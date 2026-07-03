@@ -26,6 +26,8 @@ header .src{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--
 
 .app{display:grid;grid-template-columns:252px 1fr;gap:0;min-height:calc(100vh - 60px)}
 aside{border-right:1px solid var(--line);padding:14px 12px 30px;background:var(--panel)}
+.filter{display:block;width:100%;padding:7px 10px;margin:0 0 10px;border:1px solid var(--line);border-radius:7px;font:inherit;font-size:13px;background:var(--paper);color:var(--ink)}
+.filter:focus{outline:2px solid var(--accent);outline-offset:0;border-color:transparent}
 .grp{margin-bottom:16px}
 .grp h2{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);padding:0 8px 6px}
 .item{display:flex;align-items:center;gap:9px;width:100%;text-align:left;border:0;background:none;font:inherit;font-size:13.5px;padding:6px 8px;border-radius:6px;cursor:pointer;color:var(--ink)}
@@ -80,7 +82,7 @@ td button.rm:hover{background:var(--paper);color:var(--ink)}
 
 @media (max-width:840px){
   .app{grid-template-columns:1fr}
-  aside{border-right:0;border-bottom:1px solid var(--line);max-height:300px;overflow:auto}
+  aside{border-right:0;border-bottom:1px solid var(--line);max-height:150px;overflow:auto}
   canvas{height:340px}
   main{padding:14px 12px 40px}
   table{display:block;overflow-x:auto}
@@ -99,7 +101,7 @@ td button.rm:hover{background:var(--paper);color:var(--ink)}
 </header>
 
 <div class="app">
-  <aside id="sidebar"><div class="status" id="loadstatus">Loading test index…</div></aside>
+  <aside id="sidebar"><input id="filtertests" class="filter" type="search" placeholder="Filter tests…" autocomplete="off" aria-label="Filter tests"><div class="status" id="loadstatus">Loading test index…</div></aside>
 
   <main>
     <div class="chartcard">
@@ -373,14 +375,14 @@ function statLines(s){
            ["Collapse Travel",st.xpeak.toFixed(2)+" mm"],
            ["Snap %",Math.round(st.snap)+" %"],
            ["Total Energy",Math.round(st.E)+" gf\u00B7mm"]];
-  if(isSlider(s.key))L.push(["Travel",st.travel.toFixed(2)+" mm"]);
+  L.push(["Travel",st.travel.toFixed(2)+" mm"]);
   return L;
 }
 function legendStat(s){
   const st=s.data&&s.data.stats;
   if(!st)return "loading\u2026";
   let t=`${Math.round(st.Fpeak)}g @ ${st.xpeak.toFixed(2)}mm \u00B7 ${Math.round(st.snap)}% \u00B7 ${Math.round(st.E)}gf\u00B7mm`;
-  if(isSlider(s.key))t+=` \u00B7 trv ${st.travel.toFixed(2)}mm`;
+  t+=` \u00B7 trv ${st.travel.toFixed(2)}mm`;
   return t;
 }
 
@@ -483,17 +485,17 @@ function drawScene(g,w,h,opts={}){
     const s=sets.get(selected[0]);
     if(s.data&&s.data.stats){
       const L=statLines(s);
-      const lh=19,pad=12,labW=118;
-      g.font="600 12px 'IBM Plex Mono',monospace";
+      const lh=16,pad=9,labW=102;
+      g.font="600 11px 'IBM Plex Mono',monospace";
       let valW=0;for(const[,v]of L)valW=Math.max(valW,g.measureText(v).width);
-      const bw=labW+valW+pad*2+14, bh=L.length*lh+pad*2-4;
+      const bw=labW+valW+pad*2+12, bh=L.length*lh+pad*2-3;
       g.fillStyle="rgba(255,255,255,.9)";g.strokeStyle="#D9E0DD";g.lineWidth=1;
       g.beginPath();g.roundRect(tx-pad+2,ty,bw,bh,8);g.fill();g.stroke();
-      let ly=ty+pad+9;
+      let ly=ty+pad+8;
       for(const[lab,val]of L){
-        g.fillStyle="#68766F";g.font="10.5px 'IBM Plex Mono',monospace";
+        g.fillStyle="#68766F";g.font="9.5px 'IBM Plex Mono',monospace";
         g.fillText(lab,tx+2,ly);
-        g.fillStyle="#1C2422";g.font="600 12px 'IBM Plex Mono',monospace";
+        g.fillStyle="#1C2422";g.font="600 11px 'IBM Plex Mono',monospace";
         g.textAlign="right";g.fillText(val,tx-pad+2+bw-pad,ly);g.textAlign="left";
         ly+=lh;
       }
@@ -594,8 +596,7 @@ function renderReadout(){
     el.innerHTML=`<div class="empty">Compare Topre and EC domes and parts by selecting one or more tests above.</div>`;
     return;
   }
-  const showTravel=selected.some(k=>isSlider(k));
-  const cols=4+(showTravel?1:0);
+  const cols=5;
   let rows="";
   for(const key of selected){
     const s=sets.get(key);
@@ -612,19 +613,36 @@ function renderReadout(){
         `<td><span class="big">${Math.round(st.Fpeak)}</span> <span class="u">g</span> <span class="at">@ ${st.xpeak.toFixed(2)} mm</span></td>`+
         `<td><span class="big">${Math.round(st.snap)}</span> <span class="u">%</span></td>`+
         `<td><span class="big">${Math.round(st.E)}</span> <span class="u">gf\u00B7mm</span></td>`+
-        (showTravel?`<td>${isSlider(s.key)?st.travel.toFixed(2)+' <span class="u">mm</span>':'<span class="u">\u2014</span>'}</td>`:"");
+        `<td>${st.travel.toFixed(2)} <span class="u">mm</span></td>`;
     }
     const ntag=view.runs?` <span class="u">n=${s.files.length}</span>`:"";
     const snaptag=(s.data&&s.data.snapshot)?' <span class="u" title="GitHub unreachable \u2014 showing built-in snapshot of averaged curves">snapshot</span>':"";
     rows+=`<tr><td class="name"><span class="chip" style="background:${s.color}"></span>${s.name}${ntag}${snaptag}</td>${cells}<td><button class="rm" data-key="${s.key}" aria-label="Remove ${s.name}">\u00D7</button></td></tr>`;
   }
   el.innerHTML=`<table>
-    <thead><tr><th>Test</th><th>Collapse Force and Travel</th><th>Snap %</th><th>Total Energy</th>${showTravel?"<th>Travel</th>":""}<th></th></tr></thead>
+    <thead><tr><th>Test</th><th>Collapse Force and Travel</th><th>Snap %</th><th>Total Energy</th><th>Travel</th><th></th></tr></thead>
     <tbody>${rows}</tbody></table>`;
   el.querySelectorAll("button.rm").forEach(b=>b.addEventListener("click",()=>toggleSet(b.dataset.key)));
 }
 
 /* ------------------------------------------------------------------ toggles & boot */
+function applyFilter(){
+  const q=document.getElementById("filtertests").value.trim().toLowerCase();
+  let rx=null;
+  if(q.includes("*")){
+    try{rx=new RegExp(q.split("*").map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join(".*"),"i");}catch(e){}
+  }
+  document.querySelectorAll("#sidebar .grp").forEach(grp=>{
+    let vis=0;
+    grp.querySelectorAll(".item").forEach(b=>{
+      const name=(sets.get(b.dataset.key)||{name:""}).name.toLowerCase();
+      const show=!q||(rx?rx.test(name):name.includes(q));
+      b.style.display=show?"":"none";if(show)vis++;
+    });
+    grp.style.display=vis?"":"none";
+  });
+}
+document.getElementById("filtertests").addEventListener("input",applyFilter);
 document.getElementById("tglReturn").addEventListener("change",e=>{view.ret=e.target.checked;render();});
 document.getElementById("tglRuns").addEventListener("change",e=>{
   view.runs=e.target.checked;
