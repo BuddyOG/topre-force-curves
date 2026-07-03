@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +9,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
+  --paper:#0E1012; --panel:#16181B; --ink:#ECEDEF; --muted:#9AA3AD;
+  --line:#2A2F35; --grid-minor:#1E2226; --grid-major:#2A2F35;
+  --accent:#AC53FF; --accent-ink:#C08CFF;
+  --tt-bg:#22262B; --tt-fg:#ECEDEF; --tt-mut:#9AA3AD; --tt-line:#3A4046;
+  --err:#FF8A70; --tint:rgba(172,83,255,.08);
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:'Space Grotesk',system-ui,-apple-system,sans-serif;
+}
+:root[data-theme="light"]{
   --paper:#F4F6F5; --panel:#FFFFFF; --ink:#1C2422; --muted:#68766F;
   --line:#D9E0DD; --grid-minor:#EDF1EF; --grid-major:#DCE3E0;
   --accent:#7A52B8; --accent-ink:#5B3A94;
-  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
-  --sans:'Space Grotesk',system-ui,-apple-system,sans-serif;
+  --tt-bg:#1C2422; --tt-fg:#F2F5F4; --tt-mut:#AEBBB5; --tt-line:#3A4642;
+  --err:#A8402C; --tint:rgba(122,82,184,.07);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px}
@@ -34,7 +43,7 @@ aside{border-right:1px solid var(--line);padding:14px 12px 30px;background:var(-
 .item{display:flex;align-items:center;gap:9px;width:100%;text-align:left;border:0;background:none;font:inherit;font-size:13.5px;padding:6px 8px;border-radius:6px;cursor:pointer;color:var(--ink)}
 .item:hover{background:var(--paper)}
 .item:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
-.item .box{width:13px;height:13px;border:1.5px solid #9AA6A1;border-radius:3px;flex:none;position:relative}
+.item .box{width:13px;height:13px;border:1.5px solid var(--muted);border-radius:3px;flex:none;position:relative}
 .item.on .box{border-color:transparent}
 .item.on .box::after{content:"";position:absolute;inset:0;border-radius:3px;background:var(--c)}
 .item .lbl{line-height:1.25}
@@ -52,8 +61,8 @@ main{padding:16px 22px 40px;min-width:0}
 body:not(.runs-on) .item .n{display:none}
 .chartwrap{position:relative}
 canvas{display:block;width:100%;height:460px;cursor:crosshair}
-.tooltip{position:absolute;pointer-events:none;background:var(--ink);color:#F2F5F4;border-radius:7px;padding:8px 10px;font-family:var(--mono);font-size:11.5px;line-height:1.55;display:none;z-index:5;max-width:300px;box-shadow:0 4px 14px rgba(20,30,26,.25)}
-.tooltip .tx{color:#AEBBB5;border-bottom:1px solid #3A4642;padding-bottom:3px;margin-bottom:4px}
+.tooltip{position:absolute;pointer-events:none;background:var(--tt-bg);color:var(--tt-fg);border:1px solid var(--tt-line);border-radius:7px;padding:8px 10px;font-family:var(--mono);font-size:11.5px;line-height:1.55;display:none;z-index:5;max-width:300px;box-shadow:0 4px 14px rgba(20,30,26,.25)}
+.tooltip .tx{color:var(--tt-mut);border-bottom:1px solid var(--tt-line);padding-bottom:3px;margin-bottom:4px}
 .tooltip .row{display:flex;gap:8px;align-items:center}
 .tooltip .dot{width:8px;height:8px;border-radius:2px;flex:none}
 .tooltip .v{margin-left:auto;padding-left:10px}
@@ -73,13 +82,18 @@ td .at{color:var(--muted);font-size:11.5px}
 td button.rm{border:0;background:none;color:var(--muted);cursor:pointer;font-family:var(--mono);font-size:12px;padding:2px 6px;border-radius:4px}
 td button.rm:hover{background:var(--paper);color:var(--ink)}
 .empty{padding:60px 20px;text-align:center;color:var(--muted);font-size:14px}
-.impnote{margin:18px 4px 0;max-width:860px}
-.impnote .ih{font-weight:700;font-size:16px;letter-spacing:.05em;color:var(--accent-ink);margin:0 0 6px}
-.impnote .ib{font-size:14px;line-height:1.75;color:var(--ink);margin:0}
+.impnote{padding:14px 22px;border-bottom:1px solid var(--line);background:var(--tint)}
+.impnote .ih{font-weight:700;font-size:15px;letter-spacing:.05em;color:var(--accent-ink);margin:0 0 5px}
+.impnote .ib{font-size:14px;line-height:1.7;color:var(--ink);margin:0}
+.method{margin:26px 4px 0;max-width:860px}
+.method h2{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.method p{font-size:13.5px;line-height:1.75;color:var(--ink);margin:0 0 12px}
+.method a{font-weight:500}
+.foot{margin:30px 4px 0;padding-top:16px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--muted)}
 .empty b{color:var(--ink);font-weight:600}
 .note{margin:14px 4px 0;font-size:12px;color:var(--muted);line-height:1.6;max-width:860px}
 .status{font-family:var(--mono);font-size:11px;color:var(--muted);padding:8px}
-.err{color:#A8402C}
+.err{color:var(--err)}
 
 @media (max-width:840px){
   .app{grid-template-columns:1fr}
@@ -100,7 +114,13 @@ td button.rm:hover{background:var(--paper);color:var(--ink)}
   <span class="eyebrow">Unreal Keyboards · Dome Lab</span>
   <h1>Topre Force Curve Bench</h1>
   <span class="src">data: <a href="https://github.com/BuddyOG/topre-force-curves" target="_blank" rel="noopener">github.com/BuddyOG/topre-force-curves</a> · page: <a href="https://buddyog.github.io/topre-force-curves/" target="_blank" rel="noopener">buddyog.github.io/topre-force-curves</a></span>
+  <button class="xbtn" id="themeToggle" type="button">☀ Light mode</button>
 </header>
+
+<div class="impnote">
+  <p class="ih">IMPORTANT - HOW TO COMPARE DOMES</p>
+  <p class="ib"><b>Snap %</b> is how <b>tactile</b> a dome feels.<br><b>Total Energy</b> is how <b>heavy</b> a dome feels.</p>
+</div>
 
 <div class="app">
   <aside id="sidebar">
@@ -129,12 +149,14 @@ td button.rm:hover{background:var(--paper);color:var(--ink)}
       <div id="readout"><div class="empty">Compare Topre and EC domes and parts by selecting one or more tests above.</div></div>
     </div>
 
-    <div class="impnote">
-      <p class="ih">IMPORTANT - TOTAL ENERGY AND SNAP %</p>
-      <p class="ib">These two numbers are how domes compare and exist nowhere else:<br>
-      <b>Snap %</b> is how tactile a dome is.<br>
-      <b>Total Energy</b> is how heavy a dome actually is, <b>not</b> the stated weight, i.e. Topre 45g, Deskeys Blue 49g, etc.</p>
+    <div class="method">
+      <h2>Method</h2>
+      <p>Press and return strokes are recorded at 0.005&nbsp;mm displacement steps on a calibrated bench (~0.15&nbsp;mm/s — quasi-static), with the load cell verified against standardized test weights. Every configuration is tested in multiple runs and averaged; run-to-run deviation in collapse force is under one gram, which is why grams and gf·mm are displayed as whole numbers. Hover the chart for readings as recorded.</p>
+      <p><b>Collapse</b> is the tactile peak of the press curve. <b>Valley</b> is the post-collapse minimum. <b>Snap&nbsp;%</b> = (Collapse − Valley) / Collapse × 100 — the dome-switch industry's tactile-ratio standard, where linear = 0% and higher is crisper. <b>Travel</b> is detected where the bottom-out wall begins (press slope exceeding 300&nbsp;g/mm past the valley). <b>Total Energy</b> is the area under the press curve from 0 to Travel, in gf·mm — the total work your finger does across the keystroke.</p>
+      <p><a href="https://unrealkeyboards.com/blogs/topre-mods/topre-dome-force-curves" target="_blank" rel="noopener">Read the full write-up: Topre Dome Force Curves — a testing standard →</a></p>
     </div>
+
+    <footer class="foot">© 2026 Brian “BuddyOG” Gebo — Unreal Keyboards. All rights reserved.</footer>
   </main>
 </div>
 
@@ -147,7 +169,16 @@ const RAW = (p)=>`https://raw.githubusercontent.com/${REPO}/${BRANCH}/${p.split(
 const WALL_SLOPE = 300;      // g/mm — bottom-out wall detection
 const SMOOTH_K   = 7;        // moving-average window for analysis
 const VALLEY_WIN = 1.6;      // mm search window after peak
-const PALETTE = ["#7048B6","#C2452D","#1B7F72","#B07C10","#2F5FA8","#A83A6E","#4A7A22","#5A6472","#8A5A2B","#356E86"];
+const PALETTES = {
+  light:["#7048B6","#C2452D","#1B7F72","#B07C10","#2F5FA8","#A83A6E","#4A7A22","#5A6472","#8A5A2B","#356E86"],
+  dark: ["#A97DFF","#FF7A5C","#35C9A8","#E8B23A","#6FA8FF","#FF7ABF","#8FD05C","#9AA6B5","#D89A5B","#5CC9E8"]
+};
+const CANVAS_THEME = {
+  light:{gridMinor:"#EDF1EF",gridMajor:"#DCE3E0",label:"#68766F",ink:"#1C2422",panelFill:"rgba(255,255,255,.9)",panelLine:"#D9E0DD",markerFill:"#FFFFFF",exportBg:"#FFFFFF"},
+  dark: {gridMinor:"#1E2226",gridMajor:"#2A2F35",label:"#9AA3AD",ink:"#ECEDEF",panelFill:"rgba(22,24,27,.92)",panelLine:"#2A2F35",markerFill:"#16181B",exportBg:"#111316"}
+};
+let theme = "dark";
+function getColor(s){return PALETTES[theme][s.ci % PALETTES[theme].length];}
 
 /* Fallback manifest: snapshot of the repo, used only if the GitHub API is unavailable. */
 const FALLBACK_CSVS = [
@@ -182,7 +213,7 @@ function unpackStroke(p){
 /* ------------------------------------------------------------------ state */
 const sets = new Map();      // folder -> {name, files[], color?, data?, loading}
 const selected = [];         // folder keys in selection order
-let colorPool = [...PALETTE];
+let colorPool = [0,1,2,3,4,5,6,7,8,9];
 const view = { ret:true, runs:false, markers:true, guides:true };
 let hoverX = null;
 
@@ -279,7 +310,7 @@ async function loadManifest(){
   if(!paths||!paths.length){paths=FALLBACK_CSVS;fromFallback=true;}
   for(const p of paths){
     const folder=p.split("/")[0];
-    if(!sets.has(folder))sets.set(folder,{key:folder,name:folder.replace(/_/g," "),files:[],data:null,loading:false,color:null});
+    if(!sets.has(folder))sets.set(folder,{key:folder,name:folder.replace(/_/g," "),files:[],data:null,loading:false,ci:null});
     sets.get(folder).files.push(p);
   }
   buildSidebar();
@@ -321,13 +352,13 @@ async function toggleSet(key){
   const i=selected.indexOf(key);
   if(i>=0){
     selected.splice(i,1);
-    colorPool.unshift(s.color);s.color=null;
+    colorPool.unshift(s.ci);s.ci=null;
     s.btn.classList.remove("on");s.btn.style.removeProperty("--c");s.btn.setAttribute("aria-pressed","false");
     render();return;
   }
-  s.color=colorPool.shift()||"#"+Math.floor(Math.random()*0xFFFFFF).toString(16).padStart(6,"0");
+  s.ci=colorPool.length?colorPool.shift():selected.length%PALETTES[theme].length;
   selected.push(key);
-  s.btn.classList.add("on");s.btn.style.setProperty("--c",s.color);s.btn.setAttribute("aria-pressed","true");
+  s.btn.classList.add("on");s.btn.style.setProperty("--c",getColor(s));s.btn.setAttribute("aria-pressed","true");
   if(!s.data&&!s.loading)await fetchSet(s);
   render();
 }
@@ -395,6 +426,7 @@ function legendStat(s){
    exported image is self-contained (title, annotations, legend). */
 function drawScene(g,w,h,opts={}){
   const interactive=!opts.export;
+  const T=CANVAS_THEME[theme];
   const fmax=chartFmax();
   const X=v=>M.l+(v/XMAX)*(w-M.l-M.r);
   const Y=v=>h-M.b-(v/fmax)*(h-M.t-M.b);
@@ -404,15 +436,15 @@ function drawScene(g,w,h,opts={}){
   const yStep=niceCeil(fmax/8);
   for(let gx=0;gx<=XMAX+1e-9;gx+=0.1){
     const major=Math.abs(gx/0.5-Math.round(gx/0.5))<1e-9;
-    g.strokeStyle=major?"#DCE3E0":"#EDF1EF";
+    g.strokeStyle=major?T.gridMajor:T.gridMinor;
     g.beginPath();g.moveTo(X(gx)+.5,M.t);g.lineTo(X(gx)+.5,h-M.b);g.stroke();
   }
   for(let gy=0;gy<=fmax+1e-9;gy+=yStep/5){
     const major=Math.abs(gy/yStep-Math.round(gy/yStep))<1e-6;
-    g.strokeStyle=major?"#DCE3E0":"#EDF1EF";
+    g.strokeStyle=major?T.gridMajor:T.gridMinor;
     g.beginPath();g.moveTo(M.l,Y(gy)+.5);g.lineTo(w-M.r,Y(gy)+.5);g.stroke();
   }
-  g.fillStyle="#68766F";g.font="10.5px 'IBM Plex Mono',monospace";
+  g.fillStyle=T.label;g.font="10.5px 'IBM Plex Mono',monospace";
   g.textAlign="center";g.textBaseline="top";
   for(let gx=0;gx<=4.0+1e-9;gx+=0.5)g.fillText(gx.toFixed(1),X(gx),h-M.b+7);
   g.fillText("Travel (mm)",M.l+(w-M.l-M.r)/2,h-M.b+20);
@@ -442,33 +474,33 @@ function drawScene(g,w,h,opts={}){
     if(!s.data||s.data.error)continue;
     if(view.runs&&s.data.runs.length){
       for(const r of s.data.runs){
-        drawStroke(r.press,s.color,1.1,.85);
-        if(view.ret)drawStroke(r.ret,s.color,.9,.3);
+        drawStroke(r.press,getColor(s),1.1,.85);
+        if(view.ret)drawStroke(r.ret,getColor(s),.9,.3);
       }
     }else{
-      if(view.ret)drawStroke(s.data.avgRet,s.color,1.4,.38);
-      drawStroke(s.data.avgPress,s.color,2.25,1);
+      if(view.ret)drawStroke(s.data.avgRet,getColor(s),1.4,.38);
+      drawStroke(s.data.avgPress,getColor(s),2.25,1);
     }
     if(s.data.stats){
       const st=s.data.stats;
       if(view.guides){                          // drop lines — independent of markers
-        guide(X(st.xpeak),Y(st.Fpeak),s.color); // collapse point
-        guide(X(st.xval),Y(st.Fval),s.color);   // collapse bottom
+        guide(X(st.xpeak),Y(st.Fpeak),getColor(s)); // collapse point
+        guide(X(st.xval),Y(st.Fval),getColor(s));   // collapse bottom
       }
       if(view.markers){
-        g.setLineDash([5,4]);g.globalAlpha=.45;g.strokeStyle=s.color;g.lineWidth=1.25;
+        g.setLineDash([5,4]);g.globalAlpha=.45;g.strokeStyle=getColor(s);g.lineWidth=1.25;
         g.beginPath();g.moveTo(X(st.travel),M.t);g.lineTo(X(st.travel),h-M.b);g.stroke();
         g.setLineDash([]);g.globalAlpha=1;
-        g.fillStyle=s.color;
+        g.fillStyle=getColor(s);
         g.beginPath();g.arc(X(st.xpeak),Y(st.Fpeak),4.5,0,7);g.fill();
         g.beginPath();g.arc(X(st.xval),Y(st.Fval),4.5,0,7);
-        g.fillStyle="#FFFFFF";g.fill();g.strokeStyle=s.color;g.lineWidth=1.75;g.stroke();
+        g.fillStyle=T.markerFill;g.fill();g.strokeStyle=getColor(s);g.lineWidth=1.75;g.stroke();
       }
     }
   }
   /* crosshair (interactive only) */
   if(interactive&&hoverX!=null){
-    g.strokeStyle="#1C2422";g.globalAlpha=.35;g.lineWidth=1;
+    g.strokeStyle=T.ink;g.globalAlpha=.35;g.lineWidth=1;
     g.beginPath();g.moveTo(X(hoverX)+.5,M.t);g.lineTo(X(hoverX)+.5,h-M.b);g.stroke();
     g.globalAlpha=1;
   }
@@ -478,10 +510,10 @@ function drawScene(g,w,h,opts={}){
   const single=selected.length===1;
   let tx=M.l+16, ty=M.t+14;
   g.textAlign="left";g.textBaseline="alphabetic";
-  g.fillStyle="#68766F";g.font="600 9.5px 'IBM Plex Mono',monospace";
+  g.fillStyle=T.label;g.font="600 9.5px 'IBM Plex Mono',monospace";
   g.fillText("U N R E A L  K E Y B O A R D S  \u00B7  D O M E  L A B",tx,ty);
   ty+=20;
-  g.fillStyle="#1C2422";g.font="600 17px 'Space Grotesk',system-ui,sans-serif";
+  g.fillStyle=T.ink;g.font="600 17px 'Space Grotesk',system-ui,sans-serif";
   if(selected.length){
     g.fillText(single?sets.get(selected[0]).name:"Force Curve Comparison",tx,ty);
     ty+=14;
@@ -494,13 +526,13 @@ function drawScene(g,w,h,opts={}){
       g.font="600 11px 'IBM Plex Mono',monospace";
       let valW=0;for(const[,v]of L)valW=Math.max(valW,g.measureText(v).width);
       const bw=labW+valW+pad*2+12, bh=L.length*lh+pad*2-3;
-      g.fillStyle="rgba(255,255,255,.9)";g.strokeStyle="#D9E0DD";g.lineWidth=1;
+      g.fillStyle=T.panelFill;g.strokeStyle=T.panelLine;g.lineWidth=1;
       g.beginPath();g.roundRect(tx-pad+2,ty,bw,bh,8);g.fill();g.stroke();
       let ly=ty+pad+8;
       for(const[lab,val]of L){
-        g.fillStyle="#68766F";g.font="9.5px 'IBM Plex Mono',monospace";
+        g.fillStyle=T.label;g.font="9.5px 'IBM Plex Mono',monospace";
         g.fillText(lab,tx+2,ly);
-        g.fillStyle="#1C2422";g.font="600 11px 'IBM Plex Mono',monospace";
+        g.fillStyle=T.ink;g.font="600 11px 'IBM Plex Mono',monospace";
         g.textAlign="right";g.fillText(val,tx-pad+2+bw-pad,ly);g.textAlign="left";
         ly+=lh;
       }
@@ -509,12 +541,12 @@ function drawScene(g,w,h,opts={}){
     let ly=ty+8;
     for(const key of selected){
       const s=sets.get(key);
-      g.fillStyle=s.color;
+      g.fillStyle=getColor(s);
       g.beginPath();g.roundRect(tx,ly-8,10,10,3);g.fill();
-      g.fillStyle="#1C2422";g.font="600 12.5px 'Space Grotesk',system-ui,sans-serif";
+      g.fillStyle=T.ink;g.font="600 12.5px 'Space Grotesk',system-ui,sans-serif";
       g.fillText(s.name,tx+17,ly+1);
       const nw=g.measureText(s.name).width;
-      g.fillStyle="#68766F";g.font="10.5px 'IBM Plex Mono',monospace";
+      g.fillStyle=T.label;g.font="10.5px 'IBM Plex Mono',monospace";
       g.fillText((s.data&&s.data.error)?"couldn't load":legendStat(s),tx+17+nw+12,ly+1);
       ly+=20;
     }
@@ -537,7 +569,7 @@ function exportPNG(){
   const w=1500,h=880,scale=2;
   const c=document.createElement("canvas");c.width=w*scale;c.height=h*scale;
   const g=c.getContext("2d");g.scale(scale,scale);
-  g.fillStyle="#FFFFFF";g.fillRect(0,0,w,h);
+  g.fillStyle=CANVAS_THEME[theme].exportBg;g.fillRect(0,0,w,h);
   drawScene(g,w,h,{export:true});
   const name=(selected.length===1?sets.get(selected[0]).key:"force-curve-comparison")
     .replace(/[^\w.-]+/g,"_");
@@ -571,14 +603,14 @@ canvas.addEventListener("mousemove",ev=>{
     if(view.runs&&s.data.runs.length){
       s.data.runs.forEach((r,idx)=>{
         const p=sampleAt(r.press,xv);
-        if(p){any=true;html+=`<div class="row"><span class="dot" style="background:${s.color}"></span>${s.name} \u00B7 run ${idx+1}<span class="v">${p.F.toFixed(4)} g</span></div>`;}
+        if(p){any=true;html+=`<div class="row"><span class="dot" style="background:${getColor(s)}"></span>${s.name} \u00B7 run ${idx+1}<span class="v">${p.F.toFixed(4)} g</span></div>`;}
       });
     }else{
       const p=sampleAt(s.data.avgPress,xv);
-      if(p){any=true;html+=`<div class="row"><span class="dot" style="background:${s.color}"></span>${s.name}<span class="v">${p.F.toFixed(2)} g</span></div>`;}
+      if(p){any=true;html+=`<div class="row"><span class="dot" style="background:${getColor(s)}"></span>${s.name}<span class="v">${p.F.toFixed(2)} g</span></div>`;}
       if(view.ret){
         const r=sampleAt(s.data.avgRet,xv);
-        if(r)html+=`<div class="row" style="opacity:.6"><span class="dot" style="background:${s.color}"></span>return<span class="v">${r.F.toFixed(2)} g</span></div>`;
+        if(r)html+=`<div class="row" style="opacity:.6"><span class="dot" style="background:${getColor(s)}"></span>return<span class="v">${r.F.toFixed(2)} g</span></div>`;
       }
     }
   }
@@ -622,7 +654,7 @@ function renderReadout(){
     }
     const ntag=view.runs?` <span class="u">n=${s.files.length}</span>`:"";
     const snaptag=(s.data&&s.data.snapshot)?' <span class="u" title="GitHub unreachable \u2014 showing built-in snapshot of averaged curves">snapshot</span>':"";
-    rows+=`<tr><td class="name"><span class="chip" style="background:${s.color}"></span>${s.name}${ntag}${snaptag}</td>${cells}<td><button class="rm" data-key="${s.key}" aria-label="Remove ${s.name}">\u00D7</button></td></tr>`;
+    rows+=`<tr><td class="name"><span class="chip" style="background:${getColor(s)}"></span>${s.name}${ntag}${snaptag}</td>${cells}<td><button class="rm" data-key="${s.key}" aria-label="Remove ${s.name}">\u00D7</button></td></tr>`;
   }
   el.innerHTML=`<table>
     <thead><tr><th>Test</th><th>Collapse Force and Travel</th><th>Snap %</th><th>Total Energy</th><th>Travel</th><th></th></tr></thead>
@@ -657,6 +689,17 @@ document.getElementById("tglRuns").addEventListener("change",e=>{
 document.getElementById("tglMarkers").addEventListener("change",e=>{view.markers=e.target.checked;render();});
 document.getElementById("tglGuides").addEventListener("change",e=>{view.guides=e.target.checked;render();});
 document.getElementById("btnExport").addEventListener("click",exportPNG);
+function setTheme(t){
+  theme=t;
+  document.documentElement.setAttribute("data-theme",t);
+  for(const key of selected){const s=sets.get(key);if(s.btn)s.btn.style.setProperty("--c",getColor(s));}
+  const b=document.getElementById("themeToggle");
+  if(b)b.textContent=t==="dark"?"\u2600 Light mode":"\u263D Dark mode";
+  try{localStorage.setItem("ukdl-theme",t);}catch(e){}
+  render();
+}
+document.getElementById("themeToggle").addEventListener("click",()=>setTheme(theme==="dark"?"light":"dark"));
+(function(){let sv=null;try{sv=localStorage.getItem("ukdl-theme");}catch(e){}setTheme(sv==="light"?"light":"dark");})();
 window.addEventListener("resize",render);
 loadManifest().then(render);
 </script>
