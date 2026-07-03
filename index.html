@@ -70,6 +70,9 @@ td .at{color:var(--muted);font-size:11.5px}
 td button.rm{border:0;background:none;color:var(--muted);cursor:pointer;font-family:var(--mono);font-size:12px;padding:2px 6px;border-radius:4px}
 td button.rm:hover{background:var(--paper);color:var(--ink)}
 .empty{padding:60px 20px;text-align:center;color:var(--muted);font-size:14px}
+.impnote{margin:18px 4px 0;max-width:860px}
+.impnote .ih{font-weight:700;font-size:16px;letter-spacing:.05em;color:var(--accent-ink);margin:0 0 6px}
+.impnote .ib{font-size:14px;line-height:1.75;color:var(--ink);margin:0}
 .empty b{color:var(--ink);font-weight:600}
 .note{margin:14px 4px 0;font-size:12px;color:var(--muted);line-height:1.6;max-width:860px}
 .status{font-family:var(--mono);font-size:11px;color:var(--muted);padding:8px}
@@ -92,7 +95,7 @@ td button.rm:hover{background:var(--paper);color:var(--ink)}
 <header>
   <span class="eyebrow">Unreal Keyboards · Dome Lab</span>
   <h1>Topre Force Curve Bench</h1>
-  <span class="src">data: <a href="https://github.com/BuddyOG/topre-force-curves" target="_blank" rel="noopener">github.com/BuddyOG/topre-force-curves</a></span>
+  <span class="src">data: <a href="https://github.com/BuddyOG/topre-force-curves" target="_blank" rel="noopener">github.com/BuddyOG/topre-force-curves</a> · page: <a href="https://buddyog.github.io/topre-force-curves/" target="_blank" rel="noopener">buddyog.github.io/topre-force-curves</a></span>
 </header>
 
 <div class="app">
@@ -104,6 +107,7 @@ td button.rm:hover{background:var(--paper);color:var(--ink)}
         <label class="t"><input type="checkbox" id="tglReturn" checked> Return curve</label>
         <label class="t"><input type="checkbox" id="tglRuns"> Individual runs</label>
         <label class="t"><input type="checkbox" id="tglMarkers" checked> Markers</label>
+        <label class="t"><input type="checkbox" id="tglGuides" checked> Guide lines</label>
         <button class="xbtn" id="btnExport" type="button">Export PNG</button>
         <span class="hint" id="hoverhint">hover for exact readings</span>
       </div>
@@ -115,12 +119,15 @@ td button.rm:hover{background:var(--paper);color:var(--ink)}
 
     <div class="readout">
       <h2>Bench Readout — averaged across runs</h2>
-      <div id="readout"><div class="empty">Select a dome or slider test on the left.<br><b>Collapse Force</b>, <b>Snap Ratio</b>, and <b>Energy to Travel</b> are read from the averaged press curve.</div></div>
+      <div id="readout"><div class="empty">Compare Topre and EC domes and parts by selecting one or more tests above.</div></div>
     </div>
 
-    <p class="note" id="methodnote">
-      <b>Method.</b> Press and return strokes are recorded at 0.005&nbsp;mm steps on a calibrated bench. Collapse is the tactile peak; Valley is the post-collapse minimum. Snap ratio = (Collapse − Valley) / Collapse × 100 — the dome-switch industry's tactility standard (higher = crisper; linear = 0%). Travel is detected where the bottom-out wall begins (press slope exceeds 300&nbsp;g/mm past the valley). Energy to travel is the area under the press curve from 0 to Travel, in gf·mm — the honest single number for how heavy a dome feels across the whole stroke. Grams and gf·mm are rounded to whole numbers to match run-to-run repeatability; hover the chart for readings as recorded.
-    </p>
+    <div class="impnote">
+      <p class="ih">IMPORTANT - TOTAL ENERGY AND SNAP %</p>
+      <p class="ib">These two numbers are how domes compare and exist nowhere else:<br>
+      <b>Snap %</b> is how tactile a dome is.<br>
+      <b>Total Energy</b> is how heavy a dome actually is, <b>not</b> the stated weight, i.e. Topre 45g, Deskeys Blue 49g, etc.</p>
+    </div>
   </main>
 </div>
 
@@ -169,7 +176,7 @@ function unpackStroke(p){
 const sets = new Map();      // folder -> {name, files[], color?, data?, loading}
 const selected = [];         // folder keys in selection order
 let colorPool = [...PALETTE];
-const view = { ret:true, runs:false, markers:true };
+const view = { ret:true, runs:false, markers:true, guides:true };
 let hoverX = null;
 
 /* ------------------------------------------------------------------ math */
@@ -364,8 +371,8 @@ function statLines(s){
   const st=s.data.stats;
   const L=[["Collapse Force",Math.round(st.Fpeak)+" g"],
            ["Collapse Travel",st.xpeak.toFixed(2)+" mm"],
-           ["Snap Ratio",Math.round(st.snap)+" %"],
-           ["Energy to Travel",Math.round(st.E)+" gf\u00B7mm"]];
+           ["Snap %",Math.round(st.snap)+" %"],
+           ["Total Energy",Math.round(st.E)+" gf\u00B7mm"]];
   if(isSlider(s.key))L.push(["Travel",st.travel.toFixed(2)+" mm"]);
   return L;
 }
@@ -435,17 +442,21 @@ function drawScene(g,w,h,opts={}){
       if(view.ret)drawStroke(s.data.avgRet,s.color,1.4,.38);
       drawStroke(s.data.avgPress,s.color,2.25,1);
     }
-    if(view.markers&&s.data.stats){
+    if(s.data.stats){
       const st=s.data.stats;
-      g.setLineDash([5,4]);g.globalAlpha=.45;g.strokeStyle=s.color;g.lineWidth=1.25;
-      g.beginPath();g.moveTo(X(st.travel),M.t);g.lineTo(X(st.travel),h-M.b);g.stroke();
-      g.setLineDash([]);g.globalAlpha=1;
-      guide(X(st.xpeak),Y(st.Fpeak),s.color);   // collapse — readable off both axes
-      guide(X(st.xval),Y(st.Fval),s.color);     // valley
-      g.fillStyle=s.color;
-      g.beginPath();g.arc(X(st.xpeak),Y(st.Fpeak),4.5,0,7);g.fill();
-      g.beginPath();g.arc(X(st.xval),Y(st.Fval),4.5,0,7);
-      g.fillStyle="#FFFFFF";g.fill();g.strokeStyle=s.color;g.lineWidth=1.75;g.stroke();
+      if(view.guides){                          // drop lines — independent of markers
+        guide(X(st.xpeak),Y(st.Fpeak),s.color); // collapse point
+        guide(X(st.xval),Y(st.Fval),s.color);   // collapse bottom
+      }
+      if(view.markers){
+        g.setLineDash([5,4]);g.globalAlpha=.45;g.strokeStyle=s.color;g.lineWidth=1.25;
+        g.beginPath();g.moveTo(X(st.travel),M.t);g.lineTo(X(st.travel),h-M.b);g.stroke();
+        g.setLineDash([]);g.globalAlpha=1;
+        g.fillStyle=s.color;
+        g.beginPath();g.arc(X(st.xpeak),Y(st.Fpeak),4.5,0,7);g.fill();
+        g.beginPath();g.arc(X(st.xval),Y(st.Fval),4.5,0,7);
+        g.fillStyle="#FFFFFF";g.fill();g.strokeStyle=s.color;g.lineWidth=1.75;g.stroke();
+      }
     }
   }
   /* crosshair (interactive only) */
@@ -580,11 +591,11 @@ canvas.addEventListener("mouseleave",()=>{hoverX=null;tooltip.style.display="non
 function renderReadout(){
   const el=document.getElementById("readout");
   if(!selected.length){
-    el.innerHTML=`<div class="empty">Select a dome or slider test on the left.<br><b>Collapse Force</b>, <b>Snap Ratio</b>, and <b>Energy to Travel</b> are read from the averaged press curve.</div>`;
+    el.innerHTML=`<div class="empty">Compare Topre and EC domes and parts by selecting one or more tests above.</div>`;
     return;
   }
   const showTravel=selected.some(k=>isSlider(k));
-  const cols=5+(showTravel?1:0);
+  const cols=4+(showTravel?1:0);
   let rows="";
   for(const key of selected){
     const s=sets.get(key);
@@ -598,8 +609,7 @@ function renderReadout(){
     }else{
       const st=s.data.stats;
       cells=
-        `<td><span class="big">${Math.round(st.Fpeak)}</span> <span class="u">g</span></td>`+
-        `<td>${st.xpeak.toFixed(2)} <span class="u">mm</span></td>`+
+        `<td><span class="big">${Math.round(st.Fpeak)}</span> <span class="u">g</span> <span class="at">@ ${st.xpeak.toFixed(2)} mm</span></td>`+
         `<td><span class="big">${Math.round(st.snap)}</span> <span class="u">%</span></td>`+
         `<td><span class="big">${Math.round(st.E)}</span> <span class="u">gf\u00B7mm</span></td>`+
         (showTravel?`<td>${isSlider(s.key)?st.travel.toFixed(2)+' <span class="u">mm</span>':'<span class="u">\u2014</span>'}</td>`:"");
@@ -609,7 +619,7 @@ function renderReadout(){
     rows+=`<tr><td class="name"><span class="chip" style="background:${s.color}"></span>${s.name}${ntag}${snaptag}</td>${cells}<td><button class="rm" data-key="${s.key}" aria-label="Remove ${s.name}">\u00D7</button></td></tr>`;
   }
   el.innerHTML=`<table>
-    <thead><tr><th>Test</th><th>Collapse Force</th><th>Collapse Travel</th><th>Snap Ratio</th><th>Energy to Travel</th>${showTravel?"<th>Travel</th>":""}<th></th></tr></thead>
+    <thead><tr><th>Test</th><th>Collapse Force and Travel</th><th>Snap %</th><th>Total Energy</th>${showTravel?"<th>Travel</th>":""}<th></th></tr></thead>
     <tbody>${rows}</tbody></table>`;
   el.querySelectorAll("button.rm").forEach(b=>b.addEventListener("click",()=>toggleSet(b.dataset.key)));
 }
@@ -622,6 +632,7 @@ document.getElementById("tglRuns").addEventListener("change",e=>{
   render();
 });
 document.getElementById("tglMarkers").addEventListener("change",e=>{view.markers=e.target.checked;render();});
+document.getElementById("tglGuides").addEventListener("change",e=>{view.guides=e.target.checked;render();});
 document.getElementById("btnExport").addEventListener("click",exportPNG);
 window.addEventListener("resize",render);
 loadManifest().then(render);
