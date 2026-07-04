@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EC Switch Explorer — Inside the Topre Switch | Unreal Keyboards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#0E1012; --panel:#16181B; --ink:#ECEDEF; --muted:#9AA3AD;
+  --line:#2A2F35; --accent:#AC53FF; --accent-ink:#C08CFF;
+  --tint:rgba(172,83,255,.08); --err:#FF8A70; --ok:#4ECB8F; --warn:#E8B23A;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:'Space Grotesk',system-ui,-apple-system,sans-serif;
+}
+:root[data-theme="light"]{
+  --paper:#F4F6F5; --panel:#FFFFFF; --ink:#1C2422; --muted:#68766F;
+  --line:#D9E0DD; --accent:#7A52B8; --accent-ink:#5B3A94;
+  --tint:rgba(122,82,184,.07); --err:#A8402C; --ok:#1E7F50; --warn:#8A6A10;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px}
+a{color:var(--accent-ink)}
+button{font:inherit}
+
+header{display:flex;align-items:baseline;gap:14px;padding:18px 22px 12px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+h1{font-size:21px;font-weight:600;letter-spacing:-.01em}
+header .src{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.xbtn{border:1px solid var(--line);background:var(--panel);color:var(--ink);font-size:12px;padding:4px 12px;border-radius:6px;cursor:pointer;font-weight:500}
+.xbtn:hover{border-color:var(--accent);color:var(--accent-ink)}
+.xbtn:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+
+.lede{padding:12px 22px;border-bottom:1px solid var(--line);background:var(--tint);font-size:13.5px;line-height:1.6}
+.lede b{color:var(--accent-ink)}
+
+.app{display:grid;grid-template-columns:250px 1fr 270px}
+.col{padding:16px 14px 26px;min-width:0}
+.col.left{border-right:1px solid var(--line)}
+.col.right{border-left:1px solid var(--line)}
+
+h2.sec{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.group{margin-bottom:18px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--panel);color:var(--ink);font-size:12.5px;padding:5px 11px;border-radius:20px;cursor:pointer}
+.chip:hover{border-color:var(--accent)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.chip:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.ringcustom{margin-top:10px;display:none}
+.ringcustom.show{display:block}
+.ringcustom input[type=range]{width:100%;accent-color:var(--accent)}
+.ringcustom .val{font-family:var(--mono);font-size:12px;color:var(--accent-ink);font-weight:600}
+.note{font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:6px}
+
+.parts{list-style:none}
+.parts li{padding:6px 9px;border-radius:6px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.parts li:hover{background:var(--tint)}
+.parts li.sel{background:var(--tint);color:var(--accent-ink);font-weight:600}
+.parts .sw{width:10px;height:10px;border-radius:3px;flex:none;border:1px solid rgba(0,0,0,.25)}
+.parts li.off{opacity:.4}
+.parts li:focus-visible{outline:2px solid var(--accent)}
+
+.stage{background:var(--panel)}
+.stage svg{display:block;width:100%;height:auto;max-width:920px;margin:0 auto}
+.stagectl{display:flex;gap:12px;align-items:center;padding:10px 16px;border-top:1px solid var(--line);flex-wrap:wrap}
+.stagectl label{font-size:12px;color:var(--muted)}
+#depth{flex:1;min-width:140px;accent-color:var(--accent)}
+.pressbtn{background:var(--accent);border:0;color:#fff;font-weight:600;font-size:13px;padding:8px 18px;border-radius:8px;cursor:pointer}
+.pressbtn:active{transform:translateY(1px)}
+.kbd{font-family:var(--mono);font-size:10.5px;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:1px 6px}
+
+.readout{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:12px;margin-bottom:14px}
+.readout .row{display:flex;justify-content:space-between;font-size:12.5px;padding:4px 0;border-bottom:1px solid var(--line)}
+.readout .row:last-child{border-bottom:0}
+.readout .lab{color:var(--muted)}
+.readout .v{font-family:var(--mono);font-weight:600}
+.readout .v.dim{color:var(--muted);font-weight:400}
+.meter{margin:8px 0 2px}
+.meter .bar{height:12px;border:1px solid var(--line);border-radius:6px;overflow:hidden;position:relative;background:var(--paper)}
+.meter .fill{height:100%;background:linear-gradient(90deg,var(--accent),#FF7ABF);width:0%}
+.meter .thr{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--warn)}
+.meter .cap{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:3px}
+.led{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12px;font-weight:600}
+.led .dot{width:11px;height:11px;border-radius:50%;background:var(--line)}
+.led.on .dot{background:var(--ok);box-shadow:0 0 8px var(--ok)}
+.led.on{color:var(--ok)}
+.state{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tag{font-family:var(--mono);font-size:10.5px;padding:3px 9px;border-radius:12px;border:1px solid var(--line);color:var(--muted)}
+.tag.hot{border-color:var(--accent);color:var(--accent-ink)}
+.tag.err{border-color:var(--err);color:var(--err);font-weight:600}
+.tag.ok{border-color:var(--ok);color:var(--ok)}
+.tag.wrn{border-color:var(--warn);color:var(--warn)}
+#minicurve{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+
+.info{margin:0 16px 18px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;background:var(--panel);padding:13px 16px;min-height:92px}
+.info h3{font-size:14.5px;margin:0 0 5px;color:var(--accent-ink)}
+.info p{font-size:13px;line-height:1.65}
+
+.foot{margin:8px 22px 30px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap}
+.foot a{color:var(--accent-ink)}
+.foot .cp{margin-left:auto}
+
+svg .part{cursor:pointer;transition:opacity .15s}
+svg .part:hover{filter:brightness(1.08)}
+svg.dimmed .part{opacity:.38}
+svg.dimmed .part.sel{opacity:1;filter:none}
+svg .part.sel path,svg .part.sel polyline,svg .part.sel rect{stroke-width:3}
+svg .part.draggable{cursor:ns-resize}
+svg text{font-family:var(--mono);pointer-events:none}
+svg .lbl{font-size:13px;fill:var(--ink)}
+svg .lblline{stroke:var(--muted);stroke-width:1.1;fill:none}
+
+@media (max-width:980px){
+  .app{grid-template-columns:1fr 1fr}
+  .col.right{border-left:0;border-top:1px solid var(--line);grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .stage{grid-column:2}
+}
+@media (max-width:700px){
+  .app{grid-template-columns:1fr}
+  .stage{grid-column:1}
+  .col.left{border-right:0;border-bottom:1px solid var(--line)}
+  .col.right{display:block}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="eyebrow">Unreal Keyboards · Dome Lab</span>
+  <h1>EC Switch Explorer</h1>
+  <span class="src">force data: <a href="https://buddyog.github.io/topre-force-curves/" target="_blank" rel="noopener">measured on our bench</a> · geometry: traced from CAD · build cad-2.1</span>
+  <button class="xbtn" id="themeToggle" type="button">&#9728; Light mode</button>
+</header>
+
+<div class="lede">
+  A working cross-section of a <b>Topre electrostatic capacitive switch</b> — assembly per Topre's silencing patent
+  <a href="https://patentimages.storage.googleapis.com/53/d7/b3/636954aedea39a/JP2012138254A.pdf" target="_blank" rel="noopener">JP2012-138254A</a>,
+  cross-section geometry traced 1:1 from our SolidWorks assemblies, force curves from real domes measured in our lab. Press it with the button or the depth slider, hold <b>Space</b> — or grab the keycap, slider, dome, or spring and drag it. Click any part to learn its job.
+</div>
+
+<div class="app">
+
+  <!-- ============ LEFT ============ -->
+  <div class="col left">
+    <div class="group">
+      <h2 class="sec">Slider</h2>
+      <div class="chips" id="sliderChips">
+        <button class="chip on" data-v="std">Standard</button>
+        <button class="chip" data-v="purple">Silent (purple)</button>
+        <button class="chip" data-v="types">Type-S</button>
+      </div>
+      <p class="note" id="sliderNote"></p>
+    </div>
+
+    <div class="group">
+      <h2 class="sec">Dome (Topre)</h2>
+      <div class="chips" id="domeChips">
+        <button class="chip" data-v="30g">30g</button>
+        <button class="chip on" data-v="45g">45g</button>
+        <button class="chip" data-v="55g">55g</button>
+      </div>
+      <p class="note">Force curves are our bench measurements of real Topre domes, not idealized models.</p>
+    </div>
+
+    <div class="group">
+      <h2 class="sec">Silencing ring</h2>
+      <div class="chips" id="ringChips">
+        <button class="chip on" data-v="0">None</button>
+        <button class="chip" data-v="0.2">0.2 mm</button>
+        <button class="chip" data-v="0.3">0.3 mm</button>
+        <button class="chip" data-v="0.5">0.5 mm</button>
+        <button class="chip" data-v="custom">Custom</button>
+      </div>
+      <div class="ringcustom" id="ringCustom">
+        <input type="range" id="ringRange" min="0" max="4" step="0.05" value="0.5" aria-label="Custom ring thickness in millimeters">
+        <div><span class="val" id="ringVal">0.50 mm</span> <span class="note" style="display:inline">— absurd thicknesses allowed. Try one and watch what breaks.</span></div>
+      </div>
+      <p class="note">Rides on top of the plunger, around its keycap tube — it lands on the housing's upper stop wall on the upstroke.</p>
+    </div>
+
+    <div class="group">
+      <h2 class="sec">Actuation point (APC)</h2>
+      <div class="chips" id="apcChips">
+        <button class="chip" data-v="1.5">1.5 mm</button>
+        <button class="chip on" data-v="2.2">2.2 mm</button>
+        <button class="chip" data-v="3.0">3.0 mm</button>
+      </div>
+      <p class="note">Classic boards ship fixed; Realforce APC boards let you choose. Either way it's a capacitance threshold — nothing mechanical changes.</p>
+    </div>
+
+    <div class="group">
+      <h2 class="sec">Parts — click to inspect</h2>
+      <ul class="parts" id="partsList">
+        <li data-p="keycap" tabindex="0"><span class="sw" style="background:#E3D5B3"></span>Keycap</li>
+        <li data-p="housing" tabindex="0"><span class="sw" style="background:#4E6E9E"></span>Housing</li>
+        <li data-p="slider" tabindex="0"><span class="sw" id="sliderSw" style="background:#D5D9DE"></span>Slider</li>
+        <li data-p="plate" tabindex="0"><span class="sw" style="background:#A8B0BA"></span>Steel plate</li>
+        <li data-p="ring" tabindex="0" id="ringLi"><span class="sw" style="background:#E8833A"></span>Silencing ring</li>
+        <li data-p="dome" tabindex="0"><span class="sw" style="background:#E8DCC0"></span>Rubber dome (cup rubber)</li>
+        <li data-p="spring" tabindex="0"><span class="sw" style="background:#C9A24B"></span>Conical spring</li>
+        <li data-p="pcb" tabindex="0"><span class="sw" style="background:#2E7D4F"></span>PCB + sensor pads</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ CENTER ============ -->
+  <div class="stage">
+    <svg id="scene" viewBox="0 0 880 620" role="img" aria-label="Animated cross-section of a Topre electrostatic capacitive switch"></svg>
+    <div class="stagectl">
+      <button class="pressbtn" id="pressBtn" type="button">Press key</button>
+      <span class="kbd">hold Space</span>
+      <label for="depth">Depth</label>
+      <input type="range" id="depth" min="0" max="400" step="1" value="0" aria-label="Key press depth">
+      <span id="depthLbl" style="font-family:var(--mono);font-size:12px;min-width:64px;text-align:right">0.00 mm</span>
+    </div>
+  </div>
+
+  <!-- ============ RIGHT ============ -->
+  <div class="col right">
+    <div class="readout">
+      <h2 class="sec">Live readings</h2>
+      <div class="row"><span class="lab">Finger force</span><span class="v" id="rForce">— g</span></div>
+      <div class="row"><span class="lab">Dome compression</span><span class="v" id="rComp">— mm</span></div>
+      <div class="row"><span class="lab">Travel available</span><span class="v" id="rTravel">— mm</span></div>
+      <div class="row"><span class="lab">Collapse at</span><span class="v" id="rCollapse">— mm</span></div>
+      <div class="row"><span class="lab">Actuates at</span><span class="v" id="rAct">— mm</span></div>
+      <div class="meter">
+        <div class="row" style="border:0;padding-bottom:2px"><span class="lab">Capacitance <span class="v dim">(illustrative)</span></span><span class="v" id="rCap">— pF</span></div>
+        <div class="bar"><div class="fill" id="capFill"></div><div class="thr" id="capThr"></div></div>
+        <div class="cap"><span>rest</span><span>threshold ▲</span><span>max</span></div>
+      </div>
+      <div style="margin-top:10px"><span class="led" id="actLed"><span class="dot"></span><span id="actTxt">NOT ACTUATED</span></span></div>
+      <div class="state" id="stateTags"></div>
+    </div>
+
+    <h2 class="sec">Force curve — live</h2>
+    <svg id="minicurve" viewBox="0 0 300 170"></svg>
+    <p class="note">Grey: the dome's full measured curve. Shaded: stroke consumed by ring preload before your finger arrives. The dot is where you are.</p>
+  </div>
+</div>
+
+<div class="info" id="infoPanel">
+  <h3 id="infoTitle"></h3>
+  <p id="infoBody"></p>
+</div>
+
+<div class="foot">
+  <a href="https://buddyog.github.io/topre-force-curves/" target="_blank" rel="noopener">Force Curve Bench</a>
+  <a href="https://unrealkeyboards.com/blogs/topre-mods/topre-dome-force-curves" target="_blank" rel="noopener">Testing standard write-up</a>
+  <a href="https://patentimages.storage.googleapis.com/53/d7/b3/636954aedea39a/JP2012138254A.pdf" target="_blank" rel="noopener">Topre patent JP2012-138254A</a>
+  <a href="https://unrealkeyboards.com" target="_blank" rel="noopener">unrealkeyboards.com</a>
+  <span class="cp">&#169; 2026 Brian &#8220;BuddyOG&#8221; Gebo &#8212; Unreal Keyboards. All rights reserved.</span>
+</div>
+
+<script>
+"use strict";
+const DOME_DATA={"30g":{"xpeak":0.68,"Fpeak":35.9,"x0":0.005,"step":0.02,"F":[11.15,13.65,16.32,17.61,18.67,20.65,22.21,23.82,25.01,25.94,26.57,27.36,28.15,28.88,29.68,30.32,30.98,31.61,32.26,32.75,33.25,33.77,34.08,34.2,34.29,34.63,34.64,34.84,34.85,35.15,35.32,35.7,35.85,35.88,35.76,35.58,35.91,35.73,35.6,35.42,35.46,35.55,35.38,35.33,35.17,35.05,34.8,33.51,34.72,34.76,34.59,34.49,34.44,34.24,33.95,33.63,33.51,33.5,33.6,33.63,33.4,33.23,33.1,32.79,32.6,32.43,32.37,32.13,31.87,31.58,31.36,31.09,31.06,30.72,30.71,30.75,30.56,30.46,30.38,30.28,30.26,29.96,29.85,29.57,29.37,29.15,28.97,28.63,28.58,28.55,28.48,28.25,28.21,28.12,28.02,27.84,27.74,27.52,27.38,27.35,27.25,27.3,27.18,27.22,27.22,27.31,27.36,27.36,27.33,27.31,27.37,27.35,27.42,27.41,27.48,27.46,27.53,27.63,27.63,27.75,27.87,28.05,28.03,28.14,28.2,28.24,28.33,28.42,28.56,28.7,28.87,28.93,29.07,29.15,29.31,29.45,29.54,29.7,29.85,30.05,30.15,30.3,30.42,30.6,30.79,30.92,31.16,31.35,31.52,31.78,31.97,32.23,32.48,32.72,33.04,33.3,33.53,33.78,34.07,34.33,34.67,34.93,35.22,35.47,35.82,36.11,36.44,36.8,37.11,37.44,37.83,38.2,38.57,38.98,39.34,39.78,40.15,40.56,40.99,41.38,41.79,42.26,42.69,43.15,43.56,44.05,44.54,45.02,45.54,46.04,46.53,47.1,47.73,48.37,49.16,49.79,50.56,51.74,53.65,56.87,63.93,73.59,85.35,99.06,112.06,109.8,90.84,100.94,120.13,139.46,162.42,187.45,213.78,240.83]},"45g":{"xpeak":1.3,"Fpeak":51.9,"x0":0.005,"step":0.02,"F":[9.28,10.98,12.66,14.35,16.02,17.59,19.13,20.65,22.07,23.45,24.76,26.01,27.26,28.49,29.55,30.67,31.7,32.71,33.66,34.57,35.45,36.22,37.05,37.83,38.58,39.35,40.08,40.75,41.44,42.07,42.64,43.19,43.77,44.31,44.83,45.35,45.81,46.31,46.74,47.14,47.49,47.89,48.23,48.56,48.88,49.11,49.45,49.65,49.94,50.22,50.4,50.63,50.77,50.98,51.13,51.23,51.39,51.51,51.59,51.66,51.77,51.77,51.82,51.88,51.86,51.89,51.88,51.87,51.88,51.84,51.84,51.79,51.72,51.72,51.63,51.59,51.5,51.45,51.4,51.32,51.22,51.11,51.0,50.92,50.81,50.7,50.58,50.5,50.41,50.18,50.07,49.98,49.85,49.71,49.57,49.44,49.29,49.17,49.01,48.87,48.74,48.59,48.43,48.3,48.14,48.03,47.86,47.73,47.55,47.44,47.26,47.14,47.01,46.87,46.75,46.69,46.55,46.4,46.27,46.18,46.1,46.02,45.87,45.78,45.69,45.61,45.53,45.45,45.4,45.29,45.2,45.15,45.03,44.98,44.95,44.85,44.78,44.74,44.66,44.68,44.62,44.62,44.6,44.61,44.62,44.61,44.62,44.63,44.64,44.67,44.73,44.74,44.74,44.74,44.84,44.89,44.94,45.0,44.98,45.1,45.14,45.19,45.3,45.38,45.52,45.59,45.65,45.71,45.88,46.06,46.16,46.33,46.47,46.6,46.79,46.98,47.13,47.26,47.44,47.65,47.76,48.0,48.12,48.33,48.48,48.72,48.89,49.09,49.31,49.56,49.86,50.19,50.53,50.9,51.31,51.68,52.34,54.02,59.26,70.23,86.62,104.07,113.45,91.76,99.34,121.5,146.9,172.92,199.29,226.53]},"55g":{"xpeak":1.23,"Fpeak":64.2,"x0":0.005,"step":0.02,"F":[11.72,15.11,18.13,20.38,22.57,24.77,26.54,28.49,30.21,31.8,33.37,34.84,36.21,37.51,38.75,40.11,41.48,42.91,44.0,44.99,45.87,46.88,48.01,49.23,50.24,51.2,52.03,52.82,53.4,53.95,54.6,55.31,56.16,56.63,56.93,57.68,58.06,58.5,59.0,59.59,59.87,60.16,60.62,60.71,61.08,61.5,62.04,62.48,62.91,63.32,63.46,63.61,63.73,63.87,64.04,64.08,64.05,64.05,64.21,63.91,64.22,64.15,64.2,64.16,64.14,64.13,64.23,64.09,63.94,63.91,63.93,63.49,63.23,63.54,63.32,63.02,62.74,62.54,62.44,62.27,62.03,61.84,61.44,61.18,61.03,60.83,60.69,60.72,60.56,60.47,60.09,60.0,59.84,59.57,59.41,59.08,58.85,58.81,58.57,58.42,58.1,57.83,57.58,57.36,57.06,56.83,56.68,56.56,56.38,56.21,55.96,55.8,55.66,55.47,55.26,55.06,54.9,54.78,54.62,54.37,54.19,53.94,53.76,53.56,53.36,53.32,53.04,53.02,52.85,52.55,52.41,52.35,52.21,52.01,51.88,51.77,51.71,51.64,51.58,51.47,51.36,51.4,51.36,51.32,51.29,51.26,51.29,51.21,51.24,51.22,51.3,51.19,51.19,51.24,51.32,51.36,51.29,51.3,51.34,51.39,51.42,51.49,51.61,51.67,51.74,51.85,51.87,51.96,52.11,52.17,52.31,52.38,52.51,52.65,52.79,52.89,53.03,53.19,53.33,53.51,53.64,53.81,53.93,54.1,54.28,54.46,54.66,54.93,55.25,55.52,55.92,56.27,56.71,57.19,57.71,58.26,59.61,61.97,71.42,86.22,101.82,98.87,93.77,94.98,116.32,140.49,166.69,194.1,222.43,251.04]}};
+
+/* =================== physics =================== */
+const cfg = { slider:"std", dome:"45g", ring:0, apc:2.2, depth:0 };
+let selPart = "dome";
+
+/* Constants measured from the CAD assemblies (SolidWorks STEP, sectioned on the leg plane) */
+const CAD = { STOP:3.873, SEAT_STD:3.873, SEAT_SIL:3.373, CROWN0:2.495,
+              SHEET_LEG:-4.255, TRAVEL0:3.978, DOME_BASE:-4.26,
+              SPR_BOT:-4.89, SPR_TOP0:0.68, LEGTIP:-0.277 };
+const RINGGAP = ()=> cfg.slider==="std" ? 0 : 0.5;           // stop-wall clearance above the ring seat
+function preload(){ return Math.max(0, cfg.ring - RINGGAP()); }
+function upGap(){ return Math.max(0, RINGGAP() - cfg.ring); }
+function travelMM(){ return Math.max(0, CAD.TRAVEL0 - (cfg.slider==="types"?0.2:0) - preload()); }
+function domeCurve(){ return DOME_DATA[cfg.dome]; }
+function forceAt(cabs){
+  const d = domeCurve();
+  const i = (cabs - d.x0) / d.step;
+  if(i <= 0) return d.F[0] * Math.max(0, cabs/d.x0);
+  if(i >= d.F.length-1) return d.F[d.F.length-1] + (cabs-(d.x0+(d.F.length-1)*d.step))*900;
+  const lo = Math.floor(i), fr = i - lo;
+  return d.F[lo]*(1-fr) + d.F[lo+1]*fr;
+}
+function capPF(cabs){ return 2.0 + 1.85*cabs; }
+function collapseDepth(){ return domeCurve().xpeak - preload(); }
+function actDepth(){ return cfg.apc - preload(); }
+
+/* =================== scene — traced 1:1 from the STEP assemblies =================== */
+const PROF={"keycap":[[0.849,12.123],[0.849,14.678],[1.739,14.659],[1.739,5.153],[2.939,5.153],[2.939,14.634],[5.449,14.583],[8.095,9.858],[10.296,5.723],[12.106,5.723],[9.392,10.723],[6.654,15.569],[2.958,15.365],[0.0,15.36],[-2.958,15.487],[-5.905,15.745],[-8.132,16.028],[-10.924,9.742],[-11.535,7.939],[-12.106,5.723],[-10.296,5.723],[-9.871,7.505],[-9.263,9.475],[-7.015,14.84],[-2.939,14.756],[-2.939,5.153],[-1.739,5.153],[-1.739,14.731],[-0.849,14.713],[-0.849,12.123],[0.849,12.123]],"housing":[[[-7.959,3.873],[-4.255,3.873],[-4.255,6.745],[-5.283,6.745],[-5.283,4.889],[-8.495,4.889],[-9.295,3.639],[-9.295,0.0],[-11.716,0.0],[-11.716,-4.255],[-7.959,-4.255],[-7.959,3.873]],[[7.959,3.873],[7.959,-4.255],[11.716,-4.255],[11.716,0.0],[9.259,0.0],[9.259,3.639],[8.459,4.889],[5.283,4.889],[5.283,6.745],[4.255,6.745],[4.255,3.873],[7.959,3.873]]],"plate":[[[-15.556,1.2],[-9.405,1.2],[-9.405,0.0],[-15.556,0.0],[-15.556,1.2]],[[9.405,1.2],[15.556,1.2],[15.556,0.0],[9.405,0.0],[9.405,1.2]]],"dome":[[[13.258,-4.255],[13.258,-4.763],[6.575,-4.763],[6.075,-4.263],[6.075,-4.061],[5.567,-2.536],[5.603,-2.068],[5.538,-1.603],[5.425,-1.268],[5.261,-0.956],[4.968,-0.589],[4.701,-0.359],[3.351,0.439],[3.127,0.803],[3.062,0.866],[2.958,0.895],[-2.958,0.895],[-3.038,0.879],[-3.111,0.825],[-3.361,0.431],[-4.504,-0.23],[-4.794,-0.431],[-5.048,-0.675],[-5.261,-0.956],[-5.425,-1.268],[-5.538,-1.603],[-5.603,-2.068],[-5.567,-2.536],[-6.075,-4.061],[-6.075,-4.263],[-6.575,-4.763],[-13.258,-4.763],[-13.258,-4.255],[-6.375,-4.255],[-6.372,-4.005],[-5.879,-2.523],[-5.903,-2.108],[-5.887,-1.849],[-5.813,-1.468],[-5.681,-1.103],[-5.42,-0.657],[-5.166,-0.363],[-4.974,-0.19],[-4.764,-0.038],[-3.6,0.638],[-3.534,0.699],[-3.5,0.802],[-3.498,2.323],[-3.437,2.442],[-3.3,2.495],[-1.44,2.495],[-1.381,2.45],[-1.361,2.327],[-1.3,2.296],[1.305,2.296],[1.367,2.336],[1.389,2.464],[1.45,2.495],[3.3,2.495],[3.415,2.459],[3.478,2.388],[3.499,2.309],[3.5,0.811],[3.529,0.707],[3.592,0.642],[4.654,0.029],[4.974,-0.19],[5.166,-0.363],[5.42,-0.657],[5.681,-1.103],[5.813,-1.468],[5.887,-1.849],[5.903,-2.108],[5.879,-2.523],[6.372,-4.005],[6.375,-4.255],[13.258,-4.255]]],"pcb":[[[-15.556,-4.763],[15.556,-4.763],[15.556,-5.963],[-15.556,-5.963],[-15.556,-4.763]]],"plunger_std":[[[-2.96,11.473],[-2.96,3.873],[2.96,3.873],[2.96,11.473],[4.21,11.473],[4.21,3.873],[7.925,3.873],[7.925,-0.277],[7.075,-0.277],[7.075,2.474],[-7.075,2.474],[-7.075,-0.277],[-7.925,-0.277],[-7.925,3.873],[-4.21,3.873],[-4.21,11.473],[-2.96,11.473]]],"plunger_sil":[[[-4.19,2.474],[-4.19,2.174],[-6.915,2.174],[-6.915,-0.277],[-7.765,-0.277],[-7.765,3.373],[-4.19,3.373],[-4.19,11.473],[-2.94,11.473],[-2.94,3.373],[2.94,3.373],[2.94,11.473],[4.19,11.473],[4.19,3.373],[7.765,3.373],[7.765,-0.277],[6.915,-0.277],[6.915,2.174],[4.19,2.174],[4.19,2.474],[-4.19,2.474]]],"ring":[[[-4.25,3.873],[-4.25,3.373],[-5.75,3.373],[-5.75,3.873],[-4.25,3.873]],[[5.75,3.873],[5.75,3.373],[4.25,3.373],[4.25,3.873],[5.75,3.873]]],"spring":[[-6.072,-4.893,0.165],[5.921,-4.702,0.165],[-5.697,-4.42,0.165],[5.449,-4.107,0.165],[-5.201,-3.794,0.165],[4.953,-3.482,0.165],[-4.705,-3.169,0.165],[4.457,-2.856,0.165],[-4.209,-2.543,0.165],[3.961,-2.231,0.165],[-3.713,-1.918,0.165],[3.465,-1.605,0.165],[-3.217,-1.292,0.165],[2.969,-0.98,0.165],[-2.721,-0.667,0.165],[2.473,-0.354,0.165],[-2.225,-0.042,0.165],[1.977,0.271,0.165],[-1.802,0.492,0.165],[1.651,0.683,0.165]]};
+const DOME_MODEL={"S0":[[13.258,-4.255],[13.258,-4.763],[6.575,-4.763],[6.075,-4.263],[6.075,-4.061]],"S1":[[-6.075,-4.061],[-6.075,-4.263],[-6.575,-4.763],[-13.258,-4.763],[-13.258,-4.255],[-6.375,-4.255],[-6.372,-4.005]],"S2":[[6.372,-4.005],[6.375,-4.255],[13.258,-4.255]],"R_in":[[3.351,0.439],[3.127,0.803],[3.062,0.866],[2.958,0.895],[-2.958,0.895],[-3.038,0.879],[-3.111,0.825],[-3.361,0.431]],"R_out":[[-3.6,0.638],[-3.534,0.699],[-3.5,0.802],[-3.498,2.323],[-3.437,2.442],[-3.3,2.495],[-1.44,2.495],[-1.381,2.45],[-1.361,2.327],[-1.3,2.296],[1.305,2.296],[1.367,2.336],[1.389,2.464],[1.45,2.495],[3.3,2.495],[3.415,2.459],[3.478,2.388],[3.499,2.309],[3.5,0.811],[3.529,0.707],[3.592,0.642]],"walls":{"inR":{"F":[6.075,-4.061],"T0":[3.351,0.439],"K0":[5.603,-2.068],"dir":"up","L1":2.0481,"L2":3.3699},"inL":{"F":[-6.075,-4.061],"T0":[-3.361,0.431],"K0":[-5.603,-2.068],"dir":"down","L1":2.0481,"L2":3.3573},"outL":{"F":[-6.372,-4.005],"T0":[-3.6,0.638],"K0":[-5.903,-2.108],"dir":"up","L1":1.9541,"L2":3.5839},"outR":{"F":[6.372,-4.005],"T0":[3.592,0.642],"K0":[5.903,-2.108],"dir":"down","L1":1.9541,"L2":3.5921}}};
+
+const S = 27, CXpx = 330, BASEpx = 452;
+const CLIP_X = 632;                       // parts live left of this; labels in the gutter right of it
+const Xp = x => CXpx + x*S;
+const Yp = y => BASEpx - y*S;
+
+const COLORS = {
+  housing:["url(#hHouse)","#2E4468"], plate:["url(#hPlate)","#6E7884"],
+  dome:["#E8DCC0","#B9AC8C"],  pcb:["#2E7D4F","#1E5735"],
+  ring:["#E8833A","#B85F1E"],  spring:"#C9A24B",
+  cap:["url(#hCap)","#A8966C"],
+  slider:{ std:["#D5D9DE","#9AA1AA"], purple:["#9A5BD6","#6E3AA8"], types:["url(#hTS)","#7E8792"] }
+};
+
+const NS = "http://www.w3.org/2000/svg";
+const scene = document.getElementById("scene");
+function el(tag, attrs, parent){
+  const e = document.createElementNS(NS, tag);
+  for(const k in attrs) e.setAttribute(k, attrs[k]);
+  (parent||scene).appendChild(e);
+  return e;
+}
+function pAttrs(name){ return {class:"part","data-p":name,tabindex:0,role:"button","aria-label":name}; }
+function pathFrom(loops, dy=0){
+  let d="";
+  for(const lp of loops){
+    d += "M"+lp.map(([x,y])=>`${Xp(x).toFixed(1)},${Yp(y-dy).toFixed(1)}`).join(" L")+" Z ";
+  }
+  return d;
+}
+
+/* ---------- dome kinematics: rigid crown + two-link skirt hinged at the molded knee ---------- */
+function kneeSolve(F, T, L1, L2){
+  const dx=T[0]-F[0], dy=T[1]-F[1];
+  let d=Math.hypot(dx,dy); d=Math.max(d, Math.abs(L1-L2)+1e-6);
+  const ux=dx/d, uy=dy/d;
+  const a=(L1*L1-L2*L2+d*d)/(2*d);
+  const h=Math.sqrt(Math.max(0, L1*L1-a*a));
+  const mx=F[0]+a*ux, my=F[1]+a*uy;
+  const k1=[mx-h*uy, my+h*ux], k2=[mx+h*uy, my-h*ux];
+  return Math.abs(k1[0])>Math.abs(k2[0]) ? k1 : k2;      // buckling picks the outboard branch
+}
+function qSample(A, C, B, n, skipFirst){
+  const out=[];
+  for(let i=skipFirst?1:0;i<=n;i++){
+    const t=i/n, u=1-t;
+    out.push([u*u*A[0]+2*t*u*C[0]+t*t*B[0], u*u*A[1]+2*t*u*C[1]+t*t*B[1]]);
+  }
+  return out;
+}
+function bowCtrl(A,B,amt){
+  const mx=(A[0]+B[0])/2, my=(A[1]+B[1])/2;
+  let nx=-(B[1]-A[1]), ny=B[0]-A[0];
+  const L=Math.hypot(nx,ny)||1; nx/=L; ny/=L;
+  if(nx*Math.sign(mx||1) < 0){ nx=-nx; ny=-ny; }         // bow always bellies outward
+  return [mx+nx*amt, my+ny*amt];
+}
+function wallPts(w, c, xpk){
+  const F=w.F, T=[w.T0[0], w.T0[1]-c];
+  const u=Math.min(c,xpk)/xpk, post=Math.max(0,c-xpk);
+  const sq=1-0.03*u;                                     // slight elastic wall compression pre-collapse
+  const K=kneeSolve(F, T, w.L1*sq, w.L2*sq);
+  const b1=0.05+0.07*u;                                  // lower link: mild elastic bow
+  const b2=0.05+0.08*u+0.30*Math.min(post/1.2,1);        // upper link: the flap bellies out as it folds
+  const pts=[F,
+    ...qSample(F, bowCtrl(F,K,b1), K, 6, true),
+    ...qSample(K, bowCtrl(K,T,b2), T, 7, true)];
+  return w.dir==="down" ? pts.slice().reverse() : pts;
+}
+function domePath(c){
+  const xpk = domeCurve().xpeak;
+  const tr = (pts)=>pts.map(([x,y])=>[x,y-c]);           // rigid crown: pure translation, zero deformation
+  const M = DOME_MODEL;
+  const loop = [
+    ...M.S0,
+    ...wallPts(M.walls.inR,  c, xpk),
+    ...tr(M.R_in),
+    ...wallPts(M.walls.inL,  c, xpk),
+    ...M.S1,
+    ...wallPts(M.walls.outL, c, xpk),
+    ...tr(M.R_out),
+    ...wallPts(M.walls.outR, c, xpk),
+    ...M.S2
+  ];
+  return pathFrom([loop]);
+}
+
+const G = {};
+function buildStatic(){
+  const defs = el("defs", {});
+  const grid = el("pattern",{id:"pcbGrid",width:"9",height:"9",patternUnits:"userSpaceOnUse"},defs);
+  el("rect",{width:9,height:9,fill:COLORS.pcb[0]},grid);
+  el("path",{d:"M0,0 H9 M0,0 V9",stroke:COLORS.pcb[1],"stroke-width":1.2},grid);
+  const mkHatch=(id,bg,ln)=>{
+    const p=el("pattern",{id,width:"6",height:"6",patternUnits:"userSpaceOnUse",patternTransform:"rotate(45)"},defs);
+    el("rect",{width:6,height:6,fill:bg},p);
+    el("line",{x1:0,y1:0,x2:0,y2:6,stroke:ln,"stroke-width":2},p);
+  };
+  mkHatch("hHouse","#4E6E9E","#3A5480");
+  mkHatch("hCap","#E3D5B3","#C7B58C");
+  mkHatch("hPlate","#A8B0BA","#86909C");
+  mkHatch("hTS","#B9BEC6","#98A0AA");
+  const cp = el("clipPath",{id:"sceneClip"},defs);
+  el("rect",{x:0,y:0,width:CLIP_X,height:620},cp);
+
+  G.world = el("g",{"clip-path":"url(#sceneClip)"});
+  const W = G.world;
+
+  /* PCB — full bleed to the gutter edge */
+  G.pcb = el("g", pAttrs("pcb"), W);
+  el("rect",{x:-20,y:Yp(-4.763),width:CLIP_X+40,height:1.2*S+14,fill:"url(#pcbGrid)",stroke:COLORS.pcb[1],"stroke-width":2},G.pcb);
+  el("rect",{x:Xp(-1.15),y:Yp(-4.763)-4,width:0.9*S,height:4,fill:"#E8B23A",stroke:"#A87F1E","stroke-width":1},G.pcb);
+  el("rect",{x:Xp(0.25),y:Yp(-4.763)-4,width:0.9*S,height:4,fill:"#E8B23A",stroke:"#A87F1E","stroke-width":1},G.pcb);
+
+  /* steel plate — traced + full-bleed extensions */
+  G.plate = el("g", pAttrs("plate"), W);
+  el("path",{d:pathFrom(PROF.plate),fill:COLORS.plate[0],stroke:COLORS.plate[1],"stroke-width":1.5,"fill-rule":"evenodd"},G.plate);
+  let pMin=1e9,pMax=-1e9,pTop=-1e9,pBot=1e9;
+  for(const lp of PROF.plate) for(const [x,y] of lp){ pMin=Math.min(pMin,x);pMax=Math.max(pMax,x);pTop=Math.max(pTop,y);pBot=Math.min(pBot,y); }
+  el("rect",{x:-20,y:Yp(pTop),width:Xp(pMin)+21,height:(pTop-pBot)*S,fill:COLORS.plate[0],stroke:COLORS.plate[1],"stroke-width":1.5},G.plate);
+  el("rect",{x:Xp(pMax)-1,y:Yp(pTop),width:CLIP_X-Xp(pMax)+21,height:(pTop-pBot)*S,fill:COLORS.plate[0],stroke:COLORS.plate[1],"stroke-width":1.5},G.plate);
+
+  /* rubber: sheet + kinematic dome */
+  G.dome = el("g", pAttrs("dome"), W);
+  G.domePath = el("path",{fill:COLORS.dome[0],stroke:COLORS.dome[1],"stroke-width":1.8,"stroke-linejoin":"round"},G.dome);
+
+  /* conical spring — a clear coil through the traced wire positions */
+  G.spring = el("g", pAttrs("spring"), W);
+  G.springPath = el("polyline",{fill:"none",stroke:COLORS.spring,"stroke-width":2.4,"stroke-linecap":"round","stroke-linejoin":"round"},G.spring);
+
+  /* housing */
+  G.housing = el("g", pAttrs("housing"), W);
+  el("path",{d:pathFrom(PROF.housing),fill:COLORS.housing[0],stroke:COLORS.housing[1],"stroke-width":1.8,"fill-rule":"evenodd","stroke-linejoin":"round"},G.housing);
+
+  /* slider / ring / keycap (dynamic) */
+  G.slider = el("g", pAttrs("slider"), W);
+  G.sliderPath = el("path",{"fill-rule":"evenodd","stroke-width":1.6,"stroke-linejoin":"round"},G.slider);
+  G.ring = el("g", pAttrs("ring"), W);
+  G.ringPath = el("path",{fill:COLORS.ring[0],stroke:COLORS.ring[1],"stroke-width":1.3},G.ring);
+  G.keycap = el("g", pAttrs("keycap"), W);
+  G.capBody = el("path",{fill:COLORS.cap[0],stroke:COLORS.cap[1],"stroke-width":1.8,"fill-rule":"evenodd","stroke-linejoin":"round"},G.keycap);
+
+  G.labels = el("g",{});
+
+  scene.querySelectorAll(".part").forEach(p=>{
+    p.addEventListener("click",()=>{ if(!dragMoved) selectPart(p.getAttribute("data-p")); });
+    p.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectPart(p.getAttribute("data-p"));}});
+  });
+  /* drag any moving part to press the switch */
+  for(const g of [G.keycap, G.slider, G.dome, G.spring]) makeDraggable(g);
+}
+
+let dragMoved=false;
+function makeDraggable(g){
+  g.classList.add("draggable");
+  g.addEventListener("pointerdown", e=>{
+    e.preventDefault();
+    const rect=scene.getBoundingClientRect();
+    const pxPerUnit = rect.height/620;
+    const y0=e.clientY, d0=cfg.depth;
+    dragMoved=false;
+    const move=ev=>{
+      const dmm=(ev.clientY-y0)/pxPerUnit/S;
+      if(Math.abs(ev.clientY-y0)>3) dragMoved=true;
+      cfg.depth=Math.max(-upGap(), Math.min(travelMM(), d0+dmm));
+      refresh(false);
+    };
+    const up=()=>{
+      window.removeEventListener("pointermove",move);
+      window.removeEventListener("pointerup",up);
+      setTimeout(()=>{dragMoved=false;},0);
+    };
+    window.addEventListener("pointermove",move);
+    window.addEventListener("pointerup",up);
+  });
+}
+
+let sliderLoops = null;
+function buildPlunger(){
+  const base = cfg.slider==="std" ? PROF.plunger_std : PROF.plunger_sil;
+  if(cfg.slider==="types"){
+    sliderLoops = base.map(lp=>lp.map(([x,y])=> [x, y < CAD.LEGTIP+0.35 ? y-0.2 : y]));
+  } else sliderLoops = base;
+  const [f,s] = COLORS.slider[cfg.slider];
+  G.sliderPath.setAttribute("fill",f); G.sliderPath.setAttribute("stroke",s);
+  document.getElementById("sliderSw").style.background = cfg.slider==="types" ? "#B9BEC6" : f;
+}
+
+function updateScene(){
+  const p = preload(), y = cfg.depth;
+  const off = p + y;                              // slider position (y<0 = lifted into the gap)
+  const c = p + Math.max(0, y);                   // dome only compresses on the downstroke
+  const t = cfg.ring;
+
+  G.domePath.setAttribute("d", domePath(c));
+
+  /* spring: coil compresses toward the PCB, top tracking the rigid crown underside */
+  const ceil = 0.895 - c;                          // cavity ceiling (rigid crown underside)
+  const topT = Math.min(CAD.SPR_TOP0, ceil - 0.20);
+  const ks = (topT-CAD.SPR_BOT)/(CAD.SPR_TOP0-CAD.SPR_BOT);
+  G.springPath.setAttribute("points",
+    PROF.spring.map(([cx,cy,r])=>`${Xp(cx).toFixed(1)},${Yp(CAD.SPR_BOT+(cy-CAD.SPR_BOT)*ks).toFixed(1)}`).join(" "));
+
+  G.sliderPath.setAttribute("d", pathFrom(sliderLoops, off));
+
+  if(t>0){
+    G.ring.style.display="";
+    const seat = cfg.slider==="std" ? CAD.SEAT_STD : CAD.SEAT_SIL;
+    const loops = PROF.ring.map(lp=>lp.map(([x,yy])=>[x, seat + (yy-CAD.SEAT_SIL)*(t/0.5)]));
+    G.ringPath.setAttribute("d", pathFrom(loops, off));
+  } else G.ring.style.display="none";
+
+  G.capBody.setAttribute("d", pathFrom([PROF.keycap], off));
+
+  /* callouts: gutter labels, staggered, elbow leaders */
+  G.labels.innerHTML="";
+  const calls=[];
+  const call=(txt,xa,ya)=>calls.push({txt,xa,ya,ly:ya});
+  call("Keycap",         Xp(9.392),  Yp(10.723-off));
+  call("Slider",         Xp(1.5),    Yp(8.0-off));
+  if(t>0) call("Silencing ring", Xp(5.0), Yp((cfg.slider==="std"?CAD.SEAT_STD:CAD.SEAT_SIL)+t/2-off));
+  call("Housing",        Xp(8.6),    Yp(2.2));
+  call("Steel plate",    Xp(11.0),   Yp(0.6));
+  call("Rubber dome",    Xp(5.75),   Yp(-2.1 - c*0.15));
+  call("Conic spring",   Xp(2.2),    Yp((CAD.SPR_BOT+topT)/2));
+  call("PCB",            Xp(9.8),    Yp(-5.4));
+  /* leaders per drafting practice (ASME Y14.2 family): inclined segment 15–75° from
+     horizontal, horizontal shoulder only at the note, dot terminator on faces, no crossings.
+     Monotone row assignment (sorted by anchor height) makes crossings impossible. */
+  calls.sort((a,b)=>a.ya-b.ya);
+  const TAN15=0.2679, TAN75=3.732, SP=22, DYMIN=10;   // DYMIN = 36px run × tan15°
+  let prev=-1e9;
+  for(const cl of calls){
+    cl.ly = Math.max(cl.ya + DYMIN, prev + SP);       // ≥15° incline, ≥22px label spacing
+    prev = cl.ly;
+  }
+  for(const cl of calls){
+    const dy = cl.ly - cl.ya;
+    const run = Math.max(36, dy/TAN75);               // cap incline at 75°
+    el("circle",{cx:cl.xa,cy:cl.ya,r:4,fill:"var(--muted)",stroke:"var(--panel)","stroke-width":1},G.labels);
+    el("polyline",{points:`${cl.xa},${cl.ya} ${(cl.xa+run).toFixed(1)},${cl.ly} ${CLIP_X+30},${cl.ly}`,
+      class:"lblline"},G.labels);
+    el("text",{x:CLIP_X+36,y:cl.ly+4.5,class:"lbl"},G.labels).textContent=cl.txt;
+  }
+
+  const g = upGap();
+  const gLeft = g + Math.min(0, y);                // gap remaining above the (possibly lifted) slider
+  if(g>0.01 && y<=0.005 && gLeft>0.02){
+    const seat = CAD.SEAT_SIL;
+    const gy1=Yp(CAD.STOP), gy2=Yp(seat+t-off);
+    el("line",{x1:Xp(-4.0),y1:gy1,x2:Xp(-4.0),y2:gy2,stroke:"var(--warn)","stroke-width":2},G.labels);
+    el("text",{x:Xp(-4.15),y:(gy1+gy2)/2+3,class:"lbl","text-anchor":"end",fill:"var(--warn)"},G.labels)
+      .textContent=gLeft.toFixed(2)+" mm gap";
+  }
+}
+
+/* =================== instruments =================== */
+function updateInstruments(){
+  const y=cfg.depth, p=preload(), tr=travelMM(), cabs=p+Math.max(0,y);
+  const F=forceAt(cabs), cd=collapseDepth(), ad=actDepth();
+  const bottomed = y>=tr-1e-9 && y>0;
+  const preCol = p>=domeCurve().xpeak;
+  const alwaysOn = p>=cfg.apc;
+  const actuated = cabs>=cfg.apc-1e-9;
+  const g = upGap();
+
+  const set=(id,v)=>document.getElementById(id).textContent=v;
+  set("rForce", tr<=0?"—":(y<0?"0 g":Math.round(F)+" g"));
+  set("rComp", cabs.toFixed(2)+" mm");
+  set("rTravel", tr.toFixed(2)+" mm");
+  const rc=document.getElementById("rCollapse");
+  rc.textContent = preCol?"pre-collapsed!":cd.toFixed(2)+" mm"; rc.style.color=preCol?"var(--err)":"";
+  const ra=document.getElementById("rAct");
+  ra.textContent = alwaysOn?"ALWAYS ON":ad.toFixed(2)+" mm"; ra.style.color=alwaysOn?"var(--err)":"";
+
+  const c=capPF(cabs), c0=capPF(0), cM=capPF(4.2), cT=capPF(cfg.apc);
+  set("rCap", c.toFixed(1)+" pF");
+  document.getElementById("capFill").style.width=(100*(c-c0)/(cM-c0)).toFixed(1)+"%";
+  document.getElementById("capThr").style.left=(100*(cT-c0)/(cM-c0)).toFixed(1)+"%";
+  document.getElementById("actLed").classList.toggle("on",actuated);
+  set("actTxt", actuated?"ACTUATED":"NOT ACTUATED");
+
+  const tags=[];
+  if(tr<=0) tags.push(['err','NO TRAVEL LEFT']);
+  else if(y===0) tags.push(['','at rest']);
+  if(p>0 && !preCol) tags.push(['hot',`dome preloaded ${p.toFixed(2)} mm`]);
+  if(bouncing) tags.push(['err','top-out! the slider slaps the stop wall — the rattle a ring silences']);
+  if(y<-0.005) tags.push(['wrn',`lifted ${(-y).toFixed(2)} mm into the top-out gap — free play`]);
+  if(g>0.01 && y>=-0.005 && !bouncing) tags.push(['wrn',`${g.toFixed(2)} mm top-out rattle — this slider expects a 0.5 mm ring`]);
+  if(preCol) tags.push(['err','dome pre-collapsed — no tactility, may not reset']);
+  if(!preCol && y>cd && !bottomed && cd>0) tags.push(['hot','past the snap']);
+  if(alwaysOn) tags.push(['err','key stuck on — preload exceeds actuation point']);
+  if(bottomed) tags.push(['ok','bottomed out — leg tips on the flat rubber sheet']);
+  document.getElementById("stateTags").innerHTML =
+    tags.map(([k,t])=>`<span class="tag ${k}">${t}</span>`).join("");
+
+  drawMiniCurve(cabs,p);
+  set("depthLbl", y.toFixed(2)+" mm");
+  document.getElementById("sliderNote").textContent = {
+    std:"The baseline slider. Flat top face rides the housing stop wall; its legs hang outside the dome and meet the rubber sheet at 3.98 mm — traced from the CAD model.",
+    purple:"Topre's silent slider: a 0.5 mm recess in the dome seat swallows the factory ring's thickness — silenced, with the full 4.0 mm of travel intact.",
+    types:"Identical to the silent slider, but the legs are 0.2 mm longer on purpose: they meet the sheet at 3.78 mm."
+  }[cfg.slider];
+}
+
+const mc=document.getElementById("minicurve");
+function drawMiniCurve(cabs,shift){
+  const d=domeCurve();
+  const W=300,H=170,L=34,R=8,T=12,B=26;
+  const xmax=4.4,fmax=Math.max(80,d.Fpeak*1.5);
+  const X=v=>L+(v/xmax)*(W-L-R), Yc=v=>H-B-(v/fmax)*(H-T-B);
+  let path="";
+  for(let i=0;i<d.F.length;i++){
+    const x=d.x0+i*d.step;
+    path+=(i?" L":"M")+X(x).toFixed(1)+","+Yc(d.F[i]).toFixed(1);
+  }
+  const shX=X(Math.min(shift,xmax)), dotX=X(Math.min(cabs,xmax)), dotY=Yc(Math.min(forceAt(cabs),fmax));
+  mc.innerHTML=
+    `<rect x="${L}" y="${T}" width="${Math.max(0,shX-L)}" height="${H-T-B}" fill="var(--tint)"/>`+
+    `<line x1="${L}" y1="${H-B}" x2="${W-R}" y2="${H-B}" stroke="var(--line)"/>`+
+    `<line x1="${L}" y1="${T}" x2="${L}" y2="${H-B}" stroke="var(--line)"/>`+
+    `<path d="${path}" fill="none" stroke="var(--muted)" stroke-width="1.8"/>`+
+    (shift>0?`<line x1="${shX}" y1="${T}" x2="${shX}" y2="${H-B}" stroke="var(--accent)" stroke-dasharray="3 3" opacity=".8"/>`:``)+
+    `<circle cx="${dotX}" cy="${dotY}" r="5" fill="var(--accent)"/>`+
+    `<text x="${L-6}" y="${Yc(d.Fpeak)}" text-anchor="end" font-size="9" fill="var(--muted)">${Math.round(d.Fpeak)}g</text>`+
+    `<text x="${W-R}" y="${H-8}" text-anchor="end" font-size="9" fill="var(--muted)">mm →</text>`;
+}
+
+/* =================== part info =================== */
+function partInfo(p){
+  const pl=preload(), tr=travelMM(), d=domeCurve(), g=upGap();
+  const I={
+    keycap:["Keycap",
+      "Traced from topre_key_e.stl (18 × 18 mm footprint, cut on the same 45° plane as everything else — so the section runs corner to corner). Its socket slips over the slider's tube with a light press fit; cap and slider move as one. On a Topre board the cap is along for the ride — everything you feel comes from below."],
+    housing:["Housing",
+      "One molded part doing three jobs: the collar guides the slider's tube straight; the upper stop wall arrests the slider on the upstroke — that plastic-on-plastic slap is most of a Topre board's noise, and it's exactly where the silencing ring lands instead; and the lower cylinder clamps the rubber sheet's base against the PCB. The outer walls stand on the rubber sheet, clamping it to the PCB."],
+    plate:["Steel plate — 1.2 mm (standard)",
+      "The rigid backbone: every housing clips into it, tying the whole board to one plane, and it gives your fingers something solid to push against — dome feel depends on nothing flexing but the dome. This plate, straight from the CAD, is the standard 1.2 mm. Worth knowing: GX1 Realforce boards run a 1.5 mm plate — and so do DynaCaps housings, which will matter when DynaCaps parts join this tool."],
+    slider:{
+      std:["Standard slider","A \u03c0-shaped part: the web's center boss presses the dome crown, and two legs hang outside the dome's diameter. At full stroke the leg tips land on the flat rubber sheet — a cushioned bottom-out, which is part of why Topre never feels harsh. Leg clearance IS the travel: 3.98 mm, measured straight off the solid model."],
+      purple:["Silent slider (purple)",`Built for silencing without sacrifice: the dome seat has a 0.5 mm recess that exactly absorbs the factory damping ring riding on top. Its legs are the same as the standard slider's — same clearance to the sheet, same full 3.98 mm of travel — identical leg tips in both CAD assemblies. Net dome preload: ${pl.toFixed(2)} mm. Remove the ring and the recess betrays itself — ${g>0?g.toFixed(2)+" mm of free play appears at the top of the stroke":"free play appears at the top of the stroke"}.`],
+      types:["Type-S slider",`The silent slider with one deliberate change: legs 0.2 mm longer, meeting the sheet at 3.78 mm. Shorter travel is the feature — less distance to the (already cushioned) bottom, less impact, a faster-feeling key. Same 0.5 mm recess, same factory ring on top.`]
+    }[cfg.slider],
+    ring: cfg.ring>0?["Silencing ring",
+      `An annulus slid over the slider's tube, riding on its top face. On the upstroke it meets the housing's stop wall so rubber lands instead of plastic — Topre's patent claims ~7 dB off the up-slap from a ~0.5 mm two-layer damper (soft below for silencing, hard face above for durability). Thickness is the whole trade: anything beyond the seat recess (${RINGGAP().toFixed(1)} mm on this slider) preloads the dome — currently ${pl.toFixed(2)} mm, leaving ${tr.toFixed(2)} mm of travel and pulling the snap and actuation earlier.`]
+      :["Silencing ring","Not installed. The upstroke ends with the slider's bare top face slapping the housing stop wall — the signature Topre clack. Add a ring on the left and watch where it sits: on top of the slider, not under it."],
+    dome:["Rubber dome (cup rubber) — "+cfg.dome+", measured "+Math.round(d.Fpeak)+" g collapse",
+      `Three regions, three jobs — all dimensions from the CAD section. The crown is a rigid 1.6 mm disc: it never deforms, it only rides down under the slider. The skirt is a ~0.33 mm wall with a molded knee about a third of the way up (you can see it at rest) — that knee is the hinge. As force builds the knee bulges outward; at ${d.xpeak.toFixed(2)} mm and ${Math.round(d.Fpeak)} g the wall above it gives way and folds outward over the lower wall — snap-through buckling — and that fold is the snap your finger feels. Bottomed out, the intact crown sits low on its folded skirt, exactly as you see here. The "weight" printed on a dome is just the force at that snap: one point on this measured curve.`],
+    spring:["Conical spring",
+      "The most misunderstood part in the switch. It adds almost no force — the dome does that. The spring is the sensor: as it compresses, the capacitance between it and the pads below rises, and the board reads that rise. Nothing ever makes or breaks contact, so there's nothing to bounce, oxidize, or wear."],
+    pcb:["PCB + sensor pads",
+      `The pads under each spring form one plate of a capacitor; the coil is the other. A sense IC scans every position and calls it a keypress when capacitance crosses the threshold — set here at ${cfg.apc.toFixed(1)} mm of compression. Actuation is a number in silicon, not a mechanism: that's how APC boards move it without touching a single part.`]
+  };
+  return I[p];
+}
+function selectPart(p){
+  selPart=p;
+  scene.classList.add("dimmed");
+  document.querySelectorAll("#partsList li").forEach(li=>li.classList.toggle("sel",li.dataset.p===p));
+  scene.querySelectorAll(".part").forEach(gr=>gr.classList.toggle("sel",gr.getAttribute("data-p")===p));
+  const info=partInfo(p);
+  if(!info) return;
+  document.getElementById("infoTitle").textContent=info[0];
+  document.getElementById("infoBody").textContent=info[1];
+}
+
+/* =================== controls =================== */
+function setRingUI(v){
+  const box=document.getElementById("ringChips");
+  box.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on", c.dataset.v===String(v)));
+  document.getElementById("ringCustom").classList.toggle("show", v==="custom");
+}
+function chips(id,fn){
+  const box=document.getElementById(id);
+  box.querySelectorAll(".chip").forEach(ch=>ch.addEventListener("click",()=>{
+    box.querySelectorAll(".chip").forEach(c=>c.classList.remove("on"));
+    ch.classList.add("on"); fn(ch.dataset.v);
+  }));
+}
+chips("sliderChips",v=>{
+  cfg.slider=v;
+  cfg.ring = v==="std" ? 0 : 0.5;              // every slider returns to its factory configuration
+  setRingUI(v==="std" ? "0" : "0.5");
+  buildPlunger(); refresh(true);
+});
+chips("domeChips",v=>{cfg.dome=v;refresh(true);});
+chips("apcChips",v=>{cfg.apc=parseFloat(v);refresh(false);});
+chips("ringChips",v=>{
+  if(v==="custom"){ document.getElementById("ringCustom").classList.add("show"); cfg.ring=parseFloat(document.getElementById("ringRange").value); }
+  else { document.getElementById("ringCustom").classList.remove("show"); cfg.ring=parseFloat(v); }
+  refresh(true);
+});
+document.getElementById("ringRange").addEventListener("input",e=>{
+  cfg.ring=parseFloat(e.target.value);
+  document.getElementById("ringVal").textContent=cfg.ring.toFixed(2)+" mm";
+  refresh(true);
+});
+document.querySelectorAll("#partsList li").forEach(li=>{
+  li.addEventListener("click",()=>selectPart(li.dataset.p));
+  li.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectPart(li.dataset.p);}});
+});
+const depthEl=document.getElementById("depth");
+depthEl.addEventListener("input",e=>{cfg.depth=e.target.value/100;refresh(false,true);});
+
+let anim=null;
+function animateTo(target,ms,done){
+  cancelAnimationFrame(anim);
+  const start=cfg.depth,t0=performance.now();
+  const ease=t=>t<0.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+  function step(now){
+    const f=Math.min(1,(now-t0)/ms);
+    cfg.depth=start+(target-start)*ease(f);
+    refresh(false);
+    if(f<1)anim=requestAnimationFrame(step); else if(done)done();
+  }
+  anim=requestAnimationFrame(step);
+}
+let bouncing=false;
+function releaseAnim(){
+  const g=upGap();
+  if(g<=0.02){ animateTo(0,300); return; }
+  bouncing=true;                                   // ballistic top-out: fly up, slap the wall, settle
+  const seq=[[0,150],[-g,80],[0,95],[-g*0.45,65],[0,80],[-g*0.15,45],[0,60]];
+  let i=0;
+  const step=()=>{ if(i>=seq.length){ bouncing=false; refresh(false); return; }
+    const [t,ms]=seq[i++]; animateTo(t,ms,step); };
+  step();
+}
+document.getElementById("pressBtn").addEventListener("click",()=>{
+  animateTo(travelMM(),260,()=>setTimeout(releaseAnim,220));
+});
+let spaceHeld=false;
+window.addEventListener("keydown",e=>{
+  if(e.code==="Space"&&!spaceHeld&&!/input|button/i.test(document.activeElement.tagName)){
+    e.preventDefault();spaceHeld=true;animateTo(travelMM(),240);
+  }
+});
+window.addEventListener("keyup",e=>{
+  if(e.code==="Space"&&spaceHeld){spaceHeld=false;releaseAnim();}
+});
+
+/* =================== theme =================== */
+let theme="dark";
+function setTheme(t){
+  theme=t;document.documentElement.setAttribute("data-theme",t);
+  document.getElementById("themeToggle").textContent=t==="dark"?"\u2600 Light mode":"\u263D Dark mode";
+  try{localStorage.setItem("ukdl-theme",t);}catch(e){}
+}
+document.getElementById("themeToggle").addEventListener("click",()=>setTheme(theme==="dark"?"light":"dark"));
+(function(){let sv=null;try{sv=localStorage.getItem("ukdl-theme");}catch(e){}setTheme(sv==="light"?"light":"dark");})();
+
+/* =================== boot =================== */
+function refresh(configChanged,fromSlider){
+  const tr=travelMM();
+  if(configChanged){
+    cfg.depth=Math.max(-upGap(), Math.min(cfg.depth,tr));
+    depthEl.max=Math.max(1,Math.round(tr*100));
+    depthEl.min=-Math.round(upGap()*100);
+    document.getElementById("ringLi").classList.toggle("off",cfg.ring<=0);
+    if(selPart)selectPart(selPart);
+  }
+  if(!fromSlider)depthEl.value=Math.round(cfg.depth*100);
+  updateScene();
+  updateInstruments();
+}
+buildStatic();
+buildPlunger();
+document.getElementById("ringLi").classList.add("off");
+refresh(true);
+selectPart("dome");
+</script>
+</body>
+</html>
