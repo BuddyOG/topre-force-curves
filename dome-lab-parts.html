@@ -158,7 +158,7 @@ table.dt{width:100%;border-collapse:collapse;font-size:12.5px}
 <header>
   <span class="eyebrow">Unreal Keyboards · Dome Lab</span>
   <h1>Topre &amp; EC Parts Library + Builder</h1>
-  <span class="src">domes live from repo · build lib-1.0</span>
+  <span class="src">domes live from repo · build lib-1.1</span>
   <button class="xbtn" id="themeToggle" type="button">&#9728; Light mode</button>
 </header>
 
@@ -971,6 +971,41 @@ document.getElementById("gateBoards").addEventListener("click",()=>{
 initDomes();
 renderLibChips();renderLib();
 loadDomes();
+
+/* ukdl-embed-bridge: when framed, report content height so the parent
+   iframe can match it — one page, one scrollbar. */
+(function(){
+  if(window.self===window.top)return;
+  var send=function(){try{parent.postMessage({type:"ukdl-height",h:document.documentElement.scrollHeight},"*");}catch(e){}};
+  if(window.ResizeObserver)new ResizeObserver(send).observe(document.documentElement);
+  window.addEventListener("load",send);
+  setInterval(send,1200);
+  send();
+})();
+
+/* framed dome-browser fix: a fixed-position overlay breaks inside an
+   auto-height iframe, so when framed we position it absolutely inside
+   the visible slice the parent reports. */
+var UKDL_VP=null;
+window.addEventListener("message",function(e){
+  if(e.data&&e.data.type==="ukdl-viewport"){
+    UKDL_VP=e.data;
+    if(document.getElementById("domeModal").classList.contains("open"))ukdlPlaceModal();
+  }
+});
+function ukdlPlaceModal(){
+  if(window.self===window.top||!UKDL_VP)return;
+  var m=document.getElementById("domeModal"),s=document.getElementById("domeScrim");
+  var h=Math.min(UKDL_VP.viewH*0.92,880);
+  m.style.position="absolute";
+  m.style.top=Math.max(8,UKDL_VP.visibleTop+UKDL_VP.viewH*0.04)+"px";
+  m.style.bottom="auto";
+  m.style.height=h+"px";
+  s.style.position="absolute";
+  s.style.height=document.documentElement.scrollHeight+"px";
+}
+var _openDome=openDomeModal;
+openDomeModal=function(){_openDome();ukdlPlaceModal();};
 </script>
 </body>
 </html>
