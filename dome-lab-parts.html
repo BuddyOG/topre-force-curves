@@ -42,7 +42,7 @@ h2.sec{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transf
 .pname{text-transform:uppercase;font-weight:700;letter-spacing:.02em;color:var(--ink)}
 
 /* ---------- builder: loadout | stage | extras ---------- */
-.builder{display:none;grid-template-columns:300px minmax(400px,1fr) 250px;gap:20px;align-items:start}
+.builder{display:none;grid-template-columns:300px 1fr;gap:20px;align-items:start}
 .builder.open{display:grid}
 .loadout{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:14px 15px;position:relative}
 .lo-head{display:flex;gap:8px;margin-bottom:12px}
@@ -56,24 +56,25 @@ h2.sec{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transf
 .lo-link{font-family:var(--mono);font-size:10.5px}
 .copybtn{margin-top:12px;width:100%;background:var(--accent);border:0;color:#fff;font-weight:600;font-size:13px;padding:9px 0;border-radius:8px;cursor:pointer}
 
-.stage{position:relative;min-height:560px}
-.stage svg{display:block;width:100%;max-width:430px;margin:44px auto 0;height:auto}
+.stage{position:relative;display:grid;grid-template-columns:240px 1fr;gap:14px;min-height:560px}
+.rail{display:flex;flex-direction:column;gap:8px;z-index:3}
+.rail h2.sec{margin:10px 0 2px}
+.svgwrap{position:relative}
+.svgwrap svg#xsec{display:block;width:100%;max-width:440px;margin:44px auto 0;height:auto}
+.leaders{position:absolute;inset:0;pointer-events:none;z-index:2}
 .stage svg .pt{cursor:pointer;transition:filter .12s}
 .stage svg .pt:hover{filter:brightness(1.18)}
-.chip-slot{position:absolute;border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:6px 10px;cursor:pointer;min-width:118px;text-align:left;z-index:3}
+.chip-slot{position:static;width:100%;border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:7px 11px;cursor:pointer;text-align:left}
 .chip-slot .cs-l{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .chip-slot .cs-v{font-size:11.5px;font-weight:700;margin-top:1px;text-transform:uppercase;letter-spacing:.01em}
 .chip-slot .cs-v.empty{color:var(--muted);font-weight:400;text-transform:none}
 .chip-slot.on{border-color:var(--accent);background:var(--tint)}
-.chip-slot.derived{cursor:default;border-style:dashed}
 .icons-cluster{position:absolute;top:0;left:0;right:0;display:flex;gap:10px;justify-content:center;z-index:4}
 .ic-badge{font-size:15px;border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:4px 10px;cursor:default;font-family:var(--mono)}
 .ic-badge b{font-size:12px;margin-left:4px}
 .ic-warn{color:var(--warn)} .ic-note{color:var(--accent-ink)} .ic-limbo{color:var(--muted)}
 
-.extras{display:flex;flex-direction:column;gap:8px}
-.ex-slot{border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:8px 11px;cursor:pointer;text-align:left}
-.ex-slot.sub{margin-left:18px;border-left:2px solid var(--accent)}
+.ex-slot{border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:7px 11px;cursor:pointer;text-align:left}
 .ex-slot .cs-l{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .ex-slot .cs-v{font-size:11.5px;font-weight:700;margin-top:1px;text-transform:uppercase}
 .ex-slot .cs-v.empty{color:var(--muted);font-weight:400;text-transform:none}
@@ -177,7 +178,7 @@ table.dt{width:100%;border-collapse:collapse;font-size:13px}
 <header>
   <span class="eyebrow">Unreal Keyboards · Dome Lab</span>
   <h1>Topre &amp; EC Parts Library + Builder</h1>
-  <span class="src">interim catalog — awaiting ec_parts_dataset · build lib-2.0</span>
+  <span class="src">interim catalog — awaiting ec_parts_dataset · build lib-2.1</span>
   <button class="xbtn" id="themeToggle" type="button">&#9728; Light mode</button>
 </header>
 
@@ -194,12 +195,12 @@ table.dt{width:100%;border-collapse:collapse;font-size:13px}
     <div class="loadout" id="loadout"></div>
 
     <div class="stage" id="stage">
-      <div class="icons-cluster" id="cluster"></div>
-      <svg id="xsec" viewBox="0 0 320 300" role="img" aria-label="Topre switch cross-section — click a part to open its options"></svg>
-    </div>
-
-    <div class="extras" id="extras">
-      <h2 class="sec">Assemblies &amp; extras</h2>
+      <div class="rail" id="rail"></div>
+      <div class="svgwrap">
+        <div class="icons-cluster" id="cluster"></div>
+        <svg id="xsec" viewBox="0 0 320 300" role="img" aria-label="Topre switch cross-section — click a part to open its options"></svg>
+        <svg class="leaders" id="leaders"></svg>
+      </div>
     </div>
 
     <div class="opts" id="opts"></div>
@@ -259,7 +260,7 @@ table.dt{width:100%;border-collapse:collapse;font-size:13px}
    - No vendor-description claims. Feel/notes columns from vendor pages
      are quarantined from display.
 ==================================================================== */
-const SCENE={"keycap":[[[0.85,12.12],[0.85,14.68],[1.74,14.66],[1.74,5.15],[2.94,5.15],[2.94,14.63],[5.45,14.58],[8.1,9.86],[10.3,5.72],[12.11,5.72],[9.39,10.72],[6.65,15.57],[2.96,15.37],[0.0,15.36],[-2.96,15.49],[-5.91,15.74],[-8.13,16.03],[-10.92,9.74],[-11.54,7.94],[-12.11,5.72],[-10.3,5.72],[-9.87,7.5],[-9.26,9.47],[-7.01,14.84],[-2.94,14.76],[-2.94,5.15],[-1.74,5.15],[-1.74,14.73],[-0.85,14.71],[-0.85,12.12],[0.85,12.12]]],"housing":[[[-7.96,3.87],[-4.25,6.75],[-5.28,4.89],[-9.29,3.64],[-11.72,0.0],[-7.96,-4.25]],[[7.96,3.87],[11.72,-4.25],[9.26,0.0],[8.46,4.89],[5.28,6.75],[4.25,3.87]]],"plate":[[[-15.56,1.2],[-9.4,1.2],[-9.4,0.0],[-15.56,0.0],[-15.56,1.2]],[[9.4,1.2],[15.56,1.2],[15.56,0.0],[9.4,0.0],[9.4,1.2]]],"dome":[[[13.26,-4.25],[13.26,-4.76],[6.58,-4.76],[6.08,-4.26],[6.08,-4.06],[5.57,-2.54],[5.6,-2.07],[5.54,-1.6],[5.42,-1.27],[5.26,-0.96],[4.97,-0.59],[4.7,-0.36],[3.35,0.44],[3.13,0.8],[3.06,0.87],[2.96,0.9],[-2.96,0.9],[-3.04,0.88],[-3.11,0.82],[-3.36,0.43],[-4.5,-0.23],[-4.79,-0.43],[-5.05,-0.68],[-5.26,-0.96],[-5.42,-1.27],[-5.54,-1.6],[-5.6,-2.07],[-5.57,-2.54],[-6.08,-4.06],[-6.08,-4.26],[-6.58,-4.76],[-13.26,-4.76],[-13.26,-4.25],[-6.38,-4.25],[-6.37,-4.0],[-5.88,-2.52],[-5.9,-2.11],[-5.89,-1.85],[-5.81,-1.47],[-5.68,-1.1],[-5.42,-0.66],[-5.17,-0.36],[-4.97,-0.19],[-4.76,-0.04],[-3.6,0.64],[-3.53,0.7],[-3.5,0.8],[-3.5,2.32],[-3.44,2.44],[-3.3,2.5],[-1.44,2.5],[-1.38,2.45],[-1.36,2.33],[-1.3,2.3],[1.3,2.3],[1.37,2.34],[1.39,2.46],[1.45,2.5],[3.3,2.5],[3.42,2.46],[3.48,2.39],[3.5,2.31],[3.5,0.81],[3.53,0.71],[3.59,0.64],[4.65,0.03],[4.97,-0.19],[5.17,-0.36],[5.42,-0.66],[5.68,-1.1],[5.81,-1.47],[5.89,-1.85],[5.9,-2.11],[5.88,-2.52],[6.37,-4.0],[6.38,-4.25],[13.26,-4.25]]],"slider":[[[-2.96,11.47],[2.96,3.87],[4.21,11.47],[7.92,3.87],[7.08,-0.28],[-7.08,2.47],[-7.92,-0.28],[-4.21,3.87],[-2.96,11.47]]],"ring":[[[-4.25,3.87],[-4.25,3.37],[-5.75,3.37],[-5.75,3.87],[-4.25,3.87]],[[5.75,3.87],[5.75,3.37],[4.25,3.37],[4.25,3.87],[5.75,3.87]]],"spring":[[[-6.07,-4.89],[5.92,-4.7],[-5.7,-4.42],[5.45,-4.11],[-5.2,-3.79],[4.95,-3.48],[-4.71,-3.17],[4.46,-2.86],[-4.21,-2.54],[3.96,-2.23],[-3.71,-1.92],[3.46,-1.6],[-3.22,-1.29],[2.97,-0.98],[-2.72,-0.67],[2.47,-0.35],[-2.23,-0.04],[1.98,0.27],[-1.8,0.49],[1.65,0.68]]],"pcb":[[[-9.4,-4.76],[9.4,-4.76],[9.4,-5.96],[-9.4,-5.96]]]};
+const SCENE={"keycap":[[[0.85,12.12],[0.85,14.68],[1.74,14.66],[1.74,5.15],[2.94,5.15],[2.94,14.63],[5.45,14.58],[8.1,9.86],[10.3,5.72],[12.11,5.72],[9.39,10.72],[6.65,15.57],[2.96,15.37],[0.0,15.36],[-2.96,15.49],[-5.91,15.74],[-8.13,16.03],[-10.92,9.74],[-11.54,7.94],[-12.11,5.72],[-10.3,5.72],[-9.87,7.5],[-9.26,9.47],[-7.01,14.84],[-2.94,14.76],[-2.94,5.15],[-1.74,5.15],[-1.74,14.73],[-0.85,14.71],[-0.85,12.12],[0.85,12.12]]],"housing":[[[-7.96,3.87],[-4.25,3.87],[-4.25,6.75],[-5.28,6.75],[-5.28,4.89],[-8.49,4.89],[-9.29,3.64],[-9.29,0.0],[-11.72,0.0],[-11.72,-4.25],[-7.96,-4.25],[-7.96,3.87]],[[7.96,3.87],[7.96,-4.25],[11.72,-4.25],[11.72,0.0],[9.26,0.0],[9.26,3.64],[8.46,4.89],[5.28,4.89],[5.28,6.75],[4.25,6.75],[4.25,3.87],[7.96,3.87]]],"plate":[[[-15.56,1.2],[-9.4,1.2],[-9.4,0.0],[-15.56,0.0],[-15.56,1.2]],[[9.4,1.2],[15.56,1.2],[15.56,0.0],[9.4,0.0],[9.4,1.2]]],"dome":[[[13.26,-4.25],[13.26,-4.76],[6.58,-4.76],[6.08,-4.26],[6.08,-4.06],[5.57,-2.54],[5.6,-2.07],[5.54,-1.6],[5.26,-0.96],[4.97,-0.59],[4.7,-0.36],[3.35,0.44],[3.06,0.87],[-2.96,0.9],[-3.11,0.82],[-3.36,0.43],[-4.79,-0.43],[-5.26,-0.96],[-5.54,-1.6],[-5.6,-2.07],[-5.57,-2.54],[-6.08,-4.06],[-6.08,-4.26],[-6.58,-4.76],[-13.26,-4.76],[-13.26,-4.25],[-6.38,-4.25],[-6.37,-4.0],[-5.88,-2.52],[-5.89,-1.85],[-5.81,-1.47],[-5.68,-1.1],[-5.42,-0.66],[-4.97,-0.19],[-3.53,0.7],[-3.5,0.8],[-3.5,2.32],[-3.44,2.44],[-3.3,2.5],[-1.44,2.5],[-1.38,2.45],[-1.36,2.33],[-1.3,2.3],[1.3,2.3],[1.37,2.34],[1.39,2.46],[1.45,2.5],[3.3,2.5],[3.42,2.46],[3.5,2.31],[3.53,0.71],[4.97,-0.19],[5.42,-0.66],[5.68,-1.1],[5.81,-1.47],[5.89,-1.85],[5.88,-2.52],[6.37,-4.0],[6.38,-4.25],[13.26,-4.25]]],"slider":[[[-2.96,11.47],[-2.96,3.87],[2.96,3.87],[2.96,11.47],[4.21,11.47],[4.21,3.87],[7.92,3.87],[7.92,-0.28],[7.08,-0.28],[7.08,2.47],[-7.08,2.47],[-7.08,-0.28],[-7.92,-0.28],[-7.92,3.87],[-4.21,3.87],[-4.21,11.47],[-2.96,11.47]]],"ring":[[[-4.25,3.87],[-4.25,3.37],[-5.75,3.37],[-5.75,3.87],[-4.25,3.87]],[[5.75,3.87],[5.75,3.37],[4.25,3.37],[4.25,3.87],[5.75,3.87]]],"spring":[[[-6.07,-4.89],[5.92,-4.7],[-5.7,-4.42],[5.45,-4.11],[-5.2,-3.79],[4.95,-3.48],[-4.71,-3.17],[4.46,-2.86],[-4.21,-2.54],[3.96,-2.23],[-3.71,-1.92],[3.46,-1.6],[-3.22,-1.29],[2.97,-0.98],[-2.72,-0.67],[2.47,-0.35],[-2.23,-0.04],[1.98,0.27],[-1.8,0.49],[1.65,0.68]]],"pcb":[[[-9.4,-4.76],[9.4,-4.76],[9.4,-5.96],[-9.4,-5.96]]]};
 const MINI_CURVES={"BKE_Redux_Extreme_01":{"x":[0.02,0.42,0.82,1.22,1.62,2.02,2.42,2.82,3.22,3.62,4.02,4.42,4.82,5.22,5.62,6.02,6.42,6.82,7.22,7.62,8.02,8.42,8.82,9.22,9.62,10.02,10.42,10.82,11.22,11.62,12.02,12.42,12.82,13.22,13.62,14.02,14.42],"F":[9.4,90.2,95.3,107.0,115.9,122.0,126.4,129.2,131.2,132.0,131.8,130.6,128.6,125.6,121.7,117.1,112.0,106.9,101.2,95.2,89.0,82.6,76.3,70.2,64.7,58.3,55.3,53.3,52.4,52.5,53.7,56.0,59.8,65.0,95.8,150.2,237.4]},"DynaCaps_Light":{"x":[0.02,0.52,1.02,1.52,2.02,2.52,3.02,3.52,4.02,4.52,5.02,5.52,6.02,6.52,7.02,7.52,8.02,8.52,9.02,9.52,10.02,10.52,11.02,11.52,12.02,12.52,13.02,13.52,14.02,14.52,15.02,15.52,16.02,16.52,17.02,17.52],"F":[8.2,18.8,21.9,24.3,26.4,28.1,29.4,30.5,31.0,31.1,31.1,31.1,30.9,30.5,30.2,29.8,29.3,28.8,28.3,27.9,27.5,27.2,27.0,26.8,26.8,26.9,27.1,27.5,27.9,28.7,29.6,30.9,49.1,85.0,101.5,166.2]},"DynaCaps_Medium":{"x":[0.02,0.5,0.98,1.46,1.94,2.42,2.9,3.38,3.86,4.34,4.82,5.3,5.78,6.26,6.74,7.22,7.7,8.18,8.66,9.14,9.62,10.1,10.58,11.06,11.54,12.02,12.5,12.98,13.46,13.94,14.42,14.9,15.38,15.86,16.34,16.82,17.3],"F":[9.2,24.4,30.1,34.5,38.2,41.3,43.5,45.1,46.5,47.3,47.7,47.9,47.6,47.3,46.8,46.2,45.4,44.5,43.7,42.7,41.9,41.1,40.4,39.8,39.2,38.6,38.5,38.4,38.3,38.4,38.7,39.3,40.2,56.5,98.2,121.3,179.0]},"DynaCaps_Parts":{"x":[0.02,0.46,0.9,1.34,1.78,2.22,2.66,3.1,3.54,3.98,4.42,4.86,5.3,5.74,6.18,6.62,7.06,7.5,7.94,8.38,8.82,9.26,9.7,10.14,10.58,11.02,11.46,11.9,12.34,12.78,13.22,13.66,14.1,14.54,14.98,15.42,15.86],"F":[8.0,43.6,47.7,51.5,54.3,56.4,57.8,58.7,59.2,59.5,59.5,58.9,58.4,57.7,56.7,55.8,54.4,53.5,52.3,51.5,50.8,49.6,49.0,48.7,48.2,47.8,48.1,48.1,48.7,49.3,50.1,50.6,52.2,54.5,84.7,120.7,236.3]},"Dynacaps_Heavy":{"x":[0.02,0.5,0.98,1.46,1.94,2.42,2.9,3.38,3.86,4.34,4.82,5.3,5.78,6.26,6.74,7.22,7.7,8.18,8.66,9.14,9.62,10.1,10.58,11.06,11.54,12.02,12.5,12.98,13.46,13.94,14.42,14.9,15.38,15.86,16.34,16.82,17.3],"F":[6.0,28.2,35.0,40.1,44.2,47.3,49.7,51.4,52.5,53.2,53.2,53.1,52.6,52.0,51.0,50.1,48.9,47.7,46.5,45.3,44.2,43.2,42.3,41.6,40.8,40.2,39.8,39.6,39.5,39.6,39.8,40.4,41.1,50.5,92.0,125.2,201.0]},"Dynacaps_Slider_0.3mm_Poron":{"x":[0.02,0.48,0.94,1.4,1.86,2.32,2.78,3.24,3.7,4.16,4.62,5.08,5.54,6.0,6.46,6.92,7.38,7.84,8.3,8.76,9.22,9.68,10.14,10.6,11.06,11.52,11.98,12.44,12.9,13.36,13.82,14.28,14.74,15.2,15.66,16.12,16.58,17.04],"F":[5.1,28.7,37.6,44.4,49.6,53.4,56.0,58.0,59.3,60.1,60.3,60.3,59.8,58.8,57.7,56.6,55.3,54.0,52.8,51.7,50.4,49.2,48.1,47.2,46.5,46.0,45.6,45.4,45.7,45.8,46.4,47.0,48.1,49.8,52.1,67.3,98.2,205.5]},"Dynacaps_Slider_0.5mm_Silicone":{"x":[0.02,0.46,0.9,1.34,1.78,2.22,2.66,3.1,3.54,3.98,4.42,4.86,5.3,5.74,6.18,6.62,7.06,7.5,7.94,8.38,8.82,9.26,9.7,10.14,10.58,11.02,11.46,11.9,12.34,12.78,13.22,13.66,14.1,14.54,14.98,15.42,15.86],"F":[11.8,43.5,49.5,53.1,56.1,58.3,60.0,60.9,61.3,61.1,60.8,60.3,59.4,58.6,57.5,56.0,54.9,53.5,52.1,51.0,49.9,48.8,48.1,47.2,46.9,46.4,46.0,45.7,46.2,46.4,46.8,47.5,49.0,50.8,56.0,100.1,162.0]},"NiZ_65g":{"x":[0.02,0.48,0.94,1.4,1.86,2.32,2.78,3.24,3.7,4.16,4.62,5.08,5.54,6.0,6.46,6.92,7.38,7.84,8.3,8.76,9.22,9.68,10.14,10.6,11.06,11.52,11.98,12.44,12.9,13.36,13.82,14.28,14.74,15.2,15.66,16.12,16.58],"F":[3.8,16.7,27.3,35.4,43.1,50.0,56.2,61.4,65.8,69.4,72.0,73.0,74.3,75.1,75.5,75.4,75.1,74.1,73.6,72.5,71.6,70.4,69.4,68.6,67.9,67.3,66.6,66.4,66.4,66.8,67.3,68.0,68.8,70.2,78.3,121.8,240.9]},"Topre_30g":{"x":[0.02,0.48,0.94,1.4,1.86,2.32,2.78,3.24,3.7,4.16,4.62,5.08,5.54,6.0,6.46,6.92,7.38,7.84,8.3,8.76,9.22,9.68,10.14,10.6,11.06,11.52,11.98,12.44,12.9,13.36,13.82,14.28,14.74,15.2,15.66,16.12,16.58,17.04],"F":[11.2,21.8,27.8,31.8,34.2,35.0,35.8,35.4,34.8,34.4,33.5,32.7,31.6,30.7,30.2,28.9,28.2,27.4,27.2,27.3,27.5,27.9,28.5,29.1,29.9,30.8,31.9,33.3,34.9,36.7,38.7,41.1,43.6,46.5,50.1,76.4,100.9,233.9]},"Topre_45g":{"x":[0.02,0.48,0.94,1.4,1.86,2.32,2.78,3.24,3.7,4.16,4.62,5.08,5.54,6.0,6.46,6.92,7.38,7.84,8.3,8.76,9.22,9.68,10.14,10.6,11.06,11.52,11.98,12.44,12.9,13.36,13.82,14.28,14.74,15.2,15.66,16.12,16.58],"F":[9.3,18.7,26.7,32.9,37.8,41.9,45.1,47.6,49.5,50.8,51.5,51.9,51.8,51.6,51.2,50.5,49.9,49.1,48.2,47.4,46.7,46.0,45.5,45.0,44.7,44.6,44.7,44.9,45.2,45.8,46.6,47.5,48.5,49.8,52.0,107.7,172.9]},"Topre_55g":{"x":[0.02,0.48,0.94,1.4,1.86,2.32,2.78,3.24,3.7,4.16,4.62,5.08,5.54,6.0,6.46,6.92,7.38,7.84,8.3,8.76,9.22,9.68,10.14,10.6,11.06,11.52,11.98,12.44,12.9,13.36,13.82,14.28,14.74,15.2,15.66,16.12,16.58],"F":[11.7,26.2,35.5,43.2,49.2,53.9,57.4,59.9,62.0,63.8,64.2,64.2,63.9,63.2,61.9,60.6,59.8,58.7,57.2,56.1,55.1,54.0,53.0,52.1,51.6,51.3,51.2,51.2,51.5,52.0,52.6,53.3,54.3,55.8,58.8,96.8,194.1]},"Topre_55g_Aged":{"x":[0.02,0.48,0.94,1.4,1.86,2.32,2.78,3.24,3.7,4.16,4.62,5.08,5.54,6.0,6.46,6.92,7.38,7.84,8.3,8.76,9.22,9.68,10.14,10.6,11.06,11.52,11.98,12.44,12.9,13.36,13.82,14.28,14.74,15.2,15.66,16.12,16.58],"F":[9.8,30.9,40.0,47.9,54.7,59.2,64.0,66.7,68.6,69.3,69.1,68.0,67.8,67.0,65.8,64.1,62.7,61.3,59.9,58.6,57.2,56.0,55.0,53.6,52.2,52.1,51.5,51.6,50.8,50.9,50.4,50.3,50.3,51.2,53.5,93.7,144.8]},"Topre_Slider_Black":{"x":[0.02,0.48,0.94,1.4,1.86,2.32,2.78,3.24,3.7,4.16,4.62,5.08,5.54,6.0,6.46,6.92,7.38,7.84,8.3,8.76,9.22,9.68,10.14,10.6,11.06,11.52,11.98,12.44,12.9,13.36,13.82,14.28,14.74,15.2,15.66,16.12,16.58,17.04],"F":[12.8,30.1,39.5,46.2,51.7,55.8,58.4,60.5,61.9,62.7,62.9,62.6,62.0,61.2,60.1,59.0,57.6,56.3,54.8,53.3,52.1,50.9,49.8,48.8,47.9,47.2,46.7,46.3,46.2,46.3,46.7,47.3,48.1,49.2,51.3,80.9,111.4,246.0]},"Topre_Slider_Black_Silenced_0.3mm_Poron":{"x":[0.02,0.46,0.9,1.34,1.78,2.22,2.66,3.1,3.54,3.98,4.42,4.86,5.3,5.74,6.18,6.62,7.06,7.5,7.94,8.38,8.82,9.26,9.7,10.14,10.58,11.02,11.46,11.9,12.34,12.78,13.22,13.66,14.1,14.54,14.98,15.42,15.86],"F":[9.0,46.1,50.8,54.9,57.5,59.0,60.3,61.0,61.2,61.1,60.4,59.5,58.7,57.8,56.4,55.5,54.0,52.6,51.4,50.2,49.2,48.4,47.6,46.9,46.5,46.0,45.7,45.8,46.1,46.6,47.1,48.0,49.6,51.5,60.2,103.4,194.5]},"Topre_Slider_Black_Silenced_0.5mm_Poron":{"x":[0.02,0.44,0.86,1.28,1.7,2.12,2.54,2.96,3.38,3.8,4.22,4.64,5.06,5.48,5.9,6.32,6.74,7.16,7.58,8.0,8.42,8.84,9.26,9.68,10.1,10.52,10.94,11.36,11.78,12.2,12.62,13.04,13.46,13.88,14.3,14.72,15.14],"F":[8.3,53.4,59.2,62.1,64.5,66.2,66.7,67.2,67.4,66.8,65.9,65.3,63.7,63.0,61.4,60.6,59.5,56.9,55.4,54.6,53.4,52.6,51.4,50.6,50.0,49.5,50.2,50.1,50.8,51.2,51.6,52.5,54.0,55.6,57.9,103.7,145.0]},"Topre_Slider_Silenced_Purple":{"x":[0.02,0.5,0.98,1.46,1.94,2.42,2.9,3.38,3.86,4.34,4.82,5.3,5.78,6.26,6.74,7.22,7.7,8.18,8.66,9.14,9.62,10.1,10.58,11.06,11.54,12.02,12.5,12.98,13.46,13.94,14.42,14.9,15.38,15.86,16.34,16.82,17.3],"F":[2.9,22.5,35.3,42.7,49.0,53.4,57.1,59.7,61.1,62.5,63.3,63.3,63.3,62.0,60.8,59.0,57.3,55.8,54.2,53.0,52.0,50.7,49.5,48.6,47.6,47.0,46.6,46.5,46.6,46.9,47.6,48.3,49.4,51.5,75.1,114.4,245.9]},"Topre_Slider_Type-S":{"x":[0.02,0.48,0.94,1.4,1.86,2.32,2.78,3.24,3.7,4.16,4.62,5.08,5.54,6.0,6.46,6.92,7.38,7.84,8.3,8.76,9.22,9.68,10.14,10.6,11.06,11.52,11.98,12.44,12.9,13.36,13.82,14.28,14.74,15.2,15.66,16.12,16.58],"F":[3.6,25.8,35.9,43.8,49.3,53.5,56.8,59.1,60.8,61.7,62.2,62.1,61.6,60.9,59.9,58.8,57.6,56.4,55.0,53.5,52.3,51.1,50.0,49.1,48.2,47.5,47.0,46.8,46.7,46.8,47.2,47.7,48.5,49.7,85.2,124.2,205.5]}};
 const DOME_DB=[{"id":"dm-topre-oem-stock-standard-light-var","maker":"Topre","vendor":"Official","style":"OEM Stock","variant":"Standard/Light Var","name":"OEM Stock \u2014 Standard/Light Var","wmin":30.0,"wmax":35.0,"wraw":"30-35","src":""},{"id":"dm-topre-oem-stock-standard","maker":"Topre","vendor":"Official","style":"OEM Stock","variant":"Standard","name":"OEM Stock \u2014 Standard","wmin":45.0,"wmax":45.0,"wraw":"45","src":""},{"id":"dm-topre-oem-stock-heavy-discontinued","maker":"Topre","vendor":"Official","style":"OEM Stock","variant":"Heavy (discontinued)","name":"OEM Stock \u2014 Heavy (discontinued)","wmin":55.0,"wmax":55.0,"wraw":"55","src":""},{"id":"dm-deskeys-new-gen-des-domes-t1-28g-cheese","maker":"Deskeys","vendor":"deskeys.io (archive)","style":"New Gen DES-Domes T1","variant":"28g (Cheese)","name":"New Gen DES-Domes T1 \u2014 28g (Cheese)","wmin":28.0,"wmax":28.0,"wraw":"28","src":"https://deskeys.io/.../des-domes-t1"},{"id":"dm-deskeys-new-gen-des-domes-t1-tiffany-pink-purple-blue-etc","maker":"Deskeys","vendor":"deskeys.io (archive)","style":"New Gen DES-Domes T1","variant":"Tiffany/Pink/Purple/Blue/etc.","name":"New Gen DES-Domes T1 \u2014 Tiffany/Pink/Purple/Blue/etc.","wmin":35.0,"wmax":100.0,"wraw":"35-100","src":""},{"id":"dm-deskeys-des-domes-bke-tactile-tiffany","maker":"Deskeys","vendor":"deskeys.io (archive)","style":"DES-DOMES BKE Tactile","variant":"Tiffany","name":"DES-DOMES BKE Tactile \u2014 Tiffany","wmin":35.0,"wmax":35.0,"wraw":"35","src":""},{"id":"dm-deskeys-des-domes-bke-tactile-pink-purple-blue-carrot","maker":"Deskeys","vendor":"deskeys.io (archive)","style":"DES-DOMES BKE Tactile","variant":"Pink/Purple/Blue/Carrot","name":"DES-DOMES BKE Tactile \u2014 Pink/Purple/Blue/Carrot","wmin":42.0,"wmax":60.0,"wraw":"42/49/56/60","src":""},{"id":"dm-deskeys-des-dome-v2-rounder-bke-tiffany-pink-purple-blue-bro","maker":"Deskeys","vendor":"deskeys.io (archive)","style":"des-dome V2 rounder-bke","variant":"Tiffany/Pink/Purple/Blue/Brown/Green","name":"des-dome V2 rounder-bke \u2014 Tiffany/Pink/Purple/Blue/Brown/Green","wmin":35.0,"wmax":70.0,"wraw":"35-70","src":""},{"id":"dm-deskeys-des-domes-v3-cheese-tiffany-pink-purple-blue","maker":"Deskeys","vendor":"deskeys.io (archive)","style":"DES-DOMES V3","variant":"Cheese/Tiffany/Pink/Purple/Blue","name":"DES-DOMES V3 \u2014 Cheese/Tiffany/Pink/Purple/Blue","wmin":28.0,"wmax":56.0,"wraw":"28-56","src":""},{"id":"dm-deskeys-des-domes-carrots-carrots-variants","maker":"Deskeys","vendor":"deskeys.io (archive)","style":"DES-DOMES CARROTS","variant":"Carrots variants","name":"DES-DOMES CARROTS \u2014 Carrots variants","wmin":35.0,"wmax":60.0,"wraw":"35/49/60","src":""},{"id":"dm-dynacap-doems-light-translucent","maker":"DynaCap","vendor":"Omnitype","style":"DOEMS","variant":"Light (translucent)","name":"DOEMS \u2014 Light (translucent)","wmin":32.0,"wmax":38.0,"wraw":"35\u00b13","src":"https://omnitype.com/products/dynacap-doems"},{"id":"dm-dynacap-doems-medium-red","maker":"DynaCap","vendor":"Omnitype","style":"DOEMS","variant":"Medium (red)","name":"DOEMS \u2014 Medium (red)","wmin":42.0,"wmax":48.0,"wraw":"45\u00b13","src":""},{"id":"dm-dynacap-doems-heavy-black","maker":"DynaCap","vendor":"Omnitype","style":"DOEMS","variant":"Heavy (black)","name":"DOEMS \u2014 Heavy (black)","wmin":52.0,"wmax":58.0,"wraw":"55\u00b13","src":""},{"id":"dm-metakeebs-metapulse-rs-rounded-rs-25g-to-rs-55g-a-b-variants","maker":"MetaKeebs","vendor":"MetaKeebs","style":"MetaPulse RS (rounded)","variant":"RS-25g to RS-55g (A/B variants)","name":"MetaPulse RS (rounded) \u2014 RS-25g to RS-55g (A/B variants)","wmin":25.0,"wmax":55.0,"wraw":"25-55","src":"https://metakeebs.com/products/pre-order-metapulse-bundle-1"},{"id":"dm-metakeebs-metapulse-bs-bke-heavy-bs-40g-50g-55g-65g-75g","maker":"MetaKeebs","vendor":"MetaKeebs","style":"MetaPulse BS (BKE-heavy)","variant":"BS-40g/50g/55g/65g/75g+","name":"MetaPulse BS (BKE-heavy) \u2014 BS-40g/50g/55g/65g/75g+","wmin":40.0,"wmax":75.0,"wraw":"40-75","src":""},{"id":"dm-klc-playground-ec-dome-bundle-35g-45g-55g","maker":"KLC Playground","vendor":"KLC (Densus)","style":"EC Dome Bundle","variant":"35g / 45g / 55g","name":"EC Dome Bundle \u2014 35g / 45g / 55g","wmin":35.0,"wmax":55.0,"wraw":"35-55","src":"https://klc-playground.com/products/instock-ec-kits-and-packs"},{"id":"dm-niz-ec-silicone-domes-sheets-35g-45g-50g-waterproof-55g-vari","maker":"NiZ","vendor":"Nizkeyboard","style":"EC Silicone Domes Sheets","variant":"35g/45g/50g (waterproof)/55g variants","name":"EC Silicone Domes Sheets \u2014 35g/45g/50g (waterproof)/55g variants","wmin":35.0,"wmax":55.0,"wraw":"35-55","src":"https://www.nizkeyboard.com/products/ec-silicone-domes-35g-45g-55g"},{"id":"dm-keyclack-bke-redux-v1-v2-ultra-light-purple","maker":"Keyclack","vendor":"Keyclack (defunct)","style":"BKE Redux V1/V2","variant":"Ultra Light (Purple)","name":"BKE Redux V1/V2 \u2014 Ultra Light (Purple)","wmin":35.0,"wmax":40.0,"wraw":"~35-40","src":""},{"id":"dm-keyclack-bke-redux-v1-v2-light-cyan-grey","maker":"Keyclack","vendor":"Keyclack (defunct)","style":"BKE Redux V1/V2","variant":"Light (Cyan/Grey)","name":"BKE Redux V1/V2 \u2014 Light (Cyan/Grey)","wmin":45.0,"wmax":50.0,"wraw":"~45-50","src":""},{"id":"dm-keyclack-bke-redux-v1-v2-heavy-black","maker":"Keyclack","vendor":"Keyclack (defunct)","style":"BKE Redux V1/V2","variant":"Heavy (Black)","name":"BKE Redux V1/V2 \u2014 Heavy (Black)","wmin":60.0,"wmax":65.0,"wraw":"~60-65","src":""},{"id":"dm-keyclack-bke-redux-v1-v2-extreme-white","maker":"Keyclack","vendor":"Keyclack (defunct)","style":"BKE Redux V1/V2","variant":"Extreme (White)","name":"BKE Redux V1/V2 \u2014 Extreme (White)","wmin":90.0,"wmax":90.0,"wraw":"~90","src":""},{"id":"dm-astro-domes-other-bke-style-shiner-pepper-lean-fiesta-etc","maker":"Astro Domes / Other","vendor":"Astro/Sneakbox etc.","style":"BKE-style","variant":"Shiner/Pepper/Lean/Fiesta etc.","name":"BKE-style \u2014 Shiner/Pepper/Lean/Fiesta etc.","wmin":35.0,"wmax":160.0,"wraw":"35-160","src":""}];
 
@@ -381,9 +382,8 @@ const SLOTS = [
  {key:"ring",    label:"Silencing Ring",         list:"rings"},
  {key:"dome",    label:"Domes",                  list:"domes", modal:true},
  {key:"h1",      label:"Housings",               list:"housings1u"},
- {key:"stab2",   label:"2u Stabilizer",          list:"stabs2", extra:true},
- {key:"h2",      label:"2u Stabilizer Housing",  list:"housings2u", extra:true, sub:true},
- {key:"sl2",     label:"2u Stabilizer Slider",   list:"sliders2u",  extra:true, sub:true},
+ {key:"h2",      label:"2u Stabilizer Housing",  list:"housings2u", extra:true},
+ {key:"sl2",     label:"2u Stabilizer Slider",   list:"sliders2u",  extra:true},
  {key:"sb",      label:"Spacebar Stabilizer",    list:"spacebars",  extra:true},
  {key:"spring",  label:"Conical Springs",        list:"springs"}
 ];
@@ -511,7 +511,7 @@ function openNotes(p, anchor){
 /* ====================================================================
    BUILDER STATE + SCENE
 ==================================================================== */
-const build={slider:null,ring:null,dome:null,h1:null,stab2:null,h2:null,sl2:null,sb:null,spring:null};
+const build={slider:null,ring:null,dome:null,h1:null,h2:null,sl2:null,sb:null,spring:null};
 let activeSlot=null;
 
 const SC={ housing:["#4E6E9E","#2E4468"], plate:["#A8B0BA","#6E7884"], dome:["#E8DCC0","#B9AC8C"],
@@ -528,7 +528,7 @@ function renderScene(){
   const slFill = sl && SC.slider[sl.id] ? SC.slider[sl.id] : SC.sliderDef;
   let h="";
   h+=scenePath(SCENE.pcb, "#2E7D4F", SC.pcb[1], "");
-  h+=scenePath(SCENE.plate, SC.plate[0], SC.plate[1], "h1");
+  h+=scenePath(SCENE.plate, SC.plate[0], SC.plate[1], "");
   h+=scenePath(SCENE.dome, SC.dome[0], SC.dome[1], "dome");
   h+=`<polyline class="pt" data-slot="spring" points="${SCENE.spring[0].map(([x,y])=>`${Xp(x).toFixed(1)},${Yp(y).toFixed(1)}`).join(" ")}" fill="none" stroke="${SC.spring}" stroke-width="1.6" stroke-linejoin="round"/>`;
   h+=scenePath(SCENE.housing, SC.housing[0], SC.housing[1], "h1");
@@ -542,47 +542,61 @@ function renderScene(){
   });
 }
 
-/* slot chips positioned around the cross-section */
-const CHIP_POS={ cap:{top:"30px",left:"2%"}, slider:{top:"120px",right:"0%"}, ring:{top:"196px",right:"0%"},
-  h1:{top:"250px",left:"0%"}, dome:{top:"320px",right:"0%"}, spring:{top:"420px",left:"36%"} };
+/* left rail: extras stack on top, then slot chips adjacent to their parts,
+   with leader lines drawn to the part they equip (RPG-style). */
+const RAIL_SLOTS=["slider","ring","h1","dome","spring"];
+const ANCHORS={ slider:[0,14.2], ring:[3.1,5.05], h1:[-6.6,2.2], dome:[-3.2,0.9], spring:[0,-2.2] };
 function renderChips(){
-  document.querySelectorAll(".chip-slot").forEach(e=>e.remove());
-  const stage=document.getElementById("stage");
-  const mk=(key,label,val,empty,pos,extra)=>{
-    const b=document.createElement("button");
-    b.className="chip-slot"+(key===activeSlot?" on":"")+(extra||"");
-    Object.assign(b.style,pos);
-    b.innerHTML=`<div class="cs-l">${label}</div><div class="cs-v${empty?" empty":""}">${val}</div>`;
-    if(key!=="cap") b.addEventListener("click",()=>openSlot(key));
-    else b.classList.add("derived");
-    stage.appendChild(b);
-  };
-  const cs=capStem();
-  mk("cap","Keycaps (driven by slider)", cs||"— select a slider", !cs, CHIP_POS.cap);
-  for(const k of ["slider","ring","h1","dome","spring"]){
-    const s=SLOTS.find(s=>s.key===k), p=part(k);
-    mk(k, s.label, p?p.name:"— not selected", !p, CHIP_POS[k]);
-  }
-}
-function renderExtras(){
-  const box=document.getElementById("extras");
-  box.querySelectorAll(".ex-slot").forEach(e=>e.remove());
-  const asm=part("stab2");
+  const rail=document.getElementById("rail");
+  rail.innerHTML="";
+  const hd=document.createElement("h2");hd.className="sec";hd.textContent="Assemblies & extras";
+  rail.appendChild(hd);
   for(const s of SLOTS.filter(s=>s.extra)){
     const p=part(s.key);
     const b=document.createElement("button");
-    b.className="ex-slot"+(s.sub?" sub":"")+(s.key===activeSlot?" on":"");
-    let badge="";
-    if(asm && (s.key==="h2"||s.key==="sl2") && build[s.key] && build[s.key]!==asm[s.key]){
-      const tsl2=part("sl2"), th2=part("h2");
-      const bad=tsl2&&th2&&!tsl2.fits.includes(th2.sys);
-      badge=`<span class="dbadge ${bad?"badd":"okd"}">Different (${bad?"Incompatible":"Compatible"})</span>`;
-    }
-    b.innerHTML=`<div class="cs-l">${s.label}</div><div class="cs-v${p?"":" empty"}">${p?p.name:"— not selected"}${badge}</div>`;
+    b.className="ex-slot"+(s.key===activeSlot?" on":"");
+    b.innerHTML=`<div class="cs-l">${s.label}</div><div class="cs-v${p?"":" empty"}">${p?p.name:"— not selected"}</div>`;
     b.addEventListener("click",()=>openSlot(s.key));
-    box.appendChild(b);
+    rail.appendChild(b);
   }
+  const hd2=document.createElement("h2");hd2.className="sec";hd2.textContent="The switch — pick a part";
+  rail.appendChild(hd2);
+  for(const k of RAIL_SLOTS){
+    const s=SLOTS.find(s=>s.key===k), p=part(k);
+    const b=document.createElement("button");
+    b.className="chip-slot"+(k===activeSlot?" on":"");
+    b.setAttribute("data-chip",k);
+    b.innerHTML=`<div class="cs-l">${s.label}</div><div class="cs-v${p?"":" empty"}">${p?p.name:"— not selected"}</div>`;
+    b.addEventListener("click",()=>openSlot(k));
+    rail.appendChild(b);
+  }
+  requestAnimationFrame(drawLeaders);
 }
+function drawLeaders(){
+  const ov=document.getElementById("leaders");
+  const stage=document.getElementById("stage");
+  const svg=document.getElementById("xsec");
+  if(!ov||!svg)return;
+  const sw=svg.getBoundingClientRect(), st=stage.getBoundingClientRect(), wrap=svg.parentElement.getBoundingClientRect();
+  ov.innerHTML="";
+  if(sw.width<10)return;                      /* headless / not laid out */
+  ov.setAttribute("width",wrap.width);ov.setAttribute("height",wrap.height);
+  ov.setAttribute("viewBox",`0 0 ${wrap.width} ${wrap.height}`);
+  const sx=sw.width/320, sy=sw.height/300;
+  let h="";
+  for(const k of RAIL_SLOTS){
+    const chip=document.querySelector(`[data-chip="${k}"]`);
+    if(!chip)continue;
+    const cr=chip.getBoundingClientRect();
+    const a=ANCHORS[k];
+    const px=(sw.left-wrap.left)+(160+a[0]*13)*sx, py=(sw.top-wrap.top)+(210-a[1]*13)*sy;
+    const cx=cr.right-wrap.left+2, cy=cr.top-wrap.top+cr.height/2;
+    h+=`<line x1="${cx}" y1="${cy}" x2="${px}" y2="${py}" stroke="var(--line)" stroke-width="1.2"/>`+
+       `<circle cx="${px}" cy="${py}" r="3" fill="var(--accent)"/>`;
+  }
+  ov.innerHTML=h;
+}
+window.addEventListener("resize",()=>drawLeaders());
 function renderCluster(){
   const N=buildNotices();
   const box=document.getElementById("cluster");
@@ -610,9 +624,10 @@ function renderLoadout(){
     h+=`<div class="lo-row"><div class="lo-slot">${s.label}</div><div class="lo-val">`;
     if(p){
       h+=`<span class="pname">${p.name}</span>`;
+      if(s.key==="dome")h+=`<span class="lo-link" style="color:var(--muted)">${p.maker}${p.wraw?` · ${p.wraw} g`:""}</span>`;
       if(p.u)h+=`<a class="lo-link" href="${p.u}" target="_blank" rel="noopener">source ↗</a>`;
       if(p.buy)h+=`<span class="lo-buy">${p.buy}</span>`;
-      if(p.tests&&!p.tests.length&&s.key==="dome")h+=`<span class="lo-buy">not bench-tested</span>`;
+      if(s.key==="dome"&&p.tests&&!p.tests.length)h+=`<span class="lo-buy">not bench-tested</span>`;
     } else h+=`<span class="empty">— not selected</span>`;
     h+=`</div></div>`;
   }
@@ -629,7 +644,8 @@ function renderLoadout(){
     const b=document.getElementById("copyBom");b.textContent="Copied ✓";setTimeout(()=>{b.textContent="Copy build summary";},1400);
   });
 }
-function renderAll(){renderScene();renderChips();renderExtras();renderCluster();renderLoadout();}
+function renderExtras(){}
+function renderAll(){renderScene();renderChips();renderCluster();renderLoadout();}
 /* ====================================================================
    OPTIONS PANEL — hidden until a slot is clicked.
 ==================================================================== */
@@ -670,7 +686,6 @@ function openSlot(key){
       if(e.target.classList.contains("oicon"))return;
       const on=build[key]===p.id;
       build[key]=on?null:p.id;
-      if(key==="stab2"){ if(on){build.h2=null;build.sl2=null;} else {build.h2=p.h2;build.sl2=p.sl2;} }
       renderAll();openSlot(key);
     });
     el.querySelectorAll(".oicon").forEach(ic=>{
@@ -688,18 +703,23 @@ function openSlot(key){
 /* ====================================================================
    LOAD NEW — one-direction flow, back arrow, applies immediately.
 ==================================================================== */
+const findDomeW=(w,makerRe)=>{
+  const cs=CATALOG.domes.filter(d=>makerRe.test(d.maker)&&d.wmin!=null&&d.wmin<=w&&w<=d.wmax);
+  cs.sort((a,b)=>(a.wmax-a.wmin)-(b.wmax-b.wmin));       /* exact-weight rows win */
+  return cs.length?cs[0].id:null;
+};
+const findDome=(...res)=>{ for(const re of res){const hit=CATALOG.domes.find(d=>re.test((d.maker+" "+d.name+" "+(d.variant||"")).toLowerCase()));if(hit)return hit.id;} return null; };
 const PRESETS_OEM=[
- ["Realforce (Standard)",()=>({slider:"sl-std",ring:"ring-none",dome:findDome(/topre.*standard/,/topre.*45/),h1:"h1-classic",stab2:"asm-classic",h2:"h2-classic",sl2:"sl2-classic",sb:"sb-classic",spring:"spr-topre"})],
- ["Realforce (Silent)",()=>({slider:"sl-purple",ring:"ring-05",dome:findDome(/topre.*standard/,/topre.*45/),h1:"h1-classic",stab2:"asm-classic",h2:"h2-classic",sl2:"sl2-classic",sb:"sb-classic",spring:"spr-topre"})],
- ["Realforce RC1",()=>({slider:"sl-types",ring:"ring-05",dome:findDome(/topre.*standard/,/topre.*45/),h1:"rc1-shell",stab2:"asm-rc1",h2:"rc1-shell-int",sl2:"sl2-classic",sb:null,spring:"spr-topre"})],
- ["HHKB (Standard)",()=>({slider:"sl-std",ring:"ring-none",dome:findDome(/topre.*standard/,/topre.*45/),h1:"hhkb-shell",stab2:"asm-hhkb",h2:"hhkb-shell-2u",sl2:"sl2-classic",sb:null,spring:"spr-topre"})],
- ["HHKB (Type-S)",()=>({slider:"sl-types",ring:"ring-05",dome:findDome(/topre.*standard/,/topre.*45/),h1:"hhkb-shell",stab2:"asm-hhkb",h2:"hhkb-shell-2u",sl2:"sl2-classic",sb:null,spring:"spr-topre"})]
+ ["Realforce (Standard)",()=>({slider:"sl-std",ring:"ring-none",dome:findDomeW(45,/topre/i),h1:"h1-classic",h2:"h2-classic",sl2:"sl2-classic",sb:"sb-classic",spring:"spr-topre"})],
+ ["Realforce (Silent)",()=>({slider:"sl-purple",ring:"ring-05",dome:findDomeW(45,/topre/i),h1:"h1-classic",h2:"h2-classic",sl2:"sl2-classic",sb:"sb-classic",spring:"spr-topre"})],
+ ["Realforce RC1",()=>({slider:"sl-types",ring:"ring-05",dome:findDomeW(45,/topre/i),h1:"rc1-shell",h2:"rc1-shell-int",sl2:"sl2-classic",sb:null,spring:"spr-topre"})],
+ ["HHKB (Standard)",()=>({slider:"sl-std",ring:"ring-none",dome:findDomeW(45,/topre/i),h1:"hhkb-shell",h2:"hhkb-shell-2u",sl2:"sl2-classic",sb:null,spring:"spr-topre"})],
+ ["HHKB (Type-S)",()=>({slider:"sl-types",ring:"ring-05",dome:findDomeW(45,/topre/i),h1:"hhkb-shell",h2:"hhkb-shell-2u",sl2:"sl2-classic",sb:null,spring:"spr-topre"})]
 ];
 const PRESETS_AM=[
- ["DynaCaps",()=>({slider:"sl-dyna",ring:"ring-05",dome:findDome(/dynacap.*doems/),h1:"h1-dyna",stab2:"asm-dyna",h2:"h2-dyna",sl2:"sl2-dyna",sb:"sb-dyna",spring:"spr-dyna"})],
- ["Deskeys",()=>({slider:"sl-deskeys",ring:"ring-05",dome:findDome(/deskeys.*t1/,/deskeys/),h1:null,stab2:null,h2:null,sl2:null,sb:null,spring:null})]
+ ["DynaCaps",()=>({slider:"sl-dyna",ring:"ring-05",dome:findDome(/dynacap.*medium/,/dynacap.*doems/),h1:"h1-dyna",h2:"h2-dyna",sl2:"sl2-dyna",sb:"sb-dyna",spring:"spr-dyna"})],
+ ["Deskeys",()=>({slider:"sl-deskeys",ring:"ring-05",dome:findDome(/deskeys.*t1/,/deskeys/),h1:null,h2:null,sl2:null,sb:null,spring:null})]
 ];
-const findDome=(...res)=>{ for(const re of res){const hit=CATALOG.domes.find(d=>re.test((d.maker+" "+d.name+" "+(d.variant||"")).toLowerCase()));if(hit)return hit.id;} return null; };
 const OEM_NOTE=`<div class="ln-def"><b>What "OEM" means here.</b> OEM — original equipment manufacturer — means <b>made by Topre Corporation</b> (Novatouch included: Topre-made for Cooler Master). The term gets used loosely in the EC scene. Note in particular: DynaCaps parts are marketed as "Authorized OEM," including on the box — that phrasing means Omnitype is the authorized manufacturer <b>of DynaCaps-brand parts, and only DynaCaps-brand parts</b>. It does not mean Topre-made, and it does not mean officially compatible with Topre parts.</div>`;
 
 let lnStep="root";
