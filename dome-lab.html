@@ -100,7 +100,7 @@ h2.sec{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transfor
 <div class="wrap">
 
 <header>
-  <span class="eyebrow">Unreal Keyboards · Dome Lab · build lab-0.5</span>
+  <span class="eyebrow">Unreal Keyboards · Dome Lab · build lab-0.6</span>
   <div class="hb">
     <a href="https://github.com/BuddyOG/topre-force-curves" target="_blank" rel="noopener">github</a>
     <a href="https://unrealkeyboards.com" target="_blank" rel="noopener">shop</a>
@@ -240,6 +240,17 @@ function setTheme(t){
 }
 document.getElementById("themeToggle").addEventListener("click",()=>setTheme(theme==="dark"?"light":"dark"));
 (function(){let sv=null;try{sv=localStorage.getItem("ukdl-theme");}catch(e){}setTheme(sv==="light"?"light":"dark");})();
+
+/* ukdl-embed-bridge: when framed, report content height so the parent
+   iframe can match it — one page, one scrollbar. */
+(function(){
+  if(window.self===window.top)return;
+  var send=function(){try{parent.postMessage({type:"ukdl-height",h:document.documentElement.scrollHeight},"*");}catch(e){}};
+  if(window.ResizeObserver)new ResizeObserver(send).observe(document.documentElement);
+  window.addEventListener("load",send);
+  setInterval(send,1200);
+  send();
+})();
 </script>
 </body>
 </html>
