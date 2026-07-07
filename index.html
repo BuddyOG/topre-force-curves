@@ -313,7 +313,7 @@ async function loadManifest(){
     if(!sets.has(folder))sets.set(folder,{key:folder,name:folder.replace(/_/g," "),files:[],data:null,loading:false,ci:null});
     sets.get(folder).files.push(p);
   }
-  buildSidebar();
+  buildSidebar();applyUrlSel();
   status.remove();
   if(fromFallback){
     const note=document.createElement("div");
@@ -713,6 +713,27 @@ loadManifest().then(render);
   setInterval(send,1200);
   send();
 })();
+
+/* ukdl-sel: ?sel=Set+Name(,Set+Name) preselects sets on load — used by
+   the Parts Library's "open in analyzer" buttons. Fuzzy name match. */
+function applyUrlSel(){
+  try{
+    const q=new URLSearchParams(location.search).get("sel");
+    if(!q)return;
+    for(const want of q.split(",")){
+      const w=want.trim().toLowerCase();
+      if(!w)continue;
+      let best=null,bs=0;
+      for(const key of sets.keys()){
+        const k=key.toLowerCase().replace(/_/g," ");
+        let s=0;
+        for(const t of w.split(/\s+/)) if(t && k.includes(t)) s++;
+        if(s>bs){bs=s;best=key;}
+      }
+      if(best && bs>0 && !selected.includes(best)) toggleSet(best);
+    }
+  }catch(e){}
+}
 </script>
 </body>
 </html>
