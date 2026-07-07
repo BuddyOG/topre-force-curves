@@ -702,6 +702,17 @@ document.getElementById("themeToggle").addEventListener("click",()=>setTheme(the
 (function(){let sv=null;try{sv=localStorage.getItem("ukdl-theme");}catch(e){}setTheme(sv==="light"?"light":"dark");})();
 window.addEventListener("resize",render);
 loadManifest().then(render);
+
+/* ukdl-embed-bridge: when framed, report content height so the parent
+   iframe can match it — one page, one scrollbar. */
+(function(){
+  if(window.self===window.top)return;
+  var send=function(){try{parent.postMessage({type:"ukdl-height",h:document.documentElement.scrollHeight},"*");}catch(e){}};
+  if(window.ResizeObserver)new ResizeObserver(send).observe(document.documentElement);
+  window.addEventListener("load",send);
+  setInterval(send,1200);
+  send();
+})();
 </script>
 </body>
 </html>
