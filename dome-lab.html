@@ -59,7 +59,7 @@ header .hb a{font-family:var(--mono);font-size:11px;color:var(--muted)}
 /* tools */
 .tools{padding:46px 0 12px}
 h2.sec{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
 .card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:20px;text-decoration:none;color:var(--ink);transition:border-color .15s, transform .15s}
 .card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .card .no{font-family:var(--mono);font-size:11px;color:var(--accent-ink);letter-spacing:.1em}
@@ -99,7 +99,7 @@ h2.sec{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transfor
 <div class="wrap">
 
 <header>
-  <span class="eyebrow">Unreal Keyboards · Dome Lab · build lab-0.2</span>
+  <span class="eyebrow">Unreal Keyboards · Dome Lab · build lab-0.3</span>
   <div class="hb">
     <a href="https://github.com/BuddyOG/topre-force-curves" target="_blank" rel="noopener">github</a>
     <a href="https://unrealkeyboards.com" target="_blank" rel="noopener">shop</a>
@@ -109,14 +109,16 @@ h2.sec{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transfor
 
 <section class="hero">
   <div>
-    <h1>The Dome Lab.<br>Topre &amp; EC, <em>measured</em> — not marketed.</h1>
-    <p>Every dome is sold as a single number. Your fingers feel the whole curve.
-    The Dome Lab is <b>primary-source engineering</b> for electrostatic capacitive keyboards:
-    force curves from a calibrated bench, switch geometry traced from CAD of the real parts,
-    and a parts catalog with the tolerance findings nobody publishes. All of it open, all of it interactive.</p>
+    <h1>The Dome Lab.<br>Three tools for <em>understanding</em> Topre &amp; EC.</h1>
+    <p>Built for people new to Topre and EC modification — and rigorous enough for people deep in it.
+    <b>First, understand the switch</b>: the interactive Switch Explorer is the starting point.
+    <b>Then navigate the parts</b>: one place with everything needed to build a custom board without open questions.
+    <b>Then compare domes on a standard</b>: measured weight and Snap&nbsp;% instead of marketing numbers — with the goal of a complete library of every dome made.
+    Secondary to all of it: measured tests of parts and setups, and how they change travel and feel.</p>
     <div class="cta">
-      <a class="btn pri" href="https://buddyog.github.io/topre-force-curves/">Open the Force Curve Bench</a>
-      <a class="btn sec" href="https://buddyog.github.io/topre-force-curves/ec-switch-explorer.html">Press a switch</a>
+      <a class="btn pri" href="https://buddyog.github.io/topre-force-curves/ec-switch-explorer.html">Explore the Interactive Switch</a>
+      <a class="btn sec" href="https://unrealkeyboards.com/pages/topre-ec-parts-library-builder">Browse Parts &amp; Check a Build</a>
+      <a class="btn sec" href="https://buddyog.github.io/topre-force-curves/">Compare Dome Force Curves</a>
     </div>
   </div>
   <div class="heroviz">
@@ -128,33 +130,47 @@ h2.sec{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transfor
 <section class="stats">
   <div class="stat"><div class="n">0.005&nbsp;mm</div><div class="l">bench displacement resolution</div></div>
   <div class="stat"><div class="n">&lt;1&nbsp;g</div><div class="l">run-to-run collapse deviation</div></div>
-  <div class="stat"><div class="n">1:1</div><div class="l">switch geometry traced from CAD</div></div>
+  <div class="stat"><div class="n">&#181;m</div><div class="l">parts micrometer-measured &amp; hand-modeled</div></div>
   <div class="stat"><div class="n">100%</div><div class="l">raw data public on GitHub</div></div>
 </section>
 
 <section class="tools">
   <h2 class="sec">The instruments</h2>
   <div class="cards">
-    <a class="card" href="https://buddyog.github.io/topre-force-curves/">
-      <span class="no">01</span>
-      <h3>Force Curve Bench</h3>
-      <p>Overlay bench-measured curves for every dome and slider configuration on the bench — Topre, NiZ, BKE, DynaCaps, silencing rings — and compare them by the two numbers that actually matter: <b>Total Energy</b> (how heavy it really is) and <b>Snap&nbsp;%</b> (how tactile). Export publication-ready charts.</p>
-      <div class="tags"><span class="tag">measured data</span><span class="tag">auto-syncs new tests</span><span class="tag">PNG export</span></div>
-      <span class="go">open the bench &rarr;</span>
-    </a>
     <a class="card" href="https://buddyog.github.io/topre-force-curves/ec-switch-explorer.html">
-      <span class="no">02</span>
-      <h3>EC Switch Explorer</h3>
-      <p>A working cross-section of the Topre switch, traced 1:1 from CAD of the real parts. Press it and watch the dome's skirt hinge at its molded knee and snap through — driven by the measured curves. Swap sliders, fit silencing rings, find the top-out rattle yourself.</p>
-      <div class="tags"><span class="tag">CAD-traced</span><span class="tag">kinematic collapse</span><span class="tag">patent-accurate</span></div>
-      <span class="go">press a switch &rarr;</span>
+      <span class="no">01</span>
+      <h3>Topre &amp; EC Switch Explorer</h3>
+      <p>The starting point. A working, interactive cross-section that teaches everything about how a Topre &amp; EC switch works — press it, swap sliders, fit silencing rings, watch the dome's skirt hinge and snap through on real measured curves. Built to take a newcomer to fluency, and detailed enough that veterans learn from it too. Every part was measured with a digital micrometer and solid-modeled by hand; the section is traced 1:1 from those models.</p>
+      <div class="tags"><span class="tag">interactive teaching model</span><span class="tag">micrometer-measured geometry</span><span class="tag">measured collapse physics</span></div>
+      <span class="go">learn the switch, interactively &rarr;</span>
     </a>
     <a class="card" href="https://unrealkeyboards.com/pages/topre-ec-parts-library-builder">
+      <span class="no">02</span>
+      <h3>Topre &amp; EC Parts Library + Builder</h3>
+      <p>The map through the complex world of Topre &amp; EC parts: every part with the details that matter — sources, systems, and the tolerance findings nobody publishes — in one place, so you can spec a custom board without open questions. The builder checks every combination live: stem fit, ring preload, drilling requirements, system conflicts, before you spend a dime.</p>
+      <div class="tags"><span class="tag">every part, one place</span><span class="tag">compatibility engine</span><span class="tag">field notes</span></div>
+      <span class="go">browse every part &amp; check your build &rarr;</span>
+    </a>
+    <a class="card" href="https://buddyog.github.io/topre-force-curves/">
       <span class="no">03</span>
-      <h3>Parts Library + EC Builder</h3>
-      <p>Every Topre and EC-compatible part with the details that matter — including the mold-tolerance findings that explain why some aftermarket parts feel the way they do. Build a keyboard slot by slot and the checker flags every conflict before you spend a dime.</p>
-      <div class="tags"><span class="tag">compatibility engine</span><span class="tag">field notes</span><span class="tag">live dome data</span></div>
-      <span class="go">check a build &rarr;</span>
+      <h3>Force Curve Analyzer</h3>
+      <p>The standard for comparing domes. Every dome is sold as one number; your fingers feel the whole curve. Overlay measured curves for every dome and slider configuration and compare them by <b>Total Energy</b> (how heavy it really is) and <b>Snap&nbsp;%</b> (how tactile) — the standardized read on weight and snappiness, working toward a complete library of every dome. Includes measured tests of parts and setups and how they change travel.</p>
+      <div class="tags"><span class="tag">measured data</span><span class="tag">Snap % standard</span><span class="tag">auto-syncs new tests</span></div>
+      <span class="go">compare measured force curves &rarr;</span>
+    </a>
+    <a class="card" href="https://unrealkeyboards.com/pages/topre-modification-guide">
+      <span class="no">04</span>
+      <h3>Topre Modification Guide</h3>
+      <p>The practical companion: how to actually perform the modifications the other instruments quantify — silencing, dome swaps, slider work — done properly, in order, without ruining parts.</p>
+      <div class="tags"><span class="tag">hands-on</span><span class="tag">step by step</span></div>
+      <span class="go">open the modification guide &rarr;</span>
+    </a>
+    <a class="card" href="https://unrealkeyboards.com/pages/typing-tests">
+      <span class="no">05</span>
+      <h3>REAL Typing Tests</h3>
+      <p>A library of 29 typing tests recorded in the same sound-treated room, with the same equipment and settings, and <b>zero</b> audio alteration — no EQ, no filters. Every test opens with a Bic Clic pen clicked over the board, so you calibrate your own volume with a pen from your desk drawer and hear the keyboard's true loudness and tone. The only source dedicated to honest, directly comparable tests — between boards, and before/after modification.</p>
+      <div class="tags"><span class="tag">unaltered audio</span><span class="tag">Bic Clic calibration</span><span class="tag">29 tests</span></div>
+      <span class="go">hear the real sound &rarr;</span>
     </a>
   </div>
 </section>
@@ -162,10 +178,10 @@ h2.sec{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transfor
 <section class="prin">
   <h2 class="sec">How the lab works</h2>
   <div class="pgrid">
-    <div class="p"><h4>Measured, not quoted</h4><p>Every force figure comes off a calibrated bench at 0.005&nbsp;mm steps, averaged across runs. If it wasn't measured here, it's labeled.</p></div>
-    <div class="p"><h4>Geometry from CAD</h4><p>The Explorer's cross-section is sectioned from solid models of the actual parts — clearances read from the assembly, not assumed.</p></div>
+    <div class="p"><h4>Measured, not quoted</h4><p>Every force figure comes off a calibrated instrument at 0.005&nbsp;mm steps, averaged across runs. If it wasn't measured here, it's labeled.</p></div>
+    <div class="p"><h4>Modeled by hand</h4><p>The Explorer's parts were measured with a digital micrometer and solid-modeled in SolidWorks by a professional design drafter with seven years in the trade — then the cross-section was traced 1:1 from those models. <a href="https://unrealkeyboards.com/pages/about">Credentials here</a>.</p></div>
     <div class="p"><h4>Open by default</h4><p>Raw CSVs, the viewer, and the tools live in a public repo. Push a new test set and every tool picks it up automatically.</p></div>
-    <div class="p"><h4>Credit where due</h4><p>The bench is a build of bluepylons' open-source Open-Switch-Curve-Meter. Sources, patents, and designs are cited, always.</p></div>
+    <div class="p"><h4>Credit where due</h4><p>The force-curve instrument is a build of bluepylons' open-source Open-Switch-Curve-Meter. Sources, patents, and designs are cited, always.</p></div>
   </div>
 </section>
 
@@ -175,13 +191,15 @@ h2.sec{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transfor
     <a href="https://unrealkeyboards.com/blogs/topre-mods/topre-dome-force-curves"><span class="k">write-up</span><span>The testing standard: how to read and compare domes</span></a>
     <a href="https://github.com/BuddyOG/topre-force-curves"><span class="k">data</span><span>Raw force-curve CSVs, every run, every set</span></a>
     <a href="https://patentimages.storage.googleapis.com/53/d7/b3/636954aedea39a/JP2012138254A.pdf"><span class="k">patent</span><span>Topre's silencing patent JP2012-138254A — the assembly, decoded</span></a>
-    <a href="https://github.com/bluepylons/Open-Switch-Curve-Meter"><span class="k">hardware</span><span>Open-Switch-Curve-Meter by bluepylons — the bench design</span></a>
+    <a href="https://github.com/bluepylons/Open-Switch-Curve-Meter"><span class="k">hardware</span><span>Open-Switch-Curve-Meter by bluepylons — the measurement hardware design</span></a>
+    <a href="https://unrealkeyboards.com/pages/typing-tests#methodology"><span class="k">audio</span><span>REAL Typing Tests: the recording standard, in full detail</span></a>
+    <a href="https://unrealkeyboards.com/pages/about"><span class="k">who</span><span>About Unreal Keyboards — the credentials behind the lab</span></a>
   </div>
 </section>
 
 <div class="foot">
   <a href="https://unrealkeyboards.com">unrealkeyboards.com</a>
-  <a href="https://unrealkeyboards.com/pages/pages-topre-force-curves">bench on the site</a>
+  <a href="https://unrealkeyboards.com/pages/pages-topre-force-curves">force curves on the site</a>
   <a href="https://unrealkeyboards.com/pages/ec-switch-explorer">explorer on the site</a>
   <a href="https://unrealkeyboards.com/pages/topre-ec-parts-library-builder">parts library on the site</a>
   <span class="cp">&#169; 2026 Brian &#8220;BuddyOG&#8221; Gebo &#8212; Unreal Keyboards. All rights reserved.</span>
