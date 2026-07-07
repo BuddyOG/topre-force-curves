@@ -130,7 +130,7 @@ svg .lblline{stroke:var(--muted);stroke-width:1.1;fill:none}
 <header>
   <span class="eyebrow">Unreal Keyboards · Dome Lab</span>
   <h1>EC Switch Explorer</h1>
-  <span class="src">force data: <a href="https://buddyog.github.io/topre-force-curves/" target="_blank" rel="noopener">measured on our bench</a> · geometry: traced from CAD · build cad-2.1</span>
+  <span class="src">force data: <a href="https://buddyog.github.io/topre-force-curves/" target="_blank" rel="noopener">measured on our bench</a> · geometry: traced from CAD · build cad-2.2</span>
   <button class="xbtn" id="themeToggle" type="button">&#9728; Light mode</button>
 </header>
 
@@ -756,6 +756,17 @@ buildPlunger();
 document.getElementById("ringLi").classList.add("off");
 refresh(true);
 selectPart("dome");
+
+/* ukdl-embed-bridge: when framed, report content height so the parent
+   iframe can match it — one page, one scrollbar. */
+(function(){
+  if(window.self===window.top)return;
+  var send=function(){try{parent.postMessage({type:"ukdl-height",h:document.documentElement.scrollHeight},"*");}catch(e){}};
+  if(window.ResizeObserver)new ResizeObserver(send).observe(document.documentElement);
+  window.addEventListener("load",send);
+  setInterval(send,1200);
+  send();
+})();
 </script>
 </body>
 </html>
