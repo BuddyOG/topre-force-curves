@@ -33,7 +33,7 @@ header{display:flex;align-items:baseline;gap:14px;padding:18px 22px 12px;border-
 h1{font-size:21px;font-weight:600;letter-spacing:-.01em}
 header .src{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--muted)}
 
-.app{display:grid;grid-template-columns:252px 1fr;gap:0;min-height:calc(100vh - 60px)}
+.app{display:grid;grid-template-columns:252px 1fr;gap:0;min-height:560px}
 aside{border-right:1px solid var(--line);padding:14px 12px 30px;background:var(--panel)}
 .filterwrap{padding:0 0 10px;background:var(--panel)}
 .filter{display:block;width:100%;padding:7px 10px;margin:0;border:1px solid var(--line);border-radius:7px;font:inherit;font-size:13px;background:var(--paper);color:var(--ink)}
@@ -93,6 +93,10 @@ td button.rm:hover{background:var(--paper);color:var(--ink)}
 .empty b{color:var(--ink);font-weight:600}
 .note{margin:14px 4px 0;font-size:12px;color:var(--muted);line-height:1.6;max-width:860px}
 .status{font-family:var(--mono);font-size:11px;color:var(--muted);padding:8px}
+.grp.closed .item{display:none!important}
+.grp h2 .caret{color:var(--muted)}
+.item .twist{width:14px;color:var(--muted);flex:0 0 auto}
+.item.sub .lbl{opacity:.92}
 .err{color:var(--err)}
 
 @media (max-width:840px){
@@ -111,16 +115,11 @@ td button.rm:hover{background:var(--paper);color:var(--ink)}
 <body>
 
 <header>
-  <span class="eyebrow">Unreal Keyboards · Dome Lab</span>
+  <span class="eyebrow">Unreal Keyboards · <a href="https://unrealkeyboards.com/pages/dome-lab" target="_top" style="color:inherit">Dome Lab</a></span>
   <h1>Topre Force Curve Bench</h1>
   <span class="src">data: <a href="https://github.com/BuddyOG/topre-force-curves" target="_blank" rel="noopener">github.com/BuddyOG/topre-force-curves</a> · page: <a href="https://buddyog.github.io/topre-force-curves/" target="_blank" rel="noopener">buddyog.github.io/topre-force-curves</a></span>
   <button class="xbtn" id="themeToggle" type="button">☀ Light mode</button>
 </header>
-
-<div class="impnote">
-  <p class="ih">IMPORTANT - HOW TO COMPARE DOMES</p>
-  <p class="ib"><b>Snap %</b> is how <b>tactile</b> a dome feels.<br><b>Total Energy</b> is how <b>heavy</b> a dome feels.</p>
-</div>
 
 <div class="app">
   <aside id="sidebar">
@@ -144,6 +143,10 @@ td button.rm:hover{background:var(--paper);color:var(--ink)}
       </div>
     </div>
 
+<div class="impnote" style="margin:14px 0 10px">
+  <p class="ih">IMPORTANT - HOW TO COMPARE DOMES</p>
+  <p class="ib"><b>Snap %</b> is how <b>tactile</b> a dome feels.<br><b>Total Energy</b> is how <b>heavy</b> a dome feels.</p>
+</div>
     <div class="readout">
       <h2>Bench Readout — averaged across runs</h2>
       <div id="readout"><div class="empty">Compare Topre and EC domes and parts by selecting one or more tests above.</div></div>
@@ -313,7 +316,7 @@ async function loadManifest(){
     if(!sets.has(folder))sets.set(folder,{key:folder,name:folder.replace(/_/g," "),files:[],data:null,loading:false,ci:null});
     sets.get(folder).files.push(p);
   }
-  buildSidebar();applyUrlSel();
+  buildSidebar();
   status.remove();
   if(fromFallback){
     const note=document.createElement("div");
@@ -325,18 +328,56 @@ async function loadManifest(){
 function groupOf(key){
   return /slider|type-s|parts/i.test(key) ? "Topre Compatible Parts" : "Domes";
 }
+function domeGroupKey(key){ const m=key.match(/^(.*)_(\d{2,})$/); return m?m[1]:null; }
 function buildSidebar(){
   const aside=document.getElementById("setlist");
   const groups={"Domes":[],"Topre Compatible Parts":[]};
   for(const s of sets.values())groups[groupOf(s.key)].push(s);
+  /* dome groups: sets differing only by trailing _NN */
+  const fams={};
+  for(const s of groups["Domes"]){ const g=domeGroupKey(s.key); if(g)(fams[g]=fams[g]||[]).push(s); }
+  for(const g in fams){ if(fams[g].length<2) delete fams[g]; else for(const s of fams[g]) s.fam=g; }
+  for(const g in fams){
+    const parent={key:"grp::"+g,name:g.replace(/_/g," "),files:[],group:fams[g].map(s=>s.key),isParent:true};
+    sets.set(parent.key,parent);
+    groups["Domes"].push(parent);
+  }
+  const oemFirst=(a,b)=>{
+    const oa=/^topre[\s_]/i.test(a.name)?0:1, ob=/^topre[\s_]/i.test(b.name)?0:1;
+    return oa!==ob?oa-ob:a.name.localeCompare(b.name,undefined,{sensitivity:"base"});
+  };
   for(const g of Object.keys(groups)){
     if(!groups[g].length)continue;
-    groups[g].sort((a,b)=>a.key.localeCompare(b.key,undefined,{sensitivity:"base"}));
+    groups[g].sort(oemFirst);
     const div=document.createElement("div");div.className="grp";
-    const h=document.createElement("h2");h.textContent=g;div.appendChild(h);
+    const h=document.createElement("h2");h.innerHTML=`<span class="caret">▾</span> ${g}`;h.style.cursor="pointer";
+    h.addEventListener("click",()=>{div.classList.toggle("closed");h.querySelector(".caret").textContent=div.classList.contains("closed")?"▸":"▾";});
+    div.appendChild(h);
     for(const s of groups[g]){
+      if(s.fam)continue;                                  /* members render under their parent */
       const b=document.createElement("button");
       b.className="item";b.dataset.key=s.key;b.setAttribute("aria-pressed","false");
+      if(s.isParent){
+        const kids=s.group.map(k=>sets.get(k));
+        b.innerHTML=`<span class="twist">▸</span><span class="box"></span><span class="lbl">${s.name}</span><span class="n">${kids.length} domes</span>`;
+        b.querySelector(".twist").addEventListener("click",e=>{
+          e.stopPropagation();
+          const open=b.classList.toggle("open");
+          b.querySelector(".twist").textContent=open?"▾":"▸";
+          kids.forEach(k=>k.btn.style.display=open?"flex":"none");
+        });
+        b.addEventListener("click",()=>toggleSet(s.key));
+        div.appendChild(b); s.btn=b;
+        for(const k of kids){
+          const c=document.createElement("button");
+          c.className="item sub";c.dataset.key=k.key;c.style.display="none";c.style.paddingLeft="26px";
+          c.setAttribute("aria-pressed","false");
+          c.innerHTML=`<span class="box"></span><span class="lbl">${k.name.replace(s.name,"Dome")}</span><span class="n">n=${k.files.length}</span>`;
+          c.addEventListener("click",()=>toggleSet(k.key));
+          div.appendChild(c); k.btn=c;
+        }
+        continue;
+      }
       b.innerHTML=`<span class="box"></span><span class="lbl">${s.name}</span><span class="n">n=${s.files.length}</span>`;
       b.addEventListener("click",()=>toggleSet(s.key));
       div.appendChild(b);
@@ -351,7 +392,7 @@ async function toggleSet(key){
   const s=sets.get(key);
   const i=selected.indexOf(key);
   if(i>=0){
-    selected.splice(i,1);
+    selected.splice(i,1);updateRunsLabel();
     colorPool.unshift(s.ci);s.ci=null;
     s.btn.classList.remove("on");s.btn.style.removeProperty("--c");s.btn.setAttribute("aria-pressed","false");
     render();return;
@@ -360,10 +401,26 @@ async function toggleSet(key){
   selected.push(key);
   s.btn.classList.add("on");s.btn.style.setProperty("--c",getColor(s));s.btn.setAttribute("aria-pressed","true");
   if(!s.data&&!s.loading)await fetchSet(s);
-  render();
+  updateRunsLabel();render();
 }
 async function fetchSet(s){
   s.loading=true;render();
+  if(s.isParent){
+    try{
+      const kids=s.group.map(k=>sets.get(k));
+      for(const k of kids){ if(!k.data) await fetchSet(k); if(k.data.error) throw new Error(k.data.error); }
+      const dp=kids.map(k=>k.data.avgPress), dr=kids.map(k=>k.data.avgRet);
+      const avgPress=averageStrokes(dp), avgRet=averageStrokes(dr);
+      /* parent "runs" = each dome's averaged stroke -> the Individual toggle shows DOMES */
+      s.data={runs:kids.map((k,i)=>({press:dp[i],ret:dr[i],dome:k.name})),
+              avgPress,avgRet,stats:analyze(avgPress.x,avgPress.F)};
+      const cols=kids.map(k=>k.data.stats&&k.data.stats.Fpeak||0).filter(Boolean);
+      const mean=cols.reduce((a,b)=>a+b,0)/(cols.length||1);
+      s.spread10=cols.some(c=>Math.abs(c-mean)/mean>0.10);
+      if(s.spread10){ document.getElementById("tglRuns").checked=true; }
+    }catch(e){ s.data={error:e.message||"group load failed"}; }
+    s.loading=false;updateRunsLabel();render();return;
+  }
   try{
     const texts=await Promise.all(s.files.map(f=>fetch(RAW(f)).then(r=>{
       if(!r.ok)throw new Error(`${r.status} on ${f}`);return r.text();
@@ -700,40 +757,13 @@ function setTheme(t){
 }
 document.getElementById("themeToggle").addEventListener("click",()=>setTheme(theme==="dark"?"light":"dark"));
 (function(){let sv=null;try{sv=localStorage.getItem("ukdl-theme");}catch(e){}setTheme(sv==="light"?"light":"dark");})();
+function updateRunsLabel(){
+  const anyParent=selected.some(k=>sets.get(k)&&sets.get(k).isParent);
+  const lbl=document.getElementById("tglRuns").parentElement;
+  lbl.lastChild.textContent=anyParent?" Individual domes":" Individual runs";
+}
 window.addEventListener("resize",render);
 loadManifest().then(render);
-
-/* ukdl-embed-bridge: when framed, report content height so the parent
-   iframe can match it — one page, one scrollbar. */
-(function(){
-  if(window.self===window.top)return;
-  var send=function(){try{parent.postMessage({type:"ukdl-height",h:document.documentElement.scrollHeight},"*");}catch(e){}};
-  if(window.ResizeObserver)new ResizeObserver(send).observe(document.documentElement);
-  window.addEventListener("load",send);
-  setInterval(send,1200);
-  send();
-})();
-
-/* ukdl-sel: ?sel=Set+Name(,Set+Name) preselects sets on load — used by
-   the Parts Library's "open in analyzer" buttons. Fuzzy name match. */
-function applyUrlSel(){
-  try{
-    const q=new URLSearchParams(location.search).get("sel");
-    if(!q)return;
-    for(const want of q.split(",")){
-      const w=want.trim().toLowerCase();
-      if(!w)continue;
-      let best=null,bs=0;
-      for(const key of sets.keys()){
-        const k=key.toLowerCase().replace(/_/g," ");
-        let s=0;
-        for(const t of w.split(/\s+/)) if(t && k.includes(t)) s++;
-        if(s>bs){bs=s;best=key;}
-      }
-      if(best && bs>0 && !selected.includes(best)) toggleSet(best);
-    }
-  }catch(e){}
-}
 </script>
 </body>
 </html>
