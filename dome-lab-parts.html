@@ -99,6 +99,9 @@ h2.sec{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transf
 .opt .brief{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:4px}
 .oicon{font-size:14px;cursor:default;line-height:1}
 .oi-warn{color:var(--warn)} .oi-note{color:var(--accent-ink)} .oi-limbo{color:var(--muted)} .oi-pad{color:var(--muted);cursor:pointer}
+.oi-props{color:var(--muted);letter-spacing:-1px;font-family:var(--mono)}
+.oi-props:hover{color:var(--accent-ink)}
+#tip table td:first-child{text-transform:uppercase;font-family:var(--mono);font-size:10.5px;color:var(--muted);padding-right:12px}
 .oi-pad:hover{color:var(--accent-ink)}
 
 /* ---------- overlays / tooltip / notes ---------- */
@@ -176,9 +179,9 @@ table.dt{width:100%;border-collapse:collapse;font-size:13px}
 </head>
 <body>
 <header>
-  <span class="eyebrow">Unreal Keyboards · Dome Lab</span>
+  <span class="eyebrow">Unreal Keyboards · <a href="https://unrealkeyboards.com/pages/dome-lab" target="_top" style="color:inherit">Dome Lab</a></span>
   <h1>Topre &amp; EC Parts Library + Builder</h1>
-  <span class="src">ec_parts_dataset (confirmed) · build lib-3.1</span>
+  <span class="src">ec_parts_dataset (confirmed) · build lib-3.2 · data r2</span>
   <button class="xbtn" id="themeToggle" type="button">&#9728; Light mode</button>
 </header>
 
@@ -304,7 +307,7 @@ function initParts(){
   for(const s of EC.SHELLS){
     const e={id:s.id,name:s.name,maker:s.vendor,type:s.type,stem:"",seat:null,off:0,travel:null,
       buy:"",u:s.u,brief:s.id==="shell::rc1"?"One-piece shell — spacebar stabilizer included.":"One-piece shell — housings and stabilizer housing are the shell.",
-      notes:s.shellNote?[s.shellNote]:[],cat:"Shells",shell:true,addsSb:s.addsSb};
+      notes:[s.id==="shell::hhkb"?"HHKB Shell is one plastic injected part that is an array of housings and stabilizer housings. Only the spacebar stabilizer snaps into the plate.":s.id==="shell::rc1"?"Like the HHKB, the RC1 shell is one plastic injected part that is an array of housings and stabilizer housings. The spacebar stabilizer has been integrated into the plate and utilizes a non-standard 6u stabilizer bar.":null,s.shellNote].filter(Boolean),cat:"Shells",shell:true,addsSb:s.addsSb};
     CATALOG.shells.push(e); PARTIDX[e.id]=e;
   }
   for(const r of EC.RINGS){
@@ -319,7 +322,6 @@ const SLOTS=[
  {key:"ring",   label:"Silencing Ring",      list:"rings"},
  {key:"dome",   label:"Domes",               list:"domes", modal:true},
  {key:"h1",     label:"Housings",            list:"housings1u"},
- {key:"shell",  label:"Shell",               list:"shells",     extra:true},
  {key:"h2",     label:"Stabilizer Housing",  list:"housings2u", extra:true},
  {key:"sl2",    label:"Stabilizer Slider",   list:"sliders2u",  extra:true},
  {key:"sb",     label:"Spacebar Stabilizer", list:"spacebars",  extra:true},
@@ -444,7 +446,7 @@ function hoverTip(el, htmlFn){
 /* notes modal — closes on X or any click outside */
 const noteModal=document.getElementById("noteModal");
 function openNotes(p, anchor){
-  const body=(p.notes&&p.notes.length?p.notes:["No additional notes."]).map(n=>`<p>${n}</p>`).join("");
+  const body=(p.notes||[]).map(n=>`<p>${n}</p>`).join("");
   noteModal.innerHTML=`<button class="nx" type="button">✕</button><h4 class="pname">${p.name}</h4>${body}`;
   noteModal.classList.add("open");
   const r=anchor.getBoundingClientRect();
@@ -497,7 +499,7 @@ const ANCHORS={ slider:[0,14.2], ring:[3.1,5.05], h1:[-6.6,2.2], dome:[-3.2,0.9]
 function renderChips(){
   const rail=document.getElementById("rail");
   rail.innerHTML="";
-  const hd=document.createElement("h2");hd.className="sec";hd.textContent="Assemblies & extras";
+  const hd=document.createElement("h2");hd.className="sec";hd.textContent="Stabilizers";
   rail.appendChild(hd);
   for(const s of SLOTS.filter(s=>s.extra)){
     const p=part(s.key);
@@ -606,11 +608,11 @@ function openSlot(key){
   if(slot.modal){ openDomeModal(); return; }
   const box=document.getElementById("opts");
   let h=`<div class="o-head"><h3>${slot.label}</h3>
-    <button class="xbtn" id="descTgl" type="button">${showDescs?"Descriptions: on":"Descriptions: off"}</button>
     <button class="xbtn" id="optsX" type="button">✕</button></div>`;
   if(key==="spring")
     h+=`<div class="o-note">The only springs that work reliably are OEM Topre and DynaCaps conical springs. Treat every other spring claim — vendor pages included — as unverified.</div>`;
-  for(const p of CATALOG[slot.list]){
+  const optList=CATALOG[slot.list].concat(["h1","h2","sb"].includes(key)?CATALOG.shells.filter(s=>key!=="sb"||s.addsSb):[]);
+  for(const p of optList){
     const conf=conflictFor(key,p);
     const specs=specialsFor(key,p);
     const limbo=limboFor(key,p);
@@ -618,31 +620,34 @@ function openSlot(key){
     if(conf) icons+=`<span class="oicon oi-warn" data-i="w">⚠</span>`;
     else if(limbo) icons+=`<span class="oicon oi-limbo" data-i="l">⏳</span>`;
     if(specs.length) icons+=`<span class="oicon oi-note" data-i="n">✳</span>`;
-    icons+=`<span class="oicon oi-pad" data-i="p" title="">📝</span>`;
+    if(p.notes&&p.notes.length) icons+=`<span class="oicon oi-pad" data-i="p" title="">📝</span>`;
+    icons+=`<span class="oicon oi-props" data-i="pr">&#187;&#187;</span>`;
     h+=`<button class="opt${build[key]===p.id?" on":""}" data-id="${p.id}">
       <div class="o-row"><span class="pname">${p.name}</span>${icons}</div>
-      ${showDescs?`<div class="brief">${p.brief||""}</div>`:""}
     </button>`;
   }
   box.innerHTML=h;
   box.classList.add("open");
   document.getElementById("optsX").addEventListener("click",()=>{activeSlot=null;closeOpts();renderChips();renderExtras();});
-  document.getElementById("descTgl").addEventListener("click",()=>{showDescs=!showDescs;openSlot(key);});
   box.querySelectorAll(".opt").forEach(el=>{
-    const p=CATALOG[slot.list].find(x=>x.id===el.getAttribute("data-id"));
+    const p=(CATALOG[slot.list].concat(["h1","h2","sb"].includes(key)?CATALOG.shells.filter(s=>key!=="sb"||s.addsSb):[])).find(x=>x.id===el.getAttribute("data-id"));
     el.addEventListener("click",e=>{
       if(e.target.classList.contains("oicon"))return;
       const on=build[key]===p.id;
       build[key]=on?null:p.id;
-      if(key==="shell"){                     /* shells are linkers (B1) */
-        if(on){ build.h1=null;build.h2=null;if(p.addsSb)build.sb=null; }
+      if(p.shell){                           /* shells are linked parts */
+        if(on){ build.h1=null;build.h2=null;if(build.sb===p.id)build.sb=null; }
         else { build.h1=p.id;build.h2=p.id;if(p.addsSb)build.sb=p.id; }
       }
       renderAll();openSlot(key);
     });
     el.querySelectorAll(".oicon").forEach(ic=>{
       const t=ic.getAttribute("data-i");
-      if(t==="p"){ hoverTip(ic,()=>`<span class="t-slot">${p.name}</span>`+(p.notes&&p.notes.length?p.notes:["No additional notes."]).map(n=>`<div style="margin-bottom:7px">${n}</div>`).join("")); return; }
+      if(t==="p"){ hoverTip(ic,()=>`<span class="t-slot">${p.name}</span>`+p.notes.map(n=>`<div style="margin-bottom:7px">${n}</div>`).join("")); return; }
+      if(t==="pr"){ hoverTip(ic,()=>{
+        const o=props(p,p.cat||slot.label);
+        return `<span class="t-slot">Properties</span><table>${Object.entries(o).map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join("")}</table>`;
+      }); return; }
       hoverTip(ic,()=>{
         if(t==="w")return `<span class="t-slot">${slot.label}</span>${conflictFor(key,p)}`;
         if(t==="l")return `<span class="t-slot">${slot.label}</span>Waiting for a slider — compatibility is driven by the slider (2u slider is the fallback).`;
@@ -732,6 +737,16 @@ function initDomes(){
     variant:d.variant, wraw:d.wraw, wmin:d.wmin, wmax:d.wmax,
     type:d.type, u:d.u||"", brief:"", notes:[], tests:[], buy:d.avail||""
   }));
+  const fams={};
+  for(const d of CATALOG.domes){ const m=d.name.match(/^(.*)\s+\d{2,}$/); if(m)(fams[m[1]]=fams[m[1]]||[]).push(d); }
+  for(const base in fams){
+    if(fams[base].length<2)continue;
+    const kids=fams[base];
+    const g={...kids[0], id:"dm-grp-"+base.toLowerCase().replace(/\W+/g,"-"), name:base,
+             tests:[], members:kids.map(k=>k.name)};
+    CATALOG.domes=CATALOG.domes.filter(d=>!kids.includes(d));
+    CATALOG.domes.push(g);
+  }
   for(const d of CATALOG.domes)PARTIDX[d.id]=d;
 }
 /* bench set -> dome display name (explicit; fuzzy is fallback only) */
@@ -855,7 +870,12 @@ const SNAPSHOT_TESTS=[
  ["Sony_BKE_Brown_03","Snap 44% · 120"]];
 function matchDome(setName){
   const t=setName.toLowerCase().replace(/_/g," ").trim();
-  if(BENCH_MAP[t]){ const hit=CATALOG.domes.find(d=>d.name===BENCH_MAP[t]); if(hit)return hit; }
+  if(BENCH_MAP[t]){
+    let nm=BENCH_MAP[t];
+    let hit=CATALOG.domes.find(d=>d.name===nm)||CATALOG.domes.find(d=>d.members&&d.members.includes(nm));
+    if(!hit){ nm=nm.replace(/\s+\d+$/,""); hit=CATALOG.domes.find(d=>d.name===nm); }
+    if(hit)return hit;
+  }
   const nums=(t.match(/\d+/g)||[]).map(Number);
   let best=null,bs=2;
   for(const d of CATALOG.domes){
@@ -957,10 +977,10 @@ let libCat="all";
 function typeDisp(t){ return t==="OEM TOPRE"?"OEM Topre":t==="AFTERMARKET"?"Aftermarket":(t||"—"); }
 function props(p,catLabel){
   const o={"Manufacturer":p.maker||"—","Type":typeDisp(p.type),"Category":catLabel};
-  if(p.stem)o["Stem"]=p.stem.toUpperCase();
+  if(p.stem)o["Stem"]=p.stem.toUpperCase()==="MX"?"MX":"Topre";
   if(p.seat!=null)o["Ring Seat"]=p.seat+" mm";
   if(p.off)o["Ring Offset"]="+"+p.off+" mm";
-  if(p.travel!=null)o["Travel"]=p.travel+" mm";
+  if(p.travel!=null)o["Travel"]=Number(p.travel).toFixed(1)+" mm";
   if(p.t!==undefined)o["Thickness"]=p.t+" mm";
   if(p.brand)o["Brand"]=p.brand;
   if(p.style)o["Style"]=p.style;
