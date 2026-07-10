@@ -1,9 +1,15 @@
-# Topre Force Curves
+# Topre Force Curves — The Dome Lab data repo
 
-Bench-measured force–displacement data for Topre and Topre-compatible electrostatic capacitive domes, sliders, and silencing configurations, plus an interactive viewer for comparing them.
+Bench-measured force–displacement data for Topre and Topre-compatible electrostatic capacitive domes, sliders, and silencing configurations — plus the tools built on it. This repository is the data backbone of **[The Dome Lab](https://unrealkeyboards.com/pages/dome-lab)** (`lab-0.7`).
 
-**Live viewer:** https://buddyog.github.io/topre-force-curves/
-**Interactive companion:** [EC Switch Explorer](https://buddyog.github.io/topre-force-curves/ec-switch-explorer.html) — a working cross-section of the switch these curves come from
+| Piece | Build | Where |
+|---|---|---|
+| Force Curve Bench (viewer) | `fc-2.1` | [`index.html`](https://buddyog.github.io/topre-force-curves/) · [on unrealkeyboards.com](https://unrealkeyboards.com/pages/topre-force-curve-library) |
+| EC Switch Explorer | `cad-2.3` | [`ec-switch-explorer.html`](https://buddyog.github.io/topre-force-curves/ec-switch-explorer.html) · [on unrealkeyboards.com](https://unrealkeyboards.com/pages/ec-switch-explorer) |
+| Parts Library + Builder | `lib-3.2 · data r2` | [`dome-lab-parts.html`](https://buddyog.github.io/topre-force-curves/dome-lab-parts.html) · [on unrealkeyboards.com](https://unrealkeyboards.com/pages/topre-ec-parts-library-builder) |
+| EC parts dataset | `data r2` | `ec-parts-dataset.xlsx` — the single source of truth for every part and dome |
+| Bench importer | `v1.1.0` | local GUI tool; writes this repo, the dataset, and the library in one export |
+
 **Maintained by:** BuddyOG — [Unreal Keyboards](https://unrealkeyboards.com)
 
 ---
@@ -29,6 +35,8 @@ This repository establishes a measurement standard built on two numbers that are
 
 Collapse force and collapse travel remain useful and are reported, but they are not sufficient for comparison on their own.
 
+Dome-to-dome variation is real — for some lines (BKE Redux v1 in particular) it is wildly different unit to unit. The pipeline is built for it: **multiple physical domes of the same type are tested as separate sets and grouped**, so the data shows both the family and each individual dome.
+
 The full write-up of the testing standard: [Topre & EC Dome Force Curves — How to Read and Compare Domes](https://unrealkeyboards.com/blogs/topre-mods/topre-dome-force-curves).
 
 ---
@@ -37,37 +45,24 @@ The full write-up of the testing standard: [Topre & EC Dome Force Curves — How
 
 ```
 topre-force-curves/
-├── index.html                  # The interactive viewer (single file, no build step)
-├── ec-switch-explorer.html     # EC Switch Explorer (single file, no build step)
+├── index.html                  # Force Curve Bench viewer (fc-2.1, single file)
+├── ec-switch-explorer.html     # EC Switch Explorer (cad-2.3, single file)
+├── dome-lab-parts.html         # Parts Library + Builder (lib-3.2 · data r2, single file)
+├── ec-parts-dataset.xlsx       # The parts + domes source of truth (data r2)
 ├── <Test_Set_Name>/            # One folder per tested configuration
-│   ├── [<Test_Set_Name>-]DataLog_1.csv
+│   ├── DataLog_1.csv
 │   ├── DataLog_2.csv
-│   ├── ...                     # One CSV per test run (typically 3–5 runs)
-│   ├── *.pdf                   # Annotated per-run force curve plots
-│   └── *_DataLog.xlsx          # Source workbook (where present)
+│   └── ...                     # One CSV per test run (typically 3–5 runs)
 └── README.md
 ```
 
-Test set folders currently cover two categories:
+### Set-folder naming — the dome-number convention
 
-**Domes** — bare dome sheets tested directly:
-Topre 30g, Topre 45g, Topre 55g, Topre 55g (aged), NiZ 65g, BKE Redux Extreme, DynaCaps Light, DynaCaps Medium, DynaCaps Heavy.
+A folder named `<Group>_<NN>` (trailing, zero-padded number) is **physical dome NN of that group**: `Sony_BKE_Gray_01`, `Sony_BKE_Gray_02`, `Sony_BKE_Brown_01`…`_03`. The viewer groups these automatically (expandable parent, per-dome children). A group with a single tested dome displays without its number until a second dome lands. Folders without a trailing number are ordinary standalone sets.
 
-**Topre-compatible parts** — slider/housing assemblies, including silencing configurations:
-Topre Slider Black (bare), Topre Slider Black + 0.3 mm poron silencing ring, Topre Slider Black + 0.5 mm poron silencing ring, Topre Slider Silenced Purple, Topre Slider Type-S, DynaCaps Parts, DynaCaps Slider + 0.3 mm poron, DynaCaps Slider + 0.5 mm silicone.
+**Domes on the bench:** Topre 30g, Topre 45g, Topre 55g, Topre 55g Aged, Sony BKE Gray (2 domes), Sony BKE Brown (3 domes), NiZ 65g, BKE Redux Extreme, DynaCaps Light / Medium / Heavy.
 
----
-
-## How the assembly works (context for the slider data)
-
-The slider-series measurements make more sense with the mechanism in view. From Topre's silencing patent ([JP2012-138254A](https://patentimages.storage.googleapis.com/53/d7/b3/636954aedea39a/JP2012138254A.pdf)) and CAD sections of the actual parts:
-
-- A **silencing ring** rides on **top** of the slider, around its keycap tube. It does its job on the *upstroke*: the ring lands on the housing's upper stop wall so rubber strikes instead of plastic.
-- On a **standard slider**, the ring's thickness has nowhere to go — it preloads the dome by that amount at rest. That preload is what shortens travel and pulls the collapse point earlier in the measured stroke.
-- Topre's **silent (purple)** slider carries a ~0.5 mm recess in its stack that exactly absorbs the factory ring — silenced, with zero preload and full travel. The **Type-S** slider is the same design with legs 0.2 mm longer, deliberately ending the stroke at ~3.8 mm.
-- Bottom-out on these sliders is the **leg tips landing on the flat rubber sheet** outside the dome — a cushioned stop, which is part of why Topre never feels harsh at the bottom.
-
-All of this is explorable interactively in the [EC Switch Explorer](https://buddyog.github.io/topre-force-curves/ec-switch-explorer.html), which is driven by this repository's measured curves.
+**Topre-compatible parts:** Topre Slider, Topre Silent Slider, Topre Slider Type-S, Topre Slider + 0.3 mm Silencing Ring, Topre Slider + 0.5 mm Silencing Ring, DynaCaps Parts, DynaCaps Slider + 0.3 mm poron, DynaCaps Slider + 0.5 mm silicone. (Older folder names are preserved on disk; the viewer applies the current display names.)
 
 ---
 
@@ -90,17 +85,19 @@ The press stroke runs from 0 to maximum travel; the return stroke runs back to 0
 - Displacement is stepped in 0.005 mm increments at a constant, quasi-static rate (~0.15 mm/s) while force is logged from a load cell.
 - The load cell is calibrated and verified against standardized test weights.
 - Each configuration is tested in multiple runs (typically 3–5). Run-to-run deviation in collapse force is under one gram, so published figures round grams and gf·mm to whole numbers; the raw CSVs retain full recorded precision.
-- The measurement is quasi-static by design. It captures the dome's intrinsic force curve; it does not capture rate-dependent effects (e.g., viscoelastic damping of foam silencing rings at real typing speeds). Findings that depend on that distinction are noted below.
+- The measurement is quasi-static by design. It captures the dome's intrinsic force curve; it does not capture rate-dependent effects (e.g., viscoelastic damping of foam silencing rings at real typing speeds).
 
 ### Derived metrics (as computed by the viewer)
 
 All metrics are computed on the run-averaged press curve, lightly smoothed (7-sample moving average) for feature detection only; energy integrates the unsmoothed data.
 
 1. **Collapse Force / Collapse Travel** — the tactile peak: the most prominent local maximum in the first 75% of the stroke (prominence > 2 g against the following minimum).
-2. **Valley** — the post-collapse minimum within 1.6 mm after the peak. Not displayed in the viewer, but used to compute Snap %.
-3. **Travel** — where the bottom-out wall begins: the first point past the valley where the smoothed press slope exceeds 300 g/mm. Dome bottom-out walls are near-vertical, so this detection is robust.
+2. **Valley** — the post-collapse minimum within 1.6 mm after the peak. Used to compute Snap %.
+3. **Travel** — where the bottom-out wall begins: the first point past the valley where the smoothed press slope exceeds 300 g/mm.
 4. **Total Energy** — trapezoidal integration of the press curve from 0 to Travel, in gf·mm.
 5. **Snap %** — (Collapse − Valley) / Collapse × 100.
+
+For a **dome group**, the group curve is the average of its member domes' averaged curves, with metrics recomputed from that curve. When individual domes are displayed, **no averaging is applied across domes** — each dome is a full, separate test.
 
 ## Reference results
 
@@ -117,68 +114,76 @@ Averaged across runs; grams and gf·mm shown at measurement precision here (the 
 | DynaCaps Light | 44.1 @ 1.19 | 15.5 | 4.10 | 158.4 |
 | DynaCaps Medium | 48.8 @ 1.15 | 17.5 | 4.02 | 172.6 |
 | DynaCaps Heavy | 53.3 @ 1.11 | 19.6 | 4.00 | 184.5 |
-| Topre Slider Black (bare) | 62.9 @ 1.13 | 23.4 | 3.99 | 207.0 |
-| + 0.3 mm poron ring | 61.2 @ 0.98 | 23.6 | 3.75 | 195.6 |
-| + 0.5 mm poron ring | 67.6 @ 0.79 | 24.9 | 3.62 | 207.0 |
+| Topre Slider (bare) | 62.9 @ 1.13 | 23.4 | 3.99 | 207.0 |
+| + 0.3 mm silencing ring | 61.2 @ 0.98 | 23.6 | 3.75 | 195.6 |
+| + 0.5 mm silencing ring | 67.6 @ 0.79 | 24.9 | 3.62 | 207.0 |
 
 ### Findings on silencing rings
 
 The slider series above demonstrates, from measurement rather than folklore:
 
-- **Travel loss ≈ ring thickness, less for poron.** A 0.5 mm poron ring removed 0.37 mm of travel (foam absorbs part of its own thickness under preload); silicone transmits closer to its full thickness. The mechanism is the ring-on-top geometry described above: on a standard slider, ring thickness becomes dome preload.
-- **The collapse point arrives earlier** in the measured stroke by roughly the effective ring thickness, consistent with the ring precompressing the dome — the curve begins partway up its intrinsic shape (visible as an elevated force reading in the first hundredths of a millimeter).
-- **Measured collapse force goes up, not down.** Precompression alone cannot explain this — a pure preload moves you along the same curve. The increase indicates the ring changes the dome's intrinsic buckling load, consistent with shell-buckling behavior: critical snap-through load is highly sensitive to load distribution and boundary constraint, and the ring loads the dome crown through a wider annulus than the slider's native contact.
-- **Quasi-static tactility barely changes; felt tactility does.** Snap % is nearly identical bare vs. 0.5 mm ring in slow-press data, yet thick rings feel markedly less tactile. The perceived loss is dominated by rate-dependent effects — foam damping the snap transient at keystroke speeds — plus the shortened pre-travel before the break. This is why Snap % should be read alongside Collapse Travel and Travel when rings are involved.
+- **Travel loss ≈ ring thickness, less for poron.** A 0.5 mm poron ring removed 0.37 mm of travel (foam absorbs part of its own thickness under preload); silicone transmits closer to its full thickness. On a standard slider, ring thickness becomes dome preload.
+- **The collapse point arrives earlier** in the measured stroke by roughly the effective ring thickness, consistent with the ring precompressing the dome.
+- **Measured collapse force goes up, not down.** Precompression alone cannot explain this; the increase indicates the ring changes the dome's intrinsic buckling load, consistent with shell-buckling sensitivity to load distribution.
+- **Quasi-static tactility barely changes; felt tactility does.** Snap % is nearly identical bare vs. 0.5 mm ring in slow-press data, yet thick rings feel markedly less tactile — rate-dependent foam damping plus shortened pre-travel. Read Snap % alongside Collapse Travel and Travel when rings are involved.
 
 ---
 
-## The viewer (`index.html`)
+## The Force Curve Bench (`index.html`, build fc-2.1)
 
-A single self-contained HTML file — no build step, no dependencies to install. Hosted with GitHub Pages from this repo and embedded on [unrealkeyboards.com](https://unrealkeyboards.com/pages/pages-topre-force-curves).
+A single self-contained HTML file — no build step. Hosted with GitHub Pages and embedded at [unrealkeyboards.com/pages/topre-force-curve-library](https://unrealkeyboards.com/pages/topre-force-curve-library).
 
 **Features**
 
-- Overlay any combination of test sets; press and return curves, color-coded.
-- Bench readout per set: Collapse Force and Travel, Snap %, Total Energy, Travel.
-- Single-set view renders the test name and full stat panel directly on the chart; multi-set view renders a legend with compact stats — exports are self-contained and readable without the readout table.
-- **Export PNG** — 2× resolution chart with title, markers, guide lines, and stats baked in.
-- Toggles: return curve, individual runs (vs. run-averaged), markers (collapse/valley dots + travel line), guide lines (dashed drop lines from collapse point and collapse bottom to both axes).
-- Live filter box over the test list; plain text is a contains-match, `*` acts as a wildcard (`t*black` matches "Topre Slider Black …").
-- Hover crosshair snapped to the 0.005 mm sample grid; shows readings as recorded (full stored precision in individual-runs mode).
-- Dark theme by default with a light-mode toggle; the preference persists.
+- Overlay any combination of test sets; press and return curves, color-coded; bench readout per set (Collapse @ travel, Snap %, Total Energy, Travel); **Export PNG** at 2× with stats baked in.
+- **Dome groups:** `_NN` sibling folders appear as one expandable parent. Selecting the parent shows the group-averaged curve; the *Individual runs* toggle becomes **Individual domes** and overlays each dome as its own full test — own color, markers, readout row — with no cross-dome averaging. If any member's collapse force is more than **±10%** from the group mean, individual domes are shown by default. Children are named in full (`Sony BKE Brown 01`).
+- Sidebar: DOMES and TOPRE COMPATIBLE PARTS sections are collapsible; sort is **OEM Topre first** (Topre, then Topre-made lines such as Sony BKE), then aftermarket, alphabetical within. The parts section uses a curated order starting from the stock Topre configuration; parts with defined build recipes carry a **»» info box** listing `PART TYPE / Description` (slider, silencing ring, housing, dome, spring).
+- Toggles for return curve, individual runs/domes, markers, guide lines; live filter with `*` wildcard; hover crosshair on the 0.005 mm grid; dark/light theme persisted. The "how to compare" note sits below the chart.
 
-**Data loading**
+**Data loading:** on load the viewer reads the repo tree from the GitHub API and groups every `DataLog_N.csv` by folder — **new set folders appear automatically**. CSVs are fetched on first selection and cached. If GitHub is unreachable, an embedded delta-encoded snapshot of averaged curves takes over, tagged "snapshot".
 
-1. On load, the viewer fetches the repo file index from the GitHub git-trees API and groups every `*DataLog_N.csv` by folder — **new test folders pushed to the repo appear automatically with no changes to the viewer.**
-2. CSVs are fetched from `raw.githubusercontent.com` on first selection and cached for the session.
-3. If GitHub is unreachable (offline, sandboxed embeds, API rate limit), the viewer falls back to an embedded, delta-encoded snapshot of the averaged curves and tags affected rows "snapshot". Live data always takes priority.
+## The EC Switch Explorer (`ec-switch-explorer.html`, build cad-2.3)
 
-**Display conventions**
+An interactive, animated cross-section of a complete Topre switch — the educational companion to the bench data. The drawing is a depiction; the physics are this repository's measured curves.
 
-Grams, gf·mm, and Snap % are rounded to whole numbers — matching run-to-run repeatability rather than implying false precision. Millimeter values show 2 decimals. The X axis is fixed at 4.1 mm (Topre maximum travel is 4.0 mm).
-
-## The EC Switch Explorer (`ec-switch-explorer.html`)
-
-An interactive, animated cross-section of a complete Topre switch — the educational companion to the bench data. Also a single self-contained file, hosted from this repo.
-
-- **Geometry traced 1:1 from SolidWorks STEP assemblies** of real parts, sectioned on the plane through the slider legs; the keycap is traced from an STL. Stack clearances (0.5 mm ring pocket, 3.98 mm leg-to-sheet travel, 3.873 mm stop-wall height) are read from the CAD, not assumed.
-- **Dome collapse modeled kinematically**: rigid 1.6 mm crown that never deforms, thin skirt hinged at its molded knee, two-link buckling fold through the snap — driven by this repository's measured force curves.
-- Swap standard / silent / Type-S sliders, fit silencing rings from 0.2 mm to absurd custom thicknesses, and watch preload, travel, collapse point, and actuation move. Remove the ring from a silent slider and the top-out rattle becomes drag-able and audible in the animation.
+- Press it with the button, the depth slider, or **any key on your keyboard**; drag the keycap, slider, dome, or spring. Release always snaps back — and with a missing silencing ring, the slider smacks the stop wall once and settles, with the **top-out chatter called out in a warning box pointing at the actual gap**.
+- Swap standard / silent / Type-S sliders (4.0 / 4.0 / 3.8 mm travel), fit silencing rings (0.3 / 0.5 / 0.7 mm or custom), and watch preload, travel, collapse point, and actuation move.
+- **Actuation the way current boards actually do it:** HHKB Classic/Hybrid ship fixed; Realforce R2 APC used fixed steps; R3, R4, and RC1 set actuation 0.1–3.0 mm in 0.1 mm increments from an analog signal; GX1 and Cipulot PCBs add Wooting-style variable actuation **and** reset — the Explorer's Custom mode emulates exactly that, with hysteresis in the live readings.
 - Assembly per Topre patent [JP2012-138254A](https://patentimages.storage.googleapis.com/53/d7/b3/636954aedea39a/JP2012138254A.pdf).
+
+## The Parts Library + Builder (`dome-lab-parts.html`, build lib-3.2 · data r2)
+
+Every Topre/EC part and dome in one place, read verbatim from `ec-parts-dataset.xlsx` — names come from the raw list, never vendor terminology, and vendor claims are never treated as measurements.
+
+- **Library:** 40 parts + the full dome catalog with hover property boxes (`STEM / Topre`, `RING SEAT / 0.5 mm`, `TRAVEL / 4.0 mm`), availability, and bench data (▦) synced live from this repo. Dome rows differing only by a trailing number are **one part** (the group), with per-dome bench runs visible from it.
+- **Builder:** pick slider, silencing ring, dome, housings, stabilizers, and springs; every combination is checked live against the dataset's compatibility edge list — stem fit, ring preload and top-out chatter math (`effective = ring − (seat + housing offset)`), drilling requirements, unreleased-part warnings. Shells (HHKB, RC1, Heavy Grail) are selected as Housings / Stabilizer Housings (RC1 also Spacebar Stabilizer) and populate their linked slots together, because a shell is one injected part.
+
+## `ec-parts-dataset.xlsx` — the source of truth
+
+Sheets: Parts, Domes, Compatibility (edge list — no row = compatible; domes have no rows *on purpose*, they're universal), Notes, Rings, RingDefaults, Shells, Categories. Every tool is generated from this file; to change the catalog, change the workbook.
+
+## The bench importer (local tool, v1.1.0)
+
+A local GUI (Python/tkinter, packaged with PyInstaller) that turns a raw test session into everything above in one Export:
+
+1. Loads a batch of `DataLog_N.csv` + a `data_log.xlsx` metadata sheet (template with vocabulary dropdowns provided).
+2. Validates metadata (names, vocabulary, dome numbers) and raw runs (truncated sweeps, missing return strokes, non-monotonic travel, dropped samples). **Outlier runs (>10% collapse or energy vs. siblings) prompt keep/discard — never silent.**
+3. Export writes: the `<Group>_<NN>/DataLog_1..n.csv` folders into this repo, new rows into the dataset's Domes sheet, and the Parts Library's embedded data (dome rows, bench mapping, offline snapshot) — then archives the batch and lays out a fresh blank `data_log.xlsx`.
+
+### Versioning
+
+- **Tool code** is versioned by hand: viewer `fc-X.Y`, Explorer `cad-X.Y`, library `lib-X.Y`, importer `vX.Y.Z` (SemVer, changelog embedded). Each page displays its build in the header.
+- **Data revisions** (`data rN`) are bumped automatically by the importer on every export and stamped identically into the library header and the dataset README — if the two numbers match, library and dataset agree.
 
 ## Adding a new test set
 
-1. Create a folder named for the configuration, e.g. `Deskeys_Blue_49g`. Underscores become spaces in the viewer.
-2. Put one CSV per run inside, named `DataLog_1.csv`, `DataLog_2.csv`, … (a `FolderName-` prefix on the filenames is also accepted). Match the column format above.
-3. Folder names containing `Slider`, `Type-S`, or `Parts` are grouped under **Topre Compatible Parts** in the viewer; everything else lands under **Domes**.
-4. Commit and push. The live viewer picks the set up on next load.
+**Importer path (normal):** fill the `data_log.xlsx` template, drop it beside the batch's CSVs, run the importer, Export, commit, push. Done — both web tools pick the new sets up live.
 
-To update the embedded offline snapshot with new sets, regenerate it from the CSVs and replace the `EMBEDDED` constant in `index.html` — this is optional and only affects offline/sandboxed fallback behavior, not the live site.
+**Manual path:** create `<Test_Set_Name>/` (use `<Group>_<NN>` for a numbered dome), add `DataLog_1.csv`… matching the column format above, push. Folder names containing `Slider`, `Type-S`, or `Parts` group under **Topre Compatible Parts**; everything else lands under **Domes**.
 
 ## Hosting and embedding
 
-- GitHub Pages serves both HTML files from the repo root (`main` branch). Every push redeploys automatically in about a minute.
-- Embed anywhere with an iframe:
+GitHub Pages serves all three HTML files from the repo root (`main` branch); every push redeploys in about a minute. Embed with an iframe (fixed height — do **not** size embedded pages with `vh` inside auto-resizing frames):
 
 ```html
 <iframe
@@ -189,20 +194,20 @@ To update the embedded offline snapshot with new sets, regenerate it from the CS
 </iframe>
 ```
 
-The Explorer embeds the same way with `ec-switch-explorer.html` appended to the `src` (use `min-height:900px`).
+The Explorer and Parts Library embed the same way with their filenames appended to the `src`.
 
 ## Using this data
 
-Exported charts and the data in this repository may be shared with attribution to **BuddyOG / Unreal Keyboards** and a link back to this repository or the live viewer. The viewer's Export PNG button produces self-contained charts with the source branding included.
+Exported charts and the data in this repository may be shared with attribution to **BuddyOG / Unreal Keyboards** and a link back to this repository or the live viewer.
 
 ## Credits
 
 - **Bench design:** [bluepylons — Open-Switch-Curve-Meter](https://github.com/bluepylons/Open-Switch-Curve-Meter) (open source). All design credit for the measurement hardware belongs there.
 - **Bench build:** custom-commissioned from a third-party professional fabricator, to bluepylons' design.
-- **Testing, data, viewer, and Explorer:** BuddyOG / [Unreal Keyboards](https://unrealkeyboards.com).
+- **Testing, data, tools, and the Dome Lab:** BuddyOG / [Unreal Keyboards](https://unrealkeyboards.com).
 
 ## Caveats
 
-- Aftermarket and aged parts vary; these curves characterize the specific units tested.
+- Aftermarket and aged parts vary; these curves characterize the specific units tested — which is exactly why multi-dome groups exist.
 - The bench is quasi-static. Rate-dependent feel (notably foam silencing rings at typing speed) is discussed above but not directly measured.
-- Travel detection uses a slope threshold (300 g/mm); pathological curves without a clean bottom-out wall would fall back to end-of-stroke.
+- Travel detection uses a slope threshold (300 g/mm); pathological curves without a clean bottom-out wall fall back to end-of-stroke.
