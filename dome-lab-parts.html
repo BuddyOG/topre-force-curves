@@ -39,7 +39,7 @@ header .src{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--
 .view{display:none;padding:18px 22px 30px;position:relative}
 .view.on{display:block}
 h2.sec{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
-.pname{text-transform:uppercase;font-weight:700;letter-spacing:.02em;color:var(--ink)}
+.pname{font-weight:700;letter-spacing:.01em;color:var(--ink)}
 
 /* ---------- builder: loadout | stage | extras ---------- */
 .builder{display:none;grid-template-columns:300px 1fr;gap:20px;align-items:start}
@@ -66,7 +66,7 @@ h2.sec{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transf
 .stage svg .pt:hover{filter:brightness(1.18)}
 .chip-slot{position:static;width:100%;border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:7px 11px;cursor:pointer;text-align:left}
 .chip-slot .cs-l{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.chip-slot .cs-v{font-size:11.5px;font-weight:700;margin-top:1px;text-transform:uppercase;letter-spacing:.01em}
+.chip-slot .cs-v{font-size:11.5px;font-weight:700;margin-top:1px;letter-spacing:.01em}
 .chip-slot .cs-v.empty{color:var(--muted);font-weight:400;text-transform:none}
 .chip-slot.on{border-color:var(--accent);background:var(--tint)}
 .icons-cluster{position:absolute;top:0;left:0;right:0;display:flex;gap:10px;justify-content:center;z-index:4}
@@ -76,7 +76,7 @@ h2.sec{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transf
 
 .ex-slot{border:1px solid var(--line);border-radius:9px;background:var(--panel);padding:7px 11px;cursor:pointer;text-align:left}
 .ex-slot .cs-l{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.ex-slot .cs-v{font-size:11.5px;font-weight:700;margin-top:1px;text-transform:uppercase}
+.ex-slot .cs-v{font-size:11.5px;font-weight:700;margin-top:1px}
 .ex-slot .cs-v.empty{color:var(--muted);font-weight:400;text-transform:none}
 .ex-slot.on{border-color:var(--accent);background:var(--tint)}
 .dbadge{display:inline-block;font-family:var(--mono);font-size:9px;padding:1px 6px;border-radius:8px;margin-left:5px}
@@ -178,13 +178,14 @@ table.dt{width:100%;border-collapse:collapse;font-size:13px}
 <header>
   <span class="eyebrow">Unreal Keyboards · Dome Lab</span>
   <h1>Topre &amp; EC Parts Library + Builder</h1>
-  <span class="src">interim catalog — awaiting ec_parts_dataset · build lib-2.1</span>
+  <span class="src">ec_parts_dataset (confirmed) · build lib-3.1</span>
   <button class="xbtn" id="themeToggle" type="button">&#9728; Light mode</button>
 </header>
 
-<div class="tabs">
+<div class="tabs" style="align-items:center">
   <button class="tab on" data-v="builder">EC Builder</button>
   <button class="tab" data-v="library">Parts Library</button>
+  <input class="filter" id="libFilter" type="text" placeholder="Filter by name or property (maker, stem, weight)…" style="display:none;margin:6px 0 6px 16px;max-width:360px">
 </div>
 
 <!-- ================= BUILDER ================= -->
@@ -209,7 +210,6 @@ table.dt{width:100%;border-collapse:collapse;font-size:13px}
 
 <!-- ================= LIBRARY ================= -->
 <div class="view" id="view-library">
-  <input class="filter" id="libFilter" type="text" placeholder="Filter by name or property (maker, stem, weight, OEM TOPRE / AFTERMARKET)…">
   <div class="chips" id="libChips"></div>
   <p class="count" id="libCount"></p>
   <div class="cards" id="libCards"></div>
@@ -225,9 +225,10 @@ table.dt{width:100%;border-collapse:collapse;font-size:13px}
   </div>
   <div class="mchips" id="domeMakerChips"></div>
   <div class="mchips" id="domeWeightChips" style="padding-bottom:6px"></div>
+  <div style="padding:8px 18px 0;font-family:var(--mono);font-size:10.5px;color:var(--muted);line-height:1.55">Dome designations are nominal, not measured: makers name by tier (Light/Medium/Heavy), by color (Deskeys), or by nominal collapse grams — Topre themselves state the 45g collapse point as ±10%. Measured truth lives in the Bench column.</div>
   <div class="mbody">
     <table class="dt">
-      <thead><tr><th>Dome</th><th>Maker</th><th>Weight (g)</th><th>Type</th><th>Bench</th></tr></thead>
+      <thead><tr><th>Dome</th><th>Maker</th><th>Nominal</th><th>Type</th><th>Bench</th></tr></thead>
       <tbody id="domeRows"></tbody>
     </table>
   </div>
@@ -249,222 +250,164 @@ table.dt{width:100%;border-collapse:collapse;font-size:13px}
 <script>
 "use strict";
 /* ====================================================================
-   DATA. Interim catalog cleaned to BuddyOG's rules — the authoritative
-   source is ec_parts_dataset.json (pending upload); entries flagged
-   review:true are listed in parts-pending-review.txt.
-   Rules enforced here:
-   - No Realforce RGB / GX1 anywhere (not in the compatibility list)
-   - Novatouch is OEM TOPRE
-   - Keycaps are NOT parts: TOPRE or MX, derived from the slider
-   - Springs: only OEM Topre and DynaCaps springs work reliably
-   - No vendor-description claims. Feel/notes columns from vendor pages
-     are quarantined from display.
+   DATA — built verbatim from ec-parts-dataset.xlsx (BuddyOG-confirmed).
+   Names are final. Conflicts live in EC.COMPAT, an edge list: one row
+   per relationship. No row = compatible (silent).
 ==================================================================== */
+const EC={"PARTS":[{"id":"slider::deskeys","cat":"Sliders","vendor":"Deskeys","name":"Deskeys Slider","type":"AFTERMARKET","stem":"mx","seat":0.5,"off":0,"travel":3.8,"avail":"","u":"https://deskeys.io"},{"id":"slider::dynacaps","cat":"Sliders","vendor":"DynaCaps","name":"DynaCaps Slider","type":"AFTERMARKET","stem":"mx","seat":0.0,"off":0,"travel":4.0,"avail":"","u":"https://omnitype.com/pages/dynacap"},{"id":"slider::hhkb_type_s","cat":"Sliders","vendor":"HHKB Type-S","name":"HHKB Type-S Slider","type":"OEM TOPRE","stem":"topre","seat":0.5,"off":0,"travel":3.8,"avail":"","u":""},{"id":"slider::klc_playground","cat":"Sliders","vendor":"KLC Playground","name":"KLC Playground Slider","type":"AFTERMARKET","stem":"mx","seat":0.0,"off":0,"travel":4.0,"avail":"","u":"https://klc-playground.com/products/instock-ec-kits-and-packs"},{"id":"slider::metapulse","cat":"Sliders","vendor":"MetaPulse","name":"MetaPulse Slider","type":"AFTERMARKET","stem":"mx","seat":0.0,"off":0,"travel":4.0,"avail":"ETA Q3 2026","u":"https://metakeebs.com/collections/metapulse"},{"id":"slider::novatouch","cat":"Sliders","vendor":"Novatouch","name":"Novatouch Slider","type":"OEM TOPRE","stem":"mx","seat":0.0,"off":0,"travel":4.0,"avail":"No longer sold \u2014 secondary market only","u":""},{"id":"slider::topre","cat":"Sliders","vendor":"Topre","name":"Topre Slider","type":"OEM TOPRE","stem":"topre","seat":0.0,"off":0,"travel":4.0,"avail":"","u":"https://mechanicalkeyboards.com/collections/realforce"},{"id":"slider::topre_silenced_purple","cat":"Sliders","vendor":"Topre Silenced (Purple)","name":"Realforce Silent Slider","type":"OEM TOPRE","stem":"topre","seat":0.5,"off":0,"travel":4.0,"avail":"","u":""},{"id":"stabilizer_slider_2u::deskeys","cat":"Stabilizer Sliders","vendor":"Deskeys","name":"Deskeys Stabilizer Slider","type":"AFTERMARKET","stem":"mx","seat":0.0,"off":0,"travel":4.0,"avail":"","u":"https://deskeys.io"},{"id":"stabilizer_slider_2u::dynacaps","cat":"Stabilizer Sliders","vendor":"DynaCaps","name":"DynaCaps Stabilizer Slider","type":"AFTERMARKET","stem":"mx","seat":0.0,"off":0,"travel":4.0,"avail":"","u":"https://omnitype.com/pages/dynacap"},{"id":"stabilizer_slider_2u::hhkb_type_s","cat":"Stabilizer Sliders","vendor":"HHKB Type-S","name":"HHKB Type-S Stabilizer Slider","type":"OEM TOPRE","stem":"topre","seat":0.5,"off":0,"travel":3.8,"avail":"","u":""},{"id":"stabilizer_slider_2u::klc_playground","cat":"Stabilizer Sliders","vendor":"KLC Playground","name":"KLC Playground Stabilizer Slider","type":"AFTERMARKET","stem":"mx","seat":0.0,"off":0,"travel":4.0,"avail":"","u":"https://klc-playground.com/products/instock-ec-kits-and-packs"},{"id":"stabilizer_slider_2u::metapulse","cat":"Stabilizer Sliders","vendor":"MetaPulse","name":"MetaPulse Stabilizer Slider","type":"AFTERMARKET","stem":"mx","seat":0.0,"off":0,"travel":4.0,"avail":"ETA Q3 2026","u":"https://metakeebs.com/collections/metapulse"},{"id":"stabilizer_slider_2u::novatouch","cat":"Stabilizer Sliders","vendor":"Novatouch","name":"Novatouch Stabilizer Slider","type":"OEM TOPRE","stem":"mx","seat":0.0,"off":0,"travel":4.0,"avail":"No longer sold \u2014 secondary market only","u":""},{"id":"stabilizer_slider_2u::realforce_rc1_silenced_purple","cat":"Stabilizer Sliders","vendor":"Realforce RC1 Silenced (Purple)","name":"Realforce RC1 Stabilizer Slider","type":"OEM TOPRE","stem":"topre","seat":0.5,"off":0,"travel":4.0,"avail":"","u":""},{"id":"stabilizer_slider_2u::topre","cat":"Stabilizer Sliders","vendor":"Topre","name":"Topre Stabilizer Slider","type":"OEM TOPRE","stem":"topre","seat":0.0,"off":0,"travel":4.0,"avail":"","u":"https://mechanicalkeyboards.com/collections/realforce"},{"id":"stabilizer_slider_2u::topre_silenced","cat":"Stabilizer Sliders","vendor":"Topre Silenced","name":"Realforce Silent Stabilizer Slider","type":"OEM TOPRE","stem":"topre","seat":0.0,"off":0,"travel":4.0,"avail":"","u":""},{"id":"stabilizer_housing_2u::deskeys","cat":"Stabilizer Housings","vendor":"Deskeys","name":"Deskeys Stabilizer Housing","type":"AFTERMARKET","stem":"","seat":null,"off":0.0,"travel":null,"avail":"","u":"https://deskeys.io"},{"id":"stabilizer_housing_2u::dynacaps","cat":"Stabilizer Housings","vendor":"DynaCaps","name":"DynaCaps Stabilizer Housing","type":"AFTERMARKET","stem":"","seat":null,"off":0.0,"travel":null,"avail":"","u":"https://omnitype.com/pages/dynacap"},{"id":"stabilizer_housing_2u::klc_playground","cat":"Stabilizer Housings","vendor":"KLC Playground","name":"KLC Playground Stabilizer Housing","type":"AFTERMARKET","stem":"","seat":null,"off":0.0,"travel":null,"avail":"","u":"https://klc-playground.com/products/instock-ec-kits-and-packs"},{"id":"stabilizer_housing_2u::metapulse","cat":"Stabilizer Housings","vendor":"MetaPulse","name":"MetaPulse Stabilizer Housing","type":"AFTERMARKET","stem":"","seat":null,"off":0.0,"travel":null,"avail":"ETA Q3 2026","u":"https://metakeebs.com/collections/metapulse"},{"id":"stabilizer_housing_2u::novatouch","cat":"Stabilizer Housings","vendor":"Novatouch","name":"Novatouch Stabilizer Housing","type":"OEM TOPRE","stem":"","seat":null,"off":0.0,"travel":null,"avail":"No longer sold \u2014 secondary market only","u":""},{"id":"stabilizer_housing_2u::topre_silenced","cat":"Stabilizer Housings","vendor":"Topre Silenced","name":"Realforce Silent Stabilizer Housing","type":"OEM TOPRE","stem":"","seat":null,"off":1.0,"travel":null,"avail":"","u":""},{"id":"stabilizer_housing_2u::topre_standard","cat":"Stabilizer Housings","vendor":"Topre Standard","name":"Topre Stabilizer Housing","type":"OEM TOPRE","stem":"","seat":null,"off":0.0,"travel":null,"avail":"","u":""},{"id":"housings::deskeys","cat":"Housings","vendor":"Deskeys","name":"Deskeys Housings","type":"AFTERMARKET","stem":"","seat":null,"off":0.2,"travel":null,"avail":"","u":"https://deskeys.io"},{"id":"housings::dynacaps","cat":"Housings","vendor":"DynaCaps","name":"DynaCaps Housings","type":"AFTERMARKET","stem":"","seat":null,"off":0.0,"travel":null,"avail":"","u":"https://omnitype.com/pages/dynacap"},{"id":"housings::klc_playground","cat":"Housings","vendor":"KLC Playground","name":"KLC Playground Housings","type":"AFTERMARKET","stem":"","seat":null,"off":0.0,"travel":null,"avail":"","u":"https://klc-playground.com/products/instock-ec-kits-and-packs"},{"id":"housings::metapulse","cat":"Housings","vendor":"MetaPulse","name":"MetaPulse Housings","type":"AFTERMARKET","stem":"","seat":null,"off":0.0,"travel":null,"avail":"ETA Q3 2026","u":"https://metakeebs.com/collections/metapulse"},{"id":"housings::topre","cat":"Housings","vendor":"Topre","name":"Topre Housings","type":"OEM TOPRE","stem":"","seat":null,"off":0.0,"travel":null,"avail":"","u":"https://mechanicalkeyboards.com/collections/realforce"},{"id":"spacebar_stabilizer::deskeys","cat":"Spacebar Stabilizer","vendor":"Deskeys","name":"Deskeys Spacebar Stabilizer","type":"AFTERMARKET","stem":"mx","seat":null,"off":0,"travel":null,"avail":"","u":"https://deskeys.io"},{"id":"spacebar_stabilizer::dynacaps","cat":"Spacebar Stabilizer","vendor":"DynaCaps","name":"DynaCaps Spacebar Stabilizer","type":"AFTERMARKET","stem":"mx","seat":null,"off":0,"travel":null,"avail":"","u":"https://omnitype.com/pages/dynacap"},{"id":"spacebar_stabilizer::klc_playground","cat":"Spacebar Stabilizer","vendor":"KLC Playground","name":"KLC Playground Spacebar Stabilizer","type":"AFTERMARKET","stem":"mx","seat":null,"off":0,"travel":null,"avail":"","u":"https://klc-playground.com/products/instock-ec-kits-and-packs"},{"id":"spacebar_stabilizer::metapulse","cat":"Spacebar Stabilizer","vendor":"MetaPulse","name":"MetaPulse Spacebar Stabilizer","type":"AFTERMARKET","stem":"mx","seat":null,"off":0,"travel":null,"avail":"ETA Q3 2026","u":"https://metakeebs.com/collections/metapulse"},{"id":"spacebar_stabilizer::topre","cat":"Spacebar Stabilizer","vendor":"Topre","name":"Topre Spacebar Stabilizer","type":"OEM TOPRE","stem":"topre","seat":null,"off":0,"travel":null,"avail":"","u":"https://mechanicalkeyboards.com/collections/realforce"},{"id":"conical_springs::deskeys_conical","cat":"Conical Springs","vendor":"Deskeys-Conical","name":"Deskeys-Conical Conical Springs","type":"AFTERMARKET","stem":"","seat":null,"off":0,"travel":null,"avail":"","u":"https://deskeys.io"},{"id":"conical_springs::deskeys_volcano","cat":"Conical Springs","vendor":"Deskeys-Volcano","name":"Deskeys-Volcano Conical Springs","type":"AFTERMARKET","stem":"","seat":null,"off":0,"travel":null,"avail":"","u":"https://deskeys.io"},{"id":"conical_springs::dynacaps","cat":"Conical Springs","vendor":"DynaCaps","name":"DynaCaps Conical Springs","type":"AFTERMARKET","stem":"","seat":null,"off":0,"travel":null,"avail":"","u":"https://omnitype.com/pages/dynacap"},{"id":"conical_springs::klc_playground","cat":"Conical Springs","vendor":"KLC Playground","name":"KLC Playground Conical Springs","type":"AFTERMARKET","stem":"","seat":null,"off":0,"travel":null,"avail":"","u":"https://klc-playground.com/products/instock-ec-kits-and-packs"},{"id":"conical_springs::metapulse","cat":"Conical Springs","vendor":"MetaPulse","name":"MetaPulse Conical Springs","type":"AFTERMARKET","stem":"","seat":null,"off":0,"travel":null,"avail":"ETA Q3 2026","u":"https://metakeebs.com/collections/metapulse"},{"id":"conical_springs::topre","cat":"Conical Springs","vendor":"Topre","name":"Topre Conical Springs","type":"OEM TOPRE","stem":"","seat":null,"off":0,"travel":null,"avail":"","u":"https://mechanicalkeyboards.com/collections/realforce"}],"SHELLS":[{"id":"shell::hhkb","cat":"Shells","vendor":"PFU","name":"HHKB Shell","type":"OEM TOPRE","stem":"","seat":null,"off":0,"travel":null,"avail":"","u":"https://hhkeyboard.us","addsSb":false,"shellNote":""},{"id":"shell::rc1","cat":"Shells","vendor":"Topre","name":"Realforce RC1 Shell","type":"OEM TOPRE","stem":"","seat":null,"off":0,"travel":null,"avail":"","u":"https://mechanicalkeyboards.com/collections/realforce","addsSb":true,"shellNote":"Spacebar stabilizer is part of the shell."},{"id":"shell::heavygrail","cat":"Shells","vendor":"Norbauer & Co.","name":"Heavy Grail Shell","type":"AFTERMARKET","stem":"","seat":null,"off":0,"travel":null,"avail":"","u":"https://norbauer.com","addsSb":false,"shellNote":"Drill holes required. \u2733 2U STABILIZER WIRE CLIP NEEDS MODIFYING. Guide: https://docs.google.com/document/d/1tsC0GfalhJzpZUHmakf0BVXkoIT3mlJ9cxQFvhAL9Kw/edit?usp=sharing"}],"RINGS":[{"id":"ring::none","name":"None","t":0.0},{"id":"ring::0.3","name":"0.3 mm","t":0.3},{"id":"ring::0.5","name":"0.5 mm","t":0.5},{"id":"ring::0.7","name":"0.7 mm","t":0.7}],"COMPAT":{"Deskeys Housings||Deskeys-Conical Conical Springs":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||DynaCaps Housings":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||KLC Playground Housings":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||Topre Housings":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||MX Keycaps":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||Topre Keycaps":{"s":"incompatible","n":""},"Deskeys Slider||Deskeys-Conical Conical Springs":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||DynaCaps Slider":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||HHKB Type-S Slider":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||KLC Playground Slider":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||Novatouch Slider":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||Topre Slider":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||Realforce Silent Slider":{"s":"incompatible","n":""},"Deskeys Spacebar Stabilizer||Deskeys-Conical Conical Springs":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||DynaCaps Spacebar Stabilizer":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||KLC Playground Spacebar Stabilizer":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||Topre Spacebar Stabilizer":{"s":"incompatible","n":""},"Deskeys Stabilizer Housing||Deskeys-Conical Conical Springs":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||DynaCaps Stabilizer Housing":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||KLC Playground Stabilizer Housing":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||Novatouch Stabilizer Housing":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||Realforce Silent Stabilizer Housing":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||Topre Stabilizer Housing":{"s":"incompatible","n":""},"Deskeys Stabilizer Slider||Deskeys-Conical Conical Springs":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||DynaCaps Stabilizer Slider":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||HHKB Type-S Stabilizer Slider":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||KLC Playground Stabilizer Slider":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||Novatouch Stabilizer Slider":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||Realforce RC1 Stabilizer Slider":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||Topre Stabilizer Slider":{"s":"incompatible","n":""},"Deskeys-Conical Conical Springs||Realforce Silent Stabilizer Slider":{"s":"incompatible","n":""},"Deskeys Housings||Deskeys-Volcano Conical Springs":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||DynaCaps Housings":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||KLC Playground Housings":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||Topre Housings":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||MX Keycaps":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||Topre Keycaps":{"s":"incompatible","n":""},"Deskeys Slider||Deskeys-Volcano Conical Springs":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||DynaCaps Slider":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||HHKB Type-S Slider":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||KLC Playground Slider":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||Novatouch Slider":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||Topre Slider":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||Realforce Silent Slider":{"s":"incompatible","n":""},"Deskeys Spacebar Stabilizer||Deskeys-Volcano Conical Springs":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||DynaCaps Spacebar Stabilizer":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||KLC Playground Spacebar Stabilizer":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||Topre Spacebar Stabilizer":{"s":"incompatible","n":""},"Deskeys Stabilizer Housing||Deskeys-Volcano Conical Springs":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||DynaCaps Stabilizer Housing":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||KLC Playground Stabilizer Housing":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||Novatouch Stabilizer Housing":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||Realforce Silent Stabilizer Housing":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||Topre Stabilizer Housing":{"s":"incompatible","n":""},"Deskeys Stabilizer Slider||Deskeys-Volcano Conical Springs":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||DynaCaps Stabilizer Slider":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||HHKB Type-S Stabilizer Slider":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||KLC Playground Stabilizer Slider":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||Novatouch Stabilizer Slider":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||Realforce RC1 Stabilizer Slider":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||Topre Stabilizer Slider":{"s":"incompatible","n":""},"Deskeys-Volcano Conical Springs||Realforce Silent Stabilizer Slider":{"s":"incompatible","n":""},"Deskeys Housings||DynaCaps Conical Springs":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||DynaCaps Housings":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||KLC Playground Housings":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||Topre Housings":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||MX Keycaps":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||Topre Keycaps":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"Deskeys Slider||DynaCaps Conical Springs":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||DynaCaps Slider":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||HHKB Type-S Slider":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||KLC Playground Slider":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||Novatouch Slider":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||Topre Slider":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||Realforce Silent Slider":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"Deskeys Spacebar Stabilizer||DynaCaps Conical Springs":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||DynaCaps Spacebar Stabilizer":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||KLC Playground Spacebar Stabilizer":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||Topre Spacebar Stabilizer":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"Deskeys Stabilizer Housing||DynaCaps Conical Springs":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||DynaCaps Stabilizer Housing":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||KLC Playground Stabilizer Housing":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||Novatouch Stabilizer Housing":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||Realforce Silent Stabilizer Housing":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||Topre Stabilizer Housing":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"Deskeys Stabilizer Slider||DynaCaps Conical Springs":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||DynaCaps Stabilizer Slider":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||HHKB Type-S Stabilizer Slider":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||KLC Playground Stabilizer Slider":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||Novatouch Stabilizer Slider":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||Realforce RC1 Stabilizer Slider":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||Topre Stabilizer Slider":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"DynaCaps Conical Springs||Realforce Silent Stabilizer Slider":{"s":"compatible_note","n":"note_dynacaps_conical_universal"},"Deskeys Housings||KLC Playground Conical Springs":{"s":"incompatible","n":""},"DynaCaps Housings||KLC Playground Conical Springs":{"s":"incompatible","n":""},"KLC Playground Conical Springs||KLC Playground Housings":{"s":"incompatible","n":""},"KLC Playground Conical Springs||Topre Housings":{"s":"incompatible","n":""},"KLC Playground Conical Springs||MX Keycaps":{"s":"incompatible","n":""},"KLC Playground Conical Springs||Topre Keycaps":{"s":"incompatible","n":""},"Deskeys Slider||KLC Playground Conical Springs":{"s":"incompatible","n":""},"DynaCaps Slider||KLC Playground Conical Springs":{"s":"incompatible","n":""},"HHKB Type-S Slider||KLC Playground Conical Springs":{"s":"incompatible","n":""},"KLC Playground Conical Springs||KLC Playground Slider":{"s":"incompatible","n":""},"KLC Playground Conical Springs||Novatouch Slider":{"s":"incompatible","n":""},"KLC Playground Conical Springs||Topre Slider":{"s":"incompatible","n":""},"KLC Playground Conical Springs||Realforce Silent Slider":{"s":"incompatible","n":""},"Deskeys Spacebar Stabilizer||KLC Playground Conical Springs":{"s":"incompatible","n":""},"DynaCaps Spacebar Stabilizer||KLC Playground Conical Springs":{"s":"incompatible","n":""},"KLC Playground Conical Springs||KLC Playground Spacebar Stabilizer":{"s":"incompatible","n":""},"KLC Playground Conical Springs||Topre Spacebar Stabilizer":{"s":"incompatible","n":""},"Deskeys Stabilizer Housing||KLC Playground Conical Springs":{"s":"incompatible","n":""},"DynaCaps Stabilizer Housing||KLC Playground Conical Springs":{"s":"incompatible","n":""},"KLC Playground Conical Springs||KLC Playground Stabilizer Housing":{"s":"incompatible","n":""},"KLC Playground Conical Springs||Novatouch Stabilizer Housing":{"s":"incompatible","n":""},"KLC Playground Conical Springs||Realforce Silent Stabilizer Housing":{"s":"incompatible","n":""},"KLC Playground Conical Springs||Topre Stabilizer Housing":{"s":"incompatible","n":""},"Deskeys Stabilizer Slider||KLC Playground Conical Springs":{"s":"incompatible","n":""},"DynaCaps Stabilizer Slider||KLC Playground Conical Springs":{"s":"incompatible","n":""},"HHKB Type-S Stabilizer Slider||KLC Playground Conical Springs":{"s":"incompatible","n":""},"KLC Playground Conical Springs||KLC Playground Stabilizer Slider":{"s":"incompatible","n":""},"KLC Playground Conical Springs||Novatouch Stabilizer Slider":{"s":"incompatible","n":""},"KLC Playground Conical Springs||Realforce RC1 Stabilizer Slider":{"s":"incompatible","n":""},"KLC Playground Conical Springs||Topre Stabilizer Slider":{"s":"incompatible","n":""},"KLC Playground Conical Springs||Realforce Silent Stabilizer Slider":{"s":"incompatible","n":""},"Deskeys Housings||MetaPulse Conical Springs":{"s":"pending","n":""},"DynaCaps Housings||MetaPulse Conical Springs":{"s":"pending","n":""},"KLC Playground Housings||MetaPulse Conical Springs":{"s":"pending","n":""},"MetaPulse Conical Springs||MetaPulse Housings":{"s":"pending","n":""},"MetaPulse Conical Springs||Topre Housings":{"s":"pending","n":""},"MX Keycaps||MetaPulse Conical Springs":{"s":"pending","n":""},"MetaPulse Conical Springs||Topre Keycaps":{"s":"pending","n":""},"Deskeys Slider||MetaPulse Conical Springs":{"s":"pending","n":""},"DynaCaps Slider||MetaPulse Conical Springs":{"s":"pending","n":""},"HHKB Type-S Slider||MetaPulse Conical Springs":{"s":"pending","n":""},"KLC Playground Slider||MetaPulse Conical Springs":{"s":"pending","n":""},"MetaPulse Conical Springs||Novatouch Slider":{"s":"pending","n":""},"MetaPulse Conical Springs||Topre Slider":{"s":"pending","n":""},"MetaPulse Conical Springs||Realforce Silent Slider":{"s":"pending","n":""},"Deskeys Spacebar Stabilizer||MetaPulse Conical Springs":{"s":"pending","n":""},"DynaCaps Spacebar Stabilizer||MetaPulse Conical Springs":{"s":"pending","n":""},"KLC Playground Spacebar Stabilizer||MetaPulse Conical Springs":{"s":"pending","n":""},"MetaPulse Conical Springs||MetaPulse Spacebar Stabilizer":{"s":"pending","n":""},"MetaPulse Conical Springs||Topre Spacebar Stabilizer":{"s":"pending","n":""},"Deskeys Stabilizer Housing||MetaPulse Conical Springs":{"s":"pending","n":""},"DynaCaps Stabilizer Housing||MetaPulse Conical Springs":{"s":"pending","n":""},"KLC Playground Stabilizer Housing||MetaPulse Conical Springs":{"s":"pending","n":""},"MetaPulse Conical Springs||MetaPulse Stabilizer Housing":{"s":"pending","n":""},"MetaPulse Conical Springs||Novatouch Stabilizer Housing":{"s":"pending","n":""},"MetaPulse Conical Springs||Realforce Silent Stabilizer Housing":{"s":"pending","n":""},"MetaPulse Conical Springs||Topre Stabilizer Housing":{"s":"pending","n":""},"Deskeys Stabilizer Slider||MetaPulse Conical Springs":{"s":"pending","n":""},"DynaCaps Stabilizer Slider||MetaPulse Conical Springs":{"s":"pending","n":""},"HHKB Type-S Stabilizer Slider||MetaPulse Conical Springs":{"s":"pending","n":""},"KLC Playground Stabilizer Slider||MetaPulse Conical Springs":{"s":"pending","n":""},"MetaPulse Conical Springs||MetaPulse Stabilizer Slider":{"s":"pending","n":""},"MetaPulse Conical Springs||Novatouch Stabilizer Slider":{"s":"pending","n":""},"MetaPulse Conical Springs||Realforce RC1 Stabilizer Slider":{"s":"pending","n":""},"MetaPulse Conical Springs||Topre Stabilizer Slider":{"s":"pending","n":""},"MetaPulse Conical Springs||Realforce Silent Stabilizer Slider":{"s":"pending","n":""},"Deskeys Housings||Topre Conical Springs":{"s":"compatible","n":""},"DynaCaps Housings||Topre Conical Springs":{"s":"compatible","n":""},"KLC Playground Housings||Topre Conical Springs":{"s":"compatible","n":""},"Topre Conical Springs||Topre Housings":{"s":"compatible","n":""},"MX Keycaps||Topre Conical Springs":{"s":"compatible","n":""},"Topre Conical Springs||Topre Keycaps":{"s":"compatible","n":""},"Deskeys Slider||Topre Conical Springs":{"s":"compatible","n":""},"DynaCaps Slider||Topre Conical Springs":{"s":"compatible","n":""},"HHKB Type-S Slider||Topre Conical Springs":{"s":"compatible","n":""},"KLC Playground Slider||Topre Conical Springs":{"s":"compatible","n":""},"Novatouch Slider||Topre Conical Springs":{"s":"compatible","n":""},"Topre Conical Springs||Topre Slider":{"s":"compatible","n":""},"Realforce Silent Slider||Topre Conical Springs":{"s":"compatible","n":""},"Deskeys Spacebar Stabilizer||Topre Conical Springs":{"s":"compatible","n":""},"DynaCaps Spacebar Stabilizer||Topre Conical Springs":{"s":"compatible","n":""},"KLC Playground Spacebar Stabilizer||Topre Conical Springs":{"s":"compatible","n":""},"Topre Conical Springs||Topre Spacebar Stabilizer":{"s":"compatible","n":""},"Deskeys Stabilizer Housing||Topre Conical Springs":{"s":"compatible","n":""},"DynaCaps Stabilizer Housing||Topre Conical Springs":{"s":"compatible","n":""},"KLC Playground Stabilizer Housing||Topre Conical Springs":{"s":"compatible","n":""},"Novatouch Stabilizer Housing||Topre Conical Springs":{"s":"compatible","n":""},"Realforce Silent Stabilizer Housing||Topre Conical Springs":{"s":"compatible","n":""},"Topre Conical Springs||Topre Stabilizer Housing":{"s":"compatible","n":""},"Deskeys Stabilizer Slider||Topre Conical Springs":{"s":"compatible","n":""},"DynaCaps Stabilizer Slider||Topre Conical Springs":{"s":"compatible","n":""},"HHKB Type-S Stabilizer Slider||Topre Conical Springs":{"s":"compatible","n":""},"KLC Playground Stabilizer Slider||Topre Conical Springs":{"s":"compatible","n":""},"Novatouch Stabilizer Slider||Topre Conical Springs":{"s":"compatible","n":""},"Realforce RC1 Stabilizer Slider||Topre Conical Springs":{"s":"compatible","n":""},"Topre Conical Springs||Topre Stabilizer Slider":{"s":"compatible","n":""},"Realforce Silent Stabilizer Slider||Topre Conical Springs":{"s":"compatible","n":""},"Deskeys Housings||MX Keycaps":{"s":"compatible","n":""},"Deskeys Housings||Topre Keycaps":{"s":"compatible_note","n":"note_deskeys_housing"},"Deskeys Housings||HHKB Type-S Slider":{"s":"compatible_note","n":"note_deskeys_housing"},"Deskeys Housings||Topre Slider":{"s":"compatible_note","n":"note_deskeys_housing"},"Deskeys Housings||Realforce Silent Slider":{"s":"compatible_note","n":"note_deskeys_housing"},"DynaCaps Housings||MX Keycaps":{"s":"compatible","n":""},"DynaCaps Housings||Topre Keycaps":{"s":"incompatible","n":""},"DynaCaps Housings||HHKB Type-S Slider":{"s":"compatible_note","n":"note_dynacaps_housing (scratchy)"},"DynaCaps Housings||Topre Slider":{"s":"incompatible","n":""},"DynaCaps Housings||Realforce Silent Slider":{"s":"compatible_note","n":"note_dynacaps_housing (scratchy)"},"KLC Playground Housings||MX Keycaps":{"s":"compatible","n":""},"KLC Playground Housings||Topre Keycaps":{"s":"compatible","n":""},"HHKB Type-S Slider||KLC Playground Housings":{"s":"compatible","n":""},"KLC Playground Housings||Topre Slider":{"s":"compatible","n":""},"KLC Playground Housings||Realforce Silent Slider":{"s":"compatible","n":""},"MX Keycaps||MetaPulse Housings":{"s":"compatible","n":""},"MetaPulse Housings||Topre Keycaps":{"s":"pending","n":""},"HHKB Type-S Slider||MetaPulse Housings":{"s":"pending","n":""},"MetaPulse Housings||Topre Slider":{"s":"pending","n":""},"MetaPulse Housings||Realforce Silent Slider":{"s":"pending","n":""},"MX Keycaps||Topre Housings":{"s":"compatible","n":""},"Topre Housings||Topre Keycaps":{"s":"compatible","n":""},"HHKB Type-S Slider||Topre Housings":{"s":"compatible","n":""},"Topre Housings||Topre Slider":{"s":"compatible","n":""},"Realforce Silent Slider||Topre Housings":{"s":"compatible","n":""},"Deskeys Slider||MX Keycaps":{"s":"compatible","n":""},"DynaCaps Slider||MX Keycaps":{"s":"compatible","n":""},"HHKB Type-S Slider||MX Keycaps":{"s":"incompatible","n":""},"KLC Playground Slider||MX Keycaps":{"s":"compatible","n":""},"MX Keycaps||MetaPulse Slider":{"s":"compatible","n":""},"MX Keycaps||Novatouch Slider":{"s":"compatible","n":""},"MX Keycaps||Topre Slider":{"s":"incompatible","n":""},"MX Keycaps||Realforce Silent Slider":{"s":"incompatible","n":""},"Deskeys Spacebar Stabilizer||MX Keycaps":{"s":"compatible","n":""},"DynaCaps Spacebar Stabilizer||MX Keycaps":{"s":"compatible","n":""},"KLC Playground Spacebar Stabilizer||MX Keycaps":{"s":"compatible","n":""},"MX Keycaps||MetaPulse Spacebar Stabilizer":{"s":"compatible","n":""},"MX Keycaps||Topre Spacebar Stabilizer":{"s":"incompatible","n":""},"Deskeys Stabilizer Housing||MX Keycaps":{"s":"compatible","n":""},"DynaCaps Stabilizer Housing||MX Keycaps":{"s":"compatible","n":""},"KLC Playground Stabilizer Housing||MX Keycaps":{"s":"compatible","n":""},"MX Keycaps||MetaPulse Stabilizer Housing":{"s":"compatible","n":""},"MX Keycaps||Novatouch Stabilizer Housing":{"s":"compatible","n":""},"MX Keycaps||Realforce Silent Stabilizer Housing":{"s":"incompatible","n":""},"MX Keycaps||Topre Stabilizer Housing":{"s":"compatible_note","n":"note_mx_keycaps_stab_housing"},"Deskeys Stabilizer Slider||MX Keycaps":{"s":"compatible","n":""},"DynaCaps Stabilizer Slider||MX Keycaps":{"s":"compatible","n":""},"HHKB Type-S Stabilizer Slider||MX Keycaps":{"s":"incompatible","n":""},"KLC Playground Stabilizer Slider||MX Keycaps":{"s":"compatible","n":""},"MX Keycaps||MetaPulse Stabilizer Slider":{"s":"compatible","n":""},"MX Keycaps||Novatouch Stabilizer Slider":{"s":"compatible","n":""},"MX Keycaps||Realforce RC1 Stabilizer Slider":{"s":"incompatible","n":""},"MX Keycaps||Topre Stabilizer Slider":{"s":"incompatible","n":""},"MX Keycaps||Realforce Silent Stabilizer Slider":{"s":"incompatible","n":""},"Deskeys Slider||Topre Keycaps":{"s":"incompatible","n":""},"DynaCaps Slider||Topre Keycaps":{"s":"incompatible","n":""},"HHKB Type-S Slider||Topre Keycaps":{"s":"compatible","n":""},"KLC Playground Slider||Topre Keycaps":{"s":"incompatible","n":""},"MetaPulse Slider||Topre Keycaps":{"s":"incompatible","n":""},"Novatouch Slider||Topre Keycaps":{"s":"incompatible","n":""},"Topre Keycaps||Topre Slider":{"s":"compatible","n":""},"Realforce Silent Slider||Topre Keycaps":{"s":"compatible","n":""},"Deskeys Spacebar Stabilizer||Topre Keycaps":{"s":"incompatible","n":""},"DynaCaps Spacebar Stabilizer||Topre Keycaps":{"s":"incompatible","n":""},"KLC Playground Spacebar Stabilizer||Topre Keycaps":{"s":"incompatible","n":""},"MetaPulse Spacebar Stabilizer||Topre Keycaps":{"s":"incompatible","n":""},"Topre Keycaps||Topre Spacebar Stabilizer":{"s":"compatible","n":""},"Deskeys Stabilizer Housing||Topre Keycaps":{"s":"incompatible","n":""},"DynaCaps Stabilizer Housing||Topre Keycaps":{"s":"incompatible","n":""},"KLC Playground Stabilizer Housing||Topre Keycaps":{"s":"compatible","n":""},"MetaPulse Stabilizer Housing||Topre Keycaps":{"s":"incompatible","n":""},"Novatouch Stabilizer Housing||Topre Keycaps":{"s":"incompatible","n":""},"Realforce Silent Stabilizer Housing||Topre Keycaps":{"s":"compatible","n":""},"Topre Keycaps||Topre Stabilizer Housing":{"s":"compatible","n":""},"Deskeys Stabilizer Slider||Topre Keycaps":{"s":"incompatible","n":""},"DynaCaps Stabilizer Slider||Topre Keycaps":{"s":"incompatible","n":""},"HHKB Type-S Stabilizer Slider||Topre Keycaps":{"s":"compatible","n":""},"KLC Playground Stabilizer Slider||Topre Keycaps":{"s":"incompatible","n":""},"MetaPulse Stabilizer Slider||Topre Keycaps":{"s":"incompatible","n":""},"Novatouch Stabilizer Slider||Topre Keycaps":{"s":"incompatible","n":""},"Realforce RC1 Stabilizer Slider||Topre Keycaps":{"s":"compatible","n":""},"Topre Keycaps||Topre Stabilizer Slider":{"s":"compatible","n":""},"Realforce Silent Stabilizer Slider||Topre Keycaps":{"s":"compatible","n":""},"Deskeys Spacebar Stabilizer||HHKB Type-S Slider":{"s":"incompatible","n":""},"DynaCaps Spacebar Stabilizer||HHKB Type-S Slider":{"s":"incompatible","n":""},"HHKB Type-S Slider||KLC Playground Spacebar Stabilizer":{"s":"incompatible","n":""},"HHKB Type-S Slider||MetaPulse Spacebar Stabilizer":{"s":"incompatible","n":""},"HHKB Type-S Slider||Topre Spacebar Stabilizer":{"s":"compatible","n":""},"Deskeys Stabilizer Housing||HHKB Type-S Slider":{"s":"incompatible","n":""},"DynaCaps Stabilizer Housing||HHKB Type-S Slider":{"s":"incompatible","n":""},"HHKB Type-S Slider||KLC Playground Stabilizer Housing":{"s":"pending","n":""},"HHKB Type-S Slider||MetaPulse Stabilizer Housing":{"s":"incompatible","n":""},"HHKB Type-S Slider||Novatouch Stabilizer Housing":{"s":"compatible","n":""},"HHKB Type-S Slider||Realforce Silent Stabilizer Housing":{"s":"incompatible","n":""},"HHKB Type-S Slider||Topre Stabilizer Housing":{"s":"compatible","n":""},"Deskeys Stabilizer Slider||HHKB Type-S Slider":{"s":"incompatible","n":""},"DynaCaps Stabilizer Slider||HHKB Type-S Slider":{"s":"incompatible","n":""},"HHKB Type-S Slider||HHKB Type-S Stabilizer Slider":{"s":"compatible","n":""},"HHKB Type-S Slider||KLC Playground Stabilizer Slider":{"s":"incompatible","n":""},"HHKB Type-S Slider||MetaPulse Stabilizer Slider":{"s":"incompatible","n":""},"HHKB Type-S Slider||Novatouch Stabilizer Slider":{"s":"incompatible","n":""},"HHKB Type-S Slider||Realforce RC1 Stabilizer Slider":{"s":"compatible","n":""},"HHKB Type-S Slider||Topre Stabilizer Slider":{"s":"compatible","n":""},"HHKB Type-S Slider||Realforce Silent Stabilizer Slider":{"s":"compatible","n":""},"Deskeys Stabilizer Housing||Novatouch Slider":{"s":"pending","n":""},"DynaCaps Stabilizer Housing||Novatouch Slider":{"s":"incompatible","n":""},"KLC Playground Stabilizer Housing||Novatouch Slider":{"s":"compatible","n":""},"MetaPulse Stabilizer Housing||Novatouch Slider":{"s":"incompatible","n":""},"Novatouch Slider||Novatouch Stabilizer Housing":{"s":"incompatible","n":""},"Novatouch Slider||Realforce Silent Stabilizer Housing":{"s":"incompatible","n":""},"Novatouch Slider||Topre Stabilizer Housing":{"s":"compatible","n":""},"Deskeys Stabilizer Slider||Novatouch Slider":{"s":"compatible","n":""},"DynaCaps Stabilizer Slider||Novatouch Slider":{"s":"compatible","n":""},"HHKB Type-S Stabilizer Slider||Novatouch Slider":{"s":"incompatible","n":""},"KLC Playground Stabilizer Slider||Novatouch Slider":{"s":"compatible","n":""},"MetaPulse Stabilizer Slider||Novatouch Slider":{"s":"compatible","n":""},"Novatouch Slider||Novatouch Stabilizer Slider":{"s":"compatible","n":""},"Novatouch Slider||Realforce RC1 Stabilizer Slider":{"s":"incompatible","n":""},"Novatouch Slider||Topre Stabilizer Slider":{"s":"incompatible","n":""},"Novatouch Slider||Realforce Silent Stabilizer Slider":{"s":"incompatible","n":""},"Deskeys Spacebar Stabilizer||Topre Slider":{"s":"incompatible","n":""},"DynaCaps Spacebar Stabilizer||Topre Slider":{"s":"incompatible","n":""},"KLC Playground Spacebar Stabilizer||Topre Slider":{"s":"incompatible","n":""},"MetaPulse Spacebar Stabilizer||Topre Slider":{"s":"incompatible","n":""},"Topre Slider||Topre Spacebar Stabilizer":{"s":"compatible","n":""},"Deskeys Stabilizer Housing||Topre Slider":{"s":"incompatible","n":""},"DynaCaps Stabilizer Housing||Topre Slider":{"s":"incompatible","n":""},"KLC Playground Stabilizer Housing||Topre Slider":{"s":"pending","n":""},"MetaPulse Stabilizer Housing||Topre Slider":{"s":"incompatible","n":""},"Novatouch Stabilizer Housing||Topre Slider":{"s":"incompatible","n":""},"Realforce Silent Stabilizer Housing||Topre Slider":{"s":"incompatible","n":""},"Topre Slider||Topre Stabilizer Housing":{"s":"compatible","n":""},"Deskeys Stabilizer Slider||Topre Slider":{"s":"incompatible","n":""},"DynaCaps Stabilizer Slider||Topre Slider":{"s":"incompatible","n":""},"HHKB Type-S Stabilizer Slider||Topre Slider":{"s":"compatible","n":""},"KLC Playground Stabilizer Slider||Topre Slider":{"s":"incompatible","n":""},"MetaPulse Stabilizer Slider||Topre Slider":{"s":"incompatible","n":""},"Novatouch Stabilizer Slider||Topre Slider":{"s":"incompatible","n":""},"Realforce RC1 Stabilizer Slider||Topre Slider":{"s":"compatible","n":""},"Topre Slider||Topre Stabilizer Slider":{"s":"compatible","n":""},"Realforce Silent Stabilizer Slider||Topre Slider":{"s":"compatible","n":""},"Deskeys Spacebar Stabilizer||Realforce Silent Slider":{"s":"incompatible","n":""},"DynaCaps Spacebar Stabilizer||Realforce Silent Slider":{"s":"incompatible","n":""},"KLC Playground Spacebar Stabilizer||Realforce Silent Slider":{"s":"incompatible","n":""},"MetaPulse Spacebar Stabilizer||Realforce Silent Slider":{"s":"incompatible","n":""},"Realforce Silent Slider||Topre Spacebar Stabilizer":{"s":"compatible","n":""},"Deskeys Stabilizer Housing||Realforce Silent Slider":{"s":"incompatible","n":""},"DynaCaps Stabilizer Housing||Realforce Silent Slider":{"s":"incompatible","n":""},"KLC Playground Stabilizer Housing||Realforce Silent Slider":{"s":"pending","n":""},"MetaPulse Stabilizer Housing||Realforce Silent Slider":{"s":"incompatible","n":""},"Novatouch Stabilizer Housing||Realforce Silent Slider":{"s":"incompatible","n":""},"Realforce Silent Slider||Realforce Silent Stabilizer Housing":{"s":"compatible","n":""},"Realforce Silent Slider||Topre Stabilizer Housing":{"s":"compatible","n":""},"Deskeys Stabilizer Slider||Realforce Silent Slider":{"s":"incompatible","n":""},"DynaCaps Stabilizer Slider||Realforce Silent Slider":{"s":"incompatible","n":""},"HHKB Type-S Stabilizer Slider||Realforce Silent Slider":{"s":"compatible","n":""},"KLC Playground Stabilizer Slider||Realforce Silent Slider":{"s":"incompatible","n":""},"MetaPulse Stabilizer Slider||Realforce Silent Slider":{"s":"incompatible","n":""},"Novatouch Stabilizer Slider||Realforce Silent Slider":{"s":"incompatible","n":""},"Realforce RC1 Stabilizer Slider||Realforce Silent Slider":{"s":"compatible","n":""},"Realforce Silent Slider||Topre Stabilizer Slider":{"s":"compatible","n":""},"Realforce Silent Slider||Realforce Silent Stabilizer Slider":{"s":"compatible","n":""},"HHKB Shell||MetaPulse Stabilizer Slider":{"s":"incompatible","n":"note_metapulse_stab_incompat"},"MetaPulse Stabilizer Slider||Realforce RC1 Shell":{"s":"incompatible","n":"note_metapulse_stab_incompat"},"MetaPulse Stabilizer Slider||Topre Stabilizer Housing":{"s":"incompatible","n":"note_metapulse_stab_incompat"},"MetaPulse Stabilizer Slider||Realforce Silent Stabilizer Housing":{"s":"incompatible","n":"note_metapulse_stab_incompat"}},"NOTES":{"note_dynacaps_conical_universal":{"kind":"informational","text":"DynaCaps conical springs are the first aftermarket conical spring that reliably works on Topre-brand switches and Cipulot custom PCBs. Treat as universally compatible."},"note_deskeys_housing":{"kind":"dimensional","text":"Deskeys 1u housings add 0.2 mm of silencing-ring space over every other housing (recess offset +0.2 mm). Effect = ring - (slider seat + 0.2). With a 0.5 mm ring this yields 0.2 mm chatter; a 0.7 mm ring seats flush (no chatter, no precompression)."},"note_mx_keycaps_stab_housing":{"kind":"requires_mod","text":"MX keycaps on a stabilizer require an MX-compatible + confirmed stabilizer slider AND the housing drilled with 2 holes."},"note_dynacaps_housing":{"kind":"requires_mod","text":"DynaCaps housing: functional but with documented tolerance issues (mold-parting concentricity, canted crown, zero-clearance rails) \u2014 expect scratch. Requires DynaCaps gaskets on a 1.2 mm plate."},"note_metapulse_stab_incompat":{"kind":"incompatible","text":"Warning: Not Compatible with Realforce or HHKB.* | * Source: MetaPulse Discord. Omitted from product page."},"note_spring_reliability":{"kind":"warning","text":"Only OEM Topre and DynaCaps conical springs are confirmed reliable. Deskeys-Conical, Deskeys-Volcano, KLC Playground, and MetaPulse springs each carry a reliability warning."},"note_heavy_grail":{"kind":"requires_mod","text":"Heavy Grail shell: treated as HHKB for housing linking. Injection-molded plate can interfere with OEM sliders on some units. 2U stabilizer wire clip needs modifying. Guide linked."},"note_rf_silent_stab_housing":{"kind":"dimensional","text":"Realforce Silent Stabilizer Housing adds 1.0 mm of ring space over all other stabilizer housings to fit a 1.0 mm ring and cannot be used without it."}},"RINGDEF":{"Topre Slider":{"ring":"None","stab":"","note":""},"Realforce Silent Slider":{"ring":"0.5 mm","stab":"1.0 mm","note":""},"HHKB Type-S Slider":{"ring":"0.5 mm","stab":"","note":""},"Novatouch Slider":{"ring":"None","stab":"","note":""},"KLC Playground Slider":{"ring":"None","stab":"","note":""},"Deskeys Slider":{"ring":"0.7 mm","stab":"0.5 mm","note":""},"DynaCaps Slider":{"ring":"0.5 mm","stab":"","note":"Pre-Compression by Design; compression warning until 0.3 mm selected"},"MetaPulse Slider":{"ring":"0.5 mm","stab":"","note":"By design; 4 mm travel, no precompression"}}};
 const SCENE={"keycap":[[[0.85,12.12],[0.85,14.68],[1.74,14.66],[1.74,5.15],[2.94,5.15],[2.94,14.63],[5.45,14.58],[8.1,9.86],[10.3,5.72],[12.11,5.72],[9.39,10.72],[6.65,15.57],[2.96,15.37],[0.0,15.36],[-2.96,15.49],[-5.91,15.74],[-8.13,16.03],[-10.92,9.74],[-11.54,7.94],[-12.11,5.72],[-10.3,5.72],[-9.87,7.5],[-9.26,9.47],[-7.01,14.84],[-2.94,14.76],[-2.94,5.15],[-1.74,5.15],[-1.74,14.73],[-0.85,14.71],[-0.85,12.12],[0.85,12.12]]],"housing":[[[-7.96,3.87],[-4.25,3.87],[-4.25,6.75],[-5.28,6.75],[-5.28,4.89],[-8.49,4.89],[-9.29,3.64],[-9.29,0.0],[-11.72,0.0],[-11.72,-4.25],[-7.96,-4.25],[-7.96,3.87]],[[7.96,3.87],[7.96,-4.25],[11.72,-4.25],[11.72,0.0],[9.26,0.0],[9.26,3.64],[8.46,4.89],[5.28,4.89],[5.28,6.75],[4.25,6.75],[4.25,3.87],[7.96,3.87]]],"plate":[[[-15.56,1.2],[-9.4,1.2],[-9.4,0.0],[-15.56,0.0],[-15.56,1.2]],[[9.4,1.2],[15.56,1.2],[15.56,0.0],[9.4,0.0],[9.4,1.2]]],"dome":[[[13.26,-4.25],[13.26,-4.76],[6.58,-4.76],[6.08,-4.26],[6.08,-4.06],[5.57,-2.54],[5.6,-2.07],[5.54,-1.6],[5.26,-0.96],[4.97,-0.59],[4.7,-0.36],[3.35,0.44],[3.06,0.87],[-2.96,0.9],[-3.11,0.82],[-3.36,0.43],[-4.79,-0.43],[-5.26,-0.96],[-5.54,-1.6],[-5.6,-2.07],[-5.57,-2.54],[-6.08,-4.06],[-6.08,-4.26],[-6.58,-4.76],[-13.26,-4.76],[-13.26,-4.25],[-6.38,-4.25],[-6.37,-4.0],[-5.88,-2.52],[-5.89,-1.85],[-5.81,-1.47],[-5.68,-1.1],[-5.42,-0.66],[-4.97,-0.19],[-3.53,0.7],[-3.5,0.8],[-3.5,2.32],[-3.44,2.44],[-3.3,2.5],[-1.44,2.5],[-1.38,2.45],[-1.36,2.33],[-1.3,2.3],[1.3,2.3],[1.37,2.34],[1.39,2.46],[1.45,2.5],[3.3,2.5],[3.42,2.46],[3.5,2.31],[3.53,0.71],[4.97,-0.19],[5.42,-0.66],[5.68,-1.1],[5.81,-1.47],[5.89,-1.85],[5.88,-2.52],[6.37,-4.0],[6.38,-4.25],[13.26,-4.25]]],"slider":[[[-2.96,11.47],[-2.96,3.87],[2.96,3.87],[2.96,11.47],[4.21,11.47],[4.21,3.87],[7.92,3.87],[7.92,-0.28],[7.08,-0.28],[7.08,2.47],[-7.08,2.47],[-7.08,-0.28],[-7.92,-0.28],[-7.92,3.87],[-4.21,3.87],[-4.21,11.47],[-2.96,11.47]]],"ring":[[[-4.25,3.87],[-4.25,3.37],[-5.75,3.37],[-5.75,3.87],[-4.25,3.87]],[[5.75,3.87],[5.75,3.37],[4.25,3.37],[4.25,3.87],[5.75,3.87]]],"spring":[[[-6.07,-4.89],[5.92,-4.7],[-5.7,-4.42],[5.45,-4.11],[-5.2,-3.79],[4.95,-3.48],[-4.71,-3.17],[4.46,-2.86],[-4.21,-2.54],[3.96,-2.23],[-3.71,-1.92],[3.46,-1.6],[-3.22,-1.29],[2.97,-0.98],[-2.72,-0.67],[2.47,-0.35],[-2.23,-0.04],[1.98,0.27],[-1.8,0.49],[1.65,0.68]]],"pcb":[[[-9.4,-4.76],[9.4,-4.76],[9.4,-5.96],[-9.4,-5.96]]]};
 const MINI_CURVES={"BKE_Redux_Extreme_01":{"x":[0.02,0.42,0.82,1.22,1.62,2.02,2.42,2.82,3.22,3.62,4.02,4.42,4.82,5.22,5.62,6.02,6.42,6.82,7.22,7.62,8.02,8.42,8.82,9.22,9.62,10.02,10.42,10.82,11.22,11.62,12.02,12.42,12.82,13.22,13.62,14.02,14.42],"F":[9.4,90.2,95.3,107.0,115.9,122.0,126.4,129.2,131.2,132.0,131.8,130.6,128.6,125.6,121.7,117.1,112.0,106.9,101.2,95.2,89.0,82.6,76.3,70.2,64.7,58.3,55.3,53.3,52.4,52.5,53.7,56.0,59.8,65.0,95.8,150.2,237.4]},"DynaCaps_Light":{"x":[0.02,0.52,1.02,1.52,2.02,2.52,3.02,3.52,4.02,4.52,5.02,5.52,6.02,6.52,7.02,7.52,8.02,8.52,9.02,9.52,10.02,10.52,11.02,11.52,12.02,12.52,13.02,13.52,14.02,14.52,15.02,15.52,16.02,16.52,17.02,17.52],"F":[8.2,18.8,21.9,24.3,26.4,28.1,29.4,30.5,31.0,31.1,31.1,31.1,30.9,30.5,30.2,29.8,29.3,28.8,28.3,27.9,27.5,27.2,27.0,26.8,26.8,26.9,27.1,27.5,27.9,28.7,29.6,30.9,49.1,85.0,101.5,166.2]},"DynaCaps_Medium":{"x":[0.02,0.5,0.98,1.46,1.94,2.42,2.9,3.38,3.86,4.34,4.82,5.3,5.78,6.26,6.74,7.22,7.7,8.18,8.66,9.14,9.62,10.1,10.58,11.06,11.54,12.02,12.5,12.98,13.46,13.94,14.42,14.9,15.38,15.86,16.34,16.82,17.3],"F":[9.2,24.4,30.1,34.5,38.2,41.3,43.5,45.1,46.5,47.3,47.7,47.9,47.6,47.3,46.8,46.2,45.4,44.5,43.7,42.7,41.9,41.1,40.4,39.8,39.2,38.6,38.5,38.4,38.3,38.4,38.7,39.3,40.2,56.5,98.2,121.3,179.0]},"DynaCaps_Parts":{"x":[0.02,0.46,0.9,1.34,1.78,2.22,2.66,3.1,3.54,3.98,4.42,4.86,5.3,5.74,6.18,6.62,7.06,7.5,7.94,8.38,8.82,9.26,9.7,10.14,10.58,11.02,11.46,11.9,12.34,12.78,13.22,13.66,14.1,14.54,14.98,15.42,15.86],"F":[8.0,43.6,47.7,51.5,54.3,56.4,57.8,58.7,59.2,59.5,59.5,58.9,58.4,57.7,56.7,55.8,54.4,53.5,52.3,51.5,50.8,49.6,49.0,48.7,48.2,47.8,48.1,48.1,48.7,49.3,50.1,50.6,52.2,54.5,84.7,120.7,236.3]},"Dynacaps_Heavy":{"x":[0.02,0.5,0.98,1.46,1.94,2.42,2.9,3.38,3.86,4.34,4.82,5.3,5.78,6.26,6.74,7.22,7.7,8.18,8.66,9.14,9.62,10.1,10.58,11.06,11.54,12.02,12.5,12.98,13.46,13.94,14.42,14.9,15.38,15.86,16.34,16.82,17.3],"F":[6.0,28.2,35.0,40.1,44.2,47.3,49.7,51.4,52.5,53.2,53.2,53.1,52.6,52.0,51.0,50.1,48.9,47.7,46.5,45.3,44.2,43.2,42.3,41.6,40.8,40.2,39.8,39.6,39.5,39.6,39.8,40.4,41.1,50.5,92.0,125.2,201.0]},"Dynacaps_Slider_0.3mm_Poron":{"x":[0.02,0.48,0.94,1.4,1.86,2.32,2.78,3.24,3.7,4.16,4.62,5.08,5.54,6.0,6.46,6.92,7.38,7.84,8.3,8.76,9.22,9.68,10.14,10.6,11.06,11.52,11.98,12.44,12.9,13.36,13.82,14.28,14.74,15.2,15.66,16.12,16.58,17.04],"F":[5.1,28.7,37.6,44.4,49.6,53.4,56.0,58.0,59.3,60.1,60.3,60.3,59.8,58.8,57.7,56.6,55.3,54.0,52.8,51.7,50.4,49.2,48.1,47.2,46.5,46.0,45.6,45.4,45.7,45.8,46.4,47.0,48.1,49.8,52.1,67.3,98.2,205.5]},"Dynacaps_Slider_0.5mm_Silicone":{"x":[0.02,0.46,0.9,1.34,1.78,2.22,2.66,3.1,3.54,3.98,4.42,4.86,5.3,5.74,6.18,6.62,7.06,7.5,7.94,8.38,8.82,9.26,9.7,10.14,10.58,11.02,11.46,11.9,12.34,12.78,13.22,13.66,14.1,14.54,14.98,15.42,15.86],"F":[11.8,43.5,49.5,53.1,56.1,58.3,60.0,60.9,61.3,61.1,60.8,60.3,59.4,58.6,57.5,56.0,54.9,53.5,52.1,51.0,49.9,48.8,48.1,47.2,46.9,46.4,46.0,45.7,46.2,46.4,46.8,47.5,49.0,50.8,56.0,100.1,162.0]},"NiZ_65g":{"x":[0.02,0.48,0.94,1.4,1.86,2.32,2.78,3.24,3.7,4.16,4.62,5.08,5.54,6.0,6.46,6.92,7.38,7.84,8.3,8.76,9.22,9.68,10.14,10.6,11.06,11.52,11.98,12.44,12.9,13.36,13.82,14.28,14.74,15.2,15.66,16.12,16.58],"F":[3.8,16.7,27.3,35.4,43.1,50.0,56.2,61.4,65.8,69.4,72.0,73.0,74.3,75.1,75.5,75.4,75.1,74.1,73.6,72.5,71.6,70.4,69.4,68.6,67.9,67.3,66.6,66.4,66.4,66.8,67.3,68.0,68.8,70.2,78.3,121.8,240.9]},"Topre_30g":{"x":[0.02,0.48,0.94,1.4,1.86,2.32,2.78,3.24,3.7,4.16,4.62,5.08,5.54,6.0,6.46,6.92,7.38,7.84,8.3,8.76,9.22,9.68,10.14,10.6,11.06,11.52,11.98,12.44,12.9,13.36,13.82,14.28,14.74,15.2,15.66,16.12,16.58,17.04],"F":[11.2,21.8,27.8,31.8,34.2,35.0,35.8,35.4,34.8,34.4,33.5,32.7,31.6,30.7,30.2,28.9,28.2,27.4,27.2,27.3,27.5,27.9,28.5,29.1,29.9,30.8,31.9,33.3,34.9,36.7,38.7,41.1,43.6,46.5,50.1,76.4,100.9,233.9]},"Topre_45g":{"x":[0.02,0.48,0.94,1.4,1.86,2.32,2.78,3.24,3.7,4.16,4.62,5.08,5.54,6.0,6.46,6.92,7.38,7.84,8.3,8.76,9.22,9.68,10.14,10.6,11.06,11.52,11.98,12.44,12.9,13.36,13.82,14.28,14.74,15.2,15.66,16.12,16.58],"F":[9.3,18.7,26.7,32.9,37.8,41.9,45.1,47.6,49.5,50.8,51.5,51.9,51.8,51.6,51.2,50.5,49.9,49.1,48.2,47.4,46.7,46.0,45.5,45.0,44.7,44.6,44.7,44.9,45.2,45.8,46.6,47.5,48.5,49.8,52.0,107.7,172.9]},"Topre_55g":{"x":[0.02,0.48,0.94,1.4,1.86,2.32,2.78,3.24,3.7,4.16,4.62,5.08,5.54,6.0,6.46,6.92,7.38,7.84,8.3,8.76,9.22,9.68,10.14,10.6,11.06,11.52,11.98,12.44,12.9,13.36,13.82,14.28,14.74,15.2,15.66,16.12,16.58],"F":[11.7,26.2,35.5,43.2,49.2,53.9,57.4,59.9,62.0,63.8,64.2,64.2,63.9,63.2,61.9,60.6,59.8,58.7,57.2,56.1,55.1,54.0,53.0,52.1,51.6,51.3,51.2,51.2,51.5,52.0,52.6,53.3,54.3,55.8,58.8,96.8,194.1]},"Topre_55g_Aged":{"x":[0.02,0.48,0.94,1.4,1.86,2.32,2.78,3.24,3.7,4.16,4.62,5.08,5.54,6.0,6.46,6.92,7.38,7.84,8.3,8.76,9.22,9.68,10.14,10.6,11.06,11.52,11.98,12.44,12.9,13.36,13.82,14.28,14.74,15.2,15.66,16.12,16.58],"F":[9.8,30.9,40.0,47.9,54.7,59.2,64.0,66.7,68.6,69.3,69.1,68.0,67.8,67.0,65.8,64.1,62.7,61.3,59.9,58.6,57.2,56.0,55.0,53.6,52.2,52.1,51.5,51.6,50.8,50.9,50.4,50.3,50.3,51.2,53.5,93.7,144.8]},"Topre_Slider_Black":{"x":[0.02,0.48,0.94,1.4,1.86,2.32,2.78,3.24,3.7,4.16,4.62,5.08,5.54,6.0,6.46,6.92,7.38,7.84,8.3,8.76,9.22,9.68,10.14,10.6,11.06,11.52,11.98,12.44,12.9,13.36,13.82,14.28,14.74,15.2,15.66,16.12,16.58,17.04],"F":[12.8,30.1,39.5,46.2,51.7,55.8,58.4,60.5,61.9,62.7,62.9,62.6,62.0,61.2,60.1,59.0,57.6,56.3,54.8,53.3,52.1,50.9,49.8,48.8,47.9,47.2,46.7,46.3,46.2,46.3,46.7,47.3,48.1,49.2,51.3,80.9,111.4,246.0]},"Topre_Slider_Black_Silenced_0.3mm_Poron":{"x":[0.02,0.46,0.9,1.34,1.78,2.22,2.66,3.1,3.54,3.98,4.42,4.86,5.3,5.74,6.18,6.62,7.06,7.5,7.94,8.38,8.82,9.26,9.7,10.14,10.58,11.02,11.46,11.9,12.34,12.78,13.22,13.66,14.1,14.54,14.98,15.42,15.86],"F":[9.0,46.1,50.8,54.9,57.5,59.0,60.3,61.0,61.2,61.1,60.4,59.5,58.7,57.8,56.4,55.5,54.0,52.6,51.4,50.2,49.2,48.4,47.6,46.9,46.5,46.0,45.7,45.8,46.1,46.6,47.1,48.0,49.6,51.5,60.2,103.4,194.5]},"Topre_Slider_Black_Silenced_0.5mm_Poron":{"x":[0.02,0.44,0.86,1.28,1.7,2.12,2.54,2.96,3.38,3.8,4.22,4.64,5.06,5.48,5.9,6.32,6.74,7.16,7.58,8.0,8.42,8.84,9.26,9.68,10.1,10.52,10.94,11.36,11.78,12.2,12.62,13.04,13.46,13.88,14.3,14.72,15.14],"F":[8.3,53.4,59.2,62.1,64.5,66.2,66.7,67.2,67.4,66.8,65.9,65.3,63.7,63.0,61.4,60.6,59.5,56.9,55.4,54.6,53.4,52.6,51.4,50.6,50.0,49.5,50.2,50.1,50.8,51.2,51.6,52.5,54.0,55.6,57.9,103.7,145.0]},"Topre_Slider_Silenced_Purple":{"x":[0.02,0.5,0.98,1.46,1.94,2.42,2.9,3.38,3.86,4.34,4.82,5.3,5.78,6.26,6.74,7.22,7.7,8.18,8.66,9.14,9.62,10.1,10.58,11.06,11.54,12.02,12.5,12.98,13.46,13.94,14.42,14.9,15.38,15.86,16.34,16.82,17.3],"F":[2.9,22.5,35.3,42.7,49.0,53.4,57.1,59.7,61.1,62.5,63.3,63.3,63.3,62.0,60.8,59.0,57.3,55.8,54.2,53.0,52.0,50.7,49.5,48.6,47.6,47.0,46.6,46.5,46.6,46.9,47.6,48.3,49.4,51.5,75.1,114.4,245.9]},"Topre_Slider_Type-S":{"x":[0.02,0.48,0.94,1.4,1.86,2.32,2.78,3.24,3.7,4.16,4.62,5.08,5.54,6.0,6.46,6.92,7.38,7.84,8.3,8.76,9.22,9.68,10.14,10.6,11.06,11.52,11.98,12.44,12.9,13.36,13.82,14.28,14.74,15.2,15.66,16.12,16.58],"F":[3.6,25.8,35.9,43.8,49.3,53.5,56.8,59.1,60.8,61.7,62.2,62.1,61.6,60.9,59.9,58.8,57.6,56.4,55.0,53.5,52.3,51.1,50.0,49.1,48.2,47.5,47.0,46.8,46.7,46.8,47.2,47.7,48.5,49.7,85.2,124.2,205.5]}};
-const DOME_DB=[{"id":"dm-topre-oem-stock-standard-light-var","maker":"Topre","vendor":"Official","style":"OEM Stock","variant":"Standard/Light Var","name":"OEM Stock \u2014 Standard/Light Var","wmin":30.0,"wmax":35.0,"wraw":"30-35","src":""},{"id":"dm-topre-oem-stock-standard","maker":"Topre","vendor":"Official","style":"OEM Stock","variant":"Standard","name":"OEM Stock \u2014 Standard","wmin":45.0,"wmax":45.0,"wraw":"45","src":""},{"id":"dm-topre-oem-stock-heavy-discontinued","maker":"Topre","vendor":"Official","style":"OEM Stock","variant":"Heavy (discontinued)","name":"OEM Stock \u2014 Heavy (discontinued)","wmin":55.0,"wmax":55.0,"wraw":"55","src":""},{"id":"dm-deskeys-new-gen-des-domes-t1-28g-cheese","maker":"Deskeys","vendor":"deskeys.io (archive)","style":"New Gen DES-Domes T1","variant":"28g (Cheese)","name":"New Gen DES-Domes T1 \u2014 28g (Cheese)","wmin":28.0,"wmax":28.0,"wraw":"28","src":"https://deskeys.io/.../des-domes-t1"},{"id":"dm-deskeys-new-gen-des-domes-t1-tiffany-pink-purple-blue-etc","maker":"Deskeys","vendor":"deskeys.io (archive)","style":"New Gen DES-Domes T1","variant":"Tiffany/Pink/Purple/Blue/etc.","name":"New Gen DES-Domes T1 \u2014 Tiffany/Pink/Purple/Blue/etc.","wmin":35.0,"wmax":100.0,"wraw":"35-100","src":""},{"id":"dm-deskeys-des-domes-bke-tactile-tiffany","maker":"Deskeys","vendor":"deskeys.io (archive)","style":"DES-DOMES BKE Tactile","variant":"Tiffany","name":"DES-DOMES BKE Tactile \u2014 Tiffany","wmin":35.0,"wmax":35.0,"wraw":"35","src":""},{"id":"dm-deskeys-des-domes-bke-tactile-pink-purple-blue-carrot","maker":"Deskeys","vendor":"deskeys.io (archive)","style":"DES-DOMES BKE Tactile","variant":"Pink/Purple/Blue/Carrot","name":"DES-DOMES BKE Tactile \u2014 Pink/Purple/Blue/Carrot","wmin":42.0,"wmax":60.0,"wraw":"42/49/56/60","src":""},{"id":"dm-deskeys-des-dome-v2-rounder-bke-tiffany-pink-purple-blue-bro","maker":"Deskeys","vendor":"deskeys.io (archive)","style":"des-dome V2 rounder-bke","variant":"Tiffany/Pink/Purple/Blue/Brown/Green","name":"des-dome V2 rounder-bke \u2014 Tiffany/Pink/Purple/Blue/Brown/Green","wmin":35.0,"wmax":70.0,"wraw":"35-70","src":""},{"id":"dm-deskeys-des-domes-v3-cheese-tiffany-pink-purple-blue","maker":"Deskeys","vendor":"deskeys.io (archive)","style":"DES-DOMES V3","variant":"Cheese/Tiffany/Pink/Purple/Blue","name":"DES-DOMES V3 \u2014 Cheese/Tiffany/Pink/Purple/Blue","wmin":28.0,"wmax":56.0,"wraw":"28-56","src":""},{"id":"dm-deskeys-des-domes-carrots-carrots-variants","maker":"Deskeys","vendor":"deskeys.io (archive)","style":"DES-DOMES CARROTS","variant":"Carrots variants","name":"DES-DOMES CARROTS \u2014 Carrots variants","wmin":35.0,"wmax":60.0,"wraw":"35/49/60","src":""},{"id":"dm-dynacap-doems-light-translucent","maker":"DynaCap","vendor":"Omnitype","style":"DOEMS","variant":"Light (translucent)","name":"DOEMS \u2014 Light (translucent)","wmin":32.0,"wmax":38.0,"wraw":"35\u00b13","src":"https://omnitype.com/products/dynacap-doems"},{"id":"dm-dynacap-doems-medium-red","maker":"DynaCap","vendor":"Omnitype","style":"DOEMS","variant":"Medium (red)","name":"DOEMS \u2014 Medium (red)","wmin":42.0,"wmax":48.0,"wraw":"45\u00b13","src":""},{"id":"dm-dynacap-doems-heavy-black","maker":"DynaCap","vendor":"Omnitype","style":"DOEMS","variant":"Heavy (black)","name":"DOEMS \u2014 Heavy (black)","wmin":52.0,"wmax":58.0,"wraw":"55\u00b13","src":""},{"id":"dm-metakeebs-metapulse-rs-rounded-rs-25g-to-rs-55g-a-b-variants","maker":"MetaKeebs","vendor":"MetaKeebs","style":"MetaPulse RS (rounded)","variant":"RS-25g to RS-55g (A/B variants)","name":"MetaPulse RS (rounded) \u2014 RS-25g to RS-55g (A/B variants)","wmin":25.0,"wmax":55.0,"wraw":"25-55","src":"https://metakeebs.com/products/pre-order-metapulse-bundle-1"},{"id":"dm-metakeebs-metapulse-bs-bke-heavy-bs-40g-50g-55g-65g-75g","maker":"MetaKeebs","vendor":"MetaKeebs","style":"MetaPulse BS (BKE-heavy)","variant":"BS-40g/50g/55g/65g/75g+","name":"MetaPulse BS (BKE-heavy) \u2014 BS-40g/50g/55g/65g/75g+","wmin":40.0,"wmax":75.0,"wraw":"40-75","src":""},{"id":"dm-klc-playground-ec-dome-bundle-35g-45g-55g","maker":"KLC Playground","vendor":"KLC (Densus)","style":"EC Dome Bundle","variant":"35g / 45g / 55g","name":"EC Dome Bundle \u2014 35g / 45g / 55g","wmin":35.0,"wmax":55.0,"wraw":"35-55","src":"https://klc-playground.com/products/instock-ec-kits-and-packs"},{"id":"dm-niz-ec-silicone-domes-sheets-35g-45g-50g-waterproof-55g-vari","maker":"NiZ","vendor":"Nizkeyboard","style":"EC Silicone Domes Sheets","variant":"35g/45g/50g (waterproof)/55g variants","name":"EC Silicone Domes Sheets \u2014 35g/45g/50g (waterproof)/55g variants","wmin":35.0,"wmax":55.0,"wraw":"35-55","src":"https://www.nizkeyboard.com/products/ec-silicone-domes-35g-45g-55g"},{"id":"dm-keyclack-bke-redux-v1-v2-ultra-light-purple","maker":"Keyclack","vendor":"Keyclack (defunct)","style":"BKE Redux V1/V2","variant":"Ultra Light (Purple)","name":"BKE Redux V1/V2 \u2014 Ultra Light (Purple)","wmin":35.0,"wmax":40.0,"wraw":"~35-40","src":""},{"id":"dm-keyclack-bke-redux-v1-v2-light-cyan-grey","maker":"Keyclack","vendor":"Keyclack (defunct)","style":"BKE Redux V1/V2","variant":"Light (Cyan/Grey)","name":"BKE Redux V1/V2 \u2014 Light (Cyan/Grey)","wmin":45.0,"wmax":50.0,"wraw":"~45-50","src":""},{"id":"dm-keyclack-bke-redux-v1-v2-heavy-black","maker":"Keyclack","vendor":"Keyclack (defunct)","style":"BKE Redux V1/V2","variant":"Heavy (Black)","name":"BKE Redux V1/V2 \u2014 Heavy (Black)","wmin":60.0,"wmax":65.0,"wraw":"~60-65","src":""},{"id":"dm-keyclack-bke-redux-v1-v2-extreme-white","maker":"Keyclack","vendor":"Keyclack (defunct)","style":"BKE Redux V1/V2","variant":"Extreme (White)","name":"BKE Redux V1/V2 \u2014 Extreme (White)","wmin":90.0,"wmax":90.0,"wraw":"~90","src":""},{"id":"dm-astro-domes-other-bke-style-shiner-pepper-lean-fiesta-etc","maker":"Astro Domes / Other","vendor":"Astro/Sneakbox etc.","style":"BKE-style","variant":"Shiner/Pepper/Lean/Fiesta etc.","name":"BKE-style \u2014 Shiner/Pepper/Lean/Fiesta etc.","wmin":35.0,"wmax":160.0,"wraw":"35-160","src":""}];
+const DOME_DB=[{"id":"dm-topre-30g","name":"Topre 30g","maker":"Topre","brand":"Topre","style":"","variant":"","wraw":"30g","wmin":30.0,"wmax":30.0,"type":"OEM TOPRE","avail":"","u":""},{"id":"dm-topre-45g","name":"Topre 45g","maker":"Topre","brand":"Topre","style":"","variant":"","wraw":"45g","wmin":45.0,"wmax":45.0,"type":"OEM TOPRE","avail":"","u":""},{"id":"dm-topre-aged-55g","name":"Topre Aged 55g","maker":"Topre","brand":"Topre","style":"","variant":"Aged","wraw":"55g","wmin":55.0,"wmax":55.0,"type":"OEM TOPRE","avail":"","u":""},{"id":"dm-topre-55g","name":"Topre 55g","maker":"Topre","brand":"Topre","style":"","variant":"","wraw":"55g","wmin":55.0,"wmax":55.0,"type":"OEM TOPRE","avail":"","u":""},{"id":"dm-des-domes-t1-cheese-28g","name":"DES-DOMES T1 Cheese 28g","maker":"Deskeys","brand":"DES-DOMES","style":"T1","variant":"Cheese","wraw":"28g","wmin":28.0,"wmax":28.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-domes-t1"},{"id":"dm-des-domes-t1-tiffany-35g","name":"DES-DOMES T1 Tiffany 35g","maker":"Deskeys","brand":"DES-DOMES","style":"T1","variant":"Tiffany","wraw":"35g","wmin":35.0,"wmax":35.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-domes-t1"},{"id":"dm-des-domes-t1-pink-42g","name":"DES-DOMES T1 Pink 42g","maker":"Deskeys","brand":"DES-DOMES","style":"T1","variant":"Pink","wraw":"42g","wmin":42.0,"wmax":42.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-domes-t1"},{"id":"dm-des-domes-t1-purple-49g","name":"DES-DOMES T1 Purple 49g","maker":"Deskeys","brand":"DES-DOMES","style":"T1","variant":"Purple","wraw":"49g","wmin":49.0,"wmax":49.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-domes-t1"},{"id":"dm-des-domes-t1-blue-56g","name":"DES-DOMES T1 Blue 56g","maker":"Deskeys","brand":"DES-DOMES","style":"T1","variant":"Blue","wraw":"56g","wmin":56.0,"wmax":56.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-domes-t1"},{"id":"dm-des-domes-t1-coffee-63g","name":"DES-DOMES T1 Coffee 63g","maker":"Deskeys","brand":"DES-DOMES","style":"T1","variant":"Coffee","wraw":"63g","wmin":63.0,"wmax":63.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-domes-t1"},{"id":"dm-des-domes-t1-grey-70g","name":"DES-DOMES T1 Grey 70g","maker":"Deskeys","brand":"DES-DOMES","style":"T1","variant":"Grey","wraw":"70g","wmin":70.0,"wmax":70.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-domes-t1"},{"id":"dm-des-domes-t1-green-85g","name":"DES-DOMES T1 Green 85g","maker":"Deskeys","brand":"DES-DOMES","style":"T1","variant":"Green","wraw":"85g","wmin":85.0,"wmax":85.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-domes-t1"},{"id":"dm-des-domes-t1-darkside-100g","name":"DES-DOMES T1 Darkside 100g","maker":"Deskeys","brand":"DES-DOMES","style":"T1","variant":"Darkside","wraw":"100g","wmin":100.0,"wmax":100.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-domes-t1"},{"id":"dm-des-domes-v1-tiffany-35g","name":"DES-DOMES V1 Tiffany 35g","maker":"Deskeys","brand":"DES-DOMES","style":"V1","variant":"Tiffany","wraw":"35g","wmin":35.0,"wmax":35.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-domes-bke-tactile"},{"id":"dm-des-domes-v1-pink-42g","name":"DES-DOMES V1 Pink 42g","maker":"Deskeys","brand":"DES-DOMES","style":"V1","variant":"Pink","wraw":"42g","wmin":42.0,"wmax":42.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-domes-bke-tactile"},{"id":"dm-des-domes-v1-purple-49g","name":"DES-DOMES V1 Purple 49g","maker":"Deskeys","brand":"DES-DOMES","style":"V1","variant":"Purple","wraw":"49g","wmin":49.0,"wmax":49.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-domes-bke-tactile"},{"id":"dm-des-domes-v1-blue-56g","name":"DES-DOMES V1 Blue 56g","maker":"Deskeys","brand":"DES-DOMES","style":"V1","variant":"Blue","wraw":"56g","wmin":56.0,"wmax":56.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-domes-bke-tactile"},{"id":"dm-des-domes-v2-tiffany-35g","name":"DES-DOMES V2 Tiffany 35g","maker":"Deskeys","brand":"DES-DOMES","style":"V2","variant":"Tiffany","wraw":"35g","wmin":35.0,"wmax":35.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-dome-v2-rounder-bke-style"},{"id":"dm-des-domes-v2-pink-42g","name":"DES-DOMES V2 Pink 42g","maker":"Deskeys","brand":"DES-DOMES","style":"V2","variant":"Pink","wraw":"42g","wmin":42.0,"wmax":42.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-dome-v2-rounder-bke-style"},{"id":"dm-des-domes-v2-purple-49g","name":"DES-DOMES V2 Purple 49g","maker":"Deskeys","brand":"DES-DOMES","style":"V2","variant":"Purple","wraw":"49g","wmin":49.0,"wmax":49.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-dome-v2-rounder-bke-style"},{"id":"dm-des-domes-v2-blue-56g","name":"DES-DOMES V2 Blue 56g","maker":"Deskeys","brand":"DES-DOMES","style":"V2","variant":"Blue","wraw":"56g","wmin":56.0,"wmax":56.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-dome-v2-rounder-bke-style"},{"id":"dm-des-domes-v2-brown-63g","name":"DES-DOMES V2 Brown 63g","maker":"Deskeys","brand":"DES-DOMES","style":"V2","variant":"Brown","wraw":"63g","wmin":63.0,"wmax":63.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-dome-v2-rounder-bke-style"},{"id":"dm-des-domes-v2-green-70g","name":"DES-DOMES V2 Green 70g","maker":"Deskeys","brand":"DES-DOMES","style":"V2","variant":"Green","wraw":"70g","wmin":70.0,"wmax":70.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-dome-v2-rounder-bke-style"},{"id":"dm-des-domes-v3-cheese-28g","name":"DES-DOMES V3 Cheese 28g","maker":"Deskeys","brand":"DES-DOMES","style":"V3","variant":"Cheese","wraw":"28g","wmin":28.0,"wmax":28.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-dome-v3"},{"id":"dm-des-domes-v3-tiffany-35g","name":"DES-DOMES V3 Tiffany 35g","maker":"Deskeys","brand":"DES-DOMES","style":"V3","variant":"Tiffany","wraw":"35g","wmin":35.0,"wmax":35.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-dome-v3"},{"id":"dm-des-domes-v3-pink-42g","name":"DES-DOMES V3 Pink 42g","maker":"Deskeys","brand":"DES-DOMES","style":"V3","variant":"Pink","wraw":"42g","wmin":42.0,"wmax":42.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-dome-v3"},{"id":"dm-des-domes-v3-purple-49g","name":"DES-DOMES V3 Purple 49g","maker":"Deskeys","brand":"DES-DOMES","style":"V3","variant":"Purple","wraw":"49g","wmin":49.0,"wmax":49.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-dome-v3"},{"id":"dm-des-domes-v3-blue-56g","name":"DES-DOMES V3 Blue 56g","maker":"Deskeys","brand":"DES-DOMES","style":"V3","variant":"Blue","wraw":"56g","wmin":56.0,"wmax":56.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-dome-v3"},{"id":"dm-des-domes-v3-brown-63g","name":"DES-DOMES V3 Brown 63g","maker":"Deskeys","brand":"DES-DOMES","style":"V3","variant":"Brown","wraw":"63g","wmin":63.0,"wmax":63.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-dome-v3"},{"id":"dm-des-domes-v3-green-70g","name":"DES-DOMES V3 Green 70g","maker":"Deskeys","brand":"DES-DOMES","style":"V3","variant":"Green","wraw":"70g","wmin":70.0,"wmax":70.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-dome-v3"},{"id":"dm-des-domes-carrots-35g","name":"DES-DOMES CARROTS 35g","maker":"Deskeys","brand":"DES-DOMES","style":"CARROTS","variant":"","wraw":"35g","wmin":35.0,"wmax":35.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-domes-carrots"},{"id":"dm-des-domes-carrots-49g","name":"DES-DOMES CARROTS 49g","maker":"Deskeys","brand":"DES-DOMES","style":"CARROTS","variant":"","wraw":"49g","wmin":49.0,"wmax":49.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-domes-carrots"},{"id":"dm-des-domes-carrots-60g","name":"DES-DOMES CARROTS 60g","maker":"Deskeys","brand":"DES-DOMES","style":"CARROTS","variant":"","wraw":"60g","wmin":60.0,"wmax":60.0,"type":"AFTERMARKET","avail":"","u":"https://deskeys.io/collections/home-all-products/products/des-domes-carrots"},{"id":"dm-dynacaps-light","name":"DynaCaps Light","maker":"DynaCaps","brand":"DynaCaps","style":"","variant":"Light","wraw":"","wmin":null,"wmax":null,"type":"AFTERMARKET","avail":"","u":"https://omnitype.com/products/dynacap-doems"},{"id":"dm-dynacaps-medium","name":"DynaCaps Medium","maker":"DynaCaps","brand":"DynaCaps","style":"","variant":"Medium","wraw":"","wmin":null,"wmax":null,"type":"AFTERMARKET","avail":"","u":"https://omnitype.com/products/dynacap-doems"},{"id":"dm-dynacaps-heavy","name":"DynaCaps Heavy","maker":"DynaCaps","brand":"DynaCaps","style":"","variant":"Heavy","wraw":"","wmin":null,"wmax":null,"type":"AFTERMARKET","avail":"","u":"https://omnitype.com/products/dynacap-doems"},{"id":"dm-klc-playground-35g","name":"KLC Playground 35g","maker":"KLC Playground","brand":"KLC Playground","style":"","variant":"","wraw":"35g","wmin":35.0,"wmax":35.0,"type":"AFTERMARKET","avail":"","u":"https://klc-playground.com/products/instock-ec-kits-and-packs"},{"id":"dm-klc-playground-45g","name":"KLC Playground 45g","maker":"KLC Playground","brand":"KLC Playground","style":"","variant":"","wraw":"45g","wmin":45.0,"wmax":45.0,"type":"AFTERMARKET","avail":"","u":"https://klc-playground.com/products/instock-ec-kits-and-packs"},{"id":"dm-klc-playground-55g","name":"KLC Playground 55g","maker":"KLC Playground","brand":"KLC Playground","style":"","variant":"","wraw":"55g","wmin":55.0,"wmax":55.0,"type":"AFTERMARKET","avail":"","u":"https://klc-playground.com/products/instock-ec-kits-and-packs"},{"id":"dm-metapulse-rs-25g","name":"MetaPulse RS-25g","maker":"MetaPulse","brand":"MetaPulse","style":"RS","variant":"","wraw":"25g","wmin":25.0,"wmax":25.0,"type":"AFTERMARKET","avail":"ETA Q3 2026","u":"https://metakeebs.com/products/pre-order-metapulse-bundle-1"},{"id":"dm-metapulse-rs-30g","name":"MetaPulse RS-30g","maker":"MetaPulse","brand":"MetaPulse","style":"RS","variant":"","wraw":"30g","wmin":30.0,"wmax":30.0,"type":"AFTERMARKET","avail":"ETA Q3 2026","u":"https://metakeebs.com/products/pre-order-metapulse-bundle-1"},{"id":"dm-metapulse-rs-35g","name":"MetaPulse RS-35g","maker":"MetaPulse","brand":"MetaPulse","style":"RS","variant":"","wraw":"35g","wmin":35.0,"wmax":35.0,"type":"AFTERMARKET","avail":"ETA Q3 2026","u":"https://metakeebs.com/products/pre-order-metapulse-bundle-1"},{"id":"dm-metapulse-rs-40g","name":"MetaPulse RS-40g","maker":"MetaPulse","brand":"MetaPulse","style":"RS","variant":"","wraw":"40g","wmin":40.0,"wmax":40.0,"type":"AFTERMARKET","avail":"ETA Q3 2026","u":"https://metakeebs.com/products/pre-order-metapulse-bundle-1"},{"id":"dm-metapulse-rs-45g","name":"MetaPulse RS-45g","maker":"MetaPulse","brand":"MetaPulse","style":"RS","variant":"","wraw":"45g","wmin":45.0,"wmax":45.0,"type":"AFTERMARKET","avail":"ETA Q3 2026","u":"https://metakeebs.com/products/pre-order-metapulse-bundle-1"},{"id":"dm-metapulse-rs-55g-version-a","name":"MetaPulse RS-55g-Version A","maker":"MetaPulse","brand":"MetaPulse","style":"RS","variant":"Version A","wraw":"55g","wmin":55.0,"wmax":55.0,"type":"AFTERMARKET","avail":"ETA Q3 2026","u":"https://metakeebs.com/products/pre-order-metapulse-bundle-1"},{"id":"dm-metapulse-rs-55g-version-b","name":"MetaPulse RS-55g-Version B","maker":"MetaPulse","brand":"MetaPulse","style":"RS","variant":"Version B","wraw":"55g","wmin":55.0,"wmax":55.0,"type":"AFTERMARKET","avail":"ETA Q3 2026","u":"https://metakeebs.com/products/pre-order-metapulse-bundle-1"},{"id":"dm-metapulse-bs-40g","name":"MetaPulse BS-40g","maker":"MetaPulse","brand":"MetaPulse","style":"BS","variant":"","wraw":"40g","wmin":40.0,"wmax":40.0,"type":"AFTERMARKET","avail":"ETA Q3 2026","u":"https://metakeebs.com/products/pre-order-metapulse-bundle-1"},{"id":"dm-metapulse-bs-50g","name":"MetaPulse BS-50g","maker":"MetaPulse","brand":"MetaPulse","style":"BS","variant":"","wraw":"50g","wmin":50.0,"wmax":50.0,"type":"AFTERMARKET","avail":"ETA Q3 2026","u":"https://metakeebs.com/products/pre-order-metapulse-bundle-1"},{"id":"dm-metapulse-bs-65g","name":"MetaPulse BS-65g","maker":"MetaPulse","brand":"MetaPulse","style":"BS","variant":"","wraw":"65g","wmin":65.0,"wmax":65.0,"type":"AFTERMARKET","avail":"ETA Q3 2026","u":"https://metakeebs.com/products/pre-order-metapulse-bundle-1"},{"id":"dm-metapulse-bs-75g","name":"MetaPulse BS-75g","maker":"MetaPulse","brand":"MetaPulse","style":"BS","variant":"","wraw":"75g","wmin":75.0,"wmax":75.0,"type":"AFTERMARKET","avail":"ETA Q3 2026","u":"https://metakeebs.com/products/pre-order-metapulse-bundle-1"},{"id":"dm-astro-domes-35g-shiner-amber","name":"Astro Domes 35g Shiner (Amber)","maker":"Astro Domes","brand":"Astro Domes","style":"","variant":"Shiner (Amber)","wraw":"35g","wmin":35.0,"wmax":35.0,"type":"AFTERMARKET","avail":"","u":"https://sneakbox.com/products/astro-domes"},{"id":"dm-astro-domes-50g-pepper-burgundy","name":"Astro Domes 50g Pepper (Burgundy)","maker":"Astro Domes","brand":"Astro Domes","style":"","variant":"Pepper (Burgundy)","wraw":"50g","wmin":50.0,"wmax":50.0,"type":"AFTERMARKET","avail":"","u":"https://sneakbox.com/products/astro-domes"},{"id":"dm-astro-domes-60g-whatadome-orange-white","name":"Astro Domes 60g Whatadome (Orange/White)","maker":"Astro Domes","brand":"Astro Domes","style":"","variant":"Whatadome (Orange/White)","wraw":"60g","wmin":60.0,"wmax":60.0,"type":"AFTERMARKET","avail":"","u":"https://sneakbox.com/products/astro-domes"},{"id":"dm-astro-domes-70g-weird-green-black","name":"Astro Domes 70g Weird (Green/Black)","maker":"Astro Domes","brand":"Astro Domes","style":"","variant":"Weird (Green/Black)","wraw":"70g","wmin":70.0,"wmax":70.0,"type":"AFTERMARKET","avail":"","u":"https://sneakbox.com/products/astro-domes"},{"id":"dm-astro-domes-90g-lean-purple","name":"Astro Domes 90g Lean (Purple)","maker":"Astro Domes","brand":"Astro Domes","style":"","variant":"Lean (Purple)","wraw":"90g","wmin":90.0,"wmax":90.0,"type":"AFTERMARKET","avail":"","u":"https://sneakbox.com/products/astro-domes"},{"id":"dm-astro-domes-120g-fiesta-teal-pink-orange","name":"Astro Domes 120g Fiesta (Teal/Pink/Orange)","maker":"Astro Domes","brand":"Astro Domes","style":"","variant":"Fiesta (Teal/Pink/Orange)","wraw":"120g","wmin":120.0,"wmax":120.0,"type":"AFTERMARKET","avail":"","u":"https://sneakbox.com/products/astro-domes"},{"id":"dm-astro-domes-160g-big-d-blue-gray","name":"Astro Domes 160g Big D (Blue/Gray)","maker":"Astro Domes","brand":"Astro Domes","style":"","variant":"Big D (Blue/Gray)","wraw":"160g","wmin":160.0,"wmax":160.0,"type":"AFTERMARKET","avail":"","u":"https://sneakbox.com/products/astro-domes"},{"id":"dm-astro-domes-500g-texas-tea-brown-black","name":"Astro Domes 500g Texas Tea (Brown Black)","maker":"Astro Domes","brand":"Astro Domes","style":"","variant":"Texas Tea (Brown Black)","wraw":"500g","wmin":500.0,"wmax":500.0,"type":"AFTERMARKET","avail":"","u":"https://sneakbox.com/products/astro-domes"},{"id":"dm-bke-redux-v1-ultra-light","name":"BKE Redux v1 Ultra Light","maker":"Keyclack","brand":"BKE Redux","style":"v1","variant":"Ultra Light","wraw":"","wmin":null,"wmax":null,"type":"AFTERMARKET","avail":"No longer sold \u2014 secondary market only","u":""},{"id":"dm-bke-redux-v1-light","name":"BKE Redux v1 Light","maker":"Keyclack","brand":"BKE Redux","style":"v1","variant":"Light","wraw":"","wmin":null,"wmax":null,"type":"AFTERMARKET","avail":"No longer sold \u2014 secondary market only","u":""},{"id":"dm-bke-redux-v1-heavy","name":"BKE Redux v1 Heavy","maker":"Keyclack","brand":"BKE Redux","style":"v1","variant":"Heavy","wraw":"","wmin":null,"wmax":null,"type":"AFTERMARKET","avail":"No longer sold \u2014 secondary market only","u":""},{"id":"dm-bke-redux-v1-extreme","name":"BKE Redux v1 Extreme","maker":"Keyclack","brand":"BKE Redux","style":"v1","variant":"Extreme","wraw":"","wmin":null,"wmax":null,"type":"AFTERMARKET","avail":"No longer sold \u2014 secondary market only","u":""},{"id":"dm-niz-65g","name":"NiZ 65g","maker":"NiZ","brand":"NiZ","style":"","variant":"","wraw":"65g","wmin":65.0,"wmax":65.0,"type":"AFTERMARKET","avail":"","u":"https://www.nizkeyboard.com"}];
 
-const MAKERS={
- "Topre":"https://mechanicalkeyboards.com/collections/realforce",
- "PFU":"https://hhkeyboard.us",
- "Leopold":"", "Norbauer & Co.":"https://norbauer.com", "Sho":"",
- "Cipulot":"https://github.com/Cipulot", "Various / Cipulot":"https://www.lusvsolutions.com/",
- "Cooler Master":"", "Deskeys":"https://deskeys.io",
- "DynaCaps":"https://omnitype.com/pages/dynacap","DynaCap":"https://omnitype.com/pages/dynacap","Dynacaps":"https://omnitype.com/pages/dynacap",
- "MetaKeebs":"https://metakeebs.com/products/pre-order-metapulse-bundle-1","MetaPulse":"https://metakeebs.com/products/pre-order-metapulse-bundle-1",
- "KLC Playground":"https://klc-playground.com/products/instock-ec-kits-and-packs","KLC-Playground":"https://klc-playground.com/products/instock-ec-kits-and-packs",
- "Keyclack":"", "Astro Domes / Other":"", "NiZ":"https://www.nizkeyboard.com", "BKE":"", "Topre/PFU/Leopold":"", "Various":""
-};
 const OEM="OEM TOPRE", AM="AFTERMARKET";
-
-const CATALOG = {
-housings1u:[
- {id:"h1-classic", name:"Topre 1u Housing", maker:"Topre", type:OEM, sys:"classic", u:"https://mechanicalkeyboards.com/collections/realforce",
-  brief:"The standard 1u housing across Realforce and Topre boards.",
-  notes:["Design note: the crown is deliberately larger than the opening it aligns with, and the rails are generously clearanced to the slider legs — Topre designed for injection-molding accuracy.","The rails have exactly two jobs: stop the slider rotating, and secondarily limit wobble. Wobble is primarily controlled by barrel-to-bore fit; a taller crown helps more than tighter rails."]},
- {id:"h1-dyna", name:"DynaCaps 1u Housing", maker:"DynaCaps", type:AM, sys:"dynacaps", special:true, review:true,
-  brief:"DynaCaps-system housing, built for 1.5 mm plates.",
-  notes:["Designed for 1.5 mm plates — on a standard 1.2 mm plate it needs DynaCaps housing gaskets.","Mold halves part at the plate plane, so the crown is non-concentric to the bore — the alignment error Topre designs around by oversizing the crown.","The crown is also canted — a visible angle on a ~1 mm feature, compounding the concentricity error.","Rails are cut to the slider legs' dimensions with effectively zero clearance, locking the base and forcing every tolerance error into sliding contact."]},
- {id:"hhkb-shell", name:"HHKB Shell", maker:"PFU", type:OEM, sys:"classic", shell:true, ptype:"HHKB Shell", u:"https://hhkeyboard.us", special:true,
-  brief:"HHKB housings are not individual parts — they are the shell.",
-  notes:["Every 1u housing, the 2u stabilizer housing, and the plate are one plastic injection-molded part. Selecting it here means your housings ARE the shell."]},
- {id:"rc1-shell", name:"Realforce RC1 Shell", maker:"Topre", type:OEM, sys:"classic", shell:true, rc1:true, ptype:"RC1 Shell", u:"https://mechanicalkeyboards.com/collections/realforce", special:true,
-  brief:"RC1 housings are part of the one-piece shell — spacebar assembly included.",
-  notes:["Housings, stabilizer housings, and plate are one injected part. The spacebar stabilizer assembly is integrated into the shell as well.","The RC1 spacebar wire is unique to the RC1 and requires that special bar. MX conversion requires swapping the spacebar stabilizer plunger out of the assembly — untested."]}
-],
-housings2u:[
- {id:"h2-classic", name:"Topre 2u Stabilizer Housing", maker:"Topre", type:OEM, sys:"classic", u:"https://mechanicalkeyboards.com/collections/realforce", review:true,
-  brief:"The stabilized-key housing: carries the bar, its slider, and its ring.", notes:[]},
- {id:"h2-dyna", name:"DynaCaps 2u Stabilizer Housing", maker:"DynaCaps", type:AM, sys:"dynacaps", review:true,
-  brief:"DynaCaps stabilized-key housing for kit builds.", notes:[]},
- {id:"hhkb-shell-2u", name:"HHKB Shell", maker:"PFU", type:OEM, sys:"classic", shell:true, ptype:"HHKB Shell", u:"https://hhkeyboard.us", special:true,
-  brief:"The 2u stabilizer housing is part of the one-piece shell.",
-  notes:["Compatibility-wise, treat exactly as a Topre 2u stabilizer housing — drilling notes included."]},
- {id:"rc1-shell-int", name:"Realforce RC1 Shell (Integrated)", maker:"Topre", type:OEM, sys:"classic", shell:true, rc1:true, ptype:"RC1 Shell", u:"https://mechanicalkeyboards.com/collections/realforce", special:true,
-  brief:"RC1 stabilizer housings — spacebar included — live in the shell.",
-  notes:["Compatibility-wise, treat as a Topre 2u stabilizer housing, drilling notes included.","The RC1 spacebar wire is unique to the RC1 and requires that special bar. MX conversion requires swapping the spacebar stabilizer plunger from the assembly — untested."]}
-],
-stabs2:[
- {id:"asm-classic", name:"Topre 2u Stabilizer (Complete)", maker:"Topre", type:OEM, sys:"classic", h2:"h2-classic", sl2:"sl2-classic", u:"https://mechanicalkeyboards.com/collections/realforce",
-  brief:"Complete assembly: 2u housing with bar, slider, and ring.", notes:[]},
- {id:"asm-dyna", name:"DynaCaps 2u Stabilizer (Complete)", maker:"DynaCaps", type:AM, sys:"dynacaps", h2:"h2-dyna", sl2:"sl2-dyna", review:true,
-  brief:"DynaCaps complete stabilized-key assembly.", notes:[]},
- {id:"asm-hhkb", name:"HHKB Shell", maker:"PFU", type:OEM, sys:"classic", h2:"hhkb-shell-2u", sl2:"sl2-classic", shell:true, ptype:"HHKB Shell", u:"https://hhkeyboard.us",
-  brief:"Stabilizer housing molded into the shell; completes with Topre 2u sliders.", notes:[]},
- {id:"asm-rc1", name:"Realforce RC1 Shell (Integrated)", maker:"Topre", type:OEM, sys:"classic", h2:"rc1-shell-int", sl2:"sl2-classic", shell:true, rc1:true, ptype:"RC1 Shell", u:"https://mechanicalkeyboards.com/collections/realforce", special:true,
-  brief:"RC1 stabilizer housings live in the one-piece shell.", notes:["Spacebar assembly integrated; unique RC1 wire; MX conversion untested."]}
-],
-sliders:[
- {id:"sl-std", name:"Topre Standard Slider", maker:"Topre", type:OEM, stem:"topre", fits:["classic"], silentRecess:0, u:"https://mechanicalkeyboards.com/collections/realforce",
-  brief:"The baseline: Topre stem, 4.0 mm travel, no silencing.",
-  notes:["The barrel carries a slight intentional draft taper — wider at the base — from the mold parting at the ring-seat face. Ejection is the likely reason; smooth fit in the bore is the happy side effect."]},
- {id:"sl-purple", name:"Topre Silent Slider (Purple)", maker:"Topre", type:OEM, stem:"topre", fits:["classic"], silentRecess:0.5, u:"https://mechanicalkeyboards.com/collections/realforce",
-  brief:"Factory silencing: 0.5 mm seat recess absorbs the factory ring.", notes:["Silenced with full travel when paired with its 0.5 mm ring."]},
- {id:"sl-types", name:"Topre Type-S Slider", maker:"Topre", type:OEM, stem:"topre", fits:["classic"], silentRecess:0.5, travelMod:-0.2, u:"https://mechanicalkeyboards.com/collections/realforce",
-  brief:"Silent slider with legs 0.2 mm longer on purpose: 3.8 mm travel.", notes:[]},
- {id:"sl-novatouch", name:"Novatouch Slider (MX Stem)", maker:"Cooler Master", type:OEM, stem:"mx", fits:["classic"], silentRecess:0, buy:"Out of production — secondary market only",
-  brief:"The original MX-stem drop-in for classic Topre housings.", notes:["Long out of production; prices reflect it."]},
- {id:"sl-deskeys", name:"Deskeys MX Slider", maker:"Deskeys", type:AM, stem:"mx", fits:["classic"], silentRecess:0, u:"https://deskeys.io/products/des-sliders", buy:"Deskeys defunct (July 2026) — remaining stock via resellers", review:true,
-  brief:"MX-stem slider for classic housings.", notes:[]},
- {id:"sl-dyna", name:"DynaCaps Slider", maker:"DynaCaps", type:AM, stem:"mx", fits:["dynacaps"], silentRecess:0, special:true, review:true,
-  brief:"DynaCaps-system slider for their housings.",
-  notes:["Barrel taper runs the wrong way: slightly wider at the TOP than the base — the inverse of Topre's draft taper — so it binds as it travels deeper into the bore.","The barrel is slightly elliptical: a min and a max diameter, not a circle.","Barrel-to-base non-concentricity from the mold parting varies unit to unit — sometimes perfect, sometimes at the full, never-considered tolerance."]}
-],
-sliders2u:[
- {id:"sl2-classic", name:"Topre 2u Slider", maker:"Topre", type:OEM, stem:"topre", fits:["classic"], u:"https://mechanicalkeyboards.com/collections/realforce", review:true,
-  brief:"The slider inside the 2u stabilizer assembly.", notes:[]},
- {id:"sl2-dyna", name:"DynaCaps 2u Slider", maker:"DynaCaps", type:AM, stem:"mx", fits:["dynacaps"], review:true,
-  brief:"DynaCaps stabilized-key slider.", notes:[]}
-],
-rings:[
- {id:"ring-none", name:"No Silencing Ring", maker:"—", type:OEM, t:0, brief:"Stock clack.", notes:["On silent sliders this leaves 0.5 mm of top-out rattle — they expect their ring."]},
- {id:"ring-02", name:"0.2 mm Silencing Ring", maker:"Deskeys", type:AM, t:0.2, u:"https://deskeys.io/products/silencing-ring-for-topre-keyboards", brief:"Light silencing; 0.2 mm preload on standard sliders.", notes:[]},
- {id:"ring-03", name:"0.3 mm Silencing Ring", maker:"Deskeys", type:AM, t:0.3, u:"https://deskeys.io/products/silencing-ring-for-topre-keyboards", brief:"Bench sweet spot on standard sliders — feel largely survives.", notes:[]},
- {id:"ring-05", name:"0.5 mm Silencing Ring", maker:"Deskeys / DynaCaps", type:AM, t:0.5, u:"https://deskeys.io/products/silencing-ring-for-topre-keyboards", brief:"Full silencing; factory fit on silent sliders.", notes:["On a standard slider this preloads the dome 0.5 mm and dulls the snap at typing speed."]}
-],
-spacebars:[
- {id:"sb-classic", name:"Topre Spacebar Stabilizer", maker:"Topre", type:OEM, sys:"classic", u:"https://mechanicalkeyboards.com/collections/realforce", review:true,
-  brief:"Wire bar plus plunger, Realforce pattern.", notes:[]},
- {id:"sb-dyna", name:"DynaCaps Spacebar Stabilizer", maker:"DynaCaps", type:AM, sys:"dynacaps", review:true,
-  brief:"DynaCaps spacebar stabilizer hardware.", notes:[]}
-],
-springs:[
- {id:"spr-topre", name:"Topre Conical Spring", maker:"Topre", type:OEM, u:"https://mechanicalkeyboards.com/collections/realforce",
-  brief:"The capacitive sensing element. Do not stretch or deform.", notes:[]},
- {id:"spr-dyna", name:"DynaCaps Conical Spring", maker:"DynaCaps", type:AM, review:true,
-  brief:"The only aftermarket conical spring that works reliably.", notes:[]}
-],
-domes:[],
-shells:[
- {id:"rf-oem", name:"Realforce OEM Shell (R1/R2/R3)", maker:"Topre", type:OEM, u:"https://mechanicalkeyboards.com/collections/realforce", brief:"Donor board: OEM case, PCB, and plate; everything inside is swappable.", notes:[]},
- {id:"hhkb-oem", name:"HHKB OEM Shell (Pro 2 / Hybrid)", maker:"PFU", type:OEM, u:"https://hhkeyboard.us", brief:"HHKB case with integrated housing/plate assembly and OEM PCB.", notes:[]},
- {id:"leopold-oem", name:"Leopold FC660C / FC980C Shell", maker:"Leopold", type:OEM, buy:"Discontinued — secondary market only", brief:"Leopold's Topre-licensed boards; classic internals throughout.", notes:[]},
- {id:"norbauer", name:"Norbauer Housing (Heavy Grail etc.)", maker:"Norbauer & Co.", type:AM, u:"https://norbauer.com", special:true, review:true,
-  brief:"Premium replacement case; donor PCB and plate carry over.",
-  notes:["Heavy Grail's injection-molded plate repeated the mold-parting concentricity mistake: on a large portion of units the plate interfered with OEM sliders. Verify clearance on your unit before final assembly."]},
- {id:"sho", name:"Sho Aftermarket Housing", maker:"Sho", type:AM, review:true, brief:"Aftermarket shell; donor PCB and plate carry over.", notes:[]},
- {id:"kit-cipulot", name:"Custom EC Kit (Cipulot PCB)", maker:"Various / Cipulot", type:AM, u:"https://www.lusvsolutions.com/", brief:"Arrives in parts, you assemble; Cipulot PCB included, usually paired with DynaCaps parts.", notes:[]},
- {id:"kit-metapulse", name:"MetaPulse EC Bundle", maker:"MetaKeebs", type:AM, u:"https://metakeebs.com/products/pre-order-metapulse-bundle-1", review:true, brief:"MetaKeebs EC kit bundle with the MetaPulse dome line.", notes:[]},
- {id:"kit-klc", name:"KLC-Playground EC Kit", maker:"KLC Playground", type:AM, u:"https://klc-playground.com/products/instock-ec-kits-and-packs", review:true, brief:"In-stock EC kits and packs with housings, stabs, and springs.", notes:[]}
-],
-plates:[
- {id:"pl-12", name:"1.2 mm Plate (Standard Topre)", maker:"—", type:OEM, brief:"The classic spec — and the assumption the builder runs on.", notes:["Material matters: stay stiff (carbon steel, stainless, brass); aluminum, polycarbonate, and carbon fiber degrade feel at Topre's thin gauge."]},
- {id:"pl-15", name:"1.5 mm Plate (DynaCaps)", maker:"—", type:AM, brief:"DynaCaps housings are designed around 1.5 mm plates.", notes:[]}
-],
-pcbs:[
- {id:"pcb-oem", name:"OEM Topre PCB (From Donor)", maker:"Topre/PFU/Leopold", type:OEM, brief:"Comes with the donor board.", notes:[]},
- {id:"pcb-cipulot", name:"Cipulot EC PCB", maker:"Cipulot", type:AM, u:"https://github.com/Cipulot", brief:"The custom-kit standard: QMK/VIA, actuation in firmware.", notes:[]}
-]
+const MAKERS={
+ "Topre":"https://mechanicalkeyboards.com/collections/realforce","PFU":"https://hhkeyboard.us",
+ "Deskeys":"https://deskeys.io","Deskeys-Conical":"https://deskeys.io","Deskeys-Volcano":"https://deskeys.io",
+ "DynaCaps":"https://omnitype.com/pages/dynacap","DynaCap":"https://omnitype.com/pages/dynacap",
+ "KLC Playground":"https://klc-playground.com/products/instock-ec-kits-and-packs",
+ "MetaPulse":"https://metakeebs.com/collections/metapulse","Norbauer & Co.":"https://norbauer.com",
+ "NiZ":"https://www.nizkeyboard.com","Keyclack":"","Astro Domes / Other":"","MX":"","Novatouch":""
 };
 
-const SLOTS = [
- {key:"slider",  label:"Slider",                 list:"sliders"},
- {key:"ring",    label:"Silencing Ring",         list:"rings"},
- {key:"dome",    label:"Domes",                  list:"domes", modal:true},
- {key:"h1",      label:"Housings",               list:"housings1u"},
- {key:"h2",      label:"2u Stabilizer Housing",  list:"housings2u", extra:true},
- {key:"sl2",     label:"2u Stabilizer Slider",   list:"sliders2u",  extra:true},
- {key:"sb",      label:"Spacebar Stabilizer",    list:"spacebars",  extra:true},
- {key:"spring",  label:"Conical Springs",        list:"springs"}
+const CATALOG={sliders:[],housings1u:[],sliders2u:[],housings2u:[],spacebars:[],springs:[],rings:[],shells:[],domes:[]};
+const PARTIDX={};
+const SPRING_RELIABLE=["Topre Conical Springs","DynaCaps Conical Springs"];
+
+function briefFor(p){
+  const b=[];
+  if(p.stem)b.push(p.stem.toUpperCase()+" stem");
+  if(p.seat!=null)b.push(`ring seat ${p.seat} mm`);
+  if(p.off)b.push(`+${p.off} mm ring space`);
+  if(p.travel!=null)b.push(`${p.travel} mm travel`);
+  return b.join(" · ");
+}
+function initParts(){
+  const CATMAP={"Sliders":"sliders","Housings":"housings1u","Stabilizer Sliders":"sliders2u",
+    "Stabilizer Housings":"housings2u","Spacebar Stabilizer":"spacebars","Conical Springs":"springs"};
+  for(const p of EC.PARTS){
+    const list=CATMAP[p.cat]; if(!list)continue;
+    const e={id:p.id,name:p.name,maker:p.vendor,type:p.type,stem:p.stem,seat:p.seat,off:p.off||0,
+      travel:p.travel,buy:p.avail,u:p.u||MAKERS[p.vendor]||"",brief:briefFor(p),notes:[],cat:p.cat};
+    if(list==="springs" && !SPRING_RELIABLE.includes(p.name))
+      e.springWarn="Reliability warning: only OEM Topre and DynaCaps conical springs are confirmed reliable.";
+    if(p.name==="DynaCaps Conical Springs")e.notes.push(EC.NOTES.note_dynacaps_conical_universal.text);
+    if(p.name==="Deskeys Housings")e.notes.push(EC.NOTES.note_deskeys_housing.text);
+    if(p.name==="DynaCaps Housings")e.notes.push(EC.NOTES.note_dynacaps_housing.text);
+    if(p.name==="Realforce Silent Stabilizer Housing")e.notes.push(EC.NOTES.note_rf_silent_stab_housing.text);
+    CATALOG[list].push(e); PARTIDX[e.id]=e;
+  }
+  for(const s of EC.SHELLS){
+    const e={id:s.id,name:s.name,maker:s.vendor,type:s.type,stem:"",seat:null,off:0,travel:null,
+      buy:"",u:s.u,brief:s.id==="shell::rc1"?"One-piece shell — spacebar stabilizer included.":"One-piece shell — housings and stabilizer housing are the shell.",
+      notes:s.shellNote?[s.shellNote]:[],cat:"Shells",shell:true,addsSb:s.addsSb};
+    CATALOG.shells.push(e); PARTIDX[e.id]=e;
+  }
+  for(const r of EC.RINGS){
+    const e={id:r.id,name:r.name,maker:r.t?"Deskeys / DynaCaps":"—",type:r.t?AM:OEM,t:r.t,
+      brief:r.t?`${r.t} mm silencing ring.`:"No ring — stock clack.",notes:[],cat:"Silencing Ring"};
+    CATALOG.rings.push(e); PARTIDX[e.id]=e;
+  }
+}
+
+const SLOTS=[
+ {key:"slider", label:"Slider",              list:"sliders"},
+ {key:"ring",   label:"Silencing Ring",      list:"rings"},
+ {key:"dome",   label:"Domes",               list:"domes", modal:true},
+ {key:"h1",     label:"Housings",            list:"housings1u"},
+ {key:"shell",  label:"Shell",               list:"shells",     extra:true},
+ {key:"h2",     label:"Stabilizer Housing",  list:"housings2u", extra:true},
+ {key:"sl2",    label:"Stabilizer Slider",   list:"sliders2u",  extra:true},
+ {key:"sb",     label:"Spacebar Stabilizer", list:"spacebars",  extra:true},
+ {key:"spring", label:"Conical Springs",     list:"springs"}
 ];
 /* ====================================================================
-   ENGINE — the slider is the driving part (2u slider is the fallback
-   driver). Compatible pairs stay silent; only warnings (⚠), special
-   notes (✳), and limbo (⏳) surface, as hover icons.
+   ENGINE — edge-list compatibility (EC.COMPAT) + seat/offset/ring math.
+   effective = ring − (slider_seat + housing_offset)
+     < 0 → chatter |effective|; > 0 → precompression, travel loss.
 ==================================================================== */
-function get(listKey, id){ return CATALOG[listKey].find(p=>p.id===id) || null; }
-function part(slotKey){ const s=SLOTS.find(s=>s.key===slotKey); return s && build[s.key] ? get(s.list,build[s.key]) : null; }
-function driver(){ return part("slider") || part("sl2"); }
-function capStem(){ const d=driver(); return d ? (d.stem==="mx"?"MX":"TOPRE") : null; }
+function get(listKey,id){ if(PARTIDX[id])return PARTIDX[id]; return CATALOG[listKey]?CATALOG[listKey].find(p=>p.id===id)||null:null; }
+function part(slotKey){ const s=SLOTS.find(s=>s.key===slotKey); if(!s||!build[s.key])return null; return PARTIDX[build[s.key]]||get(s.list,build[s.key]); }
+function capStem(){ const d=part("slider"); return d?(d.stem==="mx"?"MX":"TOPRE"):null; }
+function capPartName(){ const c=capStem(); return c? (c==="MX"?"MX Keycaps":"Topre Keycaps") : null; }
 
-/* conflict of a candidate part against the current build (driving-part logic) */
-function conflictFor(slotKey, p){
-  const d = (slotKey==="slider") ? p : (slotKey==="sl2" && !part("slider")) ? p : driver();
-  if(!d) return null;                                   // limbo — no driver
-  const h1 = (slotKey==="h1") ? p : part("h1");
-  const h2 = (slotKey==="h2") ? p : part("h2");
-  const sl2= (slotKey==="sl2")? p : part("sl2");
-  const sl = (slotKey==="slider")? p : part("slider");
-  if(slotKey==="slider"||slotKey==="h1"){
-    if(sl && h1 && !sl.fits.includes(h1.sys)) return `${sl.name} does not fit ${h1.name} — ${sl.fits.join("/")} vs ${h1.sys}. Systems are not interchangeable.`;
-  }
-  if(slotKey==="sl2"||slotKey==="h2"){
-    if(sl2 && h2 && !sl2.fits.includes(h2.sys)) return `${sl2.name} does not fit ${h2.name} — ${sl2.fits.join("/")} vs ${h2.sys}.`;
-  }
-  if(slotKey==="h1"||slotKey==="h2"){
-    if(h1 && h2 && h1.sys!==h2.sys) return `Mixed systems on one plate: housings are ${h1.sys}, 2u stabilizer housing is ${h2.sys}.`;
-  }
-  if(slotKey==="stab2" && p.h2){
-    const th2=get("housings2u",p.h2), tsl2=get("sliders2u",p.sl2);
-    if(tsl2 && th2 && !tsl2.fits.includes(th2.sys)) return "Assembly parts mismatch.";
-    if(h1 && th2 && h1.sys!==th2.sys) return `Mixed systems: housings are ${h1.sys}, this assembly is ${th2.sys}.`;
-  }
-  return null;
+function edge(a,b){ return EC.COMPAT[[a,b].sort().join("||")]||null; }
+function edgeNote(e){
+  if(!e||!e.n||!EC.NOTES[e.n])return "";
+  return EC.NOTES[e.n].text;
 }
-function limboFor(slotKey, p){
-  if(driver()) return false;
-  if(slotKey==="slider"||slotKey==="sl2") return false;
-  return !!(p.fits || p.sys);                            // constrained parts wait for a driver
-}
-/* special-condition notes (✳) for a candidate in the current build */
-function specialsFor(slotKey, p){
+/* equipped part names for pairwise checks (derived keycap included) */
+function equippedNames(exceptSlot){
   const out=[];
-  const sl = (slotKey==="slider")? p : part("slider");
-  const rg = (slotKey==="ring")? p : part("ring");
-  const h1 = (slotKey==="h1")? p : part("h1");
-  const h2 = (slotKey==="h2")? p : part("h2");
-  const sl2= (slotKey==="sl2")? p : part("sl2");
-  if((slotKey==="ring"||slotKey==="slider") && rg && sl){
-    const recess=sl.silentRecess||0, pre=Math.max(0,rg.t-recess), gap=Math.max(0,recess-rg.t);
-    if(pre>0) out.push(`${rg.t} mm ring on a ${recess} mm-recess slider: ${pre.toFixed(1)} mm dome preload — travel ~${(4.0+(sl.travelMod||0)-pre).toFixed(1)} mm, snap arrives earlier. Bench data: feel survives to ~0.3 mm on standard sliders.`);
-    if(gap>0.01) out.push(`Silent slider without its ring: ${gap.toFixed(1)} mm top-out rattle. These sliders expect a 0.5 mm ring.`);
+  for(const s of SLOTS){
+    if(s.key===exceptSlot)continue;
+    const p=part(s.key); if(!p)continue;
+    if(s.key==="dome")continue;                    /* domes: universal */
+    out.push(p.name);
   }
-  if((slotKey==="sl2"||slotKey==="h2") && sl2 && h2 && sl2.stem==="mx" && h2.sys==="classic")
-    out.push(`MX-stem 2u slider in a Topre-pattern 2u housing: the housing needs drilling for MX keycap stem clearance.`);
-  if(slotKey==="h1" && p.sys==="dynacaps")
-    out.push("DynaCaps housings are designed for 1.5 mm plates — on the standard 1.2 mm plate (assumed here), use DynaCaps housing gaskets.");
-  if(slotKey==="slider" && p.id==="sl-dyna" && h1 && h1.id==="h1-dyna")
-    out.push("DynaCaps slider in DynaCaps housing: zero-clearance rails lock the base while the inverse-tapered, elliptical barrel and the non-concentric, canted crown fight each other. It works, but expect a level of scratch Topre assemblies never show.");
-  if(slotKey==="h1" && p.id==="h1-dyna" && sl && sl.id==="sl-dyna")
-    out.push("DynaCaps slider in DynaCaps housing: expect scratch — see slider notes.");
-  if(p.rc1) out.push("RC1 spacebar stabilizer is integrated into the shell; its wire is unique to the RC1 and requires that special bar. MX conversion requires swapping the spacebar stabilizer plunger from the assembly — untested.");
-  if(p.special && p.notes && p.notes.length) out.push(p.notes[0]);
+  const cap=capPartName(); if(cap)out.push(cap);
   return out;
 }
-/* full build notices for the cluster + loadout */
+/* worst pairwise status for a candidate part against the current build */
+function pairStatus(slotKey,p){
+  const res={warn:[],note:[],pending:[]};
+  for(const other of equippedNames(slotKey)){
+    if(other===p.name)continue;
+    const e=edge(p.name,other);
+    if(!e)continue;
+    const txt=edgeNote(e);
+    if(e.s==="incompatible")res.warn.push({other,txt:txt||`Incompatible with ${other}.`});
+    else if(e.s==="pending")res.pending.push({other,txt:`Unconfirmed with ${other} — pending release.`});
+    else if(e.s==="compatible_note"&&txt)res.note.push({other,txt});
+  }
+  return res;
+}
+function conflictFor(slotKey,p){
+  const r=pairStatus(slotKey,p);
+  return r.warn.length? r.warn.map(w=>w.txt).join(" ") : null;
+}
+function limboFor(slotKey,p){
+  return pairStatus(slotKey,p).pending.length>0;
+}
+/* seat/offset/ring math on the 1u chain */
+function ringMath(sl,rg,h1){
+  if(!sl||sl.seat==null)return null;
+  const t=rg?rg.t:0;
+  const off=h1?(h1.off||0):0;
+  const base=sl.travel!=null?sl.travel:4.0;
+  const eff=+(t-(sl.seat+off)).toFixed(2);
+  if(Math.abs(eff)<1e-9)return {kind:"none",txt:`Ring seats flush — no chatter, no precompression. Travel ${base} mm.`};
+  if(eff<0)return {kind:"chatter",txt:`${(-eff).toFixed(1)} mm top-out chatter (ring thinner than seat${off?" + housing space":""}). Travel ${base} mm.`};
+  return {kind:"precomp",txt:`${eff.toFixed(1)} mm dome precompression — travel ${(base-eff).toFixed(1)} mm, snap arrives earlier.`};
+}
+function specialsFor(slotKey,p){
+  const out=[];
+  const sl=(slotKey==="slider")?p:part("slider");
+  const rg=(slotKey==="ring")?p:part("ring");
+  const h1=(slotKey==="h1")?p:part("h1");
+  if(["slider","ring","h1"].includes(slotKey)){
+    const m=ringMath(sl,rg,h1);
+    if(m&&m.kind!=="none")out.push(m.txt);
+    if(sl&&/dynacaps/i.test(sl.maker)&&rg&&rg.t>0.3)
+      out.push("DynaCaps: Pre-Compression by Design — compression warning until a 0.3 mm ring is selected.");
+  }
+  if((slotKey==="h1"||slotKey==="h2")&&p.off&&p.notes.length)out.push(p.notes[0]);
+  if(p.springWarn)out.push(p.springWarn);
+  if(p.shell&&p.notes.length)out.push(p.notes[0]);
+  const r=pairStatus(slotKey,p);
+  for(const n of r.note)out.push(n.txt);
+  return out;
+}
 function buildNotices(){
   const out=[];
-  const d=driver();
   for(const s of SLOTS){
-    const p=part(s.key); if(!p) continue;
-    const c=conflictFor(s.key,p);
-    if(c) out.push({slot:s.label,kind:"warn",txt:c});
-    for(const t of specialsFor(s.key,p)) out.push({slot:s.label,kind:"note",txt:t});
-    if(!d && limboFor(s.key,p)) out.push({slot:s.label,kind:"limbo",txt:"Waiting for a slider — compatibility is driven by the slider (2u slider is the fallback)."});
+    const p=part(s.key); if(!p)continue;
+    const r=pairStatus(s.key,p);
+    for(const w of r.warn)out.push({slot:s.label,kind:"warn",txt:w.txt});
+    for(const q of r.pending)out.push({slot:s.label,kind:"limbo",txt:q.txt});
+    for(const t of specialsFor(s.key,p))out.push({slot:s.label,kind:"note",txt:t});
   }
-  /* dedupe */
   const seen=new Set();
-  return out.filter(n=>{const k=n.slot+"|"+n.txt;if(seen.has(k))return false;seen.add(k);return true;});
+  return out.filter(n=>{const k=n.kind+"|"+n.txt;if(seen.has(k))return false;seen.add(k);return true;});
 }
 
 /* ====================================================================
@@ -511,12 +454,12 @@ function openNotes(p, anchor){
 /* ====================================================================
    BUILDER STATE + SCENE
 ==================================================================== */
-const build={slider:null,ring:null,dome:null,h1:null,h2:null,sl2:null,sb:null,spring:null};
+const build={slider:null,ring:null,dome:null,h1:null,shell:null,h2:null,sl2:null,sb:null,spring:null};
 let activeSlot=null;
 
 const SC={ housing:["#4E6E9E","#2E4468"], plate:["#A8B0BA","#6E7884"], dome:["#E8DCC0","#B9AC8C"],
   pcb:["#2E7D4F","#1E5735"], ring:["#E8833A","#B85F1E"], spring:"#C9A24B",
-  cap:["#E3D5B3","#A8966C"], slider:{"sl-purple":"#9A5BD6","sl-types":"#B9BEC6"}, sliderDef:"#D5D9DE" };
+  cap:["#E3D5B3","#A8966C"], slider:{}, sliderDef:"#D5D9DE" };
 const Xp=x=>160+x*13, Yp=y=>210-y*13;
 function scenePath(loops, fill, stroke, slot){
   const d=loops.map(lp=>"M"+lp.map(([x,y])=>`${Xp(x).toFixed(1)},${Yp(y).toFixed(1)}`).join(" L")+" Z").join(" ");
@@ -624,7 +567,7 @@ function renderLoadout(){
     h+=`<div class="lo-row"><div class="lo-slot">${s.label}</div><div class="lo-val">`;
     if(p){
       h+=`<span class="pname">${p.name}</span>`;
-      if(s.key==="dome")h+=`<span class="lo-link" style="color:var(--muted)">${p.maker}${p.wraw?` · ${p.wraw} g`:""}</span>`;
+      if(s.key==="dome"&&p.wraw&&!p.name.includes(p.wraw))h+=`<span class="lo-link" style="color:var(--muted)">${p.maker} · ${p.wraw} g</span>`;
       if(p.u)h+=`<a class="lo-link" href="${p.u}" target="_blank" rel="noopener">source ↗</a>`;
       if(p.buy)h+=`<span class="lo-buy">${p.buy}</span>`;
       if(s.key==="dome"&&p.tests&&!p.tests.length)h+=`<span class="lo-buy">not bench-tested</span>`;
@@ -686,11 +629,15 @@ function openSlot(key){
       if(e.target.classList.contains("oicon"))return;
       const on=build[key]===p.id;
       build[key]=on?null:p.id;
+      if(key==="shell"){                     /* shells are linkers (B1) */
+        if(on){ build.h1=null;build.h2=null;if(p.addsSb)build.sb=null; }
+        else { build.h1=p.id;build.h2=p.id;if(p.addsSb)build.sb=p.id; }
+      }
       renderAll();openSlot(key);
     });
     el.querySelectorAll(".oicon").forEach(ic=>{
       const t=ic.getAttribute("data-i");
-      if(t==="p"){ ic.addEventListener("click",e=>{e.stopPropagation();openNotes(p,ic);}); return; }
+      if(t==="p"){ hoverTip(ic,()=>`<span class="t-slot">${p.name}</span>`+(p.notes&&p.notes.length?p.notes:["No additional notes."]).map(n=>`<div style="margin-bottom:7px">${n}</div>`).join("")); return; }
       hoverTip(ic,()=>{
         if(t==="w")return `<span class="t-slot">${slot.label}</span>${conflictFor(key,p)}`;
         if(t==="l")return `<span class="t-slot">${slot.label}</span>Waiting for a slider — compatibility is driven by the slider (2u slider is the fallback).`;
@@ -705,20 +652,23 @@ function openSlot(key){
 ==================================================================== */
 const findDomeW=(w,makerRe)=>{
   const cs=CATALOG.domes.filter(d=>makerRe.test(d.maker)&&d.wmin!=null&&d.wmin<=w&&w<=d.wmax);
-  cs.sort((a,b)=>(a.wmax-a.wmin)-(b.wmax-b.wmin));       /* exact-weight rows win */
+  cs.sort((a,b)=>(a.wmax-a.wmin)-(b.wmax-b.wmin));
   return cs.length?cs[0].id:null;
 };
 const findDome=(...res)=>{ for(const re of res){const hit=CATALOG.domes.find(d=>re.test((d.maker+" "+d.name+" "+(d.variant||"")).toLowerCase()));if(hit)return hit.id;} return null; };
+const byName=n=>{ for(const k in PARTIDX)if(PARTIDX[k].name===n)return k; return null; };
+const RINGID={"None":"ring::none","0.3 mm":"ring::0.3","0.5 mm":"ring::0.5","0.7 mm":"ring::0.7"};
+const ringFor=slider=>{ const d=EC.RINGDEF[slider]; return d?RINGID[d.ring]||"ring::none":"ring::none"; };
 const PRESETS_OEM=[
- ["Realforce (Standard)",()=>({slider:"sl-std",ring:"ring-none",dome:findDomeW(45,/topre/i),h1:"h1-classic",h2:"h2-classic",sl2:"sl2-classic",sb:"sb-classic",spring:"spr-topre"})],
- ["Realforce (Silent)",()=>({slider:"sl-purple",ring:"ring-05",dome:findDomeW(45,/topre/i),h1:"h1-classic",h2:"h2-classic",sl2:"sl2-classic",sb:"sb-classic",spring:"spr-topre"})],
- ["Realforce RC1",()=>({slider:"sl-types",ring:"ring-05",dome:findDomeW(45,/topre/i),h1:"rc1-shell",h2:"rc1-shell-int",sl2:"sl2-classic",sb:null,spring:"spr-topre"})],
- ["HHKB (Standard)",()=>({slider:"sl-std",ring:"ring-none",dome:findDomeW(45,/topre/i),h1:"hhkb-shell",h2:"hhkb-shell-2u",sl2:"sl2-classic",sb:null,spring:"spr-topre"})],
- ["HHKB (Type-S)",()=>({slider:"sl-types",ring:"ring-05",dome:findDomeW(45,/topre/i),h1:"hhkb-shell",h2:"hhkb-shell-2u",sl2:"sl2-classic",sb:null,spring:"spr-topre"})]
+ ["Realforce (Standard)",()=>({slider:byName("Topre Slider"),ring:ringFor("Topre Slider"),dome:findDomeW(45,/topre/i),h1:byName("Topre Housings"),shell:null,h2:byName("Topre Stabilizer Housing"),sl2:byName("Topre Stabilizer Slider"),sb:byName("Topre Spacebar Stabilizer"),spring:byName("Topre Conical Springs")})],
+ ["Realforce (Silent)",()=>({slider:byName("Realforce Silent Slider"),ring:ringFor("Realforce Silent Slider"),dome:findDomeW(45,/topre/i),h1:byName("Topre Housings"),shell:null,h2:byName("Realforce Silent Stabilizer Housing"),sl2:byName("Realforce Silent Stabilizer Slider"),sb:byName("Topre Spacebar Stabilizer"),spring:byName("Topre Conical Springs")})],
+ ["Realforce RC1",()=>({slider:byName("Realforce Silent Slider"),ring:ringFor("Realforce Silent Slider"),dome:findDomeW(45,/topre/i),h1:"shell::rc1",shell:"shell::rc1",h2:"shell::rc1",sl2:byName("Realforce RC1 Stabilizer Slider"),sb:"shell::rc1",spring:byName("Topre Conical Springs")})],
+ ["HHKB (Standard)",()=>({slider:byName("Topre Slider"),ring:ringFor("Topre Slider"),dome:findDomeW(45,/topre/i),h1:"shell::hhkb",shell:"shell::hhkb",h2:"shell::hhkb",sl2:byName("Topre Stabilizer Slider"),sb:null,spring:byName("Topre Conical Springs")})],
+ ["HHKB (Type-S)",()=>({slider:byName("HHKB Type-S Slider"),ring:ringFor("HHKB Type-S Slider"),dome:findDomeW(45,/topre/i),h1:"shell::hhkb",shell:"shell::hhkb",h2:"shell::hhkb",sl2:byName("HHKB Type-S Stabilizer Slider"),sb:null,spring:byName("Topre Conical Springs")})]
 ];
 const PRESETS_AM=[
- ["DynaCaps",()=>({slider:"sl-dyna",ring:"ring-05",dome:findDome(/dynacap.*medium/,/dynacap.*doems/),h1:"h1-dyna",h2:"h2-dyna",sl2:"sl2-dyna",sb:"sb-dyna",spring:"spr-dyna"})],
- ["Deskeys",()=>({slider:"sl-deskeys",ring:"ring-05",dome:findDome(/deskeys.*t1/,/deskeys/),h1:null,h2:null,sl2:null,sb:null,spring:null})]
+ ["DynaCaps",()=>({slider:byName("DynaCaps Slider"),ring:ringFor("DynaCaps Slider"),dome:findDome(/dynacaps medium/),h1:byName("DynaCaps Housings"),shell:null,h2:byName("DynaCaps Stabilizer Housing"),sl2:byName("DynaCaps Stabilizer Slider"),sb:byName("DynaCaps Spacebar Stabilizer"),spring:byName("DynaCaps Conical Springs")})],
+ ["Deskeys",()=>({slider:byName("Deskeys Slider"),ring:ringFor("Deskeys Slider"),dome:findDome(/deskeys.*t1/,/deskeys/),h1:byName("Deskeys Housings"),shell:null,h2:byName("Deskeys Stabilizer Housing"),sl2:byName("Deskeys Stabilizer Slider"),sb:byName("Deskeys Spacebar Stabilizer"),spring:null})]
 ];
 const OEM_NOTE=`<div class="ln-def"><b>What "OEM" means here.</b> OEM — original equipment manufacturer — means <b>made by Topre Corporation</b> (Novatouch included: Topre-made for Cooler Master). The term gets used loosely in the EC scene. Note in particular: DynaCaps parts are marketed as "Authorized OEM," including on the box — that phrasing means Omnitype is the authorized manufacturer <b>of DynaCaps-brand parts, and only DynaCaps-brand parts</b>. It does not mean Topre-made, and it does not mean officially compatible with Topre parts.</div>`;
 
@@ -766,25 +716,32 @@ function openLoadNew(){lnStep="root";document.getElementById("loadModal").classL
 function closeLoadNew(){document.getElementById("loadModal").classList.remove("open");}
 document.getElementById("loadModal").addEventListener("click",e=>{if(e.target.id==="loadModal")closeLoadNew();});
 /* ====================================================================
-   DOMES — BuddyOG's database. Name = the part name only; variant,
-   color, weight are searchable properties, never renamed in.
-   Vendor feel/notes columns are quarantined from display.
+   DOMES — verbatim from dome-list-review.xlsx (63 rows, BuddyOG-final).
+   Names are final; brand/style/variant/nominal are searchable
+   properties. Nominal is the NAME's number, not a measurement — the
+   Bench column is the measurement.
 ==================================================================== */
 function initDomes(){
   CATALOG.domes = DOME_DB.map(d=>({
-    id:d.id, name:d.style, maker:d.maker, vendor:d.vendor,
-    type:/topre/i.test(d.maker)?OEM:AM,
+    id:d.id, name:d.name, maker:d.maker, brand:d.brand, style:d.style,
     variant:d.variant, wraw:d.wraw, wmin:d.wmin, wmax:d.wmax,
-    u:d.src&&/^https?:/.test(d.src)?d.src:"",
-    brief:"", notes:[], tests:[],
-    buy:/deskeys/i.test(d.maker)?"Deskeys defunct (July 2026)":(/bke|keyclack/i.test(d.maker+d.style)?"No longer sold — secondary market only":"")
+    type:d.type, u:d.u||"", brief:"", notes:[], tests:[], buy:d.avail||""
   }));
+  for(const d of CATALOG.domes)PARTIDX[d.id]=d;
 }
+/* bench set -> dome display name (explicit; fuzzy is fallback only) */
+const BENCH_MAP={
+ "topre 30g":"Topre 30g","topre 45g":"Topre 45g",
+ "topre 55g":"Topre Aged 55g","topre 55g aged":"Topre Aged 55g",
+ "dynacaps light":"DynaCaps Light","dynacaps medium":"DynaCaps Medium","dynacaps heavy":"DynaCaps Heavy",
+ "bke redux extreme 01":"BKE Redux v1 Extreme","niz 65g":"NiZ 65g"
+};
 let domeMaker="all", domeWeight="all";
 const WBUCKETS=[["all","All weights"],["le35","≤ 35 g"],["w4055","40–55 g"],["w6075","60–75 g"],["ge80","80 g +"]];
 function wMatch(d,b){
   if(b==="all")return true;
-  const lo=d.wmin??0, hi=d.wmax??999;
+  if(d.wmin==null)return false;         /* no nominal claim -> no bucket */
+  const lo=d.wmin, hi=d.wmax??d.wmin;
   if(b==="le35")return lo<=35;
   if(b==="w4055")return hi>=40&&lo<=55;
   if(b==="w6075")return hi>=60&&lo<=75;
@@ -844,7 +801,7 @@ function tokensMatch(q, hay){
     return s&&H.includes(s);
   });
 }
-function domeHay(d){return [d.name,d.maker,d.vendor,d.variant,d.wraw,d.type].filter(Boolean).join(" ");}
+function domeHay(d){return [d.name,d.maker,d.brand,d.style,d.variant,d.wraw,d.type,d.buy].filter(Boolean).join(" ");}
 function renderDomeRows(){
   const q=document.getElementById("domeSearch").value||"";
   const tb=document.getElementById("domeRows");tb.innerHTML="";
@@ -882,7 +839,8 @@ const SNAPSHOT_TESTS=[
  ["DynaCaps Light","Snap 16% · 158 gf·mm"],["DynaCaps Medium","Snap 18% · 173 gf·mm"],["DynaCaps Heavy","Snap 20% · 185 gf·mm"]
 ];
 function matchDome(setName){
-  const t=setName.toLowerCase();
+  const t=setName.toLowerCase().replace(/_/g," ").trim();
+  if(BENCH_MAP[t]){ const hit=CATALOG.domes.find(d=>d.name===BENCH_MAP[t]); if(hit)return hit; }
   const nums=(t.match(/\d+/g)||[]).map(Number);
   let best=null,bs=2;
   for(const d of CATALOG.domes){
@@ -904,7 +862,11 @@ async function loadDomes(){
   }catch(e){}
   const isParts=f=>/slider|type-?s|parts/i.test(f);
   if(!paths||!paths.length){
-    for(const [set,stat] of SNAPSHOT_TESTS){const d=matchDome(set);if(d)d.tests.push({set,stat:stat+" (snapshot)"});}
+    for(const [set,stat] of SNAPSHOT_TESTS){
+      let d=matchDome(set);
+      if(!d){d={id:"dm-set-"+set.toLowerCase().replace(/\W+/g,"-"),name:set,maker:set.split(" ")[0],type:AM,variant:"",wraw:"",wmin:null,wmax:null,u:"",brief:"",notes:[],tests:[],buy:""};CATALOG.domes.push(d);}
+      d.tests.push({set,stat:stat+" (snapshot)"});
+    }
     renderAll();return;
   }
   const folders=new Map();
@@ -912,8 +874,12 @@ async function loadDomes(){
   const queue=[];
   for(const [f,files] of folders){
     const setName=f.replace(/_/g," ");
-    const d=matchDome(setName);
-    if(!d)continue;                     /* domes not in BuddyOG's list are NOT invented */
+    let d=matchDome(setName);
+    if(!d){                              /* bench-measured but not on the list: add it (ruling #4) */
+      d={id:"dm-set-"+f.toLowerCase(), name:setName, maker:setName.split(" ")[0],
+         type:AM, variant:"", wraw:"", wmin:null, wmax:null, u:"", brief:"", notes:[], tests:[], buy:""};
+      CATALOG.domes.push(d);
+    }
     const t={set:setName,stat:null,files};d.tests.push(t);queue.push(t);
   }
   renderAll();
@@ -969,18 +935,22 @@ function analyze(x,F){
 /* ====================================================================
    LIBRARY — search filters NAME + PROPERTIES only, plural-normalized.
 ==================================================================== */
-const LIB_CATS=[["all","All"],["shells","Shells & Kits"],["housings1u","Housings"],["housings2u","2u Stab Housings"],
- ["stabs2","2u Stab Assemblies"],["sliders","Sliders"],["sliders2u","2u Sliders"],["rings","Silencing Rings"],
- ["spacebars","Spacebar Stabs"],["springs","Springs"],["domes","Domes"],["plates","Plates"],["pcbs","PCBs"]];
+const LIB_CATS=[["all","All"],["domes","Domes"],["sliders","Sliders"],["rings","Silencing Rings"],
+ ["housings1u","Housings"],["sliders2u","Stabilizer Sliders"],["housings2u","Stabilizer Housings"],
+ ["spacebars","Spacebar Stabilizer"],["springs","Conical Springs"],["shells","Shells"]];
 let libCat="all";
+function typeDisp(t){ return t==="OEM TOPRE"?"OEM Topre":t==="AFTERMARKET"?"Aftermarket":(t||"—"); }
 function props(p,catLabel){
-  const o={"Manufacturer":p.maker||"—","Type":p.type||"—","Category":catLabel};
+  const o={"Manufacturer":p.maker||"—","Type":typeDisp(p.type),"Category":catLabel};
   if(p.stem)o["Stem"]=p.stem.toUpperCase();
-  if(p.sys)o["System"]=p.sys;
+  if(p.seat!=null)o["Ring Seat"]=p.seat+" mm";
+  if(p.off)o["Ring Offset"]="+"+p.off+" mm";
+  if(p.travel!=null)o["Travel"]=p.travel+" mm";
   if(p.t!==undefined)o["Thickness"]=p.t+" mm";
-  if(p.wraw)o["Weight"]=p.wraw+" g";
-  if(p.variant)o["Variants / colors"]=p.variant;
-  if(p.silentRecess)o["Seat recess"]=p.silentRecess+" mm";
+  if(p.brand)o["Brand"]=p.brand;
+  if(p.style)o["Style"]=p.style;
+  if(p.variant)o["Variant"]=p.variant;
+  if(p.wraw)o["Nominal"]=p.wraw;
   if(p.buy)o["Availability"]=p.buy;
   return o;
 }
@@ -1010,16 +980,10 @@ function renderLib(){
       n++;
       const el=document.createElement("div");el.className="card";
       const nm=p.u?`<a href="${p.u}" target="_blank" rel="noopener">${p.name}</a>`:p.name;
-      const mkUrl=MAKERS[p.maker]||"";
-      const mk=p.maker&&p.maker!=="—"?(mkUrl?`<a href="${mkUrl}" target="_blank" rel="noopener" style="color:inherit">${p.maker}</a>`:p.maker):"";
-      el.innerHTML=`<span class="pname">${nm}</span><div class="mk">${mk}</div>
-        ${p.brief?`<div class="brief">${p.brief}</div>`:""}
-        ${p.buy?`<div class="brief" style="color:var(--warn)">${p.buy}</div>`:""}
-        ${p.ptype?`<span class="ptype">${p.ptype}</span>`:""}
-        ${p.tests&&p.tests.length?`<div class="brief"><span class="tested-ic">▦</span> bench-tested</div>`:""}
-        <div class="c-ic">${p.notes&&p.notes.length?`<span class="oicon oi-pad">📝</span>`:""}<span class="props">&#187;&#187;</span></div>`;
+      el.innerHTML=`<span class="pname">${nm}</span>
+        <div class="c-ic">${p.notes&&p.notes.length?`<span class="oicon oi-pad">📝</span>`:""}${p.tests&&p.tests.length?`<span class="tested-ic">▦</span>`:""}<span class="props">&#187;&#187;</span></div>`;
       const pad=el.querySelector(".oi-pad");
-      if(pad)pad.addEventListener("click",()=>openNotes(p,pad));
+      if(pad)hoverTip(pad,()=>`<span class="t-slot">${p.name}</span>`+p.notes.map(n=>`<div style="margin-bottom:7px">${n}</div>`).join(""));
       const pr=el.querySelector(".props");
       hoverTip(pr,()=>{
         const t=props(p,catLabel);
@@ -1041,6 +1005,7 @@ document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
   document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x===t));
   document.querySelectorAll(".view").forEach(v=>v.classList.remove("on"));
   document.getElementById("view-"+t.dataset.v).classList.add("on");
+  document.getElementById("libFilter").style.display=t.dataset.v==="library"?"block":"none";
 }));
 let theme="dark";
 function setTheme(t){
@@ -1051,6 +1016,7 @@ function setTheme(t){
 document.getElementById("themeToggle").addEventListener("click",()=>setTheme(theme==="dark"?"light":"dark"));
 (function(){let sv=null;try{sv=localStorage.getItem("ukdl-theme");}catch(e){}setTheme(sv==="light"?"light":"dark");})();
 
+initParts();
 initDomes();
 renderLoadNew(true);          /* the gate IS the Load New screen */
 renderLibChips();renderLib();
