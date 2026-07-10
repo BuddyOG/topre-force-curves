@@ -77,6 +77,10 @@ h2.sec{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transfor
 .p h4{font-size:14px;margin-bottom:4px}
 .p p{font-size:12.5px;line-height:1.6;color:var(--muted)}
 
+.hsub{font-size:19px;color:var(--muted);margin:4px 0 10px;font-weight:600}
+.hopen{display:inline-block;font-family:var(--mono);font-size:12.5px;color:var(--accent-ink);margin:2px 0 10px;text-decoration:none}
+.hopen:hover{text-decoration:underline}
+.hbtn.on{border-color:var(--accent);color:var(--accent-ink)}
 /* deep cuts */
 .deep{padding:34px 0 30px}
 .dlist{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
@@ -100,7 +104,7 @@ h2.sec{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transfor
 <div class="wrap">
 
 <header>
-  <span class="eyebrow">Unreal Keyboards · Dome Lab · build lab-0.7</span>
+  <span class="eyebrow">Unreal Keyboards · Dome Lab · build lab-1.1</span>
   <div class="hb">
     <a href="https://github.com/BuddyOG/topre-force-curves" target="_blank" rel="noopener">github</a>
     <a href="https://unrealkeyboards.com" target="_blank" rel="noopener">shop</a>
@@ -110,30 +114,80 @@ h2.sec{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transfor
 
 <section class="hero">
   <div>
-    <h1>The Dome Lab.<br>Three tools for <em>understanding</em> Topre &amp; EC.</h1>
-    <p>Built for people new to Topre and EC modification — and rigorous enough for people deep in it.
-    <b>First, understand the switch</b>: the interactive Switch Explorer is the starting point.
-    <b>Then navigate the parts</b>: one place with everything needed to build a custom board without open questions.
-    <b>Then compare domes on a standard</b>: measured weight and Snap&nbsp;% instead of marketing numbers — across a complete library of every dome made.
-    Secondary to all of it: measured tests of parts and setups, and how they change travel and feel.</p>
+    <h1 id="hTitle">The Dome Lab.</h1>
+    <p class="hsub" id="hSub">Three tools for <em>understanding</em> Topre &amp; EC.</p>
+    <p id="hDesc"></p>
+    <a id="hOpen" class="hopen" target="_top" href="#" style="display:none">Open the tool &rarr;</a>
     <div class="cta">
-      <a class="btn pri" target="_top" href="https://unrealkeyboards.com/pages/ec-switch-explorer">Explore the Interactive Switch</a>
-      <a class="btn sec" target="_top" href="https://unrealkeyboards.com/pages/topre-ec-parts-library-builder">Browse Parts &amp; Check a Build</a>
-      <a class="btn sec" target="_top" href="https://unrealkeyboards.com/pages/topre-force-curve-library">Compare Dome Force Curves</a>
+      <button class="btn sec hbtn" type="button" data-h="explorer">Explore</button>
+      <button class="btn sec hbtn" type="button" data-h="builder">Build</button>
+      <button class="btn sec hbtn" type="button" data-h="analyzer">Compare</button>
     </div>
   </div>
   <div class="heroviz">
     <svg id="heroCurve" viewBox="0 0 460 240" role="img" aria-label="Measured force curve of a Topre 45g dome: force rises to a 52 gram collapse peak at 1.3 millimeters, dips through the tactile snap, then climbs steeply at bottom-out near 4 millimeters."></svg>
-    <div class="cap"><span>Topre 45g — as measured</span><span class="live">real bench data</span></div>
+    <!-- Cross-section traced from the explorer's cad-2.3 profiles (at rest,
+         standard slider, no ring) — same geometry, same colors, no callouts. -->
+    <svg id="heroXsect" viewBox="0 0 460 240" style="display:none" role="img" aria-label="Cross-section of a Topre electrostatic capacitive switch at rest, drawn from the explorer's CAD profiles: hatched keycap over the standard slider, hatched housing, rubber dome with conical spring inside, mounting plate and PCB.">
+      <defs>
+        <pattern id="xsGrid" width="5" height="5" patternUnits="userSpaceOnUse">
+          <rect width="5" height="5" fill="#2E7D4F"/>
+          <path d="M0,0 H5 M0,0 V5" stroke="#1E5735" stroke-width=".8"/>
+        </pattern>
+        <pattern id="xsHouse" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="4" height="4" fill="#4E6E9E"/>
+          <line x1="0" y1="0" x2="0" y2="4" stroke="#3A5480" stroke-width="1.2"/>
+        </pattern>
+        <pattern id="xsCap" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="4" height="4" fill="#E3D5B3"/>
+          <line x1="0" y1="0" x2="0" y2="4" stroke="#C7B58C" stroke-width="1.2"/>
+        </pattern>
+        <pattern id="xsPlate" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <rect width="4" height="4" fill="#A8B0BA"/>
+          <line x1="0" y1="0" x2="0" y2="4" stroke="#86909C" stroke-width="1.2"/>
+        </pattern>
+      </defs>
+      <!-- PCB (full bleed) + capacitive sense pads -->
+      <rect x="0" y="221.5" width="460" height="13" fill="url(#xsGrid)" stroke="#1E5735" stroke-width="1"/>
+      <rect x="218" y="217.5" width="9.4" height="4" fill="#E8B23A" stroke="#A87F1E" stroke-width=".6"/>
+      <rect x="232.6" y="217.5" width="9.4" height="4" fill="#E8B23A" stroke="#A87F1E" stroke-width=".6"/>
+      <!-- plate (full bleed to the housing flange) -->
+      <rect x="0" y="159.4" width="132.2" height="12.5" fill="url(#xsPlate)" stroke="#6E7884" stroke-width="1"/>
+      <rect x="327.8" y="159.4" width="132.2" height="12.5" fill="url(#xsPlate)" stroke="#6E7884" stroke-width="1"/>
+      <!-- rubber: sheet + dome at rest -->
+      <path fill="#E8DCC0" stroke="#B9AC8C" stroke-width="1.1" stroke-linejoin="round" d="M367.9,216.2 L367.9,221.5 L298.4,221.5 L293.2,216.3 L293.2,214.2 L287.9,198.3 L288.3,193.4 L287.6,188.6 L286.4,185.1 L284.7,181.9 L281.7,178 L278.9,175.7 L264.9,167.4 L262.5,163.6 L261.8,162.9 L260.8,162.6 L199.2,162.6 L198.4,162.8 L197.6,163.3 L195,167.4 L183.2,174.3 L180.1,176.4 L177.5,178.9 L175.3,181.9 L173.6,185.1 L172.4,188.6 L171.7,193.4 L172.1,198.3 L166.8,214.2 L166.8,216.3 L161.6,221.5 L92.1,221.5 L92.1,216.2 L163.7,216.2 L163.7,213.6 L168.9,198.2 L168.6,193.8 L168.8,191.1 L169.5,187.2 L170.9,183.4 L173.6,178.8 L176.3,175.7 L178.3,173.9 L180.5,172.3 L192.6,165.3 L193.2,164.7 L193.6,163.6 L193.6,147.8 L194.3,146.5 L195.7,146 L215,146 L215.6,146.4 L215.8,147.7 L216.5,148 L243.6,148 L244.2,147.6 L244.4,146.3 L245.1,146 L264.3,146 L265.5,146.3 L266.2,147.1 L266.4,147.9 L266.4,163.5 L266.7,164.6 L267.4,165.2 L278.4,171.6 L281.7,173.9 L283.7,175.7 L286.4,178.8 L289.1,183.4 L290.5,187.2 L291.2,191.1 L291.4,193.8 L291.1,198.2 L296.3,213.6 L296.3,216.2 Z"/>
+      <!-- conical spring inside the dome -->
+      <polyline fill="none" stroke="#C9A24B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" points="166.9,220.8 291.6,219.6 170.8,217.4 286.7,214.6 175.9,211.4 281.5,208.1 181.1,204.9 276.4,201.6 186.2,198.4 271.2,195.1 191.4,191.9 266,188.6 196.5,185.4 260.9,182.1 201.7,178.9 255.7,175.6 206.9,172.4 250.6,169.1 211.3,166.8 247.2,164.8"/>
+      <!-- housing -->
+      <path fill="url(#xsHouse)" stroke="#2E4468" stroke-width="1.1" fill-rule="evenodd" stroke-linejoin="round" d="M147.2,131.6 L185.7,131.6 L185.7,101.8 L175.1,101.8 L175.1,121.1 L141.7,121.1 L133.3,134.1 L133.3,171.9 L108.2,171.9 L108.2,216.2 L147.2,216.2 Z M312.8,131.6 L312.8,216.2 L351.8,216.2 L351.8,171.9 L326.3,171.9 L326.3,134.1 L318,121.1 L284.9,121.1 L284.9,101.8 L274.3,101.8 L274.3,131.6 Z"/>
+      <!-- standard slider -->
+      <path fill="#D5D9DE" stroke="#9AA1AA" stroke-width="1" fill-rule="evenodd" stroke-linejoin="round" d="M199.2,52.6 L199.2,131.6 L260.8,131.6 L260.8,52.6 L273.8,52.6 L273.8,131.6 L312.4,131.6 L312.4,174.8 L303.6,174.8 L303.6,146.2 L156.4,146.2 L156.4,174.8 L147.6,174.8 L147.6,131.6 L186.2,131.6 L186.2,52.6 Z"/>
+      <!-- keycap -->
+      <path fill="url(#xsCap)" stroke="#A8966C" stroke-width="1.1" fill-rule="evenodd" stroke-linejoin="round" d="M238.8,45.8 L238.8,19.3 L248.1,19.5 L248.1,118.3 L260.6,118.3 L260.6,19.7 L286.7,20.3 L314.2,69.4 L337.1,112.4 L355.9,112.4 L327.7,60.4 L299.2,10 L260.8,12.1 L230,12.2 L199.2,10.9 L168.6,8.2 L145.4,5.2 L116.4,70.6 L110,89.4 L104.1,112.4 L122.9,112.4 L127.3,93.9 L133.7,73.4 L157,17.6 L199.4,18.5 L199.4,118.3 L211.9,118.3 L211.9,18.7 L221.2,18.9 L221.2,45.8 Z"/>
+    </svg>
+    <svg id="heroParts" viewBox="0 0 460 240" style="display:none" role="img" aria-label="The builder's part picker: a slider list with one part selected and the loadout updating beside it.">
+      <text x="20" y="30" fill="#A7B0BA" font-family="monospace" font-size="11" letter-spacing="2">SLIDER — PICK A PART</text>
+      <rect x="20" y="44" width="264" height="34" rx="8" fill="#AC53FF" opacity=".18" stroke="#AC53FF"/>
+      <text x="34" y="66" fill="#F2F3F5" font-family="sans-serif" font-size="14" font-weight="700">Topre Slider</text>
+      <text x="262" y="66" fill="#AC53FF" font-family="monospace" font-size="13" text-anchor="end">&#10003;</text>
+      <rect x="20" y="86" width="264" height="34" rx="8" fill="none" stroke="#2E343B"/>
+      <text x="34" y="108" fill="#C6CCD2" font-family="sans-serif" font-size="14">Realforce Silent Slider</text>
+      <rect x="20" y="128" width="264" height="34" rx="8" fill="none" stroke="#2E343B"/>
+      <text x="34" y="150" fill="#C6CCD2" font-family="sans-serif" font-size="14">HHKB Type-S Slider</text>
+      <rect x="20" y="170" width="264" height="34" rx="8" fill="none" stroke="#2E343B"/>
+      <text x="34" y="192" fill="#C6CCD2" font-family="sans-serif" font-size="14">Deskeys Slider</text>
+      <text x="262" y="192" fill="#F0BE4E" font-family="monospace" font-size="13" text-anchor="end">&#9888;</text>
+      <text x="306" y="30" fill="#A7B0BA" font-family="monospace" font-size="11" letter-spacing="2">LOADOUT</text>
+      <text x="306" y="58" fill="#7C8894" font-family="monospace" font-size="10">KEYCAPS</text><text x="306" y="74" fill="#F2F3F5" font-family="sans-serif" font-size="12.5">Topre stem</text>
+      <text x="306" y="98" fill="#7C8894" font-family="monospace" font-size="10">SILENCING RING</text><text x="306" y="114" fill="#F2F3F5" font-family="sans-serif" font-size="12.5">None</text>
+      <text x="306" y="138" fill="#7C8894" font-family="monospace" font-size="10">DOMES</text><text x="306" y="154" fill="#F2F3F5" font-family="sans-serif" font-size="12.5">Topre 45g</text>
+      <text x="306" y="178" fill="#7C8894" font-family="monospace" font-size="10">CHATTER CHECK</text><text x="306" y="194" fill="#5FBF7A" font-family="sans-serif" font-size="12.5">flush — no warnings</text>
+    </svg>
+    <div class="cap"><span id="capL">Topre 45g — as measured</span><span class="live" id="capR">real bench data</span></div>
   </div>
 </section>
 
-<section class="stats">
-  <div class="stat"><div class="n">0.005&nbsp;mm</div><div class="l">bench displacement resolution</div></div>
-  <div class="stat"><div class="n">&lt;1&nbsp;g</div><div class="l">run-to-run collapse deviation</div></div>
-  <div class="stat"><div class="n">63</div><div class="l">domes catalogued — the complete library</div></div>
-  <div class="stat"><div class="n">100%</div><div class="l">raw data public on GitHub</div></div>
-</section>
+<section class="stats" id="statsRow"></section>
 
 <section class="tools">
   <h2 class="sec">The instruments</h2>
@@ -141,22 +195,19 @@ h2.sec{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transfor
     <a class="card" target="_top" href="https://unrealkeyboards.com/pages/ec-switch-explorer">
       <span class="no">01</span>
       <h3>Topre &amp; EC Switch Explorer</h3>
-      <p>The starting point. A working, interactive cross-section that teaches everything about how a Topre &amp; EC switch works — press it with any key, swap sliders, fit silencing rings, watch the dome's skirt hinge and snap through on real measured curves, and see top-out chatter happen when a ring is missing. Set the actuation and reset points yourself, from fixed HHKB behavior to GX1/Cipulot-style fully adjustable. Built to take a newcomer to fluency, and detailed enough that veterans learn from it too.</p>
-      <div class="tags"><span class="tag">interactive teaching model</span><span class="tag">adjustable actuation &amp; reset</span><span class="tag">measured collapse physics</span></div>
+      <p id="cardDesc1"></p>
       <span class="go">learn the switch, interactively &rarr;</span>
     </a>
     <a class="card" target="_top" href="https://unrealkeyboards.com/pages/topre-ec-parts-library-builder">
       <span class="no">02</span>
       <h3>Topre &amp; EC Parts Library + Builder</h3>
-      <p>The map through the complex world of Topre &amp; EC parts: every part and all 63 domes with the details that matter — sources, seat and travel dimensions, availability, and the tolerance findings nobody publishes — in one place, so you can spec a custom board without open questions. The builder checks every combination live against the confirmed compatibility dataset: stem fit, ring preload and top-out chatter, drilling requirements — before you spend a dime.</p>
-      <div class="tags"><span class="tag">every part, one place</span><span class="tag">live compatibility checks</span><span class="tag">field notes</span></div>
+      <p id="cardDesc2"></p>
       <span class="go">browse every part &amp; check your build &rarr;</span>
     </a>
     <a class="card" target="_top" href="https://unrealkeyboards.com/pages/topre-force-curve-library">
       <span class="no">03</span>
-      <h3>Force Curve Analyzer</h3>
-      <p>The standard for comparing domes. Every dome is sold as one number; your fingers feel the whole curve. Overlay measured curves for every dome and slider configuration and compare them by <b>Total Energy</b> (how heavy it really is) and <b>Snap&nbsp;%</b> (how tactile) — the standardized read on weight and snappiness, working toward a complete library of every dome. Includes measured tests of parts and setups and how they change travel.</p>
-      <div class="tags"><span class="tag">measured data</span><span class="tag">Snap % standard</span><span class="tag">auto-syncs new tests</span></div>
+      <h3>Topre &amp; EC Dome Force Analyzer</h3>
+      <p id="cardDesc3"></p>
       <span class="go">compare measured force curves &rarr;</span>
     </a>
   </div>
@@ -165,9 +216,9 @@ h2.sec{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transfor
 <section class="prin">
   <h2 class="sec">How the lab works</h2>
   <div class="pgrid">
-    <div class="p"><h4>Measured, not quoted</h4><p>Every force figure comes off a calibrated instrument at 0.005&nbsp;mm steps, averaged across runs. If it wasn't measured here, it's labeled.</p></div>
+    <div class="p"><h4>Measured, not quoted</h4><p>Every force figure comes off a calibrated instrument at 0.005&nbsp;mm steps, averaged across runs. Dome-to-dome variation is measured too: multiple physical domes of one type are tested and grouped, never blended silently. If it wasn't measured here, it's labeled.</p></div>
     <div class="p"><h4>One source of truth</h4><p>The parts and dome catalog is a single confirmed dataset; the tools read it verbatim. Names come from the raw list — never vendor terminology — and vendor claims are never treated as measurements. <a href="https://unrealkeyboards.com/pages/about">Who's behind it</a>.</p></div>
-    <div class="p"><h4>Open by default</h4><p>Raw CSVs, the viewer, and the tools live in a public repo. Push a new test set and every tool picks it up automatically.</p></div>
+    <div class="p"><h4>Open by default</h4><p>Raw CSVs, the dataset, and all three tools live in a public repo. New bench sessions flow through one importer — validated, outlier-checked, exported — and every tool picks them up automatically, with the data revision stamped in the library header.</p></div>
     <div class="p"><h4>Credit where due</h4><p>The force-curve instrument is a build of bluepylons' open-source Open-Switch-Curve-Meter. Sources, patents, and designs are cited, always.</p></div>
   </div>
 </section>
@@ -179,6 +230,8 @@ h2.sec{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transfor
     <a href="https://github.com/BuddyOG/topre-force-curves"><span class="k">data</span><span>Raw force-curve CSVs, every run, every set</span></a>
     <a href="https://patentimages.storage.googleapis.com/53/d7/b3/636954aedea39a/JP2012138254A.pdf"><span class="k">patent</span><span>Topre's silencing patent JP2012-138254A — the assembly, decoded</span></a>
     <a href="https://github.com/bluepylons/Open-Switch-Curve-Meter"><span class="k">hardware</span><span>Open-Switch-Curve-Meter by bluepylons — the measurement hardware design</span></a>
+    <a href="https://github.com/BuddyOG/topre-force-curves#readme"><span class="k">readme</span><span>The full standard &amp; pipeline documentation — metrics, method, importer, versioning</span></a>
+    <a href="https://buddyog.github.io/topre-force-curves/"><span class="k">live</span><span>The Force Curve Bench, raw on GitHub Pages</span></a>
     <a href="https://unrealkeyboards.com/pages/about"><span class="k">who</span><span>About Unreal Keyboards — the credentials behind the lab</span></a>
   </div>
 </section>
@@ -194,6 +247,46 @@ h2.sec{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transfor
 </div>
 <script>
 "use strict";
+/* ---------- header switcher (lab-1.1) ---------- */
+const HEADERS={
+ lab:{t:"The Dome Lab.",s:"Three tools for <em>understanding</em> Topre &amp; EC.",
+  d:"Built for people new to Topre and EC modification — and rigorous enough for people deep in it. <b>Explore</b> the switch itself in a working, interactive cross-section. <b>Build</b> against every part and dome ever made, with compatibility checked live from one confirmed dataset. <b>Compare</b> domes on a measured standard — Total Energy and Snap&nbsp;% instead of marketing numbers. Everything traces to a calibrated bench and a public repo.",
+  viz:"curve",cap:["Topre 45g — as measured","real bench data"],open:null,
+  st:[["3","instruments, one lab"],["63","domes catalogued — the complete library"],["356","compatibility rules checked live"],["100%","raw data public on GitHub"]]},
+ explorer:{t:"Topre &amp; EC Switch Explorer",s:"Press it. Break it. Understand it.",
+  d:"A working cross-section of the Topre electrostatic capacitive switch. Press it with any key on your keyboard, swap standard, silent, and Type-S sliders, fit silencing rings from 0.3 to 0.7&nbsp;mm or dial a custom one — and watch preload, travel, and the collapse point move on real measured curves. Remove the ring and the top-out chatter happens: one smack against the stop wall, called out on the model. Set actuation and reset yourself, from fixed HHKB behavior through R3/R4/RC1's 0.1&nbsp;mm analog steps to GX1/Cipulot-style variable actuation and reset.",
+  viz:"xsect",cap:["Topre switch — cross-section","every part explained"],open:"https://unrealkeyboards.com/pages/ec-switch-explorer",
+  st:[["any key","presses the switch — release always snaps back"],["0.1 mm","actuation &amp; reset increments, HHKB to Cipulot"],["8 parts","each one explained on hover"],["4.0 mm","full travel, animated on measured physics"]]},
+ builder:{t:"Topre &amp; EC Switch Builder",s:"Every part. Every dome. Zero guesswork.",
+  d:"The map through Topre &amp; EC parts: 40 parts and all 63 domes, named from the raw list — never vendor terminology — with seat, travel, availability, and the tolerance findings nobody publishes in hover-anywhere property boxes. The builder checks every combination live against the confirmed compatibility dataset: stem fit, ring preload and top-out chatter math, drilling requirements, unreleased-part warnings. Shells select as the housings they actually are, and bench-tested domes carry their measured curves, synced straight from the repo.",
+  viz:"parts",cap:["The builder — pick a part","checked as you click"],open:"https://unrealkeyboards.com/pages/topre-ec-parts-library-builder",
+  st:[["40","parts catalogued, named right"],["63","domes — the complete library"],["356","compatibility rules checked live"],["0","guesswork — chatter &amp; preload computed"]]},
+ analyzer:{t:"Topre &amp; EC Dome Force Analyzer",s:"Weight and tactility, measured — not marketed.",
+  d:"Every dome is sold as one number; your fingers feel the whole curve. Overlay bench-measured curves for every dome and slider configuration and compare them by <b>Total Energy</b> (how heavy it really is) and <b>Snap&nbsp;%</b> (how tactile). Dome-to-dome variation is first-class: multiple domes of one type group under a parent, compared individually — never silently averaged — with spready groups opening expanded automatically. New test sets appear the moment they're pushed.",
+  viz:"curve",cap:["Topre 45g — as measured","real bench data"],open:"https://unrealkeyboards.com/pages/topre-force-curve-library",
+  st:[["0.005 mm","bench displacement resolution"],["&lt;1 g","run-to-run collapse deviation"],["63","domes catalogued — the complete library"],["100%","raw data public on GitHub"]]}
+};
+function renderHeader(k){
+  const H=HEADERS[k];
+  document.getElementById("hTitle").innerHTML=H.t;
+  document.getElementById("hSub").innerHTML=H.s;
+  document.getElementById("hDesc").innerHTML=H.d;
+  const o=document.getElementById("hOpen");
+  if(H.open){o.href=H.open;o.style.display="inline-block";}else o.style.display="none";
+  for(const [id,vk] of [["heroCurve","curve"],["heroXsect","xsect"],["heroParts","parts"]])
+    document.getElementById(id).style.display=H.viz===vk?"":"none";
+  document.getElementById("capL").textContent=H.cap[0].replace(/&amp;/g,"&");
+  document.getElementById("capR").innerHTML=H.cap[1];
+  document.getElementById("statsRow").innerHTML=H.st.map(([n,l])=>`<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
+  document.querySelectorAll(".hbtn").forEach(b=>b.classList.toggle("on",b.dataset.h===k&&k!=="lab"));
+}
+document.querySelectorAll(".hbtn").forEach(b=>b.addEventListener("click",()=>renderHeader(b.dataset.h)));
+renderHeader("lab");
+/* the instrument cards mirror the header descriptions */
+document.getElementById("cardDesc1").innerHTML=HEADERS.explorer.d+" Built to take a newcomer to fluency, and detailed enough that veterans learn from it too.";
+document.getElementById("cardDesc2").innerHTML=HEADERS.builder.d+" Spec a custom board without open questions — before you spend a dime.";
+document.getElementById("cardDesc3").innerHTML=HEADERS.analyzer.d+" The standardized read on weight and snappiness, across a complete library of every dome made.";
+
 /* hero art: the actual measured Topre 45g press curve, decimated from the bench data */
 const CURVE_X=[0.01,0.11,0.21,0.3,0.41,0.51,0.6,0.71,0.81,0.91,1.0,1.1,1.2,1.3,1.41,1.5,1.6,1.7,1.8,1.91,2.0,2.1,2.21,2.31,2.4,2.5,2.6,2.71,2.81,2.9,3.0,3.1,3.21,3.31,3.4,3.5,3.6,3.71,3.81,3.9,4.0,4.1];
 const CURVE_F=[9.3,17.6,24.8,30.7,35.5,39.4,42.6,45.4,47.5,49.1,50.4,51.2,51.8,51.9,51.8,51.6,51.2,50.7,50.1,49.4,48.7,48.0,47.3,46.7,46.1,45.6,45.2,44.9,44.6,44.6,44.7,44.9,45.1,45.6,46.2,47.0,47.8,48.7,49.9,51.7,86.6,121.5];
