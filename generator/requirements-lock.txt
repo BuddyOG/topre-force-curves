@@ -1,0 +1,20 @@
+# Dome Lab metrics-v4.1 generator — complete cross-platform dependency lock (Step 2.3).
+# Step 2.2 shipped a partial transitive list and called it a lock: openpyxl (required by the
+# importer), Pygments, Windows colorama and a pinned build backend were all absent.
+# Install with:  pip install -r requirements-lock.txt
+
+attrs==26.1.0
+colorama==0.4.6; sys_platform == 'win32'
+et-xmlfile==2.0.0
+iniconfig==2.3.0
+jsonschema-specifications==2025.9.1
+jsonschema==4.26.0
+openpyxl==3.1.5
+packaging==26.0
+pluggy==1.6.0
+Pygments==2.20.0
+pytest==9.1.1
+referencing==0.37.0
+rpds-py==2026.6.3
+setuptools==80.9.0
+wheel==0.45.1

@@ -1,0 +1,36 @@
+{
+  "provenance_version": 1,
+  "epoch_id": "canonical-evidence-2026-08-15-6e86ac19",
+  "deterministic_epoch_time": "2026-08-15T17:16:08-04:00",
+  "frozen_repository": {
+    "path_as_received": "D:\\Documents\\GitHub\\topre-force-curves",
+    "commit": "6e86ac1955a0c566c7aae521705e51371992ba8a",
+    "parent_commit": "8816ffbf80ce7fd349a1a73893ce63cd5b7ad3d2",
+    "tree_oid": "e43d25a3fed8c5177467bba96a5abbdd5a3442b0",
+    "subject": "Topre_45g_R2_Retest",
+    "commit_time": "2026-08-15T17:16:08-04:00",
+    "tracked_file_count": 189,
+    "raw_csv_path_count": 184
+  },
+  "workbook": {
+    "path_as_received": "D:\\Documents\\Projects\\SwitchTester\\26.08.05_Untested_Domes\\untested-domes_v2.xlsx",
+    "bundled_relative_path": "source_workbook/untested-domes_v2.xlsx",
+    "sha256": "02e85a2fbdc8e025f1445ab8cb7bd830501f755b79d0a755d6ee31e53bca45a4",
+    "size_bytes": 13815,
+    "artifact_tool_snapshot_sha256": "fee2cc5b217e8ce2600d5e8d778f6dc5eca2abbe15d93a4f983b316ca6e940ea",
+    "superseded_ingestion_identity": {
+      "sha256": "c52393a1d3f33c9c21aa2de35c46cb53914fad0eadcfd4d33b1f7dc72def2921",
+      "size_bytes": 13811,
+      "status": "superseded_by_final_source_byte_identity",
+      "metadata_value_formula_delta": false,
+      "artifact_tool_snapshot_sha256": "fee2cc5b217e8ce2600d5e8d778f6dc5eca2abbe15d93a4f983b316ca6e940ea",
+      "explanation": "The source workbook was resaved after initial ingestion. The final source bytes supersede the prior copy; artifact-tool extraction proves no A1:G80 metadata value or formula delta."
+    }
+  },
+  "legacy_manifest": {
+    "path_as_received": "C:\\Users\\btgeb\\Documents\\Codex\\2026-08-07\\t\\canonical_epoch_8816ffb_work\\epoch_inputs\\source_lineage\\predecessor_dataset_manifest.json",
+    "sha256": "640bf8f63161d2825fa7168ac314aaef5c0b0440e913c82ec3964d8e7cfc8583",
+    "repo_commit": "9175069f4e49cf968b911fbe6a5587e1921a4c18"
+  },
+  "scope": "Step 2 metadata/provenance inputs only; no generator or viewer implementation changes."
+}

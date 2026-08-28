@@ -1,0 +1,18 @@
+{
+  "provenance_version": 2,
+  "branch": "main",
+  "sha": "6e86ac1955a0c566c7aae521705e51371992ba8a",
+  "parent_sha": "8816ffbf80ce7fd349a1a73893ce63cd5b7ad3d2",
+  "tree_oid": "e43d25a3fed8c5177467bba96a5abbdd5a3442b0",
+  "date": "2026-08-15T17:16:08-04:00",
+  "commit_subject": "Topre_45g_R2_Retest",
+  "git_object_format": "sha1",
+  "tracked_files": 189,
+  "csvs": 184,
+  "semantic_sets": 76,
+  "independent_measurement_cohorts": 75,
+  "unique_raw_blobs": 180,
+  "repository_file_inventory_sha256": "8e3ec38cc7adca909072c65982364064eafeb99c7d4f5dedc14ff25c36241e32",
+  "raw_file_inventory_sha256": "e48d5e0ef7cbcf797e85eef0c284230ebcc3816b121054d82112d853e881ce13",
+  "raw_cache_identity": "exact git ls-tree/cat-file blob snapshot"
+}

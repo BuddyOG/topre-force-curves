@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Force Curve Bench documentation</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0e1012;--panel:#15181c;--ink:#edf0f2;--muted:#a6adb4;--line:#2a2f35;--accent:#b668ff}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
+    main{max-width:960px;margin:auto;padding:44px 24px 72px}
+    h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.05;margin:.2rem 0 .7rem}
+    h2{margin:2.4rem 0 .7rem;font-size:1.35rem}
+    p{max-width:78ch}
+    a{color:#d2a7ff;text-underline-offset:.18em}
+    .eyebrow{color:var(--accent);font-weight:750;letter-spacing:.13em;text-transform:uppercase;font-size:.78rem}
+    .lead{color:var(--muted);font-size:1.08rem}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-top:18px}
+    .card{display:block;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:17px;text-decoration:none}
+    .card:hover,.card:focus-visible{border-color:var(--accent);outline:none}
+    .card b{display:block;color:var(--ink);margin-bottom:4px}
+    .card span{color:var(--muted);font-size:.92rem}
+    .notice{border-left:3px solid var(--accent);background:var(--panel);padding:14px 17px;margin:22px 0}
+    footer{border-top:1px solid var(--line);margin-top:44px;padding-top:18px;color:var(--muted);font-size:.9rem}
+  </style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">Unreal Keyboards · Dome Lab</div>
+  <h1>Force Curve Bench documentation</h1>
+  <p class="lead">Method, interpretation, provenance, limitations, release notes, and reproducibility material for Force Curve Bench fc-3.4.</p>
+
+  <div class="notice"><b>Release identity:</b> The canonical viewer is <a href="https://buddyog.github.io/topre-force-curves/">buddyog.github.io/topre-force-curves</a> and the frozen Git tag is <code>fc-3.4</code>. Package hashes are recorded in <code>FORCE_CURVE_BENCH_RELEASE_MANIFEST.json</code> and <code>SHA256SUMS</code>.</div>
+  <div class="notice"><b>Repository continuity:</b> fc-3.4 preserves all 184 existing raw CSV paths and the legacy <code>dome-lab.html</code>, <code>dome-lab-parts.html</code>, and <code>ec-switch-explorer.html</code> endpoints byte for byte. The root <code>index.html</code> and <code>README.md</code> are intentionally replaced. A root <code>.gitattributes</code> containing <code>* -text</code> prevents Git line-ending normalization, and an empty <code>.nojekyll</code> prevents GitHub Pages from filtering underscore-prefixed paths. Both are release infrastructure, not source evidence. The legacy pages are retained for URL continuity and were not revalidated as part of fc-3.4.</div>
+
+
+  <h2>Documentation set</h2>
+  <div class="grid">
+    <a class="card" href="../README.md"><b>Overview and quick start</b><span>What the viewer does, the measurements it presents, and current release identity.</span></a>
+    <a class="card" href="VIEWER_GUIDE.md"><b>Viewer guide</b><span>Selecting, comparing, filtering, sharing, reading, and exporting.</span></a>
+    <a class="card" href="METHOD.md"><b>Measurement and calculation method</b><span>Acquisition, intake, aggregation, metrics, and perception-index rules.</span></a>
+    <a class="card" href="LIMITATIONS.md"><b>Limitations</b><span>Interpretation boundaries and claims the evidence does not support.</span></a>
+    <a class="card" href="DATA_PROVENANCE.md"><b>Data and provenance</b><span>Frozen identities, population counts, metadata lineage, and authority.</span></a>
+    <a class="card" href="REPRODUCING.md"><b>Reproduction and verification</b><span>Hash verification and conditional full regeneration.</span></a>
+    <a class="card" href="BROWSER_ACCEPTANCE.md"><b>Browser acceptance</b><span>Interactive checks, runtime batteries, PNG export, and responsive coverage.</span></a>
+    <a class="card" href="DATA_UPDATES.md"><b>Future data updates</b><span>How later tests, retests, corrections, and renames become a new evidence epoch.</span></a>
+    <a class="card" href="RELEASE_NOTES_fc-3.4.md"><b>fc-3.4 release notes</b><span>Second GUI update, integration corrections, and scientific continuity.</span></a>
+    <a class="card" href="subjective-pilot/index.html"><b>Subjective pilot</b><span>Protocol, observations, correlations, and the evidence behind the two indices.</span></a>
+    <a class="card" href="THIRD_PARTY_NOTICES.md"><b>Third-party notices</b><span>Embedded Inter and IBM Plex Mono credits and license terms.</span></a>
+  </div>
+
+  <h2 id="rights-and-reuse">Rights and reuse</h2>
+  <p>© 2026 Brian “BuddyOG” Gebo — Unreal Keyboards. All rights reserved.</p>
+  <p>The owner permits sharing unmodified charts exported by Force Curve Bench and unmodified data files published with the repository when the share includes attribution to <b>BuddyOG / Unreal Keyboards</b> and a link to the repository or canonical live viewer. This limited permission is not an open license or a broader grant for the software, documentation, or data.</p>
+
+  <h2 id="third-party-fonts">Embedded fonts</h2>
+  <p>Inter and IBM Plex Mono are embedded third-party fonts licensed separately under the SIL Open Font License 1.1. Their terms do not change the project rights above. See the <a href="THIRD_PARTY_NOTICES.md">font notice</a>, the bundled <a href="licenses/INTER-LICENSE.txt">Inter license</a>, and the bundled <a href="licenses/IBM-PLEX-LICENSE.txt">IBM Plex license</a>.</p>
+
+  <footer><a href="https://buddyog.github.io/topre-force-curves/">Open Force Curve Bench</a> · <a href="https://github.com/BuddyOG/topre-force-curves">GitHub repository</a></footer>
+</main>
+</body>
+</html>

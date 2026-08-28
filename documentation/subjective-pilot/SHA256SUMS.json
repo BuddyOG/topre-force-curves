@@ -1,0 +1,41 @@
+{
+ "files": [
+  {
+   "bytes": 1704,
+   "path": "README.md",
+   "sha256": "25245803f774f4a869c366c529e71d9d639b4aa9d43b584304bcc1f2c53f0a3a"
+  },
+  {
+   "bytes": 11727,
+   "path": "analysis.json",
+   "sha256": "47e7379ce7cd261bafb718c2f51affab7557a930bac3e869c6bcef39e8557458"
+  },
+  {
+   "bytes": 3385,
+   "path": "dome_summary.csv",
+   "sha256": "0a823119cf58289d0ad9319b5d5b3b087d4147a41596e019f7fe06bc191d463e"
+  },
+  {
+   "bytes": 3456,
+   "path": "grid_mapping.json",
+   "sha256": "9eeb2cb75b3572b410aca23f55a89c54d40b1533ba6e1117697c932b43aabb2e"
+  },
+  {
+   "bytes": 3605,
+   "path": "index.html",
+   "sha256": "0ca8444c60f6aea47222103e55214aa6b070cb1b18f537b2a66c55ef18bead4a"
+  },
+  {
+   "bytes": 6876,
+   "path": "observations.csv",
+   "sha256": "fd31526bfdb526589a10c81f0327048e61ef5c1deeff250db3fa775b797b08bb"
+  },
+  {
+   "bytes": 1237,
+   "path": "source_identity.json",
+   "sha256": "8ebabff34ba0118a7868825d9c9a1d9eef24588b299e677d1dda0d4c88599704"
+  }
+ ],
+ "inventory_scope": "all regular files in this directory except SHA256SUMS.json",
+ "pilot_id": "subjective-pilot-v1"
+}

@@ -1,0 +1,342 @@
+[
+ {
+  "metrics": {
+   "collapse_force_gf": 79.59095714285715,
+   "collapse_travel_mm": 1.195,
+   "drop_gf": 49.66472857142858,
+   "drop_rate_gf_per_mm": 25.799858998144718,
+   "drop_travel_mm": 1.925,
+   "full_stroke_press_work_gf_mm": 185.0487567500002,
+   "norm_drop_rate_per_mm": 0.32415565692766785,
+   "precollapse_work_gf_mm": 74.85828025000002,
+   "ramp_10_90_gf_per_mm": 50.48793475267141,
+   "snap_pct": 62.399963958576066,
+   "steepest_drop_0p10mm_gf_per_mm": 65.89428571428577,
+   "travel_mm": 3.15,
+   "valley_force_gf": 29.92622857142857,
+   "valley_travel_mm": 3.12
+  },
+  "rel": "Sony_BKE_Gray_01/DataLog_1.csv",
+  "sha256": "1a65c28c6070d2d551ef448395a1d07fe4e73e07073d1402e0d3f5298299344c"
+ },
+ {
+  "metrics": {
+   "collapse_force_gf": 78.23241428571428,
+   "collapse_travel_mm": 1.285,
+   "drop_gf": 48.44134285714286,
+   "drop_rate_gf_per_mm": 26.326816770186333,
+   "drop_travel_mm": 1.84,
+   "full_stroke_press_work_gf_mm": 181.80586125000016,
+   "norm_drop_rate_per_mm": 0.3365205715630557,
+   "precollapse_work_gf_mm": 80.29149675000001,
+   "ramp_10_90_gf_per_mm": 50.940947181443974,
+   "snap_pct": 61.91978516760225,
+   "steepest_drop_0p10mm_gf_per_mm": 63.78785714285719,
+   "travel_mm": 3.15,
+   "valley_force_gf": 29.791071428571428,
+   "valley_travel_mm": 3.125
+  },
+  "rel": "Sony_BKE_Gray_01/DataLog_2.csv",
+  "sha256": "3977fd12a4e3662b512218fe6ee31f9b33e730e369949b3e2625007315c30a7f"
+ },
+ {
+  "metrics": {
+   "collapse_force_gf": 77.68055714285715,
+   "collapse_travel_mm": 1.295,
+   "drop_gf": 47.87388571428572,
+   "drop_rate_gf_per_mm": 26.23226614481409,
+   "drop_travel_mm": 1.8250000000000002,
+   "full_stroke_press_work_gf_mm": 180.45472000000015,
+   "norm_drop_rate_per_mm": 0.33769410402878636,
+   "precollapse_work_gf_mm": 80.18033750000005,
+   "ramp_10_90_gf_per_mm": 51.2335287360902,
+   "snap_pct": 61.62917398525353,
+   "steepest_drop_0p10mm_gf_per_mm": 61.09257142857153,
+   "travel_mm": 3.15,
+   "valley_force_gf": 29.80667142857143,
+   "valley_travel_mm": 3.12
+  },
+  "rel": "Sony_BKE_Gray_01/DataLog_3.csv",
+  "sha256": "3c80ba71438d05d265120bcd78054465c327722419e63ec72cbb6035dc41fe9b"
+ },
+ {
+  "metrics": {
+   "collapse_force_gf": 62.83915714285714,
+   "collapse_travel_mm": 1.115,
+   "drop_gf": 16.560614285714287,
+   "drop_rate_gf_per_mm": 7.684739807756049,
+   "drop_travel_mm": 2.1550000000000002,
+   "full_stroke_press_work_gf_mm": 205.06300349999995,
+   "norm_drop_rate_per_mm": 0.12229221646442094,
+   "precollapse_work_gf_mm": 55.640865500000004,
+   "ramp_10_90_gf_per_mm": 45.43928479841204,
+   "snap_pct": 26.353972648082717,
+   "steepest_drop_0p10mm_gf_per_mm": 12.796285714285816,
+   "travel_mm": 3.955,
+   "valley_force_gf": 46.27854285714285,
+   "valley_travel_mm": 3.27
+  },
+  "rel": "Topre_Slider_Black/Topre_Slider_Black-DataLog_0.csv",
+  "sha256": "e3750bb2d88d0e4fbf1ce8643891a0395e73084b0a895f7da5d4f773a017fc98"
+ },
+ {
+  "metrics": {
+   "collapse_force_gf": 62.6748,
+   "collapse_travel_mm": 1.14,
+   "drop_gf": 16.612399999999994,
+   "drop_rate_gf_per_mm": 7.986730769230766,
+   "drop_travel_mm": 2.08,
+   "full_stroke_press_work_gf_mm": 203.98201500000008,
+   "norm_drop_rate_per_mm": 0.12743129246891519,
+   "precollapse_work_gf_mm": 57.33134925000002,
+   "ramp_10_90_gf_per_mm": 45.613368893773,
+   "snap_pct": 26.505708833534364,
+   "steepest_drop_0p10mm_gf_per_mm": 13.060142857142907,
+   "travel_mm": 3.945,
+   "valley_force_gf": 46.062400000000004,
+   "valley_travel_mm": 3.22
+  },
+  "rel": "Topre_Slider_Black/Topre_Slider_Black-DataLog_1.csv",
+  "sha256": "295b17b213b625945f5195f65040d9c2d9d62a60d5c43fda39b8a083a5a5ff70"
+ },
+ {
+  "metrics": {
+   "collapse_force_gf": 63.10455714285714,
+   "collapse_travel_mm": 1.145,
+   "drop_gf": 16.9219,
+   "drop_rate_gf_per_mm": 8.116019184652279,
+   "drop_travel_mm": 2.085,
+   "full_stroke_press_work_gf_mm": 204.88212649999994,
+   "norm_drop_rate_per_mm": 0.1286122516679596,
+   "precollapse_work_gf_mm": 58.244901250000005,
+   "ramp_10_90_gf_per_mm": 45.23509678573989,
+   "snap_pct": 26.815654472769573,
+   "steepest_drop_0p10mm_gf_per_mm": 13.052428571428507,
+   "travel_mm": 3.94,
+   "valley_force_gf": 46.18265714285714,
+   "valley_travel_mm": 3.23
+  },
+  "rel": "Topre_Slider_Black/Topre_Slider_Black-DataLog_2.csv",
+  "sha256": "e45f432a6e3929ecce4b0d6a31140e865ec3f08e563b76239329d1ab1eeeece3"
+ },
+ {
+  "metrics": {
+   "collapse_force_gf": 62.905899999999995,
+   "collapse_travel_mm": 1.13,
+   "drop_gf": 16.773428571428568,
+   "drop_rate_gf_per_mm": 8.122725700449669,
+   "drop_travel_mm": 2.065,
+   "full_stroke_press_work_gf_mm": 204.28928675,
+   "norm_drop_rate_per_mm": 0.1291250216664839,
+   "precollapse_work_gf_mm": 56.88678399999997,
+   "ramp_10_90_gf_per_mm": 45.38898301578886,
+   "snap_pct": 26.664316974128926,
+   "steepest_drop_0p10mm_gf_per_mm": 12.967142857142804,
+   "travel_mm": 3.94,
+   "valley_force_gf": 46.13247142857143,
+   "valley_travel_mm": 3.195
+  },
+  "rel": "Topre_Slider_Black/Topre_Slider_Black-DataLog_3.csv",
+  "sha256": "3d1c5946158643afce7c4eeae8ec626878126bf8397174a4e2a596b30fbd063d"
+ },
+ {
+  "metrics": {
+   "collapse_force_gf": 61.41782857142857,
+   "collapse_travel_mm": 1.02,
+   "drop_gf": 15.688600000000001,
+   "drop_rate_gf_per_mm": 8.412117962466489,
+   "drop_travel_mm": 1.8649999999999998,
+   "full_stroke_press_work_gf_mm": 193.62237224999967,
+   "norm_drop_rate_per_mm": 0.13696540822317166,
+   "precollapse_work_gf_mm": 56.03636575000003,
+   "ramp_10_90_gf_per_mm": 27.02376753154204,
+   "snap_pct": 25.544048633621507,
+   "steepest_drop_0p10mm_gf_per_mm": 14.069714285714383,
+   "travel_mm": 3.71,
+   "valley_force_gf": 45.72922857142857,
+   "valley_travel_mm": 2.885
+  },
+  "rel": "Topre_Slider_Black_Silenced_0.3mm_Poron/Topre_Slider_Black_Silenced_0.3mm_Poron-DataLog_1.csv",
+  "sha256": "815a0f5622be8e52c34adefa208102b96222b6644f93b4f26e313fb43f1d6dec"
+ },
+ {
+  "metrics": {
+   "collapse_force_gf": 60.975585714285714,
+   "collapse_travel_mm": 1.0,
+   "drop_gf": 15.29157142857143,
+   "drop_rate_gf_per_mm": 8.19923400995787,
+   "drop_travel_mm": 1.8650000000000002,
+   "full_stroke_press_work_gf_mm": 193.02554825000004,
+   "norm_drop_rate_per_mm": 0.13446749078191972,
+   "precollapse_work_gf_mm": 54.52695725,
+   "ramp_10_90_gf_per_mm": 28.274968944277322,
+   "snap_pct": 25.07818703082803,
+   "steepest_drop_0p10mm_gf_per_mm": 15.296714285714259,
+   "travel_mm": 3.71,
+   "valley_force_gf": 45.684014285714284,
+   "valley_travel_mm": 2.865
+  },
+  "rel": "Topre_Slider_Black_Silenced_0.3mm_Poron/Topre_Slider_Black_Silenced_0.3mm_Poron-DataLog_2.csv",
+  "sha256": "3058d7ab29d4ff5593ed8407077058067420a602e27102cb74566884e05bc723"
+ },
+ {
+  "metrics": {
+   "collapse_force_gf": 61.34401428571429,
+   "collapse_travel_mm": 0.925,
+   "drop_gf": 15.789657142857145,
+   "drop_rate_gf_per_mm": 8.13899852724595,
+   "drop_travel_mm": 1.9400000000000002,
+   "full_stroke_press_work_gf_mm": 193.24059874999995,
+   "norm_drop_rate_per_mm": 0.1326779576135654,
+   "precollapse_work_gf_mm": 50.41414599999999,
+   "ramp_10_90_gf_per_mm": 26.562109964070952,
+   "snap_pct": 25.739523777031685,
+   "steepest_drop_0p10mm_gf_per_mm": 15.072857142857146,
+   "travel_mm": 3.71,
+   "valley_force_gf": 45.55435714285714,
+   "valley_travel_mm": 2.865
+  },
+  "rel": "Topre_Slider_Black_Silenced_0.3mm_Poron/Topre_Slider_Black_Silenced_0.3mm_Poron-DataLog_5.csv",
+  "sha256": "3d3899605efdd4822c8d72780bde39ec4c2ac297bfb8b2e04f65db2df6d2723a"
+ },
+ {
+  "metrics": {
+   "collapse_force_gf": 68.21734285714285,
+   "collapse_travel_mm": 0.82,
+   "drop_gf": 18.403971428571424,
+   "drop_rate_gf_per_mm": 10.167940015785318,
+   "drop_travel_mm": 1.81,
+   "full_stroke_press_work_gf_mm": 206.6949957500001,
+   "norm_drop_rate_per_mm": 0.14905212648165553,
+   "precollapse_work_gf_mm": 50.26388475000001,
+   "ramp_10_90_gf_per_mm": 32.202346521591615,
+   "snap_pct": 26.978434893179653,
+   "steepest_drop_0p10mm_gf_per_mm": 24.67571428571425,
+   "travel_mm": 3.58,
+   "valley_force_gf": 49.81337142857143,
+   "valley_travel_mm": 2.63
+  },
+  "rel": "Topre_Slider_Black_Silenced_0.5mm_Poron/Topre_Slider_Black_Silenced_0.5mm_Poron-DataLog_2.csv",
+  "sha256": "987958fd28d49dd7e64c143a9abe1157b121e8cc10191fd3e694ccb4029d5f2d"
+ },
+ {
+  "metrics": {
+   "collapse_force_gf": 67.71307142857142,
+   "collapse_travel_mm": 0.815,
+   "drop_gf": 18.333342857142853,
+   "drop_rate_gf_per_mm": 10.101015348288074,
+   "drop_travel_mm": 1.815,
+   "full_stroke_press_work_gf_mm": 204.4855219999999,
+   "norm_drop_rate_per_mm": 0.14917378779580756,
+   "precollapse_work_gf_mm": 48.736988749999995,
+   "ramp_10_90_gf_per_mm": 29.213444841287405,
+   "snap_pct": 27.075042484939072,
+   "steepest_drop_0p10mm_gf_per_mm": 24.070999999999998,
+   "travel_mm": 3.59,
+   "valley_force_gf": 49.37972857142857,
+   "valley_travel_mm": 2.63
+  },
+  "rel": "Topre_Slider_Black_Silenced_0.5mm_Poron/Topre_Slider_Black_Silenced_0.5mm_Poron-DataLog_3.csv",
+  "sha256": "0fbcdff8ff62c73d7955ecb598898831c89414ee37abaca579ff5e9dc39f567c"
+ },
+ {
+  "metrics": {
+   "collapse_force_gf": 66.90882857142857,
+   "collapse_travel_mm": 0.74,
+   "drop_gf": 17.848028571428564,
+   "drop_rate_gf_per_mm": 9.468450170519132,
+   "drop_travel_mm": 1.885,
+   "full_stroke_press_work_gf_mm": 203.02850124999986,
+   "norm_drop_rate_per_mm": 0.14151271771872498,
+   "precollapse_work_gf_mm": 43.23223249999999,
+   "ramp_10_90_gf_per_mm": 29.239390391639255,
+   "snap_pct": 26.675147289979655,
+   "steepest_drop_0p10mm_gf_per_mm": 22.841999999999985,
+   "travel_mm": 3.585,
+   "valley_force_gf": 49.06080000000001,
+   "valley_travel_mm": 2.625
+  },
+  "rel": "Topre_Slider_Black_Silenced_0.5mm_Poron/Topre_Slider_Black_Silenced_0.5mm_Poron-DataLog_4.csv",
+  "sha256": "5270e6c271db2977b99a433b77c5743c3a48e94915283edeb34cb14f5036c2a2"
+ },
+ {
+  "metrics": {
+   "collapse_force_gf": 52.76819999999999,
+   "collapse_travel_mm": 1.29,
+   "drop_gf": 7.850828571428565,
+   "drop_rate_gf_per_mm": 4.876291038154388,
+   "drop_travel_mm": 1.6099999999999999,
+   "full_stroke_press_work_gf_mm": 179.90552074999997,
+   "norm_drop_rate_per_mm": 0.09240965274832928,
+   "precollapse_work_gf_mm": 52.267543750000016,
+   "ramp_10_90_gf_per_mm": 39.42606842871312,
+   "snap_pct": 14.877954092481014,
+   "steepest_drop_0p10mm_gf_per_mm": 8.514285714285776,
+   "travel_mm": 3.94,
+   "valley_force_gf": 44.91737142857143,
+   "valley_travel_mm": 2.9
+  },
+  "rel": "Topre_45g/DataLog_1.csv",
+  "sha256": "bb23823ea1781fd2327e155b2eb1bc3ce2fcefe052316be6bd89021ba3d02051"
+ },
+ {
+  "metrics": {
+   "collapse_force_gf": 51.486442857142855,
+   "collapse_travel_mm": 1.305,
+   "drop_gf": 6.950742857142849,
+   "drop_rate_gf_per_mm": 4.572857142857137,
+   "drop_travel_mm": 1.5200000000000002,
+   "full_stroke_press_work_gf_mm": 176.05741975,
+   "norm_drop_rate_per_mm": 0.08881672318177507,
+   "precollapse_work_gf_mm": 50.9024485,
+   "ramp_10_90_gf_per_mm": 39.28360639708939,
+   "snap_pct": 13.50014192362981,
+   "steepest_drop_0p10mm_gf_per_mm": 7.6780000000000825,
+   "travel_mm": 3.935,
+   "valley_force_gf": 44.535700000000006,
+   "valley_travel_mm": 2.825
+  },
+  "rel": "Topre_45g/DataLog_2.csv",
+  "sha256": "d8bffd16e80ff996c69e7ff2f8282578db0469b235ace05b9d68f210aa567e7a"
+ },
+ {
+  "metrics": {
+   "collapse_force_gf": 51.98592857142857,
+   "collapse_travel_mm": 1.295,
+   "drop_gf": 7.50702857142857,
+   "drop_rate_gf_per_mm": 4.691892857142856,
+   "drop_travel_mm": 1.6,
+   "full_stroke_press_work_gf_mm": 177.16620525,
+   "norm_drop_rate_per_mm": 0.0902531316853599,
+   "precollapse_work_gf_mm": 51.415713750000016,
+   "ramp_10_90_gf_per_mm": 38.82720492516424,
+   "snap_pct": 14.440501069657582,
+   "steepest_drop_0p10mm_gf_per_mm": 7.592714285714237,
+   "travel_mm": 3.935,
+   "valley_force_gf": 44.4789,
+   "valley_travel_mm": 2.895
+  },
+  "rel": "Topre_45g/DataLog_3.csv",
+  "sha256": "464aac4ff4ffe4b4a92d7fe5838308391a0bfd7fd90688cf56fad3e853cd17d2"
+ },
+ {
+  "metrics": {
+   "collapse_force_gf": 51.40041428571429,
+   "collapse_travel_mm": 1.3,
+   "drop_gf": 6.970428571428577,
+   "drop_rate_gf_per_mm": 4.425668934240367,
+   "drop_travel_mm": 1.575,
+   "full_stroke_press_work_gf_mm": 175.69346824999977,
+   "norm_drop_rate_per_mm": 0.08610181446475992,
+   "precollapse_work_gf_mm": 50.73225225000001,
+   "ramp_10_90_gf_per_mm": 38.459554985862304,
+   "snap_pct": 13.561035778199686,
+   "steepest_drop_0p10mm_gf_per_mm": 7.453571428571379,
+   "travel_mm": 3.94,
+   "valley_force_gf": 44.42998571428571,
+   "valley_travel_mm": 2.875
+  },
+  "rel": "Topre_45g/DataLog_4.csv",
+  "sha256": "abd5282868b44786e8225dffb0e5b3df3599319c71168884aed74a12e148a1c7"
+ }
+]

@@ -1,0 +1,89 @@
+{
+  "canonical_artifacts": {
+    "aggregate_results": "evidence/bench_tests.staged.json",
+    "curve_pack_provenance": "evidence/curve_pack_provenance.json",
+    "generated_manifest": "evidence/generated_manifest.json",
+    "history": "epoch_inputs/history/exclusions_and_retests.json",
+    "metadata_registry": "epoch_inputs/metadata/dome_metadata_registry.json",
+    "per_run_results": "evidence/per_run_full_precision.json",
+    "raw_inventory": "epoch_inputs/manifest/raw_file_inventory.json",
+    "retained_run_manifest": "evidence/intake_retention_decisions.json"
+  },
+  "component_identities": {
+    "acceptance": {
+      "file_count": 5,
+      "tree_sha256": "9a96b0f86f9212345d774d430124f3c57b8ca25db2bdb67c1bce63a7ebc7e65d"
+    },
+    "canonical_evidence": {
+      "file_count": 95,
+      "tree_sha256": "31c36ce10d3f99de0c44c800db5b666e4333fe9e616b8c7c6aa4a68ef093c71d"
+    },
+    "epoch_inputs": {
+      "file_count": 31,
+      "tree_sha256": "6e6aa72506a5ac2adaa990d7fd11a831a1042e83f8d37ea5965ac7a776e7b181"
+    },
+    "generator_source_config": {
+      "file_count": 43,
+      "tree_sha256": "92ddb71bc8a895106896231b03b5d024fc3ab210a9b311d6d92027a80f7c1527"
+    },
+    "intake_authority": {
+      "file_count": 2,
+      "tree_sha256": "b584aeac2bb4c1c4b1749716d79122cd39f1ea7001f627fec6c5c1dc13a28b8f"
+    }
+  },
+  "deterministic_epoch_time": "2026-08-15T17:16:08-04:00",
+  "epoch_id": "canonical-evidence-2026-08-15-6e86ac19",
+  "expected_counts": {
+    "curve_packs": 76,
+    "historically_pruned_runs": 9,
+    "independent_measurement_cohorts": 75,
+    "legacy_metadata_records": 11,
+    "raw_paths": 184,
+    "repository_paths": 189,
+    "semantic_records": 76,
+    "shared_evidence_alias_groups": 1,
+    "unique_acquisitions": 180,
+    "workbook_rows": 79,
+    "workbook_tested_no": 14,
+    "workbook_tested_yes": 65
+  },
+  "frozen_repository": {
+    "cache_root": "raw_cache/repo-6e86ac1955a0c566c7aae521705e51371992ba8a",
+    "commit_oid": "6e86ac1955a0c566c7aae521705e51371992ba8a",
+    "git_object_format": "sha1",
+    "inventory_path": "epoch_inputs/manifest/repository_file_inventory.csv",
+    "tree_oid": "e43d25a3fed8c5177467bba96a5abbdd5a3442b0"
+  },
+  "identity": {
+    "epoch_inputs_sha256sums_sha256": "a6c2a5dcf4f6fdc5d518309536fe29d317ae1884cea0ca7a2c512ba0e905fb46",
+    "evidence_epoch_hash": "7aa8588b50856816b7fce90dd6e743c26c6f16926071123291cb054352b6cd4a",
+    "fresh_workbook_snapshot_sha256": "fee2cc5b217e8ce2600d5e8d778f6dc5eca2abbe15d93a4f983b316ca6e940ea",
+    "generated_manifest_sha256": "b50d04604e639e19e9ace5ccc5426ceb9deffe75768a34ff61838dfc1a1c880c",
+    "retained_decisions_sha256": "e6d438b672408cd3e711d907e58424af1f73c13650674526900ce24ceeea9bf4",
+    "workbook_path": "epoch_inputs/source_workbook/untested-domes_v2.xlsx",
+    "workbook_sha256": "02e85a2fbdc8e025f1445ab8cb7bd830501f755b79d0a755d6ee31e53bca45a4"
+  },
+  "intake_authority": {
+    "application_version": "1.1.4",
+    "metrics_version": "metrics-v4.2",
+    "policy_version": "intake-qc-v1.4",
+    "source_manifest_bytes": 2704,
+    "source_manifest_path": "authority/SOURCE-SHA256SUMS-1.1.4.txt",
+    "source_manifest_sha256": "0cc31a5a4ac68108377384337d1fba662ac5c22fb9c14ee37ecc75dba74d21dd",
+    "zip_bytes": 8283858,
+    "zip_path": "authority/test-imp-1.1.4-windows-x64.zip",
+    "zip_sha256": "b1ccdaba5c4ec76b7a8516c4e8c8109c26f2cb58b0f60f49a5c5fcf9a031b284"
+  },
+  "manifest_version": 1,
+  "package_id": "canonical-evidence-epoch-6e86ac19-step2",
+  "package_inventory": {
+    "coverage_rule": "every regular package file except SHA256SUMS.csv itself",
+    "path": "SHA256SUMS.csv"
+  },
+  "scope": {
+    "completed_step": 2,
+    "description": "canonical evidence epoch only",
+    "force_curve_bench_release_eligible": false,
+    "step3_status": "deferred_not_executed"
+  }
+}

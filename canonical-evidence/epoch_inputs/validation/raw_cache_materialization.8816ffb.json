@@ -1,0 +1,21 @@
+{
+  "report_version": 1,
+  "created_utc": "2026-08-15T18:34:48.547584Z",
+  "repo_path": "D:\\Documents\\GitHub\\topre-force-curves",
+  "commit": "8816ffbf80ce7fd349a1a73893ce63cd5b7ad3d2",
+  "target": "C:\\Users\\btgeb\\Documents\\Codex\\2026-08-07\\t\\canonical_epoch_8816ffb_work\\raw_cache\\repo-8816ffbf80ce7fd349a1a73893ce63cd5b7ad3d2",
+  "method": "git ls-tree -r -z plus git cat-file blob; bytes written without text decoding",
+  "previous_cache": {
+    "existed": true,
+    "path_count": 190,
+    "hash_mismatch_count": 190,
+    "path_bijection": true
+  },
+  "result": {
+    "status": "PASS",
+    "tracked_files": 190,
+    "raw_csv_files": 185,
+    "path_bijection": true,
+    "all_sha256_match_git_blobs": true
+  }
+}

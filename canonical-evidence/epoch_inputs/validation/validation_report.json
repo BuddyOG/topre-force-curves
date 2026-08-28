@@ -1,0 +1,171 @@
+{
+  "validation_report_version": 2,
+  "epoch_id": "canonical-evidence-2026-08-15-6e86ac19",
+  "checks": {
+    "frozen_commit_available": true,
+    "frozen_commit_tree_identity": true,
+    "raw_cache_exact_path_bijection": true,
+    "raw_cache_all_blob_hashes_match": true,
+    "workbook_shape_A1_G80": true,
+    "workbook_has_no_formulas": true,
+    "authoritative_workbook_byte_identity": true,
+    "authoritative_workbook_snapshot_identity": true,
+    "workbook_yes_count_65": true,
+    "workbook_no_count_14": true,
+    "workbook_yes_all_match_repo": true,
+    "repo_csv_cohort_count_76": true,
+    "legacy_only_cohort_count_11": true,
+    "semantic_record_count_76": true,
+    "independent_measurement_cohort_count_75": true,
+    "tracked_raw_path_count_184": true,
+    "unique_acquisition_count_180": true,
+    "manifest_raw_path_bijection": true,
+    "shared_topre_has_two_semantic_records": true,
+    "shared_topre_has_four_unique_acquisitions": true,
+    "shared_topre_has_eight_alias_paths": true,
+    "nine_pruned_paths_hash_verified_and_absent": true,
+    "test_ids_unique": true,
+    "sets_unique": true,
+    "metadata_registry_has_79_rows": true,
+    "metadata_registry_columns_exact": true,
+    "metadata_registry_legacy_sets_exact": true,
+    "workbook_manifest_values_exact": true,
+    "workbook_authoritative_status_verified": true,
+    "workbook_no_rows_absent_from_manifest": true,
+    "legacy_identity_fields_preserved": true,
+    "legacy_catalog_fields_remain_unknown": true,
+    "expected_run_identity_fields_complete": true,
+    "shared_topre_semantics_distinct": true,
+    "historical_prunes_leave_two_or_more_runs": true,
+    "history_has_six_events": true,
+    "oem_topre_event_non_authoritative": true,
+    "oem_topre_exact_collection_counts": true,
+    "oem_topre_retired_objects_absent_from_epoch": true,
+    "oem_topre_later_dispositions_exact": true,
+    "oem_topre_no_retest_decision_retired_not_satisfied": true,
+    "topre_r2_45g_retest_parent_is_pruned_epoch": true,
+    "topre_r2_45g_event_is_non_authoritative_beyond_git_transition": true,
+    "topre_r2_45g_retest_diff_exact": true,
+    "topre_r2_45g_current_manifest_has_two_runs": true,
+    "final_importer_audit_schema_v2": true,
+    "final_importer_audit_matches_frozen_epoch": true,
+    "final_importer_audit_result_pass": true,
+    "final_importer_audit_artifacts_hash_bound": true,
+    "active_exclusions_registry_matches_frozen_epoch": true,
+    "active_review_register_matches_frozen_epoch": true,
+    "retained_decisions_owner_inputs_match_active_registries": true,
+    "final_importer_audit_binds_regenerated_canonical_staging": true
+  },
+  "counts": {
+    "semantic_records": 76,
+    "independent_measurement_cohorts": 75,
+    "tracked_raw_paths": 184,
+    "unique_acquisitions": 180,
+    "workbook_authoritative_records": 65,
+    "legacy_lineage_only_records": 11,
+    "historically_pruned_runs": 9
+  },
+  "importer_audit_seal": {
+    "audit_schema_version": 2,
+    "epoch_id": "canonical-evidence-2026-08-15-6e86ac19",
+    "repo_commit": "6e86ac1955a0c566c7aae521705e51371992ba8a",
+    "result": "PASS",
+    "maximum_scalar_delta": 1.4210854715202004e-14,
+    "artifacts": [
+      {
+        "path": "validation/audit_test_imp_1_1_4.py",
+        "sha256": "278222b47c067c562a472fa40fbe4dfe2e0f44ddb92c63920f54dd70e66fb8e6",
+        "size_bytes": 88470
+      },
+      {
+        "path": "validation/test_imp_1_1_4_epoch_audit.json",
+        "sha256": "1268d28d3d59cdd96552221549bc99dd3a6683e265e6e64c24543898e21657a5",
+        "size_bytes": 770933
+      },
+      {
+        "path": "validation/test_imp_1_1_4_epoch_audit.md",
+        "sha256": "657fdbb67423e99ff82c47a03cc1bcfade58fdcdc3a4ef4469e3272cc9d346f2",
+        "size_bytes": 4564
+      },
+      {
+        "path": "validation/test_imp_1_1_4_per_run.csv",
+        "sha256": "1fea6b1fcc8feccab4d9f5159c25a4d17860ca95599db9be2efd4a77199a6fc9",
+        "size_bytes": 124092
+      },
+      {
+        "path": "validation/test_imp_1_1_4_per_cohort.csv",
+        "sha256": "d8dc2914b4ef7b348da4d894314ad92b5cac9c4ec42536d1e188f184bf2e6033",
+        "size_bytes": 10519
+      }
+    ]
+  },
+  "active_registry_and_staging_seal": {
+    "repo_commit": "6e86ac1955a0c566c7aae521705e51371992ba8a",
+    "owner_decision_inputs_hash": "222e7c70f97a2f943f41a2389ad7cde42101dd5b59e761c629fbbb1a25f8891b",
+    "evidence_epoch_hash": "7aa8588b50856816b7fce90dd6e743c26c6f16926071123291cb054352b6cd4a",
+    "artifacts": [
+      {
+        "path": "source/generator/domelab_pipeline/config/exclusions.json",
+        "sha256": "3d91942253c31ca4f5391d82e0ef7fdf87423e3b38b89adeaca74f3d6bc4aab2",
+        "size_bytes": 307
+      },
+      {
+        "path": "source/generator/domelab_pipeline/config/review_register.json",
+        "sha256": "62c7e266e98e5493c7d444531ab66636eb4fcb9ebfedcd859a270dbf548aca34",
+        "size_bytes": 337
+      },
+      {
+        "path": "source/generator/domelab_pipeline/config/retained_run_decisions.json",
+        "sha256": "e6d438b672408cd3e711d907e58424af1f73c13650674526900ce24ceeea9bf4",
+        "size_bytes": 450124
+      },
+      {
+        "path": "epoch_outputs/staging_canonical_6e86ac19/curve_pack_provenance.json",
+        "sha256": "0fe1b9195c71111e578e264469f6de2a381ad49a7241f3b2878ced8f87384888",
+        "size_bytes": 92985
+      },
+      {
+        "path": "epoch_outputs/staging_canonical_6e86ac19/generated_manifest.json",
+        "sha256": "b50d04604e639e19e9ace5ccc5426ceb9deffe75768a34ff61838dfc1a1c880c",
+        "size_bytes": 10717
+      }
+    ]
+  },
+  "case_only_mapping": {
+    "workbook": "DynaCaps_Heavy_55g",
+    "repo": "Dynacaps_Heavy_55g"
+  },
+  "shared_evidence_rule": {
+    "group_id": "egrp_topre_hhkb_pro2_45g__topre_slider_black",
+    "sets": [
+      "Topre_HHKB_Pro2_45g",
+      "Topre_Slider_Black"
+    ],
+    "semantic_test_ids": [
+      "bt_0023",
+      "bt_0015"
+    ],
+    "unique_acquisition_ids": [
+      "acq_sha256:295b17b213b625945f5195f65040d9c2d9d62a60d5c43fda39b8a083a5a5ff70",
+      "acq_sha256:3d1c5946158643afce7c4eeae8ec626878126bf8397174a4e2a596b30fbd063d",
+      "acq_sha256:e3750bb2d88d0e4fbf1ce8643891a0395e73084b0a895f7da5d4f773a017fc98",
+      "acq_sha256:e45f432a6e3929ecce4b0d6a31140e865ec3f08e563b76239329d1ab1eeeece3"
+    ],
+    "unique_acquisition_count": 4,
+    "raw_path_count": 8,
+    "user_ruling": "Same physical test, but the two semantic records represent different things.",
+    "interpretations": {
+      "Topre_HHKB_Pro2_45g": "HHKB Pro2 45 g dome baseline",
+      "Topre_Slider_Black": "black-slider standard assembly baseline"
+    },
+    "inference_rule": "The four unique acquisitions may be exposed under both semantic interpretations, but they must never be counted as eight independent observations or pooled together."
+  },
+  "warnings": [
+    "The 11 non-workbook cohorts have no workbook catalog columns; manufacturer, brand, style, variant, nominal_weight_g, and tested remain explicitly null while legacy assembly metadata is preserved with its source hash.",
+    "travel_dev_mm and flag_travel are generated-result fields, so old values were retained only in legacy_metadata_snapshot and reset in current metadata.",
+    "The OEM Topre history event describes exact Git collection changes only and does not establish one-to-one specimen identity or retest satisfaction.",
+    "The Topre_R2_45g retest event records two in-place blob replacements and one retirement only; no cause, specimen identity, or equivalence is inferred."
+  ],
+  "open_questions": [],
+  "result": "PASS"
+}

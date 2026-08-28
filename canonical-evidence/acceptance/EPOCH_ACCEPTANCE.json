@@ -1,0 +1,83 @@
+{
+  "acceptance_version": 1,
+  "status": "PASS",
+  "scope": "step2_only",
+  "epoch_id": "canonical-evidence-2026-08-15-6e86ac19",
+  "repo_commit": "6e86ac1955a0c566c7aae521705e51371992ba8a",
+  "repo_tree": "e43d25a3fed8c5177467bba96a5abbdd5a3442b0",
+  "commit_subject": "Topre_45g_R2_Retest",
+  "evidence_epoch_hash": "7aa8588b50856816b7fce90dd6e743c26c6f16926071123291cb054352b6cd4a",
+  "step3_status": "deferred_not_executed",
+  "force_curve_bench_release_eligible": false,
+  "canonical_counts": {
+    "repository_paths": 189,
+    "raw_paths": 184,
+    "unique_acquisitions": 180,
+    "semantic_records": 76,
+    "independent_measurement_cohorts": 75,
+    "curve_packs": 76,
+    "workbook_authoritative_records": 65,
+    "legacy_lineage_only_records": 11,
+    "historically_pruned_runs": 9
+  },
+  "identity_seals": {
+    "authoritative_workbook_sha256": "02e85a2fbdc8e025f1445ab8cb7bd830501f755b79d0a755d6ee31e53bca45a4",
+    "fresh_workbook_snapshot_sha256": "fee2cc5b217e8ce2600d5e8d778f6dc5eca2abbe15d93a4f983b316ca6e940ea",
+    "epoch_inputs_sha256sums_sha256": "a6c2a5dcf4f6fdc5d518309536fe29d317ae1884cea0ca7a2c512ba0e905fb46",
+    "epoch_input_validation_report_sha256": "b2f13681ab5a449f8ca80422736ea9fe0847c5fd5fc255006262020efd3898d0",
+    "independent_importer_audit_sha256": "1268d28d3d59cdd96552221549bc99dd3a6683e265e6e64c24543898e21657a5",
+    "retained_run_decisions_sha256": "e6d438b672408cd3e711d907e58424af1f73c13650674526900ce24ceeea9bf4",
+    "generated_manifest_sha256": "b50d04604e639e19e9ace5ccc5426ceb9deffe75768a34ff61838dfc1a1c880c",
+    "test_imp_1_1_4_windows_zip_sha256": "b1ccdaba5c4ec76b7a8516c4e8c8109c26f2cb58b0f60f49a5c5fcf9a031b284",
+    "test_imp_1_1_4_source_manifest_sha256": "0cc31a5a4ac68108377384337d1fba662ac5c22fb9c14ee37ecc75dba74d21dd"
+  },
+  "acceptance_gates": {
+    "frozen_commit_and_tree_bound": true,
+    "raw_cache_path_sha_blob_and_tree_closure": true,
+    "input_index_rows_exact": "30/30",
+    "input_validation_checks_pass": "53/53",
+    "fresh_workbook_extraction_byte_identical": true,
+    "metadata_yes_no_counts_exact": true,
+    "active_exclusion_review_adjudication_registries_empty": true,
+    "all_raw_paths_retained": "184/184",
+    "canonical_membership_warnings": 0,
+    "mixed_population_stops": 0,
+    "ramp_review_requirements": 0,
+    "independent_importer_mismatches": 0,
+    "independent_importer_maximum_scalar_delta": 1.4210854715202004e-14,
+    "per_run_aggregate_decision_curve_provenance_closure": true,
+    "generated_html_in_evidence_tree": 0,
+    "required_step2_test_failures": 0,
+    "core_and_canonical_epoch_tests_pass": "218/218",
+    "pipeline_step2_tests_pass": "48/48",
+    "viewer_only_step3_tests_deselected": 3,
+    "evidence_only_generator_check": "PASS",
+    "reproducible_input_seal_check": "PASS"
+  },
+  "shared_evidence_ruling": {
+    "sets": [
+      "Topre_HHKB_Pro2_45g",
+      "Topre_Slider_Black"
+    ],
+    "semantic_records": 2,
+    "shared_physical_acquisitions": 4,
+    "independent_observations_per_run_pair": 1,
+    "interpretation": "The same physical test has two distinct semantic representations; it is not counted twice for independence."
+  },
+  "adversarial_review": {
+    "status": "PASS",
+    "tree_binding_gap_closed_by_recursive_git_tree_reconstruction": true,
+    "input_checksum_race_detected_and_closed_before_seal": true,
+    "active_registry_commit_labels_corrected_and_outputs_regenerated": true,
+    "active_registry_commit_mismatch_is_now_fail_closed": true,
+    "input_seal_is_self_contained_deterministic_and_read_only_checkable": true,
+    "final_audit_bound_by_input_index": true,
+    "viewer_html_absence_classified_as_step3_deferral": true
+  },
+  "test_results": "TEST_RESULTS.json",
+  "notes": [
+    "The curve packs are derived and lossy; bench_tests.staged.json and per_run_full_precision.json are authoritative.",
+    "The validation report contains informational lineage cautions; canonical intake has no membership warning or unresolved review.",
+    "Pass counts in TEST_RESULTS.json overlap and must not be summed."
+  ]
+}

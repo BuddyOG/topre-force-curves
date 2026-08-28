@@ -1,0 +1,66 @@
+workbook_row,display_name,manufacturer,brand,style,variant,nominal_weight_g,tested,repo_set,match_method
+6,Deskeys_Carrot_35g,Deskeys,DES-DOMES,Carrot,,35,YES,Deskeys_Carrot_35g,exact
+7,Deskeys_Carrot_49g,Deskeys,DES-DOMES,Carrot,,49,YES,Deskeys_Carrot_49g,exact
+8,Deskeys_Carrot_60g,Deskeys,DES-DOMES,Carrot,,60,YES,Deskeys_Carrot_60g,exact
+16,Deskeys_T1_Cheese_28g,Deskeys,DES-DOMES,T1,Cheese,28,YES,Deskeys_T1_Cheese_28g,exact
+17,Deskeys_T1_Tiffany_35g,Deskeys,DES-DOMES,T1,Tiffany,35,YES,Deskeys_T1_Tiffany_35g,exact
+18,Deskeys_T1_Pink_42g,Deskeys,DES-DOMES,T1,Pink,42,YES,Deskeys_T1_Pink_42g,exact
+19,Deskeys_T1_Purple_49g,Deskeys,DES-DOMES,T1,Purple,49,YES,Deskeys_T1_Purple_49g,exact
+20,Deskeys_T1_Blue_56g,Deskeys,DES-DOMES,T1,Blue,56,YES,Deskeys_T1_Blue_56g,exact
+21,Deskeys_T1_Coffee_63g,Deskeys,DES-DOMES,T1,Coffee,63,YES,Deskeys_T1_Coffee_63g,exact
+22,Deskeys_T1_Grey_70g,Deskeys,DES-DOMES,T1,Grey,70,YES,Deskeys_T1_Grey_70g,exact
+23,Deskeys_T1_Green_85g,Deskeys,DES-DOMES,T1,Green,85,YES,Deskeys_T1_Green_85g,exact
+24,Deskeys_T1_Darkside_100g,Deskeys,DES-DOMES,T1,Darkside,100,YES,Deskeys_T1_Darkside_100g,exact
+25,BKE_Redux_v1_Extreme_01,Keyclack,BKE Redux,v1,Extreme,,YES,BKE_Redux_v1_Extreme_01,exact
+26,BKE_Redux_v1_Heavy_01,Keyclack,BKE Redux,v1,Heavy,,YES,BKE_Redux_v1_Heavy_01,exact
+27,BKE_Redux_v1_Heavy_02,Keyclack,BKE Redux,v1,Heavy,,YES,BKE_Redux_v1_Heavy_02,exact
+28,BKE_Redux_v1_Heavy_03,Keyclack,BKE Redux,v1,Heavy,,YES,BKE_Redux_v1_Heavy_03,exact
+29,BKE_Redux_v1_Light_01,Keyclack,BKE Redux,v1,Light,,YES,BKE_Redux_v1_Light_01,exact
+30,BKE_Redux_v1_Light_02,Keyclack,BKE Redux,v1,Light,,YES,BKE_Redux_v1_Light_02,exact
+31,BKE_Redux_v1_Light_03,Keyclack,BKE Redux,v1,Light,,YES,BKE_Redux_v1_Light_03,exact
+32,BKE_Redux_v1_Ultra_Light_01,Keyclack,BKE Redux,v1,Ultra Light,,YES,BKE_Redux_v1_Ultra_Light_01,exact
+33,BKE_Redux_v1_Ultra_Light_02,Keyclack,BKE Redux,v1,Ultra Light,,YES,BKE_Redux_v1_Ultra_Light_02,exact
+34,BKE_Redux_v1_Ultra_Light_03,Keyclack,BKE Redux,v1,Ultra Light,,YES,BKE_Redux_v1_Ultra_Light_03,exact
+35,Deskeys_V1_Tiffany_35g,Deskeys,DES-DOMES,V1,Tiffany,35,YES,Deskeys_V1_Tiffany_35g,exact
+36,Deskeys_V1_Pink_42g,Deskeys,DES-DOMES,V1,Pink,42,YES,Deskeys_V1_Pink_42g,exact
+37,Deskeys_V1_Purple_49g,Deskeys,DES-DOMES,V1,Purple,49,YES,Deskeys_V1_Purple_49g,exact
+38,Deskeys_V1_Blue_56g,Deskeys,DES-DOMES,V1,Blue,56,YES,Deskeys_V1_Blue_56g,exact
+39,Deskeys_V2_Tiffany_35g,Deskeys,DES-DOMES,V2,Tiffany,35,YES,Deskeys_V2_Tiffany_35g,exact
+40,Deskeys_V2_Pink_42g,Deskeys,DES-DOMES,V2,Pink,42,YES,Deskeys_V2_Pink_42g,exact
+41,Deskeys_V2_Purple_49g,Deskeys,DES-DOMES,V2,Purple,49,YES,Deskeys_V2_Purple_49g,exact
+42,Deskeys_V2_Blue_56g,Deskeys,DES-DOMES,V2,Blue,56,YES,Deskeys_V2_Blue_56g,exact
+43,Deskeys_V2_Brown_63g,Deskeys,DES-DOMES,V2,Brown,63,YES,Deskeys_V2_Brown_63g,exact
+44,Deskeys_V2_Green_70g,Deskeys,DES-DOMES,V2,Green,70,YES,Deskeys_V2_Green_70g,exact
+45,Deskeys_V3_Cheese_28g,Deskeys,DES-DOMES,V3,Cheese,28,YES,Deskeys_V3_Cheese_28g,exact
+46,Deskeys_V3_Tiffany_35g,Deskeys,DES-DOMES,V3,Tiffany,35,YES,Deskeys_V3_Tiffany_35g,exact
+47,Deskeys_V3_Pink_42g,Deskeys,DES-DOMES,V3,Pink,42,YES,Deskeys_V3_Pink_42g,exact
+48,Deskeys_V3_Purple_49g,Deskeys,DES-DOMES,V3,Purple,49,YES,Deskeys_V3_Purple_49g,exact
+49,Deskeys_V3_Blue_56g,Deskeys,DES-DOMES,V3,Blue,56,YES,Deskeys_V3_Blue_56g,exact
+50,Deskeys_V3_Brown_63g,Deskeys,DES-DOMES,V3,Brown,63,YES,Deskeys_V3_Brown_63g,exact
+51,Deskeys_V3_Green_70g,Deskeys,DES-DOMES,V3,Green,70,YES,Deskeys_V3_Green_70g,exact
+52,Astro_Domes_Shiner_35g,Blind Assassin,Astro Domes,,Shiner (Amber),35,YES,Astro_Domes_Shiner_35g,exact
+53,Astro_Domes_Pepper_50g,Blind Assassin,Astro Domes,,Pepper (Burgundy),50,YES,Astro_Domes_Pepper_50g,exact
+54,Astro_Domes_Whatadome_60g,Blind Assassin,Astro Domes,,Whatadome (Orange/White),60,YES,Astro_Domes_Whatadome_60g,exact
+55,Astro_Domes_Weird_70g,Blind Assassin,Astro Domes,,Weird (Green/Black),70,YES,Astro_Domes_Weird_70g,exact
+56,Astro_Domes_Lean_90g,Blind Assassin,Astro Domes,,Lean (Purple),90,YES,Astro_Domes_Lean_90g,exact
+57,Astro_Domes_Fiesta_120g,Blind Assassin,Astro Domes,,Fiesta (Teal/Pink/Orange),120,YES,Astro_Domes_Fiesta_120g,exact
+58,Astro_Domes_Big_D_160g,Blind Assassin,Astro Domes,,Big D (Blue/Gray),160,YES,Astro_Domes_Big_D_160g,exact
+60,KLC_Densus_35g,Densus,KLC,,,35,YES,KLC_Densus_35g,exact
+61,KLC_Densus_45g,Densus,KLC,,,45,YES,KLC_Densus_45g,exact
+62,KLC_Densus_55g,Densus,KLC,,,55,YES,KLC_Densus_55g,exact
+63,NiZ_Black_65g,NiZ,NiZ,,Black,65,YES,NiZ_Black_65g,exact
+64,NiZ_Purple_60g,NiZ,NiZ,,Purple,60,YES,NiZ_Purple_60g,exact
+65,DynaCaps_Light_35g,OmniType,DynaCaps,,Light,35,YES,DynaCaps_Light_35g,exact
+66,DynaCaps_Medium_45g,OmniType,DynaCaps,,Medium,45,YES,DynaCaps_Medium_45g,exact
+68,DynaCaps_Heavy_55g,OmniType,DynaCaps,,Heavy,55,YES,Dynacaps_Heavy_55g,case_insensitive
+70,Sony_BKE_Gray_01,Topre,Sony_BKE,,Gray,,YES,Sony_BKE_Gray_01,exact
+71,Sony_BKE_Gray_02,Topre,Sony_BKE,,Gray,,YES,Sony_BKE_Gray_02,exact
+72,Topre_R1_55g,Topre,Realforce,,R1,55,YES,Topre_R1_55g,exact
+73,Topre_R1_45g,Topre,Realforce,,R1,45,YES,Topre_R1_45g,exact
+74,Topre_R1_30g,Topre,Realforce,,R1,30,YES,Topre_R1_30g,exact
+75,Topre_R2_55g,Topre,Realforce,,R2,55,YES,Topre_R2_55g,exact
+76,Topre_R2_45g,Topre,Realforce,,R2,45,YES,Topre_R2_45g,exact
+77,Topre_R2_30g,Topre,Realforce,,R2,30,YES,Topre_R2_30g,exact
+78,Topre_HHKB_Pro2_45g,Topre,HHKB,,Pro2,45,YES,Topre_HHKB_Pro2_45g,exact
+79,Topre_RGB_45g,Topre,Realforce,,RGB,45,YES,Topre_RGB_45g,exact
+80,Topre_GX1_45g,Topre,Realforce,,GX1,45,YES,Topre_GX1_45g,exact

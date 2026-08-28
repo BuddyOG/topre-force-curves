@@ -1,0 +1,20 @@
+{
+ "artifact_role": "exploratory_subjective_pilot",
+ "assembly": "Topre housing, Topre slider, and Topre conical spring for every dome",
+ "objective_evidence_identity": "7aa8588b50856816b7fce90dd6e743c26c6f16926071123291cb054352b6cd4a",
+ "objective_record_binding": "canonical test_id and set for each of 25 domes",
+ "objective_repo_commit": "6e86ac1955a0c566c7aae521705e51371992ba8a",
+ "pilot_id": "subjective-pilot-v1",
+ "raw_source_hashes": {
+  "analysis_extract_sha256": "042de817499f2044903b4d759f5ed78ec3c31c17d53c4d64d968483dc133a5d2",
+  "canonical_bench_records_sha256": "6d2d482921a6b2de698841287f5ba416613b6f69c471b1124d26ab0887269b6e",
+  "dome_summary_extract_sha256": "83fdc3bd28176385539d4fccea4c88f70e0acdbfc84c4e3dd0b281e128ca7c79",
+  "observations_extract_sha256": "95f35e67c87b3f8d4e6b4ad92dc006255b098794e871c48de5a1f55537209096"
+ },
+ "release_eligible": false,
+ "tactility_scale": "1 = linear/off; 10 = maximum sharpness within this 25-dome panel",
+ "weight_scale": "1 = feather weight; 10 = maximum perceived weight within this 25-dome panel",
+ "workbook_filename": "25_Dome_Subjective_Tests.xlsx",
+ "workbook_included": false,
+ "workbook_sha256": "d4bbaad6831ccab1003bcc7e2974ef7100ee32e083fa88f27d468e64d7a323d0"
+}

@@ -1,0 +1,91 @@
+source,workbook_row,workbook_display_name,tested,repo_set,match_method,manifest_disposition,metadata_source
+workbook,2,MetaPulse BS 40g,NO,,not_present,not_in_epoch,workbook_inventory_only
+workbook,3,MetaPulse BS 50g,NO,,not_present,not_in_epoch,workbook_inventory_only
+workbook,4,MetaPulse BS 65g,NO,,not_present,not_in_epoch,workbook_inventory_only
+workbook,5,MetaPulse BS 75g,NO,,not_present,not_in_epoch,workbook_inventory_only
+workbook,6,Deskeys_Carrot_35g,YES,Deskeys_Carrot_35g,exact,include,authoritative_workbook
+workbook,7,Deskeys_Carrot_49g,YES,Deskeys_Carrot_49g,exact,include,authoritative_workbook
+workbook,8,Deskeys_Carrot_60g,YES,Deskeys_Carrot_60g,exact,include,authoritative_workbook
+workbook,9,MetaPulse RS 25g,NO,,not_present,not_in_epoch,workbook_inventory_only
+workbook,10,MetaPulse RS 30g,NO,,not_present,not_in_epoch,workbook_inventory_only
+workbook,11,MetaPulse RS 35g,NO,,not_present,not_in_epoch,workbook_inventory_only
+workbook,12,MetaPulse RS 40g,NO,,not_present,not_in_epoch,workbook_inventory_only
+workbook,13,MetaPulse RS 45g,NO,,not_present,not_in_epoch,workbook_inventory_only
+workbook,14,MetaPulse RS 55g-A,NO,,not_present,not_in_epoch,workbook_inventory_only
+workbook,15,MetaPulse RS 55g-B,NO,,not_present,not_in_epoch,workbook_inventory_only
+workbook,16,Deskeys_T1_Cheese_28g,YES,Deskeys_T1_Cheese_28g,exact,include,authoritative_workbook
+workbook,17,Deskeys_T1_Tiffany_35g,YES,Deskeys_T1_Tiffany_35g,exact,include,authoritative_workbook
+workbook,18,Deskeys_T1_Pink_42g,YES,Deskeys_T1_Pink_42g,exact,include,authoritative_workbook
+workbook,19,Deskeys_T1_Purple_49g,YES,Deskeys_T1_Purple_49g,exact,include,authoritative_workbook
+workbook,20,Deskeys_T1_Blue_56g,YES,Deskeys_T1_Blue_56g,exact,include,authoritative_workbook
+workbook,21,Deskeys_T1_Coffee_63g,YES,Deskeys_T1_Coffee_63g,exact,include,authoritative_workbook
+workbook,22,Deskeys_T1_Grey_70g,YES,Deskeys_T1_Grey_70g,exact,include,authoritative_workbook
+workbook,23,Deskeys_T1_Green_85g,YES,Deskeys_T1_Green_85g,exact,include,authoritative_workbook
+workbook,24,Deskeys_T1_Darkside_100g,YES,Deskeys_T1_Darkside_100g,exact,include,authoritative_workbook
+workbook,25,BKE_Redux_v1_Extreme_01,YES,BKE_Redux_v1_Extreme_01,exact,include,authoritative_workbook
+workbook,26,BKE_Redux_v1_Heavy_01,YES,BKE_Redux_v1_Heavy_01,exact,include,authoritative_workbook
+workbook,27,BKE_Redux_v1_Heavy_02,YES,BKE_Redux_v1_Heavy_02,exact,include,authoritative_workbook
+workbook,28,BKE_Redux_v1_Heavy_03,YES,BKE_Redux_v1_Heavy_03,exact,include,authoritative_workbook
+workbook,29,BKE_Redux_v1_Light_01,YES,BKE_Redux_v1_Light_01,exact,include,authoritative_workbook
+workbook,30,BKE_Redux_v1_Light_02,YES,BKE_Redux_v1_Light_02,exact,include,authoritative_workbook
+workbook,31,BKE_Redux_v1_Light_03,YES,BKE_Redux_v1_Light_03,exact,include,authoritative_workbook
+workbook,32,BKE_Redux_v1_Ultra_Light_01,YES,BKE_Redux_v1_Ultra_Light_01,exact,include,authoritative_workbook
+workbook,33,BKE_Redux_v1_Ultra_Light_02,YES,BKE_Redux_v1_Ultra_Light_02,exact,include,authoritative_workbook
+workbook,34,BKE_Redux_v1_Ultra_Light_03,YES,BKE_Redux_v1_Ultra_Light_03,exact,include,authoritative_workbook
+workbook,35,Deskeys_V1_Tiffany_35g,YES,Deskeys_V1_Tiffany_35g,exact,include,authoritative_workbook
+workbook,36,Deskeys_V1_Pink_42g,YES,Deskeys_V1_Pink_42g,exact,include,authoritative_workbook
+workbook,37,Deskeys_V1_Purple_49g,YES,Deskeys_V1_Purple_49g,exact,include,authoritative_workbook
+workbook,38,Deskeys_V1_Blue_56g,YES,Deskeys_V1_Blue_56g,exact,include,authoritative_workbook
+workbook,39,Deskeys_V2_Tiffany_35g,YES,Deskeys_V2_Tiffany_35g,exact,include,authoritative_workbook
+workbook,40,Deskeys_V2_Pink_42g,YES,Deskeys_V2_Pink_42g,exact,include,authoritative_workbook
+workbook,41,Deskeys_V2_Purple_49g,YES,Deskeys_V2_Purple_49g,exact,include,authoritative_workbook
+workbook,42,Deskeys_V2_Blue_56g,YES,Deskeys_V2_Blue_56g,exact,include,authoritative_workbook
+workbook,43,Deskeys_V2_Brown_63g,YES,Deskeys_V2_Brown_63g,exact,include,authoritative_workbook
+workbook,44,Deskeys_V2_Green_70g,YES,Deskeys_V2_Green_70g,exact,include,authoritative_workbook
+workbook,45,Deskeys_V3_Cheese_28g,YES,Deskeys_V3_Cheese_28g,exact,include,authoritative_workbook
+workbook,46,Deskeys_V3_Tiffany_35g,YES,Deskeys_V3_Tiffany_35g,exact,include,authoritative_workbook
+workbook,47,Deskeys_V3_Pink_42g,YES,Deskeys_V3_Pink_42g,exact,include,authoritative_workbook
+workbook,48,Deskeys_V3_Purple_49g,YES,Deskeys_V3_Purple_49g,exact,include,authoritative_workbook
+workbook,49,Deskeys_V3_Blue_56g,YES,Deskeys_V3_Blue_56g,exact,include,authoritative_workbook
+workbook,50,Deskeys_V3_Brown_63g,YES,Deskeys_V3_Brown_63g,exact,include,authoritative_workbook
+workbook,51,Deskeys_V3_Green_70g,YES,Deskeys_V3_Green_70g,exact,include,authoritative_workbook
+workbook,52,Astro_Domes_Shiner_35g,YES,Astro_Domes_Shiner_35g,exact,include,authoritative_workbook
+workbook,53,Astro_Domes_Pepper_50g,YES,Astro_Domes_Pepper_50g,exact,include,authoritative_workbook
+workbook,54,Astro_Domes_Whatadome_60g,YES,Astro_Domes_Whatadome_60g,exact,include,authoritative_workbook
+workbook,55,Astro_Domes_Weird_70g,YES,Astro_Domes_Weird_70g,exact,include,authoritative_workbook
+workbook,56,Astro_Domes_Lean_90g,YES,Astro_Domes_Lean_90g,exact,include,authoritative_workbook
+workbook,57,Astro_Domes_Fiesta_120g,YES,Astro_Domes_Fiesta_120g,exact,include,authoritative_workbook
+workbook,58,Astro_Domes_Big_D_160g,YES,Astro_Domes_Big_D_160g,exact,include,authoritative_workbook
+workbook,59,Astro_Domes_500g,NO,,not_present,not_in_epoch,workbook_inventory_only
+workbook,60,KLC_Densus_35g,YES,KLC_Densus_35g,exact,include,authoritative_workbook
+workbook,61,KLC_Densus_45g,YES,KLC_Densus_45g,exact,include,authoritative_workbook
+workbook,62,KLC_Densus_55g,YES,KLC_Densus_55g,exact,include,authoritative_workbook
+workbook,63,NiZ_Black_65g,YES,NiZ_Black_65g,exact,include,authoritative_workbook
+workbook,64,NiZ_Purple_60g,YES,NiZ_Purple_60g,exact,include,authoritative_workbook
+workbook,65,DynaCaps_Light_35g,YES,DynaCaps_Light_35g,exact,include,authoritative_workbook
+workbook,66,DynaCaps_Medium_45g,YES,DynaCaps_Medium_45g,exact,include,authoritative_workbook
+workbook,67,DynaCaps_Heavy-ish_52g,NO,,not_present,not_in_epoch,workbook_inventory_only
+workbook,68,DynaCaps_Heavy_55g,YES,Dynacaps_Heavy_55g,case_insensitive,include,authoritative_workbook
+workbook,69,DynaCaps_Crazy_Heavy_82g,NO,,not_present,not_in_epoch,workbook_inventory_only
+workbook,70,Sony_BKE_Gray_01,YES,Sony_BKE_Gray_01,exact,include,authoritative_workbook
+workbook,71,Sony_BKE_Gray_02,YES,Sony_BKE_Gray_02,exact,include,authoritative_workbook
+workbook,72,Topre_R1_55g,YES,Topre_R1_55g,exact,include,authoritative_workbook
+workbook,73,Topre_R1_45g,YES,Topre_R1_45g,exact,include,authoritative_workbook
+workbook,74,Topre_R1_30g,YES,Topre_R1_30g,exact,include,authoritative_workbook
+workbook,75,Topre_R2_55g,YES,Topre_R2_55g,exact,include,authoritative_workbook
+workbook,76,Topre_R2_45g,YES,Topre_R2_45g,exact,include,authoritative_workbook
+workbook,77,Topre_R2_30g,YES,Topre_R2_30g,exact,include,authoritative_workbook
+workbook,78,Topre_HHKB_Pro2_45g,YES,Topre_HHKB_Pro2_45g,exact,include,authoritative_workbook
+workbook,79,Topre_RGB_45g,YES,Topre_RGB_45g,exact,include,authoritative_workbook
+workbook,80,Topre_GX1_45g,YES,Topre_GX1_45g,exact,include,authoritative_workbook
+repository,,,,DynaCaps_Parts,not_in_workbook,include,legacy_manifest:bt_0022
+repository,,,,Dynacaps_Slider_0.3mm_Poron,not_in_workbook,include,legacy_manifest:bt_0020
+repository,,,,Dynacaps_Slider_0.5mm_Silicone,not_in_workbook,include,legacy_manifest:bt_0021
+repository,,,,Sony_BKE_Brown_01,not_in_workbook,include,legacy_manifest:bt_0012
+repository,,,,Sony_BKE_Brown_02,not_in_workbook,include,legacy_manifest:bt_0013
+repository,,,,Sony_BKE_Brown_03,not_in_workbook,include,legacy_manifest:bt_0014
+repository,,,,Topre_Slider_Black,not_in_workbook,include,legacy_manifest:bt_0015
+repository,,,,Topre_Slider_Black_Silenced_0.3mm_Poron,not_in_workbook,include,legacy_manifest:bt_0018
+repository,,,,Topre_Slider_Black_Silenced_0.5mm_Poron,not_in_workbook,include,legacy_manifest:bt_0019
+repository,,,,Topre_Slider_Silenced_Purple,not_in_workbook,include,legacy_manifest:bt_0017
+repository,,,,Topre_Slider_Type-S,not_in_workbook,include,legacy_manifest:bt_0016

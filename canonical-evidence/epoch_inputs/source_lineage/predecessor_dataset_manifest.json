@@ -1,0 +1,828 @@
+{
+ "manifest_version": 1,
+ "repo_commit": "9175069f4e49cf968b911fbe6a5587e1921a4c18",
+ "tests": [
+  {
+   "test_id": "bt_0001",
+   "set": "Topre_30g",
+   "metadata": {
+    "name": "Topre 30g",
+    "kind": "dome_baseline",
+    "tested_part": "dome::topre_30g",
+    "dome": "dome::topre_30g",
+    "slider": "slider::topre",
+    "silencing_ring": null,
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": false,
+    "travel_dev_mm": 0.025,
+    "precompression_mm": 0.0,
+    "flag_travel": false,
+    "status": "pending_review",
+    "notes": "Dome-rig assembly assumed = standard bench parts."
+   },
+   "expected_runs": [
+    {
+     "path": "Topre_30g/DataLog_1.csv",
+     "sha256": "4f2189b59f40805a9ee0e93882604a144901ed20fcd16d6d08c72a42ee7e4ca9"
+    },
+    {
+     "path": "Topre_30g/DataLog_2.csv",
+     "sha256": "177eaf8a92586fc26ce8dbc6a5d628dd6ff061a26c78d899ecdecea02b567502"
+    },
+    {
+     "path": "Topre_30g/DataLog_3.csv",
+     "sha256": "7998277162759527d24c4d56eed6869d2213b25320412102223186dad7163e23"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0002",
+   "set": "Topre_45g",
+   "metadata": {
+    "name": "Topre 45g",
+    "kind": "dome_baseline",
+    "tested_part": "dome::topre_45g",
+    "dome": "dome::topre_45g",
+    "slider": "slider::topre",
+    "silencing_ring": null,
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": false,
+    "travel_dev_mm": 0.0,
+    "precompression_mm": 0.0,
+    "flag_travel": false,
+    "status": "pending_review",
+    "notes": "Dome-rig assembly assumed = standard bench parts."
+   },
+   "expected_runs": [
+    {
+     "path": "Topre_45g/DataLog_1.csv",
+     "sha256": "bb23823ea1781fd2327e155b2eb1bc3ce2fcefe052316be6bd89021ba3d02051"
+    },
+    {
+     "path": "Topre_45g/DataLog_2.csv",
+     "sha256": "d8bffd16e80ff996c69e7ff2f8282578db0469b235ace05b9d68f210aa567e7a"
+    },
+    {
+     "path": "Topre_45g/DataLog_3.csv",
+     "sha256": "464aac4ff4ffe4b4a92d7fe5838308391a0bfd7fd90688cf56fad3e853cd17d2"
+    },
+    {
+     "path": "Topre_45g/DataLog_4.csv",
+     "sha256": "abd5282868b44786e8225dffb0e5b3df3599319c71168884aed74a12e148a1c7"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0003",
+   "set": "Topre_55g",
+   "metadata": {
+    "name": "Topre 55g",
+    "kind": "dome_baseline",
+    "tested_part": "dome::topre_55g",
+    "dome": "dome::topre_55g",
+    "slider": "slider::topre",
+    "silencing_ring": null,
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": false,
+    "travel_dev_mm": -0.01,
+    "precompression_mm": 0.0,
+    "flag_travel": false,
+    "status": "pending_review",
+    "notes": "Dome-rig assembly assumed = standard bench parts."
+   },
+   "expected_runs": [
+    {
+     "path": "Topre_55g/DataLog_1.csv",
+     "sha256": "11bd7b5085aea1a9a0d52611e3e32c87431e53862e762afd3c8b9f9ad2476a51"
+    },
+    {
+     "path": "Topre_55g/DataLog_2.csv",
+     "sha256": "16394591cca126c66fcc7090f461816d1817726ccdab617e36e1687541907835"
+    },
+    {
+     "path": "Topre_55g/DataLog_3.csv",
+     "sha256": "670df2d2babab53d2fa31354a9650a4538ac0454163ebef94a1d588b476a1948"
+    },
+    {
+     "path": "Topre_55g/DataLog_4.csv",
+     "sha256": "d12fe570d78b118ee5b3d5af7a0ce7e8cd139dbab0a133ee6e756b1f7db315b8"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0004",
+   "set": "Topre_55g_Aged",
+   "metadata": {
+    "name": "Topre 55g Aged",
+    "kind": "dome_baseline",
+    "tested_part": "dome::topre_55g_aged",
+    "dome": "dome::topre_55g_aged",
+    "slider": "slider::topre",
+    "silencing_ring": null,
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": false,
+    "travel_dev_mm": 0.02,
+    "precompression_mm": 0.0,
+    "flag_travel": false,
+    "status": "pending_review",
+    "notes": "Dome-rig assembly assumed = standard bench parts."
+   },
+   "expected_runs": [
+    {
+     "path": "Topre_55g_Aged/Topre_55g_Aged-DataLog_3.csv",
+     "sha256": "8bd05bc8dec6d7ed550b01d750fcbac49b05500a1263619055874d50f1bc91c1"
+    },
+    {
+     "path": "Topre_55g_Aged/Topre_55g_Aged-DataLog_5.csv",
+     "sha256": "469b91944181ed67d9d7c607310fd8ace8e75fc729dad04f80748f33fab777b4"
+    },
+    {
+     "path": "Topre_55g_Aged/Topre_55g_Aged-DataLog_6.csv",
+     "sha256": "1dad4781e37895d844afc25097ada6678f9112f85b66e507a4d89d5736543839"
+    },
+    {
+     "path": "Topre_55g_Aged/Topre_55g_Aged-DataLog_7.csv",
+     "sha256": "76bb3892fb4c8ed1c7dbc523fe23d091cf3c7a8c501174b8e423122262486b93"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0005",
+   "set": "DynaCaps_Light",
+   "metadata": {
+    "name": "DynaCaps Light",
+    "kind": "dome_baseline",
+    "tested_part": "dome::dynacaps_light",
+    "dome": "dome::dynacaps_light",
+    "slider": "slider::topre",
+    "silencing_ring": null,
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": false,
+    "travel_dev_mm": -0.025,
+    "precompression_mm": 0.0,
+    "flag_travel": false,
+    "status": "pending_review",
+    "notes": "Dome-rig assembly assumed = standard bench parts."
+   },
+   "expected_runs": [
+    {
+     "path": "DynaCaps_Light/DynaCaps_Light-DataLog_1.csv",
+     "sha256": "055a6daea5a1ef3926f495fcca297d9b00e8321bb743b71f61c7b53cb16679ed"
+    },
+    {
+     "path": "DynaCaps_Light/DynaCaps_Light-DataLog_2.csv",
+     "sha256": "cfea4f97a3cbf1c36a79f728890a34f80441b0a88149b77cd696b23595a935aa"
+    },
+    {
+     "path": "DynaCaps_Light/DynaCaps_Light-DataLog_3.csv",
+     "sha256": "9c9c7944dd5fa4cc8a584469a5d104a6431b1ad89799e286049205fa5aec28da"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0006",
+   "set": "DynaCaps_Medium",
+   "metadata": {
+    "name": "DynaCaps Medium",
+    "kind": "dome_baseline",
+    "tested_part": "dome::dynacaps_medium",
+    "dome": "dome::dynacaps_medium",
+    "slider": "slider::topre",
+    "silencing_ring": null,
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": false,
+    "travel_dev_mm": -0.06,
+    "precompression_mm": 0.0,
+    "flag_travel": false,
+    "status": "pending_review",
+    "notes": "Dome-rig assembly assumed = standard bench parts."
+   },
+   "expected_runs": [
+    {
+     "path": "DynaCaps_Medium/DynaCaps_Medium-DataLog_1.csv",
+     "sha256": "7a58fac97cc350f15580987aef73a48bbae03bd91d77b8ca830b8b65e721e6cc"
+    },
+    {
+     "path": "DynaCaps_Medium/DynaCaps_Medium-DataLog_2.csv",
+     "sha256": "557f3fd595a63e0b9bda32b7538fae704d36d89a9a1d26d626a5451848017c3a"
+    },
+    {
+     "path": "DynaCaps_Medium/DynaCaps_Medium-DataLog_3.csv",
+     "sha256": "65ec93260706018b1bfd0a12e21f2eb1630bbb942fccd5c845f98a95ad0b226c"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0007",
+   "set": "Dynacaps_Heavy",
+   "metadata": {
+    "name": "Dynacaps Heavy",
+    "kind": "dome_baseline",
+    "tested_part": "dome::dynacaps_heavy",
+    "dome": "dome::dynacaps_heavy",
+    "slider": "slider::topre",
+    "silencing_ring": null,
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": false,
+    "travel_dev_mm": -0.025,
+    "precompression_mm": 0.0,
+    "flag_travel": false,
+    "status": "pending_review",
+    "notes": "Dome-rig assembly assumed = standard bench parts."
+   },
+   "expected_runs": [
+    {
+     "path": "Dynacaps_Heavy/DynaCaps_Heavy-DataLog_1.csv",
+     "sha256": "530b1dfb588d63ecde2f3c1ff287a97ac1159c20495ee0b4a3ab2e8bf3aeff8f"
+    },
+    {
+     "path": "Dynacaps_Heavy/DynaCaps_Heavy-DataLog_2.csv",
+     "sha256": "bdeb628bf19f86cab66b3e93871e7b36320f36f3a303639fdb5d77e0057e1cf9"
+    },
+    {
+     "path": "Dynacaps_Heavy/DynaCaps_Heavy-DataLog_3.csv",
+     "sha256": "64e06119d492bb04e142c8c492c5170ec8c1711d5cf6c919204ba8a26c2e1bb3"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0008",
+   "set": "BKE_Redux_Extreme_01",
+   "metadata": {
+    "name": "BKE Redux Extreme 01",
+    "kind": "dome_baseline",
+    "tested_part": "dome::bke_redux_v1_extreme",
+    "dome": "dome::bke_redux_v1_extreme",
+    "slider": "slider::topre",
+    "silencing_ring": null,
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": false,
+    "travel_dev_mm": -0.635,
+    "precompression_mm": 0.0,
+    "flag_travel": true,
+    "status": "pending_review",
+    "notes": "Dome-rig assembly assumed = standard bench parts."
+   },
+   "expected_runs": [
+    {
+     "path": "BKE_Redux_Extreme_01/BKE_Redux_Extreme_01-DataLog_1.csv",
+     "sha256": "2b5daaa1211cbc69dfd5870b9603c29e63997e77e51be3c97847d4266162105f"
+    },
+    {
+     "path": "BKE_Redux_Extreme_01/BKE_Redux_Extreme_01-DataLog_2.csv",
+     "sha256": "0aa66c2f5385fb116d8f2c1946a5e9bbf21be0d0325f0ccd013d2cd4e12b4751"
+    },
+    {
+     "path": "BKE_Redux_Extreme_01/BKE_Redux_Extreme_01-DataLog_3.csv",
+     "sha256": "5a238c2970b761d30fc1b951724565db06136510d1959d42ed0312ab7d6bcbaf"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0009",
+   "set": "NiZ_65g",
+   "metadata": {
+    "name": "NiZ 65g",
+    "kind": "dome_baseline",
+    "tested_part": "dome::niz_65g",
+    "dome": "dome::niz_65g",
+    "slider": "slider::topre",
+    "silencing_ring": null,
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": false,
+    "travel_dev_mm": -0.015,
+    "precompression_mm": 0.0,
+    "flag_travel": false,
+    "status": "pending_review",
+    "notes": "Dome-rig assembly assumed = standard bench parts."
+   },
+   "expected_runs": [
+    {
+     "path": "NiZ_65g/NiZ_65g-DataLog_1.csv",
+     "sha256": "b8b27c0fdd5dec965c65dc5a8b2d8d78dd7c1392a27f61dbd78d266e45366df8"
+    },
+    {
+     "path": "NiZ_65g/NiZ_65g-DataLog_2.csv",
+     "sha256": "d6ef05f6f66d281d0f36d30f6b013b2a27466e2009575131515593796075371e"
+    },
+    {
+     "path": "NiZ_65g/NiZ_65g-DataLog_3.csv",
+     "sha256": "ecf00c20f83e3ace8ba2ecd0990f2715918a7adfb2316013722713de511c14be"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0010",
+   "set": "Sony_BKE_Gray_01",
+   "metadata": {
+    "name": "Sony BKE Gray 01",
+    "kind": "dome_baseline",
+    "tested_part": "dome::sony_bke_gray_01",
+    "dome": "dome::sony_bke_gray_01",
+    "slider": "slider::topre",
+    "silencing_ring": null,
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": false,
+    "travel_dev_mm": -0.79,
+    "precompression_mm": 0.0,
+    "flag_travel": true,
+    "status": "pending_review",
+    "notes": "Dome-rig assembly assumed = standard bench parts."
+   },
+   "expected_runs": [
+    {
+     "path": "Sony_BKE_Gray_01/DataLog_1.csv",
+     "sha256": "1a65c28c6070d2d551ef448395a1d07fe4e73e07073d1402e0d3f5298299344c"
+    },
+    {
+     "path": "Sony_BKE_Gray_01/DataLog_2.csv",
+     "sha256": "3977fd12a4e3662b512218fe6ee31f9b33e730e369949b3e2625007315c30a7f"
+    },
+    {
+     "path": "Sony_BKE_Gray_01/DataLog_3.csv",
+     "sha256": "3c80ba71438d05d265120bcd78054465c327722419e63ec72cbb6035dc41fe9b"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0012",
+   "set": "Sony_BKE_Brown_01",
+   "metadata": {
+    "name": "Sony BKE Brown 01",
+    "kind": "dome_baseline",
+    "tested_part": "dome::sony_bke_brown_01",
+    "dome": "dome::sony_bke_brown_01",
+    "slider": "slider::topre",
+    "silencing_ring": null,
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": false,
+    "travel_dev_mm": -0.45,
+    "precompression_mm": 0.0,
+    "flag_travel": true,
+    "status": "pending_review",
+    "notes": "Dome-rig assembly assumed = standard bench parts."
+   },
+   "expected_runs": [
+    {
+     "path": "Sony_BKE_Brown_01/DataLog_1.csv",
+     "sha256": "fe0b80ba13123e4cb328df6f1740e53da81a11d7476a6f35a3ceace431eece51"
+    },
+    {
+     "path": "Sony_BKE_Brown_01/DataLog_2.csv",
+     "sha256": "71ca1ad9346278e6f8a99211ea9a2d69a732893e1a14e629cdc3fd0d5e845d39"
+    },
+    {
+     "path": "Sony_BKE_Brown_01/DataLog_3.csv",
+     "sha256": "9615241dbf250a9934d2da0c516077ec0dc33d577c79f74afbe36b010c6a3f4f"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0013",
+   "set": "Sony_BKE_Brown_02",
+   "metadata": {
+    "name": "Sony BKE Brown 02",
+    "kind": "dome_baseline",
+    "tested_part": "dome::sony_bke_brown_02",
+    "dome": "dome::sony_bke_brown_02",
+    "slider": "slider::topre",
+    "silencing_ring": null,
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": false,
+    "travel_dev_mm": -0.445,
+    "precompression_mm": 0.0,
+    "flag_travel": true,
+    "status": "pending_review",
+    "notes": "Dome-rig assembly assumed = standard bench parts."
+   },
+   "expected_runs": [
+    {
+     "path": "Sony_BKE_Brown_02/DataLog_1.csv",
+     "sha256": "de3eb8d14d16a1a229e6ecc4d9988b4b96bb5e6f83ed71597225e2da26614620"
+    },
+    {
+     "path": "Sony_BKE_Brown_02/DataLog_2.csv",
+     "sha256": "0288411ad21eafd28c26717e887f43bc1dd0d59ab410cdca82663925383736d2"
+    },
+    {
+     "path": "Sony_BKE_Brown_02/DataLog_3.csv",
+     "sha256": "c388a634f8de8dfe226d3d46b74be9da63a7ea380c0d89c99f5f4dc9a41313ad"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0014",
+   "set": "Sony_BKE_Brown_03",
+   "metadata": {
+    "name": "Sony BKE Brown 03",
+    "kind": "dome_baseline",
+    "tested_part": "dome::sony_bke_brown_03",
+    "dome": "dome::sony_bke_brown_03",
+    "slider": "slider::topre",
+    "silencing_ring": null,
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": false,
+    "travel_dev_mm": -0.49,
+    "precompression_mm": 0.0,
+    "flag_travel": true,
+    "status": "pending_review",
+    "notes": "Dome-rig assembly assumed = standard bench parts."
+   },
+   "expected_runs": [
+    {
+     "path": "Sony_BKE_Brown_03/DataLog_1.csv",
+     "sha256": "fca29cdfdb77bfdcb135ed5a51a02ee3636c2f67d71bad3459b54903fd7aac43"
+    },
+    {
+     "path": "Sony_BKE_Brown_03/DataLog_2.csv",
+     "sha256": "4c5064eebfa85f8a979110b39359af261e18961b6ddd3110f258bb418335f8dd"
+    },
+    {
+     "path": "Sony_BKE_Brown_03/DataLog_3.csv",
+     "sha256": "747bc1320fe125d35add6cc04e00bd8ad25775099c2d82414b1ed6dccc6cbd97"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0015",
+   "set": "Topre_Slider_Black",
+   "metadata": {
+    "name": "Topre Slider (baseline)",
+    "kind": "part_assembly",
+    "tested_part": "slider::topre",
+    "dome": "dome::topre_45g_aged",
+    "slider": "slider::topre",
+    "silencing_ring": null,
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": true,
+    "travel_dev_mm": 0.0,
+    "precompression_mm": 0.0,
+    "flag_travel": null,
+    "status": "verified",
+    "notes": "Standard bench assembly baseline (ruled); this set also defines the Topre 45g Aged dome baseline."
+   },
+   "expected_runs": [
+    {
+     "path": "Topre_Slider_Black/Topre_Slider_Black-DataLog_0.csv",
+     "sha256": "e3750bb2d88d0e4fbf1ce8643891a0395e73084b0a895f7da5d4f773a017fc98"
+    },
+    {
+     "path": "Topre_Slider_Black/Topre_Slider_Black-DataLog_1.csv",
+     "sha256": "295b17b213b625945f5195f65040d9c2d9d62a60d5c43fda39b8a083a5a5ff70"
+    },
+    {
+     "path": "Topre_Slider_Black/Topre_Slider_Black-DataLog_2.csv",
+     "sha256": "e45f432a6e3929ecce4b0d6a31140e865ec3f08e563b76239329d1ab1eeeece3"
+    },
+    {
+     "path": "Topre_Slider_Black/Topre_Slider_Black-DataLog_3.csv",
+     "sha256": "3d1c5946158643afce7c4eeae8ec626878126bf8397174a4e2a596b30fbd063d"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0016",
+   "set": "Topre_Slider_Type-S",
+   "metadata": {
+    "name": "Topre Silent (Type-S) Slider",
+    "kind": "part_assembly",
+    "tested_part": "slider::hhkb_type_s",
+    "dome": "dome::topre_45g_aged",
+    "slider": "slider::hhkb_type_s",
+    "silencing_ring": "silencing_ring::topre_poron_0_5",
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": true,
+    "travel_dev_mm": -0.135,
+    "precompression_mm": 0.0,
+    "flag_travel": null,
+    "status": "pending_review",
+    "notes": "Factory Topre ring assumed from ruling."
+   },
+   "expected_runs": [
+    {
+     "path": "Topre_Slider_Type-S/Topre_Slider_Type-S-DataLog_1.csv",
+     "sha256": "4c57653165404301f0f76207d1e8a0dbd4f76d13e53d786a8b90d897ac7cfbfe"
+    },
+    {
+     "path": "Topre_Slider_Type-S/Topre_Slider_Type-S-DataLog_2.csv",
+     "sha256": "aed0617c57c523b9b04f825b4e77bac92fb457240518448ec66daa016cc52883"
+    },
+    {
+     "path": "Topre_Slider_Type-S/Topre_Slider_Type-S-DataLog_3.csv",
+     "sha256": "87e856c5c4d5b1bf5010e47c231ecc9e14b9ad982e75b0f1a4cba6fa7a04211d"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0017",
+   "set": "Topre_Slider_Silenced_Purple",
+   "metadata": {
+    "name": "Topre Silent (Realforce) Slider",
+    "kind": "part_assembly",
+    "tested_part": "slider::topre_silenced_purple",
+    "dome": "dome::topre_45g_aged",
+    "slider": "slider::topre_silenced_purple",
+    "silencing_ring": "silencing_ring::topre_poron_0_5",
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": true,
+    "travel_dev_mm": 0.095,
+    "precompression_mm": 0.0,
+    "flag_travel": null,
+    "status": "pending_review",
+    "notes": "Factory Topre ring assumed from ruling."
+   },
+   "expected_runs": [
+    {
+     "path": "Topre_Slider_Silenced_Purple/Topre_Slider_Silenced_Purple-DataLog_1.csv",
+     "sha256": "50475634e1cb9edc9b22ed2a1157127c8694701492dd6b8372e31264baa405d8"
+    },
+    {
+     "path": "Topre_Slider_Silenced_Purple/Topre_Slider_Silenced_Purple-DataLog_2.csv",
+     "sha256": "d777d3677d84cdc5aad25762fb8d52073313dc96560e443179341a60ea51ec0e"
+    },
+    {
+     "path": "Topre_Slider_Silenced_Purple/Topre_Slider_Silenced_Purple-DataLog_3.csv",
+     "sha256": "958ba019a2df2fcff461d561ccf2890dc1c8b6c241de1be95ccbdc4e4f28aa5b"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0018",
+   "set": "Topre_Slider_Black_Silenced_0.3mm_Poron",
+   "metadata": {
+    "name": "Topre Slider + 0.3 mm Poron",
+    "kind": "part_assembly",
+    "tested_part": "silencing_ring::des_poron_0_3",
+    "dome": "dome::topre_45g_aged",
+    "slider": "slider::topre",
+    "silencing_ring": "silencing_ring::des_poron_0_3",
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": false,
+    "travel_dev_mm": -0.235,
+    "precompression_mm": 0.3,
+    "flag_travel": null,
+    "status": "pending_review",
+    "notes": "Tested part is the ring; brand unknown from set name."
+   },
+   "expected_runs": [
+    {
+     "path": "Topre_Slider_Black_Silenced_0.3mm_Poron/Topre_Slider_Black_Silenced_0.3mm_Poron-DataLog_1.csv",
+     "sha256": "815a0f5622be8e52c34adefa208102b96222b6644f93b4f26e313fb43f1d6dec"
+    },
+    {
+     "path": "Topre_Slider_Black_Silenced_0.3mm_Poron/Topre_Slider_Black_Silenced_0.3mm_Poron-DataLog_2.csv",
+     "sha256": "3058d7ab29d4ff5593ed8407077058067420a602e27102cb74566884e05bc723"
+    },
+    {
+     "path": "Topre_Slider_Black_Silenced_0.3mm_Poron/Topre_Slider_Black_Silenced_0.3mm_Poron-DataLog_5.csv",
+     "sha256": "3d3899605efdd4822c8d72780bde39ec4c2ac297bfb8b2e04f65db2df6d2723a"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0019",
+   "set": "Topre_Slider_Black_Silenced_0.5mm_Poron",
+   "metadata": {
+    "name": "Topre Slider + 0.5 mm Poron",
+    "kind": "part_assembly",
+    "tested_part": "silencing_ring::topre_poron_0_5",
+    "dome": "dome::topre_45g_aged",
+    "slider": "slider::topre",
+    "silencing_ring": "silencing_ring::topre_poron_0_5",
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": false,
+    "travel_dev_mm": -0.36,
+    "precompression_mm": 0.5,
+    "flag_travel": null,
+    "status": "pending_review",
+    "notes": "Tested part is the ring; brand unknown from set name."
+   },
+   "expected_runs": [
+    {
+     "path": "Topre_Slider_Black_Silenced_0.5mm_Poron/Topre_Slider_Black_Silenced_0.5mm_Poron-DataLog_2.csv",
+     "sha256": "987958fd28d49dd7e64c143a9abe1157b121e8cc10191fd3e694ccb4029d5f2d"
+    },
+    {
+     "path": "Topre_Slider_Black_Silenced_0.5mm_Poron/Topre_Slider_Black_Silenced_0.5mm_Poron-DataLog_3.csv",
+     "sha256": "0fbcdff8ff62c73d7955ecb598898831c89414ee37abaca579ff5e9dc39f567c"
+    },
+    {
+     "path": "Topre_Slider_Black_Silenced_0.5mm_Poron/Topre_Slider_Black_Silenced_0.5mm_Poron-DataLog_4.csv",
+     "sha256": "5270e6c271db2977b99a433b77c5743c3a48e94915283edeb34cb14f5036c2a2"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0020",
+   "set": "Dynacaps_Slider_0.3mm_Poron",
+   "metadata": {
+    "name": "DynaCaps Slider + 0.3 mm Poron",
+    "kind": "part_assembly",
+    "tested_part": "slider::dynacaps",
+    "dome": "dome::topre_45g_aged",
+    "slider": "slider::dynacaps",
+    "silencing_ring": "silencing_ring::dynacaps_poron_0_3",
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": false,
+    "travel_dev_mm": 0.04,
+    "precompression_mm": 0.05,
+    "flag_travel": null,
+    "status": "pending_review",
+    "notes": "DynaCaps ring assumed from set name; housing/spring assumed baseline."
+   },
+   "expected_runs": [
+    {
+     "path": "Dynacaps_Slider_0.3mm_Poron/Dynacaps_Slider_0.3mm_Poron-DataLog_1.csv",
+     "sha256": "4ddf45be0a8e75e6b4630564b5fd58479bdfa18d7823c50c29bcdc8e82832fb6"
+    },
+    {
+     "path": "Dynacaps_Slider_0.3mm_Poron/Dynacaps_Slider_0.3mm_Poron-DataLog_2.csv",
+     "sha256": "e66def887e82c55ddfa618f68ef99fe85e9f74c4d8b1ad12d4c636cb5170bb4e"
+    },
+    {
+     "path": "Dynacaps_Slider_0.3mm_Poron/Dynacaps_Slider_0.3mm_Poron-DataLog_3.csv",
+     "sha256": "6956e6c6465d8eff75a4d322b6acb13a7714ec7496c67f4549ed79c057c82037"
+    },
+    {
+     "path": "Dynacaps_Slider_0.3mm_Poron/Dynacaps_Slider_0.3mm_Poron-DataLog_4.csv",
+     "sha256": "e4abc27830da86a26ae3efd86f627e08ab8619c7a8359e78cf5b17f97d0debfe"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0021",
+   "set": "Dynacaps_Slider_0.5mm_Silicone",
+   "metadata": {
+    "name": "DynaCaps Slider + 0.5 mm Silicone",
+    "kind": "part_assembly",
+    "tested_part": "slider::dynacaps",
+    "dome": "dome::topre_45g_aged",
+    "slider": "slider::dynacaps",
+    "silencing_ring": "silencing_ring::dynacaps_silicone_0_5",
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": false,
+    "travel_dev_mm": -0.215,
+    "precompression_mm": 0.25,
+    "flag_travel": null,
+    "status": "pending_review",
+    "notes": "DynaCaps ring assumed from set name; housing/spring assumed baseline."
+   },
+   "expected_runs": [
+    {
+     "path": "Dynacaps_Slider_0.5mm_Silicone/Dynacaps_Slider_0.5mm_Silicone-DataLog_1.csv",
+     "sha256": "4880ed759c8f2179137427a16d282558a89249064af5554f14403321a9a19884"
+    },
+    {
+     "path": "Dynacaps_Slider_0.5mm_Silicone/Dynacaps_Slider_0.5mm_Silicone-DataLog_2.csv",
+     "sha256": "73c96bedae84b79734eb61349118ea44a45b857fce17cd2306cfa228a7de1023"
+    },
+    {
+     "path": "Dynacaps_Slider_0.5mm_Silicone/Dynacaps_Slider_0.5mm_Silicone-DataLog_3.csv",
+     "sha256": "2ec175f45b59ace28c98d3067eb97407d437e018859b20d9f940eb712d61beb2"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0022",
+   "set": "DynaCaps_Parts",
+   "metadata": {
+    "name": "DynaCaps Housing + Slider + 0.5 mm Silicone",
+    "kind": "part_assembly",
+    "tested_part": "slider::dynacaps",
+    "dome": "dome::topre_45g_aged",
+    "slider": "slider::dynacaps",
+    "silencing_ring": "silencing_ring::dynacaps_silicone_0_5",
+    "housing": "housing::dynacaps",
+    "conical_spring": "conical_spring::dynacaps",
+    "is_baseline": false,
+    "travel_dev_mm": -0.295,
+    "precompression_mm": 0.25,
+    "flag_travel": null,
+    "status": "pending_review",
+    "notes": "Full DynaCaps assembly assumed from set name; ring and tested-part focus unknown."
+   },
+   "expected_runs": [
+    {
+     "path": "DynaCaps_Parts/DynaCaps_Parts-DataLog_1.csv",
+     "sha256": "63d583b31924ad3ab3aad45cfb1d791329c1a3c510d393e188653f1840cf2ba3"
+    },
+    {
+     "path": "DynaCaps_Parts/DynaCaps_Parts-DataLog_2.csv",
+     "sha256": "441cc969cc9086bee23921f2c35a886d17f66be800c6e5c70f4606f600f1ff1d"
+    },
+    {
+     "path": "DynaCaps_Parts/DynaCaps_Parts-DataLog_3.csv",
+     "sha256": "15ac0198c5d8a85e4041afc38bd0cc3a9828111f35387b7c1cf178647cd824ab"
+    },
+    {
+     "path": "DynaCaps_Parts/DynaCaps_Parts-DataLog_4.csv",
+     "sha256": "960cd3c84b3142baa7e254b7a3483118f69cccd0be56760163bd7f86ead3dd8e"
+    },
+    {
+     "path": "DynaCaps_Parts/DynaCaps_Parts-DataLog_5.csv",
+     "sha256": "e1703ec3f809c5b380711700251fb4eaed5c5646494beba0efe6035dd5e7cbbf"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": "bt_0023",
+   "set": "Topre_Slider_Black",
+   "metadata": {
+    "name": "Topre 45g Aged",
+    "kind": "dome_baseline",
+    "tested_part": "dome::topre_45g_aged",
+    "dome": "dome::topre_45g_aged",
+    "slider": "slider::topre",
+    "silencing_ring": null,
+    "housing": "housing::topre",
+    "conical_spring": "conical_spring::topre",
+    "is_baseline": false,
+    "travel_dev_mm": 0.005,
+    "precompression_mm": 0.0,
+    "flag_travel": false,
+    "status": "verified",
+    "notes": "Dome baseline created from the stock-assembly parts baseline per ruling; same CSV set serves both."
+   },
+   "expected_runs": [
+    {
+     "path": "Topre_Slider_Black/Topre_Slider_Black-DataLog_0.csv",
+     "sha256": "e3750bb2d88d0e4fbf1ce8643891a0395e73084b0a895f7da5d4f773a017fc98"
+    },
+    {
+     "path": "Topre_Slider_Black/Topre_Slider_Black-DataLog_1.csv",
+     "sha256": "295b17b213b625945f5195f65040d9c2d9d62a60d5c43fda39b8a083a5a5ff70"
+    },
+    {
+     "path": "Topre_Slider_Black/Topre_Slider_Black-DataLog_2.csv",
+     "sha256": "e45f432a6e3929ecce4b0d6a31140e865ec3f08e563b76239329d1ab1eeeece3"
+    },
+    {
+     "path": "Topre_Slider_Black/Topre_Slider_Black-DataLog_3.csv",
+     "sha256": "3d1c5946158643afce7c4eeae8ec626878126bf8397174a4e2a596b30fbd063d"
+    }
+   ],
+   "disposition": "include"
+  },
+  {
+   "test_id": null,
+   "set": "Sony_BKE_Gray_02",
+   "metadata": {},
+   "expected_runs": [
+    {
+     "path": "Sony_BKE_Gray_02/DataLog_1.csv",
+     "sha256": "579d93ec120a8415b9772502e2775a4b3ec56ffaf72f5003e5b2d5dbc9058b2e"
+    },
+    {
+     "path": "Sony_BKE_Gray_02/DataLog_2.csv",
+     "sha256": "f8cbf012a13a2104caf5da4894018767ff3a7737b55dbdd938e868bfdbb11538"
+    },
+    {
+     "path": "Sony_BKE_Gray_02/DataLog_3.csv",
+     "sha256": "fb9aee8988ab9b647e99a637c2be0700e944b2969d0fcffdbaf6032171321395"
+    }
+   ],
+   "disposition": "exclude_registry"
+  }
+ ]
+}

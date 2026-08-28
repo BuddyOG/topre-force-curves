@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools==80.9.0", "wheel==0.45.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "domelab-pipeline"
+version = "4.2.2"
+description = "Dome Lab metrics-v4.2 authoritative generator (ramp-v3-post-seating)"
+requires-python = ">=3.11"
+dependencies = ["jsonschema==4.26.0", "openpyxl==3.1.5"]
+
+[project.optional-dependencies]
+test = ["pytest==9.1.1", "Pygments==2.20.0", "colorama==0.4.6; sys_platform == 'win32'"]
+
+[project.scripts]
+domelab-gen = "domelab_pipeline.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["domelab_pipeline*"]
+
+[tool.setuptools.package-data]
+domelab_pipeline = ["config/*.json", "release_reference/*"]

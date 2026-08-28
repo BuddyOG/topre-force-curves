@@ -1,0 +1,239 @@
+{
+ "metrics_version": "metrics-v4.2",
+ "calc_version": "metrics-v4.2 (valley-v2, press-work, drop-rate, ramp-v3-post-seating) + travel-v3 (step1pct force-wall) + intake-qc-v1.4",
+ "force_unit": "gf",
+ "travel_unit": "mm",
+ "nominal_sample_step_mm": 0.005,
+ "nominal_steps_per_sample": 8,
+ "smoothing": {
+  "method": "centered arithmetic moving mean",
+  "k": 7,
+  "edge_rule": "shrinking window over the first and last three samples, no padding",
+  "scope": "F_analysis supplies every landmark and shape metric (collapse, valley, snap, drop family, steepest drop, ramp, travel-v3). Work integrals use raw calibrated force."
+ },
+ "phase_split": "first occurrence of maximum Travel ends press; return begins at that shared turnaround sample (sample present in both branches)",
+ "collapse_detect": {
+  "search_fraction": 0.75,
+  "local_max_halfwin_samples": 40,
+  "drop_lookahead_samples": 200,
+  "min_prominence_gf": 2.0,
+  "edge_margin_samples": 7,
+  "fallback": {
+   "name": "first-75%-stroke global maximum",
+   "flags": [
+    "collapse_fallback_used",
+    "tactile_event_not_found"
+   ],
+   "policy": "fallback results are not accepted as a canonical dome collapse without review"
+  },
+  "tie_break": "strictly-greater comparisons: the earliest index wins among exactly equal peak values; likewise the earliest minimum wins for the valley"
+ },
+ "valley": {
+  "rule": "valley-v2",
+  "seed_window_mm": 1.6,
+  "fixed_point_max_passes": 4,
+  "nonconvergence_flag": "valley_iteration_nonconverged"
+ },
+ "travel": {
+  "rule": "travel-v3 (step1pct)",
+  "floor_gf": 10.0,
+  "step_fraction": 0.01,
+  "consecutive_steps": 3,
+  "search": "least i strictly after valley with F_analysis(i)>=floor and three successive steps dF>fraction*F; candidates run through i=n-4 inclusive",
+  "event_name": "detected force-wall onset (operational bottom-out proxy; physical contact is not observed)",
+  "no_wall": "travel_mm=null, full_stroke_press_work_gf_mm=null, legacy flag bottomout_not_found; never substitute the final sweep sample",
+  "grid_rule": {
+   "nominal_step_mm": 0.005,
+   "tolerance_mm": 1e-06,
+   "policy": "travel-v3 requires nominal-grid conformance; off-grid acquisitions are flagged grid_nonconforming and travel/full-stroke work are nulled (quarantine, never silent respan). Resampling is not implemented; if ever added it must be an explicitly versioned alternative method."
+  }
+ },
+ "steepest_drop": {
+  "window_mm": 0.1,
+  "tie_tolerance_gf_per_mm": 1e-12,
+  "tie_break": "the scalar is the exact global maximum; audit endpoints use the earliest ascending-coordinate interval whose slope is within tie_tolerance_gf_per_mm below that maximum",
+  "evaluation": "true finite span with piecewise-linear interpolation, both endpoints inside [xc, xv]"
+ },
+ "ramp": {
+  "rule": "ramp-v3-post-seating",
+  "seating_end_mm": 0.05,
+  "reference_band_low_mm": 0.05,
+  "reference_band_high_mm": 0.15,
+  "minimum_band_samples": 3,
+  "low_fraction": 0.1,
+  "high_fraction": 0.9,
+  "baseline_method": "conventional median of analysis-force samples in the inclusive configured reference band; the trace must cover both band bounds",
+  "min_rise_gf": 1.0,
+  "min_span_mm": 0.02,
+  "coordinate_tolerance_mm": 1e-09,
+  "crossing_domain": "interpolated coordinates from seating_end_mm through collapse, inclusive within coordinate_tolerance_mm",
+  "crossing": "enumerate upward piecewise-linear crossings through collapse, retain only crossings in crossing_domain, choose the last eligible crossing",
+  "collapse_order": "collapse_travel_mm must exceed reference_band_high_mm by coordinate_tolerance_mm",
+  "metric_local_null": "a RAMP null never changes intake eligibility, retained-run membership, or unrelated metric values"
+ },
+ "per_run_coherence": {
+  "contract_version": "per-run-coherence-v1",
+  "terminal_event_flags": [
+   "incomplete_press",
+   "collapse_not_found",
+   "valley_not_found"
+  ],
+  "force_wall_null_flags": [
+   "bottomout_not_found",
+   "grid_nonconforming"
+  ],
+  "ramp_null_flags": [
+   "ramp_baseline_unavailable",
+   "ramp_baseline_band_incomplete",
+   "ramp_reference_band_overlaps_collapse",
+   "ramp_crossing_missing",
+   "ramp_event_order_invalid",
+   "ramp_span_too_small"
+  ],
+  "rules": {
+   "terminal": "collapse and valley landmark pairs are all-or-none; an unavailable event stage has exactly its named terminal flag and all downstream metrics/audit evidence null or default",
+   "force_wall": "force_wall_found, audited force-wall coordinate, travel_mm and full_stroke_press_work_gf_mm are bidirectionally coherent; a reached-but-null wall has exactly one configured force-wall null flag",
+   "ramp": "numeric RAMP requires complete internally ordered audit evidence and no RAMP-null flag; post-landmark null RAMP requires exactly one configured RAMP-null flag whose audit state proves that reason",
+   "steepest_drop": "numeric steepest drop requires a complete audited window in [xc,xv]; a sub-window drop span is null with drop_travel_below_0p10mm",
+   "derived_metrics": "SNAP and DROP-rate-family nullability follows their declared positive-force and positive-travel domains"
+  }
+ },
+ "work": {
+  "integrand": "raw calibrated Scale (grams) vs recorded press Travel (mm)",
+  "method": "trapezoid with piecewise-linear interpolated endpoints",
+  "endpoints": "pre-collapse: x_collapse; legacy full-stroke field: detected travel-v3 force-wall onset",
+  "si_conversion": "1 gf*mm = 9.80665 uJ"
+ },
+ "runfilter": {
+  "version": "runfilter-v1.1",
+  "status": "legacy frozen-membership comparator used only while the checked-in intake decision artifact has artifact_role=development_preview; it is not the authority for a newly frozen fleet",
+  "centre": "median_conventional",
+  "fc_threshold_gf": 1.0,
+  "xc_threshold_mm": 0.1,
+  "boundary": "strict exclusion for deviation > threshold; equality retained",
+  "empty": "fail generation",
+  "null_landmarks": "runs with null Fc or xc are excluded as invalid_landmarks before centre computation; centres come from valid candidates only; thresholds apply to every valid candidate"
+ },
+ "intake_policy": {
+  "authority_file": "config/intake_policy.json",
+  "version": "intake-qc-v1.4",
+  "parity_target": "test-imp 1.1.4",
+  "decision_file": "config/retained_run_decisions.json",
+  "signal_discontinuity_rule": "within the force-shape domain, adjacent-step force changes greater than 5.0 gf are fatal on the press stroke only; local residuals greater than 5.0 gf are fatal on both press and return; equality passes",
+  "ramp_review_rule": "after Fc/xc retention and only outside a mixed-cohort stop, a retained finite numeric RAMP is marked for nonfatal review when it differs by strictly more than 10% from the positive conventional median of at least three retained finite numeric RAMP values; equality passes under the declared 1e-12 floating-point guard and the warning never changes membership or metrics",
+  "preview_rule": "artifact_role=development_preview is recomputed and verified but cannot alter the frozen canonical membership",
+  "review_candidate_rule": "artifact_role=review_candidate is recomputed and verified and applies membership to explicitly non-release review outputs; failed cohorts are omitted and recorded for retest",
+  "canonical_rule": "artifact_role=canonical_retention_authority is recomputed and verified, then becomes the sole run-membership authority; accepted sets retain at least two runs, while failed cohorts are explicitly omitted and recorded for retest without blocking unrelated accepted sets",
+  "promotion": "changing the artifact role is an explicit reviewed dataset decision; the generator never promotes a preview implicitly"
+ },
+ "aggregation": {
+  "method": "compute-per-run-then-arithmetic-mean",
+  "null_rule": "if any retained run is null for a metric, the canonical aggregate is null with a named flag; a valid-only exploratory mean is emitted separately with per-metric n"
+ },
+ "qc_thresholds": {
+  "timing_gap_factor": 3.0,
+  "spike_gf_per_step": 30.0,
+  "stale_force_min_run": 12,
+  "saturation_min_run": 5,
+  "saturation_min_g": 500.0,
+  "baseline_negative_floor_g": -2.0,
+  "baseline_endpoint_zone_mm": 0.15,
+  "short_return_rows": 100,
+  "short_press_max_travel_mm": 3.5
+ },
+ "acquisition": {
+  "expected_header": [
+   "Millis",
+   "Steps",
+   "Travel (mm)",
+   "Scale raw",
+   "Scale (grams)"
+  ],
+  "steps_per_mm": 1600.0,
+  "travel_steps_ratio_tol_mm": 1e-06,
+  "nominal_speed_mm_s": 0.1455,
+  "speed_cohort_tol_frac": 0.15,
+  "adc_dropout_raw_floor": -100000.0,
+  "adc_dropout_cal_floor_g": -50.0,
+  "max_malformed_row_frac": 0.02,
+  "strict_progression": {
+   "rule": "within each monotonic phase every successive sample must advance exactly one nominal step: press +0.005 mm/+8 steps, return -0.005 mm/-8 steps (tolerance 1e-6 mm / 0.5 steps)",
+   "turnaround_exception": "ONLY the exact documented duplicate maximum-travel row at the press/return join: the two maximum rows must be consecutive, travel identical, steps identical, the shared value must be the run maximum, and the declared phase split must hold. Any other boundary transition is validated normally as -0.005 mm / -8 steps.",
+   "violations": "duplicate, missing, reversed or off-grid interior samples all count; any violation clears grid_conforming"
+  }
+ },
+ "qc_dispositions": {
+  "order": [
+   "fail_exclude",
+   "quarantine_retest",
+   "review",
+   "pass_with_offset_note",
+   "pass"
+  ],
+  "fail_exclude_when": [
+   "header_mismatch",
+   "nonfinite_values",
+   "malformed_rows",
+   "malformed_rows_over_2pct",
+   "raw_adc_dropout",
+   "incomplete_press",
+   "incomplete_return",
+   "bad_origin",
+   "bad_return_endpoint",
+   "cropped_stroke",
+   "invalid_turnaround",
+   "missing_duplicate_turnaround",
+   "loadcell_saturation",
+   "timestamp_nonmonotonic",
+   "phase_reversal"
+  ],
+  "review_when": [
+   "grid_nonconforming",
+   "rate_cohort_nonconform",
+   "stale_force",
+   "force_spikes",
+   "raw_cal_inconsistency",
+   "timing_gaps_ge_10",
+   "negative_review"
+  ],
+  "pass_with_offset_note_when": [
+   "baseline_zero_offset only"
+  ],
+  "gate": "legacy diagnostic/compatibility gate used only by artifact_role=development_preview; under review_candidate or canonical_retention_authority, intake-qc-v1.4 is the acquisition authority and these dispositions cannot veto it",
+  "cadence_policy": "review/retest and adjudication are legacy diagnostic labels only when intake membership is active. The executable hard/preferred cadence authority is config/intake_policy.json; exact owner review-register blocks remain load-bearing, while the QC-bound legacy adjudication registry must be empty."
+ },
+ "canonical_eligibility": {
+  "status": "legacy diagnostic/compatibility decision when intake membership is active; never invoked as a review/canonical gate",
+  "eligible_dispositions": [
+   "pass",
+   "pass_with_offset_note"
+  ],
+  "barrier_flags": [
+   "tactile_event_not_found",
+   "collapse_fallback_used"
+  ],
+  "rule": "review and quarantine_retest runs, and runs carrying a barrier flag, enter canonical aggregates only through a version-controlled adjudication override (config/adjudications.json); fail_exclude is never overridable",
+  "persistence": "legacy observations are persisted with decision_role=legacy_qc_diagnostic; authoritative intake decisions are persisted in the role-labelled intake decision artifact, run_retention.csv and per_run_full_precision"
+ },
+ "protocol": {
+  "rule": "complete-cycle validity: origin zone, press span, return completion fraction, return span and return endpoint zone are ALL required. Row counts are supplementary observations and never establish completeness on their own.",
+  "origin_zone_mm": 0.15,
+  "return_endpoint_zone_mm": 0.15,
+  "min_press_span_mm": 3.5,
+  "min_return_span_mm": 3.5,
+  "min_return_completion_fraction": 0.95,
+  "return_completion_definition": "(x_max - x_end) / (x_max - x_start)",
+  "sensitivity": {
+   "evidence_location": "epoch acceptance artifacts",
+   "scope": "fleet-specific observations are evidence outputs and are not embedded in the reusable method configuration",
+   "conclusion_rule": "an epoch may claim threshold clearance only from a commit-pinned, hash-verified full-fleet audit"
+  }
+ },
+ "curve_average": {
+  "rule": "0.005 mm bucket key round(x*200) with ECMAScript half-up rounding; bucket value is the arithmetic mean of contributing samples; truncated at the smallest per-run maximum travel",
+  "contributor_rule": "majority",
+  "contributor_threshold": "ceil(n_runs / 2)",
+  "authority": "domelab_pipeline.curves is normative; the viewer/picker averageStrokes() body is GENERATED from it so the two cannot drift",
+  "endpoint_inclusion": "follows from the contributor threshold and the truncation rule alone; there is no branch-specific endpoint exception"
+ }
+}

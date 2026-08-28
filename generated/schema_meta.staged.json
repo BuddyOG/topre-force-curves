@@ -1,0 +1,776 @@
+{
+ "calc_version": "metrics-v4.2 (valley-v2, press-work, drop-rate, ramp-v3-post-seating) + travel-v3 (step1pct force-wall) + intake-qc-v1.4",
+ "config_hash": "d07e3cbd67e255e69a2143537d4ac661cbae0175f91273889e24b8d95e5b6f2f",
+ "config_hash_definition": "config_hash == bundle_hash over all distinguished method, dataset-decision, metadata-authority, history, raw, generator-source, and release-reference identities; evidence_epoch_hash excludes generator source and presentation/release-reference bytes",
+ "dispersion_note": "sd is the sample standard deviation (n-1) via statistics.stdev",
+ "evidence_epoch": {
+  "curve_packs_are_derived_and_lossy": true,
+  "evidence_history_hash": "f988f34c2187d9c9bc1bfb3e15e0398442a446a734c2a1b8f418feb7ab9be9de",
+  "force_curve_bench_release_eligible": false,
+  "force_curve_bench_step3_status": "deferred_not_executed",
+  "identity": "7aa8588b50856816b7fce90dd6e743c26c6f16926071123291cb054352b6cd4a",
+  "independent_measurement_cohort_count": 75,
+  "input_verification": {
+   "independent_measurement_cohorts": 75,
+   "pinned_files": 189,
+   "semantic_sets": 76,
+   "unique_raw_blobs": 180,
+   "verified_files": 189,
+   "verified_raw_runs": 184
+  },
+  "metadata_authority_hash": "ebbbec8833ad95a215afa96804dc080854809d598939e0e787d2f75ec4ae567a",
+  "raw_path_count": 184,
+  "semantic_record_count": 76,
+  "semantic_set_count": 76,
+  "shared_evidence_alias_group_count": 1,
+  "unique_raw_evidence_count": 180
+ },
+ "force_unit": "gf",
+ "generator_version": "4.2.2",
+ "intake_policy": {
+  "artifact_role": "canonical_retention_authority",
+  "canonical_membership_active": true,
+  "decision_manifest_hash": "fbdeedd89bf49eb65ba5a4848dacbde4d0dd153937106280ccb9565137381a26",
+  "decision_manifest_version": 2,
+  "implementation_parity_target": "test-imp 1.1.4",
+  "membership_applied_to_outputs": true,
+  "policy_hash": "256a3cc73e3ffa821a00743bf815bb10ca4594e2f639900fc33a51fe1b9eff58",
+  "ramp_review_set_summaries": {
+   "Astro_Domes_Big_D_160g": {
+    "numeric_retained_count": 4,
+    "retained_median_gf_per_mm": 94.20631913482774,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Astro_Domes_Fiesta_120g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Astro_Domes_Lean_90g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Astro_Domes_Pepper_50g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Astro_Domes_Shiner_35g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Astro_Domes_Weird_70g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Astro_Domes_Whatadome_60g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "BKE_Redux_v1_Extreme_01": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 75.04291819913281,
+    "review_count": 0,
+    "review_required": false
+   },
+   "BKE_Redux_v1_Heavy_01": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "BKE_Redux_v1_Heavy_02": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "BKE_Redux_v1_Heavy_03": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 69.4351261456254,
+    "review_count": 0,
+    "review_required": false
+   },
+   "BKE_Redux_v1_Light_01": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "BKE_Redux_v1_Light_02": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "BKE_Redux_v1_Light_03": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "BKE_Redux_v1_Ultra_Light_01": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "BKE_Redux_v1_Ultra_Light_02": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 30.353111737482763,
+    "review_count": 0,
+    "review_required": false
+   },
+   "BKE_Redux_v1_Ultra_Light_03": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 24.05431558573361,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_Carrot_35g": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 37.9052556416386,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_Carrot_49g": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 62.34683510116357,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_Carrot_60g": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 74.92450701298067,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_T1_Blue_56g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_T1_Cheese_28g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_T1_Coffee_63g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_T1_Darkside_100g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_T1_Green_85g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_T1_Grey_70g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_T1_Pink_42g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_T1_Purple_49g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_T1_Tiffany_35g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_V1_Blue_56g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_V1_Pink_42g": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 42.714367370138085,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_V1_Purple_49g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_V1_Tiffany_35g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_V2_Blue_56g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_V2_Brown_63g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_V2_Green_70g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_V2_Pink_42g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_V2_Purple_49g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_V2_Tiffany_35g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_V3_Blue_56g": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 36.759238305810776,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_V3_Brown_63g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_V3_Cheese_28g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_V3_Green_70g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_V3_Pink_42g": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 40.34223403369378,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_V3_Purple_49g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Deskeys_V3_Tiffany_35g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "DynaCaps_Light_35g": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 24.947718241996306,
+    "review_count": 0,
+    "review_required": false
+   },
+   "DynaCaps_Medium_45g": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 27.556679669007913,
+    "review_count": 0,
+    "review_required": false
+   },
+   "DynaCaps_Parts": {
+    "numeric_retained_count": 5,
+    "retained_median_gf_per_mm": 25.046295641408392,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Dynacaps_Heavy_55g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Dynacaps_Slider_0.3mm_Poron": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 43.397711800858595,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Dynacaps_Slider_0.5mm_Silicone": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "KLC_Densus_35g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "KLC_Densus_45g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "KLC_Densus_55g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "NiZ_Black_65g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "NiZ_Purple_60g": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 52.50866687246487,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Sony_BKE_Brown_01": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Sony_BKE_Brown_02": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 41.27186489876242,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Sony_BKE_Brown_03": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 32.41544213561265,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Sony_BKE_Gray_01": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 51.023087755070556,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Sony_BKE_Gray_02": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 47.480671981423264,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Topre_GX1_45g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Topre_HHKB_Pro2_45g": {
+    "numeric_retained_count": 4,
+    "retained_median_gf_per_mm": 45.41413390710045,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Topre_R1_30g": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 27.775904730473684,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Topre_R1_45g": {
+    "numeric_retained_count": 4,
+    "retained_median_gf_per_mm": 43.26288633569257,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Topre_R1_55g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Topre_R2_30g": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 29.123543152470802,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Topre_R2_45g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Topre_R2_55g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Topre_RGB_45g": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Topre_Slider_Black": {
+    "numeric_retained_count": 4,
+    "retained_median_gf_per_mm": 45.41413390710045,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Topre_Slider_Black_Silenced_0.3mm_Poron": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Topre_Slider_Black_Silenced_0.5mm_Poron": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Topre_Slider_Silenced_Purple": {
+    "numeric_retained_count": 2,
+    "retained_median_gf_per_mm": null,
+    "review_count": 0,
+    "review_required": false
+   },
+   "Topre_Slider_Type-S": {
+    "numeric_retained_count": 3,
+    "retained_median_gf_per_mm": 49.55637289543663,
+    "review_count": 0,
+    "review_required": false
+   }
+  },
+  "ramp_review_summary": {
+   "review_required": false,
+   "run_count": 0,
+   "set_count": 0
+  },
+  "release_eligible": true,
+  "version": "intake-qc-v1.4",
+  "warning": null
+ },
+ "known_divergences_vs_generated_reference_js": [],
+ "method_config": {
+  "acquisition": {
+   "adc_dropout_cal_floor_g": -50.0,
+   "adc_dropout_raw_floor": -100000.0,
+   "expected_header": [
+    "Millis",
+    "Steps",
+    "Travel (mm)",
+    "Scale raw",
+    "Scale (grams)"
+   ],
+   "max_malformed_row_frac": 0.02,
+   "nominal_speed_mm_s": 0.1455,
+   "speed_cohort_tol_frac": 0.15,
+   "steps_per_mm": 1600.0,
+   "strict_progression": {
+    "rule": "within each monotonic phase every successive sample must advance exactly one nominal step: press +0.005 mm/+8 steps, return -0.005 mm/-8 steps (tolerance 1e-6 mm / 0.5 steps)",
+    "turnaround_exception": "ONLY the exact documented duplicate maximum-travel row at the press/return join: the two maximum rows must be consecutive, travel identical, steps identical, the shared value must be the run maximum, and the declared phase split must hold. Any other boundary transition is validated normally as -0.005 mm / -8 steps.",
+    "violations": "duplicate, missing, reversed or off-grid interior samples all count; any violation clears grid_conforming"
+   },
+   "travel_steps_ratio_tol_mm": 1e-06
+  },
+  "aggregation": {
+   "method": "compute-per-run-then-arithmetic-mean",
+   "null_rule": "if any retained run is null for a metric, the canonical aggregate is null with a named flag; a valid-only exploratory mean is emitted separately with per-metric n"
+  },
+  "calc_version": "metrics-v4.2 (valley-v2, press-work, drop-rate, ramp-v3-post-seating) + travel-v3 (step1pct force-wall) + intake-qc-v1.4",
+  "canonical_eligibility": {
+   "barrier_flags": [
+    "tactile_event_not_found",
+    "collapse_fallback_used"
+   ],
+   "eligible_dispositions": [
+    "pass",
+    "pass_with_offset_note"
+   ],
+   "persistence": "legacy observations are persisted with decision_role=legacy_qc_diagnostic; authoritative intake decisions are persisted in the role-labelled intake decision artifact, run_retention.csv and per_run_full_precision",
+   "rule": "review and quarantine_retest runs, and runs carrying a barrier flag, enter canonical aggregates only through a version-controlled adjudication override (config/adjudications.json); fail_exclude is never overridable",
+   "status": "legacy diagnostic/compatibility decision when intake membership is active; never invoked as a review/canonical gate"
+  },
+  "collapse_detect": {
+   "drop_lookahead_samples": 200,
+   "edge_margin_samples": 7,
+   "fallback": {
+    "flags": [
+     "collapse_fallback_used",
+     "tactile_event_not_found"
+    ],
+    "name": "first-75%-stroke global maximum",
+    "policy": "fallback results are not accepted as a canonical dome collapse without review"
+   },
+   "local_max_halfwin_samples": 40,
+   "min_prominence_gf": 2.0,
+   "search_fraction": 0.75,
+   "tie_break": "strictly-greater comparisons: the earliest index wins among exactly equal peak values; likewise the earliest minimum wins for the valley"
+  },
+  "curve_average": {
+   "authority": "domelab_pipeline.curves is normative; the viewer/picker averageStrokes() body is GENERATED from it so the two cannot drift",
+   "contributor_rule": "majority",
+   "contributor_threshold": "ceil(n_runs / 2)",
+   "endpoint_inclusion": "follows from the contributor threshold and the truncation rule alone; there is no branch-specific endpoint exception",
+   "rule": "0.005 mm bucket key round(x*200) with ECMAScript half-up rounding; bucket value is the arithmetic mean of contributing samples; truncated at the smallest per-run maximum travel"
+  },
+  "force_unit": "gf",
+  "intake_policy": {
+   "authority_file": "config/intake_policy.json",
+   "canonical_rule": "artifact_role=canonical_retention_authority is recomputed and verified, then becomes the sole run-membership authority; accepted sets retain at least two runs, while failed cohorts are explicitly omitted and recorded for retest without blocking unrelated accepted sets",
+   "decision_file": "config/retained_run_decisions.json",
+   "parity_target": "test-imp 1.1.4",
+   "preview_rule": "artifact_role=development_preview is recomputed and verified but cannot alter the frozen canonical membership",
+   "promotion": "changing the artifact role is an explicit reviewed dataset decision; the generator never promotes a preview implicitly",
+   "ramp_review_rule": "after Fc/xc retention and only outside a mixed-cohort stop, a retained finite numeric RAMP is marked for nonfatal review when it differs by strictly more than 10% from the positive conventional median of at least three retained finite numeric RAMP values; equality passes under the declared 1e-12 floating-point guard and the warning never changes membership or metrics",
+   "review_candidate_rule": "artifact_role=review_candidate is recomputed and verified and applies membership to explicitly non-release review outputs; failed cohorts are omitted and recorded for retest",
+   "signal_discontinuity_rule": "within the force-shape domain, adjacent-step force changes greater than 5.0 gf are fatal on the press stroke only; local residuals greater than 5.0 gf are fatal on both press and return; equality passes",
+   "version": "intake-qc-v1.4"
+  },
+  "metrics_version": "metrics-v4.2",
+  "nominal_sample_step_mm": 0.005,
+  "nominal_steps_per_sample": 8,
+  "per_run_coherence": {
+   "contract_version": "per-run-coherence-v1",
+   "force_wall_null_flags": [
+    "bottomout_not_found",
+    "grid_nonconforming"
+   ],
+   "ramp_null_flags": [
+    "ramp_baseline_unavailable",
+    "ramp_baseline_band_incomplete",
+    "ramp_reference_band_overlaps_collapse",
+    "ramp_crossing_missing",
+    "ramp_event_order_invalid",
+    "ramp_span_too_small"
+   ],
+   "rules": {
+    "derived_metrics": "SNAP and DROP-rate-family nullability follows their declared positive-force and positive-travel domains",
+    "force_wall": "force_wall_found, audited force-wall coordinate, travel_mm and full_stroke_press_work_gf_mm are bidirectionally coherent; a reached-but-null wall has exactly one configured force-wall null flag",
+    "ramp": "numeric RAMP requires complete internally ordered audit evidence and no RAMP-null flag; post-landmark null RAMP requires exactly one configured RAMP-null flag whose audit state proves that reason",
+    "steepest_drop": "numeric steepest drop requires a complete audited window in [xc,xv]; a sub-window drop span is null with drop_travel_below_0p10mm",
+    "terminal": "collapse and valley landmark pairs are all-or-none; an unavailable event stage has exactly its named terminal flag and all downstream metrics/audit evidence null or default"
+   },
+   "terminal_event_flags": [
+    "incomplete_press",
+    "collapse_not_found",
+    "valley_not_found"
+   ]
+  },
+  "phase_split": "first occurrence of maximum Travel ends press; return begins at that shared turnaround sample (sample present in both branches)",
+  "protocol": {
+   "min_press_span_mm": 3.5,
+   "min_return_completion_fraction": 0.95,
+   "min_return_span_mm": 3.5,
+   "origin_zone_mm": 0.15,
+   "return_completion_definition": "(x_max - x_end) / (x_max - x_start)",
+   "return_endpoint_zone_mm": 0.15,
+   "rule": "complete-cycle validity: origin zone, press span, return completion fraction, return span and return endpoint zone are ALL required. Row counts are supplementary observations and never establish completeness on their own.",
+   "sensitivity": {
+    "conclusion_rule": "an epoch may claim threshold clearance only from a commit-pinned, hash-verified full-fleet audit",
+    "evidence_location": "epoch acceptance artifacts",
+    "scope": "fleet-specific observations are evidence outputs and are not embedded in the reusable method configuration"
+   }
+  },
+  "qc_dispositions": {
+   "cadence_policy": "review/retest and adjudication are legacy diagnostic labels only when intake membership is active. The executable hard/preferred cadence authority is config/intake_policy.json; exact owner review-register blocks remain load-bearing, while the QC-bound legacy adjudication registry must be empty.",
+   "fail_exclude_when": [
+    "header_mismatch",
+    "nonfinite_values",
+    "malformed_rows",
+    "malformed_rows_over_2pct",
+    "raw_adc_dropout",
+    "incomplete_press",
+    "incomplete_return",
+    "bad_origin",
+    "bad_return_endpoint",
+    "cropped_stroke",
+    "invalid_turnaround",
+    "missing_duplicate_turnaround",
+    "loadcell_saturation",
+    "timestamp_nonmonotonic",
+    "phase_reversal"
+   ],
+   "gate": "legacy diagnostic/compatibility gate used only by artifact_role=development_preview; under review_candidate or canonical_retention_authority, intake-qc-v1.4 is the acquisition authority and these dispositions cannot veto it",
+   "order": [
+    "fail_exclude",
+    "quarantine_retest",
+    "review",
+    "pass_with_offset_note",
+    "pass"
+   ],
+   "pass_with_offset_note_when": [
+    "baseline_zero_offset only"
+   ],
+   "review_when": [
+    "grid_nonconforming",
+    "rate_cohort_nonconform",
+    "stale_force",
+    "force_spikes",
+    "raw_cal_inconsistency",
+    "timing_gaps_ge_10",
+    "negative_review"
+   ]
+  },
+  "qc_thresholds": {
+   "baseline_endpoint_zone_mm": 0.15,
+   "baseline_negative_floor_g": -2.0,
+   "saturation_min_g": 500.0,
+   "saturation_min_run": 5,
+   "short_press_max_travel_mm": 3.5,
+   "short_return_rows": 100,
+   "spike_gf_per_step": 30.0,
+   "stale_force_min_run": 12,
+   "timing_gap_factor": 3.0
+  },
+  "ramp": {
+   "baseline_method": "conventional median of analysis-force samples in the inclusive configured reference band; the trace must cover both band bounds",
+   "collapse_order": "collapse_travel_mm must exceed reference_band_high_mm by coordinate_tolerance_mm",
+   "coordinate_tolerance_mm": 1e-09,
+   "crossing": "enumerate upward piecewise-linear crossings through collapse, retain only crossings in crossing_domain, choose the last eligible crossing",
+   "crossing_domain": "interpolated coordinates from seating_end_mm through collapse, inclusive within coordinate_tolerance_mm",
+   "high_fraction": 0.9,
+   "low_fraction": 0.1,
+   "metric_local_null": "a RAMP null never changes intake eligibility, retained-run membership, or unrelated metric values",
+   "min_rise_gf": 1.0,
+   "min_span_mm": 0.02,
+   "minimum_band_samples": 3,
+   "reference_band_high_mm": 0.15,
+   "reference_band_low_mm": 0.05,
+   "rule": "ramp-v3-post-seating",
+   "seating_end_mm": 0.05
+  },
+  "runfilter": {
+   "boundary": "strict exclusion for deviation > threshold; equality retained",
+   "centre": "median_conventional",
+   "empty": "fail generation",
+   "fc_threshold_gf": 1.0,
+   "null_landmarks": "runs with null Fc or xc are excluded as invalid_landmarks before centre computation; centres come from valid candidates only; thresholds apply to every valid candidate",
+   "status": "legacy frozen-membership comparator used only while the checked-in intake decision artifact has artifact_role=development_preview; it is not the authority for a newly frozen fleet",
+   "version": "runfilter-v1.1",
+   "xc_threshold_mm": 0.1
+  },
+  "smoothing": {
+   "edge_rule": "shrinking window over the first and last three samples, no padding",
+   "k": 7,
+   "method": "centered arithmetic moving mean",
+   "scope": "F_analysis supplies every landmark and shape metric (collapse, valley, snap, drop family, steepest drop, ramp, travel-v3). Work integrals use raw calibrated force."
+  },
+  "steepest_drop": {
+   "evaluation": "true finite span with piecewise-linear interpolation, both endpoints inside [xc, xv]",
+   "tie_break": "the scalar is the exact global maximum; audit endpoints use the earliest ascending-coordinate interval whose slope is within tie_tolerance_gf_per_mm below that maximum",
+   "tie_tolerance_gf_per_mm": 1e-12,
+   "window_mm": 0.1
+  },
+  "travel": {
+   "consecutive_steps": 3,
+   "event_name": "detected force-wall onset (operational bottom-out proxy; physical contact is not observed)",
+   "floor_gf": 10.0,
+   "grid_rule": {
+    "nominal_step_mm": 0.005,
+    "policy": "travel-v3 requires nominal-grid conformance; off-grid acquisitions are flagged grid_nonconforming and travel/full-stroke work are nulled (quarantine, never silent respan). Resampling is not implemented; if ever added it must be an explicitly versioned alternative method.",
+    "tolerance_mm": 1e-06
+   },
+   "no_wall": "travel_mm=null, full_stroke_press_work_gf_mm=null, legacy flag bottomout_not_found; never substitute the final sweep sample",
+   "rule": "travel-v3 (step1pct)",
+   "search": "least i strictly after valley with F_analysis(i)>=floor and three successive steps dF>fraction*F; candidates run through i=n-4 inclusive",
+   "step_fraction": 0.01
+  },
+  "travel_unit": "mm",
+  "valley": {
+   "fixed_point_max_passes": 4,
+   "nonconvergence_flag": "valley_iteration_nonconverged",
+   "rule": "valley-v2",
+   "seed_window_mm": 1.6
+  },
+  "work": {
+   "endpoints": "pre-collapse: x_collapse; legacy full-stroke field: detected travel-v3 force-wall onset",
+   "integrand": "raw calibrated Scale (grams) vs recorded press Travel (mm)",
+   "method": "trapezoid with piecewise-linear interpolated endpoints",
+   "si_conversion": "1 gf*mm = 9.80665 uJ"
+  }
+ },
+ "metrics_version": "metrics-v4.2",
+ "nominal_sample_step_mm": 0.005,
+ "per_run_audit_fields": [
+  "force_wall_travel_mm",
+  "force_wall_found",
+  "steepest_drop_start_mm",
+  "steepest_drop_end_mm",
+  "ramp_baseline_force_gf",
+  "ramp_x10_mm",
+  "ramp_x90_mm",
+  "ramp_x10_cross_count",
+  "ramp_x90_cross_count",
+  "ramp_x10_eligible_cross_count",
+  "ramp_x90_eligible_cross_count",
+  "ramp_band_sample_count",
+  "ramp_band_complete"
+ ],
+ "provenance_hashes": {
+  "bundle_hash": "d07e3cbd67e255e69a2143537d4ac661cbae0175f91273889e24b8d95e5b6f2f",
+  "dataset_decision_hash": "98c68e9f4f1d75eec1c35e9b69cbbe945621568e2d9b0432981012aa6d5e9ea1",
+  "evidence_epoch_hash": "7aa8588b50856816b7fce90dd6e743c26c6f16926071123291cb054352b6cd4a",
+  "evidence_history_hash": "f988f34c2187d9c9bc1bfb3e15e0398442a446a734c2a1b8f418feb7ab9be9de",
+  "generator_source_hash": "38980b48969bd282a6bb85850e6d4a54c6790c742affee038296371f8e77f082",
+  "metadata_authority_hash": "ebbbec8833ad95a215afa96804dc080854809d598939e0e787d2f75ec4ae567a",
+  "method_hash": "ca4bc30969d89b88c1af27b8f6fb4dfcf3d580456d73f754a0a7a27de466c6a4",
+  "raw_csv_manifest_hash": "309e3fb1e4866aafa5e11eb154b8daa3eee41ec5b96a545191a56efee55ce573",
+  "raw_manifest_hash": "b2714a4b45180b141fbb6f46913aaef854f428a5ec9c7feb36fd5b980bc6be13",
+  "release_reference_hash": "78bcaee15265b41861afa6f6eb9f85c09210d5b900cfc63fbe014b49a69e37c0"
+ },
+ "repo_commit": "6e86ac1955a0c566c7aae521705e51371992ba8a",
+ "travel_unit": "mm"
+}

@@ -1,0 +1,8 @@
+{
+ "artifact_role": "canonical_retention_authority",
+ "config_hash": "042a07a02d32eae7c17a2fadfac7364d03204117bc31e2a57d57512d250d653b",
+ "entries": [],
+ "registry_hash": "af4055647b3329d6f9f48860b408545ca9d3ff24fd3a3cf3803d092864baf505",
+ "release_eligible": true,
+ "repo_commit": "6e86ac1955a0c566c7aae521705e51371992ba8a"
+}

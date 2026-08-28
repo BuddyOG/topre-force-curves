@@ -1,0 +1,155 @@
+{
+ "mapping_rule": "visual row-major: scoring row A = 1a–1e, B = 2a–2e, through E = 5a–5e",
+ "positions": [
+  {
+   "canonical_set": "Dynacaps_Heavy_55g",
+   "dome_label": "DynaCaps Heavy 55g",
+   "position": "1a",
+   "test_id": "bt_0007"
+  },
+  {
+   "canonical_set": "Sony_BKE_Gray_01",
+   "dome_label": "Sony BKE Gray 01",
+   "position": "1b",
+   "test_id": "bt_0010"
+  },
+  {
+   "canonical_set": "KLC_Densus_35g",
+   "dome_label": "KLC Densus 35g",
+   "position": "1c",
+   "test_id": "bt_0069"
+  },
+  {
+   "canonical_set": "BKE_Redux_v1_Heavy_01",
+   "dome_label": "BKE Redux Heavy 01",
+   "position": "1d",
+   "test_id": "bt_0036"
+  },
+  {
+   "canonical_set": "Deskeys_V1_Purple_49g",
+   "dome_label": "Deskeys V1 Purple 49g",
+   "position": "1e",
+   "test_id": "bt_0047"
+  },
+  {
+   "canonical_set": "Astro_Domes_Lean_90g",
+   "dome_label": "Astro Lean 90g",
+   "position": "2a",
+   "test_id": "bt_0066"
+  },
+  {
+   "canonical_set": "Topre_R1_55g",
+   "dome_label": "Topre R1 55g",
+   "position": "2b",
+   "test_id": "bt_0074"
+  },
+  {
+   "canonical_set": "Sony_BKE_Brown_03",
+   "dome_label": "Sony BKE Brown 03",
+   "position": "2c",
+   "test_id": "bt_0014"
+  },
+  {
+   "canonical_set": "NiZ_Purple_60g",
+   "dome_label": "NiZ Purple 60g",
+   "position": "2d",
+   "test_id": "bt_0072"
+  },
+  {
+   "canonical_set": "Deskeys_T1_Purple_49g",
+   "dome_label": "Deskeys T1 Purple 49g",
+   "position": "2e",
+   "test_id": "bt_0030"
+  },
+  {
+   "canonical_set": "BKE_Redux_v1_Heavy_03",
+   "dome_label": "BKE Redux Heavy 03",
+   "position": "3a",
+   "test_id": "bt_0038"
+  },
+  {
+   "canonical_set": "Topre_R1_45g",
+   "dome_label": "Topre R1 45g",
+   "position": "3b",
+   "test_id": "bt_0075"
+  },
+  {
+   "canonical_set": "Astro_Domes_Pepper_50g",
+   "dome_label": "Astro Pepper 50g",
+   "position": "3c",
+   "test_id": "bt_0063"
+  },
+  {
+   "canonical_set": "NiZ_Black_65g",
+   "dome_label": "NiZ Black 65g",
+   "position": "3d",
+   "test_id": "bt_0009"
+  },
+  {
+   "canonical_set": "Deskeys_V3_Purple_49g",
+   "dome_label": "Deskeys V3 Purple 49g",
+   "position": "3e",
+   "test_id": "bt_0058"
+  },
+  {
+   "canonical_set": "Astro_Domes_Big_D_160g",
+   "dome_label": "Astro Big D 160g",
+   "position": "4a",
+   "test_id": "bt_0068"
+  },
+  {
+   "canonical_set": "Topre_R2_30g",
+   "dome_label": "Topre R2 30g",
+   "position": "4b",
+   "test_id": "bt_0079"
+  },
+  {
+   "canonical_set": "Deskeys_V2_Purple_49g",
+   "dome_label": "Deskeys V2 Purple 49g",
+   "position": "4c",
+   "test_id": "bt_0051"
+  },
+  {
+   "canonical_set": "DynaCaps_Light_35g",
+   "dome_label": "DynaCaps Light 35g",
+   "position": "4d",
+   "test_id": "bt_0005"
+  },
+  {
+   "canonical_set": "BKE_Redux_v1_Extreme_01",
+   "dome_label": "BKE Redux Extreme 01",
+   "position": "4e",
+   "test_id": "bt_0008"
+  },
+  {
+   "canonical_set": "Astro_Domes_Fiesta_120g",
+   "dome_label": "Astro Fiesta 120g",
+   "position": "5a",
+   "test_id": "bt_0067"
+  },
+  {
+   "canonical_set": "KLC_Densus_55g",
+   "dome_label": "KLC Densus 55g",
+   "position": "5b",
+   "test_id": "bt_0071"
+  },
+  {
+   "canonical_set": "Deskeys_T1_Darkside_100g",
+   "dome_label": "Deskeys T1 Darkside 100g",
+   "position": "5c",
+   "test_id": "bt_0035"
+  },
+  {
+   "canonical_set": "Topre_R1_30g",
+   "dome_label": "Topre R1 30g",
+   "position": "5d",
+   "test_id": "bt_0076"
+  },
+  {
+   "canonical_set": "Sony_BKE_Gray_02",
+   "dome_label": "Sony BKE Gray 02",
+   "position": "5e",
+   "test_id": "bt_0073"
+  }
+ ]
+}

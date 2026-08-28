@@ -1,0 +1,394 @@
+{
+ "correlations": {
+  "tactility": [
+   {
+    "metric": "drop_gf",
+    "pearson_p": 5.204070246069766e-11,
+    "pearson_r": 0.9228761893084989,
+    "spearman_fdr_q": 2.398833669836587e-10,
+    "spearman_p": 1.7134526213118482e-11,
+    "spearman_rho": 0.930200072898408
+   },
+   {
+    "metric": "steepest_drop_0p10mm_gf_per_mm",
+    "pearson_p": 5.32383801336353e-10,
+    "pearson_r": 0.9048477133724703,
+    "spearman_fdr_q": 1.0493933991142913e-09,
+    "spearman_p": 1.4991334273061305e-10,
+    "spearman_rho": 0.9151595244560208
+   },
+   {
+    "metric": "drop_rate_gf_per_mm",
+    "pearson_p": 9.292978108199426e-10,
+    "pearson_r": 0.8999085465499438,
+    "spearman_fdr_q": 2.099567626633401e-09,
+    "spearman_p": 4.499073485643002e-10,
+    "spearman_rho": 0.906289457425895
+   },
+   {
+    "metric": "snap_pct",
+    "pearson_p": 5.2159532041540744e-11,
+    "pearson_r": 0.922860361434908,
+    "spearman_fdr_q": 2.2502201812208248e-09,
+    "spearman_p": 6.429200517773785e-10,
+    "spearman_rho": 0.9032042167197643
+   },
+   {
+    "metric": "norm_drop_rate_per_mm",
+    "pearson_p": 1.6318956389415576e-09,
+    "pearson_r": 0.8946423585876769,
+    "spearman_fdr_q": 2.8538059279129083e-07,
+    "spearman_p": 1.0192164028260387e-07,
+    "spearman_rho": 0.8457416085680799
+   },
+   {
+    "metric": "collapse_force_gf",
+    "pearson_p": 9.342626952387863e-06,
+    "pearson_r": 0.7626332919991999,
+    "spearman_fdr_q": 0.0001454243300883966,
+    "spearman_p": 6.232471289502712e-05,
+    "spearman_rho": 0.7134619132927258
+   },
+   {
+    "metric": "ramp_10_90_gf_per_mm",
+    "pearson_p": 3.343869074420216e-05,
+    "pearson_r": 0.7307946370874466,
+    "spearman_fdr_q": 0.0003096619632017324,
+    "spearman_p": 0.0001548309816008662,
+    "spearman_rho": 0.6856947469375494
+   },
+   {
+    "metric": "travel_mm",
+    "pearson_p": 0.0003006772497669806,
+    "pearson_r": -0.6633829806686865,
+    "spearman_fdr_q": 0.0020700595527820575,
+    "spearman_p": 0.0013046018165084896,
+    "spearman_rho": -0.60663545384295
+   },
+   {
+    "metric": "drop_travel_mm",
+    "pearson_p": 0.0012732909332111293,
+    "pearson_r": 0.6076697706297729,
+    "spearman_fdr_q": 0.0020700595527820575,
+    "spearman_p": 0.0013307525696456086,
+    "spearman_rho": 0.6057878249847879
+   },
+   {
+    "metric": "precollapse_work_gf_mm",
+    "pearson_p": 0.00481905673774172,
+    "pearson_r": 0.5452643249787608,
+    "spearman_fdr_q": 0.01882725366740645,
+    "spearman_p": 0.013448038333861751,
+    "spearman_rho": 0.4874680315686516
+   },
+   {
+    "metric": "collapse_travel_mm",
+    "pearson_p": 0.025944774943788194,
+    "pearson_r": -0.4446474978358463,
+    "spearman_fdr_q": 0.025093302580503574,
+    "spearman_p": 0.01971616631325281,
+    "spearman_rho": -0.4631717610078723
+   },
+   {
+    "metric": "full_stroke_press_work_gf_mm",
+    "pearson_p": 0.010739998130261054,
+    "pearson_r": 0.5009955353348502,
+    "spearman_fdr_q": 0.03198667278720443,
+    "spearman_p": 0.027417148103318082,
+    "spearman_rho": 0.44080376588842474
+   },
+   {
+    "metric": "valley_force_gf",
+    "pearson_p": 0.5264736369330882,
+    "pearson_r": -0.13292060796417082,
+    "spearman_fdr_q": 0.7483690942785508,
+    "spearman_p": 0.6949141589729401,
+    "spearman_rho": -0.0825301888889964
+   },
+   {
+    "metric": "valley_travel_mm",
+    "pearson_p": 0.33400768901319666,
+    "pearson_r": 0.20154027361184446,
+    "spearman_fdr_q": 0.8908371904055864,
+    "spearman_p": 0.8908371904055863,
+    "spearman_rho": 0.028924131619975375
+   }
+  ],
+  "weight": [
+   {
+    "metric": "collapse_force_gf",
+    "pearson_p": 1.0827282740155828e-09,
+    "pearson_r": 0.8985072554175403,
+    "spearman_fdr_q": 3.8266889608507755e-12,
+    "spearman_p": 2.733349257750554e-13,
+    "spearman_rho": 0.951744545758805
+   },
+   {
+    "metric": "ramp_10_90_gf_per_mm",
+    "pearson_p": 6.01006683850076e-09,
+    "pearson_r": 0.8812983730314892,
+    "spearman_fdr_q": 8.989513933472904e-09,
+    "spearman_p": 1.284216276210415e-09,
+    "spearman_rho": 0.8969178822708737
+   },
+   {
+    "metric": "precollapse_work_gf_mm",
+    "pearson_p": 1.9004435140475838e-07,
+    "pearson_r": 0.836471856765822,
+    "spearman_fdr_q": 7.510617966920576e-07,
+    "spearman_p": 1.6094181357686948e-07,
+    "spearman_rho": 0.8390023926709463
+   },
+   {
+    "metric": "drop_gf",
+    "pearson_p": 2.118832232279359e-07,
+    "pearson_r": 0.8347924119753329,
+    "spearman_fdr_q": 1.3386164636934164e-06,
+    "spearman_p": 4.5634673625667766e-07,
+    "spearman_rho": 0.8223999523189673
+   },
+   {
+    "metric": "drop_rate_gf_per_mm",
+    "pearson_p": 3.129782072808496e-07,
+    "pearson_r": 0.828613558756768,
+    "spearman_fdr_q": 1.3386164636934164e-06,
+    "spearman_p": 5.856991193720931e-07,
+    "spearman_rho": 0.8181528164149726
+   },
+   {
+    "metric": "full_stroke_press_work_gf_mm",
+    "pearson_p": 2.5648740514327417e-06,
+    "pearson_r": 0.7906068606617792,
+    "spearman_fdr_q": 1.3386164636934164e-06,
+    "spearman_p": 6.124652361879902e-07,
+    "spearman_rho": 0.8173806098869736
+   },
+   {
+    "metric": "steepest_drop_0p10mm_gf_per_mm",
+    "pearson_p": 1.694145261043902e-07,
+    "pearson_r": 0.838225851772465,
+    "spearman_fdr_q": 1.3386164636934164e-06,
+    "spearman_p": 6.693082318467082e-07,
+    "spearman_rho": 0.8158361968309755
+   },
+   {
+    "metric": "snap_pct",
+    "pearson_p": 0.00018323235811682238,
+    "pearson_r": 0.6802076254919096,
+    "spearman_fdr_q": 0.000342827508515194,
+    "spearman_p": 0.00019590143343725373,
+    "spearman_rho": 0.6779973315831487
+   },
+   {
+    "metric": "norm_drop_rate_per_mm",
+    "pearson_p": 0.00042199193891891774,
+    "pearson_r": 0.651240273109819,
+    "spearman_fdr_q": 0.0034008233517846117,
+    "spearman_p": 0.0021862435832901077,
+    "spearman_rho": 0.583788135167267
+   },
+   {
+    "metric": "drop_travel_mm",
+    "pearson_p": 0.02263503520827357,
+    "pearson_r": 0.453976666685872,
+    "spearman_fdr_q": 0.023410175574316135,
+    "spearman_p": 0.016721553981654383,
+    "spearman_rho": 0.47383983673644803
+   },
+   {
+    "metric": "travel_mm",
+    "pearson_p": 0.013460703657935873,
+    "pearson_r": -0.48741027614987176,
+    "spearman_fdr_q": 0.03133151284983038,
+    "spearman_p": 0.02461761723915244,
+    "spearman_rho": -0.4482658895034371
+   },
+   {
+    "metric": "valley_force_gf",
+    "pearson_p": 0.07001067457033856,
+    "pearson_r": 0.36836337080925335,
+    "spearman_fdr_q": 0.04491283272220913,
+    "spearman_p": 0.03849671376189354,
+    "spearman_rho": 0.4162193185914773
+   },
+   {
+    "metric": "valley_travel_mm",
+    "pearson_p": 0.08888145475198632,
+    "pearson_r": 0.3473604972823096,
+    "spearman_fdr_q": 0.4249971146822921,
+    "spearman_p": 0.39464017791927125,
+    "spearman_rho": 0.17799360470377648
+   },
+   {
+    "metric": "collapse_travel_mm",
+    "pearson_p": 0.9184737908723837,
+    "pearson_r": -0.02157344281709974,
+    "spearman_fdr_q": 0.6121606931175625,
+    "spearman_p": 0.6121606931175625,
+    "spearman_rho": -0.1065645008638662
+   }
+  ]
+ },
+ "effective_n": 25,
+ "fixed_order": true,
+ "limitations": [
+  "One rater; repeated sessions improve within-rater precision but do not make n=75.",
+  "All sessions used the same fixed grid order, so position/order and dome identity are confounded.",
+  "The 1–10 endpoints are relative to this selected 25-dome panel, not calibrated perceptual units.",
+  "All tactility ratings were 2–10; the pilot contains no linear/off tactility observation.",
+  "Associations are exploratory and do not identify causal, independent metric contributions."
+ ],
+ "metric_display_names": {
+  "collapse_force_gf": "Collapse force",
+  "drop_gf": "Drop",
+  "drop_rate_gf_per_mm": "Drop rate",
+  "full_stroke_press_work_gf_mm": "Press work to force-wall",
+  "norm_drop_rate_per_mm": "Normalized drop rate",
+  "precollapse_work_gf_mm": "Pre-collapse work",
+  "ramp_10_90_gf_per_mm": "Ramp",
+  "snap_pct": "Snap %",
+  "steepest_drop_0p10mm_gf_per_mm": "Steepest 0.10 mm drop",
+  "travel_mm": "Detected force-wall onset (canonical field: travel_mm)"
+ },
+ "modeling_status": "No prediction model or causal contribution estimate is released.",
+ "pilot_id": "subjective-pilot-v1",
+ "rater_count": 1,
+ "reliability": {
+  "tactility": {
+   "cronbach_alpha": 0.973722998729352,
+   "icc_absolute_average3": 0.9672826416237502,
+   "icc_absolute_single": 0.9078760307079897,
+   "icc_consistency_average3": 0.973722998729352,
+   "icc_consistency_single": 0.9251050267999421,
+   "max_within_dome_range": 3.0,
+   "mean_within_dome_range": 1.32,
+   "mean_within_dome_sd": 0.7311622476544557,
+   "median_within_dome_sd": 0.5773502691896258,
+   "ms_error": 0.5744444444444444,
+   "ms_rows": 21.86111111111111,
+   "ms_sessions": 4.213333333333341,
+   "pairwise": [
+    {
+     "mean_abs_difference": 0.88,
+     "pearson_p": 1.7568213529005714e-10,
+     "pearson_r": 0.9139352883160721,
+     "session_a": 1,
+     "session_b": 2,
+     "spearman_p": 1.5595205342925933e-10,
+     "spearman_rho": 0.9148564308860737
+    },
+    {
+     "mean_abs_difference": 0.96,
+     "pearson_p": 1.3393664308150408e-11,
+     "pearson_r": 0.9317242519446721,
+     "session_a": 1,
+     "session_b": 3,
+     "spearman_p": 6.4190898238023444e-12,
+     "spearman_rho": 0.9360745870601446
+    },
+    {
+     "mean_abs_difference": 0.8,
+     "pearson_p": 1.2458981415658986e-11,
+     "pearson_r": 0.9321653353374937,
+     "session_a": 2,
+     "session_b": 3,
+     "spearman_p": 3.322079916498624e-11,
+     "spearman_rho": 0.9259265316188656
+    }
+   ],
+   "session_means": {
+    "1": 6.48,
+    "2": 6.24,
+    "3": 5.68
+   },
+   "session_sds": {
+    "1": 2.8594871335025562,
+    "2": 2.7123175821917807,
+    "3": 2.734349404642111
+   }
+  },
+  "weight": {
+   "cronbach_alpha": 0.9479752066115702,
+   "icc_absolute_average3": 0.9381670960618329,
+   "icc_absolute_single": 0.8349164755977727,
+   "icc_consistency_average3": 0.9479752066115703,
+   "icc_consistency_single": 0.8586346283404447,
+   "max_within_dome_range": 3.0,
+   "mean_within_dome_range": 1.4,
+   "mean_within_dome_sd": 0.795914333795136,
+   "median_within_dome_sd": 1.0,
+   "ms_error": 0.6994444444444444,
+   "ms_rows": 13.444444444444443,
+   "ms_sessions": 4.213333333333334,
+   "pairwise": [
+    {
+     "mean_abs_difference": 1.12,
+     "pearson_p": 1.0301734668236068e-08,
+     "pearson_r": 0.8752710733667804,
+     "session_a": 1,
+     "session_b": 2,
+     "spearman_p": 9.937892418027325e-10,
+     "spearman_rho": 0.899295781490395
+    },
+    {
+     "mean_abs_difference": 1.12,
+     "pearson_p": 6.421295135772406e-08,
+     "pearson_r": 0.8522482631939534,
+     "session_a": 1,
+     "session_b": 3,
+     "spearman_p": 4.684146337187245e-09,
+     "spearman_rho": 0.8839811876158487
+    },
+    {
+     "mean_abs_difference": 0.56,
+     "pearson_p": 2.6794496801259115e-09,
+     "pearson_r": 0.88976347072011,
+     "session_a": 2,
+     "session_b": 3,
+     "spearman_p": 7.50678130331357e-11,
+     "spearman_rho": 0.9202900810423443
+    }
+   ],
+   "session_means": {
+    "1": 6.12,
+    "2": 5.32,
+    "3": 5.56
+   },
+   "session_sds": {
+    "1": 2.5219040425836985,
+    "2": 2.0960279896349987,
+    "3": 2.0223748416156684
+   }
+  }
+ },
+ "score_bounds": {
+  "tactility_max": 10.0,
+  "tactility_min": 2.0,
+  "weight_max": 10.0,
+  "weight_min": 1.0
+ },
+ "session_count": 3,
+ "session_summary": [
+  {
+   "session": 1,
+   "tactility_mean": 6.48,
+   "tactility_sd": 2.8594871335025567,
+   "weight_mean": 6.12,
+   "weight_sd": 2.521904042583698
+  },
+  {
+   "session": 2,
+   "tactility_mean": 6.24,
+   "tactility_sd": 2.71231758219178,
+   "weight_mean": 5.32,
+   "weight_sd": 2.0960279896349987
+  },
+  {
+   "session": 3,
+   "tactility_mean": 5.68,
+   "tactility_sd": 2.734349404642111,
+   "weight_mean": 5.56,
+   "weight_sd": 2.022374841615669
+  }
+ ]
+}

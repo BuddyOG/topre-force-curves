@@ -1,0 +1,7 @@
+{
+ "registry_version": 3,
+ "repo_commit": "6e86ac1955a0c566c7aae521705e51371992ba8a",
+ "policy_version": "intake-qc-v1.4",
+ "purpose": "Active whole-set exclusions for this evidence epoch only. Historical exclusions and resolved retests are preserved separately in evidence_history.json.",
+ "entries": []
+}

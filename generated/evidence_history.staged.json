@@ -1,0 +1,1128 @@
+{
+ "epoch_id": "canonical-evidence-2026-08-15-6e86ac19",
+ "events": [
+  {
+   "basis": "owner-authored commit subject plus exact Git blob transition",
+   "cohorts": [
+    "Deskeys_Carrot_60g"
+   ],
+   "commit": "a78317a7d5d1c1e5f554c8e4c304c16160fc2649",
+   "commit_subject": "Deskeys_Carrot_60g_Retest",
+   "event_id": "evt_retest_deskeys_carrot_60g",
+   "event_type": "retest_supersession",
+   "interpretation": "Runs 1, 2, and 4 were replaced in place; old run 3 was retired without a same-event successor. The relationship is established by the owner-authored commit subject and exact Git diff.",
+   "parent_commit": "91727195cd115cd2c150cf5636a70ca10dcf2dc3",
+   "transitions": [
+    {
+     "action": "replaced_in_place",
+     "predecessor": {
+      "git_blob_oid": "d9176a8763e40ed8b953019a342cb09b4e1990ba",
+      "path": "Deskeys_Carrot_60g/DataLog_1.csv",
+      "sha256": "646b1aafd03a8d276ffb5245b95fbfdf1a8ffb69d994f2b960705609ea4b4659",
+      "size_bytes": 55140
+     },
+     "successor": {
+      "git_blob_oid": "bec211a5351bd3cb9950ae1ef30d08548b72098a",
+      "path": "Deskeys_Carrot_60g/DataLog_1.csv",
+      "sha256": "e0431173d4f373e2cfd2d6ecf84afb97f1665891c9963e819859769a27cb11f0",
+      "size_bytes": 55908
+     },
+     "successor_present_unchanged_at_frozen_commit": true
+    },
+    {
+     "action": "replaced_in_place",
+     "predecessor": {
+      "git_blob_oid": "cc6d5b7d458c03081d4cbb419accb0397c7d797a",
+      "path": "Deskeys_Carrot_60g/DataLog_2.csv",
+      "sha256": "9023d9008cfbf52e6ba0e46fed4a9473347f69f517b3bb22281833cf3e8a9839",
+      "size_bytes": 55244
+     },
+     "successor": {
+      "git_blob_oid": "147c15c90d10ee70f45d26a7577d568f79d40726",
+      "path": "Deskeys_Carrot_60g/DataLog_2.csv",
+      "sha256": "36a8f6d2d3f1fc3a2adcf07089fddb8fe32b72548e89145d8d8a513695ddff9d",
+      "size_bytes": 57416
+     },
+     "successor_present_unchanged_at_frozen_commit": true
+    },
+    {
+     "action": "retired_without_replacement",
+     "predecessor": {
+      "git_blob_oid": "48203ca926cf4697fc4c108169e893905e5a9e1e",
+      "path": "Deskeys_Carrot_60g/DataLog_3.csv",
+      "sha256": "3a7c199441e54dc0b6c19a94deaad3f2c18610da78362defb22462bdc46f17ce",
+      "size_bytes": 55742
+     },
+     "successor": null,
+     "successor_present_unchanged_at_frozen_commit": false
+    },
+    {
+     "action": "replaced_in_place",
+     "predecessor": {
+      "git_blob_oid": "7298d475710de0cba6c13bc47c7a2029eeeb2100",
+      "path": "Deskeys_Carrot_60g/DataLog_4.csv",
+      "sha256": "870db1b5ea831c846500d6e766ec95f771f0bbc29927181ee839f763f42d8b88",
+      "size_bytes": 55462
+     },
+     "successor": {
+      "git_blob_oid": "52c291923d4edf9c4048ff8f42e616dadc820d64",
+      "path": "Deskeys_Carrot_60g/DataLog_4.csv",
+      "sha256": "93151823949d61ad2e41f78613de30cd971ba37e5265e1ab89ebac118ecb78b1",
+      "size_bytes": 55868
+     },
+     "successor_present_unchanged_at_frozen_commit": true
+    }
+   ]
+  },
+  {
+   "basis": "owner-authored commit subject plus exact Git blob transition",
+   "cohorts": [
+    "DynaCaps_Light_35g"
+   ],
+   "commit": "d04136ed58daced2818c6e00012cd0d5ce61e306",
+   "commit_subject": "DynaCaps_Light_35g_Re-test",
+   "event_id": "evt_retest_dynacaps_light_35g",
+   "event_type": "retest_supersession",
+   "interpretation": "Three old acquisitions were removed and three newly named acquisitions were added in the owner-authored retest commit; ordinal pairing is explicit in this epoch ledger.",
+   "parent_commit": "347b386c8533e49c5b7d7309e47f9a319c6849f8",
+   "transitions": [
+    {
+     "action": "replaced_and_renamed",
+     "predecessor": {
+      "git_blob_oid": "64088c0c05b4caadecde6e07e89646fb32a9e663",
+      "path": "DynaCaps_Light_35g/DynaCaps_Light-DataLog_1.csv",
+      "sha256": "055a6daea5a1ef3926f495fcca297d9b00e8321bb743b71f61c7b53cb16679ed",
+      "size_bytes": 63290
+     },
+     "successor": {
+      "git_blob_oid": "7b74819b31fe31b08d48bb7f29b0698e9336bb1e",
+      "path": "DynaCaps_Light_35g/DataLog_1.csv",
+      "sha256": "264ab61c7518ce5347c004f7a30ab5226d851b7376c74f56fb46a622c11d4452",
+      "size_bytes": 64101
+     },
+     "successor_present_unchanged_at_frozen_commit": true
+    },
+    {
+     "action": "replaced_and_renamed",
+     "predecessor": {
+      "git_blob_oid": "9e72ebe74a79f3635cd5ec2e48f5f60e8aac291d",
+      "path": "DynaCaps_Light_35g/DynaCaps_Light-DataLog_2.csv",
+      "sha256": "cfea4f97a3cbf1c36a79f728890a34f80441b0a88149b77cd696b23595a935aa",
+      "size_bytes": 66794
+     },
+     "successor": {
+      "git_blob_oid": "ec6a5f3e9c17751edc37e3627ae76ccdb02ef217",
+      "path": "DynaCaps_Light_35g/DataLog_2.csv",
+      "sha256": "389aac90ed12d5aa23cab55ac9a8fcb5355cec4054b69eea19659e3f13c1e2b6",
+      "size_bytes": 65966
+     },
+     "successor_present_unchanged_at_frozen_commit": true
+    },
+    {
+     "action": "replaced_and_renamed",
+     "predecessor": {
+      "git_blob_oid": "eec7860adbea1428ce8bc202706b15a9a27b765a",
+      "path": "DynaCaps_Light_35g/DynaCaps_Light-DataLog_3.csv",
+      "sha256": "9c9c7944dd5fa4cc8a584469a5d104a6431b1ad89799e286049205fa5aec28da",
+      "size_bytes": 66867
+     },
+     "successor": {
+      "git_blob_oid": "948c057251fc2181d2b8a3cece6aaff36a156442",
+      "path": "DynaCaps_Light_35g/DataLog_3.csv",
+      "sha256": "2fd288f5bb8748d75adb5d695b4b9eed606ec279c3c8184d3bbd4e1e665421f6",
+      "size_bytes": 67794
+     },
+     "successor_present_unchanged_at_frozen_commit": true
+    }
+   ]
+  },
+  {
+   "basis": "owner-authored commit subject plus exact Git blob transition",
+   "cohorts": [
+    "Sony_BKE_Gray_01",
+    "Sony_BKE_Gray_02"
+   ],
+   "commit": "58f7d88e62c547b187164e11fcc35783837b7484",
+   "commit_subject": "Sony_BKE_Gray_Re-Test",
+   "event_id": "evt_retest_sony_bke_gray_01_02",
+   "event_type": "retest_supersession",
+   "interpretation": "All six paths were overwritten by the owner-authored Gray retest commit. Both physical-unit labels were retested together, resolving the prior path-and-hash-bound Gray 02 exclusion for this new epoch.",
+   "parent_commit": "d04136ed58daced2818c6e00012cd0d5ce61e306",
+   "transitions": [
+    {
+     "action": "replaced_in_place",
+     "predecessor": {
+      "git_blob_oid": "f613e6136bd8c4f77c20ca2ed2ce513056260669",
+      "path": "Sony_BKE_Gray_01/DataLog_1.csv",
+      "sha256": "1a65c28c6070d2d551ef448395a1d07fe4e73e07073d1402e0d3f5298299344c",
+      "size_bytes": 55143
+     },
+     "successor": {
+      "git_blob_oid": "3cc879454462ec43f73246be06a9a6a08b374e59",
+      "path": "Sony_BKE_Gray_01/DataLog_1.csv",
+      "sha256": "9474c859ce38173f86d367f523df4e55be790c85f333ec43e2487544807a3a0e",
+      "size_bytes": 52603
+     },
+     "successor_present_unchanged_at_frozen_commit": true
+    },
+    {
+     "action": "replaced_in_place",
+     "predecessor": {
+      "git_blob_oid": "c09e9a2a24e750cf72e50621e6ea604590db5245",
+      "path": "Sony_BKE_Gray_01/DataLog_2.csv",
+      "sha256": "3977fd12a4e3662b512218fe6ee31f9b33e730e369949b3e2625007315c30a7f",
+      "size_bytes": 55217
+     },
+     "successor": {
+      "git_blob_oid": "7b74f09a134524aac39d66416e91a6eaabf7091b",
+      "path": "Sony_BKE_Gray_01/DataLog_2.csv",
+      "sha256": "a5c9be27b38e35ee8c94ed5b772bf48b45388caaf58abbe20b8e0e42eafb2427",
+      "size_bytes": 54035
+     },
+     "successor_present_unchanged_at_frozen_commit": true
+    },
+    {
+     "action": "replaced_in_place",
+     "predecessor": {
+      "git_blob_oid": "3edf4cce6b56e91a286772cb8c7262eadf114322",
+      "path": "Sony_BKE_Gray_01/DataLog_3.csv",
+      "sha256": "3c80ba71438d05d265120bcd78054465c327722419e63ec72cbb6035dc41fe9b",
+      "size_bytes": 55256
+     },
+     "successor": {
+      "git_blob_oid": "fa13ea9578b1c6ecab5e51e8444dc789133a9c95",
+      "path": "Sony_BKE_Gray_01/DataLog_3.csv",
+      "sha256": "2a4242d93ba45decbb110ab8d2a5992f8f4fbe47067dca9df983ddd67503a16b",
+      "size_bytes": 54004
+     },
+     "successor_present_unchanged_at_frozen_commit": true
+    },
+    {
+     "action": "replaced_in_place",
+     "predecessor": {
+      "git_blob_oid": "baba5f1eb78b02dd64b915c19037f1b73caccdfd",
+      "path": "Sony_BKE_Gray_02/DataLog_1.csv",
+      "sha256": "579d93ec120a8415b9772502e2775a4b3ec56ffaf72f5003e5b2d5dbc9058b2e",
+      "size_bytes": 57638
+     },
+     "successor": {
+      "git_blob_oid": "3725c46fb53071d0b91ddadad93add1a1d8704d3",
+      "path": "Sony_BKE_Gray_02/DataLog_1.csv",
+      "sha256": "23ce8493d0fec41e2621687063ebcd6c462d5c1111e27d6edf9871a6c1e649ee",
+      "size_bytes": 53393
+     },
+     "successor_present_unchanged_at_frozen_commit": true
+    },
+    {
+     "action": "replaced_in_place",
+     "predecessor": {
+      "git_blob_oid": "d66be032f63dc3fd8be04784c49f86aff399aec6",
+      "path": "Sony_BKE_Gray_02/DataLog_2.csv",
+      "sha256": "f8cbf012a13a2104caf5da4894018767ff3a7737b55dbdd938e868bfdbb11538",
+      "size_bytes": 57593
+     },
+     "successor": {
+      "git_blob_oid": "ac683e5f48ef18db7342447bd60542090ba8c72a",
+      "path": "Sony_BKE_Gray_02/DataLog_2.csv",
+      "sha256": "50de7fc59bc8c4967d9f3daba37ff1eb3576d75f556255f6c3f5fd4d521a0dd9",
+      "size_bytes": 54751
+     },
+     "successor_present_unchanged_at_frozen_commit": true
+    },
+    {
+     "action": "replaced_in_place",
+     "predecessor": {
+      "git_blob_oid": "8c77c08d3bc32dca20f19ea98f589670a4425e32",
+      "path": "Sony_BKE_Gray_02/DataLog_3.csv",
+      "sha256": "fb9aee8988ab9b647e99a637c2be0700e944b2969d0fcffdbaf6032171321395",
+      "size_bytes": 57633
+     },
+     "successor": {
+      "git_blob_oid": "4feece9a49c9250c6fecab105a4d1312c1f5c80e",
+      "path": "Sony_BKE_Gray_02/DataLog_3.csv",
+      "sha256": "188e84ac8ef55fc923eea861339efecf9126f060a0134b013496e89110674851",
+      "size_bytes": 54777
+     },
+     "successor_present_unchanged_at_frozen_commit": true
+    }
+   ]
+  },
+  {
+   "authority": {
+    "authoritative_for_membership": false,
+    "authoritative_for_retest_satisfaction": false,
+    "authoritative_for_scientific_equivalence": false,
+    "authoritative_for_specimen_identity": false,
+    "scope": "descriptive_git_history_only"
+   },
+   "basis": "exact parent/commit Git trees and blob identities",
+   "commit": "c632440276254c01daa0543710b4148e6ac218e2",
+   "commit_subject": "OEM Topre Batch",
+   "commit_tree_oid": "8f88cf6bd105eb0fd824a6df5e001a5e8397f116",
+   "counts": {
+    "introduced_git_blobs_not_present_in_parent": 21,
+    "introduced_paths_aliasing_preexisting_slider_blobs": 4,
+    "introduced_raw_paths": 25,
+    "introduced_unique_git_blobs": 25,
+    "retired_raw_paths": 15,
+    "retired_unique_git_blobs": 15
+   },
+   "event_id": "evt_oem_topre_collection_transition",
+   "event_type": "non_authoritative_collection_transition",
+   "identity_mapping": null,
+   "inference_prohibition": "Do not infer a one-to-one specimen, run, or cohort mapping between any retired generic Topre cohort and any introduced R1, R2, HHKB, RGB, or GX1 cohort. The commit does not establish that the old Topre_55g no-retest decision was satisfied by, transferred to, or reversed for any introduced OEM specimen.",
+   "interpretation": "Commit-level collection history only: four generic Topre cohorts (15 exact raw objects) were removed while nine specifically labeled OEM cohorts (25 paths and 25 distinct blobs within the introduced collection) were added. Four HHKB blobs already existed under black-slider paths, so 21 blob identities were new to the parent tree. No specimen equivalence is asserted.",
+   "introduced_cohorts": [
+    "Topre_GX1_45g",
+    "Topre_HHKB_Pro2_45g",
+    "Topre_R1_30g",
+    "Topre_R1_45g",
+    "Topre_R1_55g",
+    "Topre_R2_30g",
+    "Topre_R2_45g",
+    "Topre_R2_55g",
+    "Topre_RGB_45g"
+   ],
+   "introduced_raw_objects": [
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "815660f3f237a1549f0b40f3cb75f7e87db55929",
+      "path": "Topre_GX1_45g/DataLog_1.csv",
+      "sha256": "d226fe3d8a2ca32871312b0714c9942d56dfdb2be77e1705f99d58449dedd87f",
+      "size_bytes": 63805
+     },
+     "git_blob_oid": "815660f3f237a1549f0b40f3cb75f7e87db55929",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_GX1_45g/DataLog_1.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "d226fe3d8a2ca32871312b0714c9942d56dfdb2be77e1705f99d58449dedd87f",
+     "size_bytes": 63805
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "05fc75efdb10f13c1883f78187a30b2ff94d4bd1",
+      "path": "Topre_GX1_45g/DataLog_2.csv",
+      "sha256": "a097955113411869be46b55fe39758ee8d5ea912939e4c3de7122ed7dd21ff39",
+      "size_bytes": 63802
+     },
+     "git_blob_oid": "05fc75efdb10f13c1883f78187a30b2ff94d4bd1",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_GX1_45g/DataLog_2.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "a097955113411869be46b55fe39758ee8d5ea912939e4c3de7122ed7dd21ff39",
+     "size_bytes": 63802
+    },
+    {
+     "declared_preexisting_same_blob_paths": [
+      "Topre_Slider_Black/Topre_Slider_Black-DataLog_0.csv"
+     ],
+     "frozen_epoch_object": {
+      "git_blob_oid": "0b3554da733e259b6904e324b873c841433e824e",
+      "path": "Topre_HHKB_Pro2_45g/Topre_Slider_Black-DataLog_0.csv",
+      "sha256": "e3750bb2d88d0e4fbf1ce8643891a0395e73084b0a895f7da5d4f773a017fc98",
+      "size_bytes": 61267
+     },
+     "git_blob_oid": "0b3554da733e259b6904e324b873c841433e824e",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_HHKB_Pro2_45g/Topre_Slider_Black-DataLog_0.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "e3750bb2d88d0e4fbf1ce8643891a0395e73084b0a895f7da5d4f773a017fc98",
+     "size_bytes": 61267
+    },
+    {
+     "declared_preexisting_same_blob_paths": [
+      "Topre_Slider_Black/Topre_Slider_Black-DataLog_1.csv"
+     ],
+     "frozen_epoch_object": {
+      "git_blob_oid": "264df1c5112c59e4e90f5fd4debc5aab5dbd7cfe",
+      "path": "Topre_HHKB_Pro2_45g/Topre_Slider_Black-DataLog_1.csv",
+      "sha256": "295b17b213b625945f5195f65040d9c2d9d62a60d5c43fda39b8a083a5a5ff70",
+      "size_bytes": 61092
+     },
+     "git_blob_oid": "264df1c5112c59e4e90f5fd4debc5aab5dbd7cfe",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_HHKB_Pro2_45g/Topre_Slider_Black-DataLog_1.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "295b17b213b625945f5195f65040d9c2d9d62a60d5c43fda39b8a083a5a5ff70",
+     "size_bytes": 61092
+    },
+    {
+     "declared_preexisting_same_blob_paths": [
+      "Topre_Slider_Black/Topre_Slider_Black-DataLog_2.csv"
+     ],
+     "frozen_epoch_object": {
+      "git_blob_oid": "b7e8414ba3b7f425f47c1984c0b9e43b6cf36cd3",
+      "path": "Topre_HHKB_Pro2_45g/Topre_Slider_Black-DataLog_2.csv",
+      "sha256": "e45f432a6e3929ecce4b0d6a31140e865ec3f08e563b76239329d1ab1eeeece3",
+      "size_bytes": 64638
+     },
+     "git_blob_oid": "b7e8414ba3b7f425f47c1984c0b9e43b6cf36cd3",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_HHKB_Pro2_45g/Topre_Slider_Black-DataLog_2.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "e45f432a6e3929ecce4b0d6a31140e865ec3f08e563b76239329d1ab1eeeece3",
+     "size_bytes": 64638
+    },
+    {
+     "declared_preexisting_same_blob_paths": [
+      "Topre_Slider_Black/Topre_Slider_Black-DataLog_3.csv"
+     ],
+     "frozen_epoch_object": {
+      "git_blob_oid": "cb47df2b70d3f546667508c2b4630cf63caea59d",
+      "path": "Topre_HHKB_Pro2_45g/Topre_Slider_Black-DataLog_3.csv",
+      "sha256": "3d1c5946158643afce7c4eeae8ec626878126bf8397174a4e2a596b30fbd063d",
+      "size_bytes": 64601
+     },
+     "git_blob_oid": "cb47df2b70d3f546667508c2b4630cf63caea59d",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_HHKB_Pro2_45g/Topre_Slider_Black-DataLog_3.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "3d1c5946158643afce7c4eeae8ec626878126bf8397174a4e2a596b30fbd063d",
+     "size_bytes": 64601
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "04f563c058581f0d482807bfe7b0e37ed37dc164",
+      "path": "Topre_R1_30g/DataLog_1.csv",
+      "sha256": "ede83daced09b8dd9093e56acd34075cfa6a7875777e78ec82e2b8fb10535774",
+      "size_bytes": 59867
+     },
+     "git_blob_oid": "04f563c058581f0d482807bfe7b0e37ed37dc164",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_R1_30g/DataLog_1.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "ede83daced09b8dd9093e56acd34075cfa6a7875777e78ec82e2b8fb10535774",
+     "size_bytes": 59867
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "0d3bc1f625ea21f4fbd8fcede64c10de08b7a91e",
+      "path": "Topre_R1_30g/DataLog_2.csv",
+      "sha256": "190f26fac084012d7c6abdf491cc62cda389b644eee62c18d39882082d67601d",
+      "size_bytes": 61666
+     },
+     "git_blob_oid": "0d3bc1f625ea21f4fbd8fcede64c10de08b7a91e",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_R1_30g/DataLog_2.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "190f26fac084012d7c6abdf491cc62cda389b644eee62c18d39882082d67601d",
+     "size_bytes": 61666
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "d1734c2a6c5324edb7f128cbb29a5dac344376d6",
+      "path": "Topre_R1_30g/DataLog_3.csv",
+      "sha256": "6a59045d2e04f092bed1048718c60f6ca526bfc85bf9d0db47b62eab6043450f",
+      "size_bytes": 61608
+     },
+     "git_blob_oid": "d1734c2a6c5324edb7f128cbb29a5dac344376d6",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_R1_30g/DataLog_3.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "6a59045d2e04f092bed1048718c60f6ca526bfc85bf9d0db47b62eab6043450f",
+     "size_bytes": 61608
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "c9914f71745b3f1b7b3ac688aba60c4c1e55373e",
+      "path": "Topre_R1_45g/DataLog_1.csv",
+      "sha256": "586cd3368a282056a8f183eea8220bd936bcbfd4ddd437aab32d7617b0664939",
+      "size_bytes": 60573
+     },
+     "git_blob_oid": "c9914f71745b3f1b7b3ac688aba60c4c1e55373e",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_R1_45g/DataLog_1.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "586cd3368a282056a8f183eea8220bd936bcbfd4ddd437aab32d7617b0664939",
+     "size_bytes": 60573
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "9bee6e7024fbda13b02d319e73135e4c441396c4",
+      "path": "Topre_R1_45g/DataLog_2.csv",
+      "sha256": "088591ebfbd92f670ac2b17e547f857cf0aadaeaaff7b3b1512d6cd7175c0d3d",
+      "size_bytes": 62229
+     },
+     "git_blob_oid": "9bee6e7024fbda13b02d319e73135e4c441396c4",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_R1_45g/DataLog_2.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "088591ebfbd92f670ac2b17e547f857cf0aadaeaaff7b3b1512d6cd7175c0d3d",
+     "size_bytes": 62229
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "e2a16a6a8de32e48f8a729d33fd3a19d73885e05",
+      "path": "Topre_R1_45g/DataLog_3.csv",
+      "sha256": "cf084ec0986ebfeafc56a79e5d0772533d9a6e7670eff2b7362c0fcc61ac28d7",
+      "size_bytes": 62187
+     },
+     "git_blob_oid": "e2a16a6a8de32e48f8a729d33fd3a19d73885e05",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_R1_45g/DataLog_3.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "cf084ec0986ebfeafc56a79e5d0772533d9a6e7670eff2b7362c0fcc61ac28d7",
+     "size_bytes": 62187
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "2d038580e5002195c756f2a428be2aec6cbc00af",
+      "path": "Topre_R1_45g/DataLog_4.csv",
+      "sha256": "20f3a62fd41587127cb7eeb37a4f6185dc509f4bf97a4db8b6e14d17fc41dc16",
+      "size_bytes": 62368
+     },
+     "git_blob_oid": "2d038580e5002195c756f2a428be2aec6cbc00af",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_R1_45g/DataLog_4.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "20f3a62fd41587127cb7eeb37a4f6185dc509f4bf97a4db8b6e14d17fc41dc16",
+     "size_bytes": 62368
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "b68ac5f243cab66c864a83e98cfc3034040957a5",
+      "path": "Topre_R1_55g/DataLog_1.csv",
+      "sha256": "551bed892474dd559fe0e2b6f98cc7d52bc3abce64661e6d5dfed90ba6708a78",
+      "size_bytes": 62204
+     },
+     "git_blob_oid": "b68ac5f243cab66c864a83e98cfc3034040957a5",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_R1_55g/DataLog_1.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "551bed892474dd559fe0e2b6f98cc7d52bc3abce64661e6d5dfed90ba6708a78",
+     "size_bytes": 62204
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "18dca4df80eff372cbddcda6be6cee45a7d73c86",
+      "path": "Topre_R1_55g/DataLog_2.csv",
+      "sha256": "6534b00924174e26fddd09a0ce51e3332e161692ab756708e712c13f6bf5c48e",
+      "size_bytes": 62203
+     },
+     "git_blob_oid": "18dca4df80eff372cbddcda6be6cee45a7d73c86",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_R1_55g/DataLog_2.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "6534b00924174e26fddd09a0ce51e3332e161692ab756708e712c13f6bf5c48e",
+     "size_bytes": 62203
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "0dd257f9e8670f6f2be3d68741a5dd7599e2a8dc",
+      "path": "Topre_R2_30g/DataLog_1.csv",
+      "sha256": "1c3b35fe92dedea9d63191df68d30cac21c4ef1b784e215c9567cda10c5f4556",
+      "size_bytes": 60144
+     },
+     "git_blob_oid": "0dd257f9e8670f6f2be3d68741a5dd7599e2a8dc",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_R2_30g/DataLog_1.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "1c3b35fe92dedea9d63191df68d30cac21c4ef1b784e215c9567cda10c5f4556",
+     "size_bytes": 60144
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "d1cf47bd7667967cdb697648f9dff1fe8a9cae20",
+      "path": "Topre_R2_30g/DataLog_2.csv",
+      "sha256": "e9ed57343034f8ead40a83b152ebf10f0576a4d9739c4e65fefe1091a868b196",
+      "size_bytes": 61917
+     },
+     "git_blob_oid": "d1cf47bd7667967cdb697648f9dff1fe8a9cae20",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_R2_30g/DataLog_2.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "e9ed57343034f8ead40a83b152ebf10f0576a4d9739c4e65fefe1091a868b196",
+     "size_bytes": 61917
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "2c59aa75cfd88552f2389975d84467320fc2b7e9",
+      "path": "Topre_R2_30g/DataLog_3.csv",
+      "sha256": "350fd9daa3d8ad587f9aaa8f5dff6b4c37bd37da36398ef578e825083bc48403",
+      "size_bytes": 63619
+     },
+     "git_blob_oid": "2c59aa75cfd88552f2389975d84467320fc2b7e9",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_R2_30g/DataLog_3.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "350fd9daa3d8ad587f9aaa8f5dff6b4c37bd37da36398ef578e825083bc48403",
+     "size_bytes": 63619
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "9d3603f60bfee143a143283d6ba5572566d06080",
+      "path": "Topre_R2_45g/DataLog_1.csv",
+      "sha256": "04820939952461911e988a5a66b421deae00570bf92e46eceed155e92b10df96",
+      "size_bytes": 64564
+     },
+     "git_blob_oid": "201c6a6c135d10a3cc2f4a062900d9744ee76eb9",
+     "later_epoch_disposition": "replaced_in_later_commit",
+     "path": "Topre_R2_45g/DataLog_1.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": false,
+     "sha256": "fd4a5532173ff8927081685ccdd676a55d1085b18181d45e6eb7e512e25536a2",
+     "size_bytes": 61684
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "08378073eb7d0561da6ef84aa28fc22e465b1701",
+      "path": "Topre_R2_45g/DataLog_2.csv",
+      "sha256": "be9b7e1bbb84d44fddb7650bbe80438f3da1cd0a49d00cfa14b1e403890d86a9",
+      "size_bytes": 61221
+     },
+     "git_blob_oid": "b4d5b07d5ad7b8a2826939cd9f8a561d106dbaab",
+     "later_epoch_disposition": "replaced_in_later_commit",
+     "path": "Topre_R2_45g/DataLog_2.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": false,
+     "sha256": "2e54e8b40c173e57cd1d1df04a09cd91ff0a55e9da2ed2956cbfd2e8228444dd",
+     "size_bytes": 63413
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": null,
+     "git_blob_oid": "0314e5b6d65520a7dae49759369e878f7edc045e",
+     "later_epoch_disposition": "retired_in_later_commit",
+     "path": "Topre_R2_45g/DataLog_3.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": false,
+     "sha256": "b2e5bdb6928660d39c8e1c6e6c5dfe09eeb8ad8897330ddf32babd60f2e34246",
+     "size_bytes": 63353
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "2a5cd766b2a199e4a85bea901550db850febab92",
+      "path": "Topre_R2_55g/DataLog_1.csv",
+      "sha256": "86c2a556aa3fec78e8083e3c881801cc4cf58e4890b1b0f33e8d4e5601e52d9b",
+      "size_bytes": 61114
+     },
+     "git_blob_oid": "2a5cd766b2a199e4a85bea901550db850febab92",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_R2_55g/DataLog_1.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "86c2a556aa3fec78e8083e3c881801cc4cf58e4890b1b0f33e8d4e5601e52d9b",
+     "size_bytes": 61114
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "7b77be7479828453199604c7ab9bca564b620e47",
+      "path": "Topre_R2_55g/DataLog_2.csv",
+      "sha256": "00270cfa54b997442fdcb7da2f2ce6ea165cdf43aea551333a564219203566fe",
+      "size_bytes": 62818
+     },
+     "git_blob_oid": "7b77be7479828453199604c7ab9bca564b620e47",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_R2_55g/DataLog_2.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "00270cfa54b997442fdcb7da2f2ce6ea165cdf43aea551333a564219203566fe",
+     "size_bytes": 62818
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "1408258bfed37237e075c41e3f495c102baa5890",
+      "path": "Topre_RGB_45g/DataLog_1.csv",
+      "sha256": "18151dbe84a34b5d0eb7dbb0d9324027a882b8939036a2fb2bc76c3cb06c28bb",
+      "size_bytes": 62866
+     },
+     "git_blob_oid": "1408258bfed37237e075c41e3f495c102baa5890",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_RGB_45g/DataLog_1.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "18151dbe84a34b5d0eb7dbb0d9324027a882b8939036a2fb2bc76c3cb06c28bb",
+     "size_bytes": 62866
+    },
+    {
+     "declared_preexisting_same_blob_paths": [],
+     "frozen_epoch_object": {
+      "git_blob_oid": "306761c04b3f1a64bc86182b1c79695ac49af676",
+      "path": "Topre_RGB_45g/DataLog_2.csv",
+      "sha256": "1f09d358c4b6b174c93d8f79ec3421123e32aa25ef3ffd324cf6bca22bbc166e",
+      "size_bytes": 62905
+     },
+     "git_blob_oid": "306761c04b3f1a64bc86182b1c79695ac49af676",
+     "later_epoch_disposition": "present_unchanged",
+     "path": "Topre_RGB_45g/DataLog_2.csv",
+     "present_at_parent": false,
+     "present_at_transition_commit": true,
+     "present_unchanged_at_frozen_commit": true,
+     "sha256": "1f09d358c4b6b174c93d8f79ec3421123e32aa25ef3ffd324cf6bca22bbc166e",
+     "size_bytes": 62905
+    }
+   ],
+   "parent_commit": "58f7d88e62c547b187164e11fcc35783837b7484",
+   "parent_tree_oid": "18de9ab3c22ec13c8b6e9ad30f3838e116e4404a",
+   "prior_topre_55g_no_retest_decision": {
+    "decision_scope": "retired generic cohort Topre_55g",
+    "decision_was_satisfied_by_this_commit": false,
+    "epoch_effect": "The generic Topre_55g cohort is absent from the frozen epoch, so its no-retest decision is historical and does not govern any introduced OEM cohort.",
+    "retired_raw_objects": [
+     {
+      "git_blob_oid": "7e15f719e9a08f290d4563904c9b0c8c6bfe50ef",
+      "path": "Topre_55g/DataLog_1.csv",
+      "present_at_frozen_commit": false,
+      "present_at_parent": true,
+      "present_at_transition_commit": false,
+      "sha256": "11bd7b5085aea1a9a0d52611e3e32c87431e53862e762afd3c8b9f9ad2476a51",
+      "size_bytes": 60019
+     },
+     {
+      "git_blob_oid": "91b5e922fafc3fe40059d7ee94b5c3d75f84944a",
+      "path": "Topre_55g/DataLog_2.csv",
+      "present_at_frozen_commit": false,
+      "present_at_parent": true,
+      "present_at_transition_commit": false,
+      "sha256": "16394591cca126c66fcc7090f461816d1817726ccdab617e36e1687541907835",
+      "size_bytes": 61795
+     },
+     {
+      "git_blob_oid": "8c4c3563de9838d890c70648579aa758467fa505",
+      "path": "Topre_55g/DataLog_3.csv",
+      "present_at_frozen_commit": false,
+      "present_at_parent": true,
+      "present_at_transition_commit": false,
+      "sha256": "670df2d2babab53d2fa31354a9650a4538ac0454163ebef94a1d588b476a1948",
+      "size_bytes": 63438
+     },
+     {
+      "git_blob_oid": "3e974538d631f87de9ce214e95ae806e0f6344d8",
+      "path": "Topre_55g/DataLog_4.csv",
+      "present_at_frozen_commit": false,
+      "present_at_parent": true,
+      "present_at_transition_commit": false,
+      "sha256": "d12fe570d78b118ee5b3d5af7a0ce7e8cd139dbab0a133ee6e756b1f7db315b8",
+      "size_bytes": 63400
+     }
+    ],
+    "source": "owner task history; not encoded in the repository commit"
+   },
+   "retired_cohorts": [
+    "Topre_30g",
+    "Topre_45g",
+    "Topre_55g",
+    "Topre_55g_Aged"
+   ],
+   "retired_raw_objects": [
+    {
+     "git_blob_oid": "18eee950bde90fca0575c7d6f23b83d40ee7bf89",
+     "path": "Topre_30g/DataLog_1.csv",
+     "present_at_frozen_commit": false,
+     "present_at_parent": true,
+     "present_at_transition_commit": false,
+     "sha256": "4f2189b59f40805a9ee0e93882604a144901ed20fcd16d6d08c72a42ee7e4ca9",
+     "size_bytes": 60445
+    },
+    {
+     "git_blob_oid": "7ee8310a650722ca9806ae2b055155b80d822f25",
+     "path": "Topre_30g/DataLog_2.csv",
+     "present_at_frozen_commit": false,
+     "present_at_parent": true,
+     "present_at_transition_commit": false,
+     "sha256": "177eaf8a92586fc26ce8dbc6a5d628dd6ff061a26c78d899ecdecea02b567502",
+     "size_bytes": 61999
+    },
+    {
+     "git_blob_oid": "95af5b190f41a0566c78ec884ba0329c89bf4a94",
+     "path": "Topre_30g/DataLog_3.csv",
+     "present_at_frozen_commit": false,
+     "present_at_parent": true,
+     "present_at_transition_commit": false,
+     "sha256": "7998277162759527d24c4d56eed6869d2213b25320412102223186dad7163e23",
+     "size_bytes": 63653
+    },
+    {
+     "git_blob_oid": "321a5949c61401547d5947b7b3d59f31068289c2",
+     "path": "Topre_45g/DataLog_1.csv",
+     "present_at_frozen_commit": false,
+     "present_at_parent": true,
+     "present_at_transition_commit": false,
+     "sha256": "bb23823ea1781fd2327e155b2eb1bc3ce2fcefe052316be6bd89021ba3d02051",
+     "size_bytes": 60204
+    },
+    {
+     "git_blob_oid": "cacad8118f79463d9237ad7450f854e3ba560c7d",
+     "path": "Topre_45g/DataLog_2.csv",
+     "present_at_frozen_commit": false,
+     "present_at_parent": true,
+     "present_at_transition_commit": false,
+     "sha256": "d8bffd16e80ff996c69e7ff2f8282578db0469b235ace05b9d68f210aa567e7a",
+     "size_bytes": 61084
+    },
+    {
+     "git_blob_oid": "fa789203bf8bc0fb9118bf62bf1f30e63c868bfe",
+     "path": "Topre_45g/DataLog_3.csv",
+     "present_at_frozen_commit": false,
+     "present_at_parent": true,
+     "present_at_transition_commit": false,
+     "sha256": "464aac4ff4ffe4b4a92d7fe5838308391a0bfd7fd90688cf56fad3e853cd17d2",
+     "size_bytes": 61913
+    },
+    {
+     "git_blob_oid": "3d5c7f8f9b0ba287bd5d81e1b1f4be01480f93de",
+     "path": "Topre_45g/DataLog_4.csv",
+     "present_at_frozen_commit": false,
+     "present_at_parent": true,
+     "present_at_transition_commit": false,
+     "sha256": "abd5282868b44786e8225dffb0e5b3df3599319c71168884aed74a12e148a1c7",
+     "size_bytes": 61904
+    },
+    {
+     "git_blob_oid": "7e15f719e9a08f290d4563904c9b0c8c6bfe50ef",
+     "path": "Topre_55g/DataLog_1.csv",
+     "present_at_frozen_commit": false,
+     "present_at_parent": true,
+     "present_at_transition_commit": false,
+     "sha256": "11bd7b5085aea1a9a0d52611e3e32c87431e53862e762afd3c8b9f9ad2476a51",
+     "size_bytes": 60019
+    },
+    {
+     "git_blob_oid": "91b5e922fafc3fe40059d7ee94b5c3d75f84944a",
+     "path": "Topre_55g/DataLog_2.csv",
+     "present_at_frozen_commit": false,
+     "present_at_parent": true,
+     "present_at_transition_commit": false,
+     "sha256": "16394591cca126c66fcc7090f461816d1817726ccdab617e36e1687541907835",
+     "size_bytes": 61795
+    },
+    {
+     "git_blob_oid": "8c4c3563de9838d890c70648579aa758467fa505",
+     "path": "Topre_55g/DataLog_3.csv",
+     "present_at_frozen_commit": false,
+     "present_at_parent": true,
+     "present_at_transition_commit": false,
+     "sha256": "670df2d2babab53d2fa31354a9650a4538ac0454163ebef94a1d588b476a1948",
+     "size_bytes": 63438
+    },
+    {
+     "git_blob_oid": "3e974538d631f87de9ce214e95ae806e0f6344d8",
+     "path": "Topre_55g/DataLog_4.csv",
+     "present_at_frozen_commit": false,
+     "present_at_parent": true,
+     "present_at_transition_commit": false,
+     "sha256": "d12fe570d78b118ee5b3d5af7a0ce7e8cd139dbab0a133ee6e756b1f7db315b8",
+     "size_bytes": 63400
+    },
+    {
+     "git_blob_oid": "970f5416e32691e74b228ea4a1bdc3082b0217e0",
+     "path": "Topre_55g_Aged/Topre_55g_Aged-DataLog_3.csv",
+     "present_at_frozen_commit": false,
+     "present_at_parent": true,
+     "present_at_transition_commit": false,
+     "sha256": "8bd05bc8dec6d7ed550b01d750fcbac49b05500a1263619055874d50f1bc91c1",
+     "size_bytes": 64005
+    },
+    {
+     "git_blob_oid": "a9a62606adfada4b4e00959d1891a658e7ca611d",
+     "path": "Topre_55g_Aged/Topre_55g_Aged-DataLog_5.csv",
+     "present_at_frozen_commit": false,
+     "present_at_parent": true,
+     "present_at_transition_commit": false,
+     "sha256": "469b91944181ed67d9d7c607310fd8ace8e75fc729dad04f80748f33fab777b4",
+     "size_bytes": 62351
+    },
+    {
+     "git_blob_oid": "beaccd63a58b3939d9e8905dc4d0bf7612f82e4b",
+     "path": "Topre_55g_Aged/Topre_55g_Aged-DataLog_6.csv",
+     "present_at_frozen_commit": false,
+     "present_at_parent": true,
+     "present_at_transition_commit": false,
+     "sha256": "1dad4781e37895d844afc25097ada6678f9112f85b66e507a4d89d5736543839",
+     "size_bytes": 62279
+    },
+    {
+     "git_blob_oid": "76bf849977bbbd62dbe6182fe7cc613e8d709420",
+     "path": "Topre_55g_Aged/Topre_55g_Aged-DataLog_7.csv",
+     "present_at_frozen_commit": false,
+     "present_at_parent": true,
+     "present_at_transition_commit": false,
+     "sha256": "76bb3892fb4c8ed1c7dbc523fe23d091cf3c7a8c501174b8e423122262486b93",
+     "size_bytes": 64004
+    }
+   ]
+  },
+  {
+   "commit": "8816ffbf80ce7fd349a1a73893ce63cd5b7ad3d2",
+   "commit_subject": "Pruned",
+   "event_id": "evt_prune_failed_importer_runs",
+   "event_type": "quality_exclusion_and_prune",
+   "exclusions": [
+    {
+     "absolute_deviation": 2.016,
+     "cohort": "BKE_Redux_v1_Heavy_03",
+     "current_epoch_status": "absent_from_frozen_commit",
+     "decision": "exclude_and_prune_before_epoch",
+     "dimension": "collapse_force_gf",
+     "git_blob_oid": "27fd9ba5033d25a777320327b9aba974bb326aff",
+     "path": "BKE_Redux_v1_Heavy_03/DataLog_1.csv",
+     "reason": "collapse-force deviation 2.016 gf exceeded the 1.840 gf cohort tolerance",
+     "reason_source": "Pre-epoch test-imp.exe 1.1.4 importer audit supplied in the owner task; path and SHA-256 independently verified against the pre-prune Git commit.",
+     "retained_sibling_run_count_at_frozen_commit": 3,
+     "sha256": "d1a99616ab6f503b64e1f926edfff50067b316230ef7264a5fa298637e3b0c9d",
+     "size_bytes": 52685,
+     "tolerance": 1.84,
+     "unit": "gf"
+    },
+    {
+     "absolute_deviation": 0.065,
+     "cohort": "Dynacaps_Heavy_55g",
+     "current_epoch_status": "absent_from_frozen_commit",
+     "decision": "exclude_and_prune_before_epoch",
+     "dimension": "collapse_position_mm",
+     "git_blob_oid": "52f76a08cd1a4992d061b488f013d1dd19686fd5",
+     "path": "Dynacaps_Heavy_55g/DynaCaps_Heavy-DataLog_1.csv",
+     "reason": "collapse-position deviation 0.065 mm exceeded the 0.050 mm cohort tolerance",
+     "reason_source": "Pre-epoch test-imp.exe 1.1.4 importer audit supplied in the owner task; path and SHA-256 independently verified against the pre-prune Git commit.",
+     "retained_sibling_run_count_at_frozen_commit": 2,
+     "sha256": "530b1dfb588d63ecde2f3c1ff287a97ac1159c20495ee0b4a3ab2e8bf3aeff8f",
+     "size_bytes": 62891,
+     "tolerance": 0.05,
+     "unit": "mm"
+    },
+    {
+     "absolute_deviation": 0.052,
+     "cohort": "Dynacaps_Slider_0.3mm_Poron",
+     "current_epoch_status": "absent_from_frozen_commit",
+     "decision": "exclude_and_prune_before_epoch",
+     "dimension": "collapse_position_mm",
+     "git_blob_oid": "e42ab17c8a1731d13a840a22fb1783feb47b59d3",
+     "path": "Dynacaps_Slider_0.3mm_Poron/Dynacaps_Slider_0.3mm_Poron-DataLog_2.csv",
+     "reason": "collapse-position deviation 0.052 mm exceeded the 0.050 mm cohort tolerance",
+     "reason_source": "Pre-epoch test-imp.exe 1.1.4 importer audit supplied in the owner task; path and SHA-256 independently verified against the pre-prune Git commit.",
+     "retained_sibling_run_count_at_frozen_commit": 3,
+     "sha256": "e66def887e82c55ddfa618f68ef99fe85e9f74c4d8b1ad12d4c636cb5170bb4e",
+     "size_bytes": 65065,
+     "tolerance": 0.05,
+     "unit": "mm"
+    },
+    {
+     "absolute_deviation": 0.055,
+     "cohort": "Dynacaps_Slider_0.5mm_Silicone",
+     "current_epoch_status": "absent_from_frozen_commit",
+     "decision": "exclude_and_prune_before_epoch",
+     "dimension": "collapse_position_mm",
+     "git_blob_oid": "eb7a8997db0e683c2150a19e5a4a880e2f81efdb",
+     "path": "Dynacaps_Slider_0.5mm_Silicone/Dynacaps_Slider_0.5mm_Silicone-DataLog_3.csv",
+     "reason": "collapse-position deviation 0.055 mm exceeded the 0.050 mm cohort tolerance",
+     "reason_source": "Pre-epoch test-imp.exe 1.1.4 importer audit supplied in the owner task; path and SHA-256 independently verified against the pre-prune Git commit.",
+     "retained_sibling_run_count_at_frozen_commit": 2,
+     "sha256": "2ec175f45b59ace28c98d3067eb97407d437e018859b20d9f940eb712d61beb2",
+     "size_bytes": 61436,
+     "tolerance": 0.05,
+     "unit": "mm"
+    },
+    {
+     "absolute_deviation": 0.065,
+     "cohort": "NiZ_Black_65g",
+     "current_epoch_status": "absent_from_frozen_commit",
+     "decision": "exclude_and_prune_before_epoch",
+     "dimension": "collapse_position_mm",
+     "git_blob_oid": "5d9b7d1145d4b9718fa4829f9708982dc44670e7",
+     "path": "NiZ_Black_65g/NiZ_65g-DataLog_1.csv",
+     "reason": "collapse-position deviation 0.065 mm exceeded the 0.050 mm cohort tolerance",
+     "reason_source": "Pre-epoch test-imp.exe 1.1.4 importer audit supplied in the owner task; path and SHA-256 independently verified against the pre-prune Git commit.",
+     "retained_sibling_run_count_at_frozen_commit": 2,
+     "sha256": "b8b27c0fdd5dec965c65dc5a8b2d8d78dd7c1392a27f61dbd78d266e45366df8",
+     "size_bytes": 59482,
+     "tolerance": 0.05,
+     "unit": "mm"
+    },
+    {
+     "absolute_deviation": 1.121,
+     "cohort": "Sony_BKE_Brown_01",
+     "current_epoch_status": "absent_from_frozen_commit",
+     "decision": "exclude_and_prune_before_epoch",
+     "dimension": "collapse_force_gf",
+     "git_blob_oid": "75b19564a3af4df28e87cd5ecf86a4debbe365bc",
+     "path": "Sony_BKE_Brown_01/DataLog_1.csv",
+     "reason": "collapse-force deviation 1.121 gf exceeded the 1.050 gf cohort tolerance",
+     "reason_source": "Pre-epoch test-imp.exe 1.1.4 importer audit supplied in the owner task; path and SHA-256 independently verified against the pre-prune Git commit.",
+     "retained_sibling_run_count_at_frozen_commit": 2,
+     "sha256": "fe0b80ba13123e4cb328df6f1740e53da81a11d7476a6f35a3ceace431eece51",
+     "size_bytes": 59910,
+     "tolerance": 1.05,
+     "unit": "gf"
+    },
+    {
+     "absolute_deviation": 0.075,
+     "cohort": "Topre_Slider_Black_Silenced_0.3mm_Poron",
+     "current_epoch_status": "absent_from_frozen_commit",
+     "decision": "exclude_and_prune_before_epoch",
+     "dimension": "collapse_position_mm",
+     "git_blob_oid": "7ecada8252eb23fba01d7b7bc22029f9326ad891",
+     "path": "Topre_Slider_Black_Silenced_0.3mm_Poron/Topre_Slider_Black_Silenced_0.3mm_Poron-DataLog_5.csv",
+     "reason": "collapse-position deviation 0.075 mm exceeded the 0.050 mm cohort tolerance",
+     "reason_source": "Pre-epoch test-imp.exe 1.1.4 importer audit supplied in the owner task; path and SHA-256 independently verified against the pre-prune Git commit.",
+     "retained_sibling_run_count_at_frozen_commit": 2,
+     "sha256": "3d3899605efdd4822c8d72780bde39ec4c2ac297bfb8b2e04f65db2df6d2723a",
+     "size_bytes": 57462,
+     "tolerance": 0.05,
+     "unit": "mm"
+    },
+    {
+     "absolute_deviation": 0.075,
+     "cohort": "Topre_Slider_Black_Silenced_0.5mm_Poron",
+     "current_epoch_status": "absent_from_frozen_commit",
+     "decision": "exclude_and_prune_before_epoch",
+     "dimension": "collapse_position_mm",
+     "git_blob_oid": "62c5f9dfe6f17b37ad4cfe1bc9144345adf4e016",
+     "path": "Topre_Slider_Black_Silenced_0.5mm_Poron/Topre_Slider_Black_Silenced_0.5mm_Poron-DataLog_4.csv",
+     "reason": "collapse-position deviation 0.075 mm exceeded the 0.050 mm cohort tolerance",
+     "reason_source": "Pre-epoch test-imp.exe 1.1.4 importer audit supplied in the owner task; path and SHA-256 independently verified against the pre-prune Git commit.",
+     "retained_sibling_run_count_at_frozen_commit": 2,
+     "sha256": "5270e6c271db2977b99a433b77c5743c3a48e94915283edeb34cb14f5036c2a2",
+     "size_bytes": 58372,
+     "tolerance": 0.05,
+     "unit": "mm"
+    },
+    {
+     "absolute_deviation": 0.14,
+     "cohort": "Topre_Slider_Silenced_Purple",
+     "current_epoch_status": "absent_from_frozen_commit",
+     "decision": "exclude_and_prune_before_epoch",
+     "dimension": "collapse_position_mm",
+     "git_blob_oid": "8df9f4706484f52a827dbd5d578025cf86a5607c",
+     "path": "Topre_Slider_Silenced_Purple/Topre_Slider_Silenced_Purple-DataLog_3.csv",
+     "reason": "collapse-position deviation 0.140 mm exceeded the 0.050 mm cohort tolerance",
+     "reason_source": "Pre-epoch test-imp.exe 1.1.4 importer audit supplied in the owner task; path and SHA-256 independently verified against the pre-prune Git commit.",
+     "retained_sibling_run_count_at_frozen_commit": 2,
+     "sha256": "958ba019a2df2fcff461d561ccf2890dc1c8b6c241de1be95ccbdc4e4f28aa5b",
+     "size_bytes": 65256,
+     "tolerance": 0.05,
+     "unit": "mm"
+    }
+   ],
+   "interpretation": "Nine exact path-and-hash-bound runs failed the cohort force/position tolerances and were removed before the evidence epoch was frozen. They remain in history, not in current canonical raw membership.",
+   "parent_commit": "c632440276254c01daa0543710b4148e6ac218e2",
+   "policy": "test-imp.exe 1.1.4 cohort check"
+  },
+  {
+   "authority": {
+    "authoritative_for_git_object_transition": true,
+    "authoritative_for_quality_reason": false,
+    "authoritative_for_scientific_equivalence": false,
+    "authoritative_for_specimen_identity": false,
+    "scope": "exact_git_object_transition_only"
+   },
+   "basis": "exact parent/commit Git diff and blob identities",
+   "cohorts": [
+    "Topre_R2_45g"
+   ],
+   "commit": "6e86ac1955a0c566c7aae521705e51371992ba8a",
+   "commit_subject": "Topre_45g_R2_Retest",
+   "event_id": "evt_retest_topre_r2_45g",
+   "event_type": "retest_supersession",
+   "interpretation": "The commit diff replaces DataLog_1.csv and DataLog_2.csv in place and retires DataLog_3.csv. No specimen, cause, quality, or equivalence claim is inferred beyond those exact Git object transitions.",
+   "parent_commit": "8816ffbf80ce7fd349a1a73893ce63cd5b7ad3d2",
+   "transitions": [
+    {
+     "action": "replaced_in_place",
+     "predecessor": {
+      "git_blob_oid": "201c6a6c135d10a3cc2f4a062900d9744ee76eb9",
+      "path": "Topre_R2_45g/DataLog_1.csv",
+      "sha256": "fd4a5532173ff8927081685ccdd676a55d1085b18181d45e6eb7e512e25536a2",
+      "size_bytes": 61684
+     },
+     "successor": {
+      "git_blob_oid": "9d3603f60bfee143a143283d6ba5572566d06080",
+      "path": "Topre_R2_45g/DataLog_1.csv",
+      "sha256": "04820939952461911e988a5a66b421deae00570bf92e46eceed155e92b10df96",
+      "size_bytes": 64564
+     },
+     "successor_present_unchanged_at_frozen_commit": true
+    },
+    {
+     "action": "replaced_in_place",
+     "predecessor": {
+      "git_blob_oid": "b4d5b07d5ad7b8a2826939cd9f8a561d106dbaab",
+      "path": "Topre_R2_45g/DataLog_2.csv",
+      "sha256": "2e54e8b40c173e57cd1d1df04a09cd91ff0a55e9da2ed2956cbfd2e8228444dd",
+      "size_bytes": 63413
+     },
+     "successor": {
+      "git_blob_oid": "08378073eb7d0561da6ef84aa28fc22e465b1701",
+      "path": "Topre_R2_45g/DataLog_2.csv",
+      "sha256": "be9b7e1bbb84d44fddb7650bbe80438f3da1cd0a49d00cfa14b1e403890d86a9",
+      "size_bytes": 61221
+     },
+     "successor_present_unchanged_at_frozen_commit": true
+    },
+    {
+     "action": "retired_without_replacement",
+     "predecessor": {
+      "git_blob_oid": "0314e5b6d65520a7dae49759369e878f7edc045e",
+      "path": "Topre_R2_45g/DataLog_3.csv",
+      "sha256": "b2e5bdb6928660d39c8e1c6e6c5dfe09eeb8ad8897330ddf32babd60f2e34246",
+      "size_bytes": 63353
+     },
+     "successor": null,
+     "successor_present_unchanged_at_frozen_commit": false
+    }
+   ]
+  }
+ ],
+ "frozen_commit": "6e86ac1955a0c566c7aae521705e51371992ba8a",
+ "ledger_version": 1
+}

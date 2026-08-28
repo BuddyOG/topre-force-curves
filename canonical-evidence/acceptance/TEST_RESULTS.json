@@ -1,0 +1,55 @@
+{
+  "test_record_version": 1,
+  "status": "PASS",
+  "scope": "step2_only",
+  "repo_commit": "6e86ac1955a0c566c7aae521705e51371992ba8a",
+  "required_failures": [],
+  "overlap_warning": "Selections overlap. Do not sum their pass counts.",
+  "final_post_gate_required_suites": [
+    {
+      "name": "core_canonical_epoch_metrics_qc_intake_schema_and_registry_tamper_gates",
+      "status": "PASS",
+      "passed": 218,
+      "failed": 0,
+      "environment_note": "Bundled Node executable available on PATH"
+    },
+    {
+      "name": "pipeline_step2_surface",
+      "status": "PASS",
+      "passed": 48,
+      "failed": 0,
+      "deselected": 3,
+      "deselection_reason": "viewer-only Step-3 selectors"
+    },
+    {
+      "name": "evidence_only_generator_check",
+      "status": "PASS",
+      "result": "CHECK OK"
+    },
+    {
+      "name": "epoch_input_reproducible_seal",
+      "status": "PASS",
+      "consecutive_seals_byte_identical": true,
+      "read_only_check": "PASS",
+      "indexed_files": 30,
+      "validation_checks": 53
+    },
+    {
+      "name": "independent_test_imp_1_1_4_epoch_audit",
+      "status": "PASS",
+      "raw_paths": 184,
+      "retained_paths": 184,
+      "mismatches": 0,
+      "maximum_scalar_delta": 1.4210854715202004e-14,
+      "numeric_tolerance": 1e-12
+    }
+  ],
+  "diagnostic_broader_mixed_command": {
+    "passed": 238,
+    "skipped": 2,
+    "failed": 6,
+    "required_acceptance_failure_count": 0,
+    "classification": "deferred_step3_out_of_scope",
+    "reason": "The six checks require viewer, picker, or prose HTML that evidence-only generation intentionally does not emit because Step 3 was not executed."
+  }
+}

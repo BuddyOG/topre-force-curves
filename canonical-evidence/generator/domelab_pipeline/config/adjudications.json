@@ -1,0 +1,5 @@
+{
+ "adjudications_version": 2,
+ "policy": "An adjudication is a version-controlled owner ruling that admits a review or quarantine_retest run, or a run carrying a barrier flag, into canonical aggregation. Every adjudication MUST bind to set identity, run identity, the exact raw SHA-256, the exact method hash, the exact QC disposition being overridden, the exact sorted QC-reason set, the exact sorted barrier-flag set, an authority, a date and a rationale. Any mismatch, duplicate key, extraneous entry, entry for a nonexistent file, or attempt to override fail_exclude is a generation failure. An adjudication that silently becomes broader after a method change is rejected by the method-hash binding.",
+ "entries": []
+}

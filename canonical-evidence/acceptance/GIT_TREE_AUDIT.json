@@ -1,0 +1,11 @@
+{
+  "audit_version": 1,
+  "calculated_tree_oid": "e43d25a3fed8c5177467bba96a5abbdd5a3442b0",
+  "expected_tree_oid": "e43d25a3fed8c5177467bba96a5abbdd5a3442b0",
+  "method": "Recompute each cached file byte count, SHA-256, and Git SHA-1 blob OID; then recursively serialize all inventory path/mode/blob entries as Git tree objects.",
+  "mismatch_count": 0,
+  "mismatches": [],
+  "repo_commit": "6e86ac1955a0c566c7aae521705e51371992ba8a",
+  "status": "PASS",
+  "verified_paths": 189
+}

@@ -1,0 +1,7 @@
+{
+  "name": "domelab-js-tests",
+  "private": true,
+  "description": "Node/jsdom environment for the Dome Lab parity harness and viewer battery",
+  "engines": { "node": ">=20 <=22" },
+  "devDependencies": { "jsdom": "^24.0.0" }
+}

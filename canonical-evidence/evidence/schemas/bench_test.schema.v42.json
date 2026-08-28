@@ -1,0 +1,1227 @@
+{
+ "$id": "https://unrealkeyboards.com/dome-lab/schemas/bench_test.v42.epoch2.json",
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "additionalProperties": false,
+ "not": {
+  "anyOf": [
+   {
+    "required": [
+     "collapse_g"
+    ]
+   },
+   {
+    "required": [
+     "collapse_mm"
+    ]
+   },
+   {
+    "required": [
+     "valley_g"
+    ]
+   },
+   {
+    "required": [
+     "valley_mm"
+    ]
+   },
+   {
+    "required": [
+     "press_work_gfmm"
+    ]
+   },
+   {
+    "required": [
+     "precollapse_work_gfmm"
+    ]
+   },
+   {
+    "required": [
+     "steepest_drop_gf_per_mm"
+    ]
+   },
+   {
+    "required": [
+     "ramp_gf_per_mm"
+    ]
+   },
+   {
+    "required": [
+     "bottom_g"
+    ]
+   },
+   {
+    "required": [
+     "bottom_mm"
+    ]
+   },
+   {
+    "required": [
+     "energy_gfmm"
+    ]
+   }
+  ]
+ },
+ "properties": {
+  "brand": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "calc_version": {
+   "const": "metrics-v4.2 (valley-v2, press-work, drop-rate, ramp-v3-post-seating) + travel-v3 (step1pct force-wall) + intake-qc-v1.4"
+  },
+  "collapse_force_gf": {
+   "maximum": 2000,
+   "minimum": 0,
+   "type": "number"
+  },
+  "collapse_travel_mm": {
+   "maximum": 10,
+   "minimum": 0,
+   "type": "number"
+  },
+  "conical_spring": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "dispersion": {
+   "additionalProperties": false,
+   "properties": {
+    "collapse_force_gf": {
+     "additionalProperties": false,
+     "properties": {
+      "max": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "mean_validonly": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "min": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "n_valid": {
+       "minimum": 0,
+       "type": "integer"
+      },
+      "sd": {
+       "description": "sample standard deviation (n-1)",
+       "type": [
+        "number",
+        "null"
+       ]
+      }
+     },
+     "required": [
+      "n_valid",
+      "mean_validonly",
+      "sd",
+      "min",
+      "max"
+     ],
+     "type": "object"
+    },
+    "collapse_travel_mm": {
+     "additionalProperties": false,
+     "properties": {
+      "max": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "mean_validonly": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "min": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "n_valid": {
+       "minimum": 0,
+       "type": "integer"
+      },
+      "sd": {
+       "description": "sample standard deviation (n-1)",
+       "type": [
+        "number",
+        "null"
+       ]
+      }
+     },
+     "required": [
+      "n_valid",
+      "mean_validonly",
+      "sd",
+      "min",
+      "max"
+     ],
+     "type": "object"
+    },
+    "drop_gf": {
+     "additionalProperties": false,
+     "properties": {
+      "max": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "mean_validonly": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "min": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "n_valid": {
+       "minimum": 0,
+       "type": "integer"
+      },
+      "sd": {
+       "description": "sample standard deviation (n-1)",
+       "type": [
+        "number",
+        "null"
+       ]
+      }
+     },
+     "required": [
+      "n_valid",
+      "mean_validonly",
+      "sd",
+      "min",
+      "max"
+     ],
+     "type": "object"
+    },
+    "drop_rate_gf_per_mm": {
+     "additionalProperties": false,
+     "properties": {
+      "max": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "mean_validonly": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "min": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "n_valid": {
+       "minimum": 0,
+       "type": "integer"
+      },
+      "sd": {
+       "description": "sample standard deviation (n-1)",
+       "type": [
+        "number",
+        "null"
+       ]
+      }
+     },
+     "required": [
+      "n_valid",
+      "mean_validonly",
+      "sd",
+      "min",
+      "max"
+     ],
+     "type": "object"
+    },
+    "drop_travel_mm": {
+     "additionalProperties": false,
+     "properties": {
+      "max": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "mean_validonly": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "min": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "n_valid": {
+       "minimum": 0,
+       "type": "integer"
+      },
+      "sd": {
+       "description": "sample standard deviation (n-1)",
+       "type": [
+        "number",
+        "null"
+       ]
+      }
+     },
+     "required": [
+      "n_valid",
+      "mean_validonly",
+      "sd",
+      "min",
+      "max"
+     ],
+     "type": "object"
+    },
+    "full_stroke_press_work_gf_mm": {
+     "additionalProperties": false,
+     "properties": {
+      "max": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "mean_validonly": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "min": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "n_valid": {
+       "minimum": 0,
+       "type": "integer"
+      },
+      "sd": {
+       "description": "sample standard deviation (n-1)",
+       "type": [
+        "number",
+        "null"
+       ]
+      }
+     },
+     "required": [
+      "n_valid",
+      "mean_validonly",
+      "sd",
+      "min",
+      "max"
+     ],
+     "type": "object"
+    },
+    "norm_drop_rate_per_mm": {
+     "additionalProperties": false,
+     "properties": {
+      "max": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "mean_validonly": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "min": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "n_valid": {
+       "minimum": 0,
+       "type": "integer"
+      },
+      "sd": {
+       "description": "sample standard deviation (n-1)",
+       "type": [
+        "number",
+        "null"
+       ]
+      }
+     },
+     "required": [
+      "n_valid",
+      "mean_validonly",
+      "sd",
+      "min",
+      "max"
+     ],
+     "type": "object"
+    },
+    "precollapse_work_gf_mm": {
+     "additionalProperties": false,
+     "properties": {
+      "max": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "mean_validonly": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "min": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "n_valid": {
+       "minimum": 0,
+       "type": "integer"
+      },
+      "sd": {
+       "description": "sample standard deviation (n-1)",
+       "type": [
+        "number",
+        "null"
+       ]
+      }
+     },
+     "required": [
+      "n_valid",
+      "mean_validonly",
+      "sd",
+      "min",
+      "max"
+     ],
+     "type": "object"
+    },
+    "ramp_10_90_gf_per_mm": {
+     "additionalProperties": false,
+     "properties": {
+      "max": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "mean_validonly": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "min": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "n_valid": {
+       "minimum": 0,
+       "type": "integer"
+      },
+      "sd": {
+       "description": "sample standard deviation (n-1)",
+       "type": [
+        "number",
+        "null"
+       ]
+      }
+     },
+     "required": [
+      "n_valid",
+      "mean_validonly",
+      "sd",
+      "min",
+      "max"
+     ],
+     "type": "object"
+    },
+    "snap_pct": {
+     "additionalProperties": false,
+     "properties": {
+      "max": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "mean_validonly": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "min": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "n_valid": {
+       "minimum": 0,
+       "type": "integer"
+      },
+      "sd": {
+       "description": "sample standard deviation (n-1)",
+       "type": [
+        "number",
+        "null"
+       ]
+      }
+     },
+     "required": [
+      "n_valid",
+      "mean_validonly",
+      "sd",
+      "min",
+      "max"
+     ],
+     "type": "object"
+    },
+    "steepest_drop_0p10mm_gf_per_mm": {
+     "additionalProperties": false,
+     "properties": {
+      "max": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "mean_validonly": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "min": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "n_valid": {
+       "minimum": 0,
+       "type": "integer"
+      },
+      "sd": {
+       "description": "sample standard deviation (n-1)",
+       "type": [
+        "number",
+        "null"
+       ]
+      }
+     },
+     "required": [
+      "n_valid",
+      "mean_validonly",
+      "sd",
+      "min",
+      "max"
+     ],
+     "type": "object"
+    },
+    "travel_mm": {
+     "additionalProperties": false,
+     "properties": {
+      "max": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "mean_validonly": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "min": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "n_valid": {
+       "minimum": 0,
+       "type": "integer"
+      },
+      "sd": {
+       "description": "sample standard deviation (n-1)",
+       "type": [
+        "number",
+        "null"
+       ]
+      }
+     },
+     "required": [
+      "n_valid",
+      "mean_validonly",
+      "sd",
+      "min",
+      "max"
+     ],
+     "type": "object"
+    },
+    "valley_force_gf": {
+     "additionalProperties": false,
+     "properties": {
+      "max": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "mean_validonly": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "min": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "n_valid": {
+       "minimum": 0,
+       "type": "integer"
+      },
+      "sd": {
+       "description": "sample standard deviation (n-1)",
+       "type": [
+        "number",
+        "null"
+       ]
+      }
+     },
+     "required": [
+      "n_valid",
+      "mean_validonly",
+      "sd",
+      "min",
+      "max"
+     ],
+     "type": "object"
+    },
+    "valley_travel_mm": {
+     "additionalProperties": false,
+     "properties": {
+      "max": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "mean_validonly": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "min": {
+       "type": [
+        "number",
+        "null"
+       ]
+      },
+      "n_valid": {
+       "minimum": 0,
+       "type": "integer"
+      },
+      "sd": {
+       "description": "sample standard deviation (n-1)",
+       "type": [
+        "number",
+        "null"
+       ]
+      }
+     },
+     "required": [
+      "n_valid",
+      "mean_validonly",
+      "sd",
+      "min",
+      "max"
+     ],
+     "type": "object"
+    }
+   },
+   "required": [
+    "collapse_force_gf",
+    "collapse_travel_mm",
+    "valley_force_gf",
+    "valley_travel_mm",
+    "snap_pct",
+    "travel_mm",
+    "full_stroke_press_work_gf_mm",
+    "precollapse_work_gf_mm",
+    "drop_gf",
+    "drop_travel_mm",
+    "drop_rate_gf_per_mm",
+    "norm_drop_rate_per_mm",
+    "steepest_drop_0p10mm_gf_per_mm",
+    "ramp_10_90_gf_per_mm"
+   ],
+   "type": "object"
+  },
+  "display_name": {
+   "minLength": 1,
+   "type": "string"
+  },
+  "dome": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "drop_gf": {
+   "maximum": 2000,
+   "minimum": -2000,
+   "type": "number"
+  },
+  "drop_rate_gf_per_mm": {
+   "maximum": 100000,
+   "minimum": 0,
+   "type": [
+    "number",
+    "null"
+   ]
+  },
+  "drop_travel_mm": {
+   "maximum": 10,
+   "minimum": -10,
+   "type": "number"
+  },
+  "evidence_alias_group": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "evidence_alias_role": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "flag_travel": {
+   "type": [
+    "boolean",
+    "null"
+   ]
+  },
+  "full_stroke_press_work_gf_mm": {
+   "maximum": 100000,
+   "minimum": 0,
+   "type": [
+    "number",
+    "null"
+   ]
+  },
+  "housing": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "intake_review_notices": {
+   "description": "Advisory intake review evidence for retained runs. Notices do not change retention, metrics, quality_flags, or null semantics.",
+   "items": {
+    "additionalProperties": false,
+    "properties": {
+     "absolute_deviation_pct": {
+      "minimum": 0,
+      "type": "number"
+     },
+     "decision": {
+      "const": "ACCEPT + RAMP REVIEW"
+     },
+     "ramp_gf_per_mm": {
+      "type": "number"
+     },
+     "raw_path": {
+      "pattern": "^(?!.*[\\\\\\\\])(?!.*://)(?![A-Za-z]:)(?!/)(?!\\.{1,2}(?:/|$))(?!.*/\\.{1,2}(?:/|$))(?!.*//)(?!.*/$)[^\\\\\\\\]+$",
+      "type": "string"
+     },
+     "retained_median_gf_per_mm": {
+      "exclusiveMinimum": 0,
+      "type": "number"
+     },
+     "run": {
+      "minLength": 1,
+      "pattern": "^[^/\\\\]+$",
+      "type": "string"
+     },
+     "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+     },
+     "signed_deviation_pct": {
+      "type": "number"
+     },
+     "threshold_pct": {
+      "exclusiveMinimum": 0,
+      "type": "number"
+     },
+     "type": {
+      "const": "ramp_repeatability_review"
+     }
+    },
+    "required": [
+     "type",
+     "decision",
+     "run",
+     "raw_path",
+     "sha256",
+     "ramp_gf_per_mm",
+     "retained_median_gf_per_mm",
+     "signed_deviation_pct",
+     "absolute_deviation_pct",
+     "threshold_pct"
+    ],
+    "type": "object"
+   },
+   "type": "array",
+   "uniqueItems": true
+  },
+  "is_baseline": {
+   "type": "boolean"
+  },
+  "kind": {
+   "enum": [
+    "dome_baseline",
+    "part_assembly"
+   ]
+  },
+  "manufacturer": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "measurement_cohort_id": {
+   "pattern": "^mc_[A-Za-z0-9_.-]+$",
+   "type": "string"
+  },
+  "metadata_override_applied": {
+   "type": "boolean"
+  },
+  "metadata_source": {
+   "enum": [
+    "authoritative_workbook",
+    "predecessor_manifest"
+   ]
+  },
+  "metadata_source_locator": {
+   "minLength": 1,
+   "type": "string"
+  },
+  "name": {
+   "minLength": 1,
+   "type": "string"
+  },
+  "nominal_weight_g": {
+   "minimum": 0,
+   "type": [
+    "number",
+    "null"
+   ]
+  },
+  "norm_drop_rate_per_mm": {
+   "maximum": 1000,
+   "minimum": 0,
+   "type": [
+    "number",
+    "null"
+   ]
+  },
+  "notes": {
+   "type": "string"
+  },
+  "null_reasons": {
+   "additionalProperties": false,
+   "description": "exactly one permitted metric-specific reason flag for every null canonical metric",
+   "properties": {
+    "drop_rate_gf_per_mm": {
+     "enum": [
+      "nonpositive_drop",
+      "nonpositive_drop_travel",
+      "nonpositive_collapse_force",
+      "aggregate_contains_null_run"
+     ]
+    },
+    "full_stroke_press_work_gf_mm": {
+     "enum": [
+      "bottomout_not_found",
+      "grid_nonconforming",
+      "aggregate_contains_null_run"
+     ]
+    },
+    "norm_drop_rate_per_mm": {
+     "enum": [
+      "nonpositive_drop",
+      "nonpositive_drop_travel",
+      "nonpositive_collapse_force",
+      "aggregate_contains_null_run"
+     ]
+    },
+    "ramp_10_90_gf_per_mm": {
+     "enum": [
+      "ramp_baseline_unavailable",
+      "ramp_baseline_band_incomplete",
+      "ramp_reference_band_overlaps_collapse",
+      "ramp_crossing_missing",
+      "ramp_event_order_invalid",
+      "ramp_span_too_small",
+      "aggregate_contains_null_run"
+     ]
+    },
+    "snap_pct": {
+     "enum": [
+      "nonpositive_collapse_force",
+      "aggregate_contains_null_run"
+     ]
+    },
+    "steepest_drop_0p10mm_gf_per_mm": {
+     "enum": [
+      "drop_travel_below_0p10mm",
+      "nonpositive_drop_travel",
+      "aggregate_contains_null_run"
+     ]
+    },
+    "travel_mm": {
+     "enum": [
+      "bottomout_not_found",
+      "grid_nonconforming",
+      "aggregate_contains_null_run"
+     ]
+    }
+   },
+   "type": "object"
+  },
+  "precollapse_work_gf_mm": {
+   "maximum": 100000,
+   "minimum": 0,
+   "type": "number"
+  },
+  "precompression_mm": {
+   "type": [
+    "number",
+    "null"
+   ]
+  },
+  "provenance": {
+   "additionalProperties": false,
+   "properties": {
+    "acquisition_ids": {
+     "items": {
+      "pattern": "^acq_sha256:[0-9a-f]{64}$",
+      "type": "string"
+     },
+     "minItems": 1,
+     "type": "array",
+     "uniqueItems": true
+    },
+    "artifact_role": {
+     "enum": [
+      "development_preview",
+      "review_candidate",
+      "canonical_retention_authority"
+     ]
+    },
+    "config_hash": {
+     "description": "presentation-independent evidence_epoch_hash; retained key name is for schema compatibility",
+     "pattern": "^[0-9a-f]{64}$",
+     "type": "string"
+    },
+    "generator_version": {
+     "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+     "type": "string"
+    },
+    "membership_authority": {
+     "minLength": 1,
+     "type": "string"
+    },
+    "raw_git_blob_oids": {
+     "items": {
+      "pattern": "^[0-9a-f]{40}$",
+      "type": "string"
+     },
+     "minItems": 1,
+     "type": "array",
+     "uniqueItems": true
+    },
+    "raw_paths": {
+     "items": {
+      "description": "normalized relative POSIX path",
+      "pattern": "^(?!.*[\\\\\\\\])(?!.*://)(?![A-Za-z]:)(?!/)(?!\\.{1,2}(?:/|$))(?!.*/\\.{1,2}(?:/|$))(?!.*//)(?!.*/$)[^\\\\\\\\]+$",
+      "type": "string"
+     },
+     "minItems": 1,
+     "type": "array",
+     "uniqueItems": true
+    },
+    "raw_sha256": {
+     "items": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+     },
+     "minItems": 1,
+     "type": "array",
+     "uniqueItems": true
+    },
+    "release_eligible": {
+     "type": "boolean"
+    },
+    "repo_commit": {
+     "pattern": "^[0-9a-f]{40}$",
+     "type": "string"
+    }
+   },
+   "required": [
+    "repo_commit",
+    "raw_paths",
+    "raw_sha256",
+    "raw_git_blob_oids",
+    "acquisition_ids",
+    "config_hash",
+    "generator_version",
+    "artifact_role",
+    "release_eligible",
+    "membership_authority"
+   ],
+   "type": "object"
+  },
+  "quality_flags": {
+   "items": {
+    "enum": [
+     "collapse_not_found",
+     "valley_not_found",
+     "bottomout_not_found",
+     "nonpositive_drop",
+     "nonpositive_drop_travel",
+     "nonpositive_collapse_force",
+     "drop_travel_below_0p10mm",
+     "ramp_baseline_unavailable",
+     "ramp_baseline_band_incomplete",
+     "ramp_reference_band_overlaps_collapse",
+     "ramp_crossing_missing",
+     "ramp_event_order_invalid",
+     "ramp_span_too_small",
+     "loadcell_saturation",
+     "incomplete_press",
+     "incomplete_return",
+     "displacement_nonmonotonic",
+     "timestamp_nonmonotonic",
+     "grid_nonconforming",
+     "collapse_fallback_used",
+     "tactile_event_not_found",
+     "valley_iteration_nonconverged",
+     "aggregate_contains_null_run",
+     "invalid_turnaround",
+     "missing_duplicate_turnaround",
+     "bad_origin",
+     "bad_return_endpoint",
+     "cropped_stroke",
+     "malformed_rows",
+     "phase_reversal"
+    ]
+   },
+   "type": "array",
+   "uniqueItems": true
+  },
+  "ramp_10_90_gf_per_mm": {
+   "maximum": 100000,
+   "minimum": 0,
+   "type": [
+    "number",
+    "null"
+   ]
+  },
+  "runs_used": {
+   "minimum": 1,
+   "type": "integer"
+  },
+  "set": {
+   "pattern": "^[A-Za-z0-9_.-]+$",
+   "type": "string"
+  },
+  "silencing_ring": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "slider": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "snap_pct": {
+   "maximum": 100,
+   "minimum": -1000,
+   "type": [
+    "number",
+    "null"
+   ]
+  },
+  "status": {
+   "enum": [
+    "pending_review",
+    "verified",
+    "retest_required"
+   ]
+  },
+  "steepest_drop_0p10mm_gf_per_mm": {
+   "maximum": 100000,
+   "minimum": -100000,
+   "type": [
+    "number",
+    "null"
+   ]
+  },
+  "style": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "test_id": {
+   "pattern": "^bt_[0-9]{4}$",
+   "type": "string"
+  },
+  "tested": {
+   "type": [
+    "boolean",
+    "null"
+   ]
+  },
+  "tested_part": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "travel_dev_mm": {
+   "type": [
+    "number",
+    "null"
+   ]
+  },
+  "travel_mm": {
+   "maximum": 10,
+   "minimum": 0,
+   "type": [
+    "number",
+    "null"
+   ]
+  },
+  "valley_force_gf": {
+   "maximum": 2000,
+   "minimum": 0,
+   "type": "number"
+  },
+  "valley_travel_mm": {
+   "maximum": 10,
+   "minimum": 0,
+   "type": "number"
+  },
+  "variant": {
+   "type": [
+    "string",
+    "null"
+   ]
+  }
+ },
+ "required": [
+  "brand",
+  "calc_version",
+  "collapse_force_gf",
+  "collapse_travel_mm",
+  "conical_spring",
+  "dispersion",
+  "display_name",
+  "dome",
+  "drop_gf",
+  "drop_rate_gf_per_mm",
+  "drop_travel_mm",
+  "evidence_alias_group",
+  "evidence_alias_role",
+  "flag_travel",
+  "full_stroke_press_work_gf_mm",
+  "housing",
+  "intake_review_notices",
+  "is_baseline",
+  "kind",
+  "manufacturer",
+  "measurement_cohort_id",
+  "metadata_override_applied",
+  "metadata_source",
+  "metadata_source_locator",
+  "name",
+  "nominal_weight_g",
+  "norm_drop_rate_per_mm",
+  "notes",
+  "null_reasons",
+  "precollapse_work_gf_mm",
+  "precompression_mm",
+  "provenance",
+  "quality_flags",
+  "ramp_10_90_gf_per_mm",
+  "runs_used",
+  "set",
+  "silencing_ring",
+  "slider",
+  "snap_pct",
+  "status",
+  "steepest_drop_0p10mm_gf_per_mm",
+  "style",
+  "test_id",
+  "tested",
+  "tested_part",
+  "travel_dev_mm",
+  "travel_mm",
+  "valley_force_gf",
+  "valley_travel_mm",
+  "variant"
+ ],
+ "title": "Dome Lab bench test record (metrics-v4.2)",
+ "type": "object",
+ "x-evidence-metadata-contract": "epoch-metadata-v1",
+ "x-generator-version": "4.2.2",
+ "x-method-config-hash": "4b6e5a999b105c1bedfb43d5c289ea956f810150738dafd866478e8926667aeb"
+}

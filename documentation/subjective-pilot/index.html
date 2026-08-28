@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dome Lab subjective pilot v1</title>
+<style>
+:root{--ink:#1d2421;--muted:#66726d;--line:#dbe2de;--paper:#fbfcfb;--accent:#7048b6}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,sans-serif}
+main{max-width:980px;margin:auto;padding:40px 24px 70px}h1{font-size:2rem;margin-bottom:.2rem}h2{margin-top:2rem}
+.tag{color:var(--accent);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:.78rem}
+.warning{border:1px solid var(--line);border-left:5px solid var(--accent);padding:14px 16px;background:white}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}table{width:100%;border-collapse:collapse;background:white}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}th:last-child,td:last-child{text-align:right}
+a{color:var(--accent)}code{font-size:.9em}.files a{margin-right:14px;white-space:nowrap}
+</style></head><body><main>
+<div class="tag">Exploratory evidence · subjective-pilot-v1</div>
+<h1>25-dome subjective pilot</h1>
+<p>One rater scored 25 dome assemblies in three fixed-order sessions using the same Topre housing, slider, and conical spring. Weight and tactility sharpness used panel-relative 1–10 scales.</p>
+<div class="warning"><strong>Read this first.</strong> The effective sample is 25 domes, not 75. These results describe associations inside this selected panel. They are not causal effects, calibrated perceptual units, population norms, or a tactile on/off classifier.</div>
+<h2>Strongest rank associations</h2>
+<div class="grid"><section><h3>Perceived weight</h3><table><thead><tr><th>Mechanical metric</th><th>Spearman ρ</th></tr></thead><tbody><tr><td>Collapse force</td><td>0.952</td></tr><tr><td>Ramp</td><td>0.897</td></tr><tr><td>Pre-collapse work</td><td>0.839</td></tr><tr><td>Drop</td><td>0.822</td></tr><tr><td>Drop rate</td><td>0.818</td></tr></tbody></table></section><section><h3>Tactility sharpness</h3><table><thead><tr><th>Mechanical metric</th><th>Spearman ρ</th></tr></thead><tbody><tr><td>Drop</td><td>0.930</td></tr><tr><td>Steepest 0.10 mm drop</td><td>0.915</td></tr><tr><td>Drop rate</td><td>0.906</td></tr><tr><td>Snap %</td><td>0.903</td></tr><tr><td>Normalized drop rate</td><td>0.846</td></tr></tbody></table></section></div>
+<p>Collapse force led the perceived-weight ranking (ρ = 0.952). The force-drop family led tactility-sharpness: Drop ρ = 0.930. These correlated metric families overlap strongly, so this pilot does not assign independent causal contributions.</p>
+<h2>Limits</h2><ul><li>One rater; repeated sessions improve within-rater precision but do not make n=75.</li><li>All sessions used the same fixed grid order, so position/order and dome identity are confounded.</li><li>The 1–10 endpoints are relative to this selected 25-dome panel, not calibrated perceptual units.</li><li>All tactility ratings were 2–10; the pilot contains no linear/off tactility observation.</li><li>Associations are exploratory and do not identify causal, independent metric contributions.</li></ul>
+<h2>Files</h2><p class="files"><a href="README.md">Methods</a><a href="observations.csv">75 raw ratings</a><a href="dome_summary.csv">25 dome means</a><a href="grid_mapping.json">Explicit 5x5 mapping</a><a href="analysis.json">Analysis results</a><a href="source_identity.json">Provenance</a></p>
+<p><a href="../../index.html">Return to Force Curve Bench</a></p>
+</main></body></html>

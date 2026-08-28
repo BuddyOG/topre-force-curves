@@ -1,0 +1,141 @@
+{
+ "policy_version": "intake-qc-v1.4",
+ "implementation_parity_target": "test-imp 1.1.4",
+ "authority_binding": {
+  "test_imp_init_py_sha256": "7a1c69b505288b267097d200480f587f0209a411fcb581aa5d5b6e30f495a88b",
+  "test_imp_config_py_sha256": "5f310e7de398ee33380833448e0132ffa1fbc8ae5059a32897e51906fe4b8bd0",
+  "test_imp_analysis_py_sha256": "75b8313b4a73cc31293fcd689e9e7b31ef0719bfd9c014b5e9063dada873506b",
+  "test_imp_model_py_sha256": "940a0cff05427d138ae5f7716cbcf54b7211cf21564cb6ac45b9b4bdf9fefbf8",
+  "test_imp_cli_py_sha256": "bf58bd81de7d67b09bb7c5bd622a408358909f2461c1e5c6e352afd89bcebb61",
+  "test_imp_method_md_sha256": "72fa2e7d4313cb00c493a98ce3a765bc2b25dd69518493c4523ec8a7cc6ba97a",
+  "test_imp_source_manifest_name": "SOURCE-SHA256SUMS-1.1.4.txt",
+  "test_imp_source_manifest_sha256": "0cc31a5a4ac68108377384337d1fba662ac5c22fb9c14ee37ecc75dba74d21dd",
+  "release_zip_name": "test-imp-1.1.4-windows-x64.zip",
+  "release_zip_bytes": 8283858,
+  "release_zip_sha256": "b1ccdaba5c4ec76b7a8516c4e8c8109c26f2cb58b0f60f49a5c5fcf9a031b284",
+  "release_directory": "release-1.1.4",
+  "release_exe_name": "test-imp.exe",
+  "release_exe_sha256": "351607fffe30eb6da8c7612e3e1bdfad0e3a737804e8f109bbd89c8d1a64854e",
+  "release_sha256s_txt_name": "SHA256SUMS.txt",
+  "release_sha256s_txt_sha256": "a4b6827de92e01bde043265f2569439fe9daa19e18a453bed956e77d6584a7b3",
+  "acceptance_json_name": "acceptance/importer_acceptance-1.1.4.json",
+  "acceptance_json_sha256": "e1e4b3d56a7e05823440e6e1d4d64dc3bd80be7148d97c03feb81e665e15d9de",
+  "binding_rule": "Any change to the bound test-imp 1.1.4 authority, accepted release, or this policy requires a new policy version, reciprocal parity evidence, and a regenerated decision manifest."
+ },
+ "scope": "Acquisition integrity, rate/cadence conformance, conservative mixed-cohort stop, and replicate retention. These are provisional engineering intake rules, not instrument uncertainty or perceptual thresholds.",
+ "parse": {
+  "expected_header": [
+   "Millis",
+   "Steps",
+   "Travel (mm)",
+   "Scale raw",
+   "Scale (grams)"
+  ],
+  "minimum_numeric_rows": 50
+ },
+ "trajectory": {
+  "nominal_step_mm": 0.005,
+  "nominal_step_count": 8.0,
+  "steps_per_mm": 1600.0,
+  "grid_tolerance_mm": 1e-06,
+  "step_tolerance": 0.5,
+  "origin_zone_mm": 0.15,
+  "return_endpoint_zone_mm": 0.15,
+  "minimum_press_span_mm": 3.5,
+  "minimum_return_span_mm": 3.5,
+  "minimum_return_completion_fraction": 0.95
+ },
+ "integrity": {
+  "timing_gap_factor": 3.0,
+  "timing_gap_fail_count": 10,
+  "adc_dropout_raw_floor": -100000.0,
+  "adc_dropout_force_floor_gf": -50.0,
+  "baseline_negative_floor_gf": -2.0,
+  "baseline_zone_mm": 0.15,
+  "stale_force_max_run": 12,
+  "saturation_min_force_gf": 500.0,
+  "saturation_min_run": 5,
+  "mechanical_region_end_mm": 3.4,
+  "mechanical_region_start_mm": 0.1,
+  "press_adjacent_force_spike_gf_per_step": 5.0,
+  "both_phase_local_force_residual_gf": 5.0,
+  "force_discontinuity_boundary": "strictly greater than 5.0 gf; equality passes",
+  "force_discontinuity_phase_rule": "adjacent-step press only; local residual press and return"
+ },
+ "speed": {
+  "preferred_full_cycle_mm_s": [0.1445, 0.15],
+  "hard_full_cycle_mm_s": [0.14, 0.153],
+  "preferred_collapse_local_mm_s": [0.1445, 0.152],
+  "hard_collapse_local_mm_s": [0.14, 0.155],
+  "preferred_interval_ms": [33.0, 35.0],
+  "normal_interval_ms": [32.0, 36.0],
+  "instantaneous_press_mm_s": [0.135, 0.16],
+  "sustained_bad_cadence_steps": 20,
+  "minimum_normal_press_fraction": 0.95,
+  "minimum_normal_collapse_approach_fraction": 0.98,
+  "minimum_normal_drop_fraction": 0.95,
+  "collapse_local_half_width_mm": 0.1,
+  "collapse_approach_window_mm": 0.25,
+  "collapse_approach_dwell_factor": 2.0,
+  "preferred_misses_are_advisory": true
+ },
+ "replicates": {
+  "centre": "conventional_median",
+  "collapse_force_absolute_tolerance_gf": 1.0,
+  "collapse_force_relative_tolerance": 0.02,
+  "collapse_position_tolerance_mm": 0.05,
+  "minimum_retained_runs": 2,
+  "boundary": "equality passes"
+ },
+ "ramp_review": {
+  "minimum_numeric_retained_runs": 3,
+  "relative_deviation": 0.1,
+  "median": "conventional_median_of_finite_numeric_retained_run_ramp_values",
+  "median_requirement": "positive and finite",
+  "boundary": "strictly greater than 10%; equality passes with rel_tol=1e-12 and abs_tol=1e-12",
+  "effect": "advisory only; never changes retention or metric values",
+  "mixed_cohort_rule": "suppressed when a mixed population is detected"
+ },
+ "mixed_cohort": {
+  "singleton_policy": "A singleton is a failed/outlier run, not evidence of a second dome. With exactly two eligible runs, a sufficiently large split may stop intake.",
+  "collapse_force_absolute_gap_gf": 4.0,
+  "collapse_force_relative_gap": 0.06,
+  "within_group_collapse_force_absolute_gf": 2.5,
+  "within_group_collapse_force_relative": 0.04,
+  "collapse_position_gap_mm": 0.15,
+  "within_group_collapse_position_mm": 0.08,
+  "snap_gap_percentage_points": 10.0,
+  "normalized_drop_rate_relative_gap": 0.15
+ },
+ "metric_flag_classification": {
+  "metric_local_flags": [
+   "bottomout_not_found",
+   "drop_travel_below_0p10mm",
+   "ramp_baseline_band_incomplete",
+   "ramp_baseline_unavailable",
+   "ramp_reference_band_overlaps_collapse",
+   "ramp_crossing_missing",
+   "ramp_event_order_invalid",
+   "ramp_span_too_small"
+  ],
+  "unknown_flags": "fail_closed"
+ },
+ "core_acceptance_metrics": [
+  "collapse_force_gf",
+  "collapse_travel_mm",
+  "valley_force_gf",
+  "valley_travel_mm",
+  "snap_pct",
+  "precollapse_work_gf_mm",
+  "drop_gf",
+  "drop_travel_mm",
+  "drop_rate_gf_per_mm",
+  "norm_drop_rate_per_mm"
+ ],
+ "mixed_cohort_metrics": [
+  "collapse_force_gf",
+  "collapse_travel_mm",
+  "snap_pct",
+  "norm_drop_rate_per_mm"
+ ]
+}

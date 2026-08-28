@@ -1,0 +1,16 @@
+{
+  "report_version": 2,
+  "deterministic_commit_time": "2026-08-15T17:16:08-04:00",
+  "repo_path": "D:\\Documents\\GitHub\\topre-force-curves",
+  "commit": "6e86ac1955a0c566c7aae521705e51371992ba8a",
+  "tree_oid": "e43d25a3fed8c5177467bba96a5abbdd5a3442b0",
+  "target": "C:\\Users\\btgeb\\Documents\\Codex\\2026-08-07\\t\\canonical_epoch_8816ffb_work\\raw_cache\\repo-6e86ac1955a0c566c7aae521705e51371992ba8a",
+  "method": "git ls-tree -r -z plus git cat-file blob; bytes written without text decoding",
+  "result": {
+    "status": "PASS",
+    "tracked_files": 189,
+    "raw_csv_files": 184,
+    "path_bijection": true,
+    "all_sha256_match_git_blobs": true
+  }
+}

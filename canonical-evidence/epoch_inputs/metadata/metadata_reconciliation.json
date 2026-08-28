@@ -1,0 +1,981 @@
+{
+  "reconciliation_version": 1,
+  "epoch_id": "canonical-evidence-2026-08-15-6e86ac19",
+  "summary": {
+    "workbook_rows": 79,
+    "workbook_yes": 65,
+    "workbook_no": 14,
+    "workbook_yes_matched": 65,
+    "case_only_matches": 1,
+    "repo_csv_cohorts": 76,
+    "repo_cohorts_not_in_workbook": 11
+  },
+  "case_only_matches": [
+    {
+      "display_name": "DynaCaps_Heavy_55g",
+      "manufacturer": "OmniType",
+      "brand": "DynaCaps",
+      "style": null,
+      "variant": "Heavy",
+      "nominal_weight_g": 55,
+      "tested": "YES",
+      "workbook_row": 68,
+      "repo_set": "Dynacaps_Heavy_55g",
+      "match_method": "case_insensitive"
+    }
+  ],
+  "non_workbook_cohorts": [
+    {
+      "set": "DynaCaps_Parts",
+      "legacy_test_id": "bt_0022"
+    },
+    {
+      "set": "Dynacaps_Slider_0.3mm_Poron",
+      "legacy_test_id": "bt_0020"
+    },
+    {
+      "set": "Dynacaps_Slider_0.5mm_Silicone",
+      "legacy_test_id": "bt_0021"
+    },
+    {
+      "set": "Sony_BKE_Brown_01",
+      "legacy_test_id": "bt_0012"
+    },
+    {
+      "set": "Sony_BKE_Brown_02",
+      "legacy_test_id": "bt_0013"
+    },
+    {
+      "set": "Sony_BKE_Brown_03",
+      "legacy_test_id": "bt_0014"
+    },
+    {
+      "set": "Topre_Slider_Black",
+      "legacy_test_id": "bt_0015"
+    },
+    {
+      "set": "Topre_Slider_Black_Silenced_0.3mm_Poron",
+      "legacy_test_id": "bt_0018"
+    },
+    {
+      "set": "Topre_Slider_Black_Silenced_0.5mm_Poron",
+      "legacy_test_id": "bt_0019"
+    },
+    {
+      "set": "Topre_Slider_Silenced_Purple",
+      "legacy_test_id": "bt_0017"
+    },
+    {
+      "set": "Topre_Slider_Type-S",
+      "legacy_test_id": "bt_0016"
+    }
+  ],
+  "rows": [
+    {
+      "source": "workbook",
+      "workbook_row": 2,
+      "workbook_display_name": "MetaPulse BS 40g",
+      "tested": "NO",
+      "repo_set": null,
+      "match_method": "not_present",
+      "manifest_disposition": "not_in_epoch",
+      "metadata_source": "workbook_inventory_only"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 3,
+      "workbook_display_name": "MetaPulse BS 50g",
+      "tested": "NO",
+      "repo_set": null,
+      "match_method": "not_present",
+      "manifest_disposition": "not_in_epoch",
+      "metadata_source": "workbook_inventory_only"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 4,
+      "workbook_display_name": "MetaPulse BS 65g",
+      "tested": "NO",
+      "repo_set": null,
+      "match_method": "not_present",
+      "manifest_disposition": "not_in_epoch",
+      "metadata_source": "workbook_inventory_only"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 5,
+      "workbook_display_name": "MetaPulse BS 75g",
+      "tested": "NO",
+      "repo_set": null,
+      "match_method": "not_present",
+      "manifest_disposition": "not_in_epoch",
+      "metadata_source": "workbook_inventory_only"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 6,
+      "workbook_display_name": "Deskeys_Carrot_35g",
+      "tested": "YES",
+      "repo_set": "Deskeys_Carrot_35g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 7,
+      "workbook_display_name": "Deskeys_Carrot_49g",
+      "tested": "YES",
+      "repo_set": "Deskeys_Carrot_49g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 8,
+      "workbook_display_name": "Deskeys_Carrot_60g",
+      "tested": "YES",
+      "repo_set": "Deskeys_Carrot_60g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 9,
+      "workbook_display_name": "MetaPulse RS 25g",
+      "tested": "NO",
+      "repo_set": null,
+      "match_method": "not_present",
+      "manifest_disposition": "not_in_epoch",
+      "metadata_source": "workbook_inventory_only"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 10,
+      "workbook_display_name": "MetaPulse RS 30g",
+      "tested": "NO",
+      "repo_set": null,
+      "match_method": "not_present",
+      "manifest_disposition": "not_in_epoch",
+      "metadata_source": "workbook_inventory_only"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 11,
+      "workbook_display_name": "MetaPulse RS 35g",
+      "tested": "NO",
+      "repo_set": null,
+      "match_method": "not_present",
+      "manifest_disposition": "not_in_epoch",
+      "metadata_source": "workbook_inventory_only"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 12,
+      "workbook_display_name": "MetaPulse RS 40g",
+      "tested": "NO",
+      "repo_set": null,
+      "match_method": "not_present",
+      "manifest_disposition": "not_in_epoch",
+      "metadata_source": "workbook_inventory_only"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 13,
+      "workbook_display_name": "MetaPulse RS 45g",
+      "tested": "NO",
+      "repo_set": null,
+      "match_method": "not_present",
+      "manifest_disposition": "not_in_epoch",
+      "metadata_source": "workbook_inventory_only"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 14,
+      "workbook_display_name": "MetaPulse RS 55g-A",
+      "tested": "NO",
+      "repo_set": null,
+      "match_method": "not_present",
+      "manifest_disposition": "not_in_epoch",
+      "metadata_source": "workbook_inventory_only"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 15,
+      "workbook_display_name": "MetaPulse RS 55g-B",
+      "tested": "NO",
+      "repo_set": null,
+      "match_method": "not_present",
+      "manifest_disposition": "not_in_epoch",
+      "metadata_source": "workbook_inventory_only"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 16,
+      "workbook_display_name": "Deskeys_T1_Cheese_28g",
+      "tested": "YES",
+      "repo_set": "Deskeys_T1_Cheese_28g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 17,
+      "workbook_display_name": "Deskeys_T1_Tiffany_35g",
+      "tested": "YES",
+      "repo_set": "Deskeys_T1_Tiffany_35g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 18,
+      "workbook_display_name": "Deskeys_T1_Pink_42g",
+      "tested": "YES",
+      "repo_set": "Deskeys_T1_Pink_42g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 19,
+      "workbook_display_name": "Deskeys_T1_Purple_49g",
+      "tested": "YES",
+      "repo_set": "Deskeys_T1_Purple_49g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 20,
+      "workbook_display_name": "Deskeys_T1_Blue_56g",
+      "tested": "YES",
+      "repo_set": "Deskeys_T1_Blue_56g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 21,
+      "workbook_display_name": "Deskeys_T1_Coffee_63g",
+      "tested": "YES",
+      "repo_set": "Deskeys_T1_Coffee_63g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 22,
+      "workbook_display_name": "Deskeys_T1_Grey_70g",
+      "tested": "YES",
+      "repo_set": "Deskeys_T1_Grey_70g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 23,
+      "workbook_display_name": "Deskeys_T1_Green_85g",
+      "tested": "YES",
+      "repo_set": "Deskeys_T1_Green_85g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 24,
+      "workbook_display_name": "Deskeys_T1_Darkside_100g",
+      "tested": "YES",
+      "repo_set": "Deskeys_T1_Darkside_100g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 25,
+      "workbook_display_name": "BKE_Redux_v1_Extreme_01",
+      "tested": "YES",
+      "repo_set": "BKE_Redux_v1_Extreme_01",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 26,
+      "workbook_display_name": "BKE_Redux_v1_Heavy_01",
+      "tested": "YES",
+      "repo_set": "BKE_Redux_v1_Heavy_01",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 27,
+      "workbook_display_name": "BKE_Redux_v1_Heavy_02",
+      "tested": "YES",
+      "repo_set": "BKE_Redux_v1_Heavy_02",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 28,
+      "workbook_display_name": "BKE_Redux_v1_Heavy_03",
+      "tested": "YES",
+      "repo_set": "BKE_Redux_v1_Heavy_03",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 29,
+      "workbook_display_name": "BKE_Redux_v1_Light_01",
+      "tested": "YES",
+      "repo_set": "BKE_Redux_v1_Light_01",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 30,
+      "workbook_display_name": "BKE_Redux_v1_Light_02",
+      "tested": "YES",
+      "repo_set": "BKE_Redux_v1_Light_02",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 31,
+      "workbook_display_name": "BKE_Redux_v1_Light_03",
+      "tested": "YES",
+      "repo_set": "BKE_Redux_v1_Light_03",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 32,
+      "workbook_display_name": "BKE_Redux_v1_Ultra_Light_01",
+      "tested": "YES",
+      "repo_set": "BKE_Redux_v1_Ultra_Light_01",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 33,
+      "workbook_display_name": "BKE_Redux_v1_Ultra_Light_02",
+      "tested": "YES",
+      "repo_set": "BKE_Redux_v1_Ultra_Light_02",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 34,
+      "workbook_display_name": "BKE_Redux_v1_Ultra_Light_03",
+      "tested": "YES",
+      "repo_set": "BKE_Redux_v1_Ultra_Light_03",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 35,
+      "workbook_display_name": "Deskeys_V1_Tiffany_35g",
+      "tested": "YES",
+      "repo_set": "Deskeys_V1_Tiffany_35g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 36,
+      "workbook_display_name": "Deskeys_V1_Pink_42g",
+      "tested": "YES",
+      "repo_set": "Deskeys_V1_Pink_42g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 37,
+      "workbook_display_name": "Deskeys_V1_Purple_49g",
+      "tested": "YES",
+      "repo_set": "Deskeys_V1_Purple_49g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 38,
+      "workbook_display_name": "Deskeys_V1_Blue_56g",
+      "tested": "YES",
+      "repo_set": "Deskeys_V1_Blue_56g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 39,
+      "workbook_display_name": "Deskeys_V2_Tiffany_35g",
+      "tested": "YES",
+      "repo_set": "Deskeys_V2_Tiffany_35g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 40,
+      "workbook_display_name": "Deskeys_V2_Pink_42g",
+      "tested": "YES",
+      "repo_set": "Deskeys_V2_Pink_42g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 41,
+      "workbook_display_name": "Deskeys_V2_Purple_49g",
+      "tested": "YES",
+      "repo_set": "Deskeys_V2_Purple_49g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 42,
+      "workbook_display_name": "Deskeys_V2_Blue_56g",
+      "tested": "YES",
+      "repo_set": "Deskeys_V2_Blue_56g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 43,
+      "workbook_display_name": "Deskeys_V2_Brown_63g",
+      "tested": "YES",
+      "repo_set": "Deskeys_V2_Brown_63g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 44,
+      "workbook_display_name": "Deskeys_V2_Green_70g",
+      "tested": "YES",
+      "repo_set": "Deskeys_V2_Green_70g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 45,
+      "workbook_display_name": "Deskeys_V3_Cheese_28g",
+      "tested": "YES",
+      "repo_set": "Deskeys_V3_Cheese_28g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 46,
+      "workbook_display_name": "Deskeys_V3_Tiffany_35g",
+      "tested": "YES",
+      "repo_set": "Deskeys_V3_Tiffany_35g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 47,
+      "workbook_display_name": "Deskeys_V3_Pink_42g",
+      "tested": "YES",
+      "repo_set": "Deskeys_V3_Pink_42g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 48,
+      "workbook_display_name": "Deskeys_V3_Purple_49g",
+      "tested": "YES",
+      "repo_set": "Deskeys_V3_Purple_49g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 49,
+      "workbook_display_name": "Deskeys_V3_Blue_56g",
+      "tested": "YES",
+      "repo_set": "Deskeys_V3_Blue_56g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 50,
+      "workbook_display_name": "Deskeys_V3_Brown_63g",
+      "tested": "YES",
+      "repo_set": "Deskeys_V3_Brown_63g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 51,
+      "workbook_display_name": "Deskeys_V3_Green_70g",
+      "tested": "YES",
+      "repo_set": "Deskeys_V3_Green_70g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 52,
+      "workbook_display_name": "Astro_Domes_Shiner_35g",
+      "tested": "YES",
+      "repo_set": "Astro_Domes_Shiner_35g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 53,
+      "workbook_display_name": "Astro_Domes_Pepper_50g",
+      "tested": "YES",
+      "repo_set": "Astro_Domes_Pepper_50g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 54,
+      "workbook_display_name": "Astro_Domes_Whatadome_60g",
+      "tested": "YES",
+      "repo_set": "Astro_Domes_Whatadome_60g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 55,
+      "workbook_display_name": "Astro_Domes_Weird_70g",
+      "tested": "YES",
+      "repo_set": "Astro_Domes_Weird_70g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 56,
+      "workbook_display_name": "Astro_Domes_Lean_90g",
+      "tested": "YES",
+      "repo_set": "Astro_Domes_Lean_90g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 57,
+      "workbook_display_name": "Astro_Domes_Fiesta_120g",
+      "tested": "YES",
+      "repo_set": "Astro_Domes_Fiesta_120g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 58,
+      "workbook_display_name": "Astro_Domes_Big_D_160g",
+      "tested": "YES",
+      "repo_set": "Astro_Domes_Big_D_160g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 59,
+      "workbook_display_name": "Astro_Domes_500g",
+      "tested": "NO",
+      "repo_set": null,
+      "match_method": "not_present",
+      "manifest_disposition": "not_in_epoch",
+      "metadata_source": "workbook_inventory_only"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 60,
+      "workbook_display_name": "KLC_Densus_35g",
+      "tested": "YES",
+      "repo_set": "KLC_Densus_35g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 61,
+      "workbook_display_name": "KLC_Densus_45g",
+      "tested": "YES",
+      "repo_set": "KLC_Densus_45g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 62,
+      "workbook_display_name": "KLC_Densus_55g",
+      "tested": "YES",
+      "repo_set": "KLC_Densus_55g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 63,
+      "workbook_display_name": "NiZ_Black_65g",
+      "tested": "YES",
+      "repo_set": "NiZ_Black_65g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 64,
+      "workbook_display_name": "NiZ_Purple_60g",
+      "tested": "YES",
+      "repo_set": "NiZ_Purple_60g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 65,
+      "workbook_display_name": "DynaCaps_Light_35g",
+      "tested": "YES",
+      "repo_set": "DynaCaps_Light_35g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 66,
+      "workbook_display_name": "DynaCaps_Medium_45g",
+      "tested": "YES",
+      "repo_set": "DynaCaps_Medium_45g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 67,
+      "workbook_display_name": "DynaCaps_Heavy-ish_52g",
+      "tested": "NO",
+      "repo_set": null,
+      "match_method": "not_present",
+      "manifest_disposition": "not_in_epoch",
+      "metadata_source": "workbook_inventory_only"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 68,
+      "workbook_display_name": "DynaCaps_Heavy_55g",
+      "tested": "YES",
+      "repo_set": "Dynacaps_Heavy_55g",
+      "match_method": "case_insensitive",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 69,
+      "workbook_display_name": "DynaCaps_Crazy_Heavy_82g",
+      "tested": "NO",
+      "repo_set": null,
+      "match_method": "not_present",
+      "manifest_disposition": "not_in_epoch",
+      "metadata_source": "workbook_inventory_only"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 70,
+      "workbook_display_name": "Sony_BKE_Gray_01",
+      "tested": "YES",
+      "repo_set": "Sony_BKE_Gray_01",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 71,
+      "workbook_display_name": "Sony_BKE_Gray_02",
+      "tested": "YES",
+      "repo_set": "Sony_BKE_Gray_02",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 72,
+      "workbook_display_name": "Topre_R1_55g",
+      "tested": "YES",
+      "repo_set": "Topre_R1_55g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 73,
+      "workbook_display_name": "Topre_R1_45g",
+      "tested": "YES",
+      "repo_set": "Topre_R1_45g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 74,
+      "workbook_display_name": "Topre_R1_30g",
+      "tested": "YES",
+      "repo_set": "Topre_R1_30g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 75,
+      "workbook_display_name": "Topre_R2_55g",
+      "tested": "YES",
+      "repo_set": "Topre_R2_55g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 76,
+      "workbook_display_name": "Topre_R2_45g",
+      "tested": "YES",
+      "repo_set": "Topre_R2_45g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 77,
+      "workbook_display_name": "Topre_R2_30g",
+      "tested": "YES",
+      "repo_set": "Topre_R2_30g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 78,
+      "workbook_display_name": "Topre_HHKB_Pro2_45g",
+      "tested": "YES",
+      "repo_set": "Topre_HHKB_Pro2_45g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 79,
+      "workbook_display_name": "Topre_RGB_45g",
+      "tested": "YES",
+      "repo_set": "Topre_RGB_45g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "workbook",
+      "workbook_row": 80,
+      "workbook_display_name": "Topre_GX1_45g",
+      "tested": "YES",
+      "repo_set": "Topre_GX1_45g",
+      "match_method": "exact",
+      "manifest_disposition": "include",
+      "metadata_source": "authoritative_workbook"
+    },
+    {
+      "source": "repository",
+      "workbook_row": null,
+      "workbook_display_name": null,
+      "tested": null,
+      "repo_set": "DynaCaps_Parts",
+      "match_method": "not_in_workbook",
+      "manifest_disposition": "include",
+      "metadata_source": "legacy_manifest:bt_0022"
+    },
+    {
+      "source": "repository",
+      "workbook_row": null,
+      "workbook_display_name": null,
+      "tested": null,
+      "repo_set": "Dynacaps_Slider_0.3mm_Poron",
+      "match_method": "not_in_workbook",
+      "manifest_disposition": "include",
+      "metadata_source": "legacy_manifest:bt_0020"
+    },
+    {
+      "source": "repository",
+      "workbook_row": null,
+      "workbook_display_name": null,
+      "tested": null,
+      "repo_set": "Dynacaps_Slider_0.5mm_Silicone",
+      "match_method": "not_in_workbook",
+      "manifest_disposition": "include",
+      "metadata_source": "legacy_manifest:bt_0021"
+    },
+    {
+      "source": "repository",
+      "workbook_row": null,
+      "workbook_display_name": null,
+      "tested": null,
+      "repo_set": "Sony_BKE_Brown_01",
+      "match_method": "not_in_workbook",
+      "manifest_disposition": "include",
+      "metadata_source": "legacy_manifest:bt_0012"
+    },
+    {
+      "source": "repository",
+      "workbook_row": null,
+      "workbook_display_name": null,
+      "tested": null,
+      "repo_set": "Sony_BKE_Brown_02",
+      "match_method": "not_in_workbook",
+      "manifest_disposition": "include",
+      "metadata_source": "legacy_manifest:bt_0013"
+    },
+    {
+      "source": "repository",
+      "workbook_row": null,
+      "workbook_display_name": null,
+      "tested": null,
+      "repo_set": "Sony_BKE_Brown_03",
+      "match_method": "not_in_workbook",
+      "manifest_disposition": "include",
+      "metadata_source": "legacy_manifest:bt_0014"
+    },
+    {
+      "source": "repository",
+      "workbook_row": null,
+      "workbook_display_name": null,
+      "tested": null,
+      "repo_set": "Topre_Slider_Black",
+      "match_method": "not_in_workbook",
+      "manifest_disposition": "include",
+      "metadata_source": "legacy_manifest:bt_0015"
+    },
+    {
+      "source": "repository",
+      "workbook_row": null,
+      "workbook_display_name": null,
+      "tested": null,
+      "repo_set": "Topre_Slider_Black_Silenced_0.3mm_Poron",
+      "match_method": "not_in_workbook",
+      "manifest_disposition": "include",
+      "metadata_source": "legacy_manifest:bt_0018"
+    },
+    {
+      "source": "repository",
+      "workbook_row": null,
+      "workbook_display_name": null,
+      "tested": null,
+      "repo_set": "Topre_Slider_Black_Silenced_0.5mm_Poron",
+      "match_method": "not_in_workbook",
+      "manifest_disposition": "include",
+      "metadata_source": "legacy_manifest:bt_0019"
+    },
+    {
+      "source": "repository",
+      "workbook_row": null,
+      "workbook_display_name": null,
+      "tested": null,
+      "repo_set": "Topre_Slider_Silenced_Purple",
+      "match_method": "not_in_workbook",
+      "manifest_disposition": "include",
+      "metadata_source": "legacy_manifest:bt_0017"
+    },
+    {
+      "source": "repository",
+      "workbook_row": null,
+      "workbook_display_name": null,
+      "tested": null,
+      "repo_set": "Topre_Slider_Type-S",
+      "match_method": "not_in_workbook",
+      "manifest_disposition": "include",
+      "metadata_source": "legacy_manifest:bt_0016"
+    }
+  ],
+  "limitations": [
+    "The 11 non-workbook cohorts have no workbook catalog columns; manufacturer, brand, style, variant, nominal_weight_g, and tested remain explicitly null while legacy assembly metadata is preserved with its source hash.",
+    "travel_dev_mm and flag_travel are generated-result fields, so old values were retained only in legacy_metadata_snapshot and reset in current metadata.",
+    "The OEM Topre history event describes exact Git collection changes only and does not establish one-to-one specimen identity or retest satisfaction.",
+    "The Topre_R2_45g retest event records two in-place blob replacements and one retirement only; no cause, specimen identity, or equivalence is inferred."
+  ]
+}
