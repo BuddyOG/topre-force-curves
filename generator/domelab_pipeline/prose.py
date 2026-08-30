@@ -59,8 +59,27 @@ PROHIBITED = [
 SCAN_EXEMPT_SUFFIXES = ("prose_scan_report.json",)
 
 
+_R8_SRC_BLOB = re.compile(r"const R8_SRC = \{.*?\}; /\* GENERATED", re.S)
+
+
+def mask_verbatim_source(text):
+    """Blank the labeled verbatim r8 source layer (R8_SRC) for scanning.
+
+    The prohibited-copy gate governs presentation copy; the R8_SRC blob is
+    the vendored source embedded verbatim under an explicit "every field,
+    verbatim" label, and losslessness requires its text intact. Returns
+    (masked_text, masked_chars)."""
+    m = _R8_SRC_BLOB.search(text)
+    if not m:
+        return text, 0
+    return (text[:m.start()] + "const R8_SRC = {}; /* GENERATED"
+            + text[m.end():]), m.end() - m.start()
+
+
 def scan(text):
-    """Return [(pattern, matched_text, offset), ...] for every prohibited hit."""
+    """Return [(pattern, matched_text, offset), ...] for every prohibited hit
+    in the PRESENTATION text (the labeled verbatim source layer is masked)."""
+    text, _ = mask_verbatim_source(text)
     hits = []
     for pat in PROHIBITED:
         for m in re.finditer(pat, text, re.IGNORECASE):

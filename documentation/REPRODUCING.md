@@ -1,15 +1,14 @@
-# Verifying and reproducing Force Curve Bench
+# Verifying the published site
 
-Force Curve Bench fc-3.4 ships as a self-verifying package. Its canonical
-viewer URL is
+The repository publishes Force Curve Bench `fc-3.4` and EC Parts Builder
+`lib-6.0`. The Force Curve Bench canonical viewer URL is
 [https://buddyog.github.io/topre-force-curves/](https://buddyog.github.io/topre-force-curves/),
-and its frozen release tag is `fc-3.4`.
+and its frozen release tag is `fc-3.4`. The builder is published at
+`dome-lab-parts.html` and is bound to tag `ec-parts-lib-6.0`.
 
-This preparation task fixed those publication identifiers but did not create
-the promotion commit or tag and did not deploy the package. The release package
-records its exact file hashes in `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` and
-`SHA256SUMS`; those files are the authority for package-specific hashes and
-avoid copying a hash into a document that the hash itself covers.
+`SITE_RELEASE_MANIFEST.json` and the published `SHA256SUMS` are the active
+combined-site authority. `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` remains the
+protected predecessor record for fc-3.4.
 
 Verification and reproduction answer different questions:
 
@@ -19,7 +18,33 @@ Verification and reproduction answer different questions:
   locked JavaScript dependencies reproduce the packaged generated tree byte
   for byte?
 
-## Frozen identities
+## Published lib-6.0 package verification
+
+From an extracted lib-6.0 package root, run:
+
+```text
+python generator/tools/build_parts_library_release.py verify .
+```
+
+On systems where the command is named `python3`, substitute `python3`. The
+verifier checks the site manifest and checksum inventory, validates
+the lib-6.0 public-release identity, proves that `dome-lab-parts.html` is
+exactly the generated release picker, and re-verifies the protected fc-3.4
+predecessor.
+Every protected predecessor endpoint other than the declared builder
+replacement, the canonical evidence tree, and all 184 raw CSV paths must remain
+byte-identical to fc-3.4.
+
+The Parts endpoint is the intentional exception to predecessor-page
+preservation: `dome-lab-parts.html` is replaced by the generator-owned lib-6.0
+release. Overlay source paths and permitted generated changes are explicit and
+fail closed; an undeclared source replacement or unrelated generated change is
+a verification failure.
+
+Passing this verifier establishes package integrity; it does not independently
+prove that an extracted copy is the tree served by GitHub Pages.
+
+## Current Force Curve Bench release identities
 
 ```text
 Public build:      fc-3.4
@@ -40,9 +65,9 @@ from the frozen raw-source tree because it replaces the prior `index.html` and
 `README.md` and adds the versioned release material; that does not change the
 raw-source or evidence identities.
 
-## Packaged repository-root layout
+## Published fc-3.4 layout
 
-The release packager creates an exact 752-file repository-root tree. In
+The fc-3.4 predecessor packager created an exact 752-file repository-root tree. In
 addition to the fc-3.4 release-managed paths, it carries forward the complete
 184-file raw CSV path set and three legacy HTML endpoints from the frozen
 source snapshot:
@@ -55,7 +80,7 @@ force-curve-bench-fc-3.4-public/
   README.md
   dome-lab.html
   dome-lab-parts.html
-  ec-switch-explorer.html
+  <other protected legacy HTML endpoint>
   <existing raw-data directories and 184 CSV paths>
   FORCE_CURVE_BENCH_RELEASE_MANIFEST.json
   SHA256SUMS
@@ -67,11 +92,12 @@ force-curve-bench-fc-3.4-public/
 ```
 
 The angle-bracketed line summarizes the existing relative CSV paths; it is not
-a literal directory name. The 184 CSV files and the three named legacy HTML
-files are preserved byte for byte. The root `index.html` and `README.md` are
-the only files from the 189-file frozen source snapshot intentionally replaced.
-The three legacy pages are retained for URL continuity and were not revalidated
-as fc-3.4 scientific or interface surfaces.
+a literal directory name. In the historical fc-3.4 package, the 184 CSV files
+and the three named legacy HTML files were preserved byte for byte. The root
+`index.html` and `README.md` were the only files from the 189-file frozen source
+snapshot intentionally replaced. A promoted lib-6.0 overlay would later
+replace `dome-lab-parts.html` by explicit policy while continuing to protect
+the other two legacy endpoints and the complete raw-data/evidence surface.
 
 The root `.gitattributes` contains exactly `* -text`. It disables Git text and
 line-ending normalization for the complete publication tree, preventing a
@@ -86,7 +112,8 @@ Key paths are:
 |---|---|
 | Production viewer | `index.html` |
 | Open Graph image | `assets/force-curve-bench-fc-3.4-og.png` |
-| Release manifest | `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` |
+| Protected fc-3.4 predecessor manifest | `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` |
+| Active lib-6.0 combined-site manifest | `SITE_RELEASE_MANIFEST.json` |
 | Whole-package checksum list | `SHA256SUMS` |
 | Generator source and lockfiles | `generator/` |
 | Exact generated output | `generated/` |
@@ -95,13 +122,15 @@ Key paths are:
 | Browser acceptance record | `documentation/BROWSER_ACCEPTANCE.md` |
 | Git byte-preservation policy | `.gitattributes`, exact content `* -text` |
 | GitHub Pages static-publication marker | `.nojekyll`, exactly zero bytes |
-| Preserved legacy endpoints | `dome-lab.html`, `dome-lab-parts.html`, `ec-switch-explorer.html` |
+| fc-3.4 legacy endpoints | Three preserved HTML continuity endpoints |
+| Protected by the lib-6.0 overlay | Every predecessor endpoint except the declared builder replacement |
+| Replaced by lib-6.0 | `dome-lab-parts.html` |
 | Preserved raw measurements | 184 CSV files at their existing repository-relative paths |
 
 The public Open Graph asset URL is
 `https://buddyog.github.io/topre-force-curves/assets/force-curve-bench-fc-3.4-og.png`.
 
-## Tier 1: verify the complete release package
+## Current Tier 1: verify the fc-3.4 package
 
 Python 3.11 or newer is sufficient for the package verifier. From the extracted
 release root, run:
@@ -135,7 +164,7 @@ The verifier fails closed. It checks, among other things:
 - the separation of production release authority from historical evidence and
   review manifests.
 
-The exact membership check covers all 752 repository-root files. An unexpected
+This predecessor check covers all 752 fc-3.4 repository-root files. An unexpected
 extra file, a missing preserved path, or any byte change to a preserved file is
 a verification failure.
 
@@ -147,29 +176,34 @@ python canonical-evidence/tools/verify_canonical_epoch.py
 
 ### Manual checksum inspection
 
-The package verifier is preferred. For a manual spot check, compute a file hash
-and compare it with the matching path in `SHA256SUMS` and the inventory in
-`FORCE_CURVE_BENCH_RELEASE_MANIFEST.json`.
+For the current public release, use the Parts release verifier and compare
+against `SITE_RELEASE_MANIFEST.json` and `SHA256SUMS`. Use the fc-3.4 verifier
+with `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` when auditing the protected
+predecessor independently.
 
 **PowerShell**
 
 ```powershell
 Get-FileHash -Algorithm SHA256 -LiteralPath '.\index.html'
-Get-FileHash -Algorithm SHA256 -LiteralPath '.\FORCE_CURVE_BENCH_RELEASE_MANIFEST.json'
-Select-String -LiteralPath '.\SHA256SUMS' -Pattern '  index.html$','  FORCE_CURVE_BENCH_RELEASE_MANIFEST.json$'
+Get-FileHash -Algorithm SHA256 -LiteralPath '.\dome-lab-parts.html'
+Get-FileHash -Algorithm SHA256 -LiteralPath '.\SITE_RELEASE_MANIFEST.json'
+Select-String -LiteralPath '.\SHA256SUMS' -Pattern '  index.html$','  dome-lab-parts.html$','  SITE_RELEASE_MANIFEST.json$'
 ```
 
 **Linux / macOS**
 
 ```bash
-sha256sum index.html FORCE_CURVE_BENCH_RELEASE_MANIFEST.json
-grep -E '  (index\.html|FORCE_CURVE_BENCH_RELEASE_MANIFEST\.json)$' SHA256SUMS
+sha256sum index.html dome-lab-parts.html SITE_RELEASE_MANIFEST.json
+grep -E '  (index\.html|dome-lab-parts\.html|SITE_RELEASE_MANIFEST\.json)$' SHA256SUMS
 ```
 
 Do not substitute a review-build hash for the values recorded by the public
 release package.
 
 ## Tier 2: reproduce the generated tree
+
+Run the following against one self-consistent extracted package. Do not combine
+a local generator with another release package's expected-output tree.
 
 ### Requirements
 
@@ -236,7 +270,7 @@ python -m domelab_pipeline.cli \
   --check
 ```
 
-The check is non-mutating. It recomputes the complete fc-3.4 release output and
+The check is non-mutating. It recomputes the complete current generated output and
 reports missing, unexpected, stale, or modified generated files. Exit status 0
 proves that the packaged generator reproduces the packaged `generated/` tree,
 including the public viewer and parity report.
@@ -274,8 +308,17 @@ must be reviewed and versioned as a new evidence or method change.
 
 ## Deployment checks
 
-After files are published, the release operator should load the canonical URL,
+For fc-3.4, the release operator should load the canonical URL,
 open a shared `?sel=` comparison, verify the documentation and bundled-license
 links, check the Open Graph URL/image, and perform a human phone-width visual
-check. These are deployment observations; they do not alter package bytes or
-the frozen evidence identity.
+check.
+
+For lib-6.0, load `dome-lab-parts.html` directly and through the Shopify
+wrapper. Confirm that Shopify owns Dome Lab navigation and that the
+standalone builder has no tabs or other-tool links. Verify 9 component rows,
+13 keyboard starters, 68 exact specimen measurements carrying measured collapse
+force plus released Weight Index and Tactility Index values, 2 public keycap
+additions, and the exact labels **Works**, **Works with conditions**, **Does not
+work**, **Not verified**, and dome-only **Not evaluated**. Confirm the consumer
+contains 338 decision-changing edges while the full 3,403-edge config audit
+passes. These observations do not alter package bytes.

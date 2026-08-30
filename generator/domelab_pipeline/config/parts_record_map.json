@@ -1,0 +1,391 @@
+{
+ "purpose": "Explicit canonical-record-to-catalog mapping for the EC Parts Library. One entry per semantic record; shared acquisitions never collapse records; runtime performs no name matching.",
+ "records": {
+  "bt_0005": {
+   "kind": "dome_baseline",
+   "set": "DynaCaps_Light_35g",
+   "target": "dome_db:dm-dynacaps-light"
+  },
+  "bt_0006": {
+   "kind": "dome_baseline",
+   "set": "DynaCaps_Medium_45g",
+   "target": "dome_db:dm-dynacaps-medium"
+  },
+  "bt_0007": {
+   "kind": "dome_baseline",
+   "set": "Dynacaps_Heavy_55g",
+   "target": "dome_db:dm-dynacaps-heavy"
+  },
+  "bt_0008": {
+   "kind": "dome_baseline",
+   "set": "BKE_Redux_v1_Extreme_01",
+   "target": "dome_db:dm-bke-redux-v1-extreme"
+  },
+  "bt_0009": {
+   "kind": "dome_baseline",
+   "set": "NiZ_Black_65g",
+   "target": "dome_db:dm-niz-65g"
+  },
+  "bt_0010": {
+   "kind": "dome_baseline",
+   "set": "Sony_BKE_Gray_01",
+   "target": "dome_db:dm-sony-bke-gray-01"
+  },
+  "bt_0012": {
+   "kind": "dome_baseline",
+   "set": "Sony_BKE_Brown_01",
+   "target": "dome_db:dm-sony-bke-brown-01"
+  },
+  "bt_0013": {
+   "kind": "dome_baseline",
+   "set": "Sony_BKE_Brown_02",
+   "target": "dome_db:dm-sony-bke-brown-02"
+  },
+  "bt_0014": {
+   "kind": "dome_baseline",
+   "set": "Sony_BKE_Brown_03",
+   "target": "dome_db:dm-sony-bke-brown-03"
+  },
+  "bt_0015": {
+   "kind": "part_assembly",
+   "set": "Topre_Slider_Black",
+   "target": "part:slider::topre"
+  },
+  "bt_0016": {
+   "kind": "part_assembly",
+   "set": "Topre_Slider_Type-S",
+   "target": "part:slider::hhkb_type_s"
+  },
+  "bt_0017": {
+   "kind": "part_assembly",
+   "set": "Topre_Slider_Silenced_Purple",
+   "target": "part:slider::topre_silenced_purple"
+  },
+  "bt_0018": {
+   "kind": "part_assembly",
+   "set": "Topre_Slider_Black_Silenced_0.3mm_Poron",
+   "target": "part:silencing_ring::des_poron_0_3"
+  },
+  "bt_0019": {
+   "kind": "part_assembly",
+   "set": "Topre_Slider_Black_Silenced_0.5mm_Poron",
+   "target": "part:silencing_ring::topre_poron_0_5"
+  },
+  "bt_0020": {
+   "kind": "part_assembly",
+   "set": "Dynacaps_Slider_0.3mm_Poron",
+   "target": "part:slider::dynacaps"
+  },
+  "bt_0021": {
+   "kind": "part_assembly",
+   "set": "Dynacaps_Slider_0.5mm_Silicone",
+   "target": "part:slider::dynacaps"
+  },
+  "bt_0022": {
+   "kind": "part_assembly",
+   "set": "DynaCaps_Parts",
+   "target": "part:slider::dynacaps"
+  },
+  "bt_0023": {
+   "kind": "dome_baseline",
+   "set": "Topre_HHKB_Pro2_45g",
+   "target": "dome_db:dm-topre-hhkb-pro2-45g"
+  },
+  "bt_0024": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_Carrot_35g",
+   "target": "dome_db:dm-des-carrots-35g"
+  },
+  "bt_0025": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_Carrot_49g",
+   "target": "dome_db:dm-des-carrots-49g"
+  },
+  "bt_0026": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_Carrot_60g",
+   "target": "dome_db:dm-des-carrots-60g"
+  },
+  "bt_0027": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_T1_Cheese_28g",
+   "target": "dome_db:dm-des-t1-28g"
+  },
+  "bt_0028": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_T1_Tiffany_35g",
+   "target": "dome_db:dm-des-t1-35g"
+  },
+  "bt_0029": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_T1_Pink_42g",
+   "target": "dome_db:dm-des-t1-42g"
+  },
+  "bt_0030": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_T1_Purple_49g",
+   "target": "dome_db:dm-des-t1-49g"
+  },
+  "bt_0031": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_T1_Blue_56g",
+   "target": "dome_db:dm-des-t1-56g"
+  },
+  "bt_0032": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_T1_Coffee_63g",
+   "target": "dome_db:dm-des-t1-63g"
+  },
+  "bt_0033": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_T1_Grey_70g",
+   "target": "dome_db:dm-des-t1-70g"
+  },
+  "bt_0034": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_T1_Green_85g",
+   "target": "dome_db:dm-des-t1-85g"
+  },
+  "bt_0035": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_T1_Darkside_100g",
+   "target": "dome_db:dm-des-t1-100g"
+  },
+  "bt_0036": {
+   "kind": "dome_baseline",
+   "set": "BKE_Redux_v1_Heavy_01",
+   "target": "dome_db:dm-bke-redux-v1-heavy"
+  },
+  "bt_0037": {
+   "kind": "dome_baseline",
+   "set": "BKE_Redux_v1_Heavy_02",
+   "target": "dome_db:dm-bke-redux-v1-heavy"
+  },
+  "bt_0038": {
+   "kind": "dome_baseline",
+   "set": "BKE_Redux_v1_Heavy_03",
+   "target": "dome_db:dm-bke-redux-v1-heavy"
+  },
+  "bt_0039": {
+   "kind": "dome_baseline",
+   "set": "BKE_Redux_v1_Light_01",
+   "target": "dome_db:dm-bke-redux-v1-light"
+  },
+  "bt_0040": {
+   "kind": "dome_baseline",
+   "set": "BKE_Redux_v1_Light_02",
+   "target": "dome_db:dm-bke-redux-v1-light"
+  },
+  "bt_0041": {
+   "kind": "dome_baseline",
+   "set": "BKE_Redux_v1_Light_03",
+   "target": "dome_db:dm-bke-redux-v1-light"
+  },
+  "bt_0042": {
+   "kind": "dome_baseline",
+   "set": "BKE_Redux_v1_Ultra_Light_01",
+   "target": "dome_db:dm-bke-redux-v1-ultra-light"
+  },
+  "bt_0043": {
+   "kind": "dome_baseline",
+   "set": "BKE_Redux_v1_Ultra_Light_02",
+   "target": "dome_db:dm-bke-redux-v1-ultra-light"
+  },
+  "bt_0044": {
+   "kind": "dome_baseline",
+   "set": "BKE_Redux_v1_Ultra_Light_03",
+   "target": "dome_db:dm-bke-redux-v1-ultra-light"
+  },
+  "bt_0045": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_V1_Tiffany_35g",
+   "target": "dome_db:dm-des-v1-35g"
+  },
+  "bt_0046": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_V1_Pink_42g",
+   "target": "dome_db:dm-des-v1-42g"
+  },
+  "bt_0047": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_V1_Purple_49g",
+   "target": "dome_db:dm-des-v1-49g"
+  },
+  "bt_0048": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_V1_Blue_56g",
+   "target": "dome_db:dm-des-v1-56g"
+  },
+  "bt_0049": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_V2_Tiffany_35g",
+   "target": "dome_db:dm-des-v2-35g"
+  },
+  "bt_0050": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_V2_Pink_42g",
+   "target": "dome_db:dm-des-v2-42g"
+  },
+  "bt_0051": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_V2_Purple_49g",
+   "target": "dome_db:dm-des-v2-49g"
+  },
+  "bt_0052": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_V2_Blue_56g",
+   "target": "dome_db:dm-des-v2-56g"
+  },
+  "bt_0053": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_V2_Brown_63g",
+   "target": "dome_db:dm-des-v2-63g"
+  },
+  "bt_0054": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_V2_Green_70g",
+   "target": "dome_db:dm-des-v2-70g"
+  },
+  "bt_0055": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_V3_Cheese_28g",
+   "target": "dome_db:dm-des-v3-28g"
+  },
+  "bt_0056": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_V3_Tiffany_35g",
+   "target": "dome_db:dm-des-v3-35g"
+  },
+  "bt_0057": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_V3_Pink_42g",
+   "target": "dome_db:dm-des-v3-42g"
+  },
+  "bt_0058": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_V3_Purple_49g",
+   "target": "dome_db:dm-des-v3-49g"
+  },
+  "bt_0059": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_V3_Blue_56g",
+   "target": "dome_db:dm-des-v3-56g"
+  },
+  "bt_0060": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_V3_Brown_63g",
+   "target": "dome_db:dm-des-v3-63g"
+  },
+  "bt_0061": {
+   "kind": "dome_baseline",
+   "set": "Deskeys_V3_Green_70g",
+   "target": "dome_db:dm-des-v3-70g"
+  },
+  "bt_0062": {
+   "kind": "dome_baseline",
+   "set": "Astro_Domes_Shiner_35g",
+   "target": "dome_db:dm-astro-domes-35g"
+  },
+  "bt_0063": {
+   "kind": "dome_baseline",
+   "set": "Astro_Domes_Pepper_50g",
+   "target": "dome_db:dm-astro-domes-50g"
+  },
+  "bt_0064": {
+   "kind": "dome_baseline",
+   "set": "Astro_Domes_Whatadome_60g",
+   "target": "dome_db:dm-astro-domes-60g"
+  },
+  "bt_0065": {
+   "kind": "dome_baseline",
+   "set": "Astro_Domes_Weird_70g",
+   "target": "dome_db:dm-astro-domes-70g"
+  },
+  "bt_0066": {
+   "kind": "dome_baseline",
+   "set": "Astro_Domes_Lean_90g",
+   "target": "dome_db:dm-astro-domes-90g"
+  },
+  "bt_0067": {
+   "kind": "dome_baseline",
+   "set": "Astro_Domes_Fiesta_120g",
+   "target": "dome_db:dm-astro-domes-120g"
+  },
+  "bt_0068": {
+   "kind": "dome_baseline",
+   "set": "Astro_Domes_Big_D_160g",
+   "target": "dome_db:dm-astro-domes-160g"
+  },
+  "bt_0069": {
+   "kind": "dome_baseline",
+   "set": "KLC_Densus_35g",
+   "target": "dome_db:dm-klc-playground-35g"
+  },
+  "bt_0070": {
+   "kind": "dome_baseline",
+   "set": "KLC_Densus_45g",
+   "target": "dome_db:dm-klc-playground-45g"
+  },
+  "bt_0071": {
+   "kind": "dome_baseline",
+   "set": "KLC_Densus_55g",
+   "target": "dome_db:dm-klc-playground-55g"
+  },
+  "bt_0072": {
+   "kind": "dome_baseline",
+   "set": "NiZ_Purple_60g",
+   "target": "dome_db:dm-niz-purple-60g"
+  },
+  "bt_0073": {
+   "kind": "dome_baseline",
+   "set": "Sony_BKE_Gray_02",
+   "target": "dome_db:dm-sony-bke-gray-02"
+  },
+  "bt_0074": {
+   "kind": "dome_baseline",
+   "set": "Topre_R1_55g",
+   "target": "dome_db:dm-topre-r1-55g"
+  },
+  "bt_0075": {
+   "kind": "dome_baseline",
+   "set": "Topre_R1_45g",
+   "target": "dome_db:dm-topre-r1-45g"
+  },
+  "bt_0076": {
+   "kind": "dome_baseline",
+   "set": "Topre_R1_30g",
+   "target": "dome_db:dm-topre-r1-30g"
+  },
+  "bt_0077": {
+   "kind": "dome_baseline",
+   "set": "Topre_R2_55g",
+   "target": "dome_db:dm-topre-r2-55g"
+  },
+  "bt_0078": {
+   "kind": "dome_baseline",
+   "set": "Topre_R2_45g",
+   "target": "dome_db:dm-topre-r2-45g"
+  },
+  "bt_0079": {
+   "kind": "dome_baseline",
+   "set": "Topre_R2_30g",
+   "target": "dome_db:dm-topre-r2-30g"
+  },
+  "bt_0080": {
+   "kind": "dome_baseline",
+   "set": "Topre_RGB_45g",
+   "target": "dome_db:dm-topre-rgb-45g"
+  },
+  "bt_0081": {
+   "kind": "dome_baseline",
+   "set": "Topre_GX1_45g",
+   "target": "dome_db:dm-topre-gx1-45g"
+  }
+ },
+ "schema": "parts-record-map-v1",
+ "source_fleet": {
+  "dome_baseline": 68,
+  "part_assembly": 8,
+  "records": 76
+ }
+}

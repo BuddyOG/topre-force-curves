@@ -22,13 +22,13 @@ from domelab_pipeline.pipeline import (
 
 
 COMMIT = "6e86ac1955a0c566c7aae521705e51371992ba8a"
-WORK_ROOT = Path(__file__).resolve().parents[3]
+REPO_ROOT = Path(__file__).resolve().parents[2]
 GENERATOR_ROOT = Path(__file__).resolve().parents[1]
-EPOCH_INPUTS = Path(os.environ.get("DOMELAB_EPOCH_INPUTS", WORK_ROOT / "epoch_inputs"))
-CACHE = Path(os.environ.get("DOMELAB_CACHE", WORK_ROOT / "raw_cache" / f"repo-{COMMIT}"))
-STAGING = Path(os.environ.get(
-    "DOMELAB_STAGING", WORK_ROOT / "epoch_outputs" / "staging_canonical_6e86ac19"
-))
+EPOCH_INPUTS = Path(os.environ.get(
+    "DOMELAB_EPOCH_INPUTS", REPO_ROOT / "canonical-evidence" / "epoch_inputs"))
+CACHE = Path(os.environ.get(
+    "DOMELAB_CACHE",
+    REPO_ROOT / "canonical-evidence" / "raw_cache" / f"repo-{COMMIT}"))
 WORKBOOK = Path(os.environ.get(
     "DOMELAB_WORKBOOK", EPOCH_INPUTS / "source_workbook" / "untested-domes_v2.xlsx"
 ))
@@ -51,12 +51,17 @@ def cache_man():
 
 
 @pytest.fixture(scope="module")
-def generated():
+def generated(staging_dir):
     staged, records, per_run, _ = generate(
-        str(CACHE), COMMIT, str(STAGING), write=False,
+        str(CACHE), COMMIT, str(staging_dir), write=False,
         run_parity=False, evidence_only=True,
     )
     return staged, records, per_run
+
+
+@pytest.fixture(scope="module")
+def staging(staging_dir):
+    return Path(staging_dir)
 
 
 def test_frozen_input_contract(bundle, cache_man):
@@ -342,18 +347,18 @@ def test_curve_packs_are_hash_bound_and_explicitly_lossy(generated):
         assert entry["raw_paths"] == by_set[entry["set"]]["provenance"]["raw_paths"]
 
 
-def test_staged_tree_is_exactly_reproducible(generated):
+def test_staged_tree_is_exactly_reproducible(sealed_epoch_source, generated, staging):
     staged, _, _ = generated
     actual = {
-        path.relative_to(STAGING).as_posix()
-        for path in STAGING.rglob("*") if path.is_file()
+        path.relative_to(staging).as_posix()
+        for path in staging.rglob("*") if path.is_file()
     }
     assert actual == set(staged)
     for rel, expected in staged.items():
-        assert (STAGING / rel).read_bytes() == expected.encode("utf-8")
+        assert (staging / rel).read_bytes() == expected.encode("utf-8")
 
 
-def test_epoch_input_reseal_is_deterministic_and_rejects_tampering(tmp_path):
+def test_epoch_input_reseal_is_deterministic_and_rejects_tampering(sealed_epoch_source, staging, tmp_path):
     """The final v2 seal is reproducible and cannot normalize altered inputs."""
     isolated = tmp_path / "canonical_epoch"
     shutil.copytree(EPOCH_INPUTS, isolated / "epoch_inputs")
@@ -362,8 +367,8 @@ def test_epoch_input_reseal_is_deterministic_and_rejects_tampering(tmp_path):
         isolated / "source" / "generator" / "domelab_pipeline" / "config",
     )
     shutil.copytree(
-        STAGING,
-        isolated / "epoch_outputs" / STAGING.name,
+        staging,
+        isolated / "epoch_outputs" / staging.name,
     )
 
     script = isolated / "epoch_inputs" / "scripts" / "seal_epoch_inputs.py"
@@ -463,7 +468,7 @@ def test_epoch_input_reseal_is_deterministic_and_rejects_tampering(tmp_path):
     curve_path = (
         isolated
         / "epoch_outputs"
-        / STAGING.name
+        / staging.name
         / "packs"
         / "curves"
         / "Topre_R2_45g.staged.json"

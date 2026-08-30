@@ -68,19 +68,37 @@ def test_release_profile_changes_only_presentation_identity(
         if key not in {"mode", "presentation_role", "release_eligible", "bench_build"}:
             assert release_build[key] == review_build[key]
 
+    # The parts library carries the same presentation identity split in its
+    # generated PICKER_BUILD blob. Only the release profile is eligible.
+    review_pb = _blob(review_staged["packs/picker.staged.html"], "PICKER_BUILD")
+    release_pb = _blob(release_staged["packs/picker.staged.html"], "PICKER_BUILD")
+    assert review_pb["mode"] == "review" and release_pb["mode"] == "release"
+    assert review_pb["presentation_role"] == "review_candidate"
+    assert release_pb["presentation_role"] == "public_release"
+    assert review_pb["library_build"] == "lib-6.0-review.1"
+    assert release_pb["library_build"] == "lib-6.0"
+    assert review_pb["release_eligible"] is False
+    assert release_pb["release_eligible"] is True
+    for key in review_pb:
+        if key not in {"mode", "presentation_role",
+                       "library_build", "release_eligible"}:
+            assert release_pb[key] == review_pb[key], key
+
     # Profile selection cannot alter the frozen records, generated data packs,
-    # scientific constants, membership, or any viewer source outside its one
-    # generated presentation-identity blob.
+    # scientific constants, membership, or any source outside the two
+    # generated presentation-identity blobs.
     assert release_records == review_records
     assert set(release_staged) == set(review_staged)
     for path in review_staged:
-        if path not in {"packs/viewer.staged.html", "generated_manifest.json"}:
+        if path not in {"packs/viewer.staged.html", "packs/picker.staged.html",
+                        "generated_manifest.json"}:
             assert release_staged[path] == review_staged[path], path
     review_manifest = json.loads(review_staged["generated_manifest.json"])
     release_manifest = json.loads(release_staged["generated_manifest.json"])
-    review_viewer_hash = review_manifest.pop("packs/viewer.staged.html")
-    release_viewer_hash = release_manifest.pop("packs/viewer.staged.html")
-    assert review_viewer_hash != release_viewer_hash
+    for moving in ("packs/viewer.staged.html", "packs/picker.staged.html"):
+        review_hash = review_manifest.pop(moving)
+        release_hash = release_manifest.pop(moving)
+        assert review_hash != release_hash, moving
     assert release_manifest == review_manifest
     assert _mask_blob(release_html, "VIEWER_BUILD") == _mask_blob(
         review_html, "VIEWER_BUILD"

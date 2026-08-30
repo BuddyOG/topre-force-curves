@@ -368,7 +368,7 @@ def test_posix_paths_everywhere(staging_dir):
         assert "\\\\" not in _read_text(os.path.join(staging_dir, fn))
 
 
-def test_deterministic_regeneration_and_exact_tree(cache, commit, staging_dir):
+def test_deterministic_regeneration_and_exact_tree(cache, commit, staging_dir, sealed_epoch_source):
     problems = check(cache, commit, staging_dir, run_parity=False, evidence_only=True)
     assert problems == []
 
@@ -416,9 +416,12 @@ def test_legacy_median_sensitivity_remains_a_synthetic_diagnostic_unit():
 
 def test_full_fleet_parity_artifact(staging_dir):
     """Every staged run x every metric; persisted test-imp 1.1.4 gate."""
-    epoch_root = os.path.abspath(os.path.join(staging_dir, "..", ".."))
+    # the persisted audit lives in the repo's canonical evidence; resolving it
+    # repo-relative keeps this test independent of where the staging tree sits
     audit = _load_json(os.path.join(
-        epoch_root, "epoch_inputs", "validation", "test_imp_1_1_4_epoch_audit.json"
+        os.path.dirname(os.path.abspath(__file__)), "..", "..",
+        "canonical-evidence", "epoch_inputs", "validation",
+        "test_imp_1_1_4_epoch_audit.json"
     ))
     per_run = _load_json(os.path.join(staging_dir, "per_run_full_precision.json"))
     assert audit["result"] == "PASS"
@@ -520,10 +523,21 @@ def _text_opens_without_encoding(path):
         name = getattr(fn, "id", None) or getattr(fn, "attr", None)
         if name != "open":
             continue
-        # mode is positional arg 1 or keyword `mode`
+        if (isinstance(fn, ast.Attribute)
+                and isinstance(getattr(fn, "value", None), ast.Name)
+                and fn.value.id == "os"):
+            continue                       # os.open is a raw fd syscall, no encoding
+        # mode position depends on the call form: builtin open(file, mode)
+        # takes it second; Path.open(mode) takes it first. Module-qualified
+        # io.open/codecs.open keep the builtin signature.
+        builtin_signature = not isinstance(fn, ast.Attribute) or (
+            isinstance(getattr(fn, "value", None), ast.Name)
+            and fn.value.id in ("io", "codecs")
+        )
+        pos = 1 if builtin_signature else 0
         mode = None
-        if len(node.args) >= 2 and isinstance(node.args[1], ast.Constant):
-            mode = node.args[1].value
+        if len(node.args) > pos and isinstance(node.args[pos], ast.Constant):
+            mode = node.args[pos].value
         for kw in node.keywords:
             if kw.arg == "mode" and isinstance(kw.value, ast.Constant):
                 mode = kw.value.value
@@ -593,7 +607,7 @@ def test_method_config_is_read_as_utf8():
     assert core.config()["calc_version"].startswith("metrics-v4.2")
 
 
-def test_check_under_c_locale(cache, commit, staging_dir):
+def test_check_under_c_locale(cache, commit, staging_dir, sealed_epoch_source):
     """Ordinary non-UTF-8 default-encoding environment, PYTHONUTF8 unset:
     --check must still be byte-identical (all I/O is explicit UTF-8)."""
     env = {k: v for k, v in os.environ.items() if k != "PYTHONUTF8"}
@@ -606,8 +620,9 @@ def test_check_under_c_locale(cache, commit, staging_dir):
     assert r.returncode == 0 and "CHECK OK" in r.stdout, r.stdout[-400:] + r.stderr[-400:]
 
 
-def test_retained_membership_parity_all_sets(staging_dir):
+def test_retained_membership_parity_all_sets(review_staging):
     """Applied output identities feed every record, curve and viewer run list."""
+    staging_dir = review_staging
     rec = _load_json(os.path.join(staging_dir, "bench_tests.staged.json"))
     per = _load_json(os.path.join(staging_dir, "per_run_full_precision.json"))
     emb = _load_json(os.path.join(staging_dir, "packs", "viewer_embedded.json"))
@@ -620,7 +635,7 @@ def test_retained_membership_parity_all_sets(staging_dir):
         if r["retained_output"]:
             retained.setdefault(r["set"], []).append(r["run"])
     decisions = _load_json(
-        os.path.join(staging_dir, "intake_decisions.review-candidate.json")
+        os.path.join(staging_dir, "intake_retention_decisions.json")
     )
     accepted = {entry["set"] for entry in decisions["sets"] if entry["status"] == "accepted"}
     assert set(emb) == set(cruns) == accepted == {r["set"] for r in rec}
@@ -633,21 +648,21 @@ def test_retained_membership_parity_all_sets(staging_dir):
         assert "r" in emb[s] and len(emb[s]["r"]["df"]) > 100   # return trace packed
 
 
-def test_viewer_offline_battery(staging_dir):
+def test_viewer_offline_battery(review_staging):
     js = os.path.join(HERE, "viewer_offline_battery.js")
-    r = subprocess.run(["node", js, os.path.join(staging_dir, "packs", "viewer.staged.html"),
-                        "Topre_45g"], capture_output=True, text=True, encoding="utf-8", errors="replace", env=_node_env())
+    r = subprocess.run(["node", js, os.path.join(review_staging, "packs", "viewer.staged.html"),
+                        "Topre_R2_45g"], capture_output=True, text=True, encoding="utf-8", errors="replace", env=_node_env())
     assert r.returncode == 0, r.stdout + r.stderr[-300:]
 
 
-def test_viewer_online_battery(cache, staging_dir):
+def test_viewer_online_battery(cache, review_staging):
     js = os.path.join(HERE, "viewer_online_battery.js")
-    viewer = _read_text(os.path.join(staging_dir, "packs", "viewer.staged.html"))
+    viewer = _read_text(os.path.join(review_staging, "packs", "viewer.staged.html"))
     import re as _re
     runs_match = _re.search(r"const CANONICAL_RUNS = (\{.*?\});", viewer)
     canonical_runs = json.loads(runs_match.group(1))
-    r = subprocess.run(["node", js, os.path.join(staging_dir, "packs", "viewer.staged.html"),
-                        cache, "Topre_45g", str(len(canonical_runs["Topre_45g"]))],
+    r = subprocess.run(["node", js, os.path.join(review_staging, "packs", "viewer.staged.html"),
+                        cache, "Topre_R2_45g", str(len(canonical_runs["Topre_R2_45g"]))],
                        capture_output=True, text=True, encoding="utf-8", errors="replace", env=_node_env())
     assert r.returncode == 0, r.stdout + r.stderr[-300:]
 

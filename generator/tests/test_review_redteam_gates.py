@@ -19,7 +19,7 @@ import types
 import pytest
 
 from domelab_pipeline.intake_policy import canonical_hash
-from domelab_pipeline.packs import VT_METRIC, _extract_blob
+from domelab_pipeline.packs import VT_METRIC_V2, _extract_blob
 from domelab_pipeline.parity import _node_modules
 from domelab_pipeline.pipeline import generate, load_config_bundle
 
@@ -202,6 +202,8 @@ def test_picker_display_pack_is_derived_from_records_not_self_referential(
     staged, records, _ = redteam_candidate
     rows = json.loads(staged["packs/picker_tests.json"])
     by_id = {row["id"]: row for row in rows}
+    perception_pack = json.loads(staged["packs/perception_scores.json"])
+    scores = {e["test_id"]: e for e in perception_pack["records"]}
 
     assert len(by_id) == len(rows) == len(records)
     assert set(by_id) == {record["test_id"] for record in records}
@@ -209,13 +211,22 @@ def test_picker_display_pack_is_derived_from_records_not_self_referential(
         row = by_id[record["test_id"]]
         assert row["set"] == record["set"]
         assert row["runs"] == record["runs_used"]
-        for picker_key, (record_key, rounder) in VT_METRIC.items():
+        assert row["k"] == record["kind"]
+        # generated-native contract: source-precision equality, rounding is a
+        # display concern only
+        for picker_key, (record_key, rounder) in VT_METRIC_V2.items():
             assert row[picker_key] == rounder(record[record_key]), (
                 record["test_id"],
                 picker_key,
                 row[picker_key],
                 record[record_key],
             )
+        # perception indices derive from the perception pack, never invented:
+        # dome-population percentiles for dome records, explicit null on parts
+        sc = scores[record["test_id"]]
+        assert row["wi"] == sc["weight_index"] and row["ti"] == sc["tactility_index"]
+        if record["kind"] == "part_assembly":
+            assert row["wi"] is None and row["ti"] is None
 
 
 def test_every_generated_surface_uses_the_same_applied_membership(redteam_candidate):

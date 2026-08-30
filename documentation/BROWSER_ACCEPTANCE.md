@@ -1,4 +1,4 @@
-# Browser acceptance — Force Curve Bench fc-3.4
+# Browser acceptance — published tools
 
 Date: 2026-08-28  
 Release profile: `public_release` / `fc-3.4`  
@@ -10,8 +10,11 @@ publication. The canonical viewer URL is
 [https://buddyog.github.io/topre-force-curves/](https://buddyog.github.io/topre-force-curves/),
 the public Open Graph image is
 `https://buddyog.github.io/topre-force-curves/assets/force-curve-bench-fc-3.4-og.png`,
-and the frozen publication tag is `fc-3.4`. This preparation task did not
-create the tag and did not deploy the files.
+and the frozen publication tag is `fc-3.4`.
+
+The sections through **Responsive visual limitation** preserve the historical
+Force Curve Bench acceptance record. EC Parts Builder `lib-6.0` has its own
+release acceptance record below.
 
 ## Interactive browser checks
 
@@ -68,14 +71,36 @@ the accepted starting point. A final human phone-width spot check is still a
 useful deployment check, but this tooling limitation did not expose a viewer
 failure.
 
+## EC Parts Builder lib-6.0 acceptance
+
+The standalone release-profile builder passed 117 of 117 real-browser checks
+across 1280 px desktop, 390 px phone, and 320 px reflow viewports. It produced
+12 inspected screenshots and recorded zero external requests, console errors,
+clipped controls, or horizontal-overflow failures. Its standalone runtime
+battery passed 45 of 45 checks, and the Shopify exact-origin bridge battery
+passed 12 of 12 checks.
+
+The complete generator suite passed 514 tests with 13 environment-dependent
+skips. Two release-profile generations were byte-identical, and the final site
+package passed its manifest, checksum, protected-predecessor, raw-data, and
+canonical-evidence verification.
+
 ## Deployment checks
 
-After publication, load the canonical URL and confirm its Open Graph URL/image,
-open one shared `?sel=` URL, confirm the documentation and bundled-license
-links, and perform the human phone-width visual check described above. Also
-confirm that `dome-lab.html`, `dome-lab-parts.html`, and
-`ec-switch-explorer.html` still resolve, and spot-check one published raw CSV at
-its preserved relative path. These are continuity checks, not fc-3.4
-revalidation of the legacy pages. Exact viewer and package hashes are recorded by
-`FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` and `SHA256SUMS` in the packaged
-release.
+For the already published fc-3.4 release, load the canonical URL and confirm
+its Open Graph URL/image, open one shared `?sel=` URL, confirm the documentation
+and bundled-license links, and perform the human phone-width visual check
+described above. Also confirm that `dome-lab-parts.html` and the other protected
+continuity endpoints resolve, and spot-check one published raw CSV at its
+preserved relative path.
+
+For the published lib-6.0 builder, confirm that the standalone builder has no
+in-tool tabs or sibling-tool links; exposes 9 component rows, 13
+keyboard starters, 68 exact specimen measurements carrying measured collapse
+force plus released Weight Index and Tactility Index values, and 2 public
+keycap additions; uses the exact labels **Works**, **Works with conditions**,
+**Does not work**, **Not verified**, and dome-only **Not evaluated**; and
+carries 338 decision-changing browser edges while the 3,403-edge config audit passes. The
+Shopify wrapper owns Dome Lab navigation and must pass the iframe contract.
+`SITE_RELEASE_MANIFEST.json` and its `SHA256SUMS` are the active site authority;
+the fc-3.4 manifest remains the protected predecessor record.

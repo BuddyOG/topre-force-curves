@@ -1,0 +1,14 @@
+{
+ "rules": [
+  {
+   "rule_id": "opening_vs_barrel",
+   "applies": [
+    "slider",
+    "housing"
+   ],
+   "check": "housing.OPENING_DIA > slider.BARREL_DIA",
+   "on_fail": "incompatible",
+   "note": "Round peg must be smaller than the hole. Evaluated only where both dimensions exist. Measurement convention makes single values worst-case: pegs measured at largest, openings at smallest."
+  }
+ ]
+}

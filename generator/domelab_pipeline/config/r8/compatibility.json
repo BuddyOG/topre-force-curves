@@ -1,0 +1,2024 @@
+[
+ {
+  "a": "conical_spring::deskeys",
+  "b": "housing::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "housing::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "housing::topre",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "housing::deskeys",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "housing::dynacaps",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "housing::klc_playground",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "housing::topre",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "housing::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "housing::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "housing::topre",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "housing::deskeys",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "housing::dynacaps",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "housing::klc_playground",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "housing::metapulse",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "housing::topre",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "housing::deskeys",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "housing::dynacaps",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "housing::klc_playground",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "housing::topre",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "keycap::mx",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "keycap::topre",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "keycap::mx",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "keycap::topre",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "keycap::mx",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "keycap::topre",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "keycap::mx",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "keycap::topre",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "keycap::mx",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "keycap::topre",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "slider::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "slider::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "slider::hhkb_type_s",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "slider::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "slider::novatouch",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "slider::topre_silenced_purple",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "slider::topre",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "slider::deskeys",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "slider::dynacaps",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "slider::hhkb_type_s",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "slider::klc_playground",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "slider::novatouch",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "slider::topre_silenced_purple",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "slider::topre",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "slider::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "slider::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "slider::hhkb_type_s",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "slider::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "slider::novatouch",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "slider::topre_silenced_purple",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "slider::topre",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "slider::deskeys",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "slider::dynacaps",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "slider::hhkb_type_s",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "slider::klc_playground",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "slider::novatouch",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "slider::topre_silenced_purple",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "slider::topre",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "slider::deskeys",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "slider::dynacaps",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "slider::hhkb_type_s",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "slider::klc_playground",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "slider::novatouch",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "slider::topre_silenced_purple",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "slider::topre",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "spacebar_stabilizer::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "spacebar_stabilizer::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "spacebar_stabilizer::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "spacebar_stabilizer::topre",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "spacebar_stabilizer::deskeys",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "spacebar_stabilizer::dynacaps",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "spacebar_stabilizer::klc_playground",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "spacebar_stabilizer::topre",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "spacebar_stabilizer::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "spacebar_stabilizer::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "spacebar_stabilizer::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "spacebar_stabilizer::topre",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "spacebar_stabilizer::deskeys",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "spacebar_stabilizer::dynacaps",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "spacebar_stabilizer::klc_playground",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "spacebar_stabilizer::metapulse",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "spacebar_stabilizer::topre",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "spacebar_stabilizer::deskeys",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "spacebar_stabilizer::dynacaps",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "spacebar_stabilizer::klc_playground",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "spacebar_stabilizer::topre",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "stabilizer_housing::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "stabilizer_housing::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "stabilizer_housing::novatouch",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "stabilizer_housing::topre_silenced",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "stabilizer_housing::topre_standard",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "stabilizer_housing::deskeys",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "stabilizer_housing::klc_playground",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "stabilizer_housing::novatouch",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "stabilizer_housing::topre_silenced",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "stabilizer_housing::topre_standard",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "stabilizer_housing::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "stabilizer_housing::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "stabilizer_housing::novatouch",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "stabilizer_housing::topre_silenced",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "stabilizer_housing::topre_standard",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "stabilizer_housing::deskeys",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "stabilizer_housing::klc_playground",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "stabilizer_housing::metapulse",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "stabilizer_housing::novatouch",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "stabilizer_housing::topre_silenced",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "stabilizer_housing::topre_standard",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "stabilizer_housing::deskeys",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "stabilizer_housing::klc_playground",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "stabilizer_housing::novatouch",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "stabilizer_housing::topre_silenced",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "stabilizer_housing::topre_standard",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "stabilizer_slider::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "stabilizer_slider::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "stabilizer_slider::hhkb_type_s",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "stabilizer_slider::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "stabilizer_slider::novatouch",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "stabilizer_slider::realforce_rc1_silenced_purple",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "stabilizer_slider::topre_silenced",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::deskeys",
+  "b": "stabilizer_slider::topre",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "stabilizer_slider::deskeys",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "stabilizer_slider::dynacaps",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "stabilizer_slider::hhkb_type_s",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "stabilizer_slider::klc_playground",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "stabilizer_slider::novatouch",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "stabilizer_slider::realforce_rc1_silenced_purple",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "stabilizer_slider::topre_silenced",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::dynacaps",
+  "b": "stabilizer_slider::topre",
+  "status": "exceptions",
+  "note": "note_dynacaps_conical_universal"
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "stabilizer_slider::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "stabilizer_slider::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "stabilizer_slider::hhkb_type_s",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "stabilizer_slider::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "stabilizer_slider::novatouch",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "stabilizer_slider::realforce_rc1_silenced_purple",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "stabilizer_slider::topre_silenced",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::klc_playground",
+  "b": "stabilizer_slider::topre",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "stabilizer_slider::deskeys",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "stabilizer_slider::dynacaps",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "stabilizer_slider::hhkb_type_s",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "stabilizer_slider::klc_playground",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "stabilizer_slider::metapulse",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "stabilizer_slider::novatouch",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "stabilizer_slider::realforce_rc1_silenced_purple",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "stabilizer_slider::topre_silenced",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::metapulse",
+  "b": "stabilizer_slider::topre",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "stabilizer_slider::deskeys",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "stabilizer_slider::dynacaps",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "stabilizer_slider::hhkb_type_s",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "stabilizer_slider::klc_playground",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "stabilizer_slider::novatouch",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "stabilizer_slider::realforce_rc1_silenced_purple",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "stabilizer_slider::topre_silenced",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "conical_spring::topre",
+  "b": "stabilizer_slider::topre",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "housing::deskeys",
+  "b": "keycap::mx",
+  "status": "compatible",
+  "note": "note_deskeys_housing"
+ },
+ {
+  "a": "housing::deskeys",
+  "b": "keycap::topre",
+  "status": "exceptions",
+  "note": "note_deskeys_housing"
+ },
+ {
+  "a": "housing::dynacaps",
+  "b": "keycap::mx",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "housing::dynacaps",
+  "b": "keycap::topre",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "housing::klc_playground",
+  "b": "keycap::mx",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "housing::klc_playground",
+  "b": "keycap::topre",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "housing::metapulse",
+  "b": "keycap::mx",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "housing::metapulse",
+  "b": "keycap::topre",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "housing::topre",
+  "b": "keycap::mx",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "housing::topre",
+  "b": "keycap::topre",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "housing::deskeys",
+  "b": "slider::hhkb_type_s",
+  "status": "exceptions",
+  "note": "note_deskeys_housing"
+ },
+ {
+  "a": "housing::deskeys",
+  "b": "slider::topre_silenced_purple",
+  "status": "exceptions",
+  "note": "note_deskeys_housing"
+ },
+ {
+  "a": "housing::deskeys",
+  "b": "slider::topre",
+  "status": "exceptions",
+  "note": "note_deskeys_housing"
+ },
+ {
+  "a": "slider::deskeys",
+  "b": "housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "housing::dynacaps",
+  "b": "slider::hhkb_type_s",
+  "status": "exceptions",
+  "note": "note_dynacaps_housing (scratchy)"
+ },
+ {
+  "a": "housing::dynacaps",
+  "b": "slider::topre_silenced_purple",
+  "status": "exceptions",
+  "note": "note_dynacaps_housing (scratchy)"
+ },
+ {
+  "a": "housing::dynacaps",
+  "b": "slider::topre",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "housing::klc_playground",
+  "b": "slider::hhkb_type_s",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "housing::klc_playground",
+  "b": "slider::topre_silenced_purple",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "housing::klc_playground",
+  "b": "slider::topre",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::klc_playground",
+  "b": "housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "housing::metapulse",
+  "b": "slider::hhkb_type_s",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "housing::metapulse",
+  "b": "slider::topre_silenced_purple",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "housing::metapulse",
+  "b": "slider::topre",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "slider::metapulse",
+  "b": "housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::novatouch",
+  "b": "housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "housing::topre",
+  "b": "slider::hhkb_type_s",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "housing::topre",
+  "b": "slider::topre_silenced_purple",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "housing::topre",
+  "b": "slider::topre",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "slider::deskeys",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "slider::dynacaps",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "slider::hhkb_type_s",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "slider::klc_playground",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "slider::metapulse",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "slider::novatouch",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "slider::topre_silenced_purple",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "slider::topre",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "slider::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "slider::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "slider::hhkb_type_s",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "slider::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "slider::metapulse",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "slider::novatouch",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "slider::topre_silenced_purple",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "slider::topre",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "spacebar_stabilizer::deskeys",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "spacebar_stabilizer::dynacaps",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "spacebar_stabilizer::klc_playground",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "spacebar_stabilizer::metapulse",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "spacebar_stabilizer::topre",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "spacebar_stabilizer::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "spacebar_stabilizer::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "spacebar_stabilizer::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "spacebar_stabilizer::metapulse",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "spacebar_stabilizer::topre",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "stabilizer_housing::deskeys",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "stabilizer_housing::klc_playground",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "stabilizer_housing::metapulse",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "stabilizer_housing::novatouch",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "stabilizer_housing::topre_silenced",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "stabilizer_housing::topre_standard",
+  "status": "exceptions",
+  "note": "note_mx_keycaps_stab_housing"
+ },
+ {
+  "a": "keycap::topre",
+  "b": "stabilizer_housing::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "stabilizer_housing::klc_playground",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "stabilizer_housing::metapulse",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "stabilizer_housing::novatouch",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "stabilizer_housing::topre_silenced",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "stabilizer_housing::topre_standard",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "stabilizer_slider::deskeys",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "stabilizer_slider::dynacaps",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "stabilizer_slider::hhkb_type_s",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "stabilizer_slider::klc_playground",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "stabilizer_slider::metapulse",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "stabilizer_slider::novatouch",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "stabilizer_slider::realforce_rc1_silenced_purple",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "stabilizer_slider::topre_silenced",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::mx",
+  "b": "stabilizer_slider::topre",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "stabilizer_slider::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "stabilizer_slider::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "stabilizer_slider::hhkb_type_s",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "stabilizer_slider::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "stabilizer_slider::metapulse",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "stabilizer_slider::novatouch",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "stabilizer_slider::realforce_rc1_silenced_purple",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "stabilizer_slider::topre_silenced",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "keycap::topre",
+  "b": "stabilizer_slider::topre",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "spacebar_stabilizer::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "spacebar_stabilizer::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "spacebar_stabilizer::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "spacebar_stabilizer::metapulse",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "spacebar_stabilizer::topre",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "spacebar_stabilizer::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "spacebar_stabilizer::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "spacebar_stabilizer::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "spacebar_stabilizer::metapulse",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "spacebar_stabilizer::topre",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "spacebar_stabilizer::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "spacebar_stabilizer::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "spacebar_stabilizer::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "spacebar_stabilizer::metapulse",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "spacebar_stabilizer::topre",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "stabilizer_housing::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "stabilizer_housing::klc_playground",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "stabilizer_housing::metapulse",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "stabilizer_housing::novatouch",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "stabilizer_housing::topre_silenced",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "stabilizer_housing::topre_standard",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::novatouch",
+  "b": "stabilizer_housing::deskeys",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "slider::novatouch",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::novatouch",
+  "b": "stabilizer_housing::klc_playground",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::novatouch",
+  "b": "stabilizer_housing::metapulse",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::novatouch",
+  "b": "stabilizer_housing::novatouch",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::novatouch",
+  "b": "stabilizer_housing::topre_silenced",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::novatouch",
+  "b": "stabilizer_housing::topre_standard",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "stabilizer_housing::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "stabilizer_housing::klc_playground",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "stabilizer_housing::metapulse",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "stabilizer_housing::novatouch",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "stabilizer_housing::topre_silenced",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "stabilizer_housing::topre_standard",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "stabilizer_housing::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "stabilizer_housing::klc_playground",
+  "status": "exceptions",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "stabilizer_housing::metapulse",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "stabilizer_housing::novatouch",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "stabilizer_housing::topre_silenced",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "stabilizer_housing::topre_standard",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "stabilizer_slider::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "stabilizer_slider::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "stabilizer_slider::hhkb_type_s",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "stabilizer_slider::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "stabilizer_slider::metapulse",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "stabilizer_slider::novatouch",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "stabilizer_slider::realforce_rc1_silenced_purple",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "stabilizer_slider::topre_silenced",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::hhkb_type_s",
+  "b": "stabilizer_slider::topre",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::novatouch",
+  "b": "stabilizer_slider::deskeys",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::novatouch",
+  "b": "stabilizer_slider::dynacaps",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::novatouch",
+  "b": "stabilizer_slider::hhkb_type_s",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::novatouch",
+  "b": "stabilizer_slider::klc_playground",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::novatouch",
+  "b": "stabilizer_slider::metapulse",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::novatouch",
+  "b": "stabilizer_slider::novatouch",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::novatouch",
+  "b": "stabilizer_slider::realforce_rc1_silenced_purple",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::novatouch",
+  "b": "stabilizer_slider::topre_silenced",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::novatouch",
+  "b": "stabilizer_slider::topre",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "stabilizer_slider::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "stabilizer_slider::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "stabilizer_slider::hhkb_type_s",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "stabilizer_slider::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "stabilizer_slider::metapulse",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "stabilizer_slider::novatouch",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "stabilizer_slider::realforce_rc1_silenced_purple",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "stabilizer_slider::topre_silenced",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre_silenced_purple",
+  "b": "stabilizer_slider::topre",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "stabilizer_slider::deskeys",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "stabilizer_slider::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "stabilizer_slider::hhkb_type_s",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "stabilizer_slider::klc_playground",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "stabilizer_slider::metapulse",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "stabilizer_slider::novatouch",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "stabilizer_slider::realforce_rc1_silenced_purple",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "stabilizer_slider::topre_silenced",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "slider::topre",
+  "b": "stabilizer_slider::topre",
+  "status": "compatible",
+  "note": ""
+ },
+ {
+  "a": "stabilizer_slider::metapulse",
+  "b": "stabilizer_housing::topre_silenced",
+  "status": "incompatible",
+  "note": "note_metapulse_stab_incompat"
+ },
+ {
+  "a": "stabilizer_slider::metapulse",
+  "b": "stabilizer_housing::topre_standard",
+  "status": "incompatible",
+  "note": "note_metapulse_stab_incompat"
+ },
+ {
+  "a": "stabilizer_slider::deskeys",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "stabilizer_slider::hhkb_type_s",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "stabilizer_slider::klc_playground",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "stabilizer_slider::metapulse",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "stabilizer_slider::novatouch",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "stabilizer_slider::realforce_rc1_silenced_purple",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "stabilizer_slider::topre_silenced",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "a": "stabilizer_slider::topre",
+  "b": "stabilizer_housing::dynacaps",
+  "status": "incompatible",
+  "note": ""
+ },
+ {
+  "keyboard": "kbd::hhkb",
+  "b": "stabilizer_slider::metapulse",
+  "status": "incompatible",
+  "note": "note_metapulse_stab_incompat"
+ },
+ {
+  "keyboard": "kbd::realforce_rc1",
+  "b": "stabilizer_slider::metapulse",
+  "status": "incompatible",
+  "note": "note_metapulse_stab_incompat"
+ }
+]

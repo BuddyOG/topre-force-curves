@@ -5,9 +5,10 @@
 > complete. The canonical viewer is
 > [https://buddyog.github.io/topre-force-curves/](https://buddyog.github.io/topre-force-curves/)
 > and the frozen release tag is `fc-3.4`. Exact production-package hashes are
-> recorded by `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` and `SHA256SUMS`. This
-> preparation task did not create the promotion commit or tag and did not
-> deploy the files.
+> recorded by `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json`. EC Parts Builder
+> `lib-6.0` is published from tag `ec-parts-lib-6.0`. The active
+> `SITE_RELEASE_MANIFEST.json` and `SHA256SUMS` inventory cover the combined
+> site while retaining the fc-3.4 manifest as the protected predecessor record.
 
 The Force Curve Bench is a presentation layer over a frozen evidence epoch. Its
 source measurements, retained-run membership, full-precision results, and
@@ -68,17 +69,46 @@ as eight independent observations.
 
 ## Publication-tree continuity
 
-The fc-3.4 publication tree keeps 187 of the frozen snapshot's 189 files byte
+### Current fc-3.4 publication
+
+The current fc-3.4 publication tree keeps 187 of the frozen snapshot's 189 files byte
 for byte: all 184 raw CSV files at their existing repository-relative paths,
-plus `dome-lab.html`, `dome-lab-parts.html`, and `ec-switch-explorer.html` for
-URL continuity. The prior root `index.html` and `README.md` are intentionally
-replaced by the fc-3.4 viewer and public overview.
+plus three legacy HTML endpoints for URL continuity. The prior root
+`index.html` and `README.md` are intentionally replaced by the fc-3.4 viewer
+and public overview.
 
 The three preserved HTML endpoints are not part of the fc-3.4 viewer
 validation surface and were not scientifically revalidated by this release.
 Their preservation is a compatibility decision. The final 752-file
 repository-root inventory, including those 187 preserved files, is sealed by
 `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` and `SHA256SUMS`.
+
+### Published lib-6.0 EC Parts Builder overlay
+
+The `lib-6.0` release replaces
+`dome-lab-parts.html` with the generator-owned standalone EC Parts Builder.
+Shopify owns the Dome Lab home and navigation; the builder contains no in-tool
+tabs or sibling-tool links, and its catalog is contextual chooser data.
+
+The released builder projects 9 component rows, 13 source-backed keyboard starters,
+68 exact dome-specimen measurements carrying measured collapse force plus
+released Weight Index and Tactility Index values, and 2 public keycap
+additions. Its browser payload contains 338 decision-changing compatibility
+edges; the complete 3,403-edge configuration remains the audit authority.
+Public compatibility labels are **Works**, **Works with conditions**, **Does
+not work**, and **Not verified**; domes are **Not evaluated**.
+
+That one endpoint is intentionally no longer byte-identical to the fc-3.4
+predecessor. The overlay keeps every other
+protected predecessor endpoint, all 184 raw CSV paths, and the complete
+canonical-evidence tree byte-identical to fc-3.4.
+
+The overlay policy declares every source path that may be introduced or
+replaced. The release verifier restricts generated differences to the EC Parts
+Builder presentation/provenance set and rejects changes to the Force Curve
+viewer or scientific evidence. `SITE_RELEASE_MANIFEST.json` plus `SHA256SUMS`
+are the active combined-site authority; the fc-3.4 release manifest remains the
+protected predecessor record.
 
 The publication root also adds `.gitattributes` with exact content `* -text`.
 This disables Git text and line-ending normalization so platform-specific

@@ -1,34 +1,5 @@
 {
- "picker_rewrites": [
-  {
-   "occurrences_replaced": 8,
-   "target": "peak of the tactile bump"
-  },
-  {
-   "occurrences_replaced": 2,
-   "target": "Full-stroke press work"
-  },
-  {
-   "occurrences_replaced": 1,
-   "target": "Total Energy (how heavy it really is) and Snap % (how tactile)"
-  },
-  {
-   "occurrences_replaced": 1,
-   "target": "a precompressed dome reduces tactility and travel"
-  },
-  {
-   "occurrences_replaced": 1,
-   "target": "Every dome is sold as one number"
-  },
-  {
-   "occurrences_replaced": 1,
-   "target": "TOTAL ENERGY"
-  },
-  {
-   "occurrences_replaced": 0,
-   "target": "Total Energy"
-  }
- ],
+ "picker_rewrites": [],
  "prohibited_patterns": [
   "TOTAL ENERGY",
   "how heavy it really is",
@@ -51,7 +22,8 @@
   "measures? (?:how )?(?:perceived |the )?(?:weight|tactility|crispness|sharpness|effort|fatigue)",
   "how (?:heavy|crisp|sharp|tactile|hard) (?:it|the dome|the switch) (?:really |actually )?(?:is|feels)"
  ],
- "result": "clean \u2014 zero prohibited matches in any generated surface",
+ "r8_src_verbatim_exempt_chars": 0,
+ "result": "clean \u2014 zero prohibited matches in any generated presentation surface (the labeled verbatim r8 source layer is exempt by design)",
  "scanned_surfaces": [
   "packs/curves/Astro_Domes_Big_D_160g.staged.json",
   "packs/curves/Astro_Domes_Fiesta_120g.staged.json",

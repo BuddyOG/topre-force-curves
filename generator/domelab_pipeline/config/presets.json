@@ -1,0 +1,818 @@
+{
+ "generator": "tools/generate_catalog_config.py",
+ "presets": [
+  {
+   "adjudication": "source_imported",
+   "brand": "",
+   "empty": {
+    "dome": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "h1": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "h2": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sl2": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "slider": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::agar_ec_kit",
+   "label": "Agar EC Kit",
+   "notes": "",
+   "slots": {},
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": null,
+   "empty": {
+    "dome": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "h1": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "h2": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sl2": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "slider": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "aftermarket",
+   "id": "kbd::ck980c",
+   "label": "CK980C",
+   "notes": "Aftermarket EC keyboard; details pending. An empty part_ids list means parts are sourced separately.",
+   "slots": {},
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": "HHKB",
+   "empty": {
+    "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::hhkb",
+   "label": "HHKB",
+   "notes": "Non-silent. Housings + Stabilizer Housing link as HHKB. Comes with Topre 45g domes.",
+   "slots": {
+    "dome": {
+     "part": "dm-topre-45g",
+     "source": "r8_keyboard_registry"
+    },
+    "ring": {
+     "part": "ring::none",
+     "source": "r8_keyboard_registry (none mapped to the explicit No-ring choice)"
+    },
+    "shell": {
+     "part": "shell::hhkb",
+     "source": "template_shell_crosswalk"
+    },
+    "sl2": {
+     "part": "stabilizer_slider_2u::topre",
+     "source": "r8_keyboard_registry"
+    },
+    "slider": {
+     "part": "slider::topre",
+     "source": "r8_keyboard_registry"
+    },
+    "spring": {
+     "part": "conical_springs::topre",
+     "source": "r8_keyboard_registry"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": "HHKB",
+   "empty": {
+    "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::hhkb_30th",
+   "label": "HHKB 30th Anniversary",
+   "notes": "First HHKB with Topre 30g domes; upcoming. See note_hhkb_mx.",
+   "slots": {
+    "dome": {
+     "part": "dm-topre-30g",
+     "source": "r8_keyboard_registry"
+    },
+    "shell": {
+     "part": "shell::hhkb",
+     "source": "template_shell_crosswalk"
+    },
+    "sl2": {
+     "part": "stabilizer_slider_2u::topre",
+     "source": "r8_keyboard_registry"
+    },
+    "slider": {
+     "part": "slider::topre",
+     "source": "r8_keyboard_registry"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": "HHKB",
+   "empty": {
+    "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::hhkb_bt",
+   "label": "HHKB BT",
+   "notes": "No Type-S variant. See note_hhkb_mx.",
+   "slots": {
+    "dome": {
+     "part": "dm-topre-45g",
+     "source": "r8_keyboard_registry"
+    },
+    "shell": {
+     "part": "shell::hhkb",
+     "source": "template_shell_crosswalk"
+    },
+    "sl2": {
+     "part": "stabilizer_slider_2u::topre",
+     "source": "r8_keyboard_registry"
+    },
+    "slider": {
+     "part": "slider::topre",
+     "source": "r8_keyboard_registry"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": "HHKB",
+   "empty": {
+    "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::hhkb_classic",
+   "label": "HHKB Classic",
+   "notes": "Often called \"HHKB Pro 3\". See note_hhkb_mx.",
+   "slots": {
+    "dome": {
+     "part": "dm-topre-45g",
+     "source": "r8_keyboard_registry"
+    },
+    "shell": {
+     "part": "shell::hhkb",
+     "source": "template_shell_crosswalk"
+    },
+    "sl2": {
+     "part": "stabilizer_slider_2u::topre",
+     "source": "r8_keyboard_registry"
+    },
+    "slider": {
+     "part": "slider::topre",
+     "source": "r8_keyboard_registry"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": "HHKB",
+   "empty": {
+    "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::hhkb_classic_type_s",
+   "label": "HHKB Classic Type-S",
+   "notes": "Often called \"HHKB Pro 3\". See note_hhkb_mx.",
+   "slots": {
+    "dome": {
+     "part": "dm-topre-45g",
+     "source": "r8_keyboard_registry"
+    },
+    "shell": {
+     "part": "shell::hhkb",
+     "source": "template_shell_crosswalk"
+    },
+    "sl2": {
+     "part": "stabilizer_slider_2u::hhkb_type_s",
+     "source": "r8_keyboard_registry"
+    },
+    "slider": {
+     "part": "slider::hhkb_type_s",
+     "source": "r8_keyboard_registry"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": "HHKB",
+   "empty": {
+    "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::hhkb_hybrid",
+   "label": "HHKB Hybrid",
+   "notes": "Often called \"HHKB Pro 3\". See note_hhkb_mx.",
+   "slots": {
+    "dome": {
+     "part": "dm-topre-45g",
+     "source": "r8_keyboard_registry"
+    },
+    "shell": {
+     "part": "shell::hhkb",
+     "source": "template_shell_crosswalk"
+    },
+    "sl2": {
+     "part": "stabilizer_slider_2u::topre",
+     "source": "r8_keyboard_registry"
+    },
+    "slider": {
+     "part": "slider::topre",
+     "source": "r8_keyboard_registry"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": "HHKB",
+   "empty": {
+    "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::hhkb_hybrid_jp",
+   "label": "HHKB Hybrid JP",
+   "notes": "Japanese layout Hybrid (no JP Classic exists). See note_hhkb_mx.",
+   "slots": {
+    "dome": {
+     "part": "dm-topre-45g",
+     "source": "r8_keyboard_registry"
+    },
+    "shell": {
+     "part": "shell::hhkb",
+     "source": "template_shell_crosswalk"
+    },
+    "sl2": {
+     "part": "stabilizer_slider_2u::topre",
+     "source": "r8_keyboard_registry"
+    },
+    "slider": {
+     "part": "slider::topre",
+     "source": "r8_keyboard_registry"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": "HHKB",
+   "empty": {
+    "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::hhkb_hybrid_type_s",
+   "label": "HHKB Hybrid Type-S",
+   "notes": "Often called \"HHKB Pro 3\". See note_hhkb_mx.",
+   "slots": {
+    "dome": {
+     "part": "dm-topre-45g",
+     "source": "r8_keyboard_registry"
+    },
+    "shell": {
+     "part": "shell::hhkb",
+     "source": "template_shell_crosswalk"
+    },
+    "sl2": {
+     "part": "stabilizer_slider_2u::hhkb_type_s",
+     "source": "r8_keyboard_registry"
+    },
+    "slider": {
+     "part": "slider::hhkb_type_s",
+     "source": "r8_keyboard_registry"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": "HHKB",
+   "empty": {
+    "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::hhkb_pro_1",
+   "label": "HHKB Professional (Pro 1)",
+   "notes": "No Type-S until 2011 — five years after Pro 2. See note_hhkb_mx.",
+   "slots": {
+    "dome": {
+     "part": "dm-topre-45g",
+     "source": "r8_keyboard_registry"
+    },
+    "shell": {
+     "part": "shell::hhkb",
+     "source": "template_shell_crosswalk"
+    },
+    "sl2": {
+     "part": "stabilizer_slider_2u::topre",
+     "source": "r8_keyboard_registry"
+    },
+    "slider": {
+     "part": "slider::topre",
+     "source": "r8_keyboard_registry"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": "HHKB",
+   "empty": {
+    "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::hhkb_pro_2",
+   "label": "HHKB Pro 2",
+   "notes": "See note_hhkb_mx.",
+   "slots": {
+    "dome": {
+     "part": "dm-topre-45g",
+     "source": "r8_keyboard_registry"
+    },
+    "shell": {
+     "part": "shell::hhkb",
+     "source": "template_shell_crosswalk"
+    },
+    "sl2": {
+     "part": "stabilizer_slider_2u::topre",
+     "source": "r8_keyboard_registry"
+    },
+    "slider": {
+     "part": "slider::topre",
+     "source": "r8_keyboard_registry"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": "HHKB",
+   "empty": {
+    "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::hhkb_pro_2_jp",
+   "label": "HHKB Pro 2 JP",
+   "notes": "See note_hhkb_mx.",
+   "slots": {
+    "dome": {
+     "part": "dm-topre-45g",
+     "source": "r8_keyboard_registry"
+    },
+    "shell": {
+     "part": "shell::hhkb",
+     "source": "template_shell_crosswalk"
+    },
+    "sl2": {
+     "part": "stabilizer_slider_2u::topre",
+     "source": "r8_keyboard_registry"
+    },
+    "slider": {
+     "part": "slider::topre",
+     "source": "r8_keyboard_registry"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": "HHKB",
+   "empty": {
+    "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::hhkb_pro_2_jp_type_s",
+   "label": "HHKB Pro 2 JP Type-S",
+   "notes": "See note_hhkb_mx.",
+   "slots": {
+    "dome": {
+     "part": "dm-topre-45g",
+     "source": "r8_keyboard_registry"
+    },
+    "shell": {
+     "part": "shell::hhkb",
+     "source": "template_shell_crosswalk"
+    },
+    "sl2": {
+     "part": "stabilizer_slider_2u::hhkb_type_s",
+     "source": "r8_keyboard_registry"
+    },
+    "slider": {
+     "part": "slider::hhkb_type_s",
+     "source": "r8_keyboard_registry"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": "HHKB",
+   "empty": {
+    "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::hhkb_pro_2_type_s",
+   "label": "HHKB Pro 2 Type-S",
+   "notes": "2011. See note_hhkb_mx.",
+   "slots": {
+    "dome": {
+     "part": "dm-topre-45g",
+     "source": "r8_keyboard_registry"
+    },
+    "shell": {
+     "part": "shell::hhkb",
+     "source": "template_shell_crosswalk"
+    },
+    "sl2": {
+     "part": "stabilizer_slider_2u::hhkb_type_s",
+     "source": "r8_keyboard_registry"
+    },
+    "slider": {
+     "part": "slider::hhkb_type_s",
+     "source": "r8_keyboard_registry"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": "HHKB",
+   "empty": {
+    "dome": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sl2": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::hhkb_type_s",
+   "label": "HHKB Type-S",
+   "notes": "",
+   "slots": {
+    "ring": {
+     "part": "silencing_ring::topre_poron_0_5",
+     "source": "r8_keyboard_registry"
+    },
+    "shell": {
+     "part": "shell::hhkb",
+     "source": "template_shell_crosswalk"
+    },
+    "slider": {
+     "part": "slider::hhkb_type_s",
+     "source": "r8_keyboard_registry"
+    },
+    "spring": {
+     "part": "conical_springs::topre",
+     "source": "r8_keyboard_registry"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": "Leopold",
+   "empty": {
+    "dome": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "h1": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "h2": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sl2": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "slider": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::leopold",
+   "label": "Leopold (family)",
+   "notes": "Placeholder for Leopold Topre models (FC660C, FC980C, ...).",
+   "slots": {},
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": null,
+   "empty": {
+    "dome": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "h1": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "h2": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sl2": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "slider": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "aftermarket",
+   "id": "kbd::neverest",
+   "label": "NEVEREST",
+   "notes": "Aftermarket EC keyboard; details pending. An empty part_ids list means parts are sourced separately.",
+   "slots": {},
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": "Novatouch",
+   "empty": {
+    "dome": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "h1": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "h2": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sl2": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "slider": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::novatouch",
+   "label": "Novatouch",
+   "notes": "",
+   "slots": {},
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": "Realforce",
+   "empty": {
+    "dome": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "h1": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "h2": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sl2": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "slider": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::realforce_r2",
+   "label": "Realforce R2",
+   "notes": "",
+   "slots": {},
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "source_imported",
+   "brand": "Realforce",
+   "empty": {
+    "dome": "the source identifies 30g and 45g variants — choose the installed dome",
+    "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sb": "represented by the selected shell's integrated spacebar stabilizer",
+    "sl2": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+   },
+   "group": "oem",
+   "id": "kbd::realforce_rc1",
+   "label": "Realforce RC1",
+   "notes": "Housings + Stabilizer Housing link as RC1. Spacebar stabilizer is part of the keyboard. Comes with Topre 45g or 30g domes.",
+   "slots": {
+    "shell": {
+     "part": "shell::rc1",
+     "source": "template_shell_crosswalk"
+    },
+    "slider": {
+     "part": "slider::topre_silenced_purple",
+     "source": "r8_keyboard_registry"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "owner_pending",
+   "brand": "Deskeys",
+   "empty": {
+    "dome": "Deskeys sells V1/V2/V3/T1/CARROTS at many weights — pick one",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "Deskeys sells 0.2–1.0 mm rings — pick one"
+   },
+   "group": "brand_kit",
+   "id": "kit::deskeys",
+   "label": "Deskeys",
+   "notes": "brand kit: only parts this brand actually sells; unlisted slots are chosen separately",
+   "slots": {
+    "h1": {
+     "part": "housings::deskeys",
+     "source": "authored_brand_kit"
+    },
+    "h2": {
+     "part": "stabilizer_housing_2u::deskeys",
+     "source": "authored_brand_kit"
+    },
+    "sb": {
+     "part": "spacebar_stabilizer::deskeys",
+     "source": "authored_brand_kit"
+    },
+    "sl2": {
+     "part": "stabilizer_slider_2u::deskeys",
+     "source": "authored_brand_kit"
+    },
+    "slider": {
+     "part": "slider::deskeys",
+     "source": "authored_brand_kit"
+    },
+    "spring": {
+     "part": "conical_springs::deskeys_conical",
+     "source": "authored_brand_kit"
+    }
+   },
+   "source": "authored_brand_kit"
+  },
+  {
+   "adjudication": "owner_pending",
+   "brand": "DynaCaps",
+   "empty": {
+    "dome": "DynaCaps sells Light/Medium/Heavy and more — pick a weight",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "DynaCaps sells 0.3/0.5 mm Poron and Silicone rings — pick one"
+   },
+   "group": "brand_kit",
+   "id": "kit::dynacaps",
+   "label": "DynaCaps",
+   "notes": "brand kit: only parts this brand actually sells; unlisted slots are chosen separately",
+   "slots": {
+    "h1": {
+     "part": "housings::dynacaps",
+     "source": "authored_brand_kit"
+    },
+    "h2": {
+     "part": "stabilizer_housing_2u::dynacaps",
+     "source": "authored_brand_kit"
+    },
+    "sb": {
+     "part": "spacebar_stabilizer::dynacaps",
+     "source": "authored_brand_kit"
+    },
+    "sl2": {
+     "part": "stabilizer_slider_2u::dynacaps",
+     "source": "authored_brand_kit"
+    },
+    "slider": {
+     "part": "slider::dynacaps",
+     "source": "authored_brand_kit"
+    },
+    "spring": {
+     "part": "conical_springs::dynacaps",
+     "source": "authored_brand_kit"
+    }
+   },
+   "source": "authored_brand_kit"
+  },
+  {
+   "adjudication": "owner_pending",
+   "brand": "KLC",
+   "empty": {
+    "dome": "KLC sells 35/45/55 g domes — pick a weight",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "KLC sells 0.3 mm Poron and Silicone rings (both in the catalog) — pick one"
+   },
+   "group": "brand_kit",
+   "id": "kit::klc",
+   "label": "KLC",
+   "notes": "brand kit: only parts this brand actually sells; unlisted slots are chosen separately",
+   "slots": {
+    "h1": {
+     "part": "housings::klc_playground",
+     "source": "authored_brand_kit"
+    },
+    "h2": {
+     "part": "stabilizer_housing_2u::klc_playground",
+     "source": "authored_brand_kit"
+    },
+    "sb": {
+     "part": "spacebar_stabilizer::klc_playground",
+     "source": "authored_brand_kit"
+    },
+    "sl2": {
+     "part": "stabilizer_slider_2u::klc_playground",
+     "source": "authored_brand_kit"
+    },
+    "slider": {
+     "part": "slider::klc_playground",
+     "source": "authored_brand_kit"
+    },
+    "spring": {
+     "part": "conical_springs::klc_playground",
+     "source": "authored_brand_kit"
+    }
+   },
+   "source": "authored_brand_kit"
+  },
+  {
+   "adjudication": "owner_pending",
+   "brand": "MetaPulse",
+   "empty": {
+    "dome": "MetaPulse sells BS/RS domes at many weights — pick one",
+    "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring": "MetaPulse sells a 0.5 mm Poron ring — optional, pick it explicitly"
+   },
+   "group": "brand_kit",
+   "id": "kit::metapulse",
+   "label": "MetaPulse",
+   "notes": "brand kit: only parts this brand actually sells; unlisted slots are chosen separately",
+   "slots": {
+    "h1": {
+     "part": "housings::metapulse",
+     "source": "authored_brand_kit"
+    },
+    "h2": {
+     "part": "stabilizer_housing_2u::metapulse",
+     "source": "authored_brand_kit"
+    },
+    "sb": {
+     "part": "spacebar_stabilizer::metapulse",
+     "source": "authored_brand_kit"
+    },
+    "sl2": {
+     "part": "stabilizer_slider_2u::metapulse",
+     "source": "authored_brand_kit"
+    },
+    "slider": {
+     "part": "slider::metapulse",
+     "source": "authored_brand_kit"
+    },
+    "spring": {
+     "part": "conical_springs::metapulse",
+     "source": "authored_brand_kit"
+    }
+   },
+   "source": "authored_brand_kit"
+  }
+ ],
+ "purpose": "Registry-generated presets. Stable part IDs only; a preset never invents a component — empty slots carry the reason. Imported registry statements are source_imported; the authored brand kits are owner_pending.",
+ "schema": "presets-v1"
+}

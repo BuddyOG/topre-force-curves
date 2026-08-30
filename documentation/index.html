@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Force Curve Bench documentation</title>
+  <title>Unreal Keyboards tool documentation</title>
   <style>
     :root{color-scheme:dark;--bg:#0e1012;--panel:#15181c;--ink:#edf0f2;--muted:#a6adb4;--line:#2a2f35;--accent:#b668ff}
     *{box-sizing:border-box}
@@ -27,11 +27,12 @@
 <body>
 <main>
   <div class="eyebrow">Unreal Keyboards · Dome Lab</div>
-  <h1>Force Curve Bench documentation</h1>
-  <p class="lead">Method, interpretation, provenance, limitations, release notes, and reproducibility material for Force Curve Bench fc-3.4.</p>
+  <h1>Unreal Keyboards tool documentation</h1>
+  <p class="lead">Documentation for the published Force Curve Bench and EC Parts Builder.</p>
 
-  <div class="notice"><b>Release identity:</b> The canonical viewer is <a href="https://buddyog.github.io/topre-force-curves/">buddyog.github.io/topre-force-curves</a> and the frozen Git tag is <code>fc-3.4</code>. Package hashes are recorded in <code>FORCE_CURVE_BENCH_RELEASE_MANIFEST.json</code> and <code>SHA256SUMS</code>.</div>
-  <div class="notice"><b>Repository continuity:</b> fc-3.4 preserves all 184 existing raw CSV paths and the legacy <code>dome-lab.html</code>, <code>dome-lab-parts.html</code>, and <code>ec-switch-explorer.html</code> endpoints byte for byte. The root <code>index.html</code> and <code>README.md</code> are intentionally replaced. A root <code>.gitattributes</code> containing <code>* -text</code> prevents Git line-ending normalization, and an empty <code>.nojekyll</code> prevents GitHub Pages from filtering underscore-prefixed paths. Both are release infrastructure, not source evidence. The legacy pages are retained for URL continuity and were not revalidated as part of fc-3.4.</div>
+  <div class="notice"><b>Current publication:</b> Force Curve Bench <code>fc-3.4</code> is available at <a href="https://buddyog.github.io/topre-force-curves/">buddyog.github.io/topre-force-curves</a>. EC Parts Builder <code>lib-6.0</code> is available at <a href="https://buddyog.github.io/topre-force-curves/dome-lab-parts.html">dome-lab-parts.html</a>. <code>SITE_RELEASE_MANIFEST.json</code> and <code>SHA256SUMS</code> are the active combined-site authority.</div>
+  <div class="notice"><b>EC Parts Builder:</b> The release has 9 component rows, 13 keyboard starters, 68 exact specimen measurements carrying measured collapse force plus released Weight Index and Tactility Index values, 2 public keycap additions, and 338 decision-changing browser edges; the complete 3,403-edge configuration remains the audit authority. Its labels are <b>Works</b>, <b>Works with conditions</b>, <b>Does not work</b>, and <b>Not verified</b>; domes are <b>Not evaluated</b>.</div>
+  <div class="notice"><b>Product boundary:</b> Shopify owns the Dome Lab home, header, and navigation. The generated EC Parts Builder is one standalone tool with contextual catalog choosers, no in-tool tabs or master library page, and no links to other tools. The lib-6.0 release overlay preserves the fc-3.4 viewer, raw files, canonical evidence, and continuity endpoints under the explicit manifest policy.</div>
 
 
   <h2>Documentation set</h2>
@@ -45,6 +46,10 @@
     <a class="card" href="BROWSER_ACCEPTANCE.md"><b>Browser acceptance</b><span>Interactive checks, runtime batteries, PNG export, and responsive coverage.</span></a>
     <a class="card" href="DATA_UPDATES.md"><b>Future data updates</b><span>How later tests, retests, corrections, and renames become a new evidence epoch.</span></a>
     <a class="card" href="RELEASE_NOTES_fc-3.4.md"><b>fc-3.4 release notes</b><span>Second GUI update, integration corrections, and scientific continuity.</span></a>
+    <a class="card" href="EC_PARTS_LIBRARY.md"><b>EC Parts Builder</b><span>Standalone workflow, Evidence-beta labels, contextual catalog, and interpretation limits.</span></a>
+    <a class="card" href="SHOPIFY_EMBED.md"><b>Shopify embed contract</b><span>Secure parent/child messaging, origin validation, sizing, and acceptance checks.</span></a>
+    <a class="card" href="EC_PARTS_LIBRARY_REVIEW_PLAN.md"><b>lib-6.0 review plan</b><span>Local review scope, acceptance boundary, and publication stop.</span></a>
+    <a class="card" href="RELEASE_NOTES_lib-6.0.md"><b>lib-6.0 release notes</b><span>Target identity, redesign changes, limitations, and promotion gates.</span></a>
     <a class="card" href="subjective-pilot/index.html"><b>Subjective pilot</b><span>Protocol, observations, correlations, and the evidence behind the two indices.</span></a>
     <a class="card" href="THIRD_PARTY_NOTICES.md"><b>Third-party notices</b><span>Embedded Inter and IBM Plex Mono credits and license terms.</span></a>
   </div>
@@ -56,7 +61,7 @@
   <h2 id="third-party-fonts">Embedded fonts</h2>
   <p>Inter and IBM Plex Mono are embedded third-party fonts licensed separately under the SIL Open Font License 1.1. Their terms do not change the project rights above. See the <a href="THIRD_PARTY_NOTICES.md">font notice</a>, the bundled <a href="licenses/INTER-LICENSE.txt">Inter license</a>, and the bundled <a href="licenses/IBM-PLEX-LICENSE.txt">IBM Plex license</a>.</p>
 
-  <footer><a href="https://buddyog.github.io/topre-force-curves/">Open Force Curve Bench</a> · <a href="https://github.com/BuddyOG/topre-force-curves">GitHub repository</a></footer>
+  <footer>Shopify owns the Dome Lab home and tool navigation. · <a href="https://github.com/BuddyOG/topre-force-curves">GitHub repository</a></footer>
 </main>
 </body>
 </html>

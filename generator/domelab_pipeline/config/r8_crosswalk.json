@@ -1,0 +1,1710 @@
+{
+ "generator": "tools/generate_catalog_config.py",
+ "records": {
+  "conical_spring::deskeys": {
+   "brand": "Deskeys",
+   "catalog_id": "conical_springs::deskeys_conical",
+   "category": "conical_spring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Deskeys Conical Springs",
+   "r8_id": "conical_spring::deskeys",
+   "tier": "builder"
+  },
+  "conical_spring::dynacaps": {
+   "brand": "DynaCaps",
+   "catalog_id": "conical_springs::dynacaps",
+   "category": "conical_spring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "DynaCaps Conical Springs",
+   "r8_id": "conical_spring::dynacaps",
+   "tier": "builder"
+  },
+  "conical_spring::klc_playground": {
+   "brand": "KLC",
+   "catalog_id": "conical_springs::klc_playground",
+   "category": "conical_spring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "KLC Conical Springs",
+   "r8_id": "conical_spring::klc_playground",
+   "tier": "builder"
+  },
+  "conical_spring::metapulse": {
+   "brand": "MetaPulse",
+   "catalog_id": "conical_springs::metapulse",
+   "category": "conical_spring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "MetaPulse Conical Springs",
+   "r8_id": "conical_spring::metapulse",
+   "tier": "builder"
+  },
+  "conical_spring::topre": {
+   "brand": "Topre",
+   "catalog_id": "conical_springs::topre",
+   "category": "conical_spring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Topre Conical Springs",
+   "r8_id": "conical_spring::topre",
+   "tier": "builder"
+  },
+  "dome::astro_domes_120g": {
+   "brand": "Astro Domes",
+   "catalog_id": "dm-astro-domes-120g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Astro Domes 120g",
+   "r8_id": "dome::astro_domes_120g",
+   "tier": "builder"
+  },
+  "dome::astro_domes_160g": {
+   "brand": "Astro Domes",
+   "catalog_id": "dm-astro-domes-160g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Astro Domes 160g",
+   "r8_id": "dome::astro_domes_160g",
+   "tier": "builder"
+  },
+  "dome::astro_domes_35g": {
+   "brand": "Astro Domes",
+   "catalog_id": "dm-astro-domes-35g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Astro Domes 35g",
+   "r8_id": "dome::astro_domes_35g",
+   "tier": "builder"
+  },
+  "dome::astro_domes_500g": {
+   "brand": "Astro Domes",
+   "catalog_id": "dm-astro-domes-500g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Astro Domes 500g",
+   "r8_id": "dome::astro_domes_500g",
+   "tier": "builder"
+  },
+  "dome::astro_domes_50g": {
+   "brand": "Astro Domes",
+   "catalog_id": "dm-astro-domes-50g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Astro Domes 50g",
+   "r8_id": "dome::astro_domes_50g",
+   "tier": "builder"
+  },
+  "dome::astro_domes_60g": {
+   "brand": "Astro Domes",
+   "catalog_id": "dm-astro-domes-60g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Astro Domes 60g",
+   "r8_id": "dome::astro_domes_60g",
+   "tier": "builder"
+  },
+  "dome::astro_domes_70g": {
+   "brand": "Astro Domes",
+   "catalog_id": "dm-astro-domes-70g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Astro Domes 70g",
+   "r8_id": "dome::astro_domes_70g",
+   "tier": "builder"
+  },
+  "dome::astro_domes_90g": {
+   "brand": "Astro Domes",
+   "catalog_id": "dm-astro-domes-90g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Astro Domes 90g",
+   "r8_id": "dome::astro_domes_90g",
+   "tier": "builder"
+  },
+  "dome::bke_redux_v1_extreme": {
+   "brand": "BKE Redux",
+   "catalog_id": "dm-bke-redux-v1-extreme",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "BKE Redux v1 Extreme",
+   "r8_id": "dome::bke_redux_v1_extreme",
+   "tier": "builder"
+  },
+  "dome::bke_redux_v1_heavy": {
+   "brand": "BKE Redux",
+   "catalog_id": "dm-bke-redux-v1-heavy",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "BKE Redux v1 Heavy",
+   "r8_id": "dome::bke_redux_v1_heavy",
+   "tier": "builder"
+  },
+  "dome::bke_redux_v1_light": {
+   "brand": "BKE Redux",
+   "catalog_id": "dm-bke-redux-v1-light",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "BKE Redux v1 Light",
+   "r8_id": "dome::bke_redux_v1_light",
+   "tier": "builder"
+  },
+  "dome::bke_redux_v1_ultra_light": {
+   "brand": "BKE Redux",
+   "catalog_id": "dm-bke-redux-v1-ultra-light",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "BKE Redux v1 Ultra Light",
+   "r8_id": "dome::bke_redux_v1_ultra_light",
+   "tier": "builder"
+  },
+  "dome::des_carrots_35g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-carrots-35g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys CARROTS 35g",
+   "r8_id": "dome::des_carrots_35g",
+   "tier": "builder"
+  },
+  "dome::des_carrots_49g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-carrots-49g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys CARROTS 49g",
+   "r8_id": "dome::des_carrots_49g",
+   "tier": "builder"
+  },
+  "dome::des_carrots_60g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-carrots-60g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys CARROTS 60g",
+   "r8_id": "dome::des_carrots_60g",
+   "tier": "builder"
+  },
+  "dome::des_t1_100g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-t1-100g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys T1 100g",
+   "r8_id": "dome::des_t1_100g",
+   "tier": "builder"
+  },
+  "dome::des_t1_28g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-t1-28g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys T1 28g",
+   "r8_id": "dome::des_t1_28g",
+   "tier": "builder"
+  },
+  "dome::des_t1_35g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-t1-35g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys T1 35g",
+   "r8_id": "dome::des_t1_35g",
+   "tier": "builder"
+  },
+  "dome::des_t1_42g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-t1-42g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys T1 42g",
+   "r8_id": "dome::des_t1_42g",
+   "tier": "builder"
+  },
+  "dome::des_t1_49g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-t1-49g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys T1 49g",
+   "r8_id": "dome::des_t1_49g",
+   "tier": "builder"
+  },
+  "dome::des_t1_56g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-t1-56g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys T1 56g",
+   "r8_id": "dome::des_t1_56g",
+   "tier": "builder"
+  },
+  "dome::des_t1_63g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-t1-63g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys T1 63g",
+   "r8_id": "dome::des_t1_63g",
+   "tier": "builder"
+  },
+  "dome::des_t1_70g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-t1-70g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys T1 70g",
+   "r8_id": "dome::des_t1_70g",
+   "tier": "builder"
+  },
+  "dome::des_t1_85g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-t1-85g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys T1 85g",
+   "r8_id": "dome::des_t1_85g",
+   "tier": "builder"
+  },
+  "dome::des_v1_35g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-v1-35g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys V1 35g",
+   "r8_id": "dome::des_v1_35g",
+   "tier": "builder"
+  },
+  "dome::des_v1_42g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-v1-42g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys V1 42g",
+   "r8_id": "dome::des_v1_42g",
+   "tier": "builder"
+  },
+  "dome::des_v1_49g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-v1-49g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys V1 49g",
+   "r8_id": "dome::des_v1_49g",
+   "tier": "builder"
+  },
+  "dome::des_v1_56g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-v1-56g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys V1 56g",
+   "r8_id": "dome::des_v1_56g",
+   "tier": "builder"
+  },
+  "dome::des_v2_35g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-v2-35g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys V2 35g",
+   "r8_id": "dome::des_v2_35g",
+   "tier": "builder"
+  },
+  "dome::des_v2_42g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-v2-42g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys V2 42g",
+   "r8_id": "dome::des_v2_42g",
+   "tier": "builder"
+  },
+  "dome::des_v2_49g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-v2-49g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys V2 49g",
+   "r8_id": "dome::des_v2_49g",
+   "tier": "builder"
+  },
+  "dome::des_v2_56g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-v2-56g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys V2 56g",
+   "r8_id": "dome::des_v2_56g",
+   "tier": "builder"
+  },
+  "dome::des_v2_63g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-v2-63g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys V2 63g",
+   "r8_id": "dome::des_v2_63g",
+   "tier": "builder"
+  },
+  "dome::des_v2_70g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-v2-70g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys V2 70g",
+   "r8_id": "dome::des_v2_70g",
+   "tier": "builder"
+  },
+  "dome::des_v3_28g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-v3-28g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys V3 28g",
+   "r8_id": "dome::des_v3_28g",
+   "tier": "builder"
+  },
+  "dome::des_v3_35g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-v3-35g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys V3 35g",
+   "r8_id": "dome::des_v3_35g",
+   "tier": "builder"
+  },
+  "dome::des_v3_42g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-v3-42g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys V3 42g",
+   "r8_id": "dome::des_v3_42g",
+   "tier": "builder"
+  },
+  "dome::des_v3_49g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-v3-49g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys V3 49g",
+   "r8_id": "dome::des_v3_49g",
+   "tier": "builder"
+  },
+  "dome::des_v3_56g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-v3-56g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys V3 56g",
+   "r8_id": "dome::des_v3_56g",
+   "tier": "builder"
+  },
+  "dome::des_v3_63g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-v3-63g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys V3 63g",
+   "r8_id": "dome::des_v3_63g",
+   "tier": "builder"
+  },
+  "dome::des_v3_70g": {
+   "brand": "Deskeys",
+   "catalog_id": "dm-des-v3-70g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Deskeys V3 70g",
+   "r8_id": "dome::des_v3_70g",
+   "tier": "builder"
+  },
+  "dome::dynacaps_crazy_heavy": {
+   "brand": "DynaCaps",
+   "catalog_id": "dm-dynacaps-crazy-heavy",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "DynaCaps Crazy Heavy",
+   "r8_id": "dome::dynacaps_crazy_heavy",
+   "tier": "builder"
+  },
+  "dome::dynacaps_heavy": {
+   "brand": "DynaCaps",
+   "catalog_id": "dm-dynacaps-heavy",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "DynaCaps Heavy",
+   "r8_id": "dome::dynacaps_heavy",
+   "tier": "builder"
+  },
+  "dome::dynacaps_heavy_ish": {
+   "brand": "DynaCaps",
+   "catalog_id": "dm-dynacaps-heavy-ish",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "DynaCaps Heavy-ish",
+   "r8_id": "dome::dynacaps_heavy_ish",
+   "tier": "builder"
+  },
+  "dome::dynacaps_light": {
+   "brand": "DynaCaps",
+   "catalog_id": "dm-dynacaps-light",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "DynaCaps Light",
+   "r8_id": "dome::dynacaps_light",
+   "tier": "builder"
+  },
+  "dome::dynacaps_medium": {
+   "brand": "DynaCaps",
+   "catalog_id": "dm-dynacaps-medium",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "DynaCaps Medium",
+   "r8_id": "dome::dynacaps_medium",
+   "tier": "builder"
+  },
+  "dome::klc_playground_35g": {
+   "brand": "KLC",
+   "catalog_id": "dm-klc-playground-35g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "KLC 35g",
+   "r8_id": "dome::klc_playground_35g",
+   "tier": "builder"
+  },
+  "dome::klc_playground_45g": {
+   "brand": "KLC",
+   "catalog_id": "dm-klc-playground-45g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "KLC 45g",
+   "r8_id": "dome::klc_playground_45g",
+   "tier": "builder"
+  },
+  "dome::klc_playground_55g": {
+   "brand": "KLC",
+   "catalog_id": "dm-klc-playground-55g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "KLC 55g",
+   "r8_id": "dome::klc_playground_55g",
+   "tier": "builder"
+  },
+  "dome::metapulse_bs_40g": {
+   "brand": "MetaPulse",
+   "catalog_id": "dm-metapulse-bs-40g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "MetaPulse BS 40g",
+   "r8_id": "dome::metapulse_bs_40g",
+   "tier": "builder"
+  },
+  "dome::metapulse_bs_50g": {
+   "brand": "MetaPulse",
+   "catalog_id": "dm-metapulse-bs-50g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "MetaPulse BS 50g",
+   "r8_id": "dome::metapulse_bs_50g",
+   "tier": "builder"
+  },
+  "dome::metapulse_bs_65g": {
+   "brand": "MetaPulse",
+   "catalog_id": "dm-metapulse-bs-65g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "MetaPulse BS 65g",
+   "r8_id": "dome::metapulse_bs_65g",
+   "tier": "builder"
+  },
+  "dome::metapulse_bs_75g": {
+   "brand": "MetaPulse",
+   "catalog_id": "dm-metapulse-bs-75g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "MetaPulse BS 75g",
+   "r8_id": "dome::metapulse_bs_75g",
+   "tier": "builder"
+  },
+  "dome::metapulse_rs_25g": {
+   "brand": "MetaPulse",
+   "catalog_id": "dm-metapulse-rs-25g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "MetaPulse RS 25g",
+   "r8_id": "dome::metapulse_rs_25g",
+   "tier": "builder"
+  },
+  "dome::metapulse_rs_30g": {
+   "brand": "MetaPulse",
+   "catalog_id": "dm-metapulse-rs-30g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "MetaPulse RS 30g",
+   "r8_id": "dome::metapulse_rs_30g",
+   "tier": "builder"
+  },
+  "dome::metapulse_rs_35g": {
+   "brand": "MetaPulse",
+   "catalog_id": "dm-metapulse-rs-35g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "MetaPulse RS 35g",
+   "r8_id": "dome::metapulse_rs_35g",
+   "tier": "builder"
+  },
+  "dome::metapulse_rs_40g": {
+   "brand": "MetaPulse",
+   "catalog_id": "dm-metapulse-rs-40g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "MetaPulse RS 40g",
+   "r8_id": "dome::metapulse_rs_40g",
+   "tier": "builder"
+  },
+  "dome::metapulse_rs_45g": {
+   "brand": "MetaPulse",
+   "catalog_id": "dm-metapulse-rs-45g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "MetaPulse RS 45g",
+   "r8_id": "dome::metapulse_rs_45g",
+   "tier": "builder"
+  },
+  "dome::metapulse_rs_55g_a": {
+   "brand": "MetaPulse",
+   "catalog_id": "dm-metapulse-rs-55g-a",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "MetaPulse RS 55g-A",
+   "r8_id": "dome::metapulse_rs_55g_a",
+   "tier": "builder"
+  },
+  "dome::metapulse_rs_55g_b": {
+   "brand": "MetaPulse",
+   "catalog_id": "dm-metapulse-rs-55g-b",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "MetaPulse RS 55g-B",
+   "r8_id": "dome::metapulse_rs_55g_b",
+   "tier": "builder"
+  },
+  "dome::niz_65g": {
+   "brand": "NiZ",
+   "catalog_id": "dm-niz-65g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "NiZ 65g",
+   "r8_id": "dome::niz_65g",
+   "tier": "builder"
+  },
+  "dome::sony_bke_brown_01": {
+   "brand": "Sony",
+   "catalog_id": "dm-sony-bke-brown-01",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Sony BKE Brown 01",
+   "r8_id": "dome::sony_bke_brown_01",
+   "tier": "builder"
+  },
+  "dome::sony_bke_brown_02": {
+   "brand": "Sony",
+   "catalog_id": "dm-sony-bke-brown-02",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Sony BKE Brown 02",
+   "r8_id": "dome::sony_bke_brown_02",
+   "tier": "builder"
+  },
+  "dome::sony_bke_brown_03": {
+   "brand": "Sony",
+   "catalog_id": "dm-sony-bke-brown-03",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Sony BKE Brown 03",
+   "r8_id": "dome::sony_bke_brown_03",
+   "tier": "builder"
+  },
+  "dome::sony_bke_gray_01": {
+   "brand": "Sony",
+   "catalog_id": "dm-sony-bke-gray-01",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Sony BKE Gray 01",
+   "r8_id": "dome::sony_bke_gray_01",
+   "tier": "builder"
+  },
+  "dome::sony_bke_gray_02": {
+   "brand": "Sony",
+   "catalog_id": "dm-sony-bke-gray-02",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Sony BKE Gray 02",
+   "r8_id": "dome::sony_bke_gray_02",
+   "tier": "builder"
+  },
+  "dome::topre_30g": {
+   "brand": "Topre",
+   "catalog_id": "dm-topre-30g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Topre 30g",
+   "r8_id": "dome::topre_30g",
+   "tier": "builder"
+  },
+  "dome::topre_45g": {
+   "brand": "Topre",
+   "catalog_id": "dm-topre-45g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Topre 45g",
+   "r8_id": "dome::topre_45g",
+   "tier": "builder"
+  },
+  "dome::topre_45g_aged": {
+   "brand": "Topre",
+   "catalog_id": "dm-topre-45g-aged",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Topre 45g Aged",
+   "r8_id": "dome::topre_45g_aged",
+   "tier": "builder"
+  },
+  "dome::topre_55g": {
+   "brand": "Topre",
+   "catalog_id": "dm-topre-55g",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Topre 55g",
+   "r8_id": "dome::topre_55g",
+   "tier": "builder"
+  },
+  "dome::topre_55g_aged": {
+   "brand": "Topre",
+   "catalog_id": "dm-topre-55g-aged",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Topre 55g Aged",
+   "r8_id": "dome::topre_55g_aged",
+   "tier": "builder"
+  },
+  "housing::deskeys": {
+   "brand": "Deskeys",
+   "catalog_id": "housings::deskeys",
+   "category": "housing",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Deskeys Housings",
+   "r8_id": "housing::deskeys",
+   "tier": "builder"
+  },
+  "housing::dynacaps": {
+   "brand": "DynaCaps",
+   "catalog_id": "housings::dynacaps",
+   "category": "housing",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "DynaCaps Housings",
+   "r8_id": "housing::dynacaps",
+   "tier": "builder"
+  },
+  "housing::klc_playground": {
+   "brand": "KLC",
+   "catalog_id": "housings::klc_playground",
+   "category": "housing",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "KLC Housings",
+   "r8_id": "housing::klc_playground",
+   "tier": "builder"
+  },
+  "housing::metapulse": {
+   "brand": "MetaPulse",
+   "catalog_id": "housings::metapulse",
+   "category": "housing",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "MetaPulse Housings",
+   "r8_id": "housing::metapulse",
+   "tier": "builder"
+  },
+  "housing::topre": {
+   "brand": "Topre",
+   "catalog_id": "housings::topre",
+   "category": "housing",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Topre Housings",
+   "r8_id": "housing::topre",
+   "tier": "builder"
+  },
+  "kbd::agar_ec_kit": {
+   "brand": "",
+   "catalog_id": "kbd::agar_ec_kit",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "Agar EC Kit",
+   "r8_id": "kbd::agar_ec_kit",
+   "tier": null
+  },
+  "kbd::ck980c": {
+   "brand": null,
+   "catalog_id": "kbd::ck980c",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "CK980C",
+   "r8_id": "kbd::ck980c",
+   "tier": null
+  },
+  "kbd::hhkb": {
+   "brand": "HHKB",
+   "catalog_id": "kbd::hhkb",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "HHKB",
+   "r8_id": "kbd::hhkb",
+   "tier": null
+  },
+  "kbd::hhkb_30th": {
+   "brand": "HHKB",
+   "catalog_id": "kbd::hhkb_30th",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "HHKB 30th Anniversary",
+   "r8_id": "kbd::hhkb_30th",
+   "tier": null
+  },
+  "kbd::hhkb_bt": {
+   "brand": "HHKB",
+   "catalog_id": "kbd::hhkb_bt",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "HHKB BT",
+   "r8_id": "kbd::hhkb_bt",
+   "tier": null
+  },
+  "kbd::hhkb_classic": {
+   "brand": "HHKB",
+   "catalog_id": "kbd::hhkb_classic",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "HHKB Classic",
+   "r8_id": "kbd::hhkb_classic",
+   "tier": null
+  },
+  "kbd::hhkb_classic_type_s": {
+   "brand": "HHKB",
+   "catalog_id": "kbd::hhkb_classic_type_s",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "HHKB Classic Type-S",
+   "r8_id": "kbd::hhkb_classic_type_s",
+   "tier": null
+  },
+  "kbd::hhkb_hybrid": {
+   "brand": "HHKB",
+   "catalog_id": "kbd::hhkb_hybrid",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "HHKB Hybrid",
+   "r8_id": "kbd::hhkb_hybrid",
+   "tier": null
+  },
+  "kbd::hhkb_hybrid_jp": {
+   "brand": "HHKB",
+   "catalog_id": "kbd::hhkb_hybrid_jp",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "HHKB Hybrid JP",
+   "r8_id": "kbd::hhkb_hybrid_jp",
+   "tier": null
+  },
+  "kbd::hhkb_hybrid_type_s": {
+   "brand": "HHKB",
+   "catalog_id": "kbd::hhkb_hybrid_type_s",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "HHKB Hybrid Type-S",
+   "r8_id": "kbd::hhkb_hybrid_type_s",
+   "tier": null
+  },
+  "kbd::hhkb_pro_1": {
+   "brand": "HHKB",
+   "catalog_id": "kbd::hhkb_pro_1",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "HHKB Professional (Pro 1)",
+   "r8_id": "kbd::hhkb_pro_1",
+   "tier": null
+  },
+  "kbd::hhkb_pro_2": {
+   "brand": "HHKB",
+   "catalog_id": "kbd::hhkb_pro_2",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "HHKB Pro 2",
+   "r8_id": "kbd::hhkb_pro_2",
+   "tier": null
+  },
+  "kbd::hhkb_pro_2_jp": {
+   "brand": "HHKB",
+   "catalog_id": "kbd::hhkb_pro_2_jp",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "HHKB Pro 2 JP",
+   "r8_id": "kbd::hhkb_pro_2_jp",
+   "tier": null
+  },
+  "kbd::hhkb_pro_2_jp_type_s": {
+   "brand": "HHKB",
+   "catalog_id": "kbd::hhkb_pro_2_jp_type_s",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "HHKB Pro 2 JP Type-S",
+   "r8_id": "kbd::hhkb_pro_2_jp_type_s",
+   "tier": null
+  },
+  "kbd::hhkb_pro_2_type_s": {
+   "brand": "HHKB",
+   "catalog_id": "kbd::hhkb_pro_2_type_s",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "HHKB Pro 2 Type-S",
+   "r8_id": "kbd::hhkb_pro_2_type_s",
+   "tier": null
+  },
+  "kbd::hhkb_type_s": {
+   "brand": "HHKB",
+   "catalog_id": "kbd::hhkb_type_s",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "HHKB Type-S",
+   "r8_id": "kbd::hhkb_type_s",
+   "tier": null
+  },
+  "kbd::leopold": {
+   "brand": "Leopold",
+   "catalog_id": "kbd::leopold",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "Leopold (family)",
+   "r8_id": "kbd::leopold",
+   "tier": null
+  },
+  "kbd::neverest": {
+   "brand": null,
+   "catalog_id": "kbd::neverest",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "NEVEREST",
+   "r8_id": "kbd::neverest",
+   "tier": null
+  },
+  "kbd::novatouch": {
+   "brand": "Novatouch",
+   "catalog_id": "kbd::novatouch",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "Novatouch",
+   "r8_id": "kbd::novatouch",
+   "tier": null
+  },
+  "kbd::realforce_r2": {
+   "brand": "Realforce",
+   "catalog_id": "kbd::realforce_r2",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "Realforce R2",
+   "r8_id": "kbd::realforce_r2",
+   "tier": null
+  },
+  "kbd::realforce_rc1": {
+   "brand": "Realforce",
+   "catalog_id": "kbd::realforce_rc1",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "Realforce RC1",
+   "r8_id": "kbd::realforce_rc1",
+   "tier": null
+  },
+  "keycap::mx": {
+   "brand": null,
+   "catalog_id": "keycap::mx",
+   "category": "keycap",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "MX Keycaps",
+   "r8_id": "keycap::mx",
+   "tier": "builder"
+  },
+  "keycap::topre": {
+   "brand": "Topre",
+   "catalog_id": "keycap::topre",
+   "category": "keycap",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "Topre Keycaps",
+   "r8_id": "keycap::topre",
+   "tier": "builder"
+  },
+  "keycap_oring::unreal_1_2": {
+   "brand": "Unreal Keyboards",
+   "catalog_id": "keycap_oring::unreal_1_2",
+   "category": "keycap_oring",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "Keycap O-Rings",
+   "r8_id": "keycap_oring::unreal_1_2",
+   "tier": "mod"
+  },
+  "landing_pad::des": {
+   "brand": "Deskeys",
+   "catalog_id": "landing_pad::des",
+   "category": "landing_pad",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "Deskeys Landing Pads",
+   "r8_id": "landing_pad::des",
+   "tier": "mod"
+  },
+  "landing_pad::unreal": {
+   "brand": "Unreal Keyboards",
+   "catalog_id": "landing_pad::unreal",
+   "category": "landing_pad",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "Unreal Keyboards Landing Pads",
+   "r8_id": "landing_pad::unreal",
+   "tier": "mod"
+  },
+  "newer::dm-niz-purple-60g": {
+   "brand": null,
+   "catalog_id": "dm-niz-purple-60g",
+   "category": "dome",
+   "disposition": "newer_measured_identity_unverified",
+   "note": "measured under fc-3.4; external catalog provenance not yet established",
+   "part_name": "dm-niz-purple-60g",
+   "r8_id": null,
+   "tier": null
+  },
+  "newer::dm-topre-gx1-45g": {
+   "brand": null,
+   "catalog_id": "dm-topre-gx1-45g",
+   "category": "dome",
+   "disposition": "newer_measured_identity_unverified",
+   "note": "measured under fc-3.4; external catalog provenance not yet established",
+   "part_name": "dm-topre-gx1-45g",
+   "r8_id": null,
+   "tier": null
+  },
+  "newer::dm-topre-hhkb-pro2-45g": {
+   "brand": null,
+   "catalog_id": "dm-topre-hhkb-pro2-45g",
+   "category": "dome",
+   "disposition": "newer_measured_identity_unverified",
+   "note": "measured under fc-3.4; external catalog provenance not yet established",
+   "part_name": "dm-topre-hhkb-pro2-45g",
+   "r8_id": null,
+   "tier": null
+  },
+  "newer::dm-topre-r1-30g": {
+   "brand": null,
+   "catalog_id": "dm-topre-r1-30g",
+   "category": "dome",
+   "disposition": "newer_measured_identity_unverified",
+   "note": "measured under fc-3.4; external catalog provenance not yet established",
+   "part_name": "dm-topre-r1-30g",
+   "r8_id": null,
+   "tier": null
+  },
+  "newer::dm-topre-r1-45g": {
+   "brand": null,
+   "catalog_id": "dm-topre-r1-45g",
+   "category": "dome",
+   "disposition": "newer_measured_identity_unverified",
+   "note": "measured under fc-3.4; external catalog provenance not yet established",
+   "part_name": "dm-topre-r1-45g",
+   "r8_id": null,
+   "tier": null
+  },
+  "newer::dm-topre-r1-55g": {
+   "brand": null,
+   "catalog_id": "dm-topre-r1-55g",
+   "category": "dome",
+   "disposition": "newer_measured_identity_unverified",
+   "note": "measured under fc-3.4; external catalog provenance not yet established",
+   "part_name": "dm-topre-r1-55g",
+   "r8_id": null,
+   "tier": null
+  },
+  "newer::dm-topre-r2-30g": {
+   "brand": null,
+   "catalog_id": "dm-topre-r2-30g",
+   "category": "dome",
+   "disposition": "newer_measured_identity_unverified",
+   "note": "measured under fc-3.4; external catalog provenance not yet established",
+   "part_name": "dm-topre-r2-30g",
+   "r8_id": null,
+   "tier": null
+  },
+  "newer::dm-topre-r2-45g": {
+   "brand": null,
+   "catalog_id": "dm-topre-r2-45g",
+   "category": "dome",
+   "disposition": "newer_measured_identity_unverified",
+   "note": "measured under fc-3.4; external catalog provenance not yet established",
+   "part_name": "dm-topre-r2-45g",
+   "r8_id": null,
+   "tier": null
+  },
+  "newer::dm-topre-r2-55g": {
+   "brand": null,
+   "catalog_id": "dm-topre-r2-55g",
+   "category": "dome",
+   "disposition": "newer_measured_identity_unverified",
+   "note": "measured under fc-3.4; external catalog provenance not yet established",
+   "part_name": "dm-topre-r2-55g",
+   "r8_id": null,
+   "tier": null
+  },
+  "newer::dm-topre-rgb-45g": {
+   "brand": null,
+   "catalog_id": "dm-topre-rgb-45g",
+   "category": "dome",
+   "disposition": "newer_measured_identity_unverified",
+   "note": "measured under fc-3.4; external catalog provenance not yet established",
+   "part_name": "dm-topre-rgb-45g",
+   "r8_id": null,
+   "tier": null
+  },
+  "pcb::generic": {
+   "brand": "",
+   "catalog_id": "pcb::generic",
+   "category": "pcb",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "EC PCB",
+   "r8_id": "pcb::generic",
+   "tier": "builder"
+  },
+  "plate::topre": {
+   "brand": "Topre",
+   "catalog_id": "plate::topre",
+   "category": "plate",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "Topre Plate",
+   "r8_id": "plate::topre",
+   "tier": "builder"
+  },
+  "plate_gasket::des_poron_0_5": {
+   "brand": "Deskeys",
+   "catalog_id": "plate_gasket::des_poron_0_5",
+   "category": "plate_gasket",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "Deskeys 0.5 mm Poron Plate Gasket",
+   "r8_id": "plate_gasket::des_poron_0_5",
+   "tier": "mod"
+  },
+  "plate_gasket::dynacaps_silicone_0_4": {
+   "brand": "DynaCaps",
+   "catalog_id": "plate_gasket::dynacaps_silicone_0_4",
+   "category": "plate_gasket",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "DynaCaps 0.4 mm Silicone Plate Gasket",
+   "r8_id": "plate_gasket::dynacaps_silicone_0_4",
+   "tier": "mod"
+  },
+  "plate_gasket::unreal_poron_0_3": {
+   "brand": "Unreal Keyboards",
+   "catalog_id": "plate_gasket::unreal_poron_0_3",
+   "category": "plate_gasket",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "Unreal Keyboards 0.3 mm Poron Plate Gasket",
+   "r8_id": "plate_gasket::unreal_poron_0_3",
+   "tier": "mod"
+  },
+  "plate_gasket::unreal_poron_0_3_hhkb": {
+   "brand": "Unreal Keyboards",
+   "catalog_id": "plate_gasket::unreal_poron_0_3_hhkb",
+   "category": "plate_gasket",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "Unreal Keyboards 0.3 mm Poron Plate Gasket (HHKB)",
+   "r8_id": "plate_gasket::unreal_poron_0_3_hhkb",
+   "tier": "mod"
+  },
+  "shell::hhkb": {
+   "brand": null,
+   "catalog_id": "shell::hhkb",
+   "category": "shell",
+   "disposition": "template_shell_abstraction",
+   "note": "represents the r8 keyboard-scoped MetaPulse edges as shell pair edges; the shell is a Topre-molded housing array",
+   "part_name": "HHKB Shell",
+   "r8_id": null,
+   "tier": null
+  },
+  "shell::rc1": {
+   "brand": null,
+   "catalog_id": "shell::rc1",
+   "category": "shell",
+   "disposition": "template_shell_abstraction",
+   "note": "represents the r8 keyboard-scoped MetaPulse edges as shell pair edges; the shell is a Topre-molded housing array",
+   "part_name": "Realforce RC1 Shell",
+   "r8_id": null,
+   "tier": null
+  },
+  "silencing_ring::des_poron_0_2": {
+   "brand": "Deskeys",
+   "catalog_id": "silencing_ring::des_poron_0_2",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Deskeys 0.2 mm Poron Silencing Ring",
+   "r8_id": "silencing_ring::des_poron_0_2",
+   "tier": "builder"
+  },
+  "silencing_ring::des_poron_0_3": {
+   "brand": "Deskeys",
+   "catalog_id": "silencing_ring::des_poron_0_3",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Deskeys 0.3 mm Poron Silencing Ring",
+   "r8_id": "silencing_ring::des_poron_0_3",
+   "tier": "builder"
+  },
+  "silencing_ring::des_poron_0_4": {
+   "brand": "Deskeys",
+   "catalog_id": "silencing_ring::des_poron_0_4",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Deskeys 0.4 mm Poron Silencing Ring",
+   "r8_id": "silencing_ring::des_poron_0_4",
+   "tier": "builder"
+  },
+  "silencing_ring::des_poron_0_5": {
+   "brand": "Deskeys",
+   "catalog_id": "silencing_ring::des_poron_0_5",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Deskeys 0.5 mm Poron Silencing Ring",
+   "r8_id": "silencing_ring::des_poron_0_5",
+   "tier": "builder"
+  },
+  "silencing_ring::des_poron_0_6": {
+   "brand": "Deskeys",
+   "catalog_id": "silencing_ring::des_poron_0_6",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Deskeys 0.6 mm Poron Silencing Ring",
+   "r8_id": "silencing_ring::des_poron_0_6",
+   "tier": "builder"
+  },
+  "silencing_ring::des_poron_0_7": {
+   "brand": "Deskeys",
+   "catalog_id": "silencing_ring::des_poron_0_7",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Deskeys 0.7 mm Poron Silencing Ring",
+   "r8_id": "silencing_ring::des_poron_0_7",
+   "tier": "builder"
+  },
+  "silencing_ring::des_poron_1_0": {
+   "brand": "Deskeys",
+   "catalog_id": "silencing_ring::des_poron_1_0",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Deskeys 1.0 mm Poron Silencing Ring",
+   "r8_id": "silencing_ring::des_poron_1_0",
+   "tier": "builder"
+  },
+  "silencing_ring::des_silicone_0_3": {
+   "brand": "Deskeys",
+   "catalog_id": "silencing_ring::des_silicone_0_3",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Deskeys 0.3 mm Silicone Silencing Ring",
+   "r8_id": "silencing_ring::des_silicone_0_3",
+   "tier": "builder"
+  },
+  "silencing_ring::des_silicone_0_5": {
+   "brand": "Deskeys",
+   "catalog_id": "silencing_ring::des_silicone_0_5",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Deskeys 0.5 mm Silicone Silencing Ring",
+   "r8_id": "silencing_ring::des_silicone_0_5",
+   "tier": "builder"
+  },
+  "silencing_ring::dynacaps_poron_0_3": {
+   "brand": "DynaCaps",
+   "catalog_id": "silencing_ring::dynacaps_poron_0_3",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "DynaCaps 0.3 mm Poron Silencing Ring",
+   "r8_id": "silencing_ring::dynacaps_poron_0_3",
+   "tier": "builder"
+  },
+  "silencing_ring::dynacaps_poron_0_5": {
+   "brand": "DynaCaps",
+   "catalog_id": "silencing_ring::dynacaps_poron_0_5",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "DynaCaps 0.5 mm Poron Silencing Ring",
+   "r8_id": "silencing_ring::dynacaps_poron_0_5",
+   "tier": "builder"
+  },
+  "silencing_ring::dynacaps_silicone_0_3": {
+   "brand": "DynaCaps",
+   "catalog_id": "silencing_ring::dynacaps_silicone_0_3",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "DynaCaps 0.3 mm Silicone Silencing Ring",
+   "r8_id": "silencing_ring::dynacaps_silicone_0_3",
+   "tier": "builder"
+  },
+  "silencing_ring::dynacaps_silicone_0_5": {
+   "brand": "DynaCaps",
+   "catalog_id": "silencing_ring::dynacaps_silicone_0_5",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "DynaCaps 0.5 mm Silicone Silencing Ring",
+   "r8_id": "silencing_ring::dynacaps_silicone_0_5",
+   "tier": "builder"
+  },
+  "silencing_ring::klc_poron_0_3": {
+   "brand": "KLC",
+   "catalog_id": "silencing_ring::klc_poron_0_3",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "KLC 0.3 mm Poron Silencing Ring",
+   "r8_id": "silencing_ring::klc_poron_0_3",
+   "tier": "builder"
+  },
+  "silencing_ring::klc_silicone_0_3": {
+   "brand": "KLC",
+   "catalog_id": "silencing_ring::klc_silicone_0_3",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "KLC 0.3 mm Silicone Silencing Ring",
+   "r8_id": "silencing_ring::klc_silicone_0_3",
+   "tier": "builder"
+  },
+  "silencing_ring::metapulse_poron_0_5": {
+   "brand": "MetaPulse",
+   "catalog_id": "silencing_ring::metapulse_poron_0_5",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "MetaPulse 0.5 mm Poron Silencing Ring",
+   "r8_id": "silencing_ring::metapulse_poron_0_5",
+   "tier": "builder"
+  },
+  "silencing_ring::topre_poron_0_5": {
+   "brand": "Topre",
+   "catalog_id": "silencing_ring::topre_poron_0_5",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Topre 0.5 mm Poron Silencing Ring",
+   "r8_id": "silencing_ring::topre_poron_0_5",
+   "tier": "builder"
+  },
+  "silencing_ring::unreal_keyboards_poron_0_3": {
+   "brand": "Unreal Keyboards",
+   "catalog_id": "silencing_ring::unreal_keyboards_poron_0_3",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Unreal Keyboards 0.3 mm Poron Silencing Ring",
+   "r8_id": "silencing_ring::unreal_keyboards_poron_0_3",
+   "tier": "builder"
+  },
+  "silencing_ring::unreal_keyboards_poron_0_5": {
+   "brand": "Unreal Keyboards",
+   "catalog_id": "silencing_ring::unreal_keyboards_poron_0_5",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Unreal Keyboards 0.5 mm Poron Silencing Ring",
+   "r8_id": "silencing_ring::unreal_keyboards_poron_0_5",
+   "tier": "builder"
+  },
+  "silencing_ring::unreal_keyboards_poron_0_7": {
+   "brand": "Unreal Keyboards",
+   "catalog_id": "silencing_ring::unreal_keyboards_poron_0_7",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Unreal Keyboards 0.7 mm Poron Silencing Ring",
+   "r8_id": "silencing_ring::unreal_keyboards_poron_0_7",
+   "tier": "builder"
+  },
+  "silencing_ring::unreal_keyboards_poron_1_0": {
+   "brand": "Unreal Keyboards",
+   "catalog_id": "silencing_ring::unreal_keyboards_poron_1_0",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Unreal Keyboards 1.0 mm Poron Silencing Ring",
+   "r8_id": "silencing_ring::unreal_keyboards_poron_1_0",
+   "tier": "builder"
+  },
+  "silencing_ring::unreal_keyboards_silicone_0_3": {
+   "brand": "Unreal Keyboards",
+   "catalog_id": "silencing_ring::unreal_keyboards_silicone_0_3",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Unreal Keyboards 0.3 mm Silicone Silencing Ring",
+   "r8_id": "silencing_ring::unreal_keyboards_silicone_0_3",
+   "tier": "builder"
+  },
+  "silencing_ring::unreal_keyboards_silicone_0_5": {
+   "brand": "Unreal Keyboards",
+   "catalog_id": "silencing_ring::unreal_keyboards_silicone_0_5",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Unreal Keyboards 0.5 mm Silicone Silencing Ring",
+   "r8_id": "silencing_ring::unreal_keyboards_silicone_0_5",
+   "tier": "builder"
+  },
+  "slider::deskeys": {
+   "brand": "Deskeys",
+   "catalog_id": "slider::deskeys",
+   "category": "slider",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Deskeys Slider",
+   "r8_id": "slider::deskeys",
+   "tier": "builder"
+  },
+  "slider::dynacaps": {
+   "brand": "DynaCaps",
+   "catalog_id": "slider::dynacaps",
+   "category": "slider",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "DynaCaps Slider",
+   "r8_id": "slider::dynacaps",
+   "tier": "builder"
+  },
+  "slider::hhkb_type_s": {
+   "brand": "PFU",
+   "catalog_id": "slider::hhkb_type_s",
+   "category": "slider",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Topre Silent (Type-S) Slider",
+   "r8_id": "slider::hhkb_type_s",
+   "tier": "builder"
+  },
+  "slider::klc_playground": {
+   "brand": "KLC",
+   "catalog_id": "slider::klc_playground",
+   "category": "slider",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "KLC Slider",
+   "r8_id": "slider::klc_playground",
+   "tier": "builder"
+  },
+  "slider::metapulse": {
+   "brand": "MetaPulse",
+   "catalog_id": "slider::metapulse",
+   "category": "slider",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "MetaPulse Slider",
+   "r8_id": "slider::metapulse",
+   "tier": "builder"
+  },
+  "slider::novatouch": {
+   "brand": "Cooler Master",
+   "catalog_id": "slider::novatouch",
+   "category": "slider",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "NovaTouch Slider",
+   "r8_id": "slider::novatouch",
+   "tier": "builder"
+  },
+  "slider::topre": {
+   "brand": "Topre",
+   "catalog_id": "slider::topre",
+   "category": "slider",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Topre Slider",
+   "r8_id": "slider::topre",
+   "tier": "builder"
+  },
+  "slider::topre_silenced_purple": {
+   "brand": "Realforce",
+   "catalog_id": "slider::topre_silenced_purple",
+   "category": "slider",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Topre Silent (Realforce) Slider",
+   "r8_id": "slider::topre_silenced_purple",
+   "tier": "builder"
+  },
+  "slider_gasket::des_0_5": {
+   "brand": "Deskeys",
+   "catalog_id": "slider_gasket::des_0_5",
+   "category": "slider_gasket",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "Deskeys 0.5 mm Slider Gasket",
+   "r8_id": "slider_gasket::des_0_5",
+   "tier": "mod"
+  },
+  "slider_gasket::des_0_7": {
+   "brand": "Deskeys",
+   "catalog_id": "slider_gasket::des_0_7",
+   "category": "slider_gasket",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "Deskeys 0.7 mm Slider Gasket",
+   "r8_id": "slider_gasket::des_0_7",
+   "tier": "mod"
+  },
+  "spacebar_spring::des": {
+   "brand": "Deskeys",
+   "catalog_id": "spacebar_spring::des",
+   "category": "spacebar_spring",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "Deskeys Housing Spring",
+   "r8_id": "spacebar_spring::des",
+   "tier": "mod"
+  },
+  "spacebar_stabilizer::deskeys": {
+   "brand": "Deskeys",
+   "catalog_id": "spacebar_stabilizer::deskeys",
+   "category": "spacebar_stabilizer",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Deskeys Spacebar Stabilizer",
+   "r8_id": "spacebar_stabilizer::deskeys",
+   "tier": "builder"
+  },
+  "spacebar_stabilizer::dynacaps": {
+   "brand": "DynaCaps",
+   "catalog_id": "spacebar_stabilizer::dynacaps",
+   "category": "spacebar_stabilizer",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "DynaCaps Spacebar Stabilizer",
+   "r8_id": "spacebar_stabilizer::dynacaps",
+   "tier": "builder"
+  },
+  "spacebar_stabilizer::klc_playground": {
+   "brand": "KLC",
+   "catalog_id": "spacebar_stabilizer::klc_playground",
+   "category": "spacebar_stabilizer",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "KLC Spacebar Stabilizer",
+   "r8_id": "spacebar_stabilizer::klc_playground",
+   "tier": "builder"
+  },
+  "spacebar_stabilizer::metapulse": {
+   "brand": "MetaPulse",
+   "catalog_id": "spacebar_stabilizer::metapulse",
+   "category": "spacebar_stabilizer",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "MetaPulse Spacebar Stabilizer",
+   "r8_id": "spacebar_stabilizer::metapulse",
+   "tier": "builder"
+  },
+  "spacebar_stabilizer::topre": {
+   "brand": "Topre",
+   "catalog_id": "spacebar_stabilizer::topre",
+   "category": "spacebar_stabilizer",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Topre Spacebar Stabilizer",
+   "r8_id": "spacebar_stabilizer::topre",
+   "tier": "builder"
+  },
+  "stabilizer_housing::deskeys": {
+   "brand": "Deskeys",
+   "catalog_id": "stabilizer_housing_2u::deskeys",
+   "category": "stabilizer_housing",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Deskeys Stabilizer Housing",
+   "r8_id": "stabilizer_housing::deskeys",
+   "tier": "builder"
+  },
+  "stabilizer_housing::dynacaps": {
+   "brand": "DynaCaps",
+   "catalog_id": "stabilizer_housing_2u::dynacaps",
+   "category": "stabilizer_housing",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "DynaCaps Stabilizer Housing",
+   "r8_id": "stabilizer_housing::dynacaps",
+   "tier": "builder"
+  },
+  "stabilizer_housing::klc_playground": {
+   "brand": "KLC",
+   "catalog_id": "stabilizer_housing_2u::klc_playground",
+   "category": "stabilizer_housing",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "KLC Stabilizer Housing",
+   "r8_id": "stabilizer_housing::klc_playground",
+   "tier": "builder"
+  },
+  "stabilizer_housing::metapulse": {
+   "brand": "MetaPulse",
+   "catalog_id": "stabilizer_housing_2u::metapulse",
+   "category": "stabilizer_housing",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "MetaPulse Stabilizer Housing",
+   "r8_id": "stabilizer_housing::metapulse",
+   "tier": "builder"
+  },
+  "stabilizer_housing::novatouch": {
+   "brand": "Cooler Master",
+   "catalog_id": "stabilizer_housing_2u::novatouch",
+   "category": "stabilizer_housing",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "NovaTouch Stabilizer Housing",
+   "r8_id": "stabilizer_housing::novatouch",
+   "tier": "builder"
+  },
+  "stabilizer_housing::topre_silenced": {
+   "brand": "Realforce",
+   "catalog_id": "stabilizer_housing_2u::topre_silenced",
+   "category": "stabilizer_housing",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Topre Silent (Realforce) Stabilizer Housing",
+   "r8_id": "stabilizer_housing::topre_silenced",
+   "tier": "builder"
+  },
+  "stabilizer_housing::topre_standard": {
+   "brand": "Topre",
+   "catalog_id": "stabilizer_housing_2u::topre_standard",
+   "category": "stabilizer_housing",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Topre Stabilizer Housing",
+   "r8_id": "stabilizer_housing::topre_standard",
+   "tier": "builder"
+  },
+  "stabilizer_slider::deskeys": {
+   "brand": "Deskeys",
+   "catalog_id": "stabilizer_slider_2u::deskeys",
+   "category": "stabilizer_slider",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Deskeys Stabilizer Slider",
+   "r8_id": "stabilizer_slider::deskeys",
+   "tier": "builder"
+  },
+  "stabilizer_slider::dynacaps": {
+   "brand": "DynaCaps",
+   "catalog_id": "stabilizer_slider_2u::dynacaps",
+   "category": "stabilizer_slider",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "DynaCaps Stabilizer Slider",
+   "r8_id": "stabilizer_slider::dynacaps",
+   "tier": "builder"
+  },
+  "stabilizer_slider::hhkb_type_s": {
+   "brand": "PFU",
+   "catalog_id": "stabilizer_slider_2u::hhkb_type_s",
+   "category": "stabilizer_slider",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Topre Silent (Type-S) Stabilizer Slider",
+   "r8_id": "stabilizer_slider::hhkb_type_s",
+   "tier": "builder"
+  },
+  "stabilizer_slider::klc_playground": {
+   "brand": "KLC",
+   "catalog_id": "stabilizer_slider_2u::klc_playground",
+   "category": "stabilizer_slider",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "KLC Stabilizer Slider",
+   "r8_id": "stabilizer_slider::klc_playground",
+   "tier": "builder"
+  },
+  "stabilizer_slider::metapulse": {
+   "brand": "MetaPulse",
+   "catalog_id": "stabilizer_slider_2u::metapulse",
+   "category": "stabilizer_slider",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "MetaPulse Stabilizer Slider",
+   "r8_id": "stabilizer_slider::metapulse",
+   "tier": "builder"
+  },
+  "stabilizer_slider::novatouch": {
+   "brand": "Cooler Master",
+   "catalog_id": "stabilizer_slider_2u::novatouch",
+   "category": "stabilizer_slider",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "NovaTouch Stabilizer Slider",
+   "r8_id": "stabilizer_slider::novatouch",
+   "tier": "builder"
+  },
+  "stabilizer_slider::realforce_rc1_silenced_purple": {
+   "brand": "Realforce",
+   "catalog_id": "stabilizer_slider_2u::realforce_rc1_silenced_purple",
+   "category": "stabilizer_slider",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Realforce RC1 Stabilizer Slider",
+   "r8_id": "stabilizer_slider::realforce_rc1_silenced_purple",
+   "tier": "builder"
+  },
+  "stabilizer_slider::topre": {
+   "brand": "Topre",
+   "catalog_id": "stabilizer_slider_2u::topre",
+   "category": "stabilizer_slider",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Topre Stabilizer Slider",
+   "r8_id": "stabilizer_slider::topre",
+   "tier": "builder"
+  },
+  "stabilizer_slider::topre_silenced": {
+   "brand": "Realforce",
+   "catalog_id": "stabilizer_slider_2u::topre_silenced",
+   "category": "stabilizer_slider",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Topre Silent (Realforce) Stabilizer Slider",
+   "r8_id": "stabilizer_slider::topre_silenced",
+   "tier": "builder"
+  },
+  "travel_spacer::des_poron_0_7": {
+   "brand": "Deskeys",
+   "catalog_id": "travel_spacer::des_poron_0_7",
+   "category": "travel_spacer",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "Deskeys 0.7 mm Poron Dome Gasket",
+   "r8_id": "travel_spacer::des_poron_0_7",
+   "tier": "mod"
+  },
+  "travel_spacer::des_silicone_0_3": {
+   "brand": "Deskeys",
+   "catalog_id": "travel_spacer::des_silicone_0_3",
+   "category": "travel_spacer",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "Deskeys 0.3 mm Silicone Dome Gasket",
+   "r8_id": "travel_spacer::des_silicone_0_3",
+   "tier": "mod"
+  },
+  "travel_spacer::des_silicone_0_5": {
+   "brand": "Deskeys",
+   "catalog_id": "travel_spacer::des_silicone_0_5",
+   "category": "travel_spacer",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "Deskeys 0.5 mm Silicone Dome Gasket",
+   "r8_id": "travel_spacer::des_silicone_0_5",
+   "tier": "mod"
+  },
+  "travel_spacer::des_silicone_0_7": {
+   "brand": "Deskeys",
+   "catalog_id": "travel_spacer::des_silicone_0_7",
+   "category": "travel_spacer",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "Deskeys 0.7 mm Silicone Dome Gasket",
+   "r8_id": "travel_spacer::des_silicone_0_7",
+   "tier": "mod"
+  },
+  "travel_spacer::unreal_silicone_0_5": {
+   "brand": "Unreal Keyboards",
+   "catalog_id": "travel_spacer::unreal_silicone_0_5",
+   "category": "travel_spacer",
+   "disposition": "integrated_round2",
+   "note": "added to the catalog in Round 2; previously omitted",
+   "part_name": "Unreal Keyboards 0.5 mm Silicone Travel Spacer",
+   "r8_id": "travel_spacer::unreal_silicone_0_5",
+   "tier": "mod"
+  }
+ },
+ "schema": "r8-crosswalk-v1",
+ "source": {
+  "records": {
+   "keyboards": 21,
+   "parts": 152
+  },
+  "reference": "03_product_data_r8_reference",
+  "vendored": "config/r8/"
+ }
+}

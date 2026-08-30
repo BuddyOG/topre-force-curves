@@ -1,0 +1,218 @@
+{
+ "kbd::hhkb": {
+  "display_name": "HHKB",
+  "brand": "HHKB",
+  "kind": "oem",
+  "notes": "Non-silent. Housings + Stabilizer Housing link as HHKB. Comes with Topre 45g domes.",
+  "default_parts": {
+   "slider": "slider::topre",
+   "stabilizer_slider": "stabilizer_slider::topre",
+   "dome": "dome::topre_45g",
+   "housing": "housing::topre",
+   "conical_spring": "conical_spring::topre",
+   "silencing_ring": "silencing_ring::none"
+  }
+ },
+ "kbd::hhkb_type_s": {
+  "display_name": "HHKB Type-S",
+  "brand": "HHKB",
+  "kind": "oem",
+  "notes": "",
+  "default_parts": {
+   "slider": "slider::hhkb_type_s",
+   "housing": "housing::topre",
+   "conical_spring": "conical_spring::topre",
+   "silencing_ring": "silencing_ring::topre_poron_0_5"
+  }
+ },
+ "kbd::realforce_rc1": {
+  "display_name": "Realforce RC1",
+  "brand": "Realforce",
+  "kind": "oem",
+  "notes": "Housings + Stabilizer Housing link as RC1. Spacebar stabilizer is part of the keyboard. Comes with Topre 45g or 30g domes.",
+  "default_parts": {
+   "dome": "dome::topre_30g",
+   "slider": "slider::topre_silenced_purple"
+  }
+ },
+ "kbd::novatouch": {
+  "display_name": "Novatouch",
+  "brand": "Novatouch",
+  "kind": "oem",
+  "notes": ""
+ },
+ "kbd::agar_ec_kit": {
+  "display_name": "Agar EC Kit",
+  "brand": "",
+  "kind": "oem",
+  "notes": ""
+ },
+ "kbd::hhkb_pro_1": {
+  "display_name": "HHKB Professional (Pro 1)",
+  "brand": "HHKB",
+  "kind": "oem",
+  "notes": "No Type-S until 2011 — five years after Pro 2. See note_hhkb_mx.",
+  "default_parts": {
+   "dome": "dome::topre_45g",
+   "slider": "slider::topre",
+   "stabilizer_slider": "stabilizer_slider::topre"
+  }
+ },
+ "kbd::hhkb_pro_2": {
+  "display_name": "HHKB Pro 2",
+  "brand": "HHKB",
+  "kind": "oem",
+  "notes": "See note_hhkb_mx.",
+  "default_parts": {
+   "dome": "dome::topre_45g",
+   "slider": "slider::topre",
+   "stabilizer_slider": "stabilizer_slider::topre"
+  }
+ },
+ "kbd::hhkb_pro_2_type_s": {
+  "display_name": "HHKB Pro 2 Type-S",
+  "brand": "HHKB",
+  "kind": "oem",
+  "notes": "2011. See note_hhkb_mx.",
+  "default_parts": {
+   "dome": "dome::topre_45g",
+   "slider": "slider::hhkb_type_s",
+   "stabilizer_slider": "stabilizer_slider::hhkb_type_s"
+  }
+ },
+ "kbd::hhkb_pro_2_jp": {
+  "display_name": "HHKB Pro 2 JP",
+  "brand": "HHKB",
+  "kind": "oem",
+  "notes": "See note_hhkb_mx.",
+  "default_parts": {
+   "dome": "dome::topre_45g",
+   "slider": "slider::topre",
+   "stabilizer_slider": "stabilizer_slider::topre"
+  }
+ },
+ "kbd::hhkb_pro_2_jp_type_s": {
+  "display_name": "HHKB Pro 2 JP Type-S",
+  "brand": "HHKB",
+  "kind": "oem",
+  "notes": "See note_hhkb_mx.",
+  "default_parts": {
+   "dome": "dome::topre_45g",
+   "slider": "slider::hhkb_type_s",
+   "stabilizer_slider": "stabilizer_slider::hhkb_type_s"
+  }
+ },
+ "kbd::hhkb_bt": {
+  "display_name": "HHKB BT",
+  "brand": "HHKB",
+  "kind": "oem",
+  "notes": "No Type-S variant. See note_hhkb_mx.",
+  "default_parts": {
+   "dome": "dome::topre_45g",
+   "slider": "slider::topre",
+   "stabilizer_slider": "stabilizer_slider::topre"
+  }
+ },
+ "kbd::hhkb_hybrid": {
+  "display_name": "HHKB Hybrid",
+  "brand": "HHKB",
+  "kind": "oem",
+  "notes": "Often called \"HHKB Pro 3\". See note_hhkb_mx.",
+  "default_parts": {
+   "dome": "dome::topre_45g",
+   "slider": "slider::topre",
+   "stabilizer_slider": "stabilizer_slider::topre"
+  }
+ },
+ "kbd::hhkb_hybrid_type_s": {
+  "display_name": "HHKB Hybrid Type-S",
+  "brand": "HHKB",
+  "kind": "oem",
+  "notes": "Often called \"HHKB Pro 3\". See note_hhkb_mx.",
+  "default_parts": {
+   "dome": "dome::topre_45g",
+   "slider": "slider::hhkb_type_s",
+   "stabilizer_slider": "stabilizer_slider::hhkb_type_s"
+  }
+ },
+ "kbd::hhkb_hybrid_jp": {
+  "display_name": "HHKB Hybrid JP",
+  "brand": "HHKB",
+  "kind": "oem",
+  "notes": "Japanese layout Hybrid (no JP Classic exists). See note_hhkb_mx.",
+  "default_parts": {
+   "dome": "dome::topre_45g",
+   "slider": "slider::topre",
+   "stabilizer_slider": "stabilizer_slider::topre"
+  }
+ },
+ "kbd::hhkb_classic": {
+  "display_name": "HHKB Classic",
+  "brand": "HHKB",
+  "kind": "oem",
+  "notes": "Often called \"HHKB Pro 3\". See note_hhkb_mx.",
+  "default_parts": {
+   "dome": "dome::topre_45g",
+   "slider": "slider::topre",
+   "stabilizer_slider": "stabilizer_slider::topre"
+  }
+ },
+ "kbd::hhkb_classic_type_s": {
+  "display_name": "HHKB Classic Type-S",
+  "brand": "HHKB",
+  "kind": "oem",
+  "notes": "Often called \"HHKB Pro 3\". See note_hhkb_mx.",
+  "default_parts": {
+   "dome": "dome::topre_45g",
+   "slider": "slider::hhkb_type_s",
+   "stabilizer_slider": "stabilizer_slider::hhkb_type_s"
+  }
+ },
+ "kbd::hhkb_30th": {
+  "display_name": "HHKB 30th Anniversary",
+  "brand": "HHKB",
+  "kind": "oem",
+  "notes": "First HHKB with Topre 30g domes; upcoming. See note_hhkb_mx.",
+  "default_parts": {
+   "dome": "dome::topre_30g",
+   "slider": "slider::topre",
+   "stabilizer_slider": "stabilizer_slider::topre"
+  }
+ },
+ "kbd::leopold": {
+  "display_name": "Leopold (family)",
+  "brand": "Leopold",
+  "kind": "oem",
+  "notes": "Placeholder for Leopold Topre models (FC660C, FC980C, ...)."
+ },
+ "kbd::realforce_r2": {
+  "display_name": "Realforce R2",
+  "brand": "Realforce",
+  "kind": "oem",
+  "notes": ""
+ },
+ "kbd::neverest": {
+  "display_name": "NEVEREST",
+  "kind": "aftermarket",
+  "vendor": "Deskeys",
+  "url": "https://deskeys.io",
+  "photo": null,
+  "availability": null,
+  "release_date": null,
+  "part_ids": [],
+  "status": "pending",
+  "notes": "Aftermarket EC keyboard; details pending. An empty part_ids list means parts are sourced separately."
+ },
+ "kbd::ck980c": {
+  "display_name": "CK980C",
+  "kind": "aftermarket",
+  "vendor": "CannonKeys",
+  "url": "https://cannonkeys.com",
+  "photo": null,
+  "availability": null,
+  "release_date": null,
+  "part_ids": [],
+  "status": "pending",
+  "notes": "Aftermarket EC keyboard; details pending. An empty part_ids list means parts are sourced separately."
+ }
+}

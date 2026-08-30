@@ -1,0 +1,594 @@
+{
+ "pairs": [
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "housing::deskeys",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "housing::dynacaps",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "housing::klc_playground",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "housing::topre",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "keycap::mx",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "keycap::topre",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "slider::deskeys",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "slider::dynacaps",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "slider::hhkb_type_s",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "slider::klc_playground",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "slider::novatouch",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "slider::topre",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "slider::topre_silenced_purple",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "spacebar_stabilizer::deskeys",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "spacebar_stabilizer::dynacaps",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "spacebar_stabilizer::klc_playground",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "spacebar_stabilizer::topre",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "stabilizer_housing::deskeys",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "stabilizer_housing::dynacaps",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "stabilizer_housing::klc_playground",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "stabilizer_housing::novatouch",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "stabilizer_housing::topre_silenced",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "stabilizer_housing::topre_standard",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "stabilizer_slider::deskeys",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "stabilizer_slider::dynacaps",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "stabilizer_slider::hhkb_type_s",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "stabilizer_slider::klc_playground",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "stabilizer_slider::novatouch",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "stabilizer_slider::realforce_rc1_silenced_purple",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "stabilizer_slider::topre",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "b": "stabilizer_slider::topre_silenced",
+   "lib50_status": "compatible",
+   "note_id": "note_dynacaps_conical_universal",
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "housing::deskeys",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "housing::dynacaps",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "housing::klc_playground",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "housing::metapulse",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "housing::topre",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "keycap::mx",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "keycap::topre",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "slider::deskeys",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "slider::dynacaps",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "slider::hhkb_type_s",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "slider::klc_playground",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "slider::novatouch",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "slider::topre",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "slider::topre_silenced_purple",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "spacebar_stabilizer::deskeys",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "spacebar_stabilizer::dynacaps",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "spacebar_stabilizer::klc_playground",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "spacebar_stabilizer::metapulse",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "spacebar_stabilizer::topre",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "stabilizer_housing::deskeys",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "stabilizer_housing::dynacaps",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "stabilizer_housing::klc_playground",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "stabilizer_housing::metapulse",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "stabilizer_housing::novatouch",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "stabilizer_housing::topre_silenced",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "stabilizer_housing::topre_standard",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "stabilizer_slider::deskeys",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "stabilizer_slider::dynacaps",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "stabilizer_slider::hhkb_type_s",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "stabilizer_slider::klc_playground",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "stabilizer_slider::metapulse",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "stabilizer_slider::novatouch",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "stabilizer_slider::realforce_rc1_silenced_purple",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "stabilizer_slider::topre",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "b": "stabilizer_slider::topre_silenced",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "housing::deskeys",
+   "b": "keycap::topre",
+   "lib50_status": "compatible_note",
+   "note_id": "note_deskeys_housing",
+   "qualifier": null
+  },
+  {
+   "a": "housing::deskeys",
+   "b": "slider::hhkb_type_s",
+   "lib50_status": "compatible_note",
+   "note_id": "note_deskeys_housing",
+   "qualifier": null
+  },
+  {
+   "a": "housing::deskeys",
+   "b": "slider::topre",
+   "lib50_status": "compatible_note",
+   "note_id": "note_deskeys_housing",
+   "qualifier": null
+  },
+  {
+   "a": "housing::deskeys",
+   "b": "slider::topre_silenced_purple",
+   "lib50_status": "compatible_note",
+   "note_id": "note_deskeys_housing",
+   "qualifier": null
+  },
+  {
+   "a": "housing::dynacaps",
+   "b": "slider::hhkb_type_s",
+   "lib50_status": "compatible_note",
+   "note_id": "note_dynacaps_housing",
+   "qualifier": "scratchy"
+  },
+  {
+   "a": "housing::dynacaps",
+   "b": "slider::topre_silenced_purple",
+   "lib50_status": "compatible_note",
+   "note_id": "note_dynacaps_housing",
+   "qualifier": "scratchy"
+  },
+  {
+   "a": "housing::metapulse",
+   "b": "keycap::topre",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "housing::metapulse",
+   "b": "slider::hhkb_type_s",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "housing::metapulse",
+   "b": "slider::topre",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "housing::metapulse",
+   "b": "slider::topre_silenced_purple",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "keycap::mx",
+   "b": "stabilizer_housing::topre_standard",
+   "lib50_status": "compatible_note",
+   "note_id": "note_mx_keycaps_stab_housing",
+   "qualifier": null
+  },
+  {
+   "a": "shell::hhkb",
+   "b": "spacebar_stabilizer::metapulse",
+   "lib50_status": "incompatible",
+   "note_id": "note_metapulse_stab_incompat",
+   "qualifier": null
+  },
+  {
+   "a": "shell::hhkb",
+   "b": "stabilizer_slider::metapulse",
+   "lib50_status": "incompatible",
+   "note_id": "note_metapulse_stab_incompat",
+   "qualifier": null
+  },
+  {
+   "a": "shell::rc1",
+   "b": "stabilizer_slider::metapulse",
+   "lib50_status": "incompatible",
+   "note_id": "note_metapulse_stab_incompat",
+   "qualifier": null
+  },
+  {
+   "a": "slider::hhkb_type_s",
+   "b": "stabilizer_housing::klc_playground",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "slider::novatouch",
+   "b": "stabilizer_housing::deskeys",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "slider::topre",
+   "b": "stabilizer_housing::klc_playground",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  },
+  {
+   "a": "slider::topre_silenced_purple",
+   "b": "stabilizer_housing::klc_playground",
+   "lib50_status": "pending",
+   "note_id": null,
+   "qualifier": null
+  }
+ ],
+ "purpose": "lib-5.0 authored compatibility refinements over the r8 base: the explicit authoritative overlay consumed by tools/generate_catalog_config.py. Statements here are author-asserted (source-imported), never owner-confirmed.",
+ "schema": "compat-overlay-v1"
+}

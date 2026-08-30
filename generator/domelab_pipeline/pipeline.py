@@ -92,6 +92,21 @@ def generator_source_identity():
             out[fn] = sha256_file(os.path.join(PKGDIR, fn))
     return out
 
+def parts_library_source_identity():
+    """Non-scientific identity over every presentation/build input of the
+    parts library: the generator-owned template plus the whole config tree
+    (catalog mapping, compatibility evidence, presets, crosswalk, vendored
+    r8 source). Kept strictly separate from generator_source_identity so
+    presentation inputs never enter the frozen scientific evidence hash."""
+    out = {}
+    for sub in ("release_reference", "config"):
+        root = os.path.join(PKGDIR, sub)
+        for dp, _, fs in os.walk(root):
+            for fn in sorted(fs):
+                p = os.path.join(dp, fn)
+                out[posix(os.path.relpath(p, PKGDIR))] = sha256_file(p)
+    return out
+
 def cache_manifest(cache_root):
     out = {}
     for dp, _, fs in os.walk(cache_root):

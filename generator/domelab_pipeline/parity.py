@@ -15,7 +15,7 @@ const dom=new JSDOM(fs.readFileSync(viewer,'utf8'),{runScripts:'dangerously',url
 setTimeout(()=>{const w=dom.window;
 const out=files.map(f=>{const t=fs.readFileSync(f,'utf8');
   return w.eval(`(function(t){const r=parseCSV(t);return analyze(r.press.x,r.press.F);})`)(t);});
-console.log(JSON.stringify(out));process.exit(0);},1400);
+process.stdout.write(JSON.stringify(out)+"\n",()=>process.exit(0));},1400);
 """
 def _node_modules():
     """jsdom resolution: env override, packaged js/, then walk up from cwd."""

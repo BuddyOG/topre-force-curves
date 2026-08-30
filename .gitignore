@@ -1,0 +1,4 @@
+.verify-venv/
+__pycache__/
+*.egg-info/
+generator/js/node_modules/

@@ -227,8 +227,8 @@ GENERATED_SURFACES = ["packs/picker.staged.html", "packs/viewer.staged.html",
 
 
 @pytest.mark.parametrize("rel", GENERATED_SURFACES)
-def test_no_prohibited_copy_in_generated_surface(staging_dir, rel):
-    p = os.path.join(staging_dir, rel)
+def test_no_prohibited_copy_in_generated_surface(review_staging, rel):
+    p = os.path.join(review_staging, rel)
     with open(p, encoding="utf-8", newline="") as f:
         hits = prose.scan(f.read())
     assert hits == [], [(h[0], h[1]) for h in hits[:5]]
@@ -249,13 +249,18 @@ def test_every_generated_surface_scanned(staging_dir):
 
 
 def test_replacement_is_not_first_occurrence_only():
-    """The release viewer holds two copies of two prohibited sentences."""
+    """apply_claims replaces EVERY occurrence, and the generated-native
+    fc-3.4 viewer template needs no migration because it is already clean."""
+    old_text, new_text, _ = prose.VIEWER_CLAIMS[1]
+    synthetic = f"lead {old_text} middle {old_text} tail"
+    out, log = prose.apply_claims(synthetic, [(old_text, new_text, 2)], "unit")
+    assert out.count(old_text) == 0
+    assert out.count(new_text) == 2
+    assert log == [(old_text, 2)]
     from domelab_pipeline.pipeline import REF
     src = _read_text(os.path.join(REF, "index.release.html"))
-    assert src.count("the total work your finger does across the keystroke") == 2
-    out, log = prose.apply_claims(src, prose.VIEWER_CLAIMS, "viewer")
-    assert out.count("the total work your finger does across the keystroke") == 0
-    assert prose.scan(out) == []
+    assert "const VIEWER_BUILD = " in src        # generated-native template
+    assert prose.scan(src) == []                 # already clean, no migration
 
 
 def test_claim_count_drift_fails_generation():
@@ -263,25 +268,26 @@ def test_claim_count_drift_fails_generation():
         prose.apply_claims("nothing here", prose.VIEWER_CLAIMS, "viewer")
 
 
-def test_required_language_present(staging_dir):
-    with open(os.path.join(staging_dir, "packs", "viewer.staged.html"),
+def test_required_language_present(review_staging):
+    with open(os.path.join(review_staging, "packs", "viewer.staged.html"),
               encoding="utf-8", newline="") as f:
         v = f.read()
-    assert "relative peak-to-valley force-drop ratio" in v
-    assert "one-way mechanical work integral to detected force-wall onset" in v
-    assert "one-way mechanical work integral to collapse" in v
-    assert "mechanical descriptors" in v
+    assert "one-way mechanical work integral" in v
+    assert "mechanical descriptors of the measured curve" in v
+    assert "Detected force-wall onset" in v
+    assert "do not establish independent causal contributions" in v
 
 
-def test_snap_described_as_a_ratio_not_a_standard(staging_dir):
-    with open(os.path.join(staging_dir, "packs", "viewer.staged.html"),
+def test_snap_described_as_a_ratio_not_a_standard(review_staging):
+    with open(os.path.join(review_staging, "packs", "viewer.staged.html"),
               encoding="utf-8", newline="") as f:
         v = f.read()
-    assert "no correspondence with perceived" in v or "not a validated perceptual score" in v
+    assert ("not predicted 1-10 ratings or universal perceptual units" in v
+            or "do not establish independent causal contributions" in v)
 
 
-def test_prose_scan_report_generated(staging_dir):
-    with open(os.path.join(staging_dir, "packs", "prose_scan_report.json"), encoding="utf-8") as f:
+def test_prose_scan_report_generated(review_staging):
+    with open(os.path.join(review_staging, "packs", "prose_scan_report.json"), encoding="utf-8") as f:
         rep = json.load(f)
     assert rep["result"].startswith("clean")
     assert rep["scanned_surfaces"]
@@ -301,29 +307,22 @@ def _node_env():
     return env
 
 
-def test_picker_runtime_battery(staging_dir):
+def test_picker_runtime_battery(review_staging):
     out = subprocess.run(
         ["node", os.path.join(HERE, "picker_runtime_battery.js"),
-         os.path.join(staging_dir, "packs", "picker.staged.html")],
+         os.path.join(review_staging, "packs", "picker.staged.html"),
+         "Topre_R2_45g", "bt_0078",
+         os.path.join(review_staging, "bench_tests.staged.json"),
+         "lib-6.0-review.1", "false"],
         capture_output=True, text=True, encoding="utf-8", errors="replace", env=_node_env())
     payload = json.loads(out.stdout[out.stdout.index("{"):])
     failed = [c for c in payload["checks"] if not c["pass"]]
     assert out.returncode == 0 and not failed, failed
     assert payload["total"] >= 14
-    reported = next(
-        check["detail"]["runs"] for check in payload["checks"]
-        if check["name"] == "Topre 45g exposes the generated TESTS run count"
-    )
-    with open(os.path.join(
-        staging_dir, "bench_tests.staged.json"
-    ), encoding="utf-8") as stream:
-        record = next(
-            row for row in json.load(stream) if row["set"] == "Topre_45g"
-        )
-    assert reported == record["runs_used"]
 
 
-def test_viewer_curve_battery(cache, staging_dir, tmp_path):
+def test_viewer_curve_battery(cache, review_staging, tmp_path):
+    staging_dir = review_staging
     with open(os.path.join(staging_dir, "bench_tests.staged.json"), encoding="utf-8") as f:
         recs = json.load(f)
     plan = {}
@@ -344,9 +343,9 @@ def test_viewer_curve_battery(cache, staging_dir, tmp_path):
 
 
 # ------------------------------------------------ shared curve authority
-def test_python_and_js_share_one_averaging_definition(staging_dir):
+def test_python_and_js_share_one_averaging_definition(review_staging):
     from domelab_pipeline.curves import js_average_source
-    with open(os.path.join(staging_dir, "packs", "viewer.staged.html"),
+    with open(os.path.join(review_staging, "packs", "viewer.staged.html"),
               encoding="utf-8", newline="") as f:
         v = f.read()
     assert js_average_source("majority") in v

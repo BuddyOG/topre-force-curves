@@ -11,11 +11,17 @@ generated together from a frozen commit.
 ## Deployment files versus evidence files
 
 The fc-3.4 repository update preserves all 184 raw CSV files byte for byte at
-their existing relative paths. It also preserves `dome-lab.html`,
-`dome-lab-parts.html`, and `ec-switch-explorer.html` for URL continuity, without
-claiming that those legacy pages were revalidated as part of fc-3.4. Replacing
-the root `index.html` and `README.md` with the fc-3.4 viewer and overview is a
+their existing relative paths. It also preserves three legacy HTML endpoints
+for URL continuity, without claiming that those pages were revalidated as part
+of fc-3.4. Replacing the root `index.html` and `README.md` with the fc-3.4
+viewer and overview is a
 publication-surface change; it is not a raw-data change.
+
+The current published tree combines Force Curve Bench `fc-3.4` with EC Parts
+Builder `lib-6.0`. The builder replaces `dome-lab-parts.html` through an
+explicit, versioned overlay policy. That overlay protects
+every predecessor endpoint other than the declared builder replacement, all
+raw CSVs, and the canonical evidence tree against incidental change.
 
 The release-root `.gitattributes` must contain exactly `* -text` so Git does
 not normalize line endings or otherwise apply text conversion to inventoried
@@ -26,7 +32,7 @@ not apply Jekyll filtering to underscore-prefixed paths. Preserve both
 infrastructure files in future publication trees unless the hosting contract is
 explicitly changed.
 
-A future packager or deployment must not delete, move, or overwrite raw CSVs as
+Any future packager or deployment must not delete, move, or overwrite raw CSVs as
 an incidental consequence of updating the viewer. Any intended raw-path or
 raw-byte change must follow the evidence-epoch workflow below. Retirement or
 replacement of a legacy HTML endpoint should likewise be an explicit URL-policy

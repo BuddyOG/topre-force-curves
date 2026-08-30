@@ -1,13 +1,19 @@
-# Force Curve Bench
+# Unreal Keyboards EC research tools
 
-> **fc-3.4 publication documentation:** The accepted `v416-fc-3.4v2`
-> interface and the release-integration corrections recorded in the
-> [fc-3.4 notes](documentation/RELEASE_NOTES_fc-3.4.md) are owned by the
-> generator. Byte-identical regeneration, full importer parity, and local
-> browser/runtime acceptance are complete. Publication metadata is frozen at
-> [https://buddyog.github.io/topre-force-curves/](https://buddyog.github.io/topre-force-curves/)
-> and Git tag `fc-3.4`. This preparation task did not create the promotion
-> commit or tag and did not deploy the files.
+> **Current publication:** Force Curve Bench `fc-3.4` and EC Parts Builder
+> `lib-6.0` are published from this repository. The active multi-tool site
+> authority is `SITE_RELEASE_MANIFEST.json` with its `SHA256SUMS` inventory.
+
+The corresponding Shopify pages present the Unreal Keyboards tools separately:
+
+- [Force Curve Bench](https://unrealkeyboards.com/pages/topre-force-curve-library)
+- [EC Parts Builder](https://unrealkeyboards.com/pages/topre-ec-parts-library-builder)
+
+Shopify owns the Dome Lab landing page, header, and navigation. Force Curve
+Bench and EC Parts Builder are embedded independently. The EC Parts Builder
+itself contains no Dome Lab home, tabs for other tools, or cross-tool links.
+
+## Force Curve Bench
 
 Force Curve Bench is an interactive viewer for measured Topre-compatible dome
 and assembly force curves. It lets you inspect one retained test set, compare
@@ -27,28 +33,31 @@ result.
 |---|---|
 | Canonical public viewer | [https://buddyog.github.io/topre-force-curves/](https://buddyog.github.io/topre-force-curves/) |
 | Generator integration and regeneration parity | Complete |
-| Publication action | Not performed by this preparation task |
-| Public release tag | `fc-3.4` |
-| Viewer and package hashes | Recorded by `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` and `SHA256SUMS` in the packaged release |
+| Force Curve release tag | `fc-3.4` |
+| EC Parts Builder release | `lib-6.0`; tag `ec-parts-lib-6.0`; `release_eligible: true` |
+| Current public package authority | `SITE_RELEASE_MANIFEST.json` and its `SHA256SUMS` |
+| Protected predecessor authority | `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json`, bound to tag `fc-3.4` |
 | Open Graph image | `https://buddyog.github.io/topre-force-curves/assets/force-curve-bench-fc-3.4-og.png` |
 | Browser acceptance | Local interactive/runtime/export acceptance recorded; deployment checks are listed separately |
-| Repository-root publication tree | Exact 752-file release inventory: all 184 existing raw CSV paths and three legacy HTML endpoints preserved byte for byte; `index.html` and `README.md` intentionally replaced; root `.gitattributes` and `.nojekyll` added as release infrastructure |
+| Protected fc-3.4 surfaces | `index.html`, all 184 raw CSVs, `canonical-evidence/`, and the remaining continuity endpoints remain byte-identical |
 | Frozen raw-source commit | `6e86ac1955a0c566c7aae521705e51371992ba8a` |
 | Canonical evidence identity | `7aa8588b50856816b7fce90dd6e743c26c6f16926071123291cb054352b6cd4a` |
 | Metric method | `metrics-v4.2` |
 | Intake authority | `intake-qc-v1.4`, implementation-parity bound to `test-imp 1.1.4` |
 | Perception-index model | `perception-rank-v1` |
 
+The site manifest records the active combined publication. The retained
+`FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` remains the immutable predecessor
+record for the protected fc-3.4 viewer and evidence surfaces.
+
 The accepted second GUI update changes presentation and navigation only. The
 frozen scientific payload, run membership, measurements, method, and index
 equations did not change.
 
-The fc-3.4 repository update preserves every existing raw CSV at its current
-relative path. It also preserves `dome-lab.html`, `dome-lab-parts.html`, and
-`ec-switch-explorer.html` byte for byte so their established URLs continue to
-resolve. Those three compatibility pages were not revalidated as part of the
-fc-3.4 science or interface work. The root `index.html` and `README.md` are the
-two prior root files intentionally replaced by this release.
+The lib-6.0 site release replaces only `dome-lab-parts.html` with the generated
+builder. Every other protected predecessor endpoint, every raw CSV, and the
+complete canonical-evidence tree remain byte-identical to fc-3.4. The
+deterministic site builder rejects any undeclared or protected-path change.
 
 The release adds a root `.gitattributes` containing exactly `* -text`. This
 disables Git text and line-ending normalization for every inventoried path so a
@@ -57,6 +66,25 @@ It also adds an empty root `.nojekyll`, which makes GitHub Pages publish the
 tree directly without Jekyll filtering underscore-prefixed paths. Both files
 are publication infrastructure, not raw-source files or part of the canonical
 scientific evidence.
+
+## EC Parts Builder
+
+The published `lib-6.0` build is one row-based assembly tool. Its catalog
+feeds contextual part choosers rather than a separate library page. It exposes
+9 component rows, 13 source-backed keyboard starters, 68 exact dome-specimen
+measurement mappings carrying measured collapse force plus released Weight
+Index and Tactility Index values, and 2 public keycap additions from the larger
+vendored catalog.
+
+The consumer payload contains 338 decision-changing compatibility edges. The
+complete 3,403-edge configuration remains the audit authority outside the
+browser. Public results use exactly **Works**, **Works with conditions**,
+**Does not work**, and **Not verified**. Dome compatibility is outside this
+engine and is labeled **Not evaluated**.
+
+See the [EC Parts Builder guide](documentation/EC_PARTS_LIBRARY.md),
+[lib-6.0 release notes](documentation/RELEASE_NOTES_lib-6.0.md), and
+[Shopify embed contract](documentation/SHOPIFY_EMBED.md).
 
 ![Representative fc-3.4 force-curve comparison](assets/force-curve-bench-fc-3.4-og.png)
 
@@ -236,6 +264,12 @@ tolerances, formal instrument-uncertainty bounds, or perceptual thresholds.
 - [fc-3.4 release notes](documentation/RELEASE_NOTES_fc-3.4.md) — viewer
   changes, release-integration corrections, scientific continuity, and
   publication identity.
+- [EC Parts Builder guide](documentation/EC_PARTS_LIBRARY.md) — standalone
+  workflow, contextual catalog, Evidence-beta labels, and interpretation limits.
+- [lib-6.0 release notes](documentation/RELEASE_NOTES_lib-6.0.md) — local-review
+  chronology, target identity, changes, limitations, and verification contract.
+- [Shopify embed contract](documentation/SHOPIFY_EMBED.md) — exact-origin
+  parent/child messaging and production acceptance checks.
 
 ## Scope and limitations
 
@@ -273,5 +307,6 @@ do not change the project terms above.
 - **Testing, data stewardship, analysis, and Force Curve Bench:** Brian
   “BuddyOG” Gebo / [Unreal Keyboards](https://unrealkeyboards.com).
 
-The EC Parts Library and the longer research paper are separate later projects;
-neither is required to use or audit this Force Curve Bench release.
+The local EC Parts Builder candidate consumes the fc-3.4 canonical evidence
+without changing it. The longer research paper remains a separate later
+project and is not required to use or audit the released Force Curve Bench.

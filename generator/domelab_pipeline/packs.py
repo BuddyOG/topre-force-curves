@@ -153,6 +153,17 @@ VIEWER_BUILD_PROFILES = {
 # historical constant directly. New generation calls select a named profile.
 VIEWER_BUILD_PROFILE = VIEWER_BUILD_PROFILES["review"]
 
+PARTS_LIBRARY_BUILD_PROFILES = {
+    "review": {
+        "library_build": "lib-6.0-review.1",
+        "release_eligible": False,
+    },
+    "release": {
+        "library_build": "lib-6.0",
+        "release_eligible": True,
+    },
+}
+
 
 def viewer_build_profile(name):
     try:
@@ -261,6 +272,12 @@ VT_METRIC = {"cg": ("collapse_force_gf", R1), "cx": ("collapse_travel_mm", R3),
 # boundary.  The picker keeps its compact display pack for now.
 VIEWER_METRIC = {k: (field, RAW) for k, (field, _rounder) in VT_METRIC.items()}
 
+# lib-5.0 library records: the retired full-stroke work, normalized drop
+# rate and drop-travel keys are gone; values stay at source precision and
+# round only at the display boundary (template formatters).
+VT_METRIC_V2 = {k: (field, RAW) for k, (field, _rounder) in VT_METRIC.items()
+                if k not in ("en", "ndr", "dxd")}
+
 
 # ------------------------------------------------------------------ blobs
 def _extract_blob(html, name):
@@ -284,9 +301,24 @@ def _extract_blob(html, name):
     return i, j + 1, json.loads(html[i:j + 1])
 
 
+def _inline_json(payload):
+    """Serialize JSON safely inside a classic script element.
+
+    Escaping '<' and '&' prevents data from terminating the script element or
+    being reinterpreted as HTML. U+2028/U+2029 are escaped for older JS
+    parsers. The decoded JavaScript value is unchanged.
+    """
+    return (json.dumps(payload, sort_keys=True, separators=(",", ":"),
+                       ensure_ascii=False)
+            .replace("&", "\\u0026")
+            .replace("<", "\\u003c")
+            .replace("\u2028", "\\u2028")
+            .replace("\u2029", "\\u2029"))
+
+
 def _replace_blob(html, name, payload):
     i, j, _ = _extract_blob(html, name)
-    return html[:i] + json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + html[j:]
+    return html[:i] + _inline_json(payload) + html[j:]
 
 
 def _replace_function(html, name, new_source):
@@ -504,6 +536,227 @@ PICKER_LOADDOMES = """async function loadDomes(){
   renderAll();
 }"""
 
+# ---------------------------------------------- picker V3 native contract
+# The generator-owned lib-5.x template carries these functions natively; the
+# generated-template branch verifies byte equality instead of rewriting.
+PICKER_CURVEKEY_V3 = """function curveKey(setName){
+  if(!setName)return null;
+  const k=String(setName).replace(/ /g,"_");
+  return (typeof MINI_CURVES!=="undefined"&&Object.prototype.hasOwnProperty.call(MINI_CURVES,k))?k:null;
+}"""
+
+PICKER_TESTSTAT_V3 = """function testStat(p,ix){
+  /* single-record only: metrics are per measured record and are never
+     collapsed across a part\u2019s multiple assembly records */
+  if(!(p.tests&&p.tests.length===1))return null;
+  const b=benchFor(p.tests[0].set); if(!b)return null;
+  const KEYS=["cg","wi","ti","cx","tv","pcw","dg","sd","dr","rp","sn"];
+  return benchNum(b,KEYS[ix]);
+}"""
+
+PICKER_BENCHVALS_V3 = """function benchValsHTML(setName){
+  const b=benchFor(setName); if(!b)return "";
+  const N=k=>benchNum(b,k);
+  const row=(lab,val)=>`<tr><td>${lab}</td><td>${val}</td></tr>`;
+  const fmt=(v,f,u)=>v==null?"not available":`${f(v)} ${u}`;
+  const wall=N("tv");
+  return `<table class="det-props det-test bench-vals">`+
+    row("Weight Index",fmt(N("wi"),v=>v.toFixed(1),"/ 100"))+
+    row("Tactility Index",fmt(N("ti"),v=>v.toFixed(1),"/ 100"))+
+    row("Collapse force",fmt(N("cg"),v=>Math.round(v),"gf"))+
+    row("Ramp",fmt(N("rp"),v=>v.toFixed(1),"gf/mm"))+
+    row("Pre-collapse work",fmt(N("pcw"),v=>Math.round(v),"gf\u00b7mm"))+
+    row("Drop",fmt(N("dg"),v=>Math.round(v),"gf"))+
+    row("Steepest 0.10 mm drop",fmt(N("sd"),v=>v.toFixed(1),"gf/mm"))+
+    row("Drop rate",fmt(N("dr"),v=>v.toFixed(1),"gf/mm"))+
+    row("Snap %",fmt(N("sn"),v=>Math.round(v),"%"))+
+    row("Detected force-wall onset",wall==null?"Not detected":`${wall.toFixed(2)} mm`)+
+    row("Recorded test turnaround (min\u2013max)",fmtTaRange(b))+
+    row("Runs used",`${b.runs==null?"n/a":b.runs}`)+
+    row("Canonical record",`${b.id||"?"} \u00b7 ${b.k||"?"}`)+
+    row("Source set",`${b.set||"?"}`)+
+    row("Assembly identity",`<span class="det-mono">${(b.acfg||"").slice(0,16)||"?"}</span>`)+
+    row("Evidence-method identity",`<span class="det-mono">${(b.mcfg||"").slice(0,16)||"?"}</span> · shared across the epoch`)+
+  `</table>`+
+  `<div class="det-foot" style="margin-top:4px">Detected force-wall onset is an operational proxy measured on this exact assembly. It is not physical or nominal full travel, and it is not compared to any reference or baseline. The recorded test turnaround is the bench travel limit for the run set; nominal slider travel is a separate part specification.</div>`;
+}"""
+
+PICKER_LOADDOMES_V3 = """async function loadDomes(){
+  /* The picker is a CONSUMER of generated canonical records, never a
+     calculator. Record-to-part attachment is EXPLICIT via the generated
+     RECORD_MAP (config/parts_record_map.json): no fuzzy name matching.
+     dome_baseline records attach only to the dome catalog; part_assembly
+     records attach only to parts. Unmapped records are surfaced, never
+     silently invented or dropped into the wrong catalog. */
+  const excluded=new Set(GENERATED_EXCLUSIONS);
+  for(const t of TESTS){
+    if(!t||!t.set||excluded.has(t.set))continue;
+    const m=RECORD_MAP[t.id];
+    if(!m||!m.target){reportUnmappedRecord(t,"no explicit mapping");continue;}
+    if(m.kind&&m.kind!==t.k){reportUnmappedRecord(t,`mapping kind ${m.kind} != record kind ${t.k}`);continue;}
+    if(t.k==="dome_baseline"&&m.target.startsWith("dome_db:")){
+      const id=m.target.slice(8);
+      /* authored grouping may collapse per-sample DOME_DB rows into one
+         catalog entry with members:[names]; resolve by id, then by the
+         mapped row name inside a grouped entry. Still explicit: the id
+         comes from RECORD_MAP and the name from DOME_DB, never fuzz. */
+      let d=CATALOG.domes.find(x=>x.id===id);
+      if(!d){
+        const row=DOME_DB.find(x=>x.id===id);
+        if(row)d=CATALOG.domes.find(x=>x.members&&x.members.includes(row.name));
+      }
+      if(!d){reportUnmappedRecord(t,`dome ${id} not in catalog`);continue;}
+      if(!d.tests)d.tests=[];
+      if(!d.tests.some(x=>x.id===t.id))d.tests.push(recordTestEntry(t));
+    }else if(t.k==="part_assembly"&&m.target.startsWith("part:")){
+      const id=m.target.slice(5);
+      const p=PARTIDX[id];
+      if(!p){reportUnmappedRecord(t,`part ${id} not in catalog`);continue;}
+      if(!p.tests)p.tests=[];
+      if(!p.tests.some(x=>x.id===t.id))p.tests.push(recordTestEntry(t));
+    }else{
+      reportUnmappedRecord(t,`record kind ${t.k} does not match target ${m.target}`);
+    }
+  }
+  renderAll();
+}"""
+
+PICKER_PREVCURVE_V2 = r"""function prevCurveSVG(setName){
+  const c=(typeof MINI_CURVES!=="undefined")?curveFor(setName):null;
+  const b=benchFor(setName);
+  if(!c||!b||!c.x||!c.F||!c.x.length)return "";
+  const cF=benchNum(b,"cg"), cx=benchNum(b,"cx"), tv=benchNum(b,"tv");
+  const vF=benchNum(b,"vF"), vx=benchNum(b,"vx");
+  if(cF==null||cx==null)return "";
+  const W=310,H=180,L=26,B=24,T=14,Rr=8;
+  const fm=cF*1.5;                                  /* fit rule: Y max = collapse * 1.5 */
+  const xEnd=(tv!=null)?Math.max(tv*1.04,Math.max(...c.x)):Math.max(...c.x);
+  const X=x=>L+x/xEnd*(W-L-Rr), Y=f=>H-B-Math.min(f,fm)/fm*(H-B-T);
+  const line=c.x.map((x,i)=>`${X(x).toFixed(1)},${Y(c.F[i]).toFixed(1)}`).join(" ");
+  let area="";
+  {
+    const upto=c.x.map((x,i)=>[x,c.F[i]]).filter(([x])=>x<=cx);
+    if(upto.length)area=`M${X(upto[0][0]).toFixed(1)},${(H-B).toFixed(1)} L`+
+      upto.map(([x,f])=>`${X(x).toFixed(1)},${Y(f).toFixed(1)}`).join(" L")+
+      ` L${X(cx).toFixed(1)},${(H-B).toFixed(1)} Z`;
+  }
+  let g="";
+  g+=`<circle cx="${X(cx).toFixed(1)}" cy="${Y(cF).toFixed(1)}" r="5" fill="#AC53FF"/>`+
+     `<text x="${X(cx).toFixed(1)}" y="${(Y(cF)-9).toFixed(1)}" text-anchor="middle" font-size="11" fill="var(--ink)" font-family="var(--mono)">Collapse</text>`;
+  if(vF!=null&&vx!=null){
+    g+=`<circle cx="${X(vx).toFixed(1)}" cy="${Y(vF).toFixed(1)}" r="4.5" fill="#E8892B"/>`+
+       `<text x="${X(vx).toFixed(1)}" y="${(Y(vF)+15).toFixed(1)}" text-anchor="middle" font-size="11" fill="#E8892B" font-family="var(--mono)">Valley</text>`;
+    const bx=Math.min(X(vx)+16,W-Rr-4);
+    g+=`<line x1="${bx}" y1="${Y(cF).toFixed(1)}" x2="${bx}" y2="${Y(vF).toFixed(1)}" stroke="#E8892B" stroke-width="1.6"/>`+
+       `<line x1="${bx-4}" y1="${Y(cF).toFixed(1)}" x2="${bx+4}" y2="${Y(cF).toFixed(1)}" stroke="#E8892B" stroke-width="1.6"/>`+
+       `<line x1="${bx-4}" y1="${Y(vF).toFixed(1)}" x2="${bx+4}" y2="${Y(vF).toFixed(1)}" stroke="#E8892B" stroke-width="1.6"/>`+
+       `<line x1="${X(cx).toFixed(1)}" y1="${Y(cF).toFixed(1)}" x2="${bx}" y2="${Y(cF).toFixed(1)}" stroke="#E8892B" stroke-width="0.8" stroke-dasharray="3 3" opacity=".6"/>`+
+       `<text x="${(bx+7).toFixed(1)}" y="${((Y(cF)+Y(vF))/2+4).toFixed(1)}" font-size="10.5" fill="#E8892B" font-family="var(--mono)">SNAP %</text>`;
+  }
+  if(tv!=null){
+    g+=`<line x1="${X(tv).toFixed(1)}" y1="${T}" x2="${X(tv).toFixed(1)}" y2="${H-B}" stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 3"/>`+
+       `<circle cx="${X(tv).toFixed(1)}" cy="${(H-B).toFixed(1)}" r="4.5" fill="#fff"/>`+
+       `<text x="${X(tv).toFixed(1)}" y="${(H-6).toFixed(1)}" text-anchor="middle" font-size="11" fill="var(--ink)" font-family="var(--mono)">Wall</text>`;
+  }else{
+    g+=`<text x="${W-Rr-4}" y="${(H-6).toFixed(1)}" text-anchor="end" font-size="10.5" fill="var(--muted)" font-family="var(--mono)">FORCE WALL: NOT DETECTED</text>`;
+  }
+  const areaLabel=`<text x="${((L+X(cx))/2).toFixed(0)}" y="${(H*0.60).toFixed(0)}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" letter-spacing=".05em">PRE-COLLAPSE WORK</text>`;
+  return `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" preserveAspectRatio="xMidYMid meet" style="display:block;margin:6px 0;width:100%;max-width:${W}px;height:auto">
+    <path d="${area}" fill="rgba(172,83,255,.14)"/>
+    <polyline points="${line}" fill="none" stroke="#C9CDD3" stroke-width="1.8"/>
+    <line x1="${L}" y1="${H-B}" x2="${W-Rr}" y2="${H-B}" stroke="var(--muted)" stroke-width="1"/>
+    <line x1="${L}" y1="${T}" x2="${L}" y2="${H-B}" stroke="var(--muted)" stroke-width="1"/>
+    <text x="${L-16}" y="${T+20}" font-size="12" fill="var(--ink)" font-family="var(--mono)">g</text>
+    <text x="${L+12}" y="${H-6}" font-size="12" fill="var(--ink)" font-family="var(--mono)">mm</text>
+    ${areaLabel}
+    ${g}
+  </svg>`;
+}"""
+
+PICKER_SUPPORT_V3 = """function fmtTaRange(b){
+  const lo=benchNum(b,"tamin"), hi=benchNum(b,"tamax");
+  if(lo==null||hi==null)return "not available";
+  if(Math.abs(hi-lo)<0.005)return `${lo.toFixed(2)} mm`;
+  return `${lo.toFixed(2)}\u2013${hi.toFixed(2)} mm`;
+}
+function recordStat(t){
+  const wi=(typeof t.wi==="number")?t.wi:null, ti=(typeof t.ti==="number")?t.ti:null;
+  const sn=(typeof t.sn==="number")?Math.round(t.sn):null;
+  if(wi!=null&&ti!=null)return `WI ${wi.toFixed(1)} \u00b7 TI ${ti.toFixed(1)}${sn==null?"":` \u00b7 Snap ${sn}%`}`;
+  const cg=(typeof t.cg==="number")?Math.round(t.cg):null;
+  if(cg!=null)return `${cg} gf${sn==null?"":` \u00b7 Snap ${sn}%`}`;
+  return "not available";
+}
+function recordTestEntry(t){
+  return {set:t.set,id:t.id,kind:t.k,stat:recordStat(t),cl:t.cl||t.set,acfg:t.acfg||null,mcfg:t.mcfg||null};
+}
+function reportUnmappedRecord(t,why){
+  (window.__unmappedRecords||(window.__unmappedRecords=[])).push({id:t&&t.id,set:t&&t.set,why});
+  console.warn("EC Parts Library: canonical record not attached",t&&t.id,t&&t.set,why);
+}
+function ridOf(p){ return p?(p.rid||p.id||null):null; }
+function evEdge(pa,pb){
+  const a=ridOf(pa), b=ridOf(pb);
+  if(!a||!b||a===b)return null;
+  const key=[a,b].sort().join("||");
+  const e=COMPAT_EVIDENCE[key];
+  if(e)return e;
+  /* an absent edge is NEVER silent and NEVER looks compatible */
+  return {st:"unknown",src:"none",nid:null,q:null,adj:"unadjudicated",
+          rsn:"no compatibility evidence recorded",synth:true};
+}
+function evNoteText(e){
+  if(!e||!e.nid)return "";
+  const n=EC.NOTES[e.nid];
+  return n?n.text:"";
+}
+function evMsg(e,aName,bName){
+  if(!e)return null;
+  const qual=e.q?` (${e.q})`:"";
+  if(e.st==="incompatible")
+    return {cls:"warn",st:e.st,txt:(evNoteText(e)||`Incompatible: ${aName} + ${bName}.`)};
+  if(e.st==="conditional"){
+    const base=evNoteText(e)||`Conditional: ${aName} + ${bName} work together only under the recorded conditions.`;
+    const adj=e.adj==="owner_pending"?" Owner adjudication pending \u2014 treat as unconfirmed.":"";
+    return {cls:"note",st:e.st,txt:base+qual+adj};
+  }
+  if(e.st==="pending")
+    return {cls:"pend",st:e.st,txt:`Compatibility has not been confirmed for ${aName} + ${bName} (recorded as pending verification).`};
+  if(e.st==="unknown")
+    return {cls:"pend",st:e.st,txt:`Compatibility has not been confirmed for ${aName} + ${bName} \u2014 no compatibility evidence recorded.`};
+  return null; /* compatible: explicit state, silent presentation; not_applicable: never co-selected */
+}
+function renderEvidenceHTML(b){
+  const ev=b&&b.ev; if(!ev)return "";
+  const li=(lab,arr)=>arr&&arr.length?`<div><b>${lab}</b><div class="det-mono" style="word-break:break-all">${arr.join("<br>")}</div></div>`:"";
+  return `<details class="ev-block"><summary>Evidence reference \u00b7 ${b.id}</summary>`+
+    `<div class="det-mono">assembly identity ${b.acfg||"?"}</div>`+
+    `<div class="det-mono">evidence-method identity ${b.mcfg||"?"} (shared across the epoch)</div>`+
+    li("Acquisition IDs",ev.acq)+li("Raw paths",ev.rp)+li("Raw SHA-256",ev.sh)+li("Git blob OIDs",ev.gb)+
+    `<div><b>Membership authority</b> <span class="det-mono">${ev.ma||"?"}</span> \u00b7 <b>artifact role</b> <span class="det-mono">${ev.role||"?"}</span></div>`+
+    `<div><b>Generator identity</b> <span class="det-mono">${ev.gen||"?"}</span> \u00b7 <b>repo commit</b> <span class="det-mono">${(PICKER_BUILD.repo_commit||"").slice(0,12)}</span></div>`+
+  `</details>`;
+}
+function renderPickerIdentity(){
+  const el=document.getElementById("buildBadge");
+  if(!el||typeof PICKER_BUILD!=="object")return;
+  const b=PICKER_BUILD||{};
+  const bits=[b.library_build,b.bench_build,b.data_epoch].filter(Boolean);
+  if(bits.length)el.textContent=bits.join(" \u00b7 ");
+  const t=[
+    b.metrics?`metrics ${b.metrics}`:"",
+    b.perception?`indices ${b.perception}`:"",
+    b.repo_commit?`pinned commit ${b.repo_commit}`:"",
+    (b.records!=null)?`${b.records} canonical records \u00b7 ${b.sets} sets`:"",
+    (b.retained_run_bindings!=null)?`${b.retained_run_bindings} semantic retained-run bindings \u00b7 ${b.unique_acquisitions} unique acquisitions`:"",
+    b.parts_library_source_identity?`library inputs ${String(b.parts_library_source_identity).slice(0,12)}`:"",
+    b.authority_split||"",
+  ].filter(Boolean).join(String.fromCharCode(10));
+  if(t)el.title=t;
+}"""
+
+
+
 
 # ------------------------------------------------ evidence-only curve packs
 def build_curve_evidence_packs(retained_by_set, records, exclusions):
@@ -611,7 +864,14 @@ def build_all_packs(retained_by_set, records, dataset_manifest, exclusions,
         viewer_src, vlog = prose.apply_claims(
             viewer_src, prose.VIEWER_CLAIMS, "viewer"
         )
-    picker_src, plog = prose.apply_claims(picker_src, prose.PICKER_CLAIMS, "picker")
+    # The lib-5.0 library template is generator-owned and already clean;
+    # detect it by its generated identity anchor and validate in place
+    # instead of replaying legacy claim migrations.
+    picker_is_generated_template = "const PICKER_BUILD = " in picker_src
+    if picker_is_generated_template:
+        plog = []
+    else:
+        picker_src, plog = prose.apply_claims(picker_src, prose.PICKER_CLAIMS, "picker")
     if not viewer_is_generated_template:
         viewer_src = _apply(
             viewer_src,
@@ -693,16 +953,92 @@ def build_all_packs(retained_by_set, records, dataset_manifest, exclusions,
     )
 
     # ---- picker test records -------------------------------------------
-    _, _, pk_rel = _extract_blob(picker_src, "const TESTS")
-    pk_by_id = {e.get("id"): e for e in pk_rel}
-    ptests = []
-    for r in records:
-        base = dict(pk_by_id.get(r.get("test_id"), {}))
-        base.update({"id": r.get("test_id"), "k": r.get("kind"), "n": r.get("name"), "set": r["set"],
-                     "runs": r["runs_used"]})
-        for kk, (mk, rnd) in VT_METRIC.items():
-            base[kk] = rnd(r[mk])
-        ptests.append(base)
+    if picker_is_generated_template:
+        # lib-5.x contract: canonical metrics at source precision, perception
+        # indices, force-wall null state, numeric turnaround min/max, raw
+        # stable-ID configuration fields for exact assembly matching, the
+        # canonical configuration identity, a human configuration label, and
+        # a compact evidence reference. No plural translation, no defaults.
+        import hashlib as _hl
+        import json as _json2
+        _xw = _json2.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                            "config", "r8_crosswalk.json"),
+                               encoding="utf-8"))["records"]
+        _pname = {e["r8_id"]: e["part_name"] for e in _xw.values() if e.get("r8_id")}
+        def _nm(pid):
+            if not pid:
+                return "no ring"
+            return _pname.get(pid, pid)
+        def _cfg_label(r):
+            core = (f"{_nm(r.get('slider'))} + {_nm(r.get('housing'))} + "
+                    f"{_nm(r.get('conical_spring'))} + "
+                    f"{_nm(r.get('silencing_ring')) if r.get('silencing_ring') else 'no ring'}")
+            dome = _nm(r.get("dome"))
+            pre = r.get("precompression_mm") or 0
+            tail = f" \u00b7 dome: {dome}" + (f" \u00b7 precompression {pre} mm" if pre else "")
+            return core + tail
+        ptests = []
+        for r in records:
+            perceptual = perception_by_id.get(r.get("test_id"))
+            if perceptual is None:
+                raise RuntimeError(
+                    f"picker perception score missing for {r.get('test_id')}")
+            prov = r.get("provenance") or {}
+            tlo = turnaround_by_set.get(r["set"], {}).get("min")
+            thi = turnaround_by_set.get(r["set"], {}).get("max")
+            base = {"id": r.get("test_id"), "k": r.get("kind"),
+                    "n": r.get("name"), "set": r["set"], "runs": r["runs_used"],
+                    "wi": perceptual["weight_index"],
+                    "ti": perceptual["tactility_index"],
+                    "tamin": tlo, "tamax": thi,
+                    "sl": r.get("slider"), "h1": r.get("housing"),
+                    "sp": r.get("conical_spring"),
+                    "rg": r.get("silencing_ring"),
+                    "dm": r.get("dome"),
+                    "pre": r.get("precompression_mm"),
+                    "tp": r.get("tested_part"),
+                    "base": bool(r.get("is_baseline")),
+                    # Two distinct identities, never conflated:
+                    #   mcfg — the epoch's evidence-method configuration hash
+                    #          (provenance.config_hash; identical across all
+                    #          records of the epoch by construction)
+                    #   acfg — this record's per-assembly configuration
+                    #          identity over every assembly-defining field
+                    "mcfg": prov.get("config_hash"),
+                    "acfg": _hl.sha256(_json2.dumps(
+                        {"kind": r.get("kind"),
+                         "tested_part": r.get("tested_part"),
+                         "dome": r.get("dome"),
+                         "slider": r.get("slider"),
+                         "housing": r.get("housing"),
+                         "conical_spring": r.get("conical_spring"),
+                         "silencing_ring": r.get("silencing_ring"),
+                         "precompression_mm": r.get("precompression_mm")},
+                        sort_keys=True).encode("utf-8")).hexdigest(),
+                    "cl": _cfg_label(r),
+                    "cohort": r.get("measurement_cohort_id"),
+                    "alias": r.get("evidence_alias_role"),
+                    "ev": {"acq": list(prov.get("acquisition_ids", [])),
+                           "rp": list(prov.get("raw_paths", [])),
+                           "sh": list(prov.get("raw_sha256", [])),
+                           "gb": list(prov.get("raw_git_blob_oids", [])),
+                           "ma": prov.get("membership_authority"),
+                           "role": prov.get("artifact_role"),
+                           "gen": prov.get("generator_version")}}
+            for kk, (mk, rnd) in VT_METRIC_V2.items():
+                base[kk] = rnd(r[mk])
+            ptests.append(base)
+    else:
+        _, _, pk_rel = _extract_blob(picker_src, "const TESTS")
+        pk_by_id = {e.get("id"): e for e in pk_rel}
+        ptests = []
+        for r in records:
+            base = dict(pk_by_id.get(r.get("test_id"), {}))
+            base.update({"id": r.get("test_id"), "k": r.get("kind"), "n": r.get("name"), "set": r["set"],
+                         "runs": r["runs_used"]})
+            for kk, (mk, rnd) in VT_METRIC.items():
+                base[kk] = rnd(r[mk])
+            ptests.append(base)
 
     # ---- mini curves: SAMPLES ONLY, uppercase F -------------------------
     mini = {}
@@ -886,68 +1222,403 @@ def build_all_packs(retained_by_set, records, dataset_manifest, exclusions,
 
     # ---- picker transform ----------------------------------------------
     p = picker_src
-    p = _replace_blob(p, "const TESTS", ptests)
-    p = _replace_blob(p, "MINI_CURVES", mini)
-    p = _replace_function(p, "averageStrokes", js_average_source(cfg_rule))
-    p = _replace_function(p, "analyze",
-        "/* Retired in metrics-v4.2: the picker consumes generated records and contains no metric analyzer. */")
+    if picker_is_generated_template:
+        # Generated-native builder template: validate the complete evidence
+        # model, but inject only the narrow consumer projection used by the
+        # component workflow. Full records, curves, run membership, and raw
+        # provenance remain generated artifacts rather than browser payload.
 
-    # SNAPSHOT_TESTS: generated from retained record snapshots, not a hand duplicate.
-    snapshot = []
-    for r in records:
-        if r["set"] in excluded:
-            continue
-        sn, en = r.get("snap_pct"), r.get("full_stroke_press_work_gf_mm")
-        stat = ("not available" if sn is None or en is None
-                else f"Snap {int(round(sn))}% \u00b7 {int(round(en))} gf\u00b7mm")
-        snapshot.append([r.get("name") or r["set"].replace("_", " "), stat])
-    snapshot.sort()
-    p, n_sn = re.subn(r"const SNAPSHOT_TESTS=\[.*?\];",
-                      "const SNAPSHOT_TESTS=" +
-                      json.dumps(snapshot, ensure_ascii=False, separators=(",", ":")) +
-                      "; /* generated from retained record snapshots */",
-                      p, count=1, flags=re.S)
-    if n_sn != 1:
-        raise RuntimeError("picker SNAPSHOT_TESTS: generation target not found")
+        rm_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                               "config", "parts_record_map.json")
+        with open(rm_path, encoding="utf-8") as fh:
+            rm_cfg = json.load(fh)
+        rm = rm_cfg["records"]
+        live_ids = {r["test_id"] for r in records}
+        for r in records:
+            entry = rm.get(r["test_id"])
+            if not entry:
+                raise RuntimeError(
+                    f"parts_record_map.json is missing canonical record {r['test_id']}")
+            if entry.get("kind") != r["kind"] or entry.get("set") != r["set"]:
+                raise RuntimeError(
+                    f"parts_record_map.json is stale for {r['test_id']}: "
+                    f"{entry.get('kind')}/{entry.get('set')} != {r['kind']}/{r['set']}")
+        stale = sorted(set(rm) - live_ids)
+        if stale:
+            raise RuntimeError(
+                f"parts_record_map.json names records outside the canonical fleet: {stale[:4]}")
+        _, _, db_rows = _extract_blob(p, "const DOME_DB")
+        _, _, ring_rows = _extract_blob(p, "RINGPARTS")
+        ec_match = re.search(r"const EC=(\{.*?\});\r?\nconst DOME_DB=", p, re.S)
+        if not ec_match:
+            raise RuntimeError("picker template: EC product graph anchor not found")
+        ec_obj = json.loads(ec_match.group(1))
+        dome_ids = {d["id"] for d in db_rows}
+        catalog_part_ids = ({x["id"] for x in ec_obj["PARTS"]}
+                            | {x["id"] for x in ec_obj["SHELLS"]}
+                            | {x["id"] for x in ring_rows})
+        for tid, entry in rm.items():
+            target = entry["target"]
+            if target.startswith("dome_db:"):
+                if target[8:] not in dome_ids:
+                    raise RuntimeError(
+                        f"parts_record_map target {target} for {tid} is not in DOME_DB")
+            elif target.startswith("part:"):
+                if target[5:] not in catalog_part_ids:
+                    raise RuntimeError(
+                        f"parts_record_map target {target} for {tid} is not a catalog part")
+            else:
+                raise RuntimeError(f"parts_record_map target {target} for {tid} is malformed")
+        # Stable-ID compatibility evidence and source-backed keyboard presets.
+        cfg_dir = os.path.dirname(rm_path)
+        with open(os.path.join(cfg_dir, "compat_evidence.json"), encoding="utf-8") as fh:
+            ce_cfg = json.load(fh)
+        ce = {}
+        for e in ce_cfg["pairs"]:
+            key = "||".join(sorted([e["a"], e["b"]]))
+            ce[key] = {"st": e["state"], "src": e["source"], "nid": e["note_id"],
+                       "q": e["qualifier"], "adj": e["adjudication"],
+                       "rsn": e.get("reason"), "id": e["id"],
+                       "refs": e.get("source_refs", []),
+                       "rev": e.get("last_reviewed")}
+        if len(ce) != len(ce_cfg["pairs"]):
+            raise RuntimeError("compat evidence: duplicate pair keys")
+        for key, e in ce.items():
+            if e["st"] not in ("compatible", "incompatible", "conditional",
+                               "pending", "unknown", "not_applicable"):
+                raise RuntimeError(f"compat evidence: bad state {e['st']} for {key}")
+        # The complete closure is validated above and remains an auditable
+        # generated artifact. A smaller public projection is selected after
+        # the visible catalog has been resolved below.
+        with open(os.path.join(cfg_dir, "presets.json"), encoding="utf-8") as fh:
+            pr_cfg = json.load(fh)
 
-    # Generated exclusions + retained-run membership, and the curve contract.
-    pinj = ("const CANONICAL_RUNS = " + json.dumps(canonical_runs, sort_keys=True, separators=(",", ":"))
-            + "; /* generated retained membership per set */\n"
-            + "const GENERATED_EXCLUSIONS = " + json.dumps(gen_excl)
-            + "; /* generated from config/exclusions.json */\n")
-    anchor = "const FCURL="
-    if p.count(anchor) != 1:
-        raise RuntimeError("picker: FCURL anchor not unique")
-    p = p.replace(anchor, pinj + anchor, 1)
+        # Minimal, exact-specimen dome projection for the chooser. Do not
+        # aggregate families or expose curve/provenance payload in the tool.
+        dome_measurements = []
+        rec_by_id2 = {r["test_id"]: r for r in records}
+        for tid, entry in sorted(rm.items()):
+            if not entry["target"].startswith("dome_db:"):
+                continue
+            rec = rec_by_id2[tid]
+            if rec.get("kind") != "dome_baseline":
+                raise RuntimeError(
+                    f"dome measurement {tid} is not a dome_baseline record")
+            perceptual = perception_by_id.get(tid)
+            if perceptual is None:
+                raise RuntimeError(f"dome measurement score missing for {tid}")
+            collapse = rec.get("collapse_force_gf")
+            if not isinstance(collapse, (int, float)) or isinstance(collapse, bool):
+                raise RuntimeError(f"dome measurement collapse force missing for {tid}")
+            dome_measurements.append({
+                "catalog_id": entry["target"][8:],
+                "specimen_id": rec.get("tested_part"),
+                "label": rec.get("name") or rec.get("set"),
+                "collapse_force_gf": collapse,
+                "weight_index": perceptual["weight_index"],
+                "tactility_index": perceptual["tactility_index"],
+            })
+        p = _replace_blob(p, "DOME_MEASUREMENTS", dome_measurements)
 
-    p = _replace_function(p, "prevCurveSVG", PICKER_PREVCURVE)
-    p = _replace_function(p, "benchValsHTML", PICKER_BENCHVALS)
-    p = _replace_function(p, "testStat", PICKER_TESTSTAT)
-    p = _replace_function(p, "loadDomes", PICKER_LOADDOMES)
-    # curve contract helpers must follow curveKey/curveFor definitions
-    p = p.replace("function curveFor(setName){ const k=curveKey(setName); return k?MINI_CURVES[k]:null; }",
-                  "function curveFor(setName){ const k=curveKey(setName); return k?MINI_CURVES[k]:null; }\n"
-                  + PICKER_CURVE_CONTRACT, 1)
+        with open(os.path.join(cfg_dir, "r8_crosswalk.json"), encoding="utf-8") as fh:
+            xw_cfg = json.load(fh)["records"]
+        dome_r8 = {e["catalog_id"]: e["r8_id"] for e in xw_cfg.values()
+                   if e.get("category") == "dome" and e.get("r8_id")}
+        r8_dome_vals = set(dome_r8.values())
+        for r in records:
+            if r.get("kind") == "part_assembly" and r.get("dome") not in r8_dome_vals:
+                raise RuntimeError(
+                    f"assembly dome {r.get('dome')} has no catalog identity")
+        # The catalog remains data-driven. MODPARTS and KEYBOARDS regenerate
+        # from the vendored r8 source plus the authored presentation overlay.
+        with open(os.path.join(cfg_dir, "r8", "parts.json"), encoding="utf-8") as fh:
+            r8_parts_full = json.load(fh)
+        with open(os.path.join(cfg_dir, "r8", "keyboards.json"), encoding="utf-8") as fh:
+            r8_kbd_full = json.load(fh)
+        with open(os.path.join(cfg_dir, "catalog_overlay.json"), encoding="utf-8") as fh:
+            cat_ov = json.load(fh)
+        display_names = cat_ov.get("dome_display_names", {})
+        unknown_display_ids = sorted(set(display_names) - dome_ids)
+        if unknown_display_ids:
+            raise RuntimeError(
+                f"catalog overlay names unknown DOME_DB ids: {unknown_display_ids}")
+        for row in db_rows:
+            if row["id"] in display_names:
+                row["name"] = display_names[row["id"]]
+        dome_public_fields = (
+            "id", "name", "maker", "brand", "version", "style",
+            "wraw", "wmin", "wmax", "type", "u",
+        )
+        public_domes = [
+            {key: row[key] for key in dome_public_fields if key in row}
+            for row in db_rows
+        ]
+        p = _replace_blob(p, "const DOME_DB", public_domes)
+        cat_labels = cat_ov["category_labels"]
+        modparts = []
+        for rid, e in sorted(xw_cfg.items()):
+            if e["disposition"] != "integrated_round2":
+                continue
+            src = r8_parts_full[rid]
+            # lib-6.0 has no public catch-all parts list. Only records that
+            # fill a visible builder slot belong in the consumer payload;
+            # today, the r8 additions used by that workflow are keycaps.
+            if src.get("category") != "keycap":
+                continue
+            modparts.append({
+                "id": rid, "rid": rid, "name": src["part_name"],
+                "cat": cat_labels[src["category"]],
+                "brand": src.get("brand") or "", "stem": src.get("stem") or "",
+                "notes": list(src.get("notes") or []),
+                "u": src.get("source_url") or ""})
+        public_keyboard_ids = cat_ov.get("public_keyboard_ids")
+        if not isinstance(public_keyboard_ids, list) or not public_keyboard_ids:
+            raise RuntimeError(
+                "catalog overlay: public_keyboard_ids must be a non-empty list")
+        if len(public_keyboard_ids) != len(set(public_keyboard_ids)):
+            raise RuntimeError("catalog overlay: duplicate public keyboard id")
+        preset_by_id = {row.get("id"): row for row in pr_cfg["presets"]}
+        public_presets = []
+        kbrows = []
+        for kid in public_keyboard_ids:
+            if kid not in r8_kbd_full:
+                raise RuntimeError(
+                    f"catalog overlay: public keyboard {kid} is absent from r8")
+            preset = preset_by_id.get(kid)
+            if not preset:
+                raise RuntimeError(
+                    f"catalog overlay: public keyboard {kid} has no preset")
+            if preset.get("source") != "r8_keyboard_registry":
+                raise RuntimeError(
+                    f"catalog overlay: public keyboard {kid} is not source-backed")
+            if not preset.get("slots"):
+                raise RuntimeError(
+                    f"catalog overlay: public keyboard {kid} has no usable slots")
+            # The browser needs only the starter identity, visible label, and
+            # selections. Source/adjudication/omission records remain in the
+            # generator-owned preset registry where they are validated.
+            public_preset = {
+                "id": preset["id"],
+                "label": preset["label"],
+                "slots": {
+                    slot: {"part": selection["part"]}
+                    for slot, selection in preset["slots"].items()
+                },
+            }
+            dome_omission = (preset.get("empty") or {}).get("dome")
+            if "dome" not in preset["slots"] and dome_omission:
+                public_notice = re.sub(
+                    r"\b(\d+)g\b", r"\1 g", dome_omission
+                )
+                public_notice = re.sub(
+                    r"^the source identifies\s+", "Available in ",
+                    public_notice,
+                    flags=re.IGNORECASE,
+                )
+                public_notice = public_notice.replace(
+                    " — choose the installed dome",
+                    "; choose the dome installed in this keyboard.",
+                )
+                public_preset["notice"] = public_notice
+            public_presets.append(public_preset)
+            k = r8_kbd_full[kid]
+            consumer_notes = k.get("notes") or ""
+            for note_id, note in ec_obj.get("NOTES", {}).items():
+                consumer_notes = re.sub(
+                    rf"\bSee\s+{re.escape(note_id)}\.",
+                    str(note.get("text") or ""),
+                    consumer_notes,
+                    flags=re.IGNORECASE,
+                )
+            consumer_notes = re.sub(r"\s+", " ", consumer_notes).strip()
+            kbrows.append({
+                "id": kid, "rid": kid, "name": k["display_name"],
+                "brand": k.get("brand") or "", "kind": k.get("kind") or "",
+                "notes": consumer_notes,
+                "u": k.get("url") or ""})
 
-    # Detail-panel bench table: route through the generated-record accessors.
-    p, n_det = re.subn(r"const t=p\.tests\[0\], c=curveFor\(t\.set\);",
-                       "const t=p.tests[0], c=benchFor(t.set);", p, count=1)
-    if n_det != 1:
-        raise RuntimeError("picker detail-panel accessor: target not found")
-    old_det_start = p.index('d+=`<table class="det-props det-test">')
-    old_det_end = p.index("</table>`+prevCurveSVG(t.set)+", old_det_start)
-    p = p[:old_det_start] + "d+=benchValsHTML(t.set)" + p[old_det_end + len("</table>`"):]
+        # Validate every public preset target against the exact catalog that
+        # will ship. Dome IDs address DOME_DB; all other selections address
+        # either a catalog ID or its stable compatibility rid.
+        public_part_ids = set()
+        for row in ec_obj["PARTS"] + ec_obj["SHELLS"]:
+            public_part_ids.add(row["id"])
+            public_part_ids.add(row.get("rid") or row["id"])
+        for row in ring_rows + modparts:
+            public_part_ids.add(row["id"])
+            public_part_ids.add(row.get("rid") or row["id"])
+        for preset in public_presets:
+            for slot, selection in preset["slots"].items():
+                part_id = selection.get("part")
+                known = part_id in (dome_ids if slot == "dome" else public_part_ids)
+                if not known:
+                    raise RuntimeError(
+                        f"public preset {preset['id']} references unavailable "
+                        f"{slot} part {part_id}")
+
+        # The public tool never co-selects two alternatives from one slot,
+        # and its shell replaces the housing/stabilizer slots. Accordingly,
+        # not_applicable closure rows cannot be queried. Explicit unknown rows
+        # are also equivalent to the runtime's visible Not verified fallback.
+        # Keep only decision-changing evidence for pairs of parts that can
+        # actually appear in this builder; the full 3,403-pair audit closure
+        # stays in compat_evidence.json.
+        public_rids = ({row.get("rid") or row["id"] for row in ec_obj["PARTS"]}
+                       | {row.get("rid") or row["id"] for row in ec_obj["SHELLS"]}
+                       | {row["id"] for row in ring_rows}
+                       | {row.get("rid") or row["id"] for row in modparts})
+        ce_runtime = {
+            key: {
+                "st": evidence["st"],
+                "nid": evidence["nid"],
+                "q": evidence["q"],
+                "adj": evidence["adj"],
+                "rsn": evidence["rsn"],
+            }
+            for key, evidence in ce.items()
+            if evidence["st"] not in ("unknown", "not_applicable")
+            and set(key.split("||")) <= public_rids
+        }
+        part_fields = (
+            "id", "rid", "name", "cat", "mfr", "type", "stem",
+            "seat", "off", "travel", "style", "u", "springWarn",
+        )
+        shell_fields = (
+            "id", "rid", "name", "mfr", "type", "u", "addsSb", "shellNote",
+        )
+        def consumer_note_text(value):
+            text = str(value or "")
+            text = re.sub(
+                r"(?:;\s*)?owner adjudication (?:is )?pending[^.]*\.?",
+                ". This pairing has not been independently confirmed.",
+                text,
+                flags=re.IGNORECASE,
+            )
+            text = re.sub(
+                r"The r8 source records that claim as a conditional exception, "
+                r"not a per-pairing verification\.?",
+                "The claim is recorded as a condition rather than a verified "
+                "result for every pairing.",
+                text,
+                flags=re.IGNORECASE,
+            )
+            text = re.sub(r"^Warning:\s*", "", text, flags=re.IGNORECASE)
+            text = re.sub(r"\.\*\s*\|\s*\*\s*", ". ", text)
+            text = re.sub(
+                r"\s*Omitted from product page\.?", "", text,
+                flags=re.IGNORECASE,
+            )
+            text = re.sub(r"\s+([.,;:])", r"\1", text)
+            return re.sub(r"\.{2,}", ".", text).strip()
+        public_ec = {
+            "PARTS": [
+                {key: row[key] for key in part_fields if key in row}
+                for row in ec_obj["PARTS"]
+            ],
+            "SHELLS": [
+                {key: row[key] for key in shell_fields if key in row}
+                for row in ec_obj["SHELLS"]
+            ],
+            "NOTES": {
+                note_id: {"text": consumer_note_text(note.get("text"))}
+                for note_id, note in ec_obj.get("NOTES", {}).items()
+            },
+        }
+        p = _replace_blob(p, "const EC", public_ec)
+        p = _replace_blob(p, "COMPAT_EVIDENCE", ce_runtime)
+        p = _replace_blob(p, "const PRESETS", public_presets)
+        p = _replace_blob(p, "const MODPARTS", modparts)
+        p = _replace_blob(p, "const KEYBOARDS", kbrows)
+        from .pipeline import parts_library_source_identity, _h
+        plsi = _h(parts_library_source_identity())
+        parts_profile = PARTS_LIBRARY_BUILD_PROFILES[profile["mode"]]
+        picker_build = {
+            "library_build": parts_profile["library_build"],
+            "mode": profile["mode"],
+            "presentation_role": profile["presentation_role"],
+            "release_eligible": parts_profile["release_eligible"],
+            "repo_commit": dataset_manifest["repo_commit"],
+            "parts_library_source_identity": plsi,
+        }
+        p = _replace_blob(p, "PICKER_BUILD", picker_build)
+
+        if "function assessCandidate(" not in p or "function assessBuild(" not in p:
+            raise RuntimeError("picker compatibility presentation contract is missing")
+    else:
+        p = _replace_blob(p, "const TESTS", ptests)
+        p = _replace_blob(p, "MINI_CURVES", mini)
+        p = _replace_function(p, "averageStrokes", js_average_source(cfg_rule))
+        p = _replace_function(p, "analyze",
+            "/* Retired in metrics-v4.2: the picker consumes generated records and contains no metric analyzer. */")
+
+        # SNAPSHOT_TESTS: generated from retained record snapshots, not a hand duplicate.
+        snapshot = []
+        for r in records:
+            if r["set"] in excluded:
+                continue
+            sn, en = r.get("snap_pct"), r.get("full_stroke_press_work_gf_mm")
+            stat = ("not available" if sn is None or en is None
+                    else f"Snap {int(round(sn))}% \u00b7 {int(round(en))} gf\u00b7mm")
+            snapshot.append([r.get("name") or r["set"].replace("_", " "), stat])
+        snapshot.sort()
+        p, n_sn = re.subn(r"const SNAPSHOT_TESTS=\[.*?\];",
+                          "const SNAPSHOT_TESTS=" +
+                          json.dumps(snapshot, ensure_ascii=False, separators=(",", ":")) +
+                          "; /* generated from retained record snapshots */",
+                          p, count=1, flags=re.S)
+        if n_sn != 1:
+            raise RuntimeError("picker SNAPSHOT_TESTS: generation target not found")
+
+        # Generated exclusions + retained-run membership, and the curve contract.
+        pinj = ("const CANONICAL_RUNS = " + json.dumps(canonical_runs, sort_keys=True, separators=(",", ":"))
+                + "; /* generated retained membership per set */\n"
+                + "const GENERATED_EXCLUSIONS = " + json.dumps(gen_excl)
+                + "; /* generated from config/exclusions.json */\n")
+        anchor = "const FCURL="
+        if p.count(anchor) != 1:
+            raise RuntimeError("picker: FCURL anchor not unique")
+        p = p.replace(anchor, pinj + anchor, 1)
+
+        p = _replace_function(p, "prevCurveSVG", PICKER_PREVCURVE)
+        p = _replace_function(p, "benchValsHTML", PICKER_BENCHVALS)
+        p = _replace_function(p, "testStat", PICKER_TESTSTAT)
+        p = _replace_function(p, "loadDomes", PICKER_LOADDOMES)
+        # curve contract helpers must follow curveKey/curveFor definitions
+        p = p.replace("function curveFor(setName){ const k=curveKey(setName); return k?MINI_CURVES[k]:null; }",
+                      "function curveFor(setName){ const k=curveKey(setName); return k?MINI_CURVES[k]:null; }\n"
+                      + PICKER_CURVE_CONTRACT, 1)
+
+        # Detail-panel bench table: route through the generated-record accessors.
+        p, n_det = re.subn(r"const t=p\.tests\[0\], c=curveFor\(t\.set\);",
+                           "const t=p.tests[0], c=benchFor(t.set);", p, count=1)
+        if n_det != 1:
+            raise RuntimeError("picker detail-panel accessor: target not found")
+        old_det_start = p.index('d+=`<table class="det-props det-test">')
+        old_det_end = p.index("</table>`+prevCurveSVG(t.set)+", old_det_start)
+        p = p[:old_det_start] + "d+=benchValsHTML(t.set)" + p[old_det_end + len("</table>`"):]
 
     staged["packs/picker.staged.html"] = p
 
     # ---- prohibited-copy scan across EVERY generated surface ------------
     surfaces = {k: val for k, val in staged.items() if isinstance(val, str)}
+    # The prohibited-copy gate governs presentation copy; prose.scan masks
+    # the labeled verbatim r8 source layer itself (see
+    # prose.mask_verbatim_source), so every authored and generated
+    # presentation string is scanned in full through the one shared
+    # definition. The exempted span is recorded in the report.
+    r8_span = 0
+    pk_key = next((k for k in surfaces if k.endswith("picker.staged.html")), None)
+    if pk_key:
+        r8_span = prose.mask_verbatim_source(surfaces[pk_key])[1]
     prose.assert_clean(surfaces)
     staged["packs/prose_scan_report.json"] = json.dumps({
         "scanned_surfaces": sorted(surfaces),
         "prohibited_patterns": prose.PROHIBITED,
         "viewer_rewrites": [{"target": o[:80], "occurrences_replaced": n} for o, n in vlog],
         "picker_rewrites": [{"target": o[:80], "occurrences_replaced": n} for o, n in plog],
-        "result": "clean — zero prohibited matches in any generated surface",
+        "r8_src_verbatim_exempt_chars": r8_span,
+        "result": "clean — zero prohibited matches in any generated "
+                  "presentation surface (the labeled verbatim r8 source "
+                  "layer is exempt by design)",
     }, sort_keys=True, indent=1) + "\n"
     return staged
