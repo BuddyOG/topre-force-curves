@@ -44,9 +44,12 @@ decision, not an accidental side effect of copying a release tree.
    press-and-return acquisition. A retest is a new acquisition even if it
    replaces the practical role of a rejected run.
 2. **Run the declared importer.** Evaluate the complete candidate cohort with
-   the versioned intake authority. Record every accepted, excluded, mixed,
+   the versioned intake authority by following the frozen
+   [dome-testing SOP](testing-sop/README.md). For the current Windows importer,
+   supply the repository explicitly with `--github-root`; do not rely on its
+   older default path. Record every accepted, excluded, mixed,
    insufficient-replicate, and advisory result. Do not select runs by visual
-   preference.
+   preference. The old `bench-import.py` / `importer_core.py` path is retired.
 3. **Require a valid retained cohort.** The active policy must retain at least
    two runs that pass the individual gates and the collapse-force and
    collapse-position replicate bands. A cohort that does not meet the minimum
@@ -74,6 +77,11 @@ decision, not an accidental side effect of copying a release tree.
 10. **Review and release the delta.** Publish the changed paths, retained-run
     changes, metric/index changes, evidence identity, tests, browser acceptance,
     and release hashes before replacing the public viewer.
+
+The importer stops at the raw-copy boundary. It does not update metadata,
+create the evidence epoch, recompute indices, regenerate the viewer, perform
+Git operations, or publish. A successful import is therefore an intake result,
+not a completed dataset release.
 
 ## Retests and replacements
 

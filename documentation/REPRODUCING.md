@@ -18,6 +18,11 @@ Verification and reproduction answer different questions:
   locked JavaScript dependencies reproduce the packaged generated tree byte
   for byte?
 
+New physical acquisitions enter this process through the frozen
+[dome-testing and new-dome intake SOP](testing-sop/README.md). Importer success
+alone is not Tier 1 or Tier 2 verification: the importer neither creates a new
+evidence epoch nor regenerates a public package.
+
 ## Published lib-6.0 package verification
 
 From an extracted lib-6.0 package root, run:

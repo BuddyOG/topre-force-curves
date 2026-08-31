@@ -76,6 +76,19 @@ thresholds are data-quality and comparability guardrails. They are not an
 instrument-uncertainty budget, a manufacturer tolerance, or a perceptual
 threshold.
 
+The frozen operator procedure is published in
+[`testing-sop/`](testing-sop/README.md). The accepted Windows executable is
+SHA-256
+`351607fffe30eb6da8c7612e3e1bdfad0e3a737804e8f109bbd89c8d1a64854e`;
+its immutable release ZIP is
+`canonical-evidence/authority/test-imp-1.1.4-windows-x64.zip`, SHA-256
+`b1ccdaba5c4ec76b7a8516c4e8c8109c26f2cb58b0f60f49a5c5fcf9a031b284`.
+Operators must pass the current repository through the executable's supported
+`--github-root` option instead of relying on a machine-specific default. The
+importer copies retained raw files only. Metadata, evidence-epoch creation,
+index versioning, viewer generation, and Git publication are separate
+controlled operations.
+
 ### 1. File and trajectory integrity
 
 A run must satisfy all of the following:

@@ -34,6 +34,7 @@ The standalone tools remain available at:
 | Canonical evidence identity | `7aa8588b50856816b7fce90dd6e743c26c6f16926071123291cb054352b6cd4a` |
 | Measurement method | `metrics-v4.2` |
 | Intake authority | `intake-qc-v1.4`, implementation-parity bound to `test-imp 1.1.4` |
+| Dome testing SOP | `dome-testing-sop-v1`; frozen operator intake and new-dome release gates |
 | Perception-index model | `perception-rank-v1` |
 | Active site authority | `SITE_RELEASE_MANIFEST.json` and `SHA256SUMS` |
 | Protected predecessor authority | `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` |

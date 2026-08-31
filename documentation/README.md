@@ -20,6 +20,9 @@ to tag `ec-parts-lib-6.0` by the active site manifest.
 - [Reproduction and verification](REPRODUCING.md)
 - [Browser acceptance](BROWSER_ACCEPTANCE.md)
 - [Future data updates](DATA_UPDATES.md)
+- [Dome testing and new-dome intake SOP](testing-sop/README.md) — frozen
+  operator workflow, exact importer usage, exception handling, handoff record,
+  and release gates.
 - [Third-party font notice](THIRD_PARTY_NOTICES.md)
 - [Subjective pilot](subjective-pilot/README.md) — sealed pilot bundle. Its
   phrase “75 raw ratings” refers to 75 session-by-dome observation rows; each
@@ -44,6 +47,8 @@ to tag `ec-parts-lib-6.0` by the active site manifest.
   sequence, manuscript plan, figures/tables, and claim matrix.
 - [Perception-validation v1 freeze notes](RELEASE_NOTES_perception-validation-v1.md)
   — frozen design, operator package, readiness boundary, and continuity.
+- [Dome testing SOP v1 freeze notes](RELEASE_NOTES_dome-testing-sop-v1.md) —
+  importer identity, operator/repository boundary, and scientific continuity.
 - [Documentation closeout notes](RELEASE_NOTES_dome-lab-docs-2026-08-31.md)
   — dated public-record additions with scientific continuity.
 

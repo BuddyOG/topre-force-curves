@@ -261,6 +261,10 @@ tolerances, formal instrument-uncertainty bounds, or perceptual thresholds.
 - [Future data updates](documentation/DATA_UPDATES.md) — the versioned path for
   adding tests, retests, corrections, or folder renames without silently
   changing a released dataset.
+- [Dome testing and new-dome intake SOP](documentation/testing-sop/README.md) —
+  the frozen, plain-language workflow for collecting a new cohort, running the
+  exact importer, handling exceptions, and handing it into a new evidence
+  epoch.
 - [Third-party font notice](documentation/THIRD_PARTY_NOTICES.md) — embedded
   font credits and SIL Open Font License 1.1 terms.
 - [Subjective pilot](documentation/subjective-pilot/README.md) — protocol,
@@ -282,6 +286,8 @@ tolerances, formal instrument-uncertainty bounds, or perceptual thresholds.
 - [Prospective multi-rater study](documentation/prospective-study/README.md) —
   frozen `perception-validation-v1` protocol, plain-language SOP, participant
   script, analysis plan, data templates, and blinded schedule generator.
+- [Dome testing SOP v1 freeze notes](documentation/RELEASE_NOTES_dome-testing-sop-v1.md)
+  — importer identity, operating boundaries, and release continuity.
 - [Full-paper roadmap](documentation/research-paper/README.md) — how Preprint
   2.0, the exploratory pilot, and future validation results become the full
   manuscript without mixing evidence classes.

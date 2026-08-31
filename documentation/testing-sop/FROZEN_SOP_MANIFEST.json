@@ -1,0 +1,103 @@
+{
+  "active_force_curve_build": "fc-3.4",
+  "active_intake_policy": "intake-qc-v1.4",
+  "active_metrics_method": "metrics-v4.2",
+  "files": [
+    {
+      "bytes": 8283858,
+      "path": "canonical-evidence/authority/test-imp-1.1.4-windows-x64.zip",
+      "role": "immutable_importer_release",
+      "sha256": "b1ccdaba5c4ec76b7a8516c4e8c8109c26f2cb58b0f60f49a5c5fcf9a031b284"
+    },
+    {
+      "bytes": 3806,
+      "path": "canonical-evidence/EPOCH_MANIFEST.json",
+      "role": "current_evidence_authority",
+      "sha256": "a1837f802de436035d605e9971563147308e86e7fc089902b30bb22e0581d354"
+    },
+    {
+      "bytes": 6744,
+      "path": "documentation/DATA_UPDATES.md",
+      "role": "frozen_integration_workflow",
+      "sha256": "60856e2fa933986aca65de2ea16cfb777ca97a22ede9bd3ad487c05ccc8a08d0"
+    },
+    {
+      "bytes": 23867,
+      "path": "documentation/METHOD.md",
+      "role": "frozen_method_documentation",
+      "sha256": "d7045b1d9253d77d657ead00d0b15e47a35360d72cae5804b607936bd991d4aa"
+    },
+    {
+      "bytes": 1671,
+      "path": "documentation/RELEASE_NOTES_dome-testing-sop-v1.md",
+      "role": "frozen_sop_file",
+      "sha256": "091d195b49eda3db180dcbc32ee40f00fe0f300ffe7498ac3c50f4a12527f885"
+    },
+    {
+      "bytes": 2512,
+      "path": "documentation/testing-sop/EXCEPTION_CHECKLIST.md",
+      "role": "frozen_sop_file",
+      "sha256": "d857ab3251fbabfa36fdee49f1e7493f416b5494f21969c3b6dbf87536133eb4"
+    },
+    {
+      "bytes": 4704,
+      "path": "documentation/testing-sop/IMPORTER_GUIDE.md",
+      "role": "frozen_sop_file",
+      "sha256": "b738a6dc66db22bca59e9a298fa2924bff1ab10423e496c67385c9830aba1f8f"
+    },
+    {
+      "bytes": 2075,
+      "path": "documentation/testing-sop/NEW_DOME_CHECKLIST.md",
+      "role": "frozen_sop_file",
+      "sha256": "ad2e869d5148220fcc2cb9a7fa83823e6ce3c6f1f039f890dd3b02ec1bb71648"
+    },
+    {
+      "bytes": 2249,
+      "path": "documentation/testing-sop/README.md",
+      "role": "frozen_sop_file",
+      "sha256": "7f2297fab03ce49c596cce993e4e233f57f01f0ef2d01fc619860e78105e70c1"
+    },
+    {
+      "bytes": 6648,
+      "path": "documentation/testing-sop/SOP.md",
+      "role": "frozen_sop_file",
+      "sha256": "8301c1e1dc6c79dc7383a20ce81ee8d8906acfc35b956f3c8a62305a3b13f4b1"
+    },
+    {
+      "bytes": 602,
+      "path": "documentation/testing-sop/new_dome_change_record.csv.template",
+      "role": "frozen_sop_file",
+      "sha256": "1431206bbf3bbf64c7671dc542b5f7829d029f7bc7c915f66ad8e5b3660c1236"
+    },
+    {
+      "bytes": 4861,
+      "path": "generator/domelab_pipeline/intake_cli.py",
+      "role": "decision_manifest_cli",
+      "sha256": "11493f5ad5277e273f4c5a396e9939dd2aad9a71a6006eb4627c97953cc5a2ec"
+    },
+    {
+      "bytes": 34240,
+      "path": "generator/domelab_pipeline/intake_policy.py",
+      "role": "active_python_policy_mirror",
+      "sha256": "d73cbdd9c2a37435269c6424f6548813986331795eaf3b49350ceabc487d0341"
+    },
+    {
+      "bytes": 5720,
+      "path": "generator/domelab_pipeline/config/intake_policy.json",
+      "role": "machine_readable_intake_authority",
+      "sha256": "7c184f6fef1b3b22b7c3c88480437ad28745d01f995e0e6a4e22924d7035e360"
+    }
+  ],
+  "frozen_at": "2026-08-31",
+  "git_tag": "dome-testing-sop-v1",
+  "importer": {
+    "application_version": "1.1.4",
+    "executable_sha256": "351607fffe30eb6da8c7612e3e1bdfad0e3a737804e8f109bbd89c8d1a64854e",
+    "help_contract": "test-imp.exe [-h] [--github-root GITHUB_ROOT] [--version] dome_name"
+  },
+  "objective_commit": "6e86ac1955a0c566c7aae521705e51371992ba8a",
+  "schema": "dome-testing-sop-freeze-v1",
+  "sop_id": "dome-testing-sop-v1",
+  "status": "frozen_before_next_acquisition",
+  "tag_binding": "The annotated Git tag target is the authoritative SOP commit."
+}

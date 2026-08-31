@@ -834,10 +834,10 @@
       "sha256": "842d16a868e8df394899ee3f75666bdfd799769c65be5de95b18bc5e0ed071bd"
     },
     {
-      "bytes": 17710,
+      "bytes": 18114,
       "component": "parts_library_overlay",
       "path": "README.md",
-      "sha256": "95282da022020b11e2c97fca0d0229e39e462cbfd9f2dd1700bd41440061d57b"
+      "sha256": "f57753485f7da07899013868a5a8e2f2dc83fbbec718d9e20038dbf9e6d33e1d"
     },
     {
       "bytes": 60003,
@@ -3390,10 +3390,10 @@
       "sha256": "da0431166082803932466c373f82b6058d26f100e0b8e88a82cf24e9902fd88d"
     },
     {
-      "bytes": 6213,
+      "bytes": 6744,
       "component": "parts_library_overlay",
       "path": "documentation/DATA_UPDATES.md",
-      "sha256": "16dd794810e6bf5f0e40b53121609d7e2f09d0b4a04c933b77d1adf723979ee1"
+      "sha256": "60856e2fa933986aca65de2ea16cfb777ca97a22ede9bd3ad487c05ccc8a08d0"
     },
     {
       "bytes": 5416,
@@ -3420,10 +3420,10 @@
       "sha256": "0d783ff8e075b423a1fdea72cf521a675ecb42d2d92d72a9a7b59de3928d87a0"
     },
     {
-      "bytes": 4190,
+      "bytes": 4286,
       "component": "parts_library_overlay",
       "path": "documentation/PUBLIC_RELEASE.md",
-      "sha256": "517014abf5d32572af9377eb7b017dac8ceb0dfc3b2500e4857cc393bef5410c"
+      "sha256": "ff1a6b3dbe9c75dacbbd539b5673b525d00fc5b6ae592a6d837b22364c131054"
     },
     {
       "bytes": 17931,
@@ -3432,16 +3432,22 @@
       "sha256": "a290397021bea7f34989b8c7d18f18744eec3883d199fc78567c11a727755e43"
     },
     {
-      "bytes": 3904,
+      "bytes": 4236,
       "component": "parts_library_overlay",
       "path": "documentation/README.md",
-      "sha256": "6450a6cc41151cb0569ed42145bd80f3b924d64e7623a6770d471715320241d5"
+      "sha256": "f30ad827cf3453b8e33191731467ab1c610de9dd7763d435cfac3a9d4080ebea"
     },
     {
       "bytes": 1376,
       "component": "parts_library_overlay",
       "path": "documentation/RELEASE_NOTES_dome-lab-docs-2026-08-31.md",
       "sha256": "348b7d26da3e7a183646750bab16d1b19ecbb6dfaf7effef118969ca80c7655e"
+    },
+    {
+      "bytes": 1671,
+      "component": "parts_library_overlay",
+      "path": "documentation/RELEASE_NOTES_dome-testing-sop-v1.md",
+      "sha256": "091d195b49eda3db180dcbc32ee40f00fe0f300ffe7498ac3c50f4a12527f885"
     },
     {
       "bytes": 13319,
@@ -3468,10 +3474,10 @@
       "sha256": "4c41365cddd9413bd5c3d9fb4b8f16dd7b67c868dfb9470cf7949e8442b12782"
     },
     {
-      "bytes": 13145,
+      "bytes": 13418,
       "component": "parts_library_overlay",
       "path": "documentation/REPRODUCING.md",
-      "sha256": "d1a03f901dc42611318c31db0712da2dc0d4ff3a32efe21c02372f0d3967acb8"
+      "sha256": "59cc4baed10c671f69dd29b2a4beffb5d5307b04bd2d4ba5cf55522dd3ede2b1"
     },
     {
       "bytes": 6235,
@@ -3492,10 +3498,10 @@
       "sha256": "fa7a7d846fdb73e51d69186e5ffbc3bcf29161781927ad90c2a6bd91b80b6be9"
     },
     {
-      "bytes": 8335,
+      "bytes": 8716,
       "component": "parts_library_overlay",
       "path": "documentation/index.html",
-      "sha256": "8741e5701cc75be7d596b41a04bf26a82716b37684827c97494c7c03c8b069eb"
+      "sha256": "3c79461921eae40edc068850ae96bc67cd70076eafa40d5a520ba7f6bb85ef4b"
     },
     {
       "bytes": 4456,
@@ -3664,6 +3670,48 @@
       "component": "fc34_base_preserved",
       "path": "documentation/subjective-pilot/source_identity.json",
       "sha256": "8ebabff34ba0118a7868825d9c9a1d9eef24588b299e677d1dda0d4c88599704"
+    },
+    {
+      "bytes": 2512,
+      "component": "parts_library_overlay",
+      "path": "documentation/testing-sop/EXCEPTION_CHECKLIST.md",
+      "sha256": "d857ab3251fbabfa36fdee49f1e7493f416b5494f21969c3b6dbf87536133eb4"
+    },
+    {
+      "bytes": 3762,
+      "component": "parts_library_overlay",
+      "path": "documentation/testing-sop/FROZEN_SOP_MANIFEST.json",
+      "sha256": "fe48e03d77617d9b836663f8341f4e8741bc40ca7a924d88b1f2d4aed582f7ba"
+    },
+    {
+      "bytes": 4704,
+      "component": "parts_library_overlay",
+      "path": "documentation/testing-sop/IMPORTER_GUIDE.md",
+      "sha256": "b738a6dc66db22bca59e9a298fa2924bff1ab10423e496c67385c9830aba1f8f"
+    },
+    {
+      "bytes": 2075,
+      "component": "parts_library_overlay",
+      "path": "documentation/testing-sop/NEW_DOME_CHECKLIST.md",
+      "sha256": "ad2e869d5148220fcc2cb9a7fa83823e6ce3c6f1f039f890dd3b02ec1bb71648"
+    },
+    {
+      "bytes": 2249,
+      "component": "parts_library_overlay",
+      "path": "documentation/testing-sop/README.md",
+      "sha256": "7f2297fab03ce49c596cce993e4e233f57f01f0ef2d01fc619860e78105e70c1"
+    },
+    {
+      "bytes": 6648,
+      "component": "parts_library_overlay",
+      "path": "documentation/testing-sop/SOP.md",
+      "sha256": "8301c1e1dc6c79dc7383a20ce81ee8d8906acfc35b956f3c8a62305a3b13f4b1"
+    },
+    {
+      "bytes": 602,
+      "component": "parts_library_overlay",
+      "path": "documentation/testing-sop/new_dome_change_record.csv.template",
+      "sha256": "1431206bbf3bbf64c7671dc542b5f7829d029f7bc7c915f66ad8e5b3660c1236"
     },
     {
       "bytes": 168808,
@@ -4392,10 +4440,10 @@
       "sha256": "fd81e078fe999cdcb6af4ecdcbea97b5d2d3962b3e863f724ca79f67d6f8f69d"
     },
     {
-      "bytes": 3636,
+      "bytes": 4050,
       "component": "parts_library_overlay",
       "path": "generator/domelab_pipeline/config/parts_release_overlay.json",
-      "sha256": "85019fa202ff9c70f1daa9403fe358b7b68510afcd3d228a97f6d87ad8c20e64"
+      "sha256": "06e49bde160f17ac320f3152c828ebb45e2e2b0e70aee751683102b47f2c1527"
     },
     {
       "bytes": 29213,
@@ -4883,7 +4931,7 @@
         "base_sha256": "ca63925cf56a61f623205af173b33fedc14e8aa8439e165e7d2b7a54df285906",
         "operation": "replace",
         "path": "README.md",
-        "release_sha256": "95282da022020b11e2c97fca0d0229e39e462cbfd9f2dd1700bd41440061d57b"
+        "release_sha256": "f57753485f7da07899013868a5a8e2f2dc83fbbec718d9e20038dbf9e6d33e1d"
       },
       {
         "base_sha256": "f6387933227ad9b3bfc68519abad2e2a83b17ab4738a059bddd37e5926026d4b",
@@ -4913,7 +4961,7 @@
         "base_sha256": "344fb67e8d168f4ade0bf32bd439f93001e992e21a94eda7f17b615e4022e35f",
         "operation": "replace",
         "path": "documentation/DATA_UPDATES.md",
-        "release_sha256": "16dd794810e6bf5f0e40b53121609d7e2f09d0b4a04c933b77d1adf723979ee1"
+        "release_sha256": "60856e2fa933986aca65de2ea16cfb777ca97a22ede9bd3ad487c05ccc8a08d0"
       },
       {
         "base_sha256": null,
@@ -4937,7 +4985,7 @@
         "base_sha256": null,
         "operation": "add",
         "path": "documentation/PUBLIC_RELEASE.md",
-        "release_sha256": "517014abf5d32572af9377eb7b017dac8ceb0dfc3b2500e4857cc393bef5410c"
+        "release_sha256": "ff1a6b3dbe9c75dacbbd539b5673b525d00fc5b6ae592a6d837b22364c131054"
       },
       {
         "base_sha256": null,
@@ -4949,13 +4997,19 @@
         "base_sha256": "389826d420a17a71a8c5b20ee04c99a99593f3cde059f3482b1125334d37b8d0",
         "operation": "replace",
         "path": "documentation/README.md",
-        "release_sha256": "6450a6cc41151cb0569ed42145bd80f3b924d64e7623a6770d471715320241d5"
+        "release_sha256": "f30ad827cf3453b8e33191731467ab1c610de9dd7763d435cfac3a9d4080ebea"
       },
       {
         "base_sha256": null,
         "operation": "add",
         "path": "documentation/RELEASE_NOTES_dome-lab-docs-2026-08-31.md",
         "release_sha256": "348b7d26da3e7a183646750bab16d1b19ecbb6dfaf7effef118969ca80c7655e"
+      },
+      {
+        "base_sha256": null,
+        "operation": "add",
+        "path": "documentation/RELEASE_NOTES_dome-testing-sop-v1.md",
+        "release_sha256": "091d195b49eda3db180dcbc32ee40f00fe0f300ffe7498ac3c50f4a12527f885"
       },
       {
         "base_sha256": "4fb7c9589d53686311f84fb3fb71470b3043534c5c446870f732b2471efcd729",
@@ -4985,7 +5039,7 @@
         "base_sha256": "910480e980c006cbe0b88e269858757a27f223ae02f358680cd5b1d9af509a38",
         "operation": "replace",
         "path": "documentation/REPRODUCING.md",
-        "release_sha256": "d1a03f901dc42611318c31db0712da2dc0d4ff3a32efe21c02372f0d3967acb8"
+        "release_sha256": "59cc4baed10c671f69dd29b2a4beffb5d5307b04bd2d4ba5cf55522dd3ede2b1"
       },
       {
         "base_sha256": null,
@@ -4997,7 +5051,7 @@
         "base_sha256": "cd932e86217300d0352f6e33ceaf8c8f8f831b39c4618763e25b793dede4b199",
         "operation": "replace",
         "path": "documentation/index.html",
-        "release_sha256": "8741e5701cc75be7d596b41a04bf26a82716b37684827c97494c7c03c8b069eb"
+        "release_sha256": "3c79461921eae40edc068850ae96bc67cd70076eafa40d5a520ba7f6bb85ef4b"
       },
       {
         "base_sha256": null,
@@ -5110,6 +5164,48 @@
       {
         "base_sha256": null,
         "operation": "add",
+        "path": "documentation/testing-sop/EXCEPTION_CHECKLIST.md",
+        "release_sha256": "d857ab3251fbabfa36fdee49f1e7493f416b5494f21969c3b6dbf87536133eb4"
+      },
+      {
+        "base_sha256": null,
+        "operation": "add",
+        "path": "documentation/testing-sop/FROZEN_SOP_MANIFEST.json",
+        "release_sha256": "fe48e03d77617d9b836663f8341f4e8741bc40ca7a924d88b1f2d4aed582f7ba"
+      },
+      {
+        "base_sha256": null,
+        "operation": "add",
+        "path": "documentation/testing-sop/IMPORTER_GUIDE.md",
+        "release_sha256": "b738a6dc66db22bca59e9a298fa2924bff1ab10423e496c67385c9830aba1f8f"
+      },
+      {
+        "base_sha256": null,
+        "operation": "add",
+        "path": "documentation/testing-sop/NEW_DOME_CHECKLIST.md",
+        "release_sha256": "ad2e869d5148220fcc2cb9a7fa83823e6ce3c6f1f039f890dd3b02ec1bb71648"
+      },
+      {
+        "base_sha256": null,
+        "operation": "add",
+        "path": "documentation/testing-sop/README.md",
+        "release_sha256": "7f2297fab03ce49c596cce993e4e233f57f01f0ef2d01fc619860e78105e70c1"
+      },
+      {
+        "base_sha256": null,
+        "operation": "add",
+        "path": "documentation/testing-sop/SOP.md",
+        "release_sha256": "8301c1e1dc6c79dc7383a20ce81ee8d8906acfc35b956f3c8a62305a3b13f4b1"
+      },
+      {
+        "base_sha256": null,
+        "operation": "add",
+        "path": "documentation/testing-sop/new_dome_change_record.csv.template",
+        "release_sha256": "1431206bbf3bbf64c7671dc542b5f7829d029f7bc7c915f66ad8e5b3660c1236"
+      },
+      {
+        "base_sha256": null,
+        "operation": "add",
         "path": "generator/domelab_pipeline/config/catalog_overlay.json",
         "release_sha256": "510a142775150b10e415ef74ee595f53b12e88a80ab4eca39c255a821103f474"
       },
@@ -5141,7 +5237,7 @@
         "base_sha256": null,
         "operation": "add",
         "path": "generator/domelab_pipeline/config/parts_release_overlay.json",
-        "release_sha256": "85019fa202ff9c70f1daa9403fe358b7b68510afcd3d228a97f6d87ad8c20e64"
+        "release_sha256": "06e49bde160f17ac320f3152c828ebb45e2e2b0e70aee751683102b47f2c1527"
       },
       {
         "base_sha256": null,
@@ -5307,7 +5403,7 @@
       }
     ],
     "policy_name": "ec-parts-builder-lib-6.0",
-    "policy_sha256": "85019fa202ff9c70f1daa9403fe358b7b68510afcd3d228a97f6d87ad8c20e64",
+    "policy_sha256": "06e49bde160f17ac320f3152c828ebb45e2e2b0e70aee751683102b47f2c1527",
     "policy_version": 1,
     "root_picker_source": "generated/packs/picker.staged.html"
   },
@@ -5338,7 +5434,7 @@
   },
   "publication": {
     "canonical_public_url": "https://buddyog.github.io/topre-force-curves/dome-lab-parts.html",
-    "git_tag": "perception-validation-v1"
+    "git_tag": "dome-testing-sop-v1"
   },
   "release_eligible": true,
   "tool_builds": {
