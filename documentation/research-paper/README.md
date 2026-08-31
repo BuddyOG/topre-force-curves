@@ -19,8 +19,8 @@ adds prospective multi-rater validation only after that study is completed.
 
 ## Required sequence
 
-1. Freeze and timestamp the prospective protocol and analysis plan before
-   enrolling anyone.
+1. **Complete:** freeze and timestamp the prospective protocol and analysis
+   plan as `perception-validation-v1` before enrolling anyone.
 2. Collect the blinded randomized multi-rater data without changing the
    released indices.
 3. Lock, hash, validate, and analyze the blinded data under the frozen plan.

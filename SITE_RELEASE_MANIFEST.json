@@ -834,10 +834,10 @@
       "sha256": "842d16a868e8df394899ee3f75666bdfd799769c65be5de95b18bc5e0ed071bd"
     },
     {
-      "bytes": 17470,
+      "bytes": 17710,
       "component": "parts_library_overlay",
       "path": "README.md",
-      "sha256": "676a3d061e1c121074c5697db6b5b8ffbba76f3a50db4a54ce6f8a8057270d4b"
+      "sha256": "95282da022020b11e2c97fca0d0229e39e462cbfd9f2dd1700bd41440061d57b"
     },
     {
       "bytes": 60003,
@@ -3420,10 +3420,10 @@
       "sha256": "0d783ff8e075b423a1fdea72cf521a675ecb42d2d92d72a9a7b59de3928d87a0"
     },
     {
-      "bytes": 4166,
+      "bytes": 4190,
       "component": "parts_library_overlay",
       "path": "documentation/PUBLIC_RELEASE.md",
-      "sha256": "c7534613b4b67c7b2628abbc679c32d5c3f639f74541305233bce76adb376ea6"
+      "sha256": "517014abf5d32572af9377eb7b017dac8ceb0dfc3b2500e4857cc393bef5410c"
     },
     {
       "bytes": 17931,
@@ -3432,10 +3432,10 @@
       "sha256": "a290397021bea7f34989b8c7d18f18744eec3883d199fc78567c11a727755e43"
     },
     {
-      "bytes": 3657,
+      "bytes": 3904,
       "component": "parts_library_overlay",
       "path": "documentation/README.md",
-      "sha256": "43142140c305bd6e4b7dbd3f9514aaaa4530c203ceaaf34596e8920daccbaf19"
+      "sha256": "6450a6cc41151cb0569ed42145bd80f3b924d64e7623a6770d471715320241d5"
     },
     {
       "bytes": 1376,
@@ -3462,6 +3462,12 @@
       "sha256": "83712fd4910b9421a0757a4c7cb8494fe0860e8347260aad413613077e90b97e"
     },
     {
+      "bytes": 1874,
+      "component": "parts_library_overlay",
+      "path": "documentation/RELEASE_NOTES_perception-validation-v1.md",
+      "sha256": "4c41365cddd9413bd5c3d9fb4b8f16dd7b67c868dfb9470cf7949e8442b12782"
+    },
+    {
       "bytes": 13145,
       "component": "parts_library_overlay",
       "path": "documentation/REPRODUCING.md",
@@ -3486,10 +3492,10 @@
       "sha256": "fa7a7d846fdb73e51d69186e5ffbc3bcf29161781927ad90c2a6bd91b80b6be9"
     },
     {
-      "bytes": 8075,
+      "bytes": 8335,
       "component": "parts_library_overlay",
       "path": "documentation/index.html",
-      "sha256": "a5cc37d87252a7fe978962da9320a9e6c1edc90f57b2bb9a90ae146479d8c8c3"
+      "sha256": "8741e5701cc75be7d596b41a04bf26a82716b37684827c97494c7c03c8b069eb"
     },
     {
       "bytes": 4456,
@@ -3504,28 +3510,76 @@
       "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
     },
     {
-      "bytes": 3964,
+      "bytes": 1347,
+      "component": "parts_library_overlay",
+      "path": "documentation/prospective-study/AMENDMENT_LOG.md",
+      "sha256": "d2fe741bc262f660f7b9bd5de76305dbaa79ac77664a8a1393a6a35e4af7314c"
+    },
+    {
+      "bytes": 3981,
       "component": "parts_library_overlay",
       "path": "documentation/prospective-study/ANALYSIS_PLAN.md",
-      "sha256": "ed083178bd9c56739b7acf688f756b0f11ca9ff914349c3db8499bebe2e91ca2"
+      "sha256": "d3eea2dc7b3ce6ef470f43c11db3801fe1614eb5e86b7af20646b1427bd0cf1a"
     },
     {
-      "bytes": 2168,
+      "bytes": 2225,
       "component": "parts_library_overlay",
       "path": "documentation/prospective-study/DATA_DICTIONARY.md",
-      "sha256": "93cf3f0d06321589e058fbf3563cca5c60104a2d93e73a3493b915f7a2946568"
+      "sha256": "c8e3e4a13ed69a8d0e61003683e4c64ba212db6fa81e598bceafa950f66d64a8"
     },
     {
-      "bytes": 5684,
+      "bytes": 3322,
+      "component": "parts_library_overlay",
+      "path": "documentation/prospective-study/EXCEPTION_CHECKLIST.md",
+      "sha256": "79428a20234f41ff8d14befdfb0dbf03f50b807074f5cf1125cd0f97ec070f23"
+    },
+    {
+      "bytes": 2637,
+      "component": "parts_library_overlay",
+      "path": "documentation/prospective-study/FREEZE_CHECKLIST.md",
+      "sha256": "7a3a2e2113fca93f1de5d35960db76326a6e5df2495f2f0e2e64984423aabe05"
+    },
+    {
+      "bytes": 5035,
+      "component": "parts_library_overlay",
+      "path": "documentation/prospective-study/FROZEN_PROTOCOL_MANIFEST.json",
+      "sha256": "bf57271e345d768b1e7c1b077bf37d80faf833c4bc30f95833cc97cf4289ec6a"
+    },
+    {
+      "bytes": 2160,
+      "component": "parts_library_overlay",
+      "path": "documentation/prospective-study/PARTICIPANT_SCRIPT.md",
+      "sha256": "ec1f550755b238336e77b1c5b574eedbc22e684fa95d8deb8436a851c6ea4633"
+    },
+    {
+      "bytes": 6249,
       "component": "parts_library_overlay",
       "path": "documentation/prospective-study/PROTOCOL.md",
-      "sha256": "0216e8c57d3492f8a42176dc7c6e802880e32e842149f192b6e780520a61bce6"
+      "sha256": "a296358223a56e4a20312368bd094c41a09be7d39b2c35c2452c8c9de625eb24"
     },
     {
-      "bytes": 4045,
+      "bytes": 5270,
       "component": "parts_library_overlay",
       "path": "documentation/prospective-study/README.md",
-      "sha256": "3b6e973dbd5fe279d9d76176710ed02a59e281d22321e029e32b543f990e487d"
+      "sha256": "9f9b58697f015b91a9f39b18f0300a8414fbbaf8548bcc62daa66deec826e57f"
+    },
+    {
+      "bytes": 1500,
+      "component": "parts_library_overlay",
+      "path": "documentation/prospective-study/SESSION_RECORDING_SHEET.md",
+      "sha256": "3cd2903494715d41c2a0faf15ea7432603d49235d75fb1cf4cc3bb4d4cfd08fb"
+    },
+    {
+      "bytes": 6516,
+      "component": "parts_library_overlay",
+      "path": "documentation/prospective-study/SOP.md",
+      "sha256": "ea0582bf50c5720bbd79200bd36b407c1d7708404fa8fff86f68cd7a7472063a"
+    },
+    {
+      "bytes": 476,
+      "component": "parts_library_overlay",
+      "path": "documentation/prospective-study/apparatus_record.csv.template",
+      "sha256": "c1e5d150b43b32102d178a87a1326bffa7d1c4cdb5efdba32c2e81017106e8cb"
     },
     {
       "bytes": 106,
@@ -3534,10 +3588,10 @@
       "sha256": "15fc39d06f93bf7efb23085d7edb10178c228552dc93dc5b5c4b6f2471b78731"
     },
     {
-      "bytes": 7167,
+      "bytes": 8003,
       "component": "parts_library_overlay",
       "path": "documentation/prospective-study/generate_schedules.py",
-      "sha256": "684566c15e95b859e64a94ca9b6ae44fdc0c42d7bf31f9ce5ae4bc680ea60336"
+      "sha256": "dc021b5875a8587c1c6a1bc7ba7b4982f90152f874290849c1a968b6957b5bce"
     },
     {
       "bytes": 90,
@@ -3558,10 +3612,10 @@
       "sha256": "0fd2f444d5e970ee6a2f6f7ef143e01ae8486ce1a21f08504ddd769ca8a56225"
     },
     {
-      "bytes": 3712,
+      "bytes": 3756,
       "component": "parts_library_overlay",
       "path": "documentation/research-paper/README.md",
-      "sha256": "11a2de32e201ea698af7011300f8a348b8e260fa3dddce148782d5c589a00a43"
+      "sha256": "144217211df7011dd96c6e116632a4a83a276a2896beca474fb395dbe4a5022d"
     },
     {
       "bytes": 1704,
@@ -4338,10 +4392,10 @@
       "sha256": "fd81e078fe999cdcb6af4ecdcbea97b5d2d3962b3e863f724ca79f67d6f8f69d"
     },
     {
-      "bytes": 3103,
+      "bytes": 3636,
       "component": "parts_library_overlay",
       "path": "generator/domelab_pipeline/config/parts_release_overlay.json",
-      "sha256": "978057930a63d29e24c829cd309326f51e86f2ad880c04d00240c0520235f62c"
+      "sha256": "85019fa202ff9c70f1daa9403fe358b7b68510afcd3d228a97f6d87ad8c20e64"
     },
     {
       "bytes": 29213,
@@ -4829,7 +4883,7 @@
         "base_sha256": "ca63925cf56a61f623205af173b33fedc14e8aa8439e165e7d2b7a54df285906",
         "operation": "replace",
         "path": "README.md",
-        "release_sha256": "676a3d061e1c121074c5697db6b5b8ffbba76f3a50db4a54ce6f8a8057270d4b"
+        "release_sha256": "95282da022020b11e2c97fca0d0229e39e462cbfd9f2dd1700bd41440061d57b"
       },
       {
         "base_sha256": "f6387933227ad9b3bfc68519abad2e2a83b17ab4738a059bddd37e5926026d4b",
@@ -4883,7 +4937,7 @@
         "base_sha256": null,
         "operation": "add",
         "path": "documentation/PUBLIC_RELEASE.md",
-        "release_sha256": "c7534613b4b67c7b2628abbc679c32d5c3f639f74541305233bce76adb376ea6"
+        "release_sha256": "517014abf5d32572af9377eb7b017dac8ceb0dfc3b2500e4857cc393bef5410c"
       },
       {
         "base_sha256": null,
@@ -4895,7 +4949,7 @@
         "base_sha256": "389826d420a17a71a8c5b20ee04c99a99593f3cde059f3482b1125334d37b8d0",
         "operation": "replace",
         "path": "documentation/README.md",
-        "release_sha256": "43142140c305bd6e4b7dbd3f9514aaaa4530c203ceaaf34596e8920daccbaf19"
+        "release_sha256": "6450a6cc41151cb0569ed42145bd80f3b924d64e7623a6770d471715320241d5"
       },
       {
         "base_sha256": null,
@@ -4922,6 +4976,12 @@
         "release_sha256": "83712fd4910b9421a0757a4c7cb8494fe0860e8347260aad413613077e90b97e"
       },
       {
+        "base_sha256": null,
+        "operation": "add",
+        "path": "documentation/RELEASE_NOTES_perception-validation-v1.md",
+        "release_sha256": "4c41365cddd9413bd5c3d9fb4b8f16dd7b67c868dfb9470cf7949e8442b12782"
+      },
+      {
         "base_sha256": "910480e980c006cbe0b88e269858757a27f223ae02f358680cd5b1d9af509a38",
         "operation": "replace",
         "path": "documentation/REPRODUCING.md",
@@ -4937,31 +4997,79 @@
         "base_sha256": "cd932e86217300d0352f6e33ceaf8c8f8f831b39c4618763e25b793dede4b199",
         "operation": "replace",
         "path": "documentation/index.html",
-        "release_sha256": "a5cc37d87252a7fe978962da9320a9e6c1edc90f57b2bb9a90ae146479d8c8c3"
+        "release_sha256": "8741e5701cc75be7d596b41a04bf26a82716b37684827c97494c7c03c8b069eb"
+      },
+      {
+        "base_sha256": null,
+        "operation": "add",
+        "path": "documentation/prospective-study/AMENDMENT_LOG.md",
+        "release_sha256": "d2fe741bc262f660f7b9bd5de76305dbaa79ac77664a8a1393a6a35e4af7314c"
       },
       {
         "base_sha256": null,
         "operation": "add",
         "path": "documentation/prospective-study/ANALYSIS_PLAN.md",
-        "release_sha256": "ed083178bd9c56739b7acf688f756b0f11ca9ff914349c3db8499bebe2e91ca2"
+        "release_sha256": "d3eea2dc7b3ce6ef470f43c11db3801fe1614eb5e86b7af20646b1427bd0cf1a"
       },
       {
         "base_sha256": null,
         "operation": "add",
         "path": "documentation/prospective-study/DATA_DICTIONARY.md",
-        "release_sha256": "93cf3f0d06321589e058fbf3563cca5c60104a2d93e73a3493b915f7a2946568"
+        "release_sha256": "c8e3e4a13ed69a8d0e61003683e4c64ba212db6fa81e598bceafa950f66d64a8"
+      },
+      {
+        "base_sha256": null,
+        "operation": "add",
+        "path": "documentation/prospective-study/EXCEPTION_CHECKLIST.md",
+        "release_sha256": "79428a20234f41ff8d14befdfb0dbf03f50b807074f5cf1125cd0f97ec070f23"
+      },
+      {
+        "base_sha256": null,
+        "operation": "add",
+        "path": "documentation/prospective-study/FREEZE_CHECKLIST.md",
+        "release_sha256": "7a3a2e2113fca93f1de5d35960db76326a6e5df2495f2f0e2e64984423aabe05"
+      },
+      {
+        "base_sha256": null,
+        "operation": "add",
+        "path": "documentation/prospective-study/FROZEN_PROTOCOL_MANIFEST.json",
+        "release_sha256": "bf57271e345d768b1e7c1b077bf37d80faf833c4bc30f95833cc97cf4289ec6a"
+      },
+      {
+        "base_sha256": null,
+        "operation": "add",
+        "path": "documentation/prospective-study/PARTICIPANT_SCRIPT.md",
+        "release_sha256": "ec1f550755b238336e77b1c5b574eedbc22e684fa95d8deb8436a851c6ea4633"
       },
       {
         "base_sha256": null,
         "operation": "add",
         "path": "documentation/prospective-study/PROTOCOL.md",
-        "release_sha256": "0216e8c57d3492f8a42176dc7c6e802880e32e842149f192b6e780520a61bce6"
+        "release_sha256": "a296358223a56e4a20312368bd094c41a09be7d39b2c35c2452c8c9de625eb24"
       },
       {
         "base_sha256": null,
         "operation": "add",
         "path": "documentation/prospective-study/README.md",
-        "release_sha256": "3b6e973dbd5fe279d9d76176710ed02a59e281d22321e029e32b543f990e487d"
+        "release_sha256": "9f9b58697f015b91a9f39b18f0300a8414fbbaf8548bcc62daa66deec826e57f"
+      },
+      {
+        "base_sha256": null,
+        "operation": "add",
+        "path": "documentation/prospective-study/SESSION_RECORDING_SHEET.md",
+        "release_sha256": "3cd2903494715d41c2a0faf15ea7432603d49235d75fb1cf4cc3bb4d4cfd08fb"
+      },
+      {
+        "base_sha256": null,
+        "operation": "add",
+        "path": "documentation/prospective-study/SOP.md",
+        "release_sha256": "ea0582bf50c5720bbd79200bd36b407c1d7708404fa8fff86f68cd7a7472063a"
+      },
+      {
+        "base_sha256": null,
+        "operation": "add",
+        "path": "documentation/prospective-study/apparatus_record.csv.template",
+        "release_sha256": "c1e5d150b43b32102d178a87a1326bffa7d1c4cdb5efdba32c2e81017106e8cb"
       },
       {
         "base_sha256": null,
@@ -4973,7 +5081,7 @@
         "base_sha256": null,
         "operation": "add",
         "path": "documentation/prospective-study/generate_schedules.py",
-        "release_sha256": "684566c15e95b859e64a94ca9b6ae44fdc0c42d7bf31f9ce5ae4bc680ea60336"
+        "release_sha256": "dc021b5875a8587c1c6a1bc7ba7b4982f90152f874290849c1a968b6957b5bce"
       },
       {
         "base_sha256": null,
@@ -4997,7 +5105,7 @@
         "base_sha256": null,
         "operation": "add",
         "path": "documentation/research-paper/README.md",
-        "release_sha256": "11a2de32e201ea698af7011300f8a348b8e260fa3dddce148782d5c589a00a43"
+        "release_sha256": "144217211df7011dd96c6e116632a4a83a276a2896beca474fb395dbe4a5022d"
       },
       {
         "base_sha256": null,
@@ -5033,7 +5141,7 @@
         "base_sha256": null,
         "operation": "add",
         "path": "generator/domelab_pipeline/config/parts_release_overlay.json",
-        "release_sha256": "978057930a63d29e24c829cd309326f51e86f2ad880c04d00240c0520235f62c"
+        "release_sha256": "85019fa202ff9c70f1daa9403fe358b7b68510afcd3d228a97f6d87ad8c20e64"
       },
       {
         "base_sha256": null,
@@ -5199,7 +5307,7 @@
       }
     ],
     "policy_name": "ec-parts-builder-lib-6.0",
-    "policy_sha256": "978057930a63d29e24c829cd309326f51e86f2ad880c04d00240c0520235f62c",
+    "policy_sha256": "85019fa202ff9c70f1daa9403fe358b7b68510afcd3d228a97f6d87ad8c20e64",
     "policy_version": 1,
     "root_picker_source": "generated/packs/picker.staged.html"
   },
@@ -5230,7 +5338,7 @@
   },
   "publication": {
     "canonical_public_url": "https://buddyog.github.io/topre-force-curves/dome-lab-parts.html",
-    "git_tag": "dome-lab-docs-2026-08-31"
+    "git_tag": "perception-validation-v1"
   },
   "release_eligible": true,
   "tool_builds": {

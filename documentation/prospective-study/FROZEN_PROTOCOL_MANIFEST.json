@@ -1,0 +1,134 @@
+{
+  "enrollment_at_freeze": 0,
+  "evidence_identity": "7aa8588b50856816b7fce90dd6e743c26c6f16926071123291cb054352b6cd4a",
+  "files": [
+    {
+      "bytes": 3806,
+      "path": "canonical-evidence/EPOCH_MANIFEST.json",
+      "role": "external_evidence_authority",
+      "sha256": "a1837f802de436035d605e9971563147308e86e7fc089902b30bb22e0581d354"
+    },
+    {
+      "bytes": 1347,
+      "path": "documentation/prospective-study/AMENDMENT_LOG.md",
+      "role": "frozen_protocol_file",
+      "sha256": "d2fe741bc262f660f7b9bd5de76305dbaa79ac77664a8a1393a6a35e4af7314c"
+    },
+    {
+      "bytes": 3981,
+      "path": "documentation/prospective-study/ANALYSIS_PLAN.md",
+      "role": "frozen_protocol_file",
+      "sha256": "d3eea2dc7b3ce6ef470f43c11db3801fe1614eb5e86b7af20646b1427bd0cf1a"
+    },
+    {
+      "bytes": 2225,
+      "path": "documentation/prospective-study/DATA_DICTIONARY.md",
+      "role": "frozen_protocol_file",
+      "sha256": "c8e3e4a13ed69a8d0e61003683e4c64ba212db6fa81e598bceafa950f66d64a8"
+    },
+    {
+      "bytes": 3322,
+      "path": "documentation/prospective-study/EXCEPTION_CHECKLIST.md",
+      "role": "frozen_protocol_file",
+      "sha256": "79428a20234f41ff8d14befdfb0dbf03f50b807074f5cf1125cd0f97ec070f23"
+    },
+    {
+      "bytes": 2637,
+      "path": "documentation/prospective-study/FREEZE_CHECKLIST.md",
+      "role": "frozen_protocol_file",
+      "sha256": "7a3a2e2113fca93f1de5d35960db76326a6e5df2495f2f0e2e64984423aabe05"
+    },
+    {
+      "bytes": 2160,
+      "path": "documentation/prospective-study/PARTICIPANT_SCRIPT.md",
+      "role": "frozen_protocol_file",
+      "sha256": "ec1f550755b238336e77b1c5b574eedbc22e684fa95d8deb8436a851c6ea4633"
+    },
+    {
+      "bytes": 6249,
+      "path": "documentation/prospective-study/PROTOCOL.md",
+      "role": "frozen_protocol_file",
+      "sha256": "a296358223a56e4a20312368bd094c41a09be7d39b2c35c2452c8c9de625eb24"
+    },
+    {
+      "bytes": 5270,
+      "path": "documentation/prospective-study/README.md",
+      "role": "frozen_protocol_file",
+      "sha256": "9f9b58697f015b91a9f39b18f0300a8414fbbaf8548bcc62daa66deec826e57f"
+    },
+    {
+      "bytes": 1500,
+      "path": "documentation/prospective-study/SESSION_RECORDING_SHEET.md",
+      "role": "frozen_protocol_file",
+      "sha256": "3cd2903494715d41c2a0faf15ea7432603d49235d75fb1cf4cc3bb4d4cfd08fb"
+    },
+    {
+      "bytes": 6516,
+      "path": "documentation/prospective-study/SOP.md",
+      "role": "frozen_protocol_file",
+      "sha256": "ea0582bf50c5720bbd79200bd36b407c1d7708404fa8fff86f68cd7a7472063a"
+    },
+    {
+      "bytes": 476,
+      "path": "documentation/prospective-study/apparatus_record.csv.template",
+      "role": "frozen_protocol_file",
+      "sha256": "c1e5d150b43b32102d178a87a1326bffa7d1c4cdb5efdba32c2e81017106e8cb"
+    },
+    {
+      "bytes": 106,
+      "path": "documentation/prospective-study/blinded_code_key.csv.template",
+      "role": "frozen_protocol_file",
+      "sha256": "15fc39d06f93bf7efb23085d7edb10178c228552dc93dc5b5c4b6f2471b78731"
+    },
+    {
+      "bytes": 8003,
+      "path": "documentation/prospective-study/generate_schedules.py",
+      "role": "frozen_protocol_file",
+      "sha256": "dc021b5875a8587c1c6a1bc7ba7b4982f90152f874290849c1a968b6957b5bce"
+    },
+    {
+      "bytes": 90,
+      "path": "documentation/prospective-study/operator_schedule.csv.template",
+      "role": "frozen_protocol_file",
+      "sha256": "f711c389c8f45e30293361560852694d0f4e11ba8d0b53a1331759b4960a1885"
+    },
+    {
+      "bytes": 263,
+      "path": "documentation/prospective-study/participant_ratings.csv.template",
+      "role": "frozen_protocol_file",
+      "sha256": "85ecfb7609949e7c0930edc0c9313f6ca1c4c58cd89c14af32ae2810aa12ae6b"
+    },
+    {
+      "bytes": 11727,
+      "path": "documentation/subjective-pilot/analysis.json",
+      "role": "external_pilot_dependency",
+      "sha256": "47e7379ce7cd261bafb718c2f51affab7557a930bac3e869c6bcef39e8557458"
+    },
+    {
+      "bytes": 3456,
+      "path": "documentation/subjective-pilot/grid_mapping.json",
+      "role": "external_panel_dependency",
+      "sha256": "9eeb2cb75b3572b410aca23f55a89c54d40b1533ba6e1117697c932b43aabb2e"
+    },
+    {
+      "bytes": 1237,
+      "path": "documentation/subjective-pilot/source_identity.json",
+      "role": "external_pilot_dependency",
+      "sha256": "8ebabff34ba0118a7868825d9c9a1d9eef24588b299e677d1dda0d4c88599704"
+    },
+    {
+      "bytes": 50515,
+      "path": "generated/packs/perception_scores.json",
+      "role": "external_frozen_predictor_dependency",
+      "sha256": "0756e49091dfc725574b4e75f5a2b0a8dc5d2bcee277dfea3ce33c2fa1e6cb0b"
+    }
+  ],
+  "frozen_at": "2026-08-31",
+  "git_tag": "perception-validation-v1",
+  "objective_commit": "6e86ac1955a0c566c7aae521705e51371992ba8a",
+  "perception_model": "perception-rank-v1",
+  "protocol_id": "perception-validation-v1",
+  "schema": "perception-validation-freeze-v1",
+  "status": "frozen_pre_enrollment",
+  "tag_binding": "The annotated Git tag target is the authoritative protocol commit."
+}

@@ -1,6 +1,8 @@
 # Prospective analysis plan
 
-Status: freeze before enrollment with the matching protocol version.
+Protocol ID: `perception-validation-v1`
+
+Status: frozen pre-enrollment on 2026-08-31.
 
 ## Frozen predictors and outcomes
 

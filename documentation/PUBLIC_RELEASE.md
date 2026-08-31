@@ -80,7 +80,7 @@ It is an operational backup, not part of the public repository package.
 The tools provide versioned bench measurements and evidence-scoped
 compatibility information. They do not establish universal product quality,
 comfort, preference, manufacturer specifications, or causal perceptual laws.
-The 25-dome subjective pilot is exploratory. The planned multi-rater study is
-specified in [`prospective-study/`](prospective-study/README.md); no
-confirmatory result exists until that study is conducted and analyzed under
-its frozen protocol.
+The 25-dome subjective pilot is exploratory. The multi-rater study protocol is
+frozen as `perception-validation-v1` in
+[`prospective-study/`](prospective-study/README.md); no confirmatory result
+exists until that study is conducted and analyzed under the frozen plan.

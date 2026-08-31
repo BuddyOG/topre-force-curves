@@ -22,7 +22,7 @@ zero or a word such as `NA` in numeric columns.
 | `weight_rating` | integer | `1` through `10`; blank if not provided. |
 | `tactility_rating` | integer | `1` through `10`; blank if not provided. |
 | `valid_trial` | boolean | `true` or `false` under prospective rules. |
-| `invalid_reason` | category | Blank when valid; otherwise `missing`, `wrong_specimen`, `unblinded`, `equipment_fault`, `assembly_fault`, `withdrawn`, or `other_declared`. |
+| `invalid_reason` | category | Blank when valid; otherwise `missing`, `wrong_specimen`, `unblinded`, `equipment_fault`, `assembly_fault`, `press_limit_exceeded`, `order_error`, `withdrawn`, or amendment-defined `other_declared`. |
 | `break_before` | boolean | Whether a break immediately preceded this trial. |
 | `protocol_deviation` | text | Neutral factual description; blank if none. |
 | `notes` | text | Nonidentifying operational note only. |

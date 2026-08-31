@@ -1,7 +1,15 @@
 # Protocol: blinded multi-rater validation of dome perception indices
 
-Protocol ID: `perception-validation-v1-draft`  
+Protocol ID: `perception-validation-v1`
+
+Status: frozen pre-enrollment
+
 Design: prospective, repeated-measures, blinded, randomized-order study
+
+The operator-facing implementation of this protocol is frozen in
+[`SOP.md`](SOP.md), [`PARTICIPANT_SCRIPT.md`](PARTICIPANT_SCRIPT.md), and
+[`EXCEPTION_CHECKLIST.md`](EXCEPTION_CHECKLIST.md). If concise and long-form
+wording appears to conflict, stop and amend the package before enrollment.
 
 ## Objective
 
@@ -96,6 +104,11 @@ break after trials 8 and 16; record any additional break.
 6. Record missingness or a protocol deviation immediately; never invent a
    score later.
 7. Remove the specimen, inspect the assembly, and continue in schedule order.
+
+An exposed scored trial is never repeated. More than five presses is invalid
+with reason `press_limit_exceeded`; an out-of-order exposure is invalid with
+reason `order_error`. Corrections made before participant exposure do not
+constitute a trial.
 
 ## Environmental and procedural record
 

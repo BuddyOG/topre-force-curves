@@ -280,11 +280,14 @@ tolerances, formal instrument-uncertainty bounds, or perceptual thresholds.
 - [Citation guide](documentation/CITATION.md) — citations for the paper,
   compendium, tools, and measurement records.
 - [Prospective multi-rater study](documentation/prospective-study/README.md) —
-  blinded randomized protocol, analysis plan, data templates, and schedule
-  generator prepared for the next evidence phase.
+  frozen `perception-validation-v1` protocol, plain-language SOP, participant
+  script, analysis plan, data templates, and blinded schedule generator.
 - [Full-paper roadmap](documentation/research-paper/README.md) — how Preprint
   2.0, the exploratory pilot, and future validation results become the full
   manuscript without mixing evidence classes.
+- [Perception-validation v1 freeze notes](documentation/RELEASE_NOTES_perception-validation-v1.md)
+  — frozen design, operator materials, readiness boundary, and scientific
+  continuity.
 
 ## Scope and limitations
 
@@ -324,6 +327,6 @@ do not change the project terms above.
 
 The released EC Parts Builder consumes the fc-3.4 canonical evidence without
 changing it. Beyond Snap Ratio Preprint 2.0 records the released methods and
-exploratory pilot. A prospective blinded multi-rater study is the next evidence
-phase; until it is completed, no confirmatory multi-rater perception claim is
-made.
+exploratory pilot. The prospective blinded multi-rater protocol is frozen as
+`perception-validation-v1`; until the study is completed, no confirmatory
+multi-rater perception claim is made.

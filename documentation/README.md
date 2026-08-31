@@ -37,19 +37,22 @@ to tag `ec-parts-lib-6.0` by the active site manifest.
   standalone URLs, release identities, paper hashes, and rollback boundary.
 - [Citation and attribution](CITATION.md) — paper, compendium, tool, and data
   citation forms with license boundaries.
-- [Prospective multi-rater study](prospective-study/README.md) — protocol,
-  analysis plan, data dictionary, collection templates, and deterministic
-  schedule generator.
+- [Prospective multi-rater study](prospective-study/README.md) — frozen
+  `perception-validation-v1` SOP, participant script, analysis plan, data
+  dictionary, collection templates, and blinded schedule generator.
 - [Full research-paper roadmap](research-paper/README.md) — required evidence
   sequence, manuscript plan, figures/tables, and claim matrix.
+- [Perception-validation v1 freeze notes](RELEASE_NOTES_perception-validation-v1.md)
+  — frozen design, operator package, readiness boundary, and continuity.
 - [Documentation closeout notes](RELEASE_NOTES_dome-lab-docs-2026-08-31.md)
   — dated public-record additions with scientific continuity.
 
 Beyond Snap Ratio Preprint 2.0 is available at
 <https://doi.org/10.5281/zenodo.22167065>, with its research compendium at
 <https://doi.org/10.5281/zenodo.22167047>. The preprint is the frozen methods
-and exploratory-pilot foundation. The prospective package specifies the next
-multi-rater evidence phase; it is not a completed result.
+and exploratory-pilot foundation. The prospective package is frozen as
+`perception-validation-v1` and specifies the next multi-rater evidence phase;
+it is not a completed result.
 
 ## Product boundary
 

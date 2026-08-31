@@ -28,6 +28,11 @@ FIELDS_PARTICIPANT = (
     "trial_order",
     "blinded_code",
 )
+FIELDS_PRACTICE = (
+    "participant_id",
+    "trial_order",
+    "blinded_code",
+)
 FIELDS_KEY = (
     "blinded_code",
     "position",
@@ -38,6 +43,7 @@ FIELDS_KEY = (
     "key_assigned_at",
     "key_custodian",
 )
+STUDY_ID = "perception-validation-v1"
 
 
 def parse_args() -> argparse.Namespace:
@@ -142,9 +148,22 @@ def main() -> int:
 
     internal: list[dict[str, object]] = []
     public: list[dict[str, object]] = []
+    practice: list[dict[str, object]] = []
     for participant_number in range(1, args.participants + 1):
         participant_id = f"P{participant_number:03d}"
-        prior_order: tuple[str, ...] | None = None
+        practice_order = list(coded_panel)
+        rng.shuffle(practice_order)
+        prior_order: tuple[str, ...] | None = tuple(
+            str(row["blinded_code"]) for row in practice_order
+        )
+        for trial_order, row in enumerate(practice_order, start=1):
+            practice.append(
+                {
+                    "participant_id": participant_id,
+                    "trial_order": trial_order,
+                    "blinded_code": row["blinded_code"],
+                }
+            )
         for session in range(1, args.sessions + 1):
             ordered = list(coded_panel)
             rng.shuffle(ordered)
@@ -177,12 +196,15 @@ def main() -> int:
     args.output.mkdir(parents=True)
     write_csv(args.output / "operator_schedule.csv", FIELDS_INTERNAL, internal)
     write_csv(args.output / "participant_schedule.csv", FIELDS_PARTICIPANT, public)
+    write_csv(args.output / "practice_schedule.csv", FIELDS_PRACTICE, practice)
     code_key_sha256 = hashlib.sha256(args.code_key.read_bytes()).hexdigest()
     metadata = {
+        "study_id": STUDY_ID,
         "generator": Path(__file__).name,
         "participants": args.participants,
         "sessions": args.sessions,
         "panel_size": len(panel),
+        "practice_rows": len(practice),
         "seed": args.seed,
         "schedule_rows": len(internal),
         "code_key_sha256": code_key_sha256,
@@ -191,7 +213,10 @@ def main() -> int:
     (args.output / "schedule_metadata.json").write_text(
         json.dumps(metadata, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
-    print(f"wrote {len(internal)} scored trials to {args.output}")
+    print(
+        f"wrote {len(internal)} scored trials and {len(practice)} practice trials "
+        f"to {args.output}"
+    )
     return 0
 
 

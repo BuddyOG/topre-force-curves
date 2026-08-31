@@ -1,0 +1,7 @@
+study_id,record_id,physical_item,physical_label,selected_at,notes
+perception-validation-v1,PV1-H1,Topre housing,PV1-H1,,
+perception-validation-v1,PV1-S1,Topre slider,PV1-S1,,
+perception-validation-v1,PV1-CS1,conical spring,PV1-CS1,,
+perception-validation-v1,PV1-K1,keycap,PV1-K1,,
+perception-validation-v1,PV1-M1,holder or mounting fixture,PV1-M1,,
+perception-validation-v1,PV1-A1,complete standardized assembly,PV1-A1,,composed of PV1-H1 + PV1-S1 + PV1-CS1 + PV1-K1 + PV1-M1
