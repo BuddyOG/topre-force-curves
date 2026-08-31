@@ -238,3 +238,16 @@ The public documentation covers:
 The longer research paper and the EC parts-library release are separate later
 milestones. Their deferral does not change the frozen evidence or the method
 documentation required to audit and use the Force Curve Bench.
+
+## Publication-status addendum — 2026-08-31
+
+The preceding publication-handoff wording records the state at which fc-3.4
+was prepared. It is retained as history. The repository actions were later
+completed: fc-3.4 was committed, tagged `fc-3.4`, published at the canonical
+URL, and followed by EC Parts Builder `lib-6.0` under tag
+`ec-parts-lib-6.0`. Beyond Snap Ratio Preprint 2.0 and its research compendium
+were also released. See [`PUBLIC_RELEASE.md`](PUBLIC_RELEASE.md) for the live
+URLs, DOI records, hashes, and current release boundary.
+
+None of those later publication actions changed the frozen fc-3.4 scientific
+payload, index equations, retained-run membership, or evidence identity.

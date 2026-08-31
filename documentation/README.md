@@ -33,10 +33,23 @@ to tag `ec-parts-lib-6.0` by the active site manifest.
   `postMessage` validation and acceptance checks.
 - [lib-6.0 release notes](RELEASE_NOTES_lib-6.0.md) — release changes,
   limitations, and verification gates.
+- [Dome Lab public release record](PUBLIC_RELEASE.md) — final storefront and
+  standalone URLs, release identities, paper hashes, and rollback boundary.
+- [Citation and attribution](CITATION.md) — paper, compendium, tool, and data
+  citation forms with license boundaries.
+- [Prospective multi-rater study](prospective-study/README.md) — protocol,
+  analysis plan, data dictionary, collection templates, and deterministic
+  schedule generator.
+- [Full research-paper roadmap](research-paper/README.md) — required evidence
+  sequence, manuscript plan, figures/tables, and claim matrix.
+- [Documentation closeout notes](RELEASE_NOTES_dome-lab-docs-2026-08-31.md)
+  — dated public-record additions with scientific continuity.
 
-The longer research paper is not part of this documentation set. These files
-contain the method, data identity, calculation rules, and limitations needed to
-use and audit the released Force Curve Bench without that paper.
+Beyond Snap Ratio Preprint 2.0 is available at
+<https://doi.org/10.5281/zenodo.22167065>, with its research compendium at
+<https://doi.org/10.5281/zenodo.22167047>. The preprint is the frozen methods
+and exploratory-pilot foundation. The prospective package specifies the next
+multi-rater evidence phase; it is not a completed result.
 
 ## Product boundary
 

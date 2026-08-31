@@ -207,3 +207,4 @@ Every record in the vendored r8 source (config/r8/) accounted for. Stable IDs on
 
 - `shell::hhkb` → `shell::hhkb` — HHKB Shell (represents the r8 keyboard-scoped MetaPulse edges as shell pair edges; the shell is a Topre-molded housing array)
 - `shell::rc1` → `shell::rc1` — Realforce RC1 Shell (represents the r8 keyboard-scoped MetaPulse edges as shell pair edges; the shell is a Topre-molded housing array)
+

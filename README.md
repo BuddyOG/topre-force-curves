@@ -6,8 +6,11 @@
 
 The corresponding Shopify pages present the Unreal Keyboards tools separately:
 
+- [Dome Lab](https://unrealkeyboards.com/pages/dome-lab)
 - [Force Curve Bench](https://unrealkeyboards.com/pages/topre-force-curve-library)
 - [EC Parts Builder](https://unrealkeyboards.com/pages/topre-ec-parts-library-builder)
+- [Beyond Snap Ratio Preprint 2.0](https://unrealkeyboards.com/pages/beyond-snap-ratio)
+- [Topre & EC Dome Force Curves article](https://unrealkeyboards.com/blogs/topre-mods/topre-dome-force-curves)
 
 Shopify owns the Dome Lab landing page, header, and navigation. Force Curve
 Bench and EC Parts Builder are embedded independently. The EC Parts Builder
@@ -38,13 +41,14 @@ result.
 | Current public package authority | `SITE_RELEASE_MANIFEST.json` and its `SHA256SUMS` |
 | Protected predecessor authority | `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json`, bound to tag `fc-3.4` |
 | Open Graph image | `https://buddyog.github.io/topre-force-curves/assets/force-curve-bench-fc-3.4-og.png` |
-| Browser acceptance | Local interactive/runtime/export acceptance recorded; deployment checks are listed separately |
+| Browser acceptance | Local interactive/runtime/export acceptance and live deployment checks recorded |
 | Protected fc-3.4 surfaces | `index.html`, all 184 raw CSVs, `canonical-evidence/`, and the remaining continuity endpoints remain byte-identical |
 | Frozen raw-source commit | `6e86ac1955a0c566c7aae521705e51371992ba8a` |
 | Canonical evidence identity | `7aa8588b50856816b7fce90dd6e743c26c6f16926071123291cb054352b6cd4a` |
 | Metric method | `metrics-v4.2` |
 | Intake authority | `intake-qc-v1.4`, implementation-parity bound to `test-imp 1.1.4` |
 | Perception-index model | `perception-rank-v1` |
+| Research preprint | Version 2.0; [paper DOI](https://doi.org/10.5281/zenodo.22167065); [compendium DOI](https://doi.org/10.5281/zenodo.22167047) |
 
 The site manifest records the active combined publication. The retained
 `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` remains the immutable predecessor
@@ -270,6 +274,17 @@ tolerances, formal instrument-uncertainty bounds, or perceptual thresholds.
   chronology, target identity, changes, limitations, and verification contract.
 - [Shopify embed contract](documentation/SHOPIFY_EMBED.md) — exact-origin
   parent/child messaging and production acceptance checks.
+- [Public release record](documentation/PUBLIC_RELEASE.md) — final public
+  URLs, released identities, paper hashes, licensing boundary, and rollback
+  retention.
+- [Citation guide](documentation/CITATION.md) — citations for the paper,
+  compendium, tools, and measurement records.
+- [Prospective multi-rater study](documentation/prospective-study/README.md) —
+  blinded randomized protocol, analysis plan, data templates, and schedule
+  generator prepared for the next evidence phase.
+- [Full-paper roadmap](documentation/research-paper/README.md) — how Preprint
+  2.0, the exploratory pilot, and future validation results become the full
+  manuscript without mixing evidence classes.
 
 ## Scope and limitations
 
@@ -307,6 +322,8 @@ do not change the project terms above.
 - **Testing, data stewardship, analysis, and Force Curve Bench:** Brian
   “BuddyOG” Gebo / [Unreal Keyboards](https://unrealkeyboards.com).
 
-The local EC Parts Builder candidate consumes the fc-3.4 canonical evidence
-without changing it. The longer research paper remains a separate later
-project and is not required to use or audit the released Force Curve Bench.
+The released EC Parts Builder consumes the fc-3.4 canonical evidence without
+changing it. Beyond Snap Ratio Preprint 2.0 records the released methods and
+exploratory pilot. A prospective blinded multi-rater study is the next evidence
+phase; until it is completed, no confirmatory multi-rater perception claim is
+made.

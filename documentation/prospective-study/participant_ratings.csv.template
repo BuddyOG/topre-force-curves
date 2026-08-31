@@ -1,0 +1,1 @@
+study_id,participant_id,experience_band,session,session_started_at,hours_since_prior_session,operator_id,apparatus_id,room_temp_c,trial_order,blinded_code,press_count,weight_rating,tactility_rating,valid_trial,invalid_reason,break_before,protocol_deviation,notes

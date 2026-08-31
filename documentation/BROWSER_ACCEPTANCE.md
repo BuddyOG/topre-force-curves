@@ -104,3 +104,26 @@ carries 338 decision-changing browser edges while the 3,403-edge config audit pa
 Shopify wrapper owns Dome Lab navigation and must pass the iframe contract.
 `SITE_RELEASE_MANIFEST.json` and its `SHA256SUMS` are the active site authority;
 the fc-3.4 manifest remains the protected predecessor record.
+
+## Live deployment closeout — 2026-08-31
+
+The publication checks above were completed against the public deployment:
+
+| Surface | Result | Public target |
+|---|---|---|
+| Dome Lab hub | Pass | <https://unrealkeyboards.com/pages/dome-lab> |
+| Force Curve Bench page | Pass | <https://unrealkeyboards.com/pages/topre-force-curve-library> |
+| EC Parts Builder page | Pass | <https://unrealkeyboards.com/pages/topre-ec-parts-library-builder> |
+| Paper overview | Pass | <https://unrealkeyboards.com/pages/beyond-snap-ratio> |
+| Explanatory article | Pass | <https://unrealkeyboards.com/blogs/topre-mods/topre-dome-force-curves> |
+| Standalone Force Curve Bench | Pass | <https://buddyog.github.io/topre-force-curves/> |
+| Standalone EC Parts Builder | Pass | <https://buddyog.github.io/topre-force-curves/dome-lab-parts.html> |
+| fc-3.4 GitHub release | Pass | <https://github.com/BuddyOG/topre-force-curves/releases/tag/fc-3.4> |
+| lib-6.0 GitHub release | Pass | <https://github.com/BuddyOG/topre-force-curves/releases/tag/ec-parts-lib-6.0> |
+| Paper DOI | Pass | <https://doi.org/10.5281/zenodo.22167065> |
+| Compendium DOI | Pass | <https://doi.org/10.5281/zenodo.22167047> |
+
+The storefront hub, paper page, article, and Tools navigation were inspected
+after publication. The standalone endpoints resolved to their released tools.
+Private review pages, the unpublished review theme, and the pre-release menu
+backup remain rollback assets rather than release authorities.
