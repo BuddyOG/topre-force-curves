@@ -100,15 +100,18 @@ a corresponding amount.
 - three sessions in the same fixed order;
 - 75 session-by-dome observation rows, each containing one weight and one
   tactility score (150 numeric scores total);
-- one standardized Topre housing, slider, and conical spring;
+- a fixed 5×5 grid of 25 separate, nominally matched OEM Topre assemblies,
+  each with an OEM housing, black slider, and conical spring;
 - relative 1–10 anchors defined by that 25-dome panel;
 - no independent validation panel; and
 - no tactility score of 1, so the pilot contains no observed linear/off case.
 
 The fixed sequence can carry order, learning, memory, or fatigue effects. One
-rater cannot establish agreement among users. The standardized assembly helps
-hold that pilot setup constant, but it does not test other housings, sliders,
-springs, precompression states, or complete keyboards.
+rater cannot establish agreement among users. Dome identity, fixed grid
+position, and unit-to-unit assembly variation were confounded, and continuity
+of each individual housing, slider, and spring across sessions was not
+separately recorded. The pilot does not test other assembly types,
+precompression states, or complete keyboards.
 
 The reported Spearman correlations are exploratory associations within this
 panel. They are not causal estimates, population parameters, or evidence that

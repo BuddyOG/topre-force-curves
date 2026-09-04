@@ -10,9 +10,9 @@
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://buddyog.github.io/topre-force-curves/">
 <meta property="og:url" content="https://buddyog.github.io/topre-force-curves/">
-<meta property="og:image" content="https://buddyog.github.io/topre-force-curves/assets/force-curve-bench-fc-3.4-og.png">
+<meta property="og:image" content="https://buddyog.github.io/topre-force-curves/assets/force-curve-bench-fc-3.5-og.png">
 <meta property="og:image:width" content="2968">
-<meta property="og:image:height" content="1929">
+<meta property="og:image:height" content="1928">
 <meta property="og:image:alt" content="Force Curve Bench comparison of Topre R1 45g and three Sony BKE Brown domes.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23AC53FF'/%3E%3Ctext x='32' y='43' font-family='Arial,Helvetica,sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%230E1012'%3EUK%3C/text%3E%3C/svg%3E">
 <style>
@@ -24,6 +24,9 @@
   --paper:#0E1012; --panel:#16181B; --ink:#ECEDEF; --muted:#9AA3AD;
   --line:#2A2F35; --grid-minor:#1E2226; --grid-major:#2A2F35;
   --accent:#AC53FF; --accent-ink:#C08CFF;
+  --weight:#FF7EB6; --weight-soft:rgba(255,126,182,.10);
+  --tactility:#33B1FF; --tactility-soft:rgba(51,177,255,.10);
+  --separate:#BE95FF; --separate-soft:rgba(190,149,255,.10);
   --tt-bg:#22262B; --tt-fg:#ECEDEF; --tt-mut:#9AA3AD; --tt-line:#3A4046;
   --err:#FF8A70; --tint:rgba(172,83,255,.08);
   --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -33,6 +36,9 @@
   --paper:#F4F6F5; --panel:#FFFFFF; --ink:#1C2422; --muted:#68766F;
   --line:#D9E0DD; --grid-minor:#EDF1EF; --grid-major:#DCE3E0;
   --accent:#7A52B8; --accent-ink:#5B3A94;
+  --weight:#8A285D; --weight-soft:rgba(138,40,93,.08);
+  --tactility:#006876; --tactility-soft:rgba(0,104,118,.08);
+  --separate:#5B3A94; --separate-soft:rgba(91,58,148,.08);
   --tt-bg:#1C2422; --tt-fg:#F2F5F4; --tt-mut:#AEBBB5; --tt-line:#3A4642;
   --err:#A8402C; --tint:rgba(122,82,184,.07);
 }
@@ -45,7 +51,8 @@ header{display:flex;align-items:baseline;gap:14px;padding:18px 22px 12px;border-
 h1{font-size:21px;font-weight:600;letter-spacing:-.01em}
 header .src{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--muted)}
 
-.app{display:grid;grid-template-columns:252px 1fr;gap:0;min-height:560px}
+.app{display:grid;grid-template-columns:252px minmax(0,var(--content-w));gap:0;min-height:560px;
+  width:min(100%,calc(252px + var(--content-w)));margin:0 auto}
 aside{border-right:1px solid var(--line);padding:14px 12px 30px;background:var(--panel)}
 .filterwrap{padding:0 0 10px;background:var(--panel)}
 .filter{display:block;width:100%;padding:7px 10px;margin:0;border:1px solid var(--line);border-radius:7px;font:inherit;font-size:13px;background:var(--paper);color:var(--ink)}
@@ -62,7 +69,7 @@ aside{border-right:1px solid var(--line);padding:14px 12px 30px;background:var(-
 .item .n{font-family:var(--sans);font-size:10px;color:var(--muted);margin-left:auto}
 
 main{padding:16px 22px 40px;min-width:0}
-main>*{max-width:var(--content-w)}
+main>*{max-width:var(--content-w);margin-left:auto;margin-right:auto}
 .chartcard{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 14px 8px}
 .toolbar{display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:0 2px 8px;max-width:var(--content-w)}
 .toolbar .t{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);cursor:pointer;user-select:none}
@@ -135,10 +142,11 @@ td button.rm:hover{background:var(--paper);color:var(--ink)}
 .brand{font-family:var(--mono);font-weight:800;font-size:22px;letter-spacing:.14em;color:var(--accent,#AC53FF);text-decoration:none}
 .powered{font-size:13px;color:var(--muted)}
 .powered a{color:var(--ink)}
-.xtabs{display:flex;gap:4px;align-items:center;padding:0 14px;border-bottom:1px solid var(--line);max-width:calc(252px + 44px + var(--content-w))}
+.brandbar,.xtabs{width:min(100%,calc(252px + var(--content-w)));margin-left:auto;margin-right:auto}
+.xtabs{display:flex;gap:4px;align-items:center;padding:0 14px;border-bottom:1px solid var(--line);max-width:none}
 .xtab{font-size:14.5px;padding:9px 13px;color:var(--muted);text-decoration:none;background:none;border:none;cursor:pointer;border-bottom:2px solid transparent}
 .xtab.on{color:var(--ink);border-bottom-color:var(--accent,#AC53FF)}
-.chartwrap{max-width:1060px;margin:0;aspect-ratio:16/10}
+.chartwrap{max-width:1060px;margin:0 auto;aspect-ratio:16/10;min-height:520px}
 canvas#chart{width:100%;height:100%;max-height:none}
 .foot{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .foot .src{font-family:var(--mono);font-size:12px;color:var(--muted)}
@@ -162,15 +170,15 @@ canvas#chart{width:100%;height:100%;max-height:none}
 .ptable .num,.ptable th.num{text-align:left}
 .ptable td,.ptable th{padding-right:22px}
 .ptable td,.ptable th{text-align:left}
-.chartcard{max-width:var(--content-w);margin:0}
+.chartcard{max-width:var(--content-w);margin:0 auto}
 .hint-bottom{display:block;text-align:left;font-family:var(--sans);font-size:12.5px;color:var(--muted);padding:6px 2px 10px}
-#filtPanel .fgrp{margin:0 0 16px}
-#filtPanel h3{font-family:var(--sans);font-weight:600;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 7px}
-#filtPanel .fchk{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--ink);padding:2.5px 0;cursor:pointer}
-#filtPanel .frange{display:flex;align-items:center;gap:6px;margin:0 0 9px}
-#filtPanel .frange label{flex:1;font-size:12px;color:var(--muted)}
-#filtPanel .frange input{width:54px;background:var(--panel);border:1px solid var(--line);border-radius:6px;color:var(--ink);padding:4px 6px;font-size:12.5px;font-family:var(--sans)}
-#filtPanel .filter{margin-bottom:14px}
+#filtPanel .fgrp,#sbFilters .fgrp{margin:0 0 16px}
+#filtPanel h3,#sbFilters h3{font-family:var(--sans);font-weight:600;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 7px}
+#filtPanel .fchk,#sbFilters .fchk{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--ink);padding:2.5px 0;cursor:pointer}
+#filtPanel .frange,#sbFilters .frange{display:flex;align-items:center;gap:6px;margin:0 0 9px}
+#filtPanel .frange label,#sbFilters .frange label{flex:1;font-size:12px;color:var(--muted)}
+#filtPanel .frange input,#sbFilters .frange input{width:54px;background:var(--panel);border:1px solid var(--line);border-radius:6px;color:var(--ink);padding:4px 6px;font-size:12.5px;font-family:var(--sans)}
+#filtPanel .filter,#sbFilters .filter{margin-bottom:14px}
 #readout tbody tr.hl{background:var(--tint)}
 #readout tbody tr{cursor:default}
 #descTip{position:absolute;display:none;max-width:250px;background:var(--tt-bg);color:var(--tt-fg);
@@ -179,12 +187,53 @@ canvas#chart{width:100%;height:100%;max-height:none}
 .seg{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--line);border-radius:9px;overflow:hidden;max-width:100%}
 .segbtn{font:600 12.5px var(--sans);padding:7px 13px;background:transparent;color:var(--muted);border:0;cursor:pointer}
 .segbtn.on{background:var(--accent-soft,rgba(122,92,255,.16));color:var(--ink)}
+.segbtn[data-m="profileWeight"].on{color:var(--weight);background:var(--weight-soft)}
+.segbtn[data-m="profileTactility"].on{color:var(--tactility);background:var(--tactility-soft)}
+.segbtn[data-m="profileTravel"].on{color:var(--separate);background:var(--separate-soft)}
 .segbtn:not(.on):hover{color:var(--ink)}
-body.tall-chart .chartwrap{aspect-ratio:auto;height:var(--tall-chart-height,560px);min-height:560px}
-.statsout{margin:10px 14px 4px;border:1px solid var(--line);border-radius:12px;padding:9px 12px;
- display:grid;grid-template-columns:auto auto;gap:2px 18px;width:fit-content;background:var(--panel,transparent)}
+body.comparison-chart .chartwrap{aspect-ratio:auto;height:640px;min-height:640px}
+.statsout{margin:12px auto 4px;border:1px solid var(--line);border-radius:12px;padding:9px 12px;
+ display:grid;grid-template-columns:minmax(210px,1fr) minmax(240px,1.1fr) minmax(230px,1fr);gap:8px 18px;width:100%;background:var(--panel,transparent)}
+.statsout .so-group{min-width:0;padding-top:5px;border-top:2px solid var(--line)}
+.statsout .so-group.family-weight{border-top-color:var(--weight)}
+.statsout .so-group.family-tactility{border-top-color:var(--tactility)}
+.statsout .so-group.family-separate{border-top-color:var(--separate)}
+.statsout .so-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:4px 7px 6px;
+  font:700 11px var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);border-radius:6px}
+.statsout .so-head.family-weight{color:var(--weight)}
+.statsout .so-head.family-tactility{color:var(--tactility)}
+.statsout .so-head.family-separate{color:var(--separate)}
+.statsout .so-head .so-v{font-size:12px;letter-spacing:0;text-transform:none;color:inherit}
+.statsout .so-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:5px 7px;border-radius:6px}
+.statsout .so-row:hover,.statsout .so-row.hot,.statsout .so-head:hover,.statsout .so-head.hot,
+.statsout .so-row[data-focus-state="active"],.statsout .so-head[data-focus-state="active"]{background:var(--tint)}
+.statsout .so-row[data-focus-state="active"] .so-l,.statsout .so-row[data-focus-state="active"] .so-v,
+.statsout .so-head[data-focus-state="active"] .so-l,.statsout .so-head[data-focus-state="active"] .so-v{font-weight:750}
+.statsout .so-row[data-focus-state="muted"] .so-l,.statsout .so-row[data-focus-state="muted"] .so-v,
+.statsout .so-head[data-focus-state="muted"]{color:var(--muted)}
+.statsout .so-group[data-focus-state="muted"]{border-top-color:var(--muted)}
 .statsout .so-l{font:11px var(--sans);color:var(--muted);padding-right:6px}
 .statsout .so-v{font:600 12px var(--sans);color:var(--ink);text-align:right}
+.statsout .family-weight .so-l,.statsout .family-weight .so-v{color:var(--weight)}
+.statsout .family-tactility .so-l,.statsout .family-tactility .so-v{color:var(--tactility)}
+.statsout .family-separate .so-l,.statsout .family-separate .so-v{color:var(--separate)}
+.compareActions{display:none;gap:7px;align-items:center}
+.compareActions.on{display:flex}
+.displaymenu{position:relative;margin-left:auto}
+.displaymenu summary{list-style:none;display:flex;align-items:center;gap:7px;white-space:nowrap}
+.displaymenu summary::-webkit-details-marker{display:none}
+.displaymenu .chev{font-size:10px;color:var(--muted);transition:transform .12s}
+.displaymenu[open] .chev{transform:rotate(180deg)}
+.displaymenu.disabled{opacity:.42}
+.displaymenu.disabled summary{cursor:not-allowed}
+.displaypop{position:absolute;right:0;top:calc(100% + 7px);z-index:20;width:226px;padding:10px;
+  border:1px solid var(--tt-line);border-radius:9px;background:var(--tt-bg);color:var(--tt-fg);box-shadow:0 8px 24px rgba(0,0,0,.32)}
+.displaypop h3{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--tt-mut);margin:0 0 7px}
+.displaysection+.displaysection{border-top:1px solid var(--tt-line);margin-top:7px;padding-top:9px}
+.displayopt{display:flex;align-items:center;gap:9px;padding:7px 6px;border-radius:6px;font-size:12.5px;cursor:pointer}
+.displayopt:hover{background:rgba(255,255,255,.06)}
+.displayopt input{accent-color:var(--accent);width:14px;height:14px}
+.displaynote{font-size:10.5px;line-height:1.4;color:var(--tt-mut);padding:6px 6px 1px;border-top:1px solid var(--tt-line);margin-top:5px}
 .review-banner{padding:9px 18px;border-bottom:1px solid var(--line);background:var(--tint);
   color:var(--ink);font-size:12.5px;line-height:1.45}
 .review-banner b{color:var(--accent-ink)}
@@ -212,6 +261,18 @@ body.tall-chart .chartwrap{aspect-ratio:auto;height:var(--tall-chart-height,560p
 .grp.closed .item,.grp.closed .subgrp{display:none!important}
 .subgrp.closed .item{display:none!important}
 .filter-hidden{display:none!important}
+#setlist.flat-results .grp>h2,#setlist.flat-results .subgrp>h2,#setlist.flat-results .item.family{display:none!important}
+#setlist.flat-results .grp,#setlist.flat-results .subgrp{display:contents;margin:0;padding:0}
+#setlist.flat-results .item,#setlist.flat-results .item.sub{padding:6px 8px!important;margin:0;text-align:left}
+#setlist.flat-results .grp.closed>.item:not(.filter-hidden),#setlist.flat-results .subgrp.closed>.item:not(.filter-hidden){display:flex!important}
+#setlist.flat-results .grp.closed>.subgrp:not(.filter-hidden){display:block!important}
+#sbFilters .side-disclosure,#filtPanel .side-disclosure{margin:0 0 10px}
+.side-disclosure-toggle,#testsMenuToggle{width:100%;display:flex;align-items:center;gap:7px;text-align:left}
+.side-disclosure-toggle .menu-count,#testsMenuToggle .menu-count{margin-left:auto;color:var(--muted);font-size:11px;font-weight:500;text-transform:none;letter-spacing:0}
+.side-disclosure-body{padding:10px 0 2px}
+.side-disclosure-body[hidden],#testsMenuBody[hidden]{display:none!important}
+#testsMenuToggle{margin:0 0 8px;position:sticky;top:0;z-index:2;background:var(--panel)}
+#testsMenuBody{min-width:0}
 .sbf{padding:0 0 8px;border-bottom:1px solid var(--line);margin-bottom:8px}
 .sbtoggle{background:none;border:0;color:var(--muted);font:inherit;font-size:11px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;padding:2px 0;font-weight:600}
 .sbtoggle:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
@@ -220,6 +281,10 @@ body.tall-chart .chartwrap{aspect-ratio:auto;height:var(--tall-chart-height,560p
 .sbnum{width:56px;background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:3px 6px;font:inherit;font-size:11.5px}
 .sbdash{color:var(--muted)}
 .sbreset{margin-top:4px;font-size:11px;padding:3px 10px}
+@media (max-width:900px){.statsout{grid-template-columns:repeat(2,minmax(220px,1fr))}.statsout .family-separate{grid-column:1/-1}}
+@media (max-width:840px){.chartwrap,body.comparison-chart .chartwrap{width:100%;aspect-ratio:auto;height:560px;min-height:0}}
+@media (max-width:640px){.statsout{grid-template-columns:1fr}.statsout .family-separate{grid-column:auto}.toolbar{gap:8px}.compareActions{width:100%}}
+@media (max-width:520px){.chartwrap,body.comparison-chart .chartwrap{height:520px}}
 </style>
 </head>
 <body>
@@ -241,22 +306,46 @@ body.tall-chart .chartwrap{aspect-ratio:auto;height:var(--tall-chart-height,560p
 <div class="app">
   <aside id="sidebar">
     <div id="selPanel">
-      <div class="filterwrap"><input id="filtertests" class="filter" type="search" placeholder="Filter tests…" autocomplete="off" aria-label="Filter tests"></div>
       <div id="sbFilters" class="sbf"></div>
-      <div id="setlist"><div class="status" id="loadstatus"></div></div>
+      <div id="setlist">
+        <button class="sbtoggle" id="testsMenuToggle" type="button" aria-expanded="true" aria-controls="testsMenuBody"><span class="caret" aria-hidden="true">▾</span><span>TESTS</span><span class="menu-count" id="testsMenuCount"></span></button>
+        <div id="testsMenuBody"></div>
+        <div class="status" id="loadstatus"></div>
+      </div>
     </div>
     <div id="filtPanel" style="display:none"></div>
   </aside>
 
   <main>
     <div class="toolbar" id="chartToolbar">
-      <div class="seg" id="modeToggle" style="display:none" role="group" aria-label="Chart mode">
+      <div class="seg" id="modeToggle" role="group" aria-label="Chart mode">
         <button class="segbtn on" type="button" aria-pressed="true" data-m="curves">Force curves</button>
         <button class="segbtn" type="button" aria-pressed="false" data-m="profileWeight">Weight profile</button>
         <button class="segbtn" type="button" aria-pressed="false" data-m="profileTactility">Tactility profile</button>
+        <button class="segbtn" type="button" aria-pressed="false" data-m="profileTravel">Force-wall onset</button>
         <button class="segbtn" type="button" aria-pressed="false" data-m="indexScatter">Weight vs tactility</button>
       </div>
-      <button class="xbtn" id="btnExport" type="button" style="margin-left:auto">Export PNG</button>
+      <div class="compareActions" id="compareActions" role="group" aria-label="Comparison selection">
+        <button class="xbtn" id="btnCompareClear" type="button">Clear selection</button>
+        <button class="xbtn" id="btnCompareAll" type="button">Load all domes</button>
+      </div>
+      <details class="displaymenu" id="graphDisplayMenu">
+        <summary class="xbtn" aria-label="Graph display options"><span id="graphDisplaySummary">Graph display · Simplified</span> <span class="chev" aria-hidden="true">▼</span></summary>
+        <div class="displaypop" role="group" aria-label="Force-curve measurement display">
+          <div class="displaysection" role="radiogroup" aria-label="Graph detail level">
+            <h3>Display style</h3>
+            <label class="displayopt"><input id="graphStyleSimplified" name="graphStyle" value="simplified" type="radio" checked> Simplified</label>
+            <label class="displayopt"><input id="graphStyleDetailed" name="graphStyle" value="detailed" type="radio"> Detailed</label>
+          </div>
+          <div class="displaysection">
+            <h3>Annotations</h3>
+            <label class="displayopt"><input id="toggleGraphLabels" type="checkbox" checked> Measurement labels</label>
+            <label class="displayopt"><input id="toggleGraphVisuals" type="checkbox" checked> Measurement visuals</label>
+          </div>
+          <div class="displaynote">Simplified is the default. Detailed restores every measured descriptor. The test name, indices, axes and force curve remain visible.</div>
+        </div>
+      </details>
+      <button class="xbtn" id="btnExport" type="button">Export PNG</button>
     </div>
     <div class="chartcard">
       <div class="chartwrap">
@@ -264,8 +353,8 @@ body.tall-chart .chartwrap{aspect-ratio:auto;height:var(--tall-chart-height,560p
         <div class="tooltip" id="tooltip" aria-hidden="true"></div>
         <div id="descTip" aria-hidden="true"></div>
       </div>
-      <div class="statsout" id="statsOut" style="display:none"></div>
     </div>
+    <div class="statsout" id="statsOut" style="display:none" aria-label="Details"></div>
     <div class="hint hint-bottom" id="hoverhint">hover for exact readings</div>
 
     <div id="testsView" style="display:none"></div>
@@ -287,9 +376,9 @@ body.tall-chart .chartwrap{aspect-ratio:auto;height:var(--tall-chart-height,560p
     <div class="method">
       <h2>Method</h2>
       <p>Press and return strokes are recorded at 0.005&nbsp;mm displacement steps on a calibrated bench. <b>intake-qc-v1.4</b> is the retention authority for this build, including integrity, target-speed-cohort, and replicate-agreement gates. Its retained-cohort RAMP repeatability check is advisory only: “ACCEPT + RAMP REVIEW” never changes retention or metric values. Scalar landmarks/markers are arithmetic means of per-run detections calculated at full precision. Averaged visualization traces are built separately and are not re-analyzed to create those scalar landmarks/markers; a marker therefore need not lie on a feature of the averaged trace. Rounding is presentation only.</p>
-      <p><b>Weight-family descriptors.</b> <b>Collapse force</b> is the detected mechanical collapse peak. <b>Ramp</b> is the pre-collapse buildup over the baseline-relative 10–90% rise (seating transient excluded). <b>Pre-collapse work</b> is the one-way mechanical work integral from the start of the press to Collapse. <b>Tactility-family descriptors.</b> <b>Drop</b> = Collapse − Valley in gf. <b>Steepest 0.10&nbsp;mm drop</b> is the fastest force loss over any 0.10&nbsp;mm window between Collapse and Valley. <b>Drop rate</b> divides Drop by the collapse-to-valley distance. <b>Snap&nbsp;%</b> = Drop / Collapse × 100. <b>Detected force-wall onset</b> is the first point past the valley where force rises by more than 1% of its current value per 0.005&nbsp;mm step, sustained for three consecutive steps. Work converts to SI as 1&nbsp;gf·mm = 9.80665&nbsp;µJ. Collapse force, Ramp, Pre-collapse work, Drop, Steepest 0.10 mm drop, Drop rate and Snap % are mechanical descriptors of the measured curve. Their pilot associations do not establish independent causal contributions.</p>
-      <p><b>Assembly scope.</b> Detected force-wall onset is an operational proxy from the complete measured test assembly. It is not nominal dome height, physical switch travel, actuation travel, or a universal contact position. <b>Recorded turnaround range (test limit)</b> is the minimum–maximum of the maximum press displacement captured across retained runs (one exact value when identical). It describes acquisition extent only and is never physical travel. If no force-wall meets the method, the force-wall field remains “Not detected”; a turnaround is never substituted.</p>
-      <p><b>Pilot-derived indices.</b> <b>Weight Index</b> is this dome’s weight percentile compared with the other domes tested. <b>Tactility Index</b> is this dome’s tactility percentile compared with the other domes tested. The 25-dome pilot identified collapse force and force drop as the strongest matches to perceived weight and tactility sharpness; the indices are not predicted 1–10 ratings. Part-assembly records are shown as Not calibrated. A low tactility index does not mean linear/off. Force-wall onset is separate and never enters either index. <a href="documentation/subjective-pilot/index.html">Full pilot method and data</a>.</p>
+      <p><b>Weight-family descriptors.</b> <b>Collapse force</b> is the detected mechanical collapse peak. <b>Ramp</b> is the pre-collapse buildup over the baseline-relative 10–90% rise (seating transient excluded). <b>Pre-collapse work</b> is the one-way mechanical work integral from the start of the press to Collapse. <b>Tactility-family descriptors.</b> <b>Drop</b> = Collapse − Valley in gf. <b>Steepest drop</b> is the fastest force loss over any 0.10&nbsp;mm window between Collapse and Valley. <b>Drop rate</b> divides Drop by the collapse-to-valley distance. <b>Snap&nbsp;%</b> = Drop / Collapse × 100. <b>Detected force-wall onset</b> is the first point past the valley where force rises by more than 1% of its current value per 0.005&nbsp;mm step, sustained for three consecutive steps. Work converts to SI as 1&nbsp;gf·mm = 9.80665&nbsp;µJ. Collapse force, Ramp, Pre-collapse work, Drop, Steepest drop, Drop rate and Snap % are mechanical descriptors of the measured curve. Their pilot associations do not establish independent causal contributions.</p>
+      <p><b>Assembly scope.</b> Detected force-wall onset is an operational proxy from the complete measured test assembly. It is not nominal dome height, physical switch travel, actuation travel, or a universal contact position. In the comparison tab, earlier onset means the rig reached the force wall with less measured displacement. All dome baselines use 0.00&nbsp;mm added precompression, so this effect is present in the measured assembly without intentionally precompressing the dome; it is not by itself verification of an advertised travel claim. Group summaries describe only the tested specimens and are not manufacturer specifications. The fixed Topre production reference is the equal-weighted mean of nine released HHKB Pro2 and Realforce R1, R2, RGB, and GX1 dome datasets. <b>Recorded turnaround range (test limit)</b> is the minimum–maximum of the maximum press displacement captured across retained runs (one exact value when identical). It describes acquisition extent only and is never physical travel. If no force-wall meets the method, the force-wall field remains “Not detected”; a turnaround is never substituted.</p>
+      <p><b>Pilot-derived indices.</b> <b>Weight Index</b> is this dome’s weight percentile compared with the other domes tested. <b>Tactility Index</b> is this dome’s tactility percentile compared with the other domes tested. Each index uses one full-precision input—Collapse force for Weight Index and force Drop for Tactility Index; correlation coefficients and supporting descriptors are not calculation weights. The 25-dome pilot identified those inputs as the strongest matches to perceived weight and collapse sharpness; the indices are not predicted 1–10 ratings. Part-assembly records are shown as Not calibrated. A low tactility index does not mean linear/off. Force-wall onset is separate and never enters either index. <a href="documentation/subjective-pilot/index.html">Full pilot method and data</a>. <a href="https://doi.org/10.5281/zenodo.22295223" target="_blank" rel="noopener">Beyond Snap Ratio, Preprint 2.1</a>.</p>
       <p><b>Documentation:</b> public method, interpretation, provenance, limitations, and update procedures are included with this release in the <a href="documentation/index.html">Force Curve Bench documentation</a>.</p>
     </div>
 
@@ -317,11 +406,22 @@ const PALETTES = {
   light:["#7048B6","#C2452D","#1B7F72","#B07C10","#2F5FA8","#A83A6E","#4A7A22","#5A6472","#8A5A2B","#356E86"],
   dark: ["#FF8AD8","#5CC9E8","#A97DFF","#E8B23A","#35C9A8","#FF7A5C","#8FD05C","#9AA6B5","#D89A5B","#6FA8FF"]
 };
-/* Single-graph feature colors — matches the EC Builder preview treatment */
+/* Semantic chart colors. A single measured force curve is always the unique,
+   neutral, highest-contrast stroke; family colors explain which measurements
+   feed each index without implying good/bad. The inactive neutral preserves
+   accessible contrast when another family is foregrounded. */
 const FEAT = {
-  dark: {collapse:"#FF7ED4", bottom:"#35D6E8", snap:"#35D6E8", travel:"#8F7BFF"},
-  light:{collapse:"#7048B6", bottom:"#C2452D", snap:"#B07C10", travel:"#2F5FA8"}
+  dark: {curve:"#F2F4F8",inactive:"#8D8D8D",weight:"#FF7EB6",tactility:"#33B1FF",
+         collapse:"#FF7EB6",pcw:"#FF7EB6",ramp:"#FF7EB6",bottom:"#33B1FF",snap:"#33B1FF",
+         dropRate:"#33B1FF",steep:"#33B1FF",travel:"#BE95FF"},
+  light:{curve:"#17211F",inactive:"#5F6B65",weight:"#8A285D",tactility:"#006876",
+         collapse:"#8A285D",pcw:"#8A285D",ramp:"#8A285D",bottom:"#006876",snap:"#006876",
+         dropRate:"#006876",steep:"#006876",travel:"#5B3A94"}
 };
+const CURVE_STROKE_WIDTH=3.5;
+const METRIC_STROKE_WIDTH=1.5;
+const METRIC_FOCUS_BUMP=0.7;
+const CONSTRUCTION_DASH=Object.freeze([5,4]);
 const CANVAS_THEME = {
   light:{gridMinor:"#EDF1EF",gridMajor:"#DCE3E0",label:"#68766F",ink:"#1C2422",panelFill:"rgba(255,255,255,.9)",panelLine:"#D9E0DD",markerFill:"#FFFFFF",exportBg:"#FFFFFF",err:"#A8402C"},
   dark: {gridMinor:"#1E2226",gridMajor:"#2A2F35",label:"#9AA3AD",ink:"#ECEDEF",panelFill:"rgba(22,24,27,.92)",panelLine:"#2A2F35",markerFill:"#16181B",exportBg:"#111316",err:"#FF8A70"}
@@ -507,6 +607,7 @@ function canonStats(key,recordId=null){
   if(!all.length)return null;
   const take=t=>({Fpeak:t.cg,xpeak:t.cx,Fval:t.vF,xval:t.vx,travel:t.tv,E:t.en,Epc:t.pcw,snap:t.sn,
     dropF:t.dg,dropX:t.dxd,dropRate:t.dr,ndr:t.ndr,steep:t.sd,ramp:t.rp,
+    rampX10:t.rx10,rampX90:t.rx90,steepStart:t.ss,steepEnd:t.se,
     weightIndex:t.wi,tactilityIndex:t.ti,percentiles:t.pp});
   /* Validate the complete source-set binding before record-id selection.  A
      caller must not be able to bypass source divergence by naming one row. */
@@ -526,10 +627,61 @@ let colorPool = [0,1,2,3,4,5,6,7,8,9];
 let hoverX = null;
 const ANNOT_HITS=[];
 let hoverKey=null;
-let chartMode="curves";           // force curves or pilot-derived comparison modes (multi-select only)
+let hoverFeature=null;
+const GRAPH_DISPLAY={style:"simplified",labels:true,visuals:true};
+function simplifiedGraphDisplay(){return chartMode==="curves"&&GRAPH_DISPLAY.style==="simplified";}
+let chartMode="curves";           // force curves or fixed-height comparison modes
 const PROFILE_PTS=[];             // hover targets rebuilt each profile draw
 const SCATTER_PTS=[];             // hover targets rebuilt each index-scatter draw
+const TRAVEL_PTS=[];              // hover targets rebuilt by the travel comparison
 const INDEX_SCATTER_DOMAIN=Object.freeze([0,100]);
+const FEATURE_INFO=Object.freeze({
+  collapse:"Collapse force is the detected mechanical collapse peak of the press curve.",
+  bottom:"Valley is the detected post-collapse minimum before the force-wall rise.",
+  ramp:"Ramp is the force buildup rate across the baseline-relative 10–90% pre-collapse rise.",
+  pcw:"Pre-collapse work is the one-way mechanical work required to reach collapse.",
+  drop:"Drop is Collapse minus Valley. Snap % is that drop divided by Collapse.",
+  dropRate:"Drop rate divides the full force drop by the collapse-to-valley distance.",
+  steep:"Steepest drop is the fastest force loss across any 0.10 mm window between Collapse and Valley.",
+  travel:"Detected force-wall onset is an operational test-assembly proxy rather than nominal or physical travel.",
+  turnaround:"Recorded turnaround is the acquisition limit and is separate from detected force-wall onset.",
+  travelGroup:"Travel-related measurements keep detected force-wall onset and the recorded test turnaround separate.",
+  weightIndex:"Weight Index is this dome's collapse-force percentile within the frozen 68-dome reference fleet.",
+  tactilityIndex:"Tactility Index is this dome's force-Drop percentile within the frozen 68-dome reference fleet. It summarizes collapse sharpness, not every tactile quality."
+});
+const FEATURE_FAMILY=Object.freeze({weightIndex:"weight",collapse:"weight",ramp:"weight",pcw:"weight",
+  tactilityIndex:"tactility",bottom:"tactility",drop:"tactility",dropRate:"tactility",steep:"tactility",
+  travel:"separate",turnaround:"separate",travelGroup:"separate"});
+const STAT_FEATURE=Object.freeze({"Weight Index":"weightIndex","Tactility Index":"tactilityIndex",
+  "Collapse force":"collapse","Ramp":"ramp","Pre-collapse work":"pcw","Drop force":"drop",
+  "Steepest drop":"steep","Drop rate":"dropRate","Snap %":"drop",
+  "Detected force-wall onset":"travel","Recorded turnaround range (test limit)":"turnaround"});
+function featureFocused(id){
+  if(!hoverFeature)return false;
+  if(["weightIndex","tactilityIndex"].includes(hoverFeature)||FEATURE_FAMILY[hoverFeature]==="separate")return FEATURE_FAMILY[id]===FEATURE_FAMILY[hoverFeature];
+  return hoverFeature===id;
+}
+function featureAlpha(id,normal=1){return hoverFeature&&featureFocused(id)?Math.max(normal,.96):normal;}
+function featureFocusState(id){return !hoverFeature?"normal":featureFocused(id)?"active":"muted";}
+function featureFillAlpha(id,normal=.045){return hoverFeature?(featureFocused(id) ? .075 : .035):normal;}
+function featureHatchAlpha(id,normal=.18){return hoverFeature?(featureFocused(id) ? .27 : .15):normal;}
+function featureWidth(id,normal=METRIC_STROKE_WIDTH){return featureFocused(id)?Math.min(CURVE_STROKE_WIDTH-.55,normal+METRIC_FOCUS_BUMP):normal;}
+function featureColor(F,id,T){
+  if(hoverFeature&&!featureFocused(id))return F.inactive;
+  const family=FEATURE_FAMILY[id];
+  if(family==="weight")return F.weight;
+  if(family==="tactility")return F.tactility;
+  if(family==="separate")return F.travel;
+  return T.ink;
+}
+function syncStatsFocus(){
+  const el=document.getElementById("statsOut");if(!el)return;
+  el.dataset.focus=hoverFeature||"";
+  el.querySelectorAll("[data-feature]").forEach(node=>node.dataset.focusState=featureFocusState(node.dataset.feature));
+  const focusedFamily=FEATURE_FAMILY[hoverFeature]||null;
+  el.querySelectorAll(".so-group[data-family]").forEach(node=>node.dataset.focusState=!focusedFamily?"normal":node.dataset.family===focusedFamily?"active":"muted");
+}
+function setFeatureFocus(id){hoverFeature=id||null;syncStatsFocus();}
 
 /* ------------------------------------------------------------------ math */
 function movAvg(F,k){
@@ -712,33 +864,12 @@ function brandOf(key){
 }
 function mfrOf(key){const rec=defRec(key);return (rec&&rec.mfr)||"";}
 function styOf(key){const rec=defRec(key);return (rec&&rec.sty)||"";}
-/* fc-3.4 second GUI update: ranges test the set's default generated record */
-const SBF={open:false,R:{}};
-function setPassesMetrics(key){
-  const rec=defRec(key); if(!rec)return true;
-  for(const k in SBF.R){const r=SBF.R[k];if(!r)continue;const v=rec[k];
-    if(r.min!=null&&!(isNum(v)&&v>=r.min))return false;
-    if(r.max!=null&&!(isNum(v)&&v<=r.max))return false;}
-  return true;
-}
+/* The Domes, Parts, and Tests views share one filter model and renderer. */
+function setPassesMetrics(key){const rec=defRec(key);return !rec||recordPassFilters(rec,FILTER_STATES[benchKind],benchKind,false);}
 function renderSbFilters(){
   const el=document.getElementById("sbFilters"); if(!el)return;
-  if(benchKind!=="dome_baseline"){el.innerHTML="";el.style.display="none";return;}
   el.style.display="";
-  const defs=[["wi","Weight Index"],["ti","Tactility Index"],["cg","Collapse (gf)"],["sn","Snap %"]];
-  const row=d=>{const k=d[0],label=d[1],r=SBF.R[k]||{};
-    return `<div class="sbrow"><span class="sblbl">${label}</span><input class="sbnum" type="number" inputmode="decimal" data-k="${k}" data-e="min" placeholder="min" value="${r.min==null?"":r.min}"><span class="sbdash">\u2013</span><input class="sbnum" type="number" inputmode="decimal" data-k="${k}" data-e="max" placeholder="max" value="${r.max==null?"":r.max}"></div>`;};
-  el.innerHTML=`<button class="sbtoggle" type="button" aria-expanded="${SBF.open}"><span class="caret">${SBF.open?"\u25be":"\u25b8"}</span> Metric filters</button>`+
-    (SBF.open?`<div class="sbbody">${defs.map(row).join("")}<button class="xbtn sbreset" type="button">Reset</button></div>`:"");
-  el.querySelector(".sbtoggle").addEventListener("click",()=>{SBF.open=!SBF.open;renderSbFilters();});
-  if(SBF.open){
-    el.querySelectorAll(".sbnum").forEach(inp=>inp.addEventListener("input",()=>{
-      const k=inp.dataset.k,e=inp.dataset.e,v=inp.value.trim();
-      SBF.R[k]=SBF.R[k]||{};SBF.R[k][e]=v===""?null:+v;
-      applyFilter();
-    }));
-    el.querySelector(".sbreset").addEventListener("click",()=>{SBF.R={};renderSbFilters();applyFilter();});
-  }
+  renderSharedFilters(el,benchKind,"sb",()=>{applyFilter();if(testsKind===benchKind)renderTests();});
 }
 function makeCollapsible(h,container,startClosed){
   h.setAttribute("role","button");h.tabIndex=0;h.style.cursor="pointer";
@@ -774,7 +905,8 @@ function revealSelectedGroups(){
 function buildSidebar(kind){
   kind=kind||benchKind;
   const aside=document.getElementById("setlist");
-  aside.querySelectorAll(".grp").forEach(g=>g.remove());
+  const menuBody=document.getElementById("testsMenuBody");
+  menuBody.querySelectorAll(":scope > .grp").forEach(g=>g.remove());
   if(kind==="dome_baseline"){
     /* dome families: sets differing only by trailing _NN (created once).
        Sony BKE units are never nested into an averaged dome. */
@@ -827,6 +959,7 @@ function buildSidebar(kind){
     const b=document.createElement("button");
     b.className="item";b.dataset.key=s.key;b.setAttribute("aria-pressed","false");
     if(s.isParent){
+      b.classList.add("family");
       const kids=s.group.map(k=>sets.get(k));
       b.innerHTML=`<span class="box"></span><span class="lbl">${esc(s.name)}</span><span class="twist">\u25b8</span><span class="n">${kids.length} domes</span>`;
       b.querySelector(".twist").addEventListener("click",e=>{
@@ -892,10 +1025,13 @@ function buildSidebar(kind){
     }else{
       for(const s of items)makeItem(s,div);
     }
-    aside.appendChild(div);
+    menuBody.appendChild(div);
   }
   const note=document.getElementById("loadstatus");
   if(note)aside.appendChild(note);   /* fleet note stays pinned below the groups */
+  const testCount=new Set(VTESTS.filter(t=>t.k===kind).map(t=>t.set)).size;
+  document.getElementById("testsMenuCount").textContent=`${testCount} test${testCount===1?"":"s"}`;
+  setTestsMenuOpen(FILTER_STATES[kind].testsOpen,kind);
   renderSbFilters();
   revealSelectedGroups();
   applyFilter();
@@ -907,7 +1043,12 @@ function syncSelParam(){
   /* fc-3.4: every selection change writes back to ?sel= so any state is shareable.
      A non-default record id travels as key@record. replaceState keeps history clean. */
   try{
-    const toks=selected.map(k=>{
+    const first=selected.length?sets.get(selected[0]):null;
+    const selectionKind=selected.length?kindOf(selected[0],first&&first.record_id):benchKind;
+    const fleetKeys=(typeof VTESTS!=="undefined")?allKeysForKind(selectionKind):[];
+    const allFleet=fleetKeys.length&&selected.length===fleetKeys.length&&fleetKeys.every(k=>selected.includes(k));
+    const fleetToken=selectionKind==="part_assembly"?"all-parts":"all-domes";
+    const toks=allFleet?[fleetToken]:selected.map(k=>{
       const s=sets.get(k);
       const def=defaultRecordId(k);
       return s&&s.record_id&&s.record_id!==def?`${k}@${s.record_id}`:k;
@@ -915,6 +1056,7 @@ function syncSelParam(){
     const url=new URL(location.href);
     if(toks.length)url.searchParams.set("sel",toks.join(","));
     else url.searchParams.delete("sel");
+    if(chartMode!=="curves")url.searchParams.set("mode",chartMode);else url.searchParams.delete("mode");
     history.replaceState(null,"",url);
   }catch(e){}
 }
@@ -938,7 +1080,7 @@ async function toggleSet(key,recordId=null){
     if(s.btn){s.btn.classList.remove("on");s.btn.style.removeProperty("--c");s.btn.setAttribute("aria-pressed","false");}
     syncSelParam();render();return;
   }
-  if(selected.length>=10){
+  if(chartMode==="curves"&&selected.length>=10){
     /* the palette holds 10 distinguishable colors; more curves than that stop being readable */
     toast("Comparison is limited to 10 tests at once. Remove one to add another.");
     return;
@@ -1063,28 +1205,52 @@ function recordedTurnaround(s){
 }
 function formatTurnaroundRange(turn){
   if(!turn)return "Not available";
-  return Math.abs(turn.max-turn.min)<1e-12?`${turn.min.toFixed(2)} mm`:
-    `${turn.min.toFixed(2)}–${turn.max.toFixed(2)} mm`;
+  return Math.abs(turn.max-turn.min)<1e-12?`${displayFixed(turn.min,2)} mm`:
+    `${displayFixed(turn.min,2)}–${displayFixed(turn.max,2)} mm`;
 }
+/* Canonical values stay full precision. This helper is display-only and uses
+   decimal half-up behavior rather than exposing binary floating-point ties
+   such as 3.195 as 3.19. */
+function displayFixed(value,digits){
+  const scale=10**digits;
+  return (Math.round((Number(value)+1e-10)*scale)/scale).toFixed(digits);
+}
+/* Individual percentile ranks use ordinal wording. A percent sign would imply
+   a proportion and would collide visually with the separate Snap % metric. */
+function formatPercentileRank(value){return isNum(value)?`${value.toFixed(1)}th percentile`:"Not available";}
 function statLines(s){
   const st=s.data.stats;
   const wall=st.travel, turnaround=recordedTurnaround(s);
-  const wallText=isNum(wall)?`${wall.toFixed(2)} mm`:"Not detected";
+  const wallText=isNum(wall)?`${displayFixed(wall,2)} mm`:"Not detected";
   const rec=s.record_id&&RECORD_BY_ID.get(s.record_id)||VTESTS.find(t=>t.set===s.key);
-  const indexText=v=>isNum(v)?`${v.toFixed(1)} / 100`:(rec&&rec.k==="part_assembly"?"Not calibrated":"Not available");
-  /* fc-3.4 second GUI update: the two indices lead the table with plain names. */
+  const indexText=v=>isNum(v)?formatPercentileRank(v):(rec&&rec.k==="part_assembly"?"Not calibrated":"Not available");
+  /* Families stay contiguous so screen readers and non-canvas fallbacks convey
+     the same Weight / Tactility / travel-related grouping as the color system. */
   const rows=[["Weight Index",indexText(st.weightIndex)],
-          ["Tactility Index",indexText(st.tactilityIndex)],
           ["Collapse force",isNum(st.Fpeak)?Math.round(st.Fpeak)+" gf":"Not available"],
           ["Ramp",isNum(st.ramp)?st.ramp.toFixed(1)+" gf/mm":"Not available"],
           ["Pre-collapse work",isNum(st.Epc)?Math.round(st.Epc)+" gf\u00B7mm":"Not available"],
-          ["Drop",isNum(st.dropF)?Math.round(st.dropF)+" gf":"Not available"],
-          ["Steepest 0.10 mm drop",isNum(st.steep)?st.steep.toFixed(1)+" gf/mm":"Not available"],
-          ["Drop rate",isNum(st.dropRate)?st.dropRate.toFixed(1)+" gf/mm":"Not available"],
+          ["Tactility Index",indexText(st.tactilityIndex)],
+          ["Drop force",isNum(st.dropF)?Math.round(st.dropF)+" gf":"Not available"],
           ["Snap %",isNum(st.snap)?Math.round(st.snap)+" %":"Not available"],
+          ["Steepest drop",isNum(st.steep)?st.steep.toFixed(1)+" gf/mm":"Not available"],
+          ["Drop rate",isNum(st.dropRate)?st.dropRate.toFixed(1)+" gf/mm":"Not available"],
           ["Detected force-wall onset",wallText]];
   if(turnaround)rows.push(["Recorded turnaround range (test limit)",formatTurnaroundRange(turnaround)]);
   return rows;
+}
+function statGroups(s){
+  const rows=statLines(s), byLabel=new Map(rows.map(row=>[row[0],row]));
+  const take=labels=>labels.map(label=>byLabel.get(label)).filter(Boolean);
+  const simplified=simplifiedGraphDisplay();
+  return [
+    {family:"weight",title:"Weight Index",index:byLabel.get("Weight Index"),
+      rows:take(simplified?["Collapse force"]:["Collapse force","Ramp","Pre-collapse work"])},
+    {family:"tactility",title:"Tactility Index",index:byLabel.get("Tactility Index"),
+      rows:take(simplified?["Drop force"]:["Drop force","Snap %","Steepest drop","Drop rate"])},
+    {family:"separate",title:"Travel-related measurements",index:null,focus:"travelGroup",
+      rows:take(simplified?["Detected force-wall onset"]:["Detected force-wall onset","Recorded turnaround range (test limit)"])}
+  ];
 }
 function legendStat(s){
   const st=s.data&&s.data.stats;
@@ -1094,7 +1260,7 @@ function legendStat(s){
   if(isNum(st.tactilityIndex))vals.push(`T ${st.tactilityIndex.toFixed(1)}`);
   if(isNum(st.Fpeak))vals.push(`${Math.round(st.Fpeak)}gf collapse`);
   if(isNum(st.dropF))vals.push(`${Math.round(st.dropF)}gf drop`);
-  vals.push(isNum(st.travel)?`wall ${st.travel.toFixed(2)}mm`:"wall not detected");
+  vals.push(isNum(st.travel)?`wall ${displayFixed(st.travel,2)}mm`:"wall not detected");
   if(s.data&&s.data.snapshot)vals.push("snapshot");
   let t=vals.join(" \u00B7 ");
   return t;
@@ -1113,11 +1279,99 @@ function annotFonts(w){
   return {LBLF:"700 "+(12.5*sf).toFixed(1)+"px "+FONT_S,
           VALF:"800 "+(14*sf).toFixed(1)+"px "+FONT_S, sf};
 }
+function forceCurveHeaderLayout(w){
+  const compact=w<760,left=compact?M.l+16:M.l,right=w-M.r-12,gap=compact?8:18;
+  if(compact){
+    const width=(right-left-gap*2)/3;
+    return {compact,titleX:left,titleY:M.t+32,titleWidth:right-left,
+      labelY:M.t+67,valueY:M.t+96,headerBottom:M.t+104,plotTop:M.t+126,
+      blocks:[0,1,2].map(index=>({x:left+index*(width+gap),width}))};
+  }
+  const indexWidth=Math.min(132,Math.max(108,w*.12)),wallWidth=Math.min(198,Math.max(176,w*.185));
+  const metricsWidth=indexWidth*2+wallWidth+gap*2,start=right-metricsWidth;
+  return {compact,titleX:left,titleY:M.t+28,titleWidth:Math.max(120,start-left-24),
+    labelY:M.t-12,valueY:M.t+28,headerBottom:M.t+36,plotTop:M.t+53,
+    blocks:[{x:start,width:indexWidth},{x:start+indexWidth+gap,width:indexWidth},
+      {x:start+indexWidth*2+gap*2,width:wallWidth}]};
+}
+function drawForceCurveHeaderMetric(g,T,F,layout,index,label,compactLabel,value,feature){
+  const block=layout.blocks[index],textLabel=layout.compact?compactLabel:label;
+  g.textAlign="left";g.textBaseline="alphabetic";g.globalAlpha=featureAlpha(feature,1);
+  g.fillStyle=featureColor(F,feature,T);g.font=(featureFocused(feature)?"800 ":"700 ")+(layout.compact?"8.5px ":"10.5px ")+FONT_S;
+  const shownLabel=fitText(g,textLabel,block.width);g.fillText(shownLabel,block.x,layout.labelY);
+  const numeric=/^-?\d+(?:\.\d+)?(?: mm)?$/.test(value);
+  g.font=(numeric?"800 "+(layout.compact?"22px ":"34px "):"750 "+(layout.compact?"11px ":"14px "))+FONT_S;
+  const shownValue=fitText(g,value,block.width);g.fillText(shownValue,block.x,layout.valueY);
+  ANNOT_HITS.push({x:block.x-4,y:layout.labelY-(layout.compact?12:14),w:block.width+8,
+    h:layout.valueY-layout.labelY+(layout.compact?12:16),desc:FEATURE_INFO[feature],feature});
+  g.globalAlpha=1;
+}
+/* Place the Drop / Snap label above and beside, rather than across, its
+   vertical dimension. The leader descends from the label row and then turns
+   exactly 90 degrees toward the text, preserving drafting-style clearance. */
+function dropSnapAnnotationLayout(left,right,top,dropDimX,peakY,dropRateY,labelWidth){
+  const preferredClearance=28,minimumClearance=8;
+  const labelBaseline=Math.min(peakY-28,Math.max(dropRateY+50,peakY-44,top+34));
+  const leftRoom=dropDimX-left,rightRoom=right-dropDimX;
+  if(leftRoom>=labelWidth+preferredClearance)
+    return {labelX:dropDimX-preferredClearance-labelWidth,labelY:labelBaseline,side:"left"};
+  if(rightRoom>=labelWidth+preferredClearance)
+    return {labelX:dropDimX+preferredClearance,labelY:labelBaseline,side:"right"};
+  if(leftRoom>=labelWidth+minimumClearance&&leftRoom>=rightRoom){
+    const gap=Math.min(preferredClearance,leftRoom-labelWidth);
+    return {labelX:dropDimX-gap-labelWidth,labelY:labelBaseline,side:"left"};
+  }
+  if(rightRoom>=labelWidth+minimumClearance){
+    const gap=Math.min(preferredClearance,rightRoom-labelWidth);
+    return {labelX:dropDimX+gap,labelY:labelBaseline,side:"right"};
+  }
+  if(leftRoom>=labelWidth+minimumClearance){
+    const gap=Math.min(preferredClearance,leftRoom-labelWidth);
+    return {labelX:dropDimX-gap-labelWidth,labelY:labelBaseline,side:"left"};
+  }
+  return leftRoom>=rightRoom
+    ?{labelX:left,labelY:labelBaseline,side:"left"}
+    :{labelX:Math.max(left,right-labelWidth),labelY:labelBaseline,side:"right"};
+}
+const DIMENSION_INSIDE_ARROW_LENGTH=8;
+const DIMENSION_INSIDE_ARROW_HALF_WIDTH=3.2;
+const DIMENSION_OUTSIDE_ARROW_LENGTH=12;
+const DIMENSION_OUTSIDE_ARROW_HALF_WIDTH=4.8;
+const DIMENSION_OUTSIDE_LEADER=12;
+function verticalDimensionLayout(y1,y2,labelInside=false){
+  const top=Math.min(y1,y2),bottom=Math.max(y1,y2),span=bottom-top;
+  /* CAD-style fit rule: two inward arrowheads need their own clearance. A
+     centered label additionally reserves its 20 px knockout plus breathing
+     room. If that package cannot fit, both arrows move outside, point back to
+     the exact measured endpoints, and receive a visible leader beyond each
+     arrow base. */
+  const requiredInside=2*DIMENSION_INSIDE_ARROW_LENGTH+(labelInside?28:4);
+  const arrowsOutside=span<requiredInside;
+  const arrowLength=arrowsOutside?DIMENSION_OUTSIDE_ARROW_LENGTH:DIMENSION_INSIDE_ARROW_LENGTH;
+  const arrowHalfWidth=arrowsOutside?DIMENSION_OUTSIDE_ARROW_HALF_WIDTH:DIMENSION_INSIDE_ARROW_HALF_WIDTH;
+  const outsideExtent=DIMENSION_OUTSIDE_ARROW_LENGTH+DIMENSION_OUTSIDE_LEADER;
+  return {top,bottom,span,arrowsOutside,
+    lineTop:arrowsOutside?top-outsideExtent:top,
+    lineBottom:arrowsOutside?bottom+outsideExtent:bottom,
+    topBaseY:top+(arrowsOutside?-arrowLength:arrowLength),
+    bottomBaseY:bottom+(arrowsOutside?arrowLength:-arrowLength),arrowHalfWidth};
+}
 function travelLineX(st,w){return isNum(st&&st.travel)?M.l+(Math.min(st.travel,XMAX)/XMAX)*(w-M.l-M.r):w-M.r;}
 function showStatsOut(s){
   const el=document.getElementById("statsOut");
-  el.innerHTML=statLines(s).map(([l,v])=>`<div class="so-l">${esc(l)}</div><div class="so-v">${esc(v)}</div>`).join("");
+  const rowHtml=(row,family)=>{const [l,v]=row,f=STAT_FEATURE[l];return `<div class="so-row family-${family}" data-family="${family}"${f?` data-feature="${f}"`:""}><div class="so-l">${esc(l)}</div><div class="so-v">${esc(v)}</div></div>`;};
+  el.innerHTML=statGroups(s).map(group=>{
+    const headFeature=group.index?STAT_FEATURE[group.index[0]]:(group.focus||null);
+    const headValue=group.index?`<div class="so-v">${esc(group.index[1])}</div>`:"";
+    return `<section class="so-group family-${group.family}" data-family="${group.family}" aria-label="${esc(group.title)}"><div class="so-head family-${group.family}"${headFeature?` data-feature="${headFeature}"`:""}><div>${esc(group.title)}</div>${headValue}</div>${group.rows.map(row=>rowHtml(row,group.family)).join("")}</section>`;
+  }).join("");
   el.style.display="grid";
+  syncStatsFocus();
+  el.querySelectorAll("[data-feature]").forEach(row=>{
+    row.addEventListener("pointerenter",()=>{setFeatureFocus(row.dataset.feature);row.classList.add("hot");schedulePaint();});
+    row.addEventListener("pointermove",ev=>{const dt=document.getElementById("descTip"),wr=canvas.parentElement.getBoundingClientRect();dt.textContent=FEATURE_INFO[row.dataset.feature];dt.style.display="block";dt.style.left=Math.max(8,Math.min(ev.clientX-wr.left+14,wr.width-260))+"px";dt.style.top=(ev.clientY-wr.top+12)+"px";});
+    row.addEventListener("pointerleave",()=>{setFeatureFocus(null);row.classList.remove("hot");document.getElementById("descTip").style.display="none";schedulePaint();});
+  });
 }
 function hideStatsOut(){document.getElementById("statsOut").style.display="none";}
 function statsCardGeom(g,s,w,h){
@@ -1128,6 +1382,9 @@ function statsCardGeom(g,s,w,h){
   g.font="600 12px "+FONT_S;
   let valW=0;for(const[,v]of L)valW=Math.max(valW,g.measureText(v).width);
   const gap=18, bw=labW+gap+valW+pad*2, bh=L.length*lh+pad*2-4;
+  return {L,lh,pad,labW,valW,bw,bh,cx0:0,cy0:0,external:true,rect:{x:-1e5,y:-1e5,w:0,h:0}};
+  /* Retained legacy placement calculations below are unreachable: details now
+     always live below the graph in both the UI and PNG export. */
   /* when the canvas is too small to hold both the panel and a readable graph,
      the panel moves out of the plot entirely (rendered below the chart) */
   if(bw>(w-M.l-M.r)*0.42||bh>(h-M.t-M.b)*0.5){
@@ -1179,15 +1436,27 @@ function drawScene(g,w,h,opts={}){
   const interactive=!opts.export;
   const th=opts.theme||theme;
   const T=CANVAS_THEME[th];
+  const showLabels=GRAPH_DISPLAY.labels,showVisuals=GRAPH_DISPLAY.visuals,
+    detailed=GRAPH_DISPLAY.style==="detailed";
   ANNOT_HITS.length=0;
   PROFILE_PTS.length=0;
   SCATTER_PTS.length=0;
+  TRAVEL_PTS.length=0;
   if(interactive)canvas.setAttribute("aria-label",isDerivedComparisonMode()?`${comparisonModeTitle()} comparison chart`:"Force versus press displacement chart");
-  if(isIndexScatterMode()&&selected.length>1){drawIndexScatter(g,w,h,T,th);return;}
-  if(isProfileMode()&&selected.length>1){drawProfile(g,w,h,T,th);return;}
+  /* Profile/scatter tabs carry their measurements in the graph itself. Never
+     duplicate them in the details strip, even for a one-record selection. */
+  if(interactive&&isDerivedComparisonMode())hideStatsOut();
+  if(isTravelProfileMode()){drawTravelComparison(g,w,h,T,th);return;}
+  if(isIndexScatterMode()){drawIndexScatter(g,w,h,T,th);return;}
+  if(isProfileMode()){drawProfile(g,w,h,T,th);return;}
+  /* Force-curve titles are part of the evidence readout, not data overlays.
+     Reserve a real header band so high-force traces and dimensions cannot run
+     through the title on narrower canvases or their PNG exports. */
+  const singleHeader=selected.length===1?forceCurveHeaderLayout(w):null;
+  const plotTop=singleHeader?singleHeader.plotTop:selected.length>1?M.t+58:M.t;
   const fmax=chartFmax();
   const X=v=>M.l+(v/XMAX)*(w-M.l-M.r);
-  const Y=v=>h-M.b-(v/fmax)*(h-M.t-M.b);
+  const Y=v=>h-M.b-(v/fmax)*(h-plotTop-M.b);
 
   /* graph-paper grid */
   g.lineWidth=1;
@@ -1195,7 +1464,7 @@ function drawScene(g,w,h,opts={}){
   for(let gx=0;gx<=XMAX+1e-9;gx+=0.1){
     const major=Math.abs(gx/0.5-Math.round(gx/0.5))<1e-9;
     g.strokeStyle=major?T.gridMajor:T.gridMinor;
-    g.beginPath();g.moveTo(X(gx)+.5,M.t);g.lineTo(X(gx)+.5,h-M.b);g.stroke();
+    g.beginPath();g.moveTo(X(gx)+.5,plotTop);g.lineTo(X(gx)+.5,h-M.b);g.stroke();
   }
   for(let gy=0;gy<=fmax+1e-9;gy+=yStep/5){
     const major=Math.abs(gy/yStep-Math.round(gy/yStep))<1e-6;
@@ -1208,7 +1477,7 @@ function drawScene(g,w,h,opts={}){
   g.fillText("Press displacement (mm)",M.l+(w-M.l-M.r)/2,h-M.b+33);
   g.textAlign="right";g.textBaseline="middle";
   for(let gy=0;gy<=fmax+1e-9;gy+=yStep)g.fillText(Math.round(gy),M.l-10,Y(gy));
-  g.save();g.translate(M.l-40,M.t+(h-M.t-M.b)/2);g.rotate(-Math.PI/2);
+  g.save();g.translate(M.l-40,plotTop+(h-plotTop-M.b)/2);g.rotate(-Math.PI/2);
   g.textAlign="center";g.textBaseline="middle";g.fillText("Force (gf)",0,0);g.restore();
 
   /* empty, loading, and error states draw in-plot so the chart is never silently blank */
@@ -1217,7 +1486,7 @@ function drawScene(g,w,h,opts={}){
     const drawable=selSets.filter(x=>x.data&&!x.data.error);
     if(!drawable.length){
       g.textAlign="center";g.textBaseline="middle";g.fillStyle=T.label;g.font="600 15px "+FONT_S;
-      const cx=M.l+(w-M.l-M.r)/2, cy=M.t+(h-M.t-M.b)/2;
+      const cx=M.l+(w-M.l-M.r)/2, cy=plotTop+(h-plotTop-M.b)/2;
       if(!selSets.length)g.fillText("Select a test from the left to plot its force curve.",cx,cy);
       else if(selSets.some(x=>x.loading))g.fillText("Loading "+selSets.filter(x=>x.loading).map(x=>selectedName(x)).join(", ")+"\u2026",cx,cy);
     }
@@ -1229,7 +1498,7 @@ function drawScene(g,w,h,opts={}){
   }
   /* curves */
   g.save();
-  g.beginPath();g.rect(M.l,M.t,w-M.l-M.r,h-M.t-M.b);g.clip();
+  g.beginPath();g.rect(M.l,plotTop,w-M.l-M.r,h-plotTop-M.b);g.clip();
   const drawStroke=(st,color,width,alpha)=>{
     if(!st.x.length)return;
     g.globalAlpha=alpha;g.strokeStyle=color;g.lineWidth=width;
@@ -1239,11 +1508,12 @@ function drawScene(g,w,h,opts={}){
     g.stroke();g.globalAlpha=1;
   };
   const DL=displayList().filter(s=>s.data&&!s.data.error);
+  const singleCurve=DL.length===1;
   for(const s of displayList()){
     if(!s.data||s.data.error)continue;
-    {
+    if(!singleCurve||!s.data.stats){
       const _hl=hoverKey&&displayList().filter(x=>x.data&&!x.data.error).length>1;
-      drawStroke(s.data.avgPress,getColorT(s,th),_hl&&s.key===hoverKey?3.2:2.25,_hl?(s.key===hoverKey?1:.28):1);
+      drawStroke(s.data.avgPress,getColorT(s,th),_hl&&s.key===hoverKey?CURVE_STROKE_WIDTH:2.5,1);
     }
     if(s.data.stats){
       const st=s.data.stats;
@@ -1254,134 +1524,213 @@ function drawScene(g,w,h,opts={}){
         const hasCollapse=isNum(st.xpeak)&&isNum(st.Fpeak);
         const hasValley=isNum(st.xval)&&isNum(st.Fval);
         const hasWall=isNum(st.travel);
-        const hasSnap=hasCollapse&&hasValley&&isNum(st.snap);
-        if(ap&&ap.x&&ap.x.length){
-          /* pre-collapse work shade: 0 -> collapse peak, its own color */
-          if(hasCollapse){
-            g.globalAlpha=0.15;g.fillStyle=FC.collapse;
+        const hasDrop=hasCollapse&&hasValley&&isNum(st.dropF);
+        const hasSnap=hasDrop&&isNum(st.snap);
+        const valleyFeature=detailed?"bottom":"drop";
+        if(showVisuals&&detailed&&ap&&ap.x&&ap.x.length&&hasCollapse){
+          /* Pre-collapse work uses a faint fill plus a single 45-degree section
+             hatch. Pattern + label make the family encoding independent of color. */
+          const tracePcwArea=()=>{
             g.beginPath();g.moveTo(X(ap.x[0]),Y(0));
-            for(let i=0;i<ap.x.length;i++){ if(ap.x[i]>st.xpeak)break; g.lineTo(X(ap.x[i]),Y(ap.F[i])); }
-            g.lineTo(X(st.xpeak),Y(0));g.closePath();g.fill();
-          }
-          g.globalAlpha=1;
+            for(let i=0;i<ap.x.length;i++){if(ap.x[i]>st.xpeak)break;g.lineTo(X(ap.x[i]),Y(ap.F[i]));}
+            g.lineTo(X(st.xpeak),Y(0));g.closePath();
+          };
+          const pcwColor=featureColor(FC,"pcw",T),pcwLeft=X(ap.x[0]),pcwRight=X(st.xpeak),
+            pcwTop=Y(st.Fpeak),pcwBottom=Y(0),pcwHeight=Math.max(1,pcwBottom-pcwTop);
+          g.fillStyle=pcwColor;g.globalAlpha=featureFillAlpha("pcw");tracePcwArea();g.fill();
+          g.save();tracePcwArea();g.clip();g.setLineDash([]);g.strokeStyle=pcwColor;
+          g.lineWidth=.8;g.globalAlpha=featureHatchAlpha("pcw");g.beginPath();
+          for(let hx=pcwLeft-pcwHeight;hx<=pcwRight;hx+=10){g.moveTo(hx,pcwBottom);g.lineTo(hx+pcwHeight,pcwTop);}
+          g.stroke();g.restore();g.globalAlpha=1;
         }
+        /* The measured trace is repainted over work shading as the unique
+           neutral, full-opacity trace. Steepest drop later recolors an exact
+           segment at this same width; no construction line is as heavy. */
+        drawStroke(ap,FC.curve,CURVE_STROKE_WIDTH,1);
         /* detected force-wall guide; absent means absent, never final-sample substitution */
         const tpF=hasWall&&ap&&ap.x.length?sampleAt(ap,Math.min(st.travel,ap.x[ap.x.length-1])):null;
-        const tvTop=tpF?Y(tpF.F):M.t;
-        if(hasWall){
-          g.setLineDash([5,4]);g.globalAlpha=.65;g.strokeStyle=FC.travel;g.lineWidth=1.5;
+        const tvTop=tpF?Y(tpF.F):plotTop;
+        if(showVisuals&&hasWall){
+          g.setLineDash(CONSTRUCTION_DASH);g.globalAlpha=featureAlpha("travel",.72);g.strokeStyle=featureColor(FC,"travel",T);g.lineWidth=featureWidth("travel",METRIC_STROKE_WIDTH);
           g.beginPath();g.moveTo(X(st.travel),tvTop);g.lineTo(X(st.travel),h-M.b);g.stroke();
         }
         /* recorded press turnaround/test limit is independent of force-wall detection */
         const turnaround=recordedTurnaround(s);
-        if(turnaround){
-          g.setLineDash([2,5]);g.globalAlpha=.55;g.strokeStyle=T.label;g.lineWidth=1;
+        if(showVisuals&&detailed&&turnaround){
+          g.setLineDash([2,5]);g.globalAlpha=featureAlpha("turnaround",.55);g.strokeStyle=featureColor(FC,"turnaround",T);g.lineWidth=1;
           for(const limit of [...new Set([turnaround.min,turnaround.max])]){
-            g.beginPath();g.moveTo(X(limit),M.t);g.lineTo(X(limit),h-M.b);g.stroke();
+            g.beginPath();g.moveTo(X(limit),plotTop);g.lineTo(X(limit),h-M.b);g.stroke();
           }
         }
-        /* dashed line at the collapse point, from the peak down */
-        if(hasCollapse){
-          g.strokeStyle=FC.collapse;
+        /* The dashed collapse-position guide is the right boundary of the
+           pre-collapse-work region. Collapse force itself owns only its peak
+           marker and label. */
+        if(showVisuals&&detailed&&hasCollapse){
+          g.setLineDash([3,4]);g.globalAlpha=featureAlpha("pcw",.82);g.strokeStyle=featureColor(FC,"pcw",T);g.lineWidth=featureWidth("pcw",1.3);
           g.beginPath();g.moveTo(X(st.xpeak),Y(st.Fpeak));g.lineTo(X(st.xpeak),h-M.b);g.stroke();
         }
         g.setLineDash([]);g.globalAlpha=1;
-        /* SNAP bracket sits directly above the bottom marker */
+        /* Dimension lines adapt engineering-drawing conventions: extension
+           lines stop short of the measured feature, arrow tips terminate at
+           the measured limits, and dimensions/leaders are offset from the trace. */
         const bx=hasValley?X(st.xval):M.l;
-        if(hasSnap){
-          g.setLineDash([4,4]);g.globalAlpha=.7;g.strokeStyle=FC.snap;g.lineWidth=1.4;
-          g.beginPath();g.moveTo(X(st.xpeak),Y(st.Fpeak));g.lineTo(bx,Y(st.Fpeak));g.stroke();
-          g.setLineDash([]);
-          g.beginPath();g.moveTo(bx,Y(st.Fpeak));g.lineTo(bx,Y(st.Fval)-8);g.stroke();
-          g.beginPath();g.moveTo(bx-5,Y(st.Fpeak));g.lineTo(bx+5,Y(st.Fpeak));g.stroke();
-          g.beginPath();g.moveTo(bx-5,Y(st.Fval)-8);g.lineTo(bx+5,Y(st.Fval)-8);g.stroke();
-          g.globalAlpha=1;
+        let dropDimX=null,dropRateDimY=null,dropLeaderAnchor=null,dropDimension=null;
+        if(hasDrop){
+          const px=X(st.xpeak),py=Y(st.Fpeak),vy=Y(st.Fval);
+          /* Napkin-layout revision: force loss reads vertically beside Valley;
+             collapse-to-valley distance reads horizontally above the trace. */
+          const dropSpan=bx-px;
+          /* Detailed offsets the Drop dimension so its drafting leader has a
+             clear junction. Simplified terminates the dimension directly at
+             the valley marker: the marker, dimension, and centered value form
+             one unambiguous visual readout. */
+          dropDimX=detailed?(dropSpan>=32?bx-16:px+dropSpan/2):bx;
+          dropRateDimY=Math.max(plotTop+18,py-114);
+          dropDimension=verticalDimensionLayout(py,vy,!detailed&&showLabels);
+          if(dropRateDimY>py-20)dropRateDimY=py-20;
+          if(showVisuals){
+            /* Drop: offset vertical dimension, gapped feature-extension lines,
+               and arrow tips terminating at the measured limits. When the
+               internal package is too tight, CAD-style arrows move outside. */
+            const dropColor=featureColor(FC,"drop",T),dropAlpha=featureAlpha("drop",.82);
+            g.setLineDash([]);g.globalAlpha=dropAlpha;g.strokeStyle=dropColor;g.lineWidth=featureWidth("drop",1.15);
+            g.beginPath();g.moveTo(dropDimX,dropDimension.lineTop);g.lineTo(dropDimX,dropDimension.lineBottom);
+            g.moveTo(px+6,py);g.lineTo(dropDimX+6,py);
+            g.moveTo(bx-6,vy);g.lineTo(dropDimX-6,vy);g.stroke();
+            g.fillStyle=dropColor;
+            g.beginPath();g.moveTo(dropDimX,py);g.lineTo(dropDimX-dropDimension.arrowHalfWidth,dropDimension.topBaseY);g.lineTo(dropDimX+dropDimension.arrowHalfWidth,dropDimension.topBaseY);g.closePath();g.fill();
+            g.beginPath();g.moveTo(dropDimX,vy);g.lineTo(dropDimX-dropDimension.arrowHalfWidth,dropDimension.bottomBaseY);g.lineTo(dropDimX+dropDimension.arrowHalfWidth,dropDimension.bottomBaseY);g.closePath();g.fill();
+            /* The Drop / Snap leader meets the upper dimension endpoint. Its
+               opposing arrow is drawn with the label leader below. */
+            if(detailed)dropLeaderAnchor={x:dropDimX,y:py};
+            /* Drop rate: extension lines rise clear of the trace; horizontal
+               arrow tips meet those extensions and point outward to the limits. */
+            if(detailed&&isNum(st.dropRate)){
+              const rateColor=featureColor(FC,"dropRate",T);
+              g.globalAlpha=featureAlpha("dropRate",.82);g.strokeStyle=rateColor;g.lineWidth=featureWidth("dropRate",1.15);
+              g.beginPath();g.moveTo(px,py-6);g.lineTo(px,dropRateDimY-5);g.moveTo(bx,vy-6);g.lineTo(bx,dropRateDimY-5);
+              g.moveTo(px,dropRateDimY);g.lineTo(bx,dropRateDimY);g.stroke();
+              g.fillStyle=rateColor;
+              g.beginPath();g.moveTo(px,dropRateDimY);g.lineTo(px+8,dropRateDimY-3.2);g.lineTo(px+8,dropRateDimY+3.2);g.closePath();g.fill();
+              g.beginPath();g.moveTo(bx,dropRateDimY);g.lineTo(bx-8,dropRateDimY-3.2);g.lineTo(bx-8,dropRateDimY+3.2);g.closePath();g.fill();
+            }
+            g.globalAlpha=1;
+          }
         }
-        if(hasCollapse){g.fillStyle=FC.collapse;g.beginPath();g.arc(X(st.xpeak),Y(st.Fpeak),5,0,7);g.fill();}
-        if(hasValley){g.beginPath();g.arc(X(st.xval),Y(st.Fval),5,0,7);
-          g.fillStyle=T.markerFill;g.fill();g.strokeStyle=FC.bottom;g.lineWidth=2;g.stroke();}
+        const rampA=isNum(st.rampX10)?sampleAt(ap,st.rampX10):null,rampB=isNum(st.rampX90)?sampleAt(ap,st.rampX90):null;
+        if(showVisuals&&detailed&&isNum(st.ramp)&&rampA&&rampB){g.setLineDash(CONSTRUCTION_DASH);g.globalAlpha=featureAlpha("ramp",.9);g.strokeStyle=featureColor(FC,"ramp",T);g.lineWidth=featureWidth("ramp",METRIC_STROKE_WIDTH);g.beginPath();g.moveTo(X(rampA.x),Y(rampA.F));g.lineTo(X(rampB.x),Y(rampB.F));g.stroke();g.setLineDash([]);g.globalAlpha=1;}
+        const steepA=isNum(st.steepStart)?sampleAt(ap,st.steepStart):null,steepB=isNum(st.steepEnd)?sampleAt(ap,st.steepEnd):null;
+        if(showVisuals&&detailed&&isNum(st.steep)&&steepA&&steepB){g.globalAlpha=featureAlpha("steep",.95);g.strokeStyle=featureColor(FC,"steep",T);g.lineWidth=CURVE_STROKE_WIDTH;g.beginPath();g.moveTo(X(steepA.x),Y(steepA.F));g.lineTo(X(steepB.x),Y(steepB.F));g.stroke();g.globalAlpha=1;}
+        if(showVisuals&&hasCollapse){g.globalAlpha=featureAlpha("collapse",1);g.fillStyle=featureColor(FC,"collapse",T);g.beginPath();g.arc(X(st.xpeak),Y(st.Fpeak),featureFocused("collapse")?6:5,0,7);g.fill();g.globalAlpha=1;}
+        if(showVisuals&&hasValley){g.beginPath();g.arc(X(st.xval),Y(st.Fval),5,0,7);
+          g.globalAlpha=featureAlpha(valleyFeature,1);g.fillStyle=T.markerFill;g.fill();g.strokeStyle=featureColor(FC,valleyFeature,T);g.lineWidth=featureWidth(valleyFeature,1.7);g.stroke();g.globalAlpha=1;}
 
         /* labels with values inline; hover any marker/label/value for its description */
         const {LBLF,VALF}=annotFonts(w);
-        const annot=(x,y,name,val,desc,align)=>{
+        const annot=(x,y,name,val,desc,align,feature=null,backdrop=false)=>{
           g.textAlign="left";g.textBaseline="alphabetic";
-          g.font=LBLF; const lw=g.measureText(name).width;
+          const labelColor=featureColor(FC,feature,T),labelFont=featureFocused(feature)?LBLF.replace(/^700 /,"800 "):LBLF;
+          g.font=labelFont; const lw=g.measureText(name).width;
           g.font=VALF; const vw=val?g.measureText(val).width:0;
           const tw=lw+(val?9+vw:0);
           if(align==="center")x-=tw/2; else if(align==="right")x-=tw;
           x=Math.max(M.l+8,Math.min(x,w-M.r-tw-4));
-          g.font=LBLF;g.fillStyle=T.label;g.fillText(name,x,y);      /* label recedes */
-          if(val){g.font=VALF;g.fillStyle=T.ink;g.fillText(val,x+lw+9,y);}  /* value pops */
-          ANNOT_HITS.push({x:x-4,y:y-15,w:tw+8,h:20,desc});
+          if(backdrop){g.fillStyle=T.panelFill;g.beginPath();g.roundRect(x-5,y-15,tw+10,20,4);g.fill();}
+          g.globalAlpha=featureAlpha(feature,1);g.font=labelFont;g.fillStyle=labelColor;g.fillText(name,x,y);
+          if(val){g.font=VALF;g.fillStyle=labelColor;g.fillText(val,x+lw+9,y);}g.globalAlpha=1;
+          ANNOT_HITS.push({x:x-4,y:y-15,w:tw+8,h:20,desc,feature});
           return {x,y,tw};
         };
-        const DTXT={
-          collapse:"The detected mechanical collapse peak of the press curve.",
-          bottom:"The detected post-collapse mechanical valley before the force-wall rise.",
-          travel:"Distance to detected force-wall onset, an operational test-assembly proxy rather than nominal or physical travel.",
-          pcw:"Pre-collapse work: the work to reach the collapse peak \u2014 the one-way mechanical work integral to collapse.",
-          snap:"Drop is Collapse minus Valley; Snap % is Drop divided by Collapse. Both are mechanical force-loss descriptors.",
-          wi:"Weight Index: weight percentile compared with the other domes tested.",
-          ti:"Tactility Index: tactility percentile compared with the other domes tested."};
+        const annotAlong=(x1,y1,x2,y2,name,val,desc,feature,normalOffset=0)=>{
+          const dx=x2-x1,dy=y2-y1,len=Math.max(1,Math.hypot(dx,dy)),angle=Math.atan2(dy,dx);
+          const labelColor=featureColor(FC,feature,T),labelFont=featureFocused(feature)?LBLF.replace(/^700 /,"800 "):LBLF;
+          g.font=labelFont;const lw=g.measureText(name).width;
+          g.font=VALF;const vw=val?g.measureText(val).width:0;
+          const tw=lw+(val?9+vw:0), nx=-dy/len,ny=dx/len;
+          const cx=(x1+x2)/2+nx*normalOffset,cy=(y1+y2)/2+ny*normalOffset;
+          g.save();g.translate(cx,cy);g.rotate(angle);g.textAlign="left";g.textBaseline="middle";g.globalAlpha=featureAlpha(feature,1);
+          g.font=labelFont;g.fillStyle=labelColor;g.fillText(name,-tw/2,0);
+          if(val){g.font=VALF;g.fillStyle=labelColor;g.fillText(val,-tw/2+lw+9,0);}g.restore();
+          const hh=22,hitW=Math.abs(Math.cos(angle))*tw+Math.abs(Math.sin(angle))*hh,
+            hitH=Math.abs(Math.sin(angle))*tw+Math.abs(Math.cos(angle))*hh;
+          ANNOT_HITS.push({x:cx-hitW/2,y:cy-hitH/2,w:hitW,h:hitH,desc,feature});
+        };
+        const DTXT={collapse:FEATURE_INFO.collapse,bottom:FEATURE_INFO.bottom,travel:FEATURE_INFO.travel,
+          pcw:FEATURE_INFO.pcw,snap:detailed?FEATURE_INFO.drop:"Drop force is Collapse minus Valley.",
+          ramp:FEATURE_INFO.ramp,dropRate:FEATURE_INFO.dropRate,steep:FEATURE_INFO.steep};
         const meas=(f,t)=>{g.font=f;return g.measureText(t).width;};
-        const tlX=travelLineX(st,w);
-        /* COLLAPSE: force value centered on the marker */
+        if(showLabels){
+        /* Detailed keeps the drafting label beside the peak. Simplified
+           centers the complete label/value group directly over its marker. */
         if(hasCollapse){
           const val=`${Math.round(st.Fpeak)} gf`;
-          const lw=meas(LBLF,"COLLAPSE"), fw=meas(VALF,`${Math.round(st.Fpeak)} gf`), tw=lw+9+meas(VALF,val);
-          let ax=X(st.xpeak)-(lw+9+fw/2);
-          ax=Math.min(ax, tlX-ANNOT_B-tw);
-          annot(ax,Y(st.Fpeak)-18,"COLLAPSE",val,DTXT.collapse,"left");
+          const collapseX=X(st.xpeak),collapseY=Y(st.Fpeak)-18;
+          annot(detailed?collapseX-14:collapseX,collapseY,"COLLAPSE",val,DTXT.collapse,detailed?"right":"center","collapse");
         }
-        /* pilot indices ride with their driving clusters: weight above collapse */
-        if(hasCollapse&&isNum(st.weightIndex)){
-          const val=`${st.weightIndex.toFixed(1)} / 100`;
-          const lw=meas(LBLF,"WEIGHT INDEX"), fw=meas(VALF,val), tw=lw+9+fw;
-          let ax=X(st.xpeak)-(lw+9+fw/2);
-          ax=Math.min(ax, tlX-ANNOT_B-tw);
-          annot(ax,Y(st.Fpeak)-38,"WEIGHT INDEX",val,DTXT.wi,"left");
-        }
-        /* DROP / SNAP: requested force-loss values centered over the bracket */
-        if(hasSnap){
-          const val=`${Math.round(st.dropF)} gf · ${Math.round(st.snap)} %`;
-          const lw=meas(LBLF,"DROP · SNAP %"), vw=meas(VALF,val), tw=lw+9+vw;
-          let ax=bx-(lw+9+vw/2);
-          ax=Math.min(ax, tlX-ANNOT_B-tw);
-          annot(ax,Y(st.Fpeak)-18,"DROP · SNAP %",val,DTXT.snap,"left");
-        }
-        /* tactility rides with the drop cluster */
-        if(hasSnap&&isNum(st.tactilityIndex)){
-          const val=`${st.tactilityIndex.toFixed(1)} / 100`;
-          const lw=meas(LBLF,"TACTILITY INDEX"), vw=meas(VALF,val), tw=lw+9+vw;
-          let ax=bx-(lw+9+vw/2);
-          ax=Math.min(ax, tlX-ANNOT_B-tw);
-          annot(ax,Y(st.Fpeak)-38,"TACTILITY INDEX",val,DTXT.ti,"left");
-        }
-        if(hasWall){
-          {
-            /* yields to the properties panel: slides above it on collision */
-            const CR=statsCardGeom(g,s,w,h).rect, PB=8;
-            const lbl="DETECTED FORCE-WALL ONSET", val=`${st.travel.toFixed(2)} mm`;
-            const axEnd=Math.min(X(st.travel),w-M.r)-ANNOT_B;
-            const tw=meas(LBLF,lbl)+9+meas(VALF,val);
-            let ay=h-M.b-10;
-            if(axEnd>CR.x-PB&&axEnd-tw<CR.x+CR.w+PB&&ay-12<CR.y+CR.h+PB&&ay+4>CR.y-PB)ay=CR.y-12;
-            annot(axEnd,ay,lbl,val,DTXT.travel,"right");
+        /* Detailed pairs Drop / Snap; Simplified retains only Drop force. */
+        if(hasDrop){
+          const dropName=detailed?"DROP · SNAP %":"DROP";
+          const val=detailed?`${Math.round(st.dropF)} gf · ${hasSnap?Math.round(st.snap)+" %":"Not available"}`:`${Math.round(st.dropF)} gf`;
+          if(!detailed){
+            /* The label/value is centered both across and along the vertical
+               dimension. Its panel-colored knockout keeps the dimension line
+               legible without running through the text. */
+            annot(dropDimX,(Y(st.Fpeak)+Y(st.Fval))/2+5,dropName,val,DTXT.snap,"center","drop",true);
+          }else{
+            const dropLabelWidth=meas(LBLF,dropName)+9+meas(VALF,val);
+            const dropLayout=dropSnapAnnotationLayout(M.l+8,w-M.r-4,plotTop,dropDimX,Y(st.Fpeak),dropRateDimY,dropLabelWidth);
+            const placed=annot(dropLayout.labelX,dropLayout.labelY,dropName,val,DTXT.snap,"left","drop");
+            if(showVisuals&&dropLeaderAnchor){
+            /* Orthogonal leader: the first leg rises from the Drop dimension;
+               the second turns 90 degrees and stops short of the text. The
+               label normally sits to the dimension's left. */
+            const color=featureColor(FC,"drop",T),endY=placed.y-5,
+              endX=dropLayout.side==="left"?placed.x+placed.tw+7:placed.x-7,
+              elbowX=dropLeaderAnchor.x,elbowY=endY;
+            g.setLineDash([]);g.globalAlpha=featureAlpha("drop",.82);g.strokeStyle=color;g.lineWidth=featureWidth("drop",1.05);
+            g.beginPath();g.moveTo(dropLeaderAnchor.x,dropLeaderAnchor.y);g.lineTo(elbowX,elbowY);g.lineTo(endX,endY);g.stroke();
+            /* Opposing arrow at the shared peak junction: the Drop dimension
+               points upward while this leader points downward into the same
+               measured endpoint. If the dimension has already moved that
+               arrow outside, it serves both roles and is not painted twice. */
+            if(!dropDimension.arrowsOutside){
+              g.fillStyle=color;g.beginPath();g.moveTo(dropLeaderAnchor.x,dropLeaderAnchor.y);
+              g.lineTo(dropLeaderAnchor.x-3.2,dropLeaderAnchor.y-8);
+              g.lineTo(dropLeaderAnchor.x+3.2,dropLeaderAnchor.y-8);g.closePath();g.fill();
+            }
+            g.globalAlpha=1;
+            /* Both elbow legs participate in the same hover description as
+               the Drop dimension and its label. */
+            ANNOT_HITS.push({x:elbowX-6,y:Math.min(dropLeaderAnchor.y,elbowY),w:12,
+              h:Math.max(12,Math.abs(elbowY-dropLeaderAnchor.y)),desc:DTXT.snap,feature:"drop"});
+            ANNOT_HITS.push({x:Math.min(elbowX,endX),y:elbowY-6,
+              w:Math.max(12,Math.abs(endX-elbowX)),h:12,desc:DTXT.snap,feature:"drop"});
+            }
           }
-        }else{
-          {
-            const CR=statsCardGeom(g,s,w,h).rect, PB=8;
-            const lbl="DETECTED FORCE-WALL ONSET", val="Not detected";
-            const axEnd=w-M.r-ANNOT_B;
-            const tw=meas(LBLF,lbl)+9+meas(VALF,val);
-            let ay=h-M.b-37;
-            if(axEnd>CR.x-PB&&axEnd-tw<CR.x+CR.w+PB&&ay-12<CR.y+CR.h+PB&&ay+4>CR.y-PB)ay=CR.y-12;
-            annot(axEnd,ay,lbl,val,DTXT.travel,"right");
-          }
+        }
+        if(detailed&&dropRateDimY!=null&&isNum(st.dropRate)){
+          annot((X(st.xpeak)+bx)/2,dropRateDimY+5,"DROP RATE",`${st.dropRate.toFixed(1)} gf/mm`,DTXT.dropRate,"center","dropRate",true);
+        }
+        if(detailed&&rampA&&rampB&&isNum(st.ramp)){
+          annotAlong(X(rampA.x),Y(rampA.F),X(rampB.x),Y(rampB.F),"RAMP",`${st.ramp.toFixed(1)} gf/mm`,DTXT.ramp,"ramp",16);
+        }
+        if(detailed&&steepA&&steepB&&isNum(st.steep)){
+          /* Positive normal offset places the label below the falling trace,
+             alongside the highlighted 0.10 mm segment as in the reference. */
+          annotAlong(X(steepA.x),Y(steepA.F),X(steepB.x),Y(steepB.F),"STEEPEST DROP",`${st.steep.toFixed(1)} gf/mm`,DTXT.steep,"steep",18);
+        }
+        {
+          /* Repeat the wall reading at its marker so the purple construction
+             line remains self-identifying even when the viewer is cropped.
+             A missing event stays explicit and never borrows the turnaround. */
+          const wallVal=hasWall?`${displayFixed(st.travel,2)} mm`:"Not detected",wallName="DETECTED FORCE-WALL ONSET";
+          const wallWidth=meas(LBLF,wallName)+9+meas(VALF,wallVal),wallX=hasWall?X(st.travel):w-M.r;
+          const wallOnLeft=wallX-18-wallWidth>=M.l+8;
+          annot(wallOnLeft?wallX-14:wallX+14,h-M.b-12,wallName,wallVal,DTXT.travel,wallOnLeft?"right":"left","travel");
         }
         /* PRE-COLLAPSE WORK: in its shade, bottom-aligned, right edge buffered
            against the collapse line — mirror of the press-work alignment */
-        if(hasCollapse&&isNum(st.Epc)){
+        if(detailed&&hasCollapse&&isNum(st.Epc)){
           const pVal=`${Math.round(st.Epc)} gf\u00b7mm`;
           const ptw=meas(LBLF,"PRE-COLLAPSE WORK")+9+meas(VALF,pVal);
           const CRp=statsCardGeom(g,s,w,h).rect, P=10;
@@ -1406,22 +1755,36 @@ function drawScene(g,w,h,opts={}){
             let t=0;
             while((hitCurve(px2,py2)||hitPanel(px2,py2))&&t++<20)py2-=18;
           }
-          annot(px2,py2,"PRE-COLLAPSE WORK",pVal,DTXT.pcw,"left");
+          annot(px2,py2,"PRE-COLLAPSE WORK",pVal,DTXT.pcw,"left","pcw");
+        }
         }
 
         /* marker dots are hover targets too */
-        if(hasCollapse)ANNOT_HITS.push({x:X(st.xpeak)-9,y:Y(st.Fpeak)-9,w:18,h:18,desc:DTXT.collapse});
-        if(hasValley)ANNOT_HITS.push({x:X(st.xval)-9,y:Y(st.Fval)-9,w:18,h:18,desc:DTXT.bottom});
-        if(hasSnap)ANNOT_HITS.push({x:bx-8,y:Y(st.Fpeak),w:16,h:Y(st.Fval)-8-Y(st.Fpeak),desc:DTXT.snap});
-        if(hasWall){const lx=Math.min(X(st.travel),w-M.r);
-         ANNOT_HITS.push({x:lx-6,y:tvTop,w:12,h:h-M.b-tvTop,desc:DTXT.travel});}
-      }else if(isNum(st.travel)){
+        if(showVisuals){
+          if(hasCollapse)ANNOT_HITS.push({x:X(st.xpeak)-9,y:Y(st.Fpeak)-9,w:18,h:18,desc:DTXT.collapse,feature:"collapse"});
+          if(hasValley)ANNOT_HITS.push({x:X(st.xval)-9,y:Y(st.Fval)-9,w:18,h:18,desc:detailed?DTXT.bottom:DTXT.snap,feature:valleyFeature});
+          if(hasDrop)ANNOT_HITS.push({x:dropDimX-10,y:dropDimension.lineTop-4,w:20,h:dropDimension.lineBottom-dropDimension.lineTop+8,desc:DTXT.snap,feature:"drop"});
+          if(detailed&&dropRateDimY!=null&&isNum(st.dropRate))ANNOT_HITS.push({x:X(st.xpeak),y:dropRateDimY-8,w:Math.max(14,bx-X(st.xpeak)),h:16,desc:DTXT.dropRate,feature:"dropRate"});
+          if(detailed&&rampA&&rampB)ANNOT_HITS.push({x:X(rampA.x)-6,y:Math.min(Y(rampA.F),Y(rampB.F))-8,w:X(rampB.x)-X(rampA.x)+12,h:Math.abs(Y(rampB.F)-Y(rampA.F))+16,desc:DTXT.ramp,feature:"ramp"});
+          if(detailed&&steepA&&steepB)ANNOT_HITS.push({x:X(steepA.x)-6,y:Math.min(Y(steepA.F),Y(steepB.F))-8,w:X(steepB.x)-X(steepA.x)+12,h:Math.abs(Y(steepB.F)-Y(steepA.F))+16,desc:DTXT.steep,feature:"steep"});
+          if(detailed&&hasCollapse&&ap&&ap.x.length)ANNOT_HITS.push({x:X(ap.x[0]),y:Y(st.Fpeak),w:Math.max(12,X(st.xpeak)-X(ap.x[0])),h:Y(0)-Y(st.Fpeak),desc:DTXT.pcw,feature:"pcw"});
+          if(hasWall){const lx=Math.min(X(st.travel),w-M.r);
+           ANNOT_HITS.push({x:lx-6,y:tvTop,w:12,h:h-M.b-tvTop,desc:DTXT.travel,feature:"travel"});}
+          if(detailed&&turnaround)for(const limit of [...new Set([turnaround.min,turnaround.max])]){
+             const lx=X(limit);ANNOT_HITS.push({x:lx-5,y:plotTop,w:10,h:h-M.b-plotTop,desc:FEATURE_INFO.turnaround,feature:"turnaround"});
+          }
+        }
+      }else if(showVisuals&&isNum(st.travel)){
         /* Comparison overlays retain a visible wall-onset marker for every
            selected record. Null walls produce no marker. */
         const highlighted=!hoverKey||s.key===hoverKey;
-        g.setLineDash([4,4]);g.globalAlpha=highlighted ? 0.62 : 0.18;
-        g.strokeStyle=getColorT(s,th);g.lineWidth=highlighted?1.5:1;
-        g.beginPath();g.moveTo(X(st.travel),M.t);g.lineTo(X(st.travel),h-M.b);g.stroke();
+        g.setLineDash(CONSTRUCTION_DASH);g.globalAlpha=highlighted ? .7 : .32;
+        g.strokeStyle=FEAT[th].travel;g.lineWidth=highlighted?METRIC_STROKE_WIDTH:1;
+        g.beginPath();g.moveTo(X(st.travel),plotTop);g.lineTo(X(st.travel),h-M.b);g.stroke();
+        /* A small dataset-colored cap preserves marker identity without reusing
+           the force-curve color for another line. */
+        g.setLineDash([]);g.globalAlpha=highlighted?1:.5;g.fillStyle=getColorT(s,th);
+        g.fillRect(X(st.travel)-2,plotTop+3,4,4);
         g.setLineDash([]);g.globalAlpha=1;
       }
     }
@@ -1429,7 +1792,7 @@ function drawScene(g,w,h,opts={}){
   /* crosshair (interactive only) */
   if(interactive&&hoverX!=null){
     g.strokeStyle=T.ink;g.globalAlpha=.35;g.lineWidth=1;
-    g.beginPath();g.moveTo(X(hoverX)+.5,M.t);g.lineTo(X(hoverX)+.5,h-M.b);g.stroke();
+    g.beginPath();g.moveTo(X(hoverX)+.5,plotTop);g.lineTo(X(hoverX)+.5,h-M.b);g.stroke();
     g.globalAlpha=1;
   }
   g.restore();
@@ -1443,21 +1806,43 @@ function drawScene(g,w,h,opts={}){
   g.textBaseline="alphabetic";
   g.textAlign="left";g.fillStyle=T.label;g.font="600 11px "+FONT_S;
   g.fillText("U N R E A L  K E Y B O A R D S  \u00B7  D O M E  L A B",M.l,M.t-12);
-  /* title inside the plot, top-left corner */
+  /* Single-test identity uses the visual hierarchy of an instrument readout:
+     specimen name at left; three small labels over large values at right. */
   let tx=M.l+16, ty=M.t+34;
   if(selected.length){
-    g.fillStyle=T.ink;g.font="800 "+Math.round(26*annotFonts(w).sf)+"px "+FONT_S;
-    g.fillText(single?selectedName(sets.get(selected[0])):"Force Curve Comparison",tx,ty);
-    ty+=18;
+    if(single){
+      const titleSet=sets.get(selected[0]),titleStats=titleSet&&titleSet.data&&titleSet.data.stats;
+      const header=singleHeader||forceCurveHeaderLayout(w);
+      g.fillStyle=T.ink;g.font="800 "+Math.round(header.compact?20:30*annotFonts(w).sf)+"px "+FONT_S;
+      g.fillText(fitText(g,selectedName(titleSet),header.titleWidth),header.titleX,header.titleY);
+      if(titleStats){
+        const rec=titleSet.record_id&&RECORD_BY_ID.get(titleSet.record_id),calibrated=(!rec||rec.k==="dome_baseline");
+        const unavailable=calibrated?"Not available":"Not calibrated";
+        const wi=calibrated&&isNum(titleStats.weightIndex)?titleStats.weightIndex.toFixed(1):unavailable;
+        const ti=calibrated&&isNum(titleStats.tactilityIndex)?titleStats.tactilityIndex.toFixed(1):unavailable;
+        const wall=isNum(titleStats.travel)?`${displayFixed(titleStats.travel,2)} mm`:"Not detected";
+        drawForceCurveHeaderMetric(g,T,FEAT[th],header,0,"WEIGHT INDEX","WEIGHT INDEX",wi,"weightIndex");
+        drawForceCurveHeaderMetric(g,T,FEAT[th],header,1,"TACTILITY INDEX","TACTILITY INDEX",ti,"tactilityIndex");
+        drawForceCurveHeaderMetric(g,T,FEAT[th],header,2,"DETECTED FORCE-WALL ONSET","FORCE-WALL ONSET",wall,"travel");
+      }
+    }else{
+      g.fillStyle=T.ink;g.font="800 "+Math.round(26*annotFonts(w).sf)+"px "+FONT_S;
+      g.fillText("Force Curve Comparison",tx,ty);
+    }
+    ty+=single?84:18;
   }
   if(single){
     const s=sets.get(selected[0]);
     if(s.data&&s.data.stats){
       const G=statsCardGeom(g,s,w,h);
-      /* the DOM stats block is always populated for assistive tech; visually
-         hidden (sr-only) while the card is drawn on the canvas, shown when external */
-      if(interactive){showStatsOut(s);document.getElementById("statsOut").classList.toggle("sr-only",!G.external);}
-      if(!G.external){
+      /* Simplified is a graph-first readout: its five retained values already
+         appear in the graph header and annotations, so the duplicate details
+         strip is removed. Detailed keeps the complete external details strip. */
+      if(interactive){
+        if(!detailed)hideStatsOut();
+        else{showStatsOut(s);document.getElementById("statsOut").classList.toggle("sr-only",!G.external);}
+      }
+      if(detailed&&!G.external){
       const {L,lh,pad,labW,valW,bw,bh,cx0,cy0}=G;
       g.textAlign="left";
       g.fillStyle=T.panelFill;g.strokeStyle=T.panelLine;g.lineWidth=1;
@@ -1491,24 +1876,25 @@ function drawScene(g,w,h,opts={}){
 /* Pilot-aligned comparison profiles. Raw metrics use incompatible units, so
    each is shown as its frozen 68-dome percentile before records are compared. */
 const PROFILES={
-  profileWeight:{title:"Perceived Weight Profile",score:"weightIndex",scoreLabel:"Weight Index",driverLabel:"Collapse-force Weight Index",rho:0.952,
+  profileWeight:{family:"weight",title:"Perceived Weight Profile",score:"weightIndex",scoreLabel:"Weight Index",driverLabel:"Collapse-force Weight Index",rho:0.952,
     metrics:[
       {p:"cg",label:["Collapse","force"],raw:st=>st.Fpeak,fmt:v=>`${Math.round(v)} gf`},
       {p:"rp",label:["Ramp"],raw:st=>st.ramp,fmt:v=>`${v.toFixed(1)} gf/mm`},
       {p:"pcw",label:["Pre-collapse","work"],raw:st=>st.Epc,fmt:v=>`${Math.round(v)} gf\u00b7mm`}
     ]},
-  profileTactility:{title:"Tactility Profile",score:"tactilityIndex",scoreLabel:"Tactility Index",driverLabel:"Drop-based Tactility Index",rho:0.930,
+  profileTactility:{family:"tactility",title:"Tactility Profile",score:"tactilityIndex",scoreLabel:"Tactility Index",driverLabel:"Drop-based Tactility Index",rho:0.930,
     metrics:[
       {p:"dg",label:["Drop"],raw:st=>st.dropF,fmt:v=>`${Math.round(v)} gf`},
-      {p:"sd",label:["Steepest","0.10 mm drop"],raw:st=>st.steep,fmt:v=>`${v.toFixed(1)} gf/mm`},
-      {p:"dr",label:["Drop rate"],raw:st=>st.dropRate,fmt:v=>`${v.toFixed(1)} gf/mm`},
-      {p:"sn",label:["Snap %"],raw:st=>st.snap,fmt:v=>`${Math.round(v)} %`}
+      {p:"sn",label:["Snap %"],raw:st=>st.snap,fmt:v=>`${Math.round(v)} %`},
+      {p:"sd",label:["Steepest","drop"],raw:st=>st.steep,fmt:v=>`${v.toFixed(1)} gf/mm`},
+      {p:"dr",label:["Drop rate"],raw:st=>st.dropRate,fmt:v=>`${v.toFixed(1)} gf/mm`}
     ]}
 };
 const isProfileMode=()=>chartMode==="profileWeight"||chartMode==="profileTactility";
 const isIndexScatterMode=()=>chartMode==="indexScatter";
-const isDerivedComparisonMode=()=>isProfileMode()||isIndexScatterMode();
-const comparisonModeTitle=()=>isIndexScatterMode()?"Weight Index vs Tactility Index":PROFILES[chartMode].title;
+const isTravelProfileMode=()=>chartMode==="profileTravel";
+const isDerivedComparisonMode=()=>isProfileMode()||isIndexScatterMode()||isTravelProfileMode();
+const comparisonModeTitle=()=>isTravelProfileMode()?"Detected Force-Wall Onset":isIndexScatterMode()?"Weight Index vs Tactility Index":PROFILES[chartMode].title;
 function isIndexScatterEligible(s){
   const st=s&&s.data&&!s.data.error&&s.data.stats;
   return !!st&&kindOf(s.key,s.record_id)==="dome_baseline"&&
@@ -1539,13 +1925,16 @@ function drawIndexScatter(g,w,h,T,th){
   });
 
   const legendRowH=34;   /* two lines per row; the wall line moved to the curves tab */
-  const mobileLegendH=compact&&DL.length?62+DL.length*legendRowH:0;
-  const legendBand=!compact&&DL.length?Math.min(380,Math.max(280,(w-M.l-M.r)*.38)):0;
+  const showLegend=DL.length>0&&DL.length<=14;
+  const mobileLegendH=compact&&showLegend?190:0;
+  const legendBand=!compact&&showLegend?Math.min(380,Math.max(280,(w-M.l-M.r)*.38)):0;
   const top=M.t+(compact?95:80)+notes.length*15, left=M.l+8;
   const right=w-M.r-8-legendBand, bottom=h-M.b-mobileLegendH;
   const [indexMin,indexMax]=INDEX_SCATTER_DOMAIN, indexSpan=indexMax-indexMin;
   const X=v=>left+((v-indexMin)/indexSpan)*(right-left);
   const Y=v=>bottom-((v-indexMin)/indexSpan)*(bottom-top);
+  if(DL.length>14){g.fillStyle=T.label;g.font="11px "+FONT_S;g.textAlign="left";g.textBaseline="alphabetic";
+    g.fillText(`${DL.length} tests shown \u00b7 hover points for test names and exact values`,M.l+16,top-8);}
   g.lineWidth=1;
   for(let value=indexMin;value<=indexMax;value+=20){
     const px=X(value),py=Y(value);
@@ -1556,10 +1945,10 @@ function drawIndexScatter(g,w,h,T,th){
     g.textAlign="right";g.textBaseline="middle";g.fillText(String(value),left-10,py);
   }
   g.strokeStyle=T.panelLine;g.strokeRect(left+.5,top+.5,right-left,bottom-top);
-  g.fillStyle=T.label;g.font="13px "+FONT_S;g.textAlign="center";g.textBaseline="top";
+  g.fillStyle=FEAT[th].weight;g.font="13px "+FONT_S;g.textAlign="center";g.textBaseline="top";
   g.fillText("Weight Index (0–100)",left+(right-left)/2,bottom+32);
   g.save();g.translate(M.l-39,top+(bottom-top)/2);g.rotate(-Math.PI/2);
-  g.textAlign="center";g.textBaseline="middle";g.fillText("Tactility Index (0–100)",0,0);g.restore();
+  g.fillStyle=FEAT[th].tactility;g.textAlign="center";g.textBaseline="middle";g.fillText("Tactility Index (0–100)",0,0);g.restore();
 
   if(!DL.length){
     g.fillStyle=T.label;g.font="600 15px "+FONT_S;g.textAlign="center";g.textBaseline="middle";
@@ -1574,23 +1963,246 @@ function drawIndexScatter(g,w,h,T,th){
     g.lineWidth=2;g.strokeStyle=T.markerFill;g.stroke();
     g.restore();
     SCATTER_PTS.push({x:px,y:py,key:s.key,name:selectedName(s),recordId:s.record_id||"",
-      tip:`Weight Index ${st.weightIndex.toFixed(1)} / 100 · Tactility Index ${st.tactilityIndex.toFixed(1)} / 100`});
+      tip:`Weight Index ${formatPercentileRank(st.weightIndex)} · Tactility Index ${formatPercentileRank(st.tactilityIndex)}`});
   }
 
   const legendX=compact?left:right+24;
   const legendWidth=compact?right-left:w-M.r-8-legendX;
   let ly=compact?bottom+62:top+16;
-  for(const s of DL){
+  const maxRows=showLegend?Math.max(1,Math.floor((h-M.b-ly-18)/legendRowH)+1):0;
+  const shown=showLegend?DL.slice(0,maxRows):[];
+  for(const s of shown){
     const st=s.data.stats;
     const textX=legendX+18, textWidth=Math.max(40,legendWidth-18);
     g.fillStyle=getColorT(s,th);g.beginPath();g.roundRect(legendX,ly-9,10,10,3);g.fill();
     g.fillStyle=T.ink;g.font="600 11px "+FONT_S;g.textAlign="left";g.textBaseline="alphabetic";
     g.fillText(fitText(g,selectedName(s),textWidth),textX,ly);
     g.fillStyle=T.label;g.font="11px "+FONT_S;
-    g.fillText(fitText(g,`Weight ${st.weightIndex.toFixed(1)} · Tactility ${st.tactilityIndex.toFixed(1)}`,textWidth),textX,ly+15);
+    g.fillText(fitText(g,`Weight ${st.weightIndex.toFixed(1)}th · Tactility ${st.tactilityIndex.toFixed(1)}th`,textWidth),textX,ly+15);
     ly+=legendRowH;
   }
+  if(shown.length<DL.length&&showLegend){g.fillStyle=T.label;g.font="11px "+FONT_S;g.fillText(`+ ${DL.length-shown.length} more \u00b7 hover points for details`,legendX,ly);}
   g.textAlign="left";
+}
+const TOPRE_TRAVEL_REFERENCE_SETS=Object.freeze(["Topre_HHKB_Pro2_45g","Topre_R1_30g","Topre_R1_45g","Topre_R1_55g",
+  "Topre_R2_30g","Topre_R2_45g","Topre_R2_55g","Topre_RGB_45g","Topre_GX1_45g"]);
+const TRAVEL_GROUP_ORDER=Object.freeze(["topre-production","sony-bke","dynacaps","deskeys-v1","deskeys-v2","deskeys-v3",
+  "deskeys-t1","deskeys-carrot","bke-redux-v1","astro-domes","klc-densus","niz","topre-compatible-parts","dynacaps-parts","other-review"]);
+function travelRecord(s){
+  return s&&s.record_id&&RECORD_BY_ID.get(s.record_id)||VTESTS.find(t=>s&&t.k==="dome_baseline"&&t.set===s.key)||null;
+}
+function travelGroupForRecord(rec){
+  if(!rec)return {id:"other-review",label:"Other · metadata review"};
+  const n=rec.n||"";
+  if(rec.k==="part_assembly")return /^DynaCaps/i.test(n)?{id:"dynacaps-parts",label:"DynaCaps part assemblies"}:
+    {id:"topre-compatible-parts",label:"Topre-compatible part assemblies"};
+  if(TOPRE_TRAVEL_REFERENCE_SETS.includes(rec.set))return {id:"topre-production",label:"Topre production"};
+  if(rec.brand==="Sony_BKE"||/^Sony[ _]BKE/i.test(n))return {id:"sony-bke",label:"Sony BKE"};
+  if(rec.brand==="DynaCaps"||/^DynaCaps_/i.test(n))return {id:"dynacaps",label:"DynaCaps"};
+  if(rec.brand==="Astro Domes"||/^Astro_Domes_/i.test(n))return {id:"astro-domes",label:"Astro Domes"};
+  if(rec.brand==="DES-DOMES"||rec.mfr==="Deskeys"||/^Deskeys_/i.test(n)){
+    if(["V1","V2","V3","T1"].includes(rec.sty))return {id:`deskeys-${rec.sty.toLowerCase()}`,label:`Deskeys ${rec.sty}`};
+    if(rec.sty==="Carrot"||/^Deskeys_Carrot_/i.test(n))return {id:"deskeys-carrot",label:"Deskeys Carrot"};
+    return {id:"other-review",label:"Other · metadata review"};
+  }
+  if((rec.brand==="BKE Redux"&&rec.sty==="v1")||/^BKE_Redux_v1_/i.test(n))return {id:"bke-redux-v1",label:"BKE Redux v1"};
+  if(rec.brand==="KLC"||rec.mfr==="Densus"||/^KLC_Densus_/i.test(n))return {id:"klc-densus",label:"KLC Densus"};
+  if(rec.brand==="NiZ"||rec.mfr==="NiZ"||/^NiZ_/i.test(n))return {id:"niz",label:"NiZ"};
+  return {id:"other-review",label:"Other · metadata review"};
+}
+function travelReferenceStats(){
+  const rows=TOPRE_TRAVEL_REFERENCE_SETS.map(set=>VTESTS.find(t=>t.k==="dome_baseline"&&t.set===set)).filter(Boolean);
+  const values=rows.map(t=>t.tv).filter(isNum);
+  return {memberCount:rows.length,detectedCount:values.length,mean:values.length?values.reduce((a,b)=>a+b,0)/values.length:null,
+    min:values.length?Math.min(...values):null,max:values.length?Math.max(...values):null};
+}
+function travelDifference(value,referenceMean){return isNum(value)&&isNum(referenceMean)?value-referenceMean:null;}
+function formatTravelDifference(delta){
+  if(!isNum(delta))return "Not available";
+  if(Math.abs(delta)<.005)return "same at displayed precision";
+  return `${displayFixed(Math.abs(delta),2)} mm ${delta<0?"earlier":"later"}`;
+}
+function travelComparisonGroups(chosen){
+  const map=new Map();
+  for(const s of chosen){
+    if(!s.data||s.data.error||!s.data.stats)continue;
+    const def=travelGroupForRecord(travelRecord(s));
+    if(!map.has(def.id))map.set(def.id,{...def,members:[],detected:[],missing:[]});
+    const group=map.get(def.id);group.members.push(s);
+    (isNum(s.data.stats.travel)?group.detected:group.missing).push(s);
+  }
+  for(const group of map.values()){
+    group.detected.sort((a,b)=>a.data.stats.travel-b.data.stats.travel||selectedName(a).localeCompare(selectedName(b)));
+    group.missing.sort((a,b)=>selectedName(a).localeCompare(selectedName(b)));
+    const values=group.detected.map(s=>s.data.stats.travel);
+    group.mean=values.length?values.reduce((a,b)=>a+b,0)/values.length:null;
+    group.min=values.length?Math.min(...values):null;group.max=values.length?Math.max(...values):null;
+  }
+  return [...map.values()].sort((a,b)=>TRAVEL_GROUP_ORDER.indexOf(a.id)-TRAVEL_GROUP_ORDER.indexOf(b.id)||a.label.localeCompare(b.label));
+}
+function travelPlotGeometry(w,h,groupCount,hasMissing){
+  const compact=w<=640,labelW=compact?112:Math.min(190,Math.max(155,w*.18)),valueW=compact?78:178;
+  const left=M.l+labelW,right=Math.max(left+72,w-M.r-valueW-(hasMissing?28:0)),top=M.t+(compact?182:166),bottom=h-M.b-18;
+  const ndX=hasMissing?right+18:null;
+  return {compact,labelW,valueW,left,right,top,bottom,ndX,valueX:ndX==null?right+10:ndX+12,
+    rowStep:groupCount?(bottom-top)/groupCount:0};
+}
+function travelRowLayout(groups,top,bottom){
+  /* Fleet rows stay inside the fixed-height chart, but dense families receive
+     enough vertical room for their individual tests to remain distinguishable. */
+  const raw=groups.map(group=>14+1.8*Math.max(1,group.members.length));
+  const scale=raw.length?(bottom-top)/raw.reduce((sum,value)=>sum+value,0):0;
+  let cursor=top;
+  return raw.map(value=>{const height=value*scale,y=cursor+height/2;cursor+=height;return {y,height};});
+}
+function packTravelMarkers(members,X,rowY,rowStep,compact){
+  const maxOffset=Math.max(2,rowStep/2-2),span=maxOffset*2;
+  const minSeparation=Math.min(compact?3.1:3.8,span/Math.max(1,members.length-1));
+  const radius=Math.min(compact?1.65:2.1,Math.max(.85,minSeparation*.28));
+  const strokeWidth=Math.min(1.25,Math.max(.65,minSeparation-2*radius-.3));
+  const offsets=[];
+  for(let offset=-maxOffset;offset<=maxOffset+.001;offset+=.25)offsets.push(offset);
+  offsets.sort((a,b)=>Math.abs(a)-Math.abs(b)||a-b);
+  const placed=[];
+  for(const s of members){
+    const x=X(s.data.stats.travel);
+    let bestOffset=offsets[0],bestDistance=-1;
+    for(const offset of offsets){
+      let nearest=Infinity;
+      for(const point of placed)nearest=Math.min(nearest,Math.hypot(x-point.x,rowY+offset-point.y));
+      if(nearest>=minSeparation){bestOffset=offset;bestDistance=nearest;break;}
+      if(nearest>bestDistance){bestDistance=nearest;bestOffset=offset;}
+    }
+    placed.push({s,x,y:rowY+bestOffset,radius,strokeWidth});
+  }
+  return placed;
+}
+function drawTravelComparison(g,w,h,T,th){
+  TRAVEL_PTS.length=0;
+  const chosen=displayList(),present=chosen.filter(s=>s.data&&!s.data.error&&s.data.stats);
+  const unavailable=chosen.filter(s=>s.loading||!s.data||s.data.error||!s.data.stats);
+  const groups=travelComparisonGroups(chosen),detected=groups.flatMap(group=>group.detected),missing=groups.flatMap(group=>group.missing);
+  const reference=travelReferenceStats(),G=travelPlotGeometry(w,h,groups.length,missing.length>0);
+  const {compact,left,right,top,bottom,ndX,valueX,rowStep}=G,X=v=>left+(v/XMAX)*(right-left);
+  const copyWidth=Math.max(90,w-M.r-(M.l+16)),travelColor=FEAT[th].travel;
+  const resolvedRecords=chosen.map(travelRecord).filter(Boolean);
+  const domeOnly=resolvedRecords.length?resolvedRecords.every(rec=>rec.k==="dome_baseline"):
+    benchKind==="dome_baseline";
+  const groupRows=travelRowLayout(groups,top,bottom);
+
+  g.textBaseline="alphabetic";g.textAlign="left";
+  g.fillStyle=T.label;g.font="600 11px "+FONT_S;
+  g.fillText("U N R E A L  K E Y B O A R D S  ·  D O M E  L A B",M.l,M.t-12);
+  g.fillStyle=travelColor;g.font=compact?"800 18px "+FONT_S:"800 "+Math.round(26*annotFonts(w).sf)+"px "+FONT_S;
+  const comparisonTitle=domeOnly?(compact?"Force-Wall Onset":"Detected Force-Wall Onset by Dome Family"):
+    (compact?"Assembly Force-Wall Onset":"Detected Force-Wall Onset by Assembly Group");
+  g.fillText(comparisonTitle,M.l+16,M.t+30);
+  g.fillStyle=T.label;g.font=(compact?"10.5px ":"11.5px ")+FONT_S;
+  const copy1=compact?"Proxy—not physical travel; not better/worse.":
+    "Operational measured-assembly proxy—not nominal/physical switch travel; not a better/worse score.";
+  const copy2=compact?"Earlier = less rig displacement before the wall.":
+    "Earlier onset = less measured displacement before the force wall on this rig.";
+  const copy3=compact?(domeOnly?"Domes: 0.00 mm precomp.; no advertised check.":
+    "Parts keep precompression; Topre is context only."):(domeOnly?
+    "Dome baselines: 0.00 mm added precompression; not an advertised-travel verification.":
+    "Part assemblies retain recorded precompression; the Topre dome reference is context only.");
+  g.fillText(fitText(g,copy1,copyWidth),M.l+16,M.t+50);
+  g.fillText(fitText(g,copy2,copyWidth),M.l+16,M.t+66);
+  g.fillText(fitText(g,copy3,copyWidth),M.l+16,M.t+82);
+  g.font=(compact?"9.5px ":"10.5px ")+FONT_S;
+  const groupWord=domeOnly?"dome families":"assembly groups";
+  const countText=`${groups.length} ${groupWord} · ${detected.length} detected · ${missing.length} not detected${unavailable.length?` · ${unavailable.length} unavailable`:""}`;
+  g.fillText(fitText(g,countText,copyWidth),M.l+16,M.t+98);
+  g.fillText(fitText(g,"○ individual test · ◇ group mean · thin line = tested range · faint bar = difference",copyWidth),M.l+16,M.t+114);
+  g.fillText(fitText(g,"shaded band = Topre tested range · dashed line = Topre reference mean",copyWidth),M.l+16,M.t+130);
+
+  /* The shaded band and dashed rule freeze a production-Topre comparison cohort:
+     nine HHKB/Realforce dome datasets, one equal-weighted aggregate per dataset. */
+  if(isNum(reference.mean)){
+    const rx=X(reference.mean),r0=X(reference.min),r1=X(reference.max);
+    g.save();g.globalAlpha=.08;g.fillStyle=travelColor;g.fillRect(r0,top,r1-r0,bottom-top);g.restore();
+    g.save();g.strokeStyle=travelColor;g.globalAlpha=.75;g.lineWidth=1.4;g.setLineDash([5,4]);
+    g.beginPath();g.moveTo(rx,top);g.lineTo(rx,bottom);g.stroke();g.restore();
+    g.fillStyle=travelColor;g.font="700 10px "+FONT_S;g.textAlign="right";g.textBaseline="bottom";
+    const referenceLabel=compact?`TOPRE REF · ${displayFixed(reference.mean,2)} MM · N=${reference.detectedCount}`:
+      `TOPRE PRODUCTION REFERENCE · ${displayFixed(reference.mean,2)} MM · ${reference.detectedCount} TESTS`;
+    g.fillText(fitText(g,referenceLabel,Math.max(120,right-left)),right,top-7);
+  }
+
+  g.lineWidth=1;
+  for(let value=0;value<=XMAX+1e-9;value+=.5){
+    const px=X(value);g.strokeStyle=T.gridMajor;g.beginPath();g.moveTo(px+.5,top);g.lineTo(px+.5,bottom);g.stroke();
+    g.fillStyle=T.label;g.font="11px "+FONT_S;g.textAlign="center";g.textBaseline="top";g.fillText(value.toFixed(1),px,bottom+7);
+  }
+  if(ndX!=null){g.fillStyle=travelColor;g.font="700 9px "+FONT_S;g.textAlign="center";g.textBaseline="bottom";g.fillText("ND",ndX,top-7);}
+  g.fillStyle=travelColor;g.font="12px "+FONT_S;g.textAlign="center";g.textBaseline="top";
+  g.fillText("Detected force-wall onset (mm)",left+(right-left)/2,bottom+27);
+
+  if(!groups.length){
+    g.fillStyle=T.label;g.font="600 15px "+FONT_S;g.textAlign="center";g.textBaseline="middle";
+    g.fillText(unavailable.length?"Selected tests are loading or unavailable.":"Select tests to compare detected force-wall onset.",left+(right-left)/2,top+(bottom-top)/2);
+  }
+  groups.forEach((group,index)=>{
+    const {y,height:groupHeight}=groupRows[index],groupKey=`travel-group::${group.id}`;
+    const memberSets=new Set(group.members.map(s=>s.key));
+    const isFullReferenceGroup=group.id==="topre-production"&&memberSets.size===TOPRE_TRAVEL_REFERENCE_SETS.length&&
+      TOPRE_TRAVEL_REFERENCE_SETS.every(set=>memberSets.has(set));
+    const groupHot=!hoverKey||hoverKey===groupKey||group.members.some(s=>s.key===hoverKey);
+    if(index%2===0){g.save();g.globalAlpha=.025;g.fillStyle=T.ink;g.fillRect(M.l,y-groupHeight/2,w-M.l-M.r,groupHeight);g.restore();}
+    g.strokeStyle=T.gridMinor;g.lineWidth=1;g.beginPath();g.moveTo(M.l,y+groupHeight/2);g.lineTo(w-M.r,y+groupHeight/2);g.stroke();
+    g.globalAlpha=groupHot?1:.3;g.fillStyle=group.id==="topre-production"?travelColor:T.ink;
+    g.font=(compact?"600 9.5px ":"650 11px ")+FONT_S;g.textAlign="right";g.textBaseline="middle";
+    g.fillText(fitText(g,group.label,G.labelW-16),left-10,y-4);
+    g.fillStyle=T.label;g.font=(compact?"8.5px ":"9.5px ")+FONT_S;
+    g.fillText(`${group.detected.length}/${group.members.length} detected`,left-10,y+8);
+
+    if(isNum(group.mean)){
+      const meanX=X(group.mean),delta=travelDifference(group.mean,reference.mean);
+      if(isNum(reference.mean)&&Math.abs(meanX-X(reference.mean))>.5){
+        g.save();g.globalAlpha=groupHot?.18:.06;g.strokeStyle=travelColor;g.lineWidth=Math.max(2,Math.min(5,groupHeight*.16));
+        g.beginPath();g.moveTo(meanX,y);g.lineTo(X(reference.mean),y);g.stroke();g.restore();
+      }
+      g.save();g.globalAlpha=groupHot?.7:.2;g.strokeStyle=travelColor;g.lineWidth=2;
+      g.beginPath();g.moveTo(X(group.min),y);g.lineTo(X(group.max),y);g.stroke();g.restore();
+      const packed=packTravelMarkers(group.detected,X,y,groupHeight,compact);
+      packed.forEach(point=>{
+        const {s,x:px,y:py,radius,strokeWidth}=point;
+        const hot=!hoverKey||hoverKey===s.key||hoverKey===groupKey;
+        g.save();g.globalAlpha=hot?1:.24;g.fillStyle=T.markerFill;g.strokeStyle=travelColor;g.lineWidth=hoverKey===s.key?2.8:strokeWidth;
+        g.beginPath();g.arc(px,py,hoverKey===s.key?Math.max(4,radius+1.5):radius,0,7);g.fill();g.stroke();g.restore();
+        TRAVEL_PTS.push({kind:"test",x:px,y:py,radius,strokeWidth,key:s.key,name:selectedName(s),recordId:s.record_id||"",group:group.label,
+          tip:`${group.label} · ${displayFixed(s.data.stats.travel,2)} mm · ${formatTravelDifference(travelDifference(s.data.stats.travel,reference.mean))}`});
+      });
+      g.save();g.globalAlpha=groupHot?1:.32;g.strokeStyle=travelColor;g.lineWidth=2.2;g.translate(meanX,y);g.rotate(Math.PI/4);
+      g.strokeRect(-4.5,-4.5,9,9);g.restore();
+      const rangeText=group.min===group.max?`${displayFixed(group.mean,2)} mm`:
+        `${displayFixed(group.mean,2)} mm · ${displayFixed(group.min,2)}–${displayFixed(group.max,2)}`;
+      TRAVEL_PTS.push({kind:"group",x:meanX,y,key:groupKey,name:group.label,recordId:"",
+        tip:`Mean ${rangeText} · ${formatTravelDifference(delta)} · ${group.detected.length} detected`});
+      g.fillStyle=group.id==="topre-production"?travelColor:T.ink;g.font=(compact?"600 8.5px ":"600 10px ")+FONT_S;
+      g.textAlign="left";g.textBaseline="middle";
+      const compactDelta=!isNum(delta)?"N/A":Math.abs(delta)<.005?"≈REF":
+        `${delta<0?"−":"+"}${displayFixed(Math.abs(delta),2)}`;
+      const valueText=compact?(isFullReferenceGroup?`${displayFixed(group.mean,2)} · REF`:`${displayFixed(group.mean,2)} · ${compactDelta}`):
+        (isFullReferenceGroup?`${displayFixed(group.mean,2)} mm · reference`:
+          `${displayFixed(group.mean,2)} mm · ${formatTravelDifference(delta)}`);
+      g.fillText(fitText(g,valueText,w-M.r-valueX),valueX,y);
+    }else{
+      g.fillStyle=travelColor;g.font="600 10px "+FONT_S;g.textAlign="left";g.textBaseline="middle";g.fillText("Not detected",valueX,y);
+    }
+    if(ndX!=null)group.missing.forEach((s,memberIndex)=>{
+      const missingGap=Math.min(7,(groupHeight-4)/Math.max(1,group.missing.length-1));
+      const radius=Math.min(2.6,Math.max(.85,missingGap*.28));
+      const strokeWidth=Math.min(1.25,Math.max(.65,missingGap-2*radius-.3));
+      const py=y+(memberIndex-(group.missing.length-1)/2)*missingGap,hot=!hoverKey||hoverKey===s.key||hoverKey===groupKey;
+      g.save();g.globalAlpha=hot?1:.25;g.fillStyle=T.markerFill;g.strokeStyle=travelColor;g.lineWidth=hoverKey===s.key?2.8:strokeWidth;
+      g.beginPath();g.arc(ndX,py,hoverKey===s.key?5:radius,0,7);g.fill();g.stroke();g.restore();
+      TRAVEL_PTS.push({kind:"test",x:ndX,y:py,radius,strokeWidth,key:s.key,name:selectedName(s),recordId:s.record_id||"",group:group.label,
+        tip:`${group.label} · Detected force-wall onset not detected`});
+    });
+    g.globalAlpha=1;
+  });
+  g.globalAlpha=1;g.textAlign="left";g.textBaseline="alphabetic";
 }
 function drawProfile(g,w,h,T,th){
   PROFILE_PTS.length=0;
@@ -1599,19 +2211,22 @@ function drawProfile(g,w,h,T,th){
   const DL=present.filter(s=>
     C.metrics.every(m=>isNum(s.data.stats.percentiles&&s.data.stats.percentiles[m.p])));
   const omitted=present.filter(s=>!DL.includes(s));
-  /* layout: on wide canvases the legend lives in a reserved right band so it can
-     never overlay the curves; under 840 px it stacks below the plot and
-     syncModeToggle extends the canvas height (tall-chart) */
+  /* The comparison canvas is fixed-height. Small selections receive a compact
+     legend; fleet-size selections use the full plot and remain identifiable by
+     hover instead of forcing the canvas to grow with every test. */
   const compact=w<=840;
-  const band=(!compact&&DL.length)?Math.min(320,Math.max(230,Math.round((w-M.l-M.r)*0.30))):0;
+  const showLegend=DL.length>0&&DL.length<=18;
+  const band=(!compact&&showLegend)?Math.min(320,Math.max(230,Math.round((w-M.l-M.r)*0.30))):0;
   const plotRight=w-M.r-(band?band+16:0);
-  const bottom=h-M.b-(compact?DL.length*20+12:0);
+  const compactLegendH=compact&&showLegend?Math.min(150,48+DL.length*20):0;
+  const bottom=h-M.b-compactLegendH;
+  const plotTop=M.t+78+(omitted.length?15:0);
   const X=i=>M.l+(i+.5)/C.metrics.length*(plotRight-M.l);
-  const Y=v=>M.t+(1-v/100)*(bottom-M.t);
+  const Y=v=>plotTop+(1-v/100)*(bottom-plotTop);
   g.textBaseline="alphabetic";g.textAlign="left";
   g.fillStyle=T.label;g.font="600 11px "+FONT_S;
   g.fillText("U N R E A L  K E Y B O A R D S  \u00B7  D O M E  L A B",M.l,M.t-12);
-  g.fillStyle=T.ink;g.font="800 "+Math.round(26*annotFonts(w).sf)+"px "+FONT_S;
+  g.fillStyle=FEAT[th][C.family];g.font="800 "+Math.round(26*annotFonts(w).sf)+"px "+FONT_S;
   g.fillText(C.title,M.l+16,M.t+34);
   g.fillStyle=T.label;g.font="12px "+FONT_S;
   g.fillText("Percentiles among tested domes",M.l+16,M.t+54);
@@ -1619,6 +2234,7 @@ function drawProfile(g,w,h,T,th){
     g.fillStyle=T.label;g.font="11px "+FONT_S;g.textAlign="left";
     g.fillText(`Not calibrated: ${omitted.map(selectedName).join(", ")}`,M.l+16,M.t+69);
   }
+  if(DL.length>18){g.fillStyle=T.label;g.font="11px "+FONT_S;g.fillText(`${DL.length} tests shown \u00b7 hover lines for test names and exact values`,M.l+16,plotTop-8);}
 
   g.lineWidth=1;
   for(let value=0;value<=100;value+=20){
@@ -1627,17 +2243,17 @@ function drawProfile(g,w,h,T,th){
     g.fillText(value,M.l-10,Y(value));
   }
   for(let i=0;i<C.metrics.length;i++){
-    g.strokeStyle=T.gridMinor;g.beginPath();g.moveTo(X(i)+.5,M.t);g.lineTo(X(i)+.5,bottom);g.stroke();
-    g.fillStyle=T.label;g.font="12px "+FONT_S;g.textAlign="center";g.textBaseline="top";
+    g.strokeStyle=T.gridMinor;g.beginPath();g.moveTo(X(i)+.5,plotTop);g.lineTo(X(i)+.5,bottom);g.stroke();
+    g.fillStyle=FEAT[th][C.family];g.font="12px "+FONT_S;g.textAlign="center";g.textBaseline="top";
     C.metrics[i].label.forEach((line,lineIndex)=>g.fillText(line,X(i),bottom+9+lineIndex*14));
   }
-  g.save();g.translate(M.l-40,M.t+(bottom-M.t)/2);g.rotate(-Math.PI/2);
+  g.save();g.translate(M.l-40,plotTop+(bottom-plotTop)/2);g.rotate(-Math.PI/2);
   g.fillStyle=T.label;g.font="13px "+FONT_S;g.textAlign="center";g.textBaseline="middle";
   g.fillText("Percentile among tested domes (0–100)",0,0);g.restore();
 
   if(!DL.length){
     g.fillStyle=T.label;g.font="600 15px "+FONT_S;g.textAlign="center";g.textBaseline="middle";
-    g.fillText("Indices are not calibrated for this selection.",M.l+(plotRight-M.l)/2,M.t+(bottom-M.t)/2);
+    g.fillText("Indices are not calibrated for this selection.",M.l+(plotRight-M.l)/2,plotTop+(bottom-plotTop)/2);
     return;
   }
   for(const s of DL){
@@ -1654,28 +2270,32 @@ function drawProfile(g,w,h,T,th){
       g.beginPath();g.arc(px,py,hoverKey===s.key?7:5.5,0,7);g.fillStyle=getColorT(s,th);g.fill();
       g.lineWidth=2;g.strokeStyle=T.markerFill;g.stroke();
       PROFILE_PTS.push({x:px,y:py,key:s.key,name:selectedName(s),
-        tip:`${metric.label.join(" ")} · ${metric.fmt(raw)} · ${percentile.toFixed(1)} / 100`});
+        tip:`${metric.label.join(" ")} · ${metric.fmt(raw)} · ${formatPercentileRank(percentile)}`});
     });
     g.restore();
   }
   /* force-wall is a curves-tab concern; profile legends carry name + score only */
-  const legendLine=s=>`${selectedName(s)} · ${C.scoreLabel} ${s.data.stats[C.score].toFixed(1)}`;
+  const legendLine=s=>`${selectedName(s)} · ${C.scoreLabel} ${formatPercentileRank(s.data.stats[C.score])}`;
   g.font="600 11px "+FONT_S;g.textAlign="left";g.textBaseline="alphabetic";
-  if(compact){
+  if(compact&&showLegend){
     let ly=bottom+52;   /* below the metric labels; tall-chart height makes room */
-    for(const s of DL){
+    const maxRows=Math.max(1,Math.floor((h-M.b-ly)/20)+1),shown=DL.slice(0,maxRows);
+    for(const s of shown){
       g.fillStyle=getColorT(s,th);g.beginPath();g.roundRect(M.l,ly-9,10,10,3);g.fill();
       g.fillStyle=T.ink;g.fillText(fitText(g,legendLine(s),w-M.r-M.l-18),M.l+18,ly);
       ly+=20;
     }
-  }else{
+    if(shown.length<DL.length){g.fillStyle=T.label;g.fillText(`+ ${DL.length-shown.length} more \u00b7 hover lines for details`,M.l,ly);}
+  }else if(showLegend){
     const lx=plotRight+24;
     let ly=M.t+16;
-    for(const s of DL){
+    const maxRows=Math.max(1,Math.floor((h-M.b-ly)/22)+1),shown=DL.slice(0,maxRows);
+    for(const s of shown){
       g.fillStyle=getColorT(s,th);g.beginPath();g.roundRect(lx,ly-9,10,10,3);g.fill();
       g.fillStyle=T.ink;g.fillText(fitText(g,legendLine(s),w-M.r-lx-18),lx+18,ly);
       ly+=22;
     }
+    if(shown.length<DL.length){g.fillStyle=T.label;g.fillText(`+ ${DL.length-shown.length} more`,lx,ly);}
   }
   g.textAlign="left";
 }
@@ -1726,18 +2346,33 @@ function updateSnapshotNote(){
 function render(){paint();renderReadout();updateSnapshotNote();}
 
 /* ------------------------------------------------------------------ export */
+function exportStatsHeight(s,w){
+  const groups=statGroups(s),pad=16,lh=19,headH=25;
+  return w<720?pad*2+groups.reduce((sum,group)=>sum+headH+group.rows.length*lh+10,0):
+    pad*2+headH+Math.max(...groups.map(group=>group.rows.length))*lh+10;
+}
 function drawExportStats(g,s,w,y,T){
-  const rows=statLines(s), pad=16, lh=19, x=M.l, bw=w-M.l-M.r, bh=rows.length*lh+pad*2+12;
+  const groups=statGroups(s),pad=16,lh=19,headH=25,x=M.l,bw=w-M.l-M.r,bh=exportStatsHeight(s,w),F=FEAT.light;
   g.fillStyle=T.panelFill;g.strokeStyle=T.panelLine;g.lineWidth=1;
   g.beginPath();g.roundRect(x,y,bw,bh,9);g.fill();g.stroke();
-  g.fillStyle=T.ink;g.font="700 12px "+FONT_S;g.textAlign="left";g.textBaseline="alphabetic";
-  g.fillText("MEASUREMENTS",x+pad,y+pad+3);
-  let ly=y+pad+24;
-  for(const [lab,val] of rows){
-    g.fillStyle=T.label;g.font="11px "+FONT_S;g.textAlign="left";g.fillText(lab,x+pad,ly);
-    g.fillStyle=T.ink;g.font="600 12px "+FONT_S;g.textAlign="right";g.fillText(val,x+bw-pad,ly);
-    ly+=lh;
-  }
+  const columns=w<720?1:3,gap=18,colW=(bw-pad*2-gap*(columns-1))/columns;
+  let stackY=y+pad;
+  groups.forEach((group,index)=>{
+    const col=columns===1?0:index,gx=x+pad+col*(colW+gap),gy=columns===1?stackY:y+pad;
+    const familyColor=group.family==="weight"?F.weight:group.family==="tactility"?F.tactility:F.travel;
+    g.strokeStyle=familyColor;g.lineWidth=2;g.beginPath();g.moveTo(gx,gy+.5);g.lineTo(gx+colW,gy+.5);g.stroke();
+    g.fillStyle=familyColor;g.font="700 11px "+FONT_S;g.textAlign="left";g.textBaseline="alphabetic";
+    g.fillText(group.title,gx,gy+17);
+    if(group.index){g.font="700 12px "+FONT_S;g.textAlign="right";g.fillText(group.index[1],gx+colW,gy+17);}
+    let ly=gy+headH+14;
+    for(const [lab,val] of group.rows){
+      const labelColor=familyColor;
+      g.fillStyle=labelColor;g.font="11px "+FONT_S;g.textAlign="left";g.fillText(lab,gx,ly);
+      g.fillStyle=labelColor;g.font="600 12px "+FONT_S;g.textAlign="right";g.fillText(val,gx+colW,ly);
+      ly+=lh;
+    }
+    if(columns===1)stackY=ly+10;
+  });
   g.textAlign="left";
   return bh;
 }
@@ -1753,6 +2388,7 @@ function drawExportWatermark(g,w,h){
   g.fillText(text,M.l+(w-M.l-M.r)/2,M.t+(h-M.t-M.b)/2);
   g.restore();
 }
+function exportTimestamp(){return new Intl.DateTimeFormat(undefined,{year:"numeric",month:"short",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit",timeZoneName:"short"}).format(new Date());}
 function exportPNG(){
   if(!selected.length)return;
   /* WYSIWYG export: same logical layout as the on-screen canvas, so every label,
@@ -1761,10 +2397,11 @@ function exportPNG(){
   const w=canvas.clientWidth||1500, h=canvas.clientHeight||880;
   const single=selected.length===1?sets.get(selected[0]):null;
   const hasStats=!!(single&&single.data&&single.data.stats);
-  const externalStats=hasStats&&statsCardGeom(ctx,single,w,h).external;
-  const exportRows=externalStats?statLines(single):[];
-  const footerH=exportRows.length?exportRows.length*19+64:0;
-  const identH=26;   /* evidence identity line under the plot */
+  /* Match the selected on-screen style: Simplified has no duplicate details
+     strip; Detailed exports the complete strip below the plot. */
+  const externalStats=hasStats&&chartMode==="curves"&&!simplifiedGraphDisplay()&&statsCardGeom(ctx,single,w,h).external;
+  const footerH=externalStats?exportStatsHeight(single,w)+22:0;
+  const identH=42;   /* evidence identity and export-time lines under the plot */
   const exportH=h+identH+footerH;
   const scale=Math.max(2,Math.round((3000/w)*10)/10);
   const c=document.createElement("canvas");c.width=Math.round(w*scale);c.height=Math.round(exportH*scale);
@@ -1776,9 +2413,11 @@ function exportPNG(){
   /* every shared image names its build, epoch, and pinned commit */
   g.fillStyle=CANVAS_THEME.light.label;g.font="10px "+FONT_S;g.textAlign="left";g.textBaseline="alphabetic";
   g.fillText(`Force Curve Bench ${VIEWER_BUILD.bench_build} \u00B7 ${VIEWER_BUILD.data_epoch} \u00B7 ${VIEWER_BUILD.repo_commit.slice(0,7)} \u00B7 unrealkeyboards.com`,M.l,h+16);
+  g.fillText(`${domeReferenceCount()}-dome released reference fleet \u00B7 ${VIEWER_BUILD.perception_score_version} \u00B7 exported ${exportTimestamp()}`,M.l,h+32);
   if(externalStats)drawExportStats(g,single,w,h+identH+6,CANVAS_THEME.light);
-  const modeName=selected.length>1?(chartMode==="profileWeight"?"weight-profile":chartMode==="profileTactility"?"tactility-profile":isIndexScatterMode()?"index-scatter":"curves"):"curves";
-  const name=((selected.length===1?sets.get(selected[0]).key:isIndexScatterMode()?"weight-vs-tactility-index":"force-curve-comparison")+"__"+modeName+"__"+VIEWER_BUILD.bench_build)
+  const modeName=chartMode==="profileWeight"?"weight-profile":chartMode==="profileTactility"?"tactility-profile":isTravelProfileMode()?"force-wall-onset":isIndexScatterMode()?"index-scatter":"curves";
+  const comparisonName=isTravelProfileMode()?"force-wall-onset":isIndexScatterMode()?"weight-vs-tactility-index":"force-curve-comparison";
+  const name=((selected.length===1?sets.get(selected[0]).key:comparisonName)+"__"+modeName+"__"+VIEWER_BUILD.bench_build)
     .replace(/[^\w.-]+/g,"_");
   const fire=(href,revoke)=>{
     const a=document.createElement("a");
@@ -1804,8 +2443,8 @@ function handleChartPointer(ev){
   const rect=canvas.getBoundingClientRect();
   const w=canvas.clientWidth;
   const px=ev.clientX-rect.left, py=ev.clientY-rect.top;
-  if(isDerivedComparisonMode()&&selected.length>1){
-    const points=isIndexScatterMode()?SCATTER_PTS:PROFILE_PTS;
+  if(isDerivedComparisonMode()){
+    const points=isTravelProfileMode()?TRAVEL_PTS:isIndexScatterMode()?SCATTER_PTS:PROFILE_PTS;
     let best=null,bd=16;
     for(const pt of points){const d=Math.hypot(px-pt.x,py-pt.y);if(d<bd){bd=d;best=pt;}}
     setHoverKey(best?best.key:null);
@@ -1825,15 +2464,16 @@ function handleChartPointer(ev){
   const hit=ANNOT_HITS.find(a=>px>=a.x&&px<=a.x+a.w&&py>=a.y&&py<=a.y+a.h);
   const dt=document.getElementById("descTip");
   if(hit){
+    setFeatureFocus(hit.feature||null);
     dt.textContent=hit.desc;dt.style.display="block";
     dt.style.left=Math.min(px+16,w-260)+"px";dt.style.top=(py+14)+"px";
     hoverX=null;tooltip.style.display="none";schedulePaint();return;
-  }else dt.style.display="none";
+  }else{dt.style.display="none";setFeatureFocus(null);}
   /* multi-select: nearest curve highlights its readout row */
   if(!selected.length||px<M.l||px>w-M.r){hoverX=null;tooltip.style.display="none";setHoverKey(null);schedulePaint();return;}
   const xv=Math.round(((px-M.l)/(w-M.l-M.r)*XMAX)*200)/200;   // snap to 0.005 mm grid
   hoverX=xv;
-  let html=`<div class="tx">press displacement ${xv.toFixed(2)} mm</div>`;
+  let html=`<div class="tx">press displacement ${displayFixed(xv,2)} mm</div>`;
   let any=false;
   let _bestDy=40,_bestKey=null;
   const DL=displayList().filter(s=>s.data&&!s.data.error);
@@ -1858,7 +2498,7 @@ function handleChartPointer(ev){
   }else tooltip.style.display="none";
   schedulePaint();
 }
-function clearHover(){hoverX=null;tooltip.style.display="none";
+function clearHover(){hoverX=null;setFeatureFocus(null);tooltip.style.display="none";
   document.getElementById("descTip").style.display="none";setHoverKey(null);schedulePaint();}
 /* mouse keeps hover semantics; touch and pen get tap-to-read (fc-3.4) */
 canvas.addEventListener("pointermove",ev=>{if(ev.pointerType==="mouse")handleChartPointer(ev);});
@@ -1901,19 +2541,26 @@ function renderReadout(){
     cohort:["cohort","MEASUREMENT COHORT"],pre:["pre","PRECOMPRESSION (MM)",1],
     collapse:["collapse","COLLAPSE (GF)",1],ramp:["ramp","RAMP (GF/MM)",1],
     pcw:["pcw","PRE-COLLAPSE WORK (GF\u00b7MM)",1],weightIndex:["weightIndex","WEIGHT INDEX",1],
-    dropF:["dropF","DROP (GF)",1],steep:["steep","STEEPEST 0.10 MM (GF/MM)",1],
+    dropF:["dropF","DROP (GF)",1],steep:["steep","STEEPEST DROP (GF/MM)",1],
     dropRate:["dropRate","DROP RATE (GF/MM)",1],snap:["snap","SNAP %",1],
-    tactilityIndex:["tactilityIndex","TACTILITY INDEX",1],travel:["travel","WALL (MM)",1],
-    turnaround:["turnaround","TURNAROUND"]};
+    tactilityIndex:["tactilityIndex","TACTILITY INDEX",1],travel:["travel","DETECTED FORCE-WALL ONSET (MM)",1],
+    travelGroup:["travelGroup","BRAND / VERSION"],travelDelta:["travelDelta","DIFFERENCE FROM TOPRE REFERENCE",1],
+    turnaround:["turnaround","RECORDED TURNAROUND RANGE (TEST LIMIT)"]};
   let core,extra;
-  if(isPart){
+  if(isTravelProfileMode()&&isPart){
+    core=["name","pre","travel"];
+    extra=["collapse","ramp","pcw","dropF","snap","steep","dropRate","recordId","sourceSet","cohort"];
+  }else if(isTravelProfileMode()){
+    core=["name","travelGroup","travel","travelDelta"];
+    extra=["weightIndex","tactilityIndex","collapse","ramp","pcw","dropF","snap","steep","dropRate","recordId","sourceSet","cohort"];
+  }else if(isPart){
     core=["name","pre","collapse","ramp","pcw","dropF","snap"];
     extra=["steep","dropRate","travel","turnaround","recordId","sourceSet","cohort"];
   }else if(chartMode==="profileWeight"){
     core=["name","weightIndex","collapse","ramp","pcw"];
-    extra=["dropF","steep","dropRate","snap","tactilityIndex","travel","turnaround","recordId","sourceSet","cohort"];
+    extra=["dropF","snap","steep","dropRate","tactilityIndex","travel","turnaround","recordId","sourceSet","cohort"];
   }else if(chartMode==="profileTactility"){
-    core=["name","tactilityIndex","dropF","steep","dropRate","snap"];
+    core=["name","tactilityIndex","dropF","snap","steep","dropRate"];
     extra=["collapse","ramp","pcw","weightIndex","travel","turnaround","recordId","sourceSet","cohort"];
   }else if(isIndexScatterMode()){
     core=["name","weightIndex","tactilityIndex"];
@@ -1926,15 +2573,17 @@ function renderReadout(){
   if(roSort.col&&!cols.some(c=>c[0]===roSort.col))roSort.col=null;
   /* Scalar landmarks are generated per-run-then-mean values. The plotted trace
      is averaged independently for visualization and is never re-analyzed here. */
-  const entries=[];
+  const entries=[],travelRef=travelReferenceStats();
   for(const s of displayList()){
     if(s.loading||!s.data||s.data.error||!s.data.stats)continue;
     const st=s.data.stats, mt=RECORD_BY_ID.get(s.record_id)||VTESTS.find(t=>t.set===s.key)||{};
+    const travelGroup=travelGroupForRecord(mt);
     entries.push({name:selectedName(s),color:getColor(s),
       recordId:s.record_id||"",sourceSet:s.key,cohort:mt.cohort||"",
       collapse:st.Fpeak,ramp:st.ramp,pcw:st.Epc,weightIndex:st.weightIndex,
       dropF:st.dropF,steep:st.steep,dropRate:st.dropRate,snap:st.snap,tactilityIndex:st.tactilityIndex,
-      travel:st.travel,turnaround:formatTurnaroundRange(recordedTurnaround(s)),
+      travel:st.travel,travelGroup:travelGroup.label,travelDelta:travelDifference(st.travel,travelRef.mean),
+      turnaround:formatTurnaroundRange(recordedTurnaround(s)),
       pre:mt.pre,kind:mt.k,key:s.key});
   }
   if(roSort.col){
@@ -1952,12 +2601,13 @@ function renderReadout(){
       let v=e[c[0]];
       if(v==null)v=c[0]==="travel"?"Not detected":(["weightIndex","tactilityIndex"].includes(c[0])&&e.kind==="part_assembly"?"Not calibrated":"Not available");
       else if(c[0]==="collapse")v=Math.round(+v)+" gf";
-      else if(["travel","pre"].includes(c[0]))v=(+v).toFixed(2)+" mm";
+      else if(["travel","pre"].includes(c[0]))v=displayFixed(+v,2)+" mm";
+      else if(c[0]==="travelDelta")v=formatTravelDifference(+v);
       else if(c[0]==="pcw")v=Math.round(+v)+" gf\u00b7mm";
       else if(c[0]==="dropF")v=Math.round(+v)+" gf";
       else if(["dropRate","steep","ramp"].includes(c[0]))v=(+v).toFixed(1)+" gf/mm";
       else if(c[0]==="snap")v=Math.round(+v)+" %";
-      else if(["weightIndex","tactilityIndex"].includes(c[0]))v=(+v).toFixed(1);
+      else if(["weightIndex","tactilityIndex"].includes(c[0]))v=formatPercentileRank(+v);
       if(c[0]==="name")v=`<span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:${e.color};margin-right:8px"></span>${esc(v)}`;
       return `<td class="${c[2]?"num":""}">${c[0]==="name"?v:esc(v)}</td>`;
     }).join("")+`<td class="num"><button class="addbtn" data-rm="${esc(e.key)}">\u00d7</button></td></tr>`;
@@ -1974,14 +2624,15 @@ function renderReadout(){
 }
 
 function applyFilter(){
-  const q=document.getElementById("filtertests").value.trim().toLowerCase();
+  const state=FILTER_STATES[benchKind],q=state.q.trim().toLowerCase();
   let rx=null;
   if(q.includes("*")){
     try{rx=new RegExp(q.split("*").map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join(".*"),"i");}catch(e){}
   }
-  const metricActive=benchKind==="dome_baseline"&&Object.values(SBF.R).some(r=>r&&(r.min!=null||r.max!=null));
-  const filterActive=!!q||metricActive;
+  const filterActive=filtersActive(state);
+  if(filterActive)setTestsMenuOpen(true,benchKind);
   const nameMatches=name=>!q||(rx?rx.test(name):name.includes(q));
+  document.getElementById("setlist").classList.toggle("flat-results",filterActive);
   document.querySelectorAll("#sidebar .grp").forEach(grp=>{
     let vis=0;
     grp.querySelectorAll(".item:not(.sub)").forEach(b=>{
@@ -1994,7 +2645,7 @@ function applyFilter(){
         for(const kid of kids){
           const childName=(kid.name||kid.key||"").toLowerCase();
           const childNameOK=!q||parentNameOK||nameMatches(childName);
-          const childMetricOK=!metricActive||setPassesMetrics(kid.key);
+          const childMetricOK=setPassesMetrics(kid.key);
           const childShow=(childNameOK&&childMetricOK)||selected.includes(kid.key);
           if(kid.btn)kid.btn.classList.toggle("filter-hidden",!childShow);
           if(childShow)childVisible++;
@@ -2012,7 +2663,7 @@ function applyFilter(){
           for(const kid of kids)if(kid.btn)kid.btn.style.display="none";
         }
       }else{
-        const nameOK=nameMatches(name),mOK=!metricActive||setPassesMetrics(b.dataset.key);
+        const nameOK=nameMatches(name),mOK=setPassesMetrics(b.dataset.key);
         const show=(nameOK&&mOK)||selected.includes(b.dataset.key);
         b.classList.toggle("filter-hidden",!show);if(show)vis++;
       }
@@ -2025,33 +2676,69 @@ function applyFilter(){
   });
 }
 
-document.getElementById("filtertests").addEventListener("input",applyFilter);
 document.getElementById("btnExport").addEventListener("click",exportPNG);
+function syncGraphDisplayMenu(){
+  document.querySelectorAll('input[name="graphStyle"]').forEach(input=>{
+    input.checked=input.value===GRAPH_DISPLAY.style;
+  });
+  document.getElementById("toggleGraphLabels").checked=GRAPH_DISPLAY.labels;
+  document.getElementById("toggleGraphVisuals").checked=GRAPH_DISPLAY.visuals;
+  document.getElementById("graphDisplaySummary").textContent=`Graph display · ${GRAPH_DISPLAY.style==="detailed"?"Detailed":"Simplified"}`;
+  const menu=document.getElementById("graphDisplayMenu"),curvesOn=chartMode==="curves";
+  menu.classList.toggle("disabled",!curvesOn);
+  menu.querySelector("summary").setAttribute("aria-disabled",String(!curvesOn));
+  if(!curvesOn)menu.open=false;
+}
+document.querySelectorAll('input[name="graphStyle"]').forEach(input=>input.addEventListener("change",e=>{
+  if(!e.target.checked)return;
+  GRAPH_DISPLAY.style=e.target.value==="detailed"?"detailed":"simplified";
+  setFeatureFocus(null);syncGraphDisplayMenu();render();
+}));
+document.getElementById("toggleGraphLabels").addEventListener("change",e=>{
+  GRAPH_DISPLAY.labels=e.target.checked;setFeatureFocus(null);render();
+});
+document.getElementById("toggleGraphVisuals").addEventListener("change",e=>{
+  GRAPH_DISPLAY.visuals=e.target.checked;setFeatureFocus(null);render();
+});
+document.querySelector("#graphDisplayMenu summary").addEventListener("click",e=>{
+  if(chartMode!=="curves")e.preventDefault();
+});
+document.addEventListener("pointerdown",e=>{
+  const menu=document.getElementById("graphDisplayMenu");
+  if(menu.open&&!menu.contains(e.target))menu.open=false;
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    const menu=document.getElementById("graphDisplayMenu");
+    if(menu.open){menu.open=false;menu.querySelector("summary").focus();}
+  }
+});
 document.querySelectorAll("#modeToggle .segbtn").forEach(b=>b.addEventListener("click",()=>{
-  chartMode=b.getAttribute("data-m");
+  const next=b.getAttribute("data-m");
+  if(next==="curves"&&selected.length>10){toast("Force curves can display at most 10 tests. Use Clear, then select up to 10.");return;}
+  chartMode=next;
+  if(isDerivedComparisonMode()&&!selected.length)loadAllComparisonSets(benchKind);
   document.querySelectorAll("#modeToggle .segbtn").forEach(x=>{
     const on=x===b;x.classList.toggle("on",on);x.setAttribute("aria-pressed",String(on));
   });
+  syncSelParam();
   render();
 }));
+document.getElementById("btnCompareClear").addEventListener("click",clearSelectionAll);
+document.getElementById("btnCompareAll").addEventListener("click",()=>loadAllComparisonSets(benchKind));
 function syncModeToggle(){
   const el=document.getElementById("modeToggle");
-  const multi=selected.length>1;
-  el.style.display=multi?"flex":"none";
-  if(!multi&&chartMode!=="curves"){
-    chartMode="curves";
-    document.querySelectorAll("#modeToggle .segbtn").forEach(x=>{
-      const on=x.getAttribute("data-m")==="curves";x.classList.toggle("on",on);x.setAttribute("aria-pressed",String(on));
-    });
-  }
-  /* both derived modes stack their legends below the plot on narrow canvases,
-     so both share the tall-chart height extension (scatter rows are taller) */
-  const derivedOn=multi&&isDerivedComparisonMode();
-  const compact=derivedOn&&canvas.clientWidth<=840;
-  const rowH=isIndexScatterMode()?34:20;
-  document.body.classList.toggle("tall-chart",compact);
-  if(compact)document.body.style.setProperty("--tall-chart-height",Math.max(560,460+selected.length*rowH)+"px");
-  else document.body.style.removeProperty("--tall-chart-height");
+  el.style.display="flex";
+  document.querySelectorAll("#modeToggle .segbtn").forEach(x=>{const on=x.getAttribute("data-m")===chartMode;x.classList.toggle("on",on);x.setAttribute("aria-pressed",String(on));});
+  document.getElementById("compareActions").classList.toggle("on",isDerivedComparisonMode());
+  document.getElementById("btnCompareAll").textContent=benchKind==="part_assembly"?"Load all parts":"Load all domes";
+  /* Comparison canvases have one stable height. Selection size never resizes
+     the graph; long legends are summarized inside the fixed drawing area. */
+  const derivedOn=isDerivedComparisonMode();
+  document.body.classList.toggle("comparison-chart",derivedOn);
+  document.body.classList.remove("tall-chart");
+  document.body.style.removeProperty("--tall-chart-height");
+  syncGraphDisplayMenu();
 }
 function setTheme(t){
   theme=t;
@@ -2092,9 +2779,16 @@ window.addEventListener("resize",schedulePaint);
    travels as key@record (e.g. ?sel=Some_Set@bt_0042). */
 async function applySelParam(){
   const qs=new URLSearchParams(location.search);
+  const requestedMode=qs.get("mode");
+  if(["curves","profileWeight","profileTactility","profileTravel","indexScatter"].includes(requestedMode))chartMode=requestedMode;
   const toks=[];
   for(const v of qs.getAll("sel")) for(const t of v.split(",")) if(t.trim())toks.push(t.trim());
-  if(!toks.length)return;
+  /* Opening any comparison view without an explicit selection means "compare
+     this bench's released fleet." Clear remains a deliberate empty state until the
+     view is re-entered or the page is reloaded. */
+  if(!toks.length){if(isDerivedComparisonMode())loadAllComparisonSets(benchKind);return;}
+  if(toks.some(t=>t.toLowerCase()==="all-domes")){loadAllComparisonDomes();return;}
+  if(toks.some(t=>t.toLowerCase()==="all-parts")){loadAllComparisonParts();return;}
   const norm=s=>s.toLowerCase().replace(/[_\s]+/g," ").trim();
   const byNorm=new Map();
   for(const [k,s] of sets){ byNorm.set(norm(k),{key:k,recordId:null}); byNorm.set(norm(s.name),{key:k,recordId:null}); }
@@ -2140,63 +2834,74 @@ function selectedName(s){
   if(!rec&&s.key){const recordId=defaultRecordId(s.key);if(recordId)rec=RECORD_BY_ID.get(recordId);}
   return fmtName(rec&&rec.n||s&&s.name||"");
 }
+function domeReferenceCount(){return VTESTS.filter(t=>t.k==="dome_baseline").length;}
 let testsKind="dome_baseline", testsQ="", testsSort={col:"n",dir:1};
-/* Tests-tab filter state: name query, category checklists, numeric min/max ranges */
-const TF={q:"",mfr:new Set(),ver:new Set(),sty:new Set(),R:{}};
-const TF_RANGES_DOME=[["wi","WEIGHT INDEX (0–100)"],["ti","TACTILITY INDEX (0–100)"],["cg","COLLAPSE FORCE (GF)"],["rp","RAMP (GF/MM)"],["pcw","PRE-COLLAPSE WORK (GF·MM)"],["dg","DROP (GF)"],["sd","STEEPEST 0.10 MM DROP (GF/MM)"],["dr","DROP RATE (GF/MM)"],["sn","SNAP %"],["tv","DETECTED FORCE-WALL ONSET (MM)"]];
-const TF_RANGES_PART=[["pre","PRECOMPRESSION (MM)"],["cg","COLLAPSE FORCE (GF)"],["rp","RAMP (GF/MM)"],["pcw","PRE-COLLAPSE WORK (GF·MM)"],["dg","DROP (GF)"],["sd","STEEPEST 0.10 MM DROP (GF/MM)"],["dr","DROP RATE (GF/MM)"],["sn","SNAP %"],["tv","DETECTED FORCE-WALL ONSET (MM)"]];
-function tfPass(t){
-  if(TF.q&&!(t.n||"").toLowerCase().includes(TF.q.toLowerCase()))return false;
-  if(TF.mfr.size&&!TF.mfr.has(t.mfr||""))return false;
-  if(testsKind==="dome_baseline"){
-    if(TF.ver.size&&!TF.ver.has(t.ver||""))return false;
-    if(TF.sty.size&&!TF.sty.has(t.sty||""))return false;
-  }
-  for(const k in TF.R){
-    const [lo,hi]=TF.R[k], v=t[k];
+const TF_RANGES_DOME=[["wi","WEIGHT INDEX (0–100)"],["ti","TACTILITY INDEX (0–100)"],["cg","COLLAPSE FORCE (GF)"],["rp","RAMP (GF/MM)"],["pcw","PRE-COLLAPSE WORK (GF·MM)"],["dg","DROP (GF)"],["sn","SNAP %"],["sd","STEEPEST DROP (GF/MM)"],["dr","DROP RATE (GF/MM)"],["tv","DETECTED FORCE-WALL ONSET (MM)"]];
+const TF_RANGES_PART=[["pre","PRECOMPRESSION (MM)"],["cg","COLLAPSE FORCE (GF)"],["rp","RAMP (GF/MM)"],["pcw","PRE-COLLAPSE WORK (GF·MM)"],["dg","DROP (GF)"],["sn","SNAP %"],["sd","STEEPEST DROP (GF/MM)"],["dr","DROP RATE (GF/MM)"],["tv","DETECTED FORCE-WALL ONSET (MM)"]];
+const FILTER_STATES={
+  dome_baseline:{q:"",open:false,testsOpen:true,R:{}},
+  part_assembly:{q:"",open:false,testsOpen:true,R:{}}
+};
+function recordPassFilters(t,state,kind,includeQuery=true){
+  if(includeQuery&&state.q&&!(t.n||"").toLowerCase().includes(state.q.toLowerCase()))return false;
+  for(const k in state.R){
+    const [lo,hi]=state.R[k], v=t[k];
     if(lo!=null&&(v==null||+v<lo))return false;
     if(hi!=null&&(v==null||+v>hi))return false;
   }
   return true;
 }
-function renderFilters(){
-  const el=document.getElementById("filtPanel");
-  const rows=VTESTS.filter(t=>t.k===testsKind);
-  const uniq=f=>[...new Set(rows.map(t=>t[f]||""))].filter(Boolean).sort();
-  const chk=(grp,set,vals)=>vals.length?`<div class="fgrp"><h3>${grp}</h3>`+
-    vals.map(v=>`<label class="fchk"><input type="checkbox" data-g="${grp}" value="${esc(v)}"${set.has(v)?" checked":""}> ${esc(v)}</label>`).join("")+`</div>`:"";
-  const ranges=testsKind==="dome_baseline"?TF_RANGES_DOME:TF_RANGES_PART;
-  let h=`<div class="fbar"><button class="xbtn" id="tfReset" type="button">Reset filters</button><span class="t-note" id="tfCount"></span></div>`;
-  h+=`<input class="filter" type="search" id="tfq" placeholder="Filter by name\u2026" value="${esc(TF.q)}">`;
-  h+=chk("MANUFACTURER",TF.mfr,uniq("mfr"));
-  if(testsKind==="dome_baseline"){
-    h+=chk("VERSION",TF.ver,uniq("ver"));
-    h+=chk("STYLE",TF.sty,uniq("sty"));
-  }
-  h+=`<div class="fgrp"><h3>Ranges \u00b7 min / max</h3>`+
-    ranges.map(([k,lab])=>{const r=TF.R[k]||[null,null];
+function filtersActive(state){return !!state.q||Object.keys(state.R).length>0;}
+function resetFilters(kind){const s=FILTER_STATES[kind];s.q="";s.R={};}
+function setTestsMenuOpen(open,kind=benchKind){
+  const state=FILTER_STATES[kind];if(state)state.testsOpen=!!open;
+  const button=document.getElementById("testsMenuToggle"),body=document.getElementById("testsMenuBody");
+  if(!button||!body)return;
+  button.setAttribute("aria-expanded",String(!!open));body.hidden=!open;
+  const caret=button.querySelector(".caret");if(caret)caret.textContent=open?"\u25be":"\u25b8";
+}
+function renderSharedFilters(el,kind,prefix,onChange){
+  const state=FILTER_STATES[kind],rows=VTESTS.filter(t=>t.k===kind);
+  const ranges=kind==="dome_baseline"?TF_RANGES_DOME:TF_RANGES_PART;
+  const count=rows.filter(t=>recordPassFilters(t,state,kind)).length;
+  const bodyId=`${prefix}-filter-body`;
+  let h=`<div class="side-disclosure"><button class="sbtoggle side-disclosure-toggle" data-filters-toggle type="button" aria-expanded="${state.open}" aria-controls="${bodyId}"><span class="caret" aria-hidden="true">${state.open?"\u25be":"\u25b8"}</span><span>Filters</span><span class="menu-count" data-count>${count} of ${rows.length}</span></button>`;
+  h+=`<div class="side-disclosure-body" id="${bodyId}"${state.open?"":" hidden"}>`;
+  h+=`<div class="fbar"><button class="xbtn" data-reset type="button" aria-label="Clear name and value filters" title="Clear the name search and every value range">Clear filters</button></div>`;
+  h+=`<input class="filter" type="search" data-query placeholder="Filter by name\u2026" value="${esc(state.q)}" aria-label="Filter tests by name">`;
+  h+=`<div class="fgrp"><h3>Values \u00b7 min / max</h3>`+
+    ranges.map(([k,lab])=>{const r=state.R[k]||[null,null];
       return `<div class="frange"><label>${lab}</label>
         <input type="number" data-r="${k}" data-e="0" placeholder="min" value="${r[0]??""}">
-        <input type="number" data-r="${k}" data-e="1" placeholder="max" value="${r[1]??""}"></div>`;}).join("")+`</div>`;
+        <input type="number" data-r="${k}" data-e="1" placeholder="max" value="${r[1]??""}"></div>`;}).join("")+`</div></div></div>`;
   el.innerHTML=h;
-  el.querySelector("#tfq").addEventListener("input",e=>{TF.q=e.target.value;renderTests();});
-  el.querySelector("#tfReset").addEventListener("click",()=>{
-    TF.q="";TF.mfr.clear();TF.ver.clear();TF.sty.clear();TF.R={};
-    renderFilters();renderTests();});
-  el.querySelectorAll("[data-g]").forEach(cb=>cb.addEventListener("change",()=>{
-    const set=cb.getAttribute("data-g")==="MANUFACTURER"?TF.mfr:cb.getAttribute("data-g")==="VERSION"?TF.ver:TF.sty;
-    cb.checked?set.add(cb.value):set.delete(cb.value);renderTests();}));
+  const updateCount=()=>{const n=rows.filter(t=>recordPassFilters(t,state,kind)).length;
+    el.querySelector("[data-count]").textContent=`${n} of ${rows.length}`;};
+  el.querySelector("[data-query]").addEventListener("input",e=>{state.q=e.target.value;updateCount();onChange();});
+  el.querySelector("[data-reset]").addEventListener("click",()=>{resetFilters(kind);renderSharedFilters(el,kind,prefix,onChange);onChange();});
+  el.querySelector("[data-filters-toggle]").addEventListener("click",e=>{
+    state.open=!state.open;e.currentTarget.setAttribute("aria-expanded",String(state.open));
+    const body=el.querySelector(`#${bodyId}`);body.hidden=!state.open;
+    const caret=e.currentTarget.querySelector(".caret");if(caret)caret.textContent=state.open?"\u25be":"\u25b8";
+  });
   el.querySelectorAll("[data-r]").forEach(inp=>inp.addEventListener("input",()=>{
     const k=inp.getAttribute("data-r"), e=+inp.getAttribute("data-e");
-    const r=TF.R[k]||(TF.R[k]=[null,null]);
+    const r=state.R[k]||(state.R[k]=[null,null]);
     r[e]=inp.value===""?null:+inp.value;
-    if(r[0]==null&&r[1]==null)delete TF.R[k];
-    renderTests();}));
+    if(r[0]==null&&r[1]==null)delete state.R[k];
+    updateCount();onChange();}));
 }
-const DOME_COLS=[["n","Test"],["id","RECORD ID"],["source_set","SOURCE SET"],["cohort","MEASUREMENT COHORT"],["wi","WEIGHT INDEX (0–100)",1],["ti","TACTILITY INDEX (0–100)",1],["cg","COLLAPSE FORCE (GF)",1],["rp","RAMP (GF/MM)",1],["pcw","PRE-COLLAPSE WORK (GF\u00B7MM)",1],["dg","DROP (GF)",1],["sd","STEEPEST 0.10 MM DROP (GF/MM)",1],["dr","DROP RATE (GF/MM)",1],["sn","SNAP %",1],["tv","DETECTED FORCE-WALL ONSET (MM)",1],["turnaround","RECORDED TURNAROUND RANGE (TEST LIMIT)"]];
-const PART_COLS=[["n","Test"],["id","RECORD ID"],["source_set","SOURCE SET"],["cohort","MEASUREMENT COHORT"],["pre","PRECOMPRESSION (MM)",1],["cg","COLLAPSE FORCE (GF)",1],["rp","RAMP (GF/MM)",1],["pcw","PRE-COLLAPSE WORK (GF\u00B7MM)",1],["dg","DROP (GF)",1],["sd","STEEPEST 0.10 MM DROP (GF/MM)",1],["dr","DROP RATE (GF/MM)",1],["sn","SNAP %",1],["tv","DETECTED FORCE-WALL ONSET (MM)",1],["turnaround","RECORDED TURNAROUND RANGE (TEST LIMIT)"]];
+function tfPass(t){return recordPassFilters(t,FILTER_STATES[testsKind],testsKind);}
+function renderFilters(){
+  renderSharedFilters(document.getElementById("filtPanel"),testsKind,"tf",()=>{
+    renderTests();if(benchKind===testsKind){renderSbFilters();applyFilter();}
+  });
+}
+const DOME_COLS=[["n","Test"],["id","RECORD ID"],["source_set","SOURCE SET"],["cohort","MEASUREMENT COHORT"],["wi","WEIGHT INDEX (0–100)",1],["ti","TACTILITY INDEX (0–100)",1],["cg","COLLAPSE FORCE (GF)",1],["rp","RAMP (GF/MM)",1],["pcw","PRE-COLLAPSE WORK (GF\u00B7MM)",1],["dg","DROP (GF)",1],["sn","SNAP %",1],["sd","STEEPEST DROP (GF/MM)",1],["dr","DROP RATE (GF/MM)",1],["tv","DETECTED FORCE-WALL ONSET (MM)",1],["turnaround","RECORDED TURNAROUND RANGE (TEST LIMIT)"]];
+const PART_COLS=[["n","Test"],["id","RECORD ID"],["source_set","SOURCE SET"],["cohort","MEASUREMENT COHORT"],["pre","PRECOMPRESSION (MM)",1],["cg","COLLAPSE FORCE (GF)",1],["rp","RAMP (GF/MM)",1],["pcw","PRE-COLLAPSE WORK (GF\u00B7MM)",1],["dg","DROP (GF)",1],["sn","SNAP %",1],["sd","STEEPEST DROP (GF/MM)",1],["dr","DROP RATE (GF/MM)",1],["tv","DETECTED FORCE-WALL ONSET (MM)",1],["turnaround","RECORDED TURNAROUND RANGE (TEST LIMIT)"]];
 function renderTests(){
   const el=document.getElementById("testsView");
+  const oldWrap=el.querySelector(".tblwrap"),oldLeft=oldWrap?oldWrap.scrollLeft:0,oldTop=oldWrap?oldWrap.scrollTop:0;
   const cols=testsKind==="dome_baseline"?DOME_COLS:PART_COLS;
   let rows=VTESTS.filter(t=>t.k===testsKind&&tfPass(t));
   const c=cols.find(c=>c[0]===testsSort.col)||cols[0];
@@ -2214,24 +2919,22 @@ function renderTests(){
     h+=`<tr>`+cols.map(cc=>{
       let v=cc[0]==="turnaround"?formatTurnaroundRange(isNum(t.tl_min)&&isNum(t.tl_max)?{min:t.tl_min,max:t.tl_max}:null):t[cc[0]];
       if(v==null)v=cc[0]==="tv"?"Not detected":"Not available";
-      else if(["pre","tv"].includes(cc[0]))v=(+v).toFixed(2)+" mm";
+      else if(["pre","tv"].includes(cc[0]))v=displayFixed(+v,2)+" mm";
       else if(cc[0]==="pcw")v=Math.round(+v)+" gf\u00b7mm";
       else if(cc[0]==="dg")v=Math.round(+v)+" gf";
       else if(["dr","sd","rp"].includes(cc[0]))v=(+v).toFixed(1)+" gf/mm";
       else if(cc[0]==="sn")v=Math.round(+v)+" %";
       else if(cc[0]==="cg")v=Math.round(+v)+" gf";
       else if(["wi","ti"].includes(cc[0]))v=(+v).toFixed(1);
-      return `<td class="${cc[2]?"num":""}">${cc[0]==="n"?esc(fmtName(v)):esc(v)}${cc[0]==="n"&&t.base?" \u00b7 <span style='color:var(--accent,#AC53FF)'>baseline</span>":""}</td>`;
+      return `<td class="${cc[2]?"num":""}">${cc[0]==="n"?esc(fmtName(v).replace(/\s*\(baseline\)$/i,"")):esc(v)}</td>`;
     }).join("")+
     `<td class="num"><button class="addbtn" data-set="${esc(t.set)}" data-record="${esc(t.id||"")}">${selected.includes(t.set)&&sets.get(t.set)&&sets.get(t.set).record_id===t.id?"Remove":selected.includes(t.set)?"Use record":"Compare"}</button></td></tr>`;
   }
   h+=`</tbody></table></div>`;
   el.innerHTML=h;
-  const cEl=document.getElementById("tfCount");
-  if(cEl)cEl.textContent=`${rows.length} of ${VTESTS.filter(t=>t.k===testsKind).length} tests match`;
+  const newWrap=el.querySelector(".tblwrap");if(newWrap){newWrap.scrollLeft=oldLeft;newWrap.scrollTop=oldTop;}
   el.querySelectorAll(".kindbtn").forEach(b=>b.addEventListener("click",()=>{
     testsKind=b.getAttribute("data-k");
-    TF.q="";TF.mfr.clear();TF.ver.clear();TF.sty.clear();TF.R={};
     renderFilters();renderTests();}));
   el.querySelectorAll(".thbtn").forEach(b=>b.addEventListener("click",()=>{
     const cc=b.getAttribute("data-c");
@@ -2242,7 +2945,32 @@ function renderTests(){
     finally{syncBenchKindToSelection();renderTests();}
   }));
 }
-function clearSelectionAll(){ for(const k of [...selected]) toggleSet(k); }
+function clearSelectionAll(){
+  for(const key of selected){const s=sets.get(key);if(!s)continue;s.ci=null;s.record_id=null;
+    if(s.btn){s.btn.classList.remove("on");s.btn.style.removeProperty("--c");s.btn.setAttribute("aria-pressed","false");}}
+  selected.length=0;colorPool=[0,1,2,3,4,5,6,7,8,9];hoverKey=null;setFeatureFocus(null);
+  syncSelParam();render();
+}
+function allKeysForKind(kind){return [...new Set(VTESTS.filter(t=>t.k===kind).map(t=>t.set))].filter(k=>sets.has(k));}
+function allDomeKeys(){return allKeysForKind("dome_baseline");}
+function allPartKeys(){return allKeysForKind("part_assembly");}
+function hydrateEmbeddedSet(s){
+  if(s.data&&!s.data.error)return;
+  const emb=EMBEDDED[s.key],canon=canonStats(s.key,s.record_id);
+  if(!emb||!canon){s.data={error:"embedded release trace unavailable"};return;}
+  s.data={runs:[],avgPress:unpackStroke(emb.p),avgRet:unpackStroke(emb.r),stats:canon,snapshot:true};
+}
+function loadAllComparisonSets(kind=benchKind){
+  const targetKind=kind==="part_assembly"?"part_assembly":"dome_baseline";
+  if(benchKind!==targetKind)showSub(targetKind==="part_assembly"?"parts":"comp");
+  clearSelectionAll();
+  const keys=allKeysForKind(targetKind);
+  keys.forEach((key,i)=>{const s=sets.get(key);s.record_id=defaultRecordId(key);s.ci=i%PALETTES[theme].length;
+    selected.push(key);hydrateEmbeddedSet(s);if(s.btn){s.btn.classList.add("on");s.btn.style.setProperty("--c",getColor(s));s.btn.setAttribute("aria-pressed","true");}});
+  syncSelParam();render();
+}
+function loadAllComparisonDomes(){loadAllComparisonSets("dome_baseline");}
+function loadAllComparisonParts(){loadAllComparisonSets("part_assembly");}
 function syncBenchKindToSelection(){
   if(selected.length){
     const s0=sets.get(selected[0]);
@@ -2265,11 +2993,17 @@ function showSub(which){
       benchKind=targetKind;
       buildSidebar(benchKind);
       render();
+    }else{
+      /* The Tests tab shares filter state with this bench. Rebuild the two
+         disclosures when returning so their controls cannot drift apart. */
+      renderSbFilters();
+      setTestsMenuOpen(FILTER_STATES[benchKind].testsOpen,benchKind);
+      applyFilter();
     }
   }
   document.getElementById("selPanel").style.display=bench?"":"none";
   const sbf=document.getElementById("sbFilters");
-  if(sbf)sbf.style.display=(bench&&benchKind==="dome_baseline")?"":"none";
+  if(sbf)sbf.style.display=bench?"":"none";
   const fp=document.getElementById("filtPanel");
   fp.style.display=which==="tests"?"":"none";
   if(which==="tests")renderFilters();
@@ -2284,6 +3018,9 @@ function showSub(which){
 document.getElementById("subComp").addEventListener("click",()=>showSub("comp"));
 document.getElementById("subParts").addEventListener("click",()=>showSub("parts"));
 document.getElementById("subTests").addEventListener("click",()=>showSub("tests"));
+document.getElementById("testsMenuToggle").addEventListener("click",()=>{
+  setTestsMenuOpen(!FILTER_STATES[benchKind].testsOpen,benchKind);
+});
 renderBuildIdentity();
 loadManifest().then(applySelParam).then(render);
 </script>

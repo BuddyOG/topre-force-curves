@@ -1,6 +1,6 @@
 # Unreal Keyboards EC research tools
 
-> **Current publication:** Force Curve Bench `fc-3.4` and EC Parts Builder
+> **Current publication:** Force Curve Bench `fc-3.5` and EC Parts Builder
 > `lib-6.1` are published from this repository. The active multi-tool site
 > authority is `SITE_RELEASE_MANIFEST.json` with its `SHA256SUMS` inventory.
 
@@ -36,14 +36,14 @@ result.
 |---|---|
 | Canonical public viewer | [https://buddyog.github.io/topre-force-curves/](https://buddyog.github.io/topre-force-curves/) |
 | Generator integration and regeneration parity | Complete |
-| Force Curve release tag | `fc-3.4` |
+| Force Curve release tag | `fc-3.5` |
 | EC Parts Builder release | `lib-6.1`; tag `ec-parts-lib-6.1`; `release_eligible: true` |
 | EC Parts Builder prepublication record | `lib-6.1-review.1`; completed and superseded by `lib-6.1` |
 | Current public package authority | `SITE_RELEASE_MANIFEST.json` and its `SHA256SUMS` |
 | Protected predecessor authority | `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json`, bound to tag `fc-3.4` |
-| Open Graph image | `https://buddyog.github.io/topre-force-curves/assets/force-curve-bench-fc-3.4-og.png` |
+| Open Graph image | `https://buddyog.github.io/topre-force-curves/assets/force-curve-bench-fc-3.5-og.png` |
 | Browser acceptance | Local interactive/runtime/export acceptance and live deployment checks recorded |
-| Protected fc-3.4 surfaces | `index.html`, all 184 raw CSVs, `canonical-evidence/`, and the remaining continuity endpoints remain byte-identical |
+| Scientific continuity | All 184 raw CSVs, `canonical-evidence/`, the retained fleet, full-precision metrics, and `perception-rank-v1` remain unchanged from `fc-3.4` |
 | Frozen raw-source commit | `6e86ac1955a0c566c7aae521705e51371992ba8a` |
 | Canonical evidence identity | `7aa8588b50856816b7fce90dd6e743c26c6f16926071123291cb054352b6cd4a` |
 | Metric method | `metrics-v4.2` |
@@ -52,18 +52,18 @@ result.
 | Research preprint | Version 2.1; [paper DOI](https://doi.org/10.5281/zenodo.22295223); [all versions](https://doi.org/10.5281/zenodo.22167064); [compendium DOI](https://doi.org/10.5281/zenodo.22167047) |
 
 The site manifest records the active combined publication. The retained
-`FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` remains the immutable predecessor
-record for the protected fc-3.4 viewer and evidence surfaces.
+`FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` remains the immutable historical
+record for the `fc-3.4` viewer and its evidence surfaces.
 
-The accepted second GUI update changes presentation and navigation only. The
+The `fc-3.5` update changes presentation and navigation only. The
 frozen scientific payload, run membership, measurements, method, and index
 equations did not change.
 
-The current lib-6.1 site release replaces only `dome-lab-parts.html` with the
-generated builder. Every other protected predecessor endpoint, every raw CSV,
-and the complete canonical-evidence tree remain byte-identical to fc-3.4. The
-deterministic site builder rejects any undeclared or protected-path change.
-The earlier lib-6.0 release used the same protected-overlay boundary.
+The `fc-3.5` site overlay replaces only the Force Curve Bench and its declared
+supporting files. The published `lib-6.1` EC Parts Builder, every raw CSV, and
+the complete canonical-evidence tree remain byte-identical to the preceding
+combined-site release. The deterministic site builder rejects undeclared or
+protected-path changes.
 
 The release adds a root `.gitattributes` containing exactly `* -text`. This
 disables Git text and line-ending normalization for every inventoried path so a
@@ -109,7 +109,7 @@ See the [EC Parts Builder guide](documentation/EC_PARTS_LIBRARY.md),
 [lib-6.0 release notes](documentation/RELEASE_NOTES_lib-6.0.md), and
 [Shopify embed contract](documentation/SHOPIFY_EMBED.md).
 
-![Representative fc-3.4 force-curve comparison](assets/force-curve-bench-fc-3.4-og.png)
+![Representative fc-3.5 Force Curve Bench](assets/force-curve-bench-fc-3.5-og.png)
 
 ## What the viewer can do
 
@@ -119,19 +119,24 @@ See the [EC Parts Builder guide](documentation/EC_PARTS_LIBRARY.md),
   released force-wall marker is slightly beyond 4.0 mm. Recorded turnaround
   does not enlarge the axis.
 - Browse dome tests and part-assembly tests in separate **Domes** and **Parts**
-  workspaces, and compare up to 10 compatible tests at once.
-- Narrow the Domes sidebar by name, Weight Index, Tactility Index, collapse
-  force, or Snap %, with tests organized under collapsible brand and variant
-  groups. Nested family members are filtered as individual records.
+  workspaces, and overlay up to 10 compatible force curves at once.
+- Use the same collapsed name-and-value filter system in **Domes**, **Parts**,
+  and **Tests**. Filtered sidebar matches appear as a flat, left-aligned list;
+  the unfiltered fleet remains organized under collapsible test groups.
 - Show weight-family and tactility-family comparison profiles on a
   shared percentile scale.
+- Compare detected force-wall onset across individual domes and assembly-family
+  groups against the measured Topre production reference context.
 - Plot Weight Index against Tactility Index for calibrated domes.
 - Browse and sort all generated test records, with name, category, and numeric
   range filters.
 - Show exact chart readings with a mouse, touch screen, or pen.
 - Keep the current comparison in the page URL so it can be shared.
 - Export an evidence-stamped PNG of any available chart mode with a faint,
-  centered **UNREAL KEYBOARDS** watermark.
+  centered **UNREAL KEYBOARDS** watermark and export date/time.
+- Choose the default **Simplified** force-curve display or the full
+  **Detailed** drafting-style measurement overlay, and independently show or
+  hide measurement labels and visuals.
 - Fall back to embedded curve snapshots if the pinned raw files cannot be read
   from the network.
 
@@ -140,19 +145,22 @@ See the [Viewer Guide](documentation/VIEWER_GUIDE.md) for step-by-step use.
 ## Quick start
 
 1. Open [Force Curve Bench](https://buddyog.github.io/topre-force-curves/).
-2. Choose **Domes** or **Parts**, expand a brand, and select a test. Use the
-   sidebar search if needed; **Metric filters** are also available in Domes.
+2. Choose **Domes** or **Parts**, expand **Tests**, and select a test. Expand
+   **Filters** to search by name or set numeric ranges.
 3. Choose additional tests to compare. Switching between **Domes** and
    **Parts** clears an incompatible selection because the two record kinds are
    intentionally kept separate.
-4. With two or more tests selected, switch among **Force curves**, **Weight
-   profile**, **Tactility profile**, and **Weight vs tactility**.
+4. Switch among **Force curves**, **Weight profile**, **Tactility profile**,
+   **Force-wall onset**, and **Weight vs tactility**. Opening a comparison tab
+   with nothing selected loads the complete compatible fleet; use **Clear
+   selection** or **Load all** to reset that comparison.
 5. Hover over the chart for exact readings, or tap it on a touch device.
 6. Copy the address bar to share the current selection, or choose **Export
    PNG** to save the current chart.
 
-The viewer limits a comparison to 10 tests to keep the color-coded series and
-readout legible. Remove one selection before adding an 11th.
+The viewer limits direct force-curve overlays to 10 tests to keep the
+color-coded series and readout legible. Fleet-wide profile, force-wall, and
+scatter comparisons can load all compatible records.
 
 ## What the main measurements mean
 
@@ -173,7 +181,7 @@ particular perception.
 ### Tactility-family descriptors
 
 - **Drop** is collapse force minus valley force, in gf.
-- **Steepest 0.10 mm drop** is the fastest force loss over any 0.10 mm window
+- **Steepest drop** is the fastest force loss over any 0.10 mm window
   between collapse and valley, in gf/mm.
 - **Drop rate** divides force drop by the collapse-to-valley distance, in
   gf/mm.
@@ -288,9 +296,10 @@ tolerances, formal instrument-uncertainty bounds, or perceptual thresholds.
   font credits and SIL Open Font License 1.1 terms.
 - [Subjective pilot](documentation/subjective-pilot/README.md) — protocol,
   source identity, observations, summaries, correlations, and limitations.
-- [fc-3.4 release notes](documentation/RELEASE_NOTES_fc-3.4.md) — viewer
-  changes, release-integration corrections, scientific continuity, and
-  publication identity.
+- [fc-3.5 release notes](documentation/RELEASE_NOTES_fc-3.5.md) — current
+  viewer presentation, comparison, filtering, export, and continuity changes.
+- [fc-3.4 release notes](documentation/RELEASE_NOTES_fc-3.4.md) — historical
+  predecessor viewer and publication identity.
 - [EC Parts Builder guide](documentation/EC_PARTS_LIBRARY.md) — standalone
   workflow, contextual catalog, Evidence-beta labels, and interpretation limits.
 - [lib-6.1 release notes](documentation/RELEASE_NOTES_lib-6.1.md) — current
@@ -313,7 +322,7 @@ tolerances, formal instrument-uncertainty bounds, or perceptual thresholds.
 - [Dome testing SOP v1 freeze notes](documentation/RELEASE_NOTES_dome-testing-sop-v1.md)
   — importer identity, operating boundaries, and release continuity.
 - [Full-paper roadmap](documentation/research-paper/README.md) — how Preprint
-  2.0, the exploratory pilot, and future validation results become the full
+  2.1, the exploratory pilot, and future validation results become the full
   manuscript without mixing evidence classes.
 - [Perception-validation v1 freeze notes](documentation/RELEASE_NOTES_perception-validation-v1.md)
   — frozen design, operator materials, readiness boundary, and scientific
@@ -355,7 +364,8 @@ do not change the project terms above.
 - **Testing, data stewardship, analysis, and Force Curve Bench:** Brian
   “BuddyOG” Gebo / [Unreal Keyboards](https://unrealkeyboards.com).
 
-The released EC Parts Builder consumes the fc-3.4 canonical evidence without
+The released EC Parts Builder and Force Curve Bench consume the same fc-3.4
+canonical evidence without
 changing it. Beyond Snap Ratio Preprint 2.1 records the released methods and
 exploratory pilot. The prospective blinded multi-rater protocol is frozen as
 `perception-validation-v1`; until the study is completed, no confirmatory

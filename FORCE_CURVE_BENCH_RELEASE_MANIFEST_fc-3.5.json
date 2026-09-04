@@ -1,0 +1,280 @@
+{
+  "artifact_role": "public_force_curve_bench_release",
+  "bench_build": "fc-3.5",
+  "evidence_identity": {
+    "data_repo_commit": "6e86ac1955a0c566c7aae521705e51371992ba8a",
+    "evidence_epoch_hash": "7aa8588b50856816b7fce90dd6e743c26c6f16926071123291cb054352b6cd4a",
+    "status": "preserved_byte_identical"
+  },
+  "files": [
+    {
+      "bytes": 20459,
+      "component": "viewer_overlay",
+      "path": "README.md",
+      "sha256": "13c6a48a49b160d4660146e6f64c7310a18538305749d89a5330efd3b0cc33d8"
+    },
+    {
+      "bytes": 404045,
+      "component": "social_preview",
+      "path": "assets/force-curve-bench-fc-3.5-og.png",
+      "sha256": "2563d0fabbbd52e8610533d96c1e3d293f47db2fa9bc89f1131268ecd5e75bf0"
+    },
+    {
+      "bytes": 15089,
+      "component": "viewer_overlay",
+      "path": "documentation/BROWSER_ACCEPTANCE.md",
+      "sha256": "bec6552b0d7cfef21ff28ab6c01b7c19b9a5323772a40fc3275d71deb8244c66"
+    },
+    {
+      "bytes": 2210,
+      "component": "viewer_overlay",
+      "path": "documentation/CITATION.md",
+      "sha256": "b3019ff31ae8c53f7633a29bedae50e05ed43de11e60e22cf089cbc9ff1cf9af"
+    },
+    {
+      "bytes": 16640,
+      "component": "viewer_overlay",
+      "path": "documentation/DATA_PROVENANCE.md",
+      "sha256": "eb03b5b749bcde5191e1145e51ba0edcff9cc0aad2682364d897312cd482b710"
+    },
+    {
+      "bytes": 6778,
+      "component": "viewer_overlay",
+      "path": "documentation/DATA_UPDATES.md",
+      "sha256": "115b5b884938236d8dcfd2e64c3949e91161ec8c70328ca70e7e5ca8d7e39e5d"
+    },
+    {
+      "bytes": 11026,
+      "component": "viewer_overlay",
+      "path": "documentation/EC_PARTS_LIBRARY.md",
+      "sha256": "339d8fbdd1037a5e9ceea88b2cfefb57319119247ffce08772be4d455026dcfc"
+    },
+    {
+      "bytes": 10057,
+      "component": "viewer_overlay",
+      "path": "documentation/LIMITATIONS.md",
+      "sha256": "12ac6d0af4ab3e20b8f711395faf7a8fc085f0c4add747f0c42e93af0e73a898"
+    },
+    {
+      "bytes": 26185,
+      "component": "viewer_overlay",
+      "path": "documentation/METHOD.md",
+      "sha256": "8904ee530162efecf2d35f4883feeaa81794aa5323517a26843ee9d33a388d92"
+    },
+    {
+      "bytes": 5548,
+      "component": "viewer_overlay",
+      "path": "documentation/PUBLIC_RELEASE.md",
+      "sha256": "87ab0511cda28167a7ee76b9f7f0f8bca6f0a7d8deb0e4f3f9609f112a67db04"
+    },
+    {
+      "bytes": 5775,
+      "component": "viewer_overlay",
+      "path": "documentation/README.md",
+      "sha256": "29f587976282bf7d3f0b34b535d1c59fc43768f7ee3c86fda6c2d45b980c0146"
+    },
+    {
+      "bytes": 5740,
+      "component": "viewer_overlay",
+      "path": "documentation/RELEASE_NOTES_fc-3.5.md",
+      "sha256": "401e10c7378872aa1fd0135b588e4ffa7c07ba4ea6d782a1d7f69a96f29ed0e0"
+    },
+    {
+      "bytes": 16688,
+      "component": "viewer_overlay",
+      "path": "documentation/REPRODUCING.md",
+      "sha256": "df2ad6651926e15263c0f70440b94258baf4545f1b583b9f4a1ed06c12c41b89"
+    },
+    {
+      "bytes": 6235,
+      "component": "viewer_overlay",
+      "path": "documentation/SHOPIFY_EMBED.md",
+      "sha256": "85254a717f8352ec5be9c3ef085c6a8580b1a0fc4591c8eaf41fbd575a0effee"
+    },
+    {
+      "bytes": 22155,
+      "component": "viewer_overlay",
+      "path": "documentation/VIEWER_GUIDE.md",
+      "sha256": "cf4e398be5b44ff1f2a82d1aea42deb7bc2d5e1938fcc689dc48399aa89066a4"
+    },
+    {
+      "bytes": 10046,
+      "component": "viewer_overlay",
+      "path": "documentation/index.html",
+      "sha256": "605ebb0efb1eae248f935941a6f67f463a1d5ac234bfbad43572926f53051957"
+    },
+    {
+      "bytes": 5390,
+      "component": "viewer_overlay",
+      "path": "documentation/research-paper/README.md",
+      "sha256": "f59b2af30bcca162dc98fdaf07c320c54a929b9fbc6ae73ac49de836e3cbc522"
+    },
+    {
+      "bytes": 2040,
+      "component": "viewer_overlay",
+      "path": "documentation/subjective-pilot/README.md",
+      "sha256": "348319b169fb818cd1ad69f28127886780046c72ab36feb25af2a2cd42a48211"
+    },
+    {
+      "bytes": 1092,
+      "component": "viewer_overlay",
+      "path": "documentation/subjective-pilot/SHA256SUMS.json",
+      "sha256": "376ee016235bec73abc8a67f5cc6bcb38e76224e1b22db665f1147e8241d0a1d"
+    },
+    {
+      "bytes": 3901,
+      "component": "viewer_overlay",
+      "path": "documentation/subjective-pilot/index.html",
+      "sha256": "9477485b2305cdcef2bc0d0e22b89078941d244668e06c24aaab38503aba051b"
+    },
+    {
+      "bytes": 327,
+      "component": "generated_hybrid",
+      "path": "generated/exclusion_manifest.json",
+      "sha256": "2ba6eaca67f57709c69396473bd397ed67c176ac5f4a8a24814aa7ecb12a8078"
+    },
+    {
+      "bytes": 11701,
+      "component": "generated_hybrid",
+      "path": "generated/generated_manifest.json",
+      "sha256": "37ca4a14485c595bdd74571d594a1a7e4848a784b32577893ecae59b5695ea96"
+    },
+    {
+      "bytes": 766104,
+      "component": "generated_hybrid",
+      "path": "generated/packs/viewer.staged.html",
+      "sha256": "108a6b3ee26b152909631a0dbada65bd3c2121f0421035294ef7055735c02f1f"
+    },
+    {
+      "bytes": 79120,
+      "component": "generated_hybrid",
+      "path": "generated/packs/viewer_vtests.json",
+      "sha256": "294d732f224679d8f2bcaba934aab8fc9528bf3ece501a06aae08579f72a7a42"
+    },
+    {
+      "bytes": 29115,
+      "component": "generated_hybrid",
+      "path": "generated/schema_meta.staged.json",
+      "sha256": "f3c5c8ad437ed5843489bcc39278b66f451e234797369da056cd6c3d830e47e3"
+    },
+    {
+      "bytes": 1304,
+      "component": "release_policy",
+      "path": "generator/domelab_pipeline/config/force_curve_release_overlay.json",
+      "sha256": "d7e2d4d9f095721f14d83c1da1b25abea1cf743f822523f4bbbbedf9d9ed4be0"
+    },
+    {
+      "bytes": 98309,
+      "component": "viewer_overlay",
+      "path": "generator/domelab_pipeline/packs.py",
+      "sha256": "7cca4ce18f326ce3e8697faf63eb26a7804254950a9805b9793c8d2f094ac0ed"
+    },
+    {
+      "bytes": 654809,
+      "component": "viewer_overlay",
+      "path": "generator/domelab_pipeline/release_reference/index.release.html",
+      "sha256": "417546d9c969e16eb8d3eb18b9829cdff22c7fb4217b81346e5a6d328644418c"
+    },
+    {
+      "bytes": 27825,
+      "component": "viewer_overlay",
+      "path": "generator/tests/test_force_curve_release.py",
+      "sha256": "fd4a3fa2692455cb58b4ec43b3ba95a8614ac2b5402b0b392740d80c8df1ac8a"
+    },
+    {
+      "bytes": 16852,
+      "component": "viewer_overlay",
+      "path": "generator/tests/test_review_redteam_gates.py",
+      "sha256": "dc7763a9356f41fadd1ea36c2fc9fad681f99eec84d09c56b03495b0022ef896"
+    },
+    {
+      "bytes": 33054,
+      "component": "viewer_overlay",
+      "path": "generator/tests/test_viewer_review_build.py",
+      "sha256": "1167fdb8805088ef796dc1311edc9a836e0ec74401dbaf115226618b2ef9a946"
+    },
+    {
+      "bytes": 15938,
+      "component": "viewer_overlay",
+      "path": "generator/tests/viewer_review_redteam_runtime.js",
+      "sha256": "b60d4ab233f714da42943ea6e6531ff0501e596342032969af251ce242dd5bd9"
+    },
+    {
+      "bytes": 55969,
+      "component": "viewer_overlay",
+      "path": "generator/tests/viewer_review_runtime.js",
+      "sha256": "e90459030797e2d62ee8f9cf1bdc3c7c38ebe12fddfc077dccc0796ccaac08ce"
+    },
+    {
+      "bytes": 78086,
+      "component": "viewer_overlay",
+      "path": "generator/tools/build_force_curve_release.py",
+      "sha256": "11b710e919b4ec35c89883ce3a2e26d6a5d039443eaab67886609e3e579bf8d2"
+    },
+    {
+      "bytes": 766104,
+      "component": "public_entrypoint",
+      "path": "index.html",
+      "sha256": "108a6b3ee26b152909631a0dbada65bd3c2121f0421035294ef7055735c02f1f"
+    }
+  ],
+  "generated_tree": {
+    "composition": "hybrid",
+    "new_from_fc35_stage": [
+      "generated/exclusion_manifest.json",
+      "generated/schema_meta.staged.json",
+      "generated/packs/viewer.staged.html",
+      "generated/packs/viewer_vtests.json"
+    ],
+    "preserved_from_lib61_base": [
+      "generated/packs/picker.staged.html"
+    ],
+    "resealed": "generated/generated_manifest.json"
+  },
+  "generation_attestation": {
+    "artifact_count": 104,
+    "bytes": 4161008,
+    "config_hash": "ae625acd2bb463aa2a273e189b8e38e371503d23f71afb94e7b6bcba21f9de2b",
+    "exclusion_manifest_sha256": "2ba6eaca67f57709c69396473bd397ed67c176ac5f4a8a24814aa7ecb12a8078",
+    "generator_source_hash": "75acf86f7463149edaed6e180bd8b78eebd52c51ecbe81740beb41cdec9c62f4",
+    "parity_report_sha256": "de0b33578837a01efa4885310dded23a50c85b1878b80fecd7e901e7ce5a3bbc",
+    "preserved_from_lib61_base": [
+      "packs/picker.staged.html"
+    ],
+    "published_from_stage": [
+      "exclusion_manifest.json",
+      "packs/viewer.staged.html",
+      "packs/viewer_vtests.json",
+      "schema_meta.staged.json"
+    ],
+    "published_generated_tree": "composed_hybrid",
+    "release_reference_hash": "2be133825832bad5079bc0d3d9114ef0368d9a7e7c15b11d5bc0c7bb12e033f7",
+    "schema_meta_sha256": "f3c5c8ad437ed5843489bcc39278b66f451e234797369da056cd6c3d830e47e3",
+    "sealed_generated_manifest_sha256": "6bcf452caf5d30adce44c9e1d07e8bd60b09a5f52c0fdb6fbb279ab000669b8e",
+    "tree_sha256": "ce73f617a90ed3461df15f2f34f88ed82c52d07732e245e90af240f73cf9550b",
+    "validation": "byte_identical_full_regeneration_from_declared_source_and_cache",
+    "viewer_sha256": "108a6b3ee26b152909631a0dbada65bd3c2121f0421035294ef7055735c02f1f",
+    "viewer_vtests_sha256": "294d732f224679d8f2bcaba934aab8fc9528bf3ece501a06aae08579f72a7a42"
+  },
+  "manifest_version": 1,
+  "package_id": "force-curve-bench-fc-3.5",
+  "parts_library_continuity": {
+    "build": "lib-6.1",
+    "generated_path": "generated/packs/picker.staged.html",
+    "generated_sha256": "9fca852ce2a50a9c5aaa5dcd089c639846e41d8298dd90b4b597321e01c198ec",
+    "root_path": "dome-lab-parts.html",
+    "root_sha256": "9fca852ce2a50a9c5aaa5dcd089c639846e41d8298dd90b4b597321e01c198ec",
+    "status": "preserved_byte_identical"
+  },
+  "predecessors": {
+    "fc34_manifest_path": "FORCE_CURVE_BENCH_RELEASE_MANIFEST.json",
+    "fc34_manifest_sha256": "a829b373765b914decd1c7a99ebe0781a22769542fa1df92e99bd4a748588478",
+    "site_manifest_path": "SITE_RELEASE_MANIFEST_PRE_FC35.json",
+    "site_manifest_sha256": "3f6ec42010a2f797ced8528dac687fb1a5ddd4017448784b8bf4efdfc74f47b2"
+  },
+  "publication": {
+    "canonical_public_url": "https://buddyog.github.io/topre-force-curves/",
+    "git_tag": "fc-3.5"
+  },
+  "release_eligible": true
+}

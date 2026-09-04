@@ -1,12 +1,12 @@
 # Force Curve Bench Viewer Guide
 
-> **fc-3.4 status:** Control names and workflows in this guide match the
-> generator-integrated viewer. Byte-identical regeneration/parity and local
-> browser/runtime acceptance are complete, the canonical viewer is
+> **fc-3.5 status:** Control names and workflows in this guide match the
+> generator-integrated public viewer. The canonical viewer is
 > [https://buddyog.github.io/topre-force-curves/](https://buddyog.github.io/topre-force-curves/),
-> and the frozen release tag is `fc-3.4`. Exact package hashes are recorded in
-> `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` and `SHA256SUMS`. This preparation
-> task did not create the promotion commit or tag and did not deploy the files.
+> and the release tag is `fc-3.5`. Exact current-package hashes are recorded in
+> `SITE_RELEASE_MANIFEST.json`, `SHA256SUMS`, and
+> `FORCE_CURVE_BENCH_RELEASE_MANIFEST_fc-3.5.json`; the latter records the
+> viewer-specific release boundary.
 
 This guide explains how to select tests, compare curves and measurements, use
 the comparison profiles, share a selection, and export a chart. For the
@@ -24,8 +24,9 @@ The viewer contains an immutable generated catalog and embedded fallback curve
 traces. Network access is used to read the retained raw traces from their exact
 pinned Git commit when available. It is not used to discover new tests.
 
-On first load, the chart asks you to select a test. The sidebar reports the
-generated fleet size and retained-run count for that build.
+On first load, the force-curve chart asks you to select a test. The sidebar
+reports the generated fleet size and retained-run count for that build. The
+comparison tabs remain visible even before a test is selected.
 
 ## 2. Choose a test
 
@@ -36,30 +37,27 @@ The top navigation keeps the two comparison workspaces separate:
 - **Tests** opens the complete sortable record browser described in the next
   section.
 
-The Domes and Parts sidebars organize tests under collapsible brand headings,
-with the manufacturer shown when it differs from the brand. Groups start
-collapsed. Brands with multiple recorded variants or styles can contain a
-second collapsible level, such as the Deskeys T1, V1, V2, and V3 groups.
+The Domes and Parts sidebars have two top-level disclosures. **Filters** starts
+collapsed. **Tests** contains the selectable records and can also be collapsed.
+With no active filter, tests are organized under collapsible brand headings,
+with the manufacturer shown when it differs from the brand. Brands with
+multiple recorded variants or styles can contain a second collapsible level,
+such as the Deskeys T1, V1, V2, and V3 groups.
 
 Select a row to add it to the chart. Its selection box and curve use the same
 color. Select the row again to remove it.
 
-Use **Filter tests…** above either sidebar to narrow the visible names. The
-search is case-insensitive. An asterisk can stand for any sequence of
-characters. For example, `Deskeys*49` finds visible names containing those
-portions in that order. Display names use spaces instead of source-key
-underscores.
+Expand **Filters** to search by test name and set optional minimum or maximum
+ranges. Domes expose Weight Index, Tactility Index, Collapse force, Ramp,
+Pre-collapse work, Drop, Snap %, Steepest drop, Drop rate, and detected
+force-wall onset. Parts expose the applicable mechanical values plus recorded
+precompression; perception indices are not calibrated for part assemblies.
 
-In **Domes**, expand **Metric filters** to set optional minimum or maximum
-values for Weight Index, Tactility Index, Collapse, or Snap %. A record with no
-value for an active metric does not pass that filter. **Reset** clears the
-sidebar metric ranges; it does not clear the name search or current chart
-selection.
-
-Name and metric filters evaluate nested family members individually. A family
-parent remains visible when a child matches, matching children are revealed,
-and unrelated siblings are hidden. A selected record remains visible while a
-filter is active.
+The name search is case-insensitive and operates on the displayed test name. A
+record with no value for an active range does not pass that range. While a name
+or value filter is active, every matching test is shown in one flat,
+left-aligned list with no inherited brand indentation. **Clear filters** clears
+the name and every value range without changing the chart selection.
 
 Some dome families have an expandable parent row. Selecting that parent draws
 a synthetic average of the member-dome averaged traces. It is a visualization
@@ -73,7 +71,8 @@ on a touch device.
 
 ### Selection rules
 
-- You can compare no more than 10 tests at once.
+- You can overlay no more than 10 direct force curves at once. The derived
+  comparison tabs can load the complete compatible fleet.
 - Dome and part-assembly records cannot be mixed in one comparison. Moving
   between **Domes** and **Parts** automatically clears an incompatible current
   selection.
@@ -84,27 +83,25 @@ on a touch device.
 
 ## 3. Use the Tests browser
 
-Choose **Tests** to browse the generated records in a table. This tab provides
-more detailed filtering than the Domes or Parts sidebar.
+Choose **Tests** to browse the generated records in a table. It uses the same
+name-and-value filter model and filter state as the matching Domes or Parts
+sidebar.
 
-Choose **Dome tests** or **Parts tests**. Switching kinds clears the current
-Tests-tab filters. The kinds remain separate because a part assembly is outside
-the dome perception-index calibration.
+Choose **Dome tests** or **Parts tests**. The kinds remain separate because a
+part assembly is outside the dome perception-index calibration.
 
-The filter panel provides:
-
-- a name search;
-- manufacturer choices;
-- version and style choices for dome records;
-- minimum and maximum ranges for the measurements available to that kind; and
-- a live “shown of total” count.
+The collapsed **Filters** panel provides a name search, minimum and maximum
+ranges for the values available to that record kind, a live “shown of total”
+count, and **Clear filters**. Manufacturer, version, and style checkbox filters
+are intentionally not duplicated here.
 
 When a minimum or maximum is active, a record with no value for that field does
-not pass that range filter. Choose **Reset filters** to clear the name,
-category, and numeric filters together.
+not pass that range filter.
 
 Choose a column heading to sort. Choose the same heading again to reverse the
-order. Numeric missing values sort below finite values in ascending order.
+order. Numeric missing values sort below finite values in ascending order. The
+table keeps its horizontal and vertical scroll position while the sort is
+applied.
 
 Choose **Compare** on a row to add it to the chart. The button changes to
 **Remove** for that active record. If one source set can carry more than one
@@ -129,27 +126,28 @@ on the force-curve chart.
   sample length do not enlarge the axis. It is not a normalized-travel axis.
 - The force axis expands as needed for the selected data.
 
-The single-test measurement card reports:
+The header above a single dome curve reports Weight Index, Tactility Index, and
+detected force-wall onset. The default **Simplified** display adds Collapse and
+Drop dimensions directly to the curve and intentionally omits a duplicate
+measurement strip below the chart.
 
-- Weight Index
-- Tactility Index
-- Collapse force
-- Ramp
-- Pre-collapse work
-- Drop
-- Steepest 0.10 mm drop
-- Drop rate
-- Snap %
-- Detected force-wall onset
-- Recorded turnaround range, when available
+Open **Graph display** to choose **Detailed** when you want all descriptors:
+Ramp, Pre-collapse work, Collapse force, Drop and Snap %, Steepest drop, Drop
+rate, detected force-wall onset, and the separate recorded-turnaround test
+limit. The same menu can show or hide measurement labels and measurement
+visuals independently. The test name, two indices, axes, and force-curve line
+remain visible. Weight-family elements are pink, tactility-family elements are
+blue, travel-related elements are purple, and the force curve is a separate,
+thicker neutral stroke.
 
-The card and the chart use generated scalar measurements. They do not
-recalculate those measurements from the visible averaged trace.
+The values come from generated scalar measurements. The viewer does not
+recalculate them from the visible averaged trace.
 
 ### Force-wall marker
 
-When detected, force-wall onset appears as a vertical marker and as a numeric
-measurement. In a comparison, **More columns** includes the measured onset.
+When detected, force-wall onset appears as a purple vertical marker and as a
+numeric measurement. In a force-curve comparison, **More columns** includes
+the measured onset.
 
 Force-wall onset is an operational proxy from the complete measured assembly.
 It is not physical or nominal full travel. The recorded turnaround range is
@@ -167,14 +165,14 @@ the feature you see in the averaged trace.
 
 ## 5. Compare force curves
 
-Select two or more compatible tests to overlay their averaged curves. A
-sortable measurement table appears below the chart.
+Select two or more compatible tests to overlay their averaged curves. Direct
+force-curve overlays are limited to 10 records. A sortable measurement table
+appears below the chart.
 
-The compact readout follows the active chart mode: force curves show the key
-indices and curve descriptors, Weight profile shows its weight-family fields,
-Tactility profile shows its tactility-family fields, and the scatter shows the
-two indices. Choose **More columns** for the remaining measurements and
-identity fields, or **Fewer columns** to return to the mode-specific view.
+The compact comparison readout follows the active chart mode. Choose **More
+columns** for the remaining measurements and identity fields, or **Fewer
+columns** to return to the mode-specific view. Profile and scatter views do not
+add a redundant single-selection measurement strip below the graph.
 
 Move the pointer near a curve to emphasize its chart series and its table row.
 You can also point at a table row to emphasize the corresponding series. Use
@@ -189,8 +187,12 @@ The table preserves three different missing-state meanings:
 
 ## 6. Choose a comparison mode
 
-The mode control appears after at least two tests are selected. Returning to a
-single selection automatically returns the chart to **Force curves**.
+All five mode controls are visible at all times. If no tests are selected,
+opening **Weight profile**, **Tactility profile**, **Force-wall onset**, or
+**Weight vs tactility** loads all compatible records automatically. Those
+fleet-wide views provide **Clear selection** and **Load all domes** (or **Load
+all parts**) controls and keep a fixed graph height regardless of record count.
+Returning to **Force curves** requires no more than 10 selected tests.
 
 ### Force curves
 
@@ -227,9 +229,9 @@ index.
 The Tactility profile compares four tactility-sharpness-family descriptors:
 
 - Drop
-- Steepest 0.10 mm drop
-- Drop rate
 - Snap %
+- Steepest drop (the fixed 0.10 mm-window measurement)
+- Drop rate
 
 As in the Weight profile, each metric is shown at its own frozen-fleet
 percentile because their raw units are not interchangeable. Tap or hover over a
@@ -252,6 +254,18 @@ Spearman rank correlations were used as primary evidence when selecting the
 single input for each index; Pearson correlations were secondary descriptions.
 Neither set of coefficients is used as a mathematical weight.
 
+### Force-wall onset
+
+This view compares detected force-wall onset without mixing in recorded
+turnaround. Individual specimen markers are collected into meaningful assembly
+groups such as DynaCaps, Astro Domes, and Deskeys generations. The measured
+Topre production-dome mean is shown as a reference context so reduced assembly
+travel is visible; it is not a nominal specification, proof of advertised
+travel, or a better/worse score. Dome baselines add no test precompression.
+Part-assembly records retain their recorded precompression context. Records
+with no detected wall remain explicitly unavailable rather than receiving the
+last sample position.
+
 ### Weight vs tactility
 
 This scatter plot places:
@@ -264,8 +278,8 @@ force rank in the tested fleet. A point farther up has a higher force-drop rank
 in that fleet. Neither direction is a universal quality judgment.
 
 Force-wall onset is kept separate and does not affect either coordinate. It is
-shown in the force-curves view and in the expanded comparison readout, not in
-the profile or scatter legends.
+shown in the force-curves and dedicated Force-wall-onset views, not as an input
+to either profile or scatter coordinate.
 
 The canonical evidence also retains **Press work to force-wall**, the press
 integral from the recorded start to the detected wall. It ranked sixth of the
@@ -286,8 +300,10 @@ is **Not available** rather than imputed.
 ### Mouse or trackpad
 
 Move across the force-curve plot to show the press displacement and per-series
-force readings. Hover near a profile or scatter point to show that point's
-details. Hover over an annotation to read its explanation.
+force readings. Hover near a profile, force-wall, or scatter point to show that
+point's details. Hover over a measurement annotation to read its explanation;
+hovering the matching description in the Detailed measurement strip emphasizes
+the same geometry on the graph.
 
 Leaving the chart clears mouse hover state. Pointer movement repaints the chart
 without rebuilding the comparison table, so selecting text in the table is not
@@ -296,7 +312,7 @@ interrupted.
 ### Touch screen or pen
 
 Tap the chart to pin an exact reading at that location. Tap another point to
-move it. Tapping an annotation or profile/scatter point shows its explanation.
+move it. Tapping an annotation or profile/force-wall/scatter point shows its explanation.
 Tap outside the plotted horizontal range to clear the reading. Vertical page
 scrolling remains available.
 
@@ -369,17 +385,18 @@ PNG**.
 The export:
 
 - uses the same chart layout and values as the viewer;
+- uses the same Simplified/Detailed choice and label/visual visibility as the
+  screen;
 - places a faint, large **UNREAL KEYBOARDS** watermark behind the chart;
 - renders in the clean light theme even if the viewer is in dark mode;
 - targets approximately 3000 pixels of output width;
-- includes the single-test measurement block when it must appear outside the
-  chart; and
-- stamps the image with the bench build, data epoch, pinned commit prefix, and
-  site identity.
+- includes the Detailed measurement block when that mode displays it; and
+- stamps the image with export date/time, bench build, data epoch, pinned
+  commit prefix, and site identity.
 
-The filename includes the selected test or comparison name, chart mode, and
+The filename includes the selected test or comparison dataset, chart mode, and
 bench build. The supported mode names are `curves`, `weight-profile`,
-`tactility-profile`, and `index-scatter`.
+`tactility-profile`, `force-wall-onset`, and `index-scatter`.
 
 The current viewer export is a PNG image export. It is not a raw-data export.
 The packaged raw evidence is under `canonical-evidence/`, and generated
@@ -407,11 +424,15 @@ legend moves below the plot.
 
 ## 12. Interpret the indices carefully
 
-The pilot used one rater, 25 domes, and three fixed-order sessions in one
-standardized Topre housing, slider, and conical-spring setup. Collapse force had
-the strongest observed rank association with perceived weight, and force drop
-had the strongest observed rank association with tactility sharpness. Those
-findings select the index inputs; they are not causal coefficients.
+The pilot used one rater, 25 domes, and three fixed-order sessions. Its fixed
+5×5 grid held 25 separate, nominally matched OEM Topre assemblies, each with an
+OEM housing, black Topre slider, and OEM conical spring. Dome identity, grid
+position, and unit-to-unit assembly variation were confounded; continuity of
+each individual assembly across sessions was not separately recorded. Collapse
+force had the strongest observed rank association with perceived weight, and
+force drop had the strongest observed rank association with tactility
+sharpness. Those findings select the index inputs; they are not causal
+coefficients.
 
 Weight Index and Tactility Index are percentiles compared with the other domes
 tested. They are not predicted 1–10 ratings, universal perceptual units, or
@@ -428,11 +449,12 @@ The pinned raw network read failed or timed out. The viewer is using the
 embedded trace. Generated scalar measurements remain the same. Reload when the
 network is available if you want a fresh read of the same frozen raw bytes.
 
-### I cannot add a test
+### I cannot add a force curve
 
 Check for one of two conditions:
 
-- The current comparison already has 10 tests. Remove one.
+- The current force-curve overlay already has 10 tests. Remove one. The derived
+  comparison tabs can load the complete compatible fleet.
 - The new test is a different kind when added from **Tests**. Open the matching
   **Domes** or **Parts** workspace, which clears the incompatible selection, or
   remove the current selections manually.
@@ -441,6 +463,12 @@ Check for one of two conditions:
 
 The record is not calibrated for that profile or a required value is not
 available. The viewer does not invent missing percentiles.
+
+### I want to return from a fleet-wide comparison
+
+Choose **Clear selection**, then return to **Force curves** or select only the
+records you want. **Clear filters** is different: it clears the sidebar search
+and value ranges without removing selected records.
 
 ### The force wall says Not detected
 

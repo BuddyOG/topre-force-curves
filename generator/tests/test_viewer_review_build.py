@@ -1,4 +1,4 @@
-"""Focused contract checks for the fc-3.4 review viewer.
+"""Focused contract checks for the fc-3.5 review viewer.
 
 These tests generate in memory from the same pinned cache as the production
 pipeline.  They do not promote or rewrite the shared staging tree.
@@ -59,11 +59,11 @@ def test_release_profile_changes_only_presentation_identity(
     assert review_build["mode"] == "review"
     assert review_build["presentation_role"] == "review_candidate"
     assert review_build["release_eligible"] is False
-    assert review_build["bench_build"] == "fc-3.4-review.2"
+    assert review_build["bench_build"] == "fc-3.5-review.1"
     assert release_build["mode"] == "release"
     assert release_build["presentation_role"] == "public_release"
     assert release_build["release_eligible"] is True
-    assert release_build["bench_build"] == "fc-3.4"
+    assert release_build["bench_build"] == "fc-3.5"
     for key in VIEWER_BUILD_PROFILES["review"]:
         if key not in {"mode", "presentation_role", "release_eligible", "bench_build"}:
             assert release_build[key] == review_build[key]
@@ -210,7 +210,7 @@ def test_viewer_is_generated_fleet_only_and_commit_pinned(review_candidate, comm
     assert build["unique_acquisition_count"] == 180
     assert build["independent_measurement_cohort_count"] == 75
     assert build["shared_evidence_alias_group_count"] == 1
-    assert build["bench_build"] == "fc-3.4-review.2"
+    assert build["bench_build"] == "fc-3.5-review.1"
     assert build["perception_score_version"] == "perception-rank-v1"
     assert len(build["data_identity"]) == 64
     assert "api.github.com/repos" not in html
@@ -263,7 +263,8 @@ def test_public_metric_profile_and_force_wall_contract(review_candidate):
     assert "Recorded turnaround range (test limit)" in html
     assert "acquisition extent only and is never physical travel" in html
     assert "Not detected" in html
-    assert "const wallText=isNum(wall)?`${wall.toFixed(2)} mm`:" in html
+    assert "const wallText=isNum(wall)?`${displayFixed(wall,2)} mm`:" in html
+    assert "function displayFixed(value,digits)" in html
     assert "forceWallDelta(" not in html
     assert "forceWallDeltaValue(" not in html
     assert "wallDelta" not in html
@@ -281,7 +282,14 @@ def test_public_metric_profile_and_force_wall_contract(review_candidate):
     assert "unrealkeyboards.com/blogs/topre-mods/topre-dome-force-curves" not in html
     assert '<link rel="canonical" href="https://buddyog.github.io/topre-force-curves/">' in html
     assert '<meta property="og:url" content="https://buddyog.github.io/topre-force-curves/">' in html
-    assert '<meta property="og:image" content="https://buddyog.github.io/topre-force-curves/assets/force-curve-bench-fc-3.4-og.png">' in html
+    assert '<meta property="og:image" content="https://buddyog.github.io/topre-force-curves/assets/force-curve-bench-fc-3.5-og.png">' in html
+    assert '<meta property="og:image:width" content="2968">' in html
+    assert '<meta property="og:image:height" content="1928">' in html
+    assert "Each index uses one full-precision input" in html
+    assert "correlation coefficients and supporting descriptors are not calculation weights" in html
+    assert 'href="https://doi.org/10.5281/zenodo.22295223"' in html
+    assert "collapse-force percentile within the frozen 68-dome reference fleet" in html
+    assert "force-Drop percentile within the frozen 68-dome reference fleet" in html
     assert "owner selects the canonical public URL" not in html
     assert '<button class="xtab subtab" id="subParts" type="button">Parts</button>' in html
     assert '<button class="xtab subtab" id="subTests" type="button">Tests</button>' in html
@@ -297,26 +305,87 @@ def test_public_metric_profile_and_force_wall_contract(review_candidate):
     assert "if(hasWall){const lx=" in html
     assert "isNum(s.data.stats.travel)?sampleAt" in html
     assert "Comparison overlays retain a visible wall-onset marker for every" in html
-    assert "else if(isNum(st.travel))" in html
+    assert "else if(showVisuals&&isNum(st.travel))" in html
     assert 'if(v==null)v=c[0]==="travel"?"Not detected"' in html
     assert 'v=cc[0]==="tv"?"Not detected":"Not available"' in html
     assert 'aria-pressed="false" data-m="profileWeight">Weight profile</button>' in html
     assert 'aria-pressed="false" data-m="profileTactility">Tactility profile</button>' in html
+    assert 'aria-pressed="false" data-m="profileTravel">Force-wall onset</button>' in html
     assert 'aria-pressed="false" data-m="indexScatter">Weight vs tactility</button>' in html
+    assert 'id="btnCompareClear" type="button">Clear selection</button>' in html
+    assert '>Clear filters</button>' in html
+    assert 'aria-label="Clear name and value filters"' in html
+    assert "Reset filters" not in html
+    assert 'data-filters-toggle' in html
+    assert 'const bodyId=`${prefix}-filter-body`;' in html
+    assert 'aria-controls="${bodyId}"' in html
+    assert "Value filters" not in html
+    assert 'id="testsMenuToggle"' in html
+    assert 'aria-controls="testsMenuBody"' in html
+    assert 'id="testsMenuBody"' in html
+    assert 'function resetFilters(kind){const s=FILTER_STATES[kind];s.q="";s.R={};}' in html
     assert "const PROFILE_PTS=[]" in html
     assert "function drawProfile(" in html
     assert "const SCATTER_PTS=[]" in html
     assert "function drawIndexScatter(" in html
+    assert "const TRAVEL_PTS=[]" in html
+    assert "function drawTravelComparison(" in html
+    assert "if(isTravelProfileMode()){drawTravelComparison(g,w,h,T,th);return;}" in html
+    assert 'if(["curves","profileWeight","profileTactility","profileTravel","indexScatter"].includes(requestedMode))' in html
+    assert 't.toLowerCase()==="all-domes"' in html
+    assert 't.toLowerCase()==="all-parts"' in html
+    assert 'if(!toks.length){if(isDerivedComparisonMode())loadAllComparisonSets(benchKind);return;}' in html
+    assert 'function allKeysForKind(kind)' in html
+    assert 'function loadAllComparisonSets(kind=benchKind)' in html
+    assert 'function loadAllComparisonParts()' in html
+    assert 'benchKind==="part_assembly"?"Load all parts":"Load all domes"' in html
+    assert 'const TOPRE_TRAVEL_REFERENCE_SETS=Object.freeze([' in html
+    assert '"Topre_HHKB_Pro2_45g"' in html
+    assert '"Topre_GX1_45g"' in html
+    assert "function travelReferenceStats()" in html
+    assert "function travelGroupForRecord(rec)" in html
+    assert 'label:"DynaCaps"' in html
+    assert 'label:"Astro Domes"' in html
+    assert 'label:`Deskeys ${rec.sty}`' in html
+    assert 'label:"BKE Redux v1"' in html
+    assert 'tip:`${group.label} · Detected force-wall onset not detected`' in html
+    assert "const unavailable=chosen.filter" in html
+    assert "function travelComparisonGroups(chosen)" in html
+    assert "function travelPlotGeometry(w,h,groupCount,hasMissing)" in html
+    assert "function travelRowLayout(groups,top,bottom)" in html
+    assert "function packTravelMarkers(members,X,rowY,rowStep,compact)" in html
+    assert "g.strokeRect(-4.5,-4.5,9,9)" in html
+    assert 'const isFullReferenceGroup=group.id==="topre-production"' in html
+    assert 'if(Math.abs(delta)<.005)return "same at displayed precision"' in html
+    assert 'Math.abs(delta)<.005?"≈REF"' in html
+    assert 'not nominal/physical switch travel; not a better/worse score' in html
+    assert 'Proxy—not physical travel; not better/worse.' in html
+    assert 'Domes: 0.00 mm precomp.; no advertised check.' in html
+    assert 'Detected Force-Wall Onset by Assembly Group' in html
+    assert 'Part assemblies retain recorded precompression; the Topre dome reference is context only.' in html
+    assert "TOPRE PRODUCTION REFERENCE" in html
+    assert "All dome baselines use 0.00&nbsp;mm added precompression" in html
+    assert "not by itself verification of an advertised travel claim" in html
+    assert 'renderSbFilters();\n      setTestsMenuOpen(FILTER_STATES[benchKind].testsOpen,benchKind);\n      applyFilter();' in html
+    assert 'core=["name","travelGroup","travel","travelDelta"]' in html
+    readout_columns = html.split("let core,extra;", 1)[1]
+    travel_branch = readout_columns.split('if(isTravelProfileMode()){', 1)[1].split('}else if(isPart)', 1)[0]
+    assert "turnaround" not in travel_branch
     assert "Weight Index (0–100)" in html
     assert "Tactility Index (0–100)" in html
     assert "Not calibrated:" in html
     assert "Not available:" in html
     assert "not calibrated or available for this selection" in html
     assert "force-wall" in html.lower()
-    assert "body.tall-chart .chartwrap" in html
-    assert "--tall-chart-height" in html
-    assert 'document.body.classList.toggle("tall-chart",compact)' in html
-    assert 'const rowH=isIndexScatterMode()?34:20' in html
+    assert "body.comparison-chart .chartwrap" in html
+    assert "height:640px" in html
+    assert ".chartwrap,body.comparison-chart .chartwrap{width:100%;aspect-ratio:auto;height:560px;min-height:0}" in html
+    assert ".chartwrap,body.comparison-chart .chartwrap{height:520px}" in html
+    assert 'document.body.classList.toggle("comparison-chart",derivedOn)' in html
+    assert 'document.body.style.removeProperty("--tall-chart-height")' in html
+    assert "const plotTop=M.t+78" in html
+    assert "const singleHeader=selected.length===1?forceCurveHeaderLayout(w):null" in html
+    assert "const plotTop=singleHeader?singleHeader.plotTop:selected.length>1?M.t+58:M.t" in html
     assert 'x.setAttribute("aria-pressed",String(on))' in html
     assert "tooltip.offsetHeight>wrap.height-8" in html
     assert "Collapse-force Weight Index" in html
@@ -324,6 +393,20 @@ def test_public_metric_profile_and_force_wall_contract(review_candidate):
     assert "Not calibrated: ${omitted.map(selectedName).join" in html
     assert "function drawExportStats(" in html
     assert "if(externalStats)drawExportStats" in html
+    assert 'id="graphDisplayMenu"' in html
+    assert 'id="graphDisplaySummary">Graph display · Simplified' in html
+    assert 'id="graphStyleSimplified" name="graphStyle" value="simplified" type="radio" checked' in html
+    assert 'id="graphStyleDetailed" name="graphStyle" value="detailed" type="radio"' in html
+    assert 'id="toggleGraphLabels"' in html
+    assert 'id="toggleGraphVisuals"' in html
+    assert 'const GRAPH_DISPLAY={style:"simplified",labels:true,visuals:true}' in html
+    assert 'function simplifiedGraphDisplay(){return chartMode==="curves"&&GRAPH_DISPLAY.style==="simplified";}' in html
+    assert 'detailed=GRAPH_DISPLAY.style==="detailed"' in html
+    assert 'GRAPH_DISPLAY.style=e.target.value==="detailed"?"detailed":"simplified"' in html
+    assert "if(showVisuals&&hasWall)" in html
+    assert "if(showVisuals&&detailed&&isNum(st.ramp)" in html
+    assert "if(showLabels){" in html
+    assert 'if(e.key==="Escape")' in html
     assert "ANNOT_HITS.length=0" in html
     assert 'if(kindOf(s.key,s.record_id)!=="dome_baseline"' not in html
     assert "Press Work vs Snap" not in html
@@ -338,9 +421,101 @@ def test_public_metric_profile_and_force_wall_contract(review_candidate):
         "VALLEY (MM)",
     ):
         assert retired_heading not in normalized_html
-    assert '/* fc-3.4 second GUI update: the two indices lead the table with plain names. */' in html
+    assert "Families stay contiguous so screen readers" in html
     assert '["Weight Index",indexText(st.weightIndex)]' in html
     assert '["Tactility Index",indexText(st.tactilityIndex)]' in html
+    assert 'const FEATURE_FAMILY=Object.freeze({weightIndex:"weight"' in html
+    assert 'family:"weight",title:"Weight Index"' in html
+    assert 'family:"tactility",title:"Tactility Index"' in html
+    assert 'family:"separate",title:"Travel-related measurements",index:null,focus:"travelGroup"' in html
+    assert '.statsout .so-group.family-separate{border-top-color:var(--separate)}' in html
+    assert '.statsout .so-head.family-separate{color:var(--separate)}' in html
+    assert '.statsout .family-separate .so-l,.statsout .family-separate .so-v{color:var(--separate)}' in html
+    assert 'if(family==="separate")return F.travel' in html
+    assert 'group.family==="weight"?F.weight:group.family==="tactility"?F.tactility:F.travel' in html
+    assert '["Drop force",isNum(st.dropF)' in html
+    assert 'rows:take(simplified?["Collapse force"]:["Collapse force","Ramp","Pre-collapse work"])' in html
+    assert 'rows:take(simplified?["Drop force"]:["Drop force","Snap %","Steepest drop","Drop rate"])' in html
+    assert 'rows:take(simplified?["Detected force-wall onset"]:["Detected force-wall onset","Recorded turnaround range (test limit)"])' in html
+    assert 'if(interactive&&isDerivedComparisonMode())hideStatsOut()' in html
+    assert 'const hasDrop=hasCollapse&&hasValley&&isNum(st.dropF)' in html
+    assert 'const hasSnap=hasDrop&&isNum(st.snap)' in html
+    assert 'const dropName=detailed?"DROP · SNAP %":"DROP"' in html
+    assert 'annot(dropDimX,(Y(st.Fpeak)+Y(st.Fval))/2+5,dropName,val,DTXT.snap,"center","drop",true)' in html
+    assert 'const placed=annot(dropLayout.labelX,dropLayout.labelY,dropName,val' in html
+    assert '"STEEPEST DROP",`${st.steep.toFixed(1)} gf/mm`' in html
+    assert '"Steepest 0.10 mm drop"' not in html
+    assert 'const CURVE_STROKE_WIDTH=3.5' in html
+    assert 'const CONSTRUCTION_DASH=Object.freeze([5,4])' in html
+    assert 'drawStroke(ap,FC.curve,CURVE_STROKE_WIDTH,1)' in html
+    assert 'g.setLineDash(CONSTRUCTION_DASH);g.globalAlpha=featureAlpha("ramp"' in html
+    assert 'g.setLineDash([3,4]);g.globalAlpha=featureAlpha("pcw",.82)' in html
+    assert 'g.strokeStyle=featureColor(FC,"pcw",T);g.lineWidth=featureWidth("pcw",1.3)' in html
+    assert 'g.setLineDash([3,4]);g.globalAlpha=featureAlpha("collapse",.82)' not in html
+    assert 'g.lineWidth=CURVE_STROKE_WIDTH;g.beginPath();g.moveTo(X(steepA.x)' in html
+    assert 'g.globalAlpha=featureFillAlpha("pcw")' in html
+    assert 'g.globalAlpha=featureHatchAlpha("pcw")' in html
+    assert 'for(let hx=pcwLeft-pcwHeight;hx<=pcwRight;hx+=10)' in html
+    assert 'if(showVisuals&&detailed&&ap&&ap.x&&ap.x.length&&hasCollapse)' in html
+    assert 'if(showVisuals&&detailed&&turnaround)' in html
+    assert 'if(showVisuals&&detailed&&hasCollapse)' in html
+    assert 'if(detailed&&isNum(st.dropRate))' in html
+    assert 'if(showVisuals&&detailed&&isNum(st.steep)' in html
+    assert 'if(detailed&&hasCollapse&&isNum(st.Epc))' in html
+    assert 'if(detailed&&turnaround)for(const limit' in html
+    assert 'const valleyFeature=detailed?"bottom":"drop"' in html
+    assert 'if(detailed)dropLeaderAnchor={x:dropDimX,y:py}' in html
+    assert 'dropDimX=detailed?(dropSpan>=32?bx-16:px+dropSpan/2):bx' in html
+    assert 'annot(detailed?collapseX-14:collapseX,collapseY,"COLLAPSE",val,DTXT.collapse,detailed?"right":"center","collapse")' in html
+    assert 'dropRateDimY=Math.max(plotTop+18,py-114)' in html
+    assert 'function dropSnapAnnotationLayout(left,right,top,dropDimX,peakY,dropRateY,labelWidth)' in html
+    assert 'const DIMENSION_INSIDE_ARROW_LENGTH=8' in html
+    assert 'const DIMENSION_INSIDE_ARROW_HALF_WIDTH=3.2' in html
+    assert 'const DIMENSION_OUTSIDE_ARROW_LENGTH=12' in html
+    assert 'const DIMENSION_OUTSIDE_ARROW_HALF_WIDTH=4.8' in html
+    assert 'const DIMENSION_OUTSIDE_LEADER=12' in html
+    assert 'function verticalDimensionLayout(y1,y2,labelInside=false)' in html
+    assert 'const requiredInside=2*DIMENSION_INSIDE_ARROW_LENGTH+(labelInside?28:4)' in html
+    assert 'const arrowsOutside=span<requiredInside' in html
+    assert 'const arrowLength=arrowsOutside?DIMENSION_OUTSIDE_ARROW_LENGTH:DIMENSION_INSIDE_ARROW_LENGTH' in html
+    assert 'const arrowHalfWidth=arrowsOutside?DIMENSION_OUTSIDE_ARROW_HALF_WIDTH:DIMENSION_INSIDE_ARROW_HALF_WIDTH' in html
+    assert 'const outsideExtent=DIMENSION_OUTSIDE_ARROW_LENGTH+DIMENSION_OUTSIDE_LEADER' in html
+    assert 'dropDimension=verticalDimensionLayout(py,vy,!detailed&&showLabels)' in html
+    assert 'g.moveTo(dropDimX,dropDimension.lineTop);g.lineTo(dropDimX,dropDimension.lineBottom)' in html
+    assert 'g.lineTo(dropDimX-dropDimension.arrowHalfWidth,dropDimension.topBaseY)' in html
+    assert 'g.lineTo(dropDimX-dropDimension.arrowHalfWidth,dropDimension.bottomBaseY)' in html
+    assert 'x:dropDimX-10,y:dropDimension.lineTop-4,w:20,h:dropDimension.lineBottom-dropDimension.lineTop+8' in html
+    assert 'Math.max(dropRateY+50,peakY-44,top+34)' in html
+    assert 'const preferredClearance=28,minimumClearance=8' in html
+    assert 'elbowX=dropLeaderAnchor.x,elbowY=endY' in html
+    assert 'endX=dropLayout.side==="left"?placed.x+placed.tw+7:placed.x-7' in html
+    assert 'g.lineTo(elbowX,elbowY);g.lineTo(endX,endY)' in html
+    assert 'g.lineTo(dropLeaderAnchor.x-3.2,dropLeaderAnchor.y-8)' in html
+    assert 'g.lineTo(dropLeaderAnchor.x+3.2,dropLeaderAnchor.y-8)' in html
+    assert 'if(!dropDimension.arrowsOutside)' in html
+    assert 'x:elbowX-6,y:Math.min(dropLeaderAnchor.y,elbowY)' in html
+    assert 'x:Math.min(elbowX,endX),y:elbowY-6' in html
+    assert '"STEEPEST DROP",`${st.steep.toFixed(1)} gf/mm`,DTXT.steep,"steep",18)' in html
+    assert 'wallName="DETECTED FORCE-WALL ONSET"' in html
+    assert 'wallVal=hasWall?`${displayFixed(st.travel,2)} mm`:"Not detected"' in html
+    assert 'wallX=hasWall?X(st.travel):w-M.r' in html
+    assert 'annot(wallOnLeft?wallX-14:wallX+14,h-M.b-12,wallName,wallVal,DTXT.travel' in html
+    assert 'if(!detailed)hideStatsOut()' in html
+    assert 'const externalStats=hasStats&&chartMode==="curves"&&!simplifiedGraphDisplay()&&statsCardGeom(ctx,single,w,h).external' in html
+    assert 'function formatPercentileRank(value){return isNum(value)?`${value.toFixed(1)}th percentile`' in html
+    assert "/ 100" not in html
+    assert "function forceCurveHeaderLayout(w)" in html
+    assert "function drawForceCurveHeaderMetric(" in html
+    assert 'titleStats.weightIndex.toFixed(1)' in html
+    assert 'titleStats.tactilityIndex.toFixed(1)' in html
+    assert 'drawForceCurveHeaderMetric(g,T,FEAT[th],header,0,"WEIGHT INDEX"' in html
+    assert 'drawForceCurveHeaderMetric(g,T,FEAT[th],header,1,"TACTILITY INDEX"' in html
+    assert 'drawForceCurveHeaderMetric(g,T,FEAT[th],header,2,"DETECTED FORCE-WALL ONSET","FORCE-WALL ONSET",wall,"travel")' in html
+    assert "Percentiles in the ${domeReferenceCount()}-dome released reference fleet" not in html
+    tactility_profile = html.split("profileTactility:", 1)[1].split("]}", 1)[0]
+    assert tactility_profile.index('p:"dg"') < tactility_profile.index('p:"sn"')
+    assert tactility_profile.index('p:"sn"') < tactility_profile.index('p:"sd"')
+    assert tactility_profile.index('p:"sd"') < tactility_profile.index('p:"dr"')
     assert (
         "Weight Index</b> is this dome’s weight percentile compared with the "
         "other domes tested."

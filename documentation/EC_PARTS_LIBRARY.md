@@ -7,7 +7,7 @@ the compatibility evidence recorded for the resulting assembly.
 
 ## Publication status
 
-The repository publishes Force Curve Bench `fc-3.4` and EC Parts Builder
+The repository publishes Force Curve Bench `fc-3.5` and EC Parts Builder
 `lib-6.1`. The builder is release-eligible and bound to Git tag
 `ec-parts-lib-6.1` by `SITE_RELEASE_MANIFEST.json`.
 

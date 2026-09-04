@@ -1,13 +1,13 @@
 # Unreal Keyboards tool documentation
 
-> Force Curve Bench `fc-3.4` and EC Parts Builder `lib-6.1` are published from
+> Force Curve Bench `fc-3.5` and EC Parts Builder `lib-6.1` are published from
 > this repository. `SITE_RELEASE_MANIFEST.json` and its `SHA256SUMS` inventory
 > are the active multi-tool site authority.
 
 The canonical Force Curve Bench is
-<https://buddyog.github.io/topre-force-curves/> and its frozen release tag is
-`fc-3.4`. `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` remains its protected
-predecessor record. The EC Parts Builder is published at
+<https://buddyog.github.io/topre-force-curves/> and its release tag is
+`fc-3.5`. `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` remains the immutable
+historical `fc-3.4` predecessor record. The EC Parts Builder is published at
 <https://buddyog.github.io/topre-force-curves/dome-lab-parts.html> and is bound
 to tag `ec-parts-lib-6.1` by the active site manifest.
 
@@ -24,10 +24,12 @@ to tag `ec-parts-lib-6.1` by the active site manifest.
   operator workflow, exact importer usage, exception handling, handoff record,
   and release gates.
 - [Third-party font notice](THIRD_PARTY_NOTICES.md)
-- [Subjective pilot](subjective-pilot/README.md) — sealed pilot bundle. Its
-  phrase “75 raw ratings” refers to 75 session-by-dome observation rows; each
-  row contains one weight and one tactility score (150 numeric scores total).
-- [fc-3.4 release notes](RELEASE_NOTES_fc-3.4.md)
+- [Subjective pilot](subjective-pilot/README.md) — sealed pilot bundle with 75
+  session-by-dome observation rows, each containing one weight and one
+  tactility score (150 numeric ratings total).
+- [fc-3.5 release notes](RELEASE_NOTES_fc-3.5.md) — current Force Curve Bench
+  presentation, interaction, verification, and continuity record.
+- [fc-3.4 release notes](RELEASE_NOTES_fc-3.4.md) — historical predecessor.
 - [Beyond Snap Ratio Preprint 2.1 clarification notes](RELEASE_NOTES_beyond-snap-ratio-v2.1.md)
   — single-input index arithmetic, association-rank interpretation, and
   publication identities.

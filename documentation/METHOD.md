@@ -1,7 +1,9 @@
 # Force Curve Bench measurement and calculation method
 
-This document describes how the Force Curve Bench fc-3.4 release acquires,
-checks, calculates, and presents its force-curve results. It is a public method
+This document describes how the Force Curve Bench fc-3.5 release acquires,
+checks, calculates, and presents its force-curve results. The fc-3.5 viewer
+update does not change the frozen method, evidence, or index calculations
+established for fc-3.4. It is a public method
 reference, not a research-paper abstract. The method and evidence needed to
 interpret or reproduce the released values are intended to stand on their own.
 
@@ -421,10 +423,14 @@ mechanical measurements. They do not average several curve metrics together.
 ### Why these two inputs were selected
 
 The exploratory `subjective-pilot-v1` involved one rater, 25 domes, and three
-fixed-order sessions. Every dome used the same Topre housing, slider, and
-conical spring. Weight was scored from 1 (feather weight) to 10 (heaviest in
-the panel); tactility sharpness was scored from 1 (linear/off) to 10 (sharpest
-in the panel). Each dome's arithmetic mean across the three sessions was used.
+fixed-order sessions. The fixed 5×5 grid held 25 separate, nominally matched
+OEM Topre assemblies; each used an OEM Topre housing, black Topre slider, and
+OEM Topre conical spring. Dome identity, fixed position, and unit-to-unit
+assembly variation were therefore confounded, and continuity of each
+individual housing, slider, and spring across sessions was not separately
+recorded. Weight was scored from 1 (feather weight) to 10 (heaviest in the
+panel); tactility sharpness was scored from 1 (linear/off) to 10 (sharpest in
+the panel). Each dome's arithmetic mean across the three sessions was used.
 
 Collapse force had the strongest observed Spearman rank association with mean
 perceived-weight rank (`rho = 0.951744545758805`). Force Drop had the strongest

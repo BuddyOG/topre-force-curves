@@ -1,14 +1,15 @@
 # Force Curve Bench data and provenance
 
-> Provenance documentation for Force Curve Bench fc-3.4. Generator integration,
-> byte-identical regeneration/parity, and local browser/runtime acceptance are
-> complete. The canonical viewer is
+> Provenance documentation for Force Curve Bench `fc-3.5`. The canonical viewer is
 > [https://buddyog.github.io/topre-force-curves/](https://buddyog.github.io/topre-force-curves/)
-> and the frozen release tag is `fc-3.4`. Exact production-package hashes are
-> recorded by `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json`. EC Parts Builder
+> and the release tag is `fc-3.5`. Exact current-package hashes are recorded by
+> `SITE_RELEASE_MANIFEST.json`, `SHA256SUMS`, and
+> `FORCE_CURVE_BENCH_RELEASE_MANIFEST_fc-3.5.json`.
+> `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` remains the immutable
+> historical `fc-3.4` record. EC Parts Builder
 > `lib-6.1` is published from tag `ec-parts-lib-6.1`. The active
 > `SITE_RELEASE_MANIFEST.json` and `SHA256SUMS` inventory cover the combined
-> site while retaining the fc-3.4 manifest as the protected predecessor record.
+> site while retaining the `fc-3.4` manifest as a predecessor record.
 
 The Force Curve Bench is a presentation layer over a frozen evidence epoch. Its
 source measurements, retained-run membership, full-precision results, and
@@ -69,9 +70,9 @@ as eight independent observations.
 
 ## Publication-tree continuity
 
-### Current fc-3.4 publication
+### Historical fc-3.4 publication
 
-The current fc-3.4 publication tree keeps 187 of the frozen snapshot's 189 files byte
+The fc-3.4 publication tree keeps 187 of the frozen snapshot's 189 files byte
 for byte: all 184 raw CSV files at their existing repository-relative paths,
 plus three legacy HTML endpoints for URL continuity. The prior root
 `index.html` and `README.md` are intentionally replaced by the fc-3.4 viewer
@@ -131,6 +132,32 @@ raw CSV paths, and the canonical-evidence tree byte-identical to fc-3.4. The
 historical `ec-parts-lib-6.0` tag retains its 338-edge consumer projection and
 3,403-edge audit record.
 
+### Current fc-3.5 Force Curve Bench overlay
+
+The `fc-3.5` release replaces the root Force Curve Bench and its declared
+viewer-generated/supporting files on top of the `lib-6.1` combined site. It
+does not create a new scientific epoch: the raw-source commit, 184 raw CSV
+paths, canonical-evidence tree, retained cohort, full-precision mechanical
+results, 68-dome percentile reference arrays, and `perception-rank-v1` scores
+remain unchanged.
+
+The overlay preserves both `dome-lab-parts.html` and
+`generated/packs/picker.staged.html` byte for byte at their published
+`lib-6.1` SHA-256. It rebuilds the active generated/site inventories around the
+new viewer rather than promoting an unrelated regenerated picker provenance
+change. `FORCE_CURVE_BENCH_RELEASE_MANIFEST_fc-3.5.json` records this
+component boundary, and
+the complete `SITE_RELEASE_MANIFEST.json` plus `SHA256SUMS` remain the active
+combined-site authority.
+
+Three files in the sealed subjective-pilot presentation bundle receive a
+documented prose-only correction: `README.md` and `index.html` now state the
+actual 25-assembly fixed-grid apparatus and describe `observations.csv` as 75
+session-by-dome rows containing 150 numeric ratings; the directory's
+`SHA256SUMS.json` is resealed to those bytes. The observations, grid mapping,
+dome summaries, analysis, source identity, workbook hash, and all released
+index values remain unchanged.
+
 The publication root also adds `.gitattributes` with exact content `* -text`.
 This disables Git text and line-ending normalization so platform-specific
 checkouts do not rewrite sealed bytes. The file is publication
@@ -141,9 +168,9 @@ underscore-prefixed paths. It too is release infrastructure, not source
 evidence.
 
 The raw-source commit and Git root tree above continue to identify the
-scientific input snapshot. The later fc-3.4 publication commit and tag identify
-the expanded release tree. Keeping those identities distinct prevents a viewer
-or documentation update from being mistaken for a new raw-data epoch.
+scientific input snapshot. Later publication commits and tags identify expanded
+release trees. Keeping those identities distinct prevents a viewer or
+documentation update from being mistaken for a new raw-data epoch.
 
 ## Metadata authority
 

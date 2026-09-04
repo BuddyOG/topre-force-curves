@@ -138,14 +138,14 @@ VIEWER_BUILD_PROFILES = {
         "mode": "review",
         "presentation_role": "review_candidate",
         "release_eligible": False,
-        "bench_build": "fc-3.4-review.2",
+        "bench_build": "fc-3.5-review.1",
     },
     "release": {
         **_VIEWER_PROFILE_COMMON,
         "mode": "release",
         "presentation_role": "public_release",
         "release_eligible": True,
-        "bench_build": "fc-3.4",
+        "bench_build": "fc-3.5",
     },
 }
 
@@ -907,6 +907,22 @@ def build_all_packs(retained_by_set, records, dataset_manifest, exclusions,
     }
     vtests = []
     for r in records:
+        # Visual landmark spans are derived from the same retained per-run
+        # analyzer audits as the released scalars.  The viewer uses these
+        # arithmetic-mean coordinates only to draw RAMP and steepest-drop
+        # overlays; it never re-analyzes the averaged display trace.
+        def audit_mean(field):
+            values = [
+                run.get("metric_audit", {}).get(field)
+                for run in retained_by_set.get(r["set"], [])
+            ]
+            if not values or any(
+                not isinstance(v, (int, float)) or not math.isfinite(v)
+                for v in values
+            ):
+                return None
+            return sum(values) / len(values)
+
         base = dict(vt_by_id.get((r["set"], r.get("name")), {}))
         base.update({"k": r.get("kind"), "n": r.get("name"), "set": r["set"], "runs": r["runs_used"]})
         base.update({
@@ -934,6 +950,10 @@ def build_all_packs(retained_by_set, records, dataset_manifest, exclusions,
             "intake_review_count": len(r.get("intake_review_notices", [])),
             "tl_min": turnaround_by_set.get(r["set"], {}).get("min"),
             "tl_max": turnaround_by_set.get(r["set"], {}).get("max"),
+            "rx10": audit_mean("ramp_x10_mm"),
+            "rx90": audit_mean("ramp_x90_mm"),
+            "ss": audit_mean("steepest_drop_start_mm"),
+            "se": audit_mean("steepest_drop_end_mm"),
         })
         for kk, (mk, rnd) in VIEWER_METRIC.items():
             base[kk] = rnd(r[mk])

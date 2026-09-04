@@ -6,18 +6,21 @@ EC Parts Builder lib-6.1 update: 2026-09-04
 
 Research-paper revision: 2026-09-04
 
+Force Curve Bench fc-3.5 update: 2026-09-04
+
 Repository: <https://github.com/BuddyOG/topre-force-curves>
 
 This record identifies the public Dome Lab system after the Force Curve Bench,
 EC Parts Builder, storefront pages, and Preprint 2.1 were released, including
-the subsequent EC Parts Builder lib-6.1 update. It does not replace the
+the subsequent EC Parts Builder lib-6.1 and Force Curve Bench fc-3.5 updates.
+It does not replace the
 tool-specific manifests or the frozen research record.
 
 ## Public entry points
 
 - [Dome Lab](https://unrealkeyboards.com/pages/dome-lab) — public hub.
 - [Force Curve Bench](https://unrealkeyboards.com/pages/topre-force-curve-library)
-  — Shopify presentation of `fc-3.4`.
+  — Shopify presentation of `fc-3.5`.
 - [EC Parts Builder](https://unrealkeyboards.com/pages/topre-ec-parts-library-builder)
   — Shopify presentation of `lib-6.1`.
 - [Beyond Snap Ratio](https://unrealkeyboards.com/pages/beyond-snap-ratio) —
@@ -34,7 +37,7 @@ The standalone tools remain available at:
 
 | Artifact | Public identity |
 |---|---|
-| Force Curve Bench | `fc-3.4`; Git tag `fc-3.4`; release commit `f8203d4` |
+| Force Curve Bench | `fc-3.5`; Git tag `fc-3.5` |
 | EC Parts Builder | `lib-6.1`; Git tag `ec-parts-lib-6.1` |
 | Previous EC Parts Builder | `lib-6.0`; Git tag `ec-parts-lib-6.0`; release commit `134e0c2` |
 | Frozen raw-source commit | `6e86ac1955a0c566c7aae521705e51371992ba8a` |
@@ -47,16 +50,24 @@ The standalone tools remain available at:
 | Protected predecessor authority | `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` |
 
 `SITE_RELEASE_MANIFEST.json` inventories every released repository path and
-its SHA-256 digest. The Force Curve Bench predecessor manifest remains in the
-site package and protects the fc-3.4 viewer, raw CSV files, canonical evidence,
-and continuity endpoints.
+its SHA-256 digest. `FORCE_CURVE_BENCH_RELEASE_MANIFEST_fc-3.5.json` records
+the current viewer overlay. The original Force Curve Bench manifest remains in
+the site package as the immutable fc-3.4 predecessor record.
 
 The lib-6.1 builder publishes 11 component rows, 28 keyboard starters, 4
 manufacturer-parts shortcuts, 10 recorded 2u assemblies, 68 exact measured-dome
 mappings, and 241 decision-changing pair edges backed by a complete 3,570-edge
 compatibility audit closure. The release changes the Parts Builder and its
-declared supporting files only; it does not change the fc-3.4 scientific
-evidence or perception-index model.
+declared supporting files only. The fc-3.5 viewer overlay preserves those
+builder bytes. Neither update changes the fc-3.4 scientific evidence or
+perception-index model.
+
+The fc-3.5 viewer adds the Simplified/Detailed graph-display contract, unified
+collapsed filters, fleet-wide profile controls, the Force-wall-onset comparison,
+fixed-height comparison charts, drafting-style measurement geometry, and PNG
+screen parity with timestamp and watermark. It keeps the 4.5 mm shared
+displacement scale and explicitly separates detected force-wall onset from the
+recorded turnaround test limit.
 
 ## Paper and research compendium
 

@@ -9,10 +9,12 @@ adds prospective multi-rater validation only after that study is completed.
 
 - Preprint 2.1: <https://doi.org/10.5281/zenodo.22295223>
 - Research compendium: <https://doi.org/10.5281/zenodo.22167047>
-- Force Curve Bench: `fc-3.4`
+- Force Curve Bench scientific foundation cited by Preprint 2.1: `fc-3.4`;
+  current presentation release: `fc-3.5`
 - EC Parts Builder: `lib-6.1`
-- Objective evidence: `metrics-v4.2`, frozen commit `6e86ac1`, evidence
-  identity `7aa8588b...d4a`
+- Objective evidence: `metrics-v4.2`, frozen commit
+  `6e86ac1955a0c566c7aae521705e51371992ba8a`, evidence identity
+  `7aa8588b50856816b7fce90dd6e743c26c6f16926071123291cb054352b6cd4a`
 - Exploratory evidence: `subjective-pilot-v1`, one rater, 25 domes, three
   fixed-order sessions
 - Frozen index model: `perception-rank-v1`

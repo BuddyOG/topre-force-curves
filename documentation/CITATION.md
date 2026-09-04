@@ -24,9 +24,9 @@ license.
 
 ## Force Curve Bench
 
-Unreal Keyboards. *Force Curve Bench*, release `fc-3.4`.
+Unreal Keyboards. *Force Curve Bench*, release `fc-3.5`.
 <https://buddyog.github.io/topre-force-curves/>. Source:
-<https://github.com/BuddyOG/topre-force-curves/releases/tag/fc-3.4>.
+<https://github.com/BuddyOG/topre-force-curves/releases/tag/fc-3.5>.
 
 When citing a measurement, also report the record name or `test_id`, the
 frozen raw-source commit

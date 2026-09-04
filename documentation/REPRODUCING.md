@@ -1,14 +1,29 @@
 # Verifying the published site
 
-The repository publishes Force Curve Bench `fc-3.4` and EC Parts Builder
+The repository publishes Force Curve Bench `fc-3.5` and EC Parts Builder
 `lib-6.1`. The Force Curve Bench canonical viewer URL is
 [https://buddyog.github.io/topre-force-curves/](https://buddyog.github.io/topre-force-curves/),
-and its frozen release tag is `fc-3.4`. The builder is published at
+and its release tag is `fc-3.5`. The builder is published at
 `dome-lab-parts.html` and is bound to tag `ec-parts-lib-6.1`.
 
 `SITE_RELEASE_MANIFEST.json` and the published `SHA256SUMS` are the active
-combined-site authority. `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` remains the
-protected predecessor record for fc-3.4.
+combined-site authority. `FORCE_CURVE_BENCH_RELEASE_MANIFEST_fc-3.5.json`
+records the current viewer overlay. `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json`
+remains the immutable historical record for fc-3.4.
+
+## Current fc-3.5 package verification
+
+From an extracted fc-3.5 package root, run:
+
+```text
+python generator/tools/build_force_curve_release.py verify .
+```
+
+The verifier checks the full active inventory and checksums, exact parity
+between root `index.html` and `generated/packs/viewer.staged.html`, the
+`fc-3.5` release identity, raw/canonical-evidence continuity, and byte identity
+of both published `lib-6.1` entrypoints. It also keeps the historical fc-3.4
+manifest unchanged. This is the current Tier 1 verifier.
 
 Verification and reproduction answer different questions:
 
@@ -52,8 +67,8 @@ prove that an extracted copy is the tree served by GitHub Pages.
 ## Current Force Curve Bench release identities
 
 ```text
-Public build:      fc-3.4
-Release tag:       fc-3.4
+Public build:      fc-3.5
+Release tag:       fc-3.5
 Canonical viewer: https://buddyog.github.io/topre-force-curves/
 Raw-source commit: 6e86ac1955a0c566c7aae521705e51371992ba8a
 Raw-source tree:   e43d25a3fed8c5177467bba96a5abbdd5a3442b0
@@ -64,13 +79,13 @@ Importer parity:   test-imp 1.1.4
 ```
 
 The 40-character commit is the immutable raw-data source, not the viewer's
-publication commit. Git tag `fc-3.4` identifies the publication commit once the
-release is committed and tagged. The publication tree intentionally differs
+publication commit. Git tag `fc-3.5` identifies the current publication
+commit. The publication tree intentionally differs
 from the frozen raw-source tree because it replaces the prior `index.html` and
 `README.md` and adds the versioned release material; that does not change the
 raw-source or evidence identities.
 
-## Published fc-3.4 layout
+## Historical fc-3.4 base layout
 
 The fc-3.4 predecessor packager created an exact 752-file repository-root tree. In
 addition to the fc-3.4 release-managed paths, it carries forward the complete
@@ -135,7 +150,7 @@ Key paths are:
 The public Open Graph asset URL is
 `https://buddyog.github.io/topre-force-curves/assets/force-curve-bench-fc-3.4-og.png`.
 
-## Current Tier 1: verify the fc-3.4 package
+## Historical Tier 1: verify the fc-3.4 package
 
 Python 3.11 or newer is sufficient for the package verifier. From the extracted
 release root, run:
@@ -181,7 +196,7 @@ python canonical-evidence/tools/verify_canonical_epoch.py
 
 ### Manual checksum inspection
 
-For the current public release, use the Parts release verifier and compare
+For the current public release, use the fc-3.5 release verifier and compare
 against `SITE_RELEASE_MANIFEST.json` and `SHA256SUMS`. Use the fc-3.4 verifier
 with `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` when auditing the protected
 predecessor independently.
@@ -205,10 +220,12 @@ grep -E '  (index\.html|dome-lab-parts\.html|SITE_RELEASE_MANIFEST\.json)$' SHA2
 Do not substitute a review-build hash for the values recorded by the public
 release package.
 
-## Tier 2: reproduce the generated tree
+## Tier 2: reproduce the fc-3.5 viewer and site overlay
 
-Run the following against one self-consistent extracted package. Do not combine
-a local generator with another release package's expected-output tree.
+Generate the release-profile staging tree from one self-consistent extracted
+package, then use the fc-3.5 overlay builder to combine its viewer-owned output
+with the verified predecessor site. Do not combine a local generator with
+another release package's expected-output tree.
 
 ### Requirements
 
@@ -219,19 +236,31 @@ a local generator with another release package's expected-output tree.
 | Python source | Packaged `generator/` tree |
 | JavaScript dependencies | `generator/js/package-lock.json`, installed with `npm ci` |
 | Frozen raw cache | `canonical-evidence/raw_cache/repo-6e86ac1955a0c566c7aae521705e51371992ba8a/` |
-| Expected output | Packaged `generated/` tree |
+| Verified predecessor | Clean archive of commit `e9dde994e516ad01bfe384b4f5796508dff1c921` |
+| Expected viewer output | Packaged viewer-owned paths under `generated/` |
 
 The package contains the generator source, release templates, font assets,
-Python lockfile, npm lockfile, frozen raw cache, and expected generated output.
+Python lockfile, npm lockfile, frozen raw cache, and expected generated viewer
+output.
 Installing locked dependencies requires access to the configured Python package
 index and `registry.npmjs.org`.
 
 ### PowerShell
 
-Run from the extracted release root:
+Run from a clean repository clone checked out at tag `fc-3.5`:
 
 ```powershell
 $commit = '6e86ac1955a0c566c7aae521705e51371992ba8a'
+$baseCommit = 'e9dde994e516ad01bfe384b4f5796508dff1c921'
+$source = (Resolve-Path '.').Path
+$work = Join-Path ([System.IO.Path]::GetTempPath()) `
+  ('force-curve-bench-fc-3.5-' + [guid]::NewGuid().ToString('N'))
+$base = Join-Path $work 'base-e9dde99'
+$stage = Join-Path $work 'regenerated-fc-3.5'
+$candidate = Join-Path $work 'candidate-fc-3.5'
+New-Item -ItemType Directory -Path $work,$base | Out-Null
+git archive --format=tar $baseCommit -o (Join-Path $work 'base.tar')
+tar -xf (Join-Path $work 'base.tar') -C $base
 $cache = (Resolve-Path ".\canonical-evidence\raw_cache\repo-$commit").Path
 
 python -m venv .verify-venv
@@ -242,22 +271,42 @@ python -m pip install -e .\generator
 Push-Location .\generator\js
 npm ci --no-audit --no-fund
 Pop-Location
-$env:NODE_PATH = (Resolve-Path '.\generator\js\node_modules').Path
+$env:DOMELAB_NODE_PATH = (Resolve-Path '.\generator\js\node_modules').Path
 
 python -m domelab_pipeline.cli `
   --cache $cache `
   --commit $commit `
-  --out .\generated `
+  --out $stage `
   --viewer-profile release `
-  --check
+  --write
+
+python .\generator\tools\build_force_curve_release.py build `
+  --base-release $base `
+  --release-source $source `
+  --staging $stage `
+  --policy .\generator\domelab_pipeline\config\force_curve_release_overlay.json `
+  --output $candidate `
+  --canonical-url https://buddyog.github.io/topre-force-curves/ `
+  --git-tag fc-3.5
+
+python .\generator\tools\build_force_curve_release.py verify $candidate
 ```
 
 ### Linux / macOS
 
-Run from the extracted release root:
+Run from a clean repository clone checked out at tag `fc-3.5`:
 
 ```bash
 commit='6e86ac1955a0c566c7aae521705e51371992ba8a'
+base_commit='e9dde994e516ad01bfe384b4f5796508dff1c921'
+source="$(pwd -P)"
+work="$(mktemp -d)"
+base="$work/base-e9dde99"
+stage="$work/regenerated-fc-3.5"
+candidate="$work/candidate-fc-3.5"
+mkdir -p "$base"
+git archive --format=tar "$base_commit" -o "$work/base.tar"
+tar -xf "$work/base.tar" -C "$base"
 cache="$(pwd -P)/canonical-evidence/raw_cache/repo-${commit}"
 
 python3 -m venv .verify-venv
@@ -265,26 +314,34 @@ python3 -m venv .verify-venv
 python -m pip install -r generator/requirements-lock.txt
 python -m pip install -e generator
 ( cd generator/js && npm ci --no-audit --no-fund )
-export NODE_PATH="$(pwd -P)/generator/js/node_modules"
+export DOMELAB_NODE_PATH="$(pwd -P)/generator/js/node_modules"
 
 python -m domelab_pipeline.cli \
   --cache "$cache" \
   --commit "$commit" \
-  --out generated \
+  --out "$stage" \
   --viewer-profile release \
-  --check
+  --write
+
+python generator/tools/build_force_curve_release.py build \
+  --base-release "$base" \
+  --release-source "$source" \
+  --staging "$stage" \
+  --policy generator/domelab_pipeline/config/force_curve_release_overlay.json \
+  --output "$candidate" \
+  --canonical-url https://buddyog.github.io/topre-force-curves/ \
+  --git-tag fc-3.5
+
+python generator/tools/build_force_curve_release.py verify "$candidate"
 ```
 
-The check is non-mutating. It recomputes the complete current generated output and
-reports missing, unexpected, stale, or modified generated files. Exit status 0
-proves that the packaged generator reproduces the packaged `generated/` tree,
-including the public viewer and parity report.
-
-To produce a clean second tree instead, give `--out` a new empty destination
-such as `regenerated-fc-3.4` and use `--write`. Its
-`generated_manifest.json` must be byte-identical to
-`generated/generated_manifest.json`; the manifest covers every other generated
-artifact.
+Generate a second clean staging tree and compare the two complete staging
+inventories byte for byte. The fc-3.5 overlay verifier then validates the
+staging manifest, parity report, source identities, and exact viewer/VTESTS
+bytes before rebuilding the hybrid public tree. The released lib-6.1 picker is
+deliberately inherited from the predecessor site: an unrelated Force viewer
+template edit must not mutate Parts Builder bytes under the same library
+version.
 
 ## Completed engineering evidence
 
@@ -299,7 +356,7 @@ artifact.
 
 ## Scientific invariants
 
-A viewer-only fc-3.4 regeneration must not change:
+A viewer-only fc-3.5 regeneration must not change:
 
 - the frozen raw-source commit, Git tree, or canonical evidence identity;
 - the 184 semantic raw-run bindings or 180 unique acquisitions;
@@ -313,10 +370,11 @@ must be reviewed and versioned as a new evidence or method change.
 
 ## Deployment checks
 
-For fc-3.4, the release operator should load the canonical URL,
-open a shared `?sel=` comparison, verify the documentation and bundled-license
-links, check the Open Graph URL/image, and perform a human phone-width visual
-check.
+For fc-3.5, the release operator should load the canonical URL; open a shared
+`?sel=` comparison; test Simplified and Detailed force curves; exercise all
+five chart modes, filters, Clear/Load all, and a null force-wall case; verify a
+timestamped/watermarked PNG; verify documentation and bundled-license links;
+check the Open Graph URL/image; and perform a human phone-width visual check.
 
 For lib-6.1, load `dome-lab-parts.html` directly and through the Shopify
 wrapper. Confirm that Shopify owns Dome Lab navigation and that the

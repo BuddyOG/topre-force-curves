@@ -1,9 +1,9 @@
 {
  "files": [
   {
-   "bytes": 1704,
+   "bytes": 2040,
    "path": "README.md",
-   "sha256": "25245803f774f4a869c366c529e71d9d639b4aa9d43b584304bcc1f2c53f0a3a"
+   "sha256": "348319b169fb818cd1ad69f28127886780046c72ab36feb25af2a2cd42a48211"
   },
   {
    "bytes": 11727,
@@ -21,9 +21,9 @@
    "sha256": "9eeb2cb75b3572b410aca23f55a89c54d40b1533ba6e1117697c932b43aabb2e"
   },
   {
-   "bytes": 3605,
+   "bytes": 3901,
    "path": "index.html",
-   "sha256": "0ca8444c60f6aea47222103e55214aa6b070cb1b18f537b2a66c55ef18bead4a"
+   "sha256": "9477485b2305cdcef2bc0d0e22b89078941d244668e06c24aaab38503aba051b"
   },
   {
    "bytes": 6876,

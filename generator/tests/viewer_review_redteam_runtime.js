@@ -87,6 +87,7 @@ const delay = milliseconds => new Promise(resolve => setTimeout(resolve, millise
   await delay(120);
   const window = dom.window;
   const records = window.eval("VTESTS");
+  const display2 = value => (Math.round((Number(value) + 1e-10) * 100) / 100).toFixed(2);
 
   // A shared curve may not silently acquire two incompatible scalar truths.
   const first = records.find(row => row.k === "dome_baseline");
@@ -111,8 +112,28 @@ const delay = milliseconds => new Promise(resolve => setTimeout(resolve, millise
   const nullSet = window.eval(`sets.get(${JSON.stringify(primarySet)})`);
   const originalStats = {...nullSet.data.stats, percentiles: {...nullSet.data.stats.percentiles}};
   const originalLines = window.eval(`statLines(sets.get(${JSON.stringify(primarySet)}))`);
+  const simplifiedLabels = window.eval(`statGroups(sets.get(${JSON.stringify(primarySet)})).flatMap(group => [
+    ...(group.index ? [group.index[0]] : []), ...group.rows.map(row => row[0])])`);
+  const simplifiedDefault = window.eval('GRAPH_DISPLAY.style === "simplified"') &&
+    JSON.stringify(simplifiedLabels) === JSON.stringify([
+      "Weight Index", "Collapse force", "Tactility Index", "Drop force", "Detected force-wall onset",
+    ]);
+  const simplifiedDetailsRemoved = window.document.getElementById("statsOut").style.display === "none";
+  const cadArrowFit = window.eval(`(()=>{
+    const tight=verticalDimensionLayout(40,68,true),roomy=verticalDimensionLayout(40,92,true);
+    return tight.arrowsOutside&&tight.lineTop===16&&tight.lineBottom===92&&
+      tight.topBaseY===28&&tight.bottomBaseY===80&&tight.arrowHalfWidth===4.8&&
+      !roomy.arrowsOutside&&roomy.lineTop===40&&roomy.lineBottom===92;
+  })()`);
+  const profileDetailsRemoved = ["simplified", "detailed"].every(style =>
+    ["profileWeight", "profileTactility", "profileTravel", "indexScatter"].every(mode => {
+      window.eval(`GRAPH_DISPLAY.style=${JSON.stringify(style)};chartMode=${JSON.stringify(mode)};render();exportPNG()`);
+      return window.document.getElementById("statsOut").style.display === "none";
+    })
+  );
+  window.eval('GRAPH_DISPLAY.style="simplified";chartMode="curves";render()');
   const numericWallValueOnly = originalLines.some(row =>
-    row[0] === "Detected force-wall onset" && row[1] === `${originalStats.travel.toFixed(2)} mm`
+    row[0] === "Detected force-wall onset" && row[1] === `${display2(originalStats.travel)} mm`
   );
   const noWallReferenceMetadata = !Object.keys(build).some(key => key.startsWith("force_wall_reference"));
   const noDeltaOrScaleNoteSource = !/forceWallDelta|wallDelta|force_wall_reference|80 is not twice 40|Index scale note|INDEX_SCALE_NOTE/.test(viewerSource);
@@ -130,8 +151,8 @@ const delay = milliseconds => new Promise(resolve => setTimeout(resolve, millise
   const nullLegend = window.eval(`legendStat(sets.get(${JSON.stringify(primarySet)}))`);
   const recordedTurnaround = window.eval(`recordedTurnaround(sets.get(${JSON.stringify(primarySet)}))`);
   const noWallText = wallNullLines.some(row => row[0] === "Detected force-wall onset" && row[1] === "Not detected") &&
-    wallNullLines.some(row => row[0] === "Weight Index" && /\/ 100$/.test(row[1])) &&
-    wallNullLines.some(row => row[0] === "Tactility Index" && /\/ 100$/.test(row[1])) &&
+    wallNullLines.some(row => row[0] === "Weight Index" && /^\d+\.\dth percentile$/.test(row[1])) &&
+    wallNullLines.some(row => row[0] === "Tactility Index" && /^\d+\.\dth percentile$/.test(row[1])) &&
     !wallNullLines.some(row => row[0] !== "Detected force-wall onset" && row[1] === "Not detected") &&
     !wallNullLines.some(row => /0\.00 mm/.test(row[1]));
 
@@ -149,7 +170,7 @@ const delay = milliseconds => new Promise(resolve => setTimeout(resolve, millise
   window.eval('chartMode="curves"; render(); exportPNG();');
   const primaryNullLines = window.eval(`statLines(sets.get(${JSON.stringify(primarySet)}))`);
   const primaryNullUnavailable = primaryNullLines.some(row => row[0] === "Collapse force" && row[1] === "Not available") &&
-    primaryNullLines.some(row => row[0] === "Drop" && row[1] === "Not available") &&
+    primaryNullLines.some(row => row[0] === "Drop force" && row[1] === "Not available") &&
     primaryNullLines.some(row => row[0] === "Weight Index" && row[1] === "Not available") &&
     primaryNullLines.some(row => row[0] === "Tactility Index" && row[1] === "Not available") &&
     !primaryNullLines.some(row => /Index$/.test(row[0]) && row[1] === "Not detected");
@@ -204,7 +225,7 @@ const delay = milliseconds => new Promise(resolve => setTimeout(resolve, millise
   const partIndicesNotCalibrated = partLines.some(row => row[0] === "Weight Index" && row[1] === "Not calibrated") &&
     partLines.some(row => row[0] === "Tactility Index" && row[1] === "Not calibrated");
   const partWallValueOnly = partLines.some(row => row[0] === "Detected force-wall onset" && row[1] ===
-    (Number.isFinite(partStats.travel) ? `${partStats.travel.toFixed(2)} mm` : "Not detected"));
+    (Number.isFinite(partStats.travel) ? `${display2(partStats.travel)} mm` : "Not detected"));
 
   const selected = window.eval("selected");
   selected.splice(0, selected.length, ...parts.map(row => row.set));
@@ -240,6 +261,10 @@ const delay = milliseconds => new Promise(resolve => setTimeout(resolve, millise
 
   const output = {
     divergentDuplicateRejected,
+    simplifiedDefault,
+    simplifiedDetailsRemoved,
+    cadArrowFit,
+    profileDetailsRemoved,
     nullForceWallText: noWallText && /wall not detected/.test(nullLegend),
     numericWallValueOnly,
     noWallReferenceMetadata,
@@ -256,7 +281,7 @@ const delay = milliseconds => new Promise(resolve => setTimeout(resolve, millise
     nullExcludedFromScatter,
     scatterHoverLinked,
     partProfilesNotCalibrated,
-    nullReadoutSafe: readout.includes("WALL (MM)") && readout.includes("Not detected") &&
+    nullReadoutSafe: readout.includes("DETECTED FORCE-WALL ONSET (MM)") && readout.includes("Not detected") &&
       readout.includes("Not available") && readout.includes("RECORD ID") &&
       !FORBIDDEN_CONSUMER_TEXT.test(readout),
     lowAssociationValuesHidden,

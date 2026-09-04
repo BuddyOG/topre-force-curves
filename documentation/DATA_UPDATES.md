@@ -17,11 +17,12 @@ of fc-3.4. Replacing the root `index.html` and `README.md` with the fc-3.4
 viewer and overview is a
 publication-surface change; it is not a raw-data change.
 
-The current published tree combines Force Curve Bench `fc-3.4` with EC Parts
-Builder `lib-6.1`. The builder replaces `dome-lab-parts.html` through an
-explicit, versioned overlay policy. That overlay protects
-every predecessor endpoint other than the declared builder replacement, all
-raw CSVs, and the canonical evidence tree against incidental change.
+The current published tree combines Force Curve Bench `fc-3.5` with EC Parts
+Builder `lib-6.1`. Both were promoted through explicit, versioned overlay
+policies. The `fc-3.5` overlay changes the Force viewer and declared supporting
+files while preserving the published Parts Builder, all raw CSVs, and the
+canonical evidence tree. A presentation-only release is not a new evidence
+epoch.
 
 The release-root `.gitattributes` must contain exactly `* -text` so Git does
 not normalize line endings or otherwise apply text conversion to inventoried

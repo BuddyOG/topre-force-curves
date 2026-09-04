@@ -72,6 +72,69 @@ the accepted starting point. A final human phone-width spot check is still a
 useful deployment check, but this tooling limitation did not expose a viewer
 failure.
 
+## Force Curve Bench fc-3.5 acceptance — 2026-09-04
+
+This section records the viewer-only `fc-3.5` acceptance. The frozen
+raw-source commit, canonical evidence identity, 184 retained semantic run
+bindings, 180 unique acquisitions, full-precision metrics, 68-dome reference
+fleet, and `perception-rank-v1` values are unchanged from `fc-3.4`.
+
+Two independent release-profile generations produced the same 104 paths and
+were byte-identical. The generated release viewer SHA-256 is
+`108a6b3ee26b152909631a0dbada65bd3c2121f0421035294ef7055735c02f1f`.
+After this acceptance record was added, two complete packages were built from
+separate clean copies of predecessor commit
+`e9dde994e516ad01bfe384b4f5796508dff1c921` and compared path for path and byte
+for byte. Each package contains 825 regular files. The standalone package
+verifier passed both candidates.
+
+The complete generator suite passed **558 tests**, with **12 declared
+environment-dependent skips**. Its 39 focused fc-3.5 packaging tests include
+negative cases for stale or hand-edited staging, incorrect canonical URLs or
+tags, malformed component metadata, undeclared overlays, raw/canonical
+changes, pilot-checksum drift, line-ending drift, and protected Parts bytes.
+The canonical-evidence verifier independently passed all 108 declared checks.
+
+The release viewer was exercised in Chrome at 1440 × 900 and at a real 390 ×
+844 phone viewport. Browser acceptance covered:
+
+- a collapsed Filters section and separate collapsible Tests list on load;
+- flat, left-aligned search results and the Clear filters action;
+- Domes, Parts, and Tests workspaces;
+- Simplified default, Detailed mode, and label/visual controls;
+- Force curves, Weight profile, Tactility profile, Force-wall onset, and
+  Weight-vs-tactility modes;
+- empty-selection automatic fleet loading plus Clear selection and Load all;
+- fixed-height comparison charts and single-selection profile views without a
+  duplicate lower measurement strip;
+- force-wall group/reference presentation without recorded-turnaround
+  substitution;
+- table sorting with horizontal scroll preserved (`2047 px` before and after);
+- direct selection restoration through `?sel=`; and
+- zero console errors, zero page errors, and no page-level horizontal overflow
+  at 390 px (`scrollWidth = innerWidth = 390`).
+
+A real Simplified NiZ Purple 60g PNG export was generated and visually
+inspected at 2952 × 1966 pixels. It matched the on-screen measurements and
+4.5 mm axis; used outside arrows with leader tails for the tight Drop
+dimension; included the detected force-wall marker, export date/time, build
+and dataset identity; and placed a faint centered `UNREAL KEYBOARDS` watermark
+behind the chart. The watermark remained absent from the interactive
+on-screen canvas.
+
+The fc-3.5 Open Graph image was also inspected at 2968 × 1928 pixels. Its
+SHA-256 is
+`2563d0fabbbd52e8610533d96c1e3d293f47db2fa9bc89f1131268ecd5e75bf0`.
+
+The viewer-only overlay preserved `dome-lab-parts.html` and
+`generated/packs/picker.staged.html` at the released `lib-6.1` SHA-256
+`9fca852ce2a50a9c5aaa5dcd089c639846e41d8298dd90b4b597321e01c198ec`.
+The independent package audit also found every package CSV and every
+`canonical-evidence/` file byte-identical to the predecessor, with no deleted
+or undeclared path. `FORCE_CURVE_BENCH_RELEASE_MANIFEST_fc-3.5.json` records
+the new component boundary; the unversioned Force manifest remains the
+immutable `fc-3.4` record.
+
 ## Historical EC Parts Builder lib-6.0 acceptance
 
 The standalone release-profile builder passed 117 of 117 real-browser checks
@@ -157,7 +220,7 @@ The publication checks above were completed against the public deployment:
 | Standalone EC Parts Builder (then `lib-6.0`) | Pass | <https://buddyog.github.io/topre-force-curves/dome-lab-parts.html> |
 | fc-3.4 GitHub release | Pass | <https://github.com/BuddyOG/topre-force-curves/releases/tag/fc-3.4> |
 | Historical lib-6.0 GitHub release | Pass | <https://github.com/BuddyOG/topre-force-curves/releases/tag/ec-parts-lib-6.0> |
-| Paper DOI | Pass | <https://doi.org/10.5281/zenodo.22167065> |
+| Preprint 2.0 DOI | Pass | <https://doi.org/10.5281/zenodo.22167065> |
 | Compendium DOI | Pass | <https://doi.org/10.5281/zenodo.22167047> |
 
 The storefront hub, paper page, article, and Tools navigation were inspected
