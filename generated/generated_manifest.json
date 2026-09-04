@@ -5,7 +5,7 @@
  "diff_vs_release.md": "add20ff3f94d54c06dca96489446125f96af01caf3ed10ad3931d204af171379",
  "eligibility_decisions.json": "4930b0b34b05b23ab2b34ceac2f9a612e924767447cc398b4ac5177604250f3e",
  "evidence_history.staged.json": "2219c48797274444fb0b1cd53bfc84a1a8247f0d8926bec5095244e928b5b89c",
- "exclusion_manifest.json": "89dbefc1e145327f8dccd68ad56b5edf97f8367e88838f46dfbf15f0bff8df58",
+ "exclusion_manifest.json": "275491a68b659911c8d7a9b6e97e1927255d06d54b65b7f1f84a8a2740a521d4",
  "intake_retention_decisions.json": "e6d438b672408cd3e711d907e58424af1f73c13650674526900ce24ceeea9bf4",
  "median_comparison.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
  "median_convention_comparison.md": "209bca7fa8805a05fa31af1736a9ce49bb99511b168c4646b95a5b23e10b9035",
@@ -87,7 +87,7 @@
  "packs/curves/Topre_Slider_Silenced_Purple.staged.json": "b2a0ceac1c4168cab341d4466a0afbcb1b88a4c1742d248e75051eb0f2c1bd7d",
  "packs/curves/Topre_Slider_Type-S.staged.json": "8fcef722b7c791c32676221a05a93b152f281a59ed400edac289f6dd45e6822d",
  "packs/perception_scores.json": "0756e49091dfc725574b4e75f5a2b0a8dc5d2bcee277dfea3ce33c2fa1e6cb0b",
- "packs/picker.staged.html": "f3b09cbc17f1842c680ec1e1f7c0001f9fb04bb3abac9a7dac0b3b54ba483acb",
+ "packs/picker.staged.html": "9fca852ce2a50a9c5aaa5dcd089c639846e41d8298dd90b4b597321e01c198ec",
  "packs/picker_mini_curves.json": "77f58538be9fe9d9f87def1178e0acc13f1ee7354206b5c79c10c402e9b6ea71",
  "packs/picker_tests.json": "9ba911c549c788eac3c4c4b96c1a4eeaa65f850d7244dea141fadcac824dc117",
  "packs/prose_scan_report.json": "397580319dae678006bd5214510a6cfaad64d15fd72b281bbe83790f2e9c56b1",
@@ -100,6 +100,6 @@
  "raw_path_manifest.csv": "51fcf24afcbdbb46e82d0450b184d33c9f5a37a3b0e35ac1e0306e7700d7b8d0",
  "raw_path_manifest.json": "27fbb18c9d437a024cadf0895aadeb0d6f24ed7a9333a3ddd30d04b6c292f465",
  "run_retention.csv": "2a651ceb0b3c2a206d1640421a8ad964a2d30074c1267a53259f9f782757b6d3",
- "schema_meta.staged.json": "3a2a4da3993cab1549780ea8011aa2668b23eaab81e727e68202305f02954be9",
+ "schema_meta.staged.json": "825c0f1432f6678cf4689a432ada13fb911c3a9d8d64a451ebc4caf589c5a99d",
  "schemas/bench_test.schema.v42.json": "9c066962b51014037bf17f30494bd3a9d68cff4ad1a3a69b4043bc8688a80930"
 }

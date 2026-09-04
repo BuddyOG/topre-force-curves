@@ -2,8 +2,8 @@
 
 Every record in the vendored r8 source (config/r8/) accounted for. Stable IDs on both sides; no record is silently out of scope. Regenerated deterministically by tools/generate_catalog_config.py.
 
-- r8 part records: 152; keyboard records: 21.
-- Dispositions: integrated_builder_catalog: 62, integrated_dome_catalog: 71, integrated_round2: 19, integrated_round2_keyboard_registry: 21, newer_measured_identity_unverified: 10, template_shell_abstraction: 2
+- r8 part records: 155; keyboard records: 34.
+- Dispositions: integrated_builder_catalog: 64, integrated_dome_catalog: 72, integrated_round2: 19, integrated_round2_keyboard_registry: 34, newer_measured_identity_unverified: 10, template_shell_abstraction: 2
 
 ## integrated_builder_catalog
 
@@ -33,6 +33,7 @@ Every record in the vendored r8 source (config/r8/) accounted for. Stable IDs on
 - `silencing_ring::klc_poron_0_3` → `silencing_ring::klc_poron_0_3` — KLC 0.3 mm Poron Silencing Ring
 - `silencing_ring::klc_silicone_0_3` → `silencing_ring::klc_silicone_0_3` — KLC 0.3 mm Silicone Silencing Ring
 - `silencing_ring::metapulse_poron_0_5` → `silencing_ring::metapulse_poron_0_5` — MetaPulse 0.5 mm Poron Silencing Ring
+- `silencing_ring::topre_2u_poron_1_0` → `silencing_ring::topre_2u_poron_1_0` — Topre 2u Silencing Ring
 - `silencing_ring::topre_poron_0_5` → `silencing_ring::topre_poron_0_5` — Topre 0.5 mm Poron Silencing Ring
 - `silencing_ring::unreal_keyboards_poron_0_3` → `silencing_ring::unreal_keyboards_poron_0_3` — Unreal Keyboards 0.3 mm Poron Silencing Ring
 - `silencing_ring::unreal_keyboards_poron_0_5` → `silencing_ring::unreal_keyboards_poron_0_5` — Unreal Keyboards 0.5 mm Poron Silencing Ring
@@ -52,23 +53,24 @@ Every record in the vendored r8 source (config/r8/) accounted for. Stable IDs on
 - `spacebar_stabilizer::dynacaps` → `spacebar_stabilizer::dynacaps` — DynaCaps Spacebar Stabilizer
 - `spacebar_stabilizer::klc_playground` → `spacebar_stabilizer::klc_playground` — KLC Spacebar Stabilizer
 - `spacebar_stabilizer::metapulse` → `spacebar_stabilizer::metapulse` — MetaPulse Spacebar Stabilizer
+- `spacebar_stabilizer::novatouch` → `spacebar_stabilizer::novatouch` — NovaTouch Spacebar Stabilizer
 - `spacebar_stabilizer::topre` → `spacebar_stabilizer::topre` — Topre Spacebar Stabilizer
 - `stabilizer_housing::deskeys` → `stabilizer_housing_2u::deskeys` — Deskeys Stabilizer Housing
 - `stabilizer_housing::dynacaps` → `stabilizer_housing_2u::dynacaps` — DynaCaps Stabilizer Housing
 - `stabilizer_housing::klc_playground` → `stabilizer_housing_2u::klc_playground` — KLC Stabilizer Housing
 - `stabilizer_housing::metapulse` → `stabilizer_housing_2u::metapulse` — MetaPulse Stabilizer Housing
-- `stabilizer_housing::novatouch` → `stabilizer_housing_2u::novatouch` — NovaTouch Stabilizer Housing
-- `stabilizer_housing::topre_silenced` → `stabilizer_housing_2u::topre_silenced` — Topre Silent (Realforce) Stabilizer Housing
-- `stabilizer_housing::topre_standard` → `stabilizer_housing_2u::topre_standard` — Topre Stabilizer Housing
+- `stabilizer_housing::novatouch` → `stabilizer_housing_2u::novatouch` — NovaTouch 2u Housing
+- `stabilizer_housing::topre_silenced` → `stabilizer_housing_2u::topre_silenced` — Topre Silenced 2u Housing
+- `stabilizer_housing::topre_standard` → `stabilizer_housing_2u::topre_standard` — Topre 2u Housing
 - `stabilizer_slider::deskeys` → `stabilizer_slider_2u::deskeys` — Deskeys Stabilizer Slider
 - `stabilizer_slider::dynacaps` → `stabilizer_slider_2u::dynacaps` — DynaCaps Stabilizer Slider
-- `stabilizer_slider::hhkb_type_s` → `stabilizer_slider_2u::hhkb_type_s` — Topre Silent (Type-S) Stabilizer Slider
+- `stabilizer_slider::hhkb_type_s` → `stabilizer_slider_2u::hhkb_type_s` — HHKB Type-S 2u Slider
 - `stabilizer_slider::klc_playground` → `stabilizer_slider_2u::klc_playground` — KLC Stabilizer Slider
 - `stabilizer_slider::metapulse` → `stabilizer_slider_2u::metapulse` — MetaPulse Stabilizer Slider
-- `stabilizer_slider::novatouch` → `stabilizer_slider_2u::novatouch` — NovaTouch Stabilizer Slider
-- `stabilizer_slider::realforce_rc1_silenced_purple` → `stabilizer_slider_2u::realforce_rc1_silenced_purple` — Realforce RC1 Stabilizer Slider
-- `stabilizer_slider::topre` → `stabilizer_slider_2u::topre` — Topre Stabilizer Slider
-- `stabilizer_slider::topre_silenced` → `stabilizer_slider_2u::topre_silenced` — Topre Silent (Realforce) Stabilizer Slider
+- `stabilizer_slider::novatouch` → `stabilizer_slider_2u::novatouch` — NovaTouch 2u Slider
+- `stabilizer_slider::realforce_rc1_silenced_purple` → `stabilizer_slider_2u::realforce_rc1_silenced_purple` — Realforce RC1 2u Slider
+- `stabilizer_slider::topre` → `stabilizer_slider_2u::topre` — Topre 2u Slider
+- `stabilizer_slider::topre_silenced` → `stabilizer_slider_2u::topre_silenced` — Topre Silenced 2u Slider
 
 ## integrated_dome_catalog
 
@@ -143,6 +145,7 @@ Every record in the vendored r8 source (config/r8/) accounted for. Stable IDs on
 - `dome::topre_45g_aged` → `dm-topre-45g-aged` — Topre 45g Aged
 - `dome::topre_55g` → `dm-topre-55g` — Topre 55g
 - `dome::topre_55g_aged` → `dm-topre-55g-aged` — Topre 55g Aged
+- `dome::topre_realforce_variable` → `dm-topre-realforce-variable` — Topre Realforce Variable
 
 ## integrated_round2
 
@@ -185,9 +188,22 @@ Every record in the vendored r8 source (config/r8/) accounted for. Stable IDs on
 - `kbd::hhkb_pro_2_type_s` → `kbd::hhkb_pro_2_type_s` — HHKB Pro 2 Type-S
 - `kbd::hhkb_type_s` → `kbd::hhkb_type_s` — HHKB Type-S
 - `kbd::leopold` → `kbd::leopold` — Leopold (family)
+- `kbd::leopold_fc660c` → `kbd::leopold_fc660c` — Leopold FC660C
+- `kbd::leopold_fc980c` → `kbd::leopold_fc980c` — Leopold FC980C
 - `kbd::neverest` → `kbd::neverest` — NEVEREST
-- `kbd::novatouch` → `kbd::novatouch` — Novatouch
+- `kbd::novatouch` → `kbd::novatouch` — NovaTouch TKL
+- `kbd::realforce_101u` → `kbd::realforce_101u` — Realforce 101U
+- `kbd::realforce_103u` → `kbd::realforce_103u` — Realforce 103U
+- `kbd::realforce_104u` → `kbd::realforce_104u` — Realforce 104U
+- `kbd::realforce_106u` → `kbd::realforce_106u` — Realforce 106U
+- `kbd::realforce_108u` → `kbd::realforce_108u` — Realforce 108U
+- `kbd::realforce_86u` → `kbd::realforce_86u` — Realforce 86U
+- `kbd::realforce_87u` → `kbd::realforce_87u` — Realforce 87U
+- `kbd::realforce_89u` → `kbd::realforce_89u` — Realforce 89U
+- `kbd::realforce_91u` → `kbd::realforce_91u` — Realforce 91U
 - `kbd::realforce_r2` → `kbd::realforce_r2` — Realforce R2
+- `kbd::realforce_r3` → `kbd::realforce_r3` — Realforce R3
+- `kbd::realforce_r4` → `kbd::realforce_r4` — Realforce R4
 - `kbd::realforce_rc1` → `kbd::realforce_rc1` — Realforce RC1
 
 ## newer_measured_identity_unverified

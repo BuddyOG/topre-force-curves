@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Real-browser acceptance for the lib-6 EC Parts Builder.
+/* Real-browser acceptance for the lib-6.1 review EC Parts Builder.
  *
  * RUNNING (Electron is intentionally not vendored):
  *   electron --no-sandbox generator/tests/browser_acceptance.electron.js \
@@ -19,7 +19,7 @@ const path = require("path");
 const args = process.argv.slice(1).filter(arg => !arg.startsWith("--"));
 const pickerPath = path.resolve(args[1]);
 const outDir = path.resolve(args[2]);
-const expectedBuild = args[3] || "lib-6.0-review.1";
+const expectedBuild = args[3] || "lib-6.1-review.1";
 if (!pickerPath || !outDir) {
   process.stderr.write("usage: electron browser_acceptance.electron.js <picker.html> <outdir> [expectedBuild]\n");
   process.exit(2);
@@ -175,9 +175,17 @@ async function runCombo(width, height, tag) {
   const originalHistory = await J("history.length");
   ck(`${tag}: viewport is exact`, await J(`innerWidth===${width}`),
     {requested: width, actual: await J("innerWidth")});
-  ck(`${tag}: lib-6 page boots without obsolete product navigation`,
+  ck(`${tag}: lib-6.1 page boots without obsolete product navigation`,
     await J(`!!window.__EC_BUILDER__ && !!document.getElementById("buildView")
       && !document.querySelector("nav,.tab,#view-home,#view-library,#view-workshop,#themeToggle")`));
+  ck(`${tag}: dimension, dome-summary, and manufacturer-fallback APIs are exposed`, await J(`(api=>
+    typeof api.forceWallText==="function"
+    &&typeof api.domeMetricSummary==="function"
+    &&typeof api.mainSwitchDimensions==="function"
+    &&typeof api.relationFor==="function"
+    &&typeof api.partScopedFinding==="function"
+    &&typeof api.sameManufacturerKey==="function"
+  )(window.__EC_BUILDER__)`));
   ck(`${tag}: expected build identity is rendered`,
     await J(`PICKER_BUILD.library_build===${JSON.stringify(expectedBuild)}
       && document.getElementById("buildBadge").textContent===PICKER_BUILD.library_build`));
@@ -186,8 +194,17 @@ async function runCombo(width, height, tag) {
     && !document.getElementById("buildView").hidden
     && document.getElementById("chooseView").hidden
     && document.getElementById("statusTitle").textContent==="Choose parts to begin"`));
-  ck(`${tag}: exactly 13 qualified keyboard starters`,
-    await J("window.__EC_BUILDER__.qualifiedKeyboardPresets().length===13"));
+  ck(`${tag}: exactly 28 keyboard starters and four manufacturer kits`,
+    await J(`(function(){
+      const rows=window.__EC_BUILDER__.qualifiedKeyboardPresets();
+      return rows.length===32
+        &&rows.filter(row=>row.id.startsWith("kbd::")).length===28
+        &&rows.filter(row=>row.id.startsWith("kit::")).length===4;
+    })()`));
+  ck(`${tag}: separate 2u assembly and ring rows are rendered`, await J(`
+    document.querySelectorAll("[data-slot-row]").length===11
+    &&!!document.querySelector('[data-slot-row="stab2uAssembly"]')
+    &&!!document.querySelector('[data-slot-row="ring2u"]')`));
   ck(`${tag}: blank build has one keyboard action and no redundant toolbar action`, await J(`
     document.querySelectorAll('[data-choose="kbd"]').length===1
     &&!document.getElementById("startKeyboard")
@@ -202,18 +219,22 @@ async function runCombo(width, height, tag) {
     document.getElementById("buildView").hidden
     && !document.getElementById("chooseView").hidden
     && document.activeElement===document.getElementById("backToBuild")
-    && document.getElementById("chooseTitle").textContent==="Choose a keyboard"`));
+    && document.getElementById("chooseTitle").textContent==="Choose a starting point"`));
   ck(`${tag}: keyboard chooser exposes only qualified starters`, await J(`
-    document.querySelectorAll("[data-candidate]").length===13
+    document.querySelectorAll("[data-candidate]").length===32
     && [...document.querySelectorAll("[data-candidate]")].every(card=>
       window.__EC_BUILDER__.qualifiedKeyboardPresets().some(p=>p.id===card.dataset.candidate))`));
   await clickCandidate("kbd::hhkb_hybrid_type_s");
-  ck(`${tag}: keyboard starter fills exactly its sourced parts and no inferred empties`, await J(`(b=>
+  ck(`${tag}: keyboard starter fills its exact owner-confirmed parts`, await J(`(b=>
     b.kbd==="kbd::hhkb_hybrid_type_s"&&b.shell==="shell::hhkb"
     &&b.h1==="shell::hhkb"&&b.h2==="shell::hhkb"
     &&b.dome==="dm-topre-45g"&&b.domeSpec===null
     &&b.slider==="slider::hhkb_type_s"&&b.sl2==="stabilizer_slider_2u::hhkb_type_s"
-    &&b.ring===null&&b.spring===null&&b.keycap===null&&b.sb===null
+    &&b.stab2uAssembly==="assembly2u::hhkb_type_s"
+    &&b.ring==="silencing_ring::topre_poron_0_5"
+    &&b.ring2u==="silencing_ring::topre_poron_0_5"
+    &&b.spring==="conical_springs::topre"
+    &&b.keycap==="keycap::topre"&&b.sb==="spacebar_stabilizer::topre"
   )(window.__EC_BUILDER__.build)`));
   ck(`${tag}: fresh keyboard starter is not marked modified`,
     await J("!document.getElementById('platformCard').textContent.includes('Modified')"));
@@ -274,6 +295,139 @@ async function runCombo(width, height, tag) {
   await click("#backToBuild");
 
   await click("#clearBuild");
+  await click('[data-choose="kbd"]');
+  await clickCandidate("kit::deskeys");
+  ck(`${tag}: Deskeys 0.7 mm rings match both corrected 0.5 + 0.2 mm seats`, await J(`(function(){
+    const api=window.__EC_BUILDER__;
+    const one=api.ringGeometryNote()||"",two=api.stabilizerRingGeometryNote()||"";
+    return /seats flush/.test(one)&&/seats flush/.test(two)
+      &&/0\\.70 mm total ring seat \\(0\\.50 mm slider seat \\+ 0\\.20 mm housing seat\\) versus 0\\.70 mm ring thickness/.test(one)
+      &&/0\\.70 mm total ring seat \\(0\\.50 mm slider seat \\+ 0\\.20 mm housing seat\\) versus 0\\.70 mm ring thickness/.test(two)
+      &&document.getElementById("statusTitle").textContent!=="Ring fit needs review";
+  })()`));
+  ck(`${tag}: the Deskeys spring is the sole incompatible part`, await J(`(function(){
+    const api=window.__EC_BUILDER__,assessment=api.assessBuild();
+    const badRows=[...document.querySelectorAll('[data-slot-row]')]
+      .filter(row=>row.querySelector('.component-status .badge')
+        &&row.querySelector('.component-status .badge').textContent==="Does not work")
+      .map(row=>row.dataset.slotRow);
+    const detailNames=[...document.querySelectorAll('#compatDetails .compat-item b')]
+      .map(node=>node.textContent);
+    return assessment.counts.bad===1
+      &&assessment.partFindings.length===1
+      &&assessment.partFindings[0].part==="Deskeys Conical Springs"
+      &&assessment.relations.every(relation=>
+        relation.a!=="Deskeys Conical Springs"&&relation.b!=="Deskeys Conical Springs")
+      &&JSON.stringify(badRows)===JSON.stringify(["spring"])
+      &&JSON.stringify(detailNames)===JSON.stringify(["Deskeys Conical Springs"])
+      &&document.getElementById("statusTitle").textContent==="1 incompatible part"
+      &&!document.getElementById("compatDetails").textContent.includes("Deskeys Conical Springs +");
+  })()`));
+  // Isolate the intrinsic spring finding before checking candidate sliders.
+  // The complete Deskeys kit also contains legitimate pair-specific evidence,
+  // which must not be conflated with the spring-only attribution contract.
+  await click("#clearBuild");
+  await click('[data-choose="spring"]');
+  await click("#showIncompatible");
+  await clickCandidate("conical_springs::deskeys_conical");
+  await click('[data-choose="slider"]');
+  const innocentSliderOptions = await J(`(function(){
+    const cards=[...document.querySelectorAll('[data-candidate^="slider::"]')];
+    const badBadges=[...document.querySelectorAll('[data-candidate^="slider::"] .badge')]
+      .filter(badge=>badge.textContent==="Does not work").map(badge=>badge.textContent);
+    const hiddenText=document.getElementById("resultCount").textContent;
+    return {pass:cards.length===8&&!hiddenText.includes("known incompatible hidden")
+      &&badBadges.length===0,count:cards.length,hiddenText,badBadges};
+  })()`);
+  ck(`${tag}: a bad spring does not flag or hide innocent slider options`,
+    innocentSliderOptions.pass, innocentSliderOptions);
+  await click("#backToBuild");
+
+  await click("#clearBuild");
+  await click('[data-choose="kbd"]');
+  await clickCandidate("kit::dynacaps");
+  const dynaDefault = await J(`(function(){
+    const api=window.__EC_BUILDER__,b=api.build;
+    const one=api.ringGeometryNote()||"",two=api.stabilizerRingGeometryNote()||"";
+    const statusTitle=document.getElementById("statusTitle").textContent;
+    const sliderText=document.querySelector('[data-slot-row="slider"]').textContent;
+    const stabilizerSliderText=document.querySelector('[data-slot-row="sl2"]').textContent;
+    const pass=b.ring==="silencing_ring::dynacaps_silicone_0_5"
+      &&b.ring2u==="silencing_ring::dynacaps_silicone_0_5"
+      &&/0\\.25 mm intentional pre-compression \\(manufacturer recommended\\)/.test(one)
+      &&/0\\.25 mm intentional pre-compression \\(manufacturer recommended\\)/.test(two)
+      &&statusTitle!=="Ring fit needs review"
+      &&sliderText.indexOf("4 mm nominal travel")<0
+      &&stabilizerSliderText.indexOf("4 mm nominal travel")<0;
+    return {pass,ring:b.ring,ring2u:b.ring2u,one,two,statusTitle,
+      sliderHasNominalTravel:sliderText.includes("4 mm nominal travel"),
+      stabilizerSliderHasNominalTravel:stabilizerSliderText.includes("4 mm nominal travel")};
+  })()`);
+  ck(`${tag}: DynaCaps kit loads the recommended 0.5 mm Silicone rings for 1u and 2u`,
+    dynaDefault.pass, dynaDefault);
+  ck(`${tag}: calculated Travel and Dome compression are visible for the DynaCaps default`, await J(`(function(){
+    const dimensions=window.__EC_BUILDER__.mainSwitchDimensions();
+    return dimensions.compressionMm===0.25
+      &&dimensions.geometricTravelMm===3.75
+      &&dimensions.forceWallMm===null
+      &&dimensions.travelMm===3.75
+      &&dimensions.travelSource==="geometry"
+      &&document.getElementById("dimensionTravel").textContent==="3.75 mm"
+      &&document.getElementById("dimensionCompression").textContent==="0.25 mm";
+  })()`));
+  ck(`${tag}: intentional DynaCaps compression is a sourced design note`, await J(`(function(){
+    const notes=[...document.querySelectorAll("#compatDetails .compat-item")];
+    return notes.filter(row=>row.querySelector("strong")&&row.querySelector("strong").textContent==="Manufacturer design note").length===2
+      &&notes.filter(row=>row.querySelector('a[href="https://omnitype.com/pages/dynacap"]')).length===2;
+  })()`));
+  await click('[data-choose="slider"]');
+  ck(`${tag}: DynaCaps 1u chooser omits nominal travel`, await J(`
+    !document.querySelector('[data-candidate="slider::dynacaps"]').textContent.includes("4 mm nominal travel")`));
+  await click('[data-candidate="slider::dynacaps"] [data-details]');
+  ck(`${tag}: DynaCaps 1u details omit nominal travel`, await J(`
+    !document.getElementById("detailBody").textContent.includes("Nominal travel")`));
+  await click("#closeDetails");
+  await click("#backToBuild");
+  await click('[data-choose="sl2"]');
+  ck(`${tag}: DynaCaps 2u chooser omits nominal travel`, await J(`
+    !document.querySelector('[data-candidate="stabilizer_slider_2u::dynacaps"]').textContent.includes("4 mm nominal travel")`));
+  await click('[data-candidate="stabilizer_slider_2u::dynacaps"] [data-details]');
+  ck(`${tag}: DynaCaps 2u details omit nominal travel`, await J(`
+    !document.getElementById("detailBody").textContent.includes("Nominal travel")`));
+  await click("#closeDetails");
+  await click("#backToBuild");
+
+  await click("#clearBuild");
+  await click('[data-choose="stab2uAssembly"]');
+  ck(`${tag}: 2u assembly chooser exposes all ten owner-confirmed assemblies`, await J(`
+    document.querySelectorAll("[data-candidate]").length===10
+    &&!!document.querySelector('[data-candidate="assembly2u::topre_silenced"]')
+    &&!!document.querySelector('[data-candidate="assembly2u::deskeys"]')
+    &&!!document.querySelector('[data-candidate="assembly2u::dynacaps"]')
+    &&!!document.querySelector('[data-candidate="assembly2u::klc"]')
+    &&!!document.querySelector('[data-candidate="assembly2u::metakeebs"]')`));
+  await clickCandidate("assembly2u::topre_silenced");
+  ck(`${tag}: Topre Silenced assembly loads its 1.0 mm flush geometry`, await J(`(function(){
+    const api=window.__EC_BUILDER__,b=api.build;
+    return b.stab2uAssembly==="assembly2u::topre_silenced"
+      &&b.h2==="stabilizer_housing_2u::topre_silenced"
+      &&b.sl2==="stabilizer_slider_2u::topre_silenced"
+      &&b.ring2u==="silencing_ring::topre_2u_poron_1_0"
+      &&/seats flush/.test(api.stabilizerRingGeometryNote()||"");
+  })()`));
+  await click('[data-choose="ring2u"]');
+  await clickCandidate("silencing_ring::topre_poron_0_5");
+  ck(`${tag}: thinner 2u ring visibly reports chatter risk`, await J(`
+    /0\\.50 mm top-out clearance \\(chatter risk\\)/.test(
+      window.__EC_BUILDER__.stabilizerRingGeometryNote()||"")
+    &&window.__EC_BUILDER__.isAssemblyModified()`));
+  await click('[data-choose="ring2u"]');
+  await clickCandidate("ring::none");
+  ck(`${tag}: explicit no-ring still reports nonzero 2u chatter clearance`, await J(`
+    /1\\.00 mm top-out clearance \\(chatter risk\\)/.test(
+      window.__EC_BUILDER__.stabilizerRingGeometryNote()||"")`));
+
+  await click("#clearBuild");
   await click('[data-choose="slider"]');
   ck(`${tag}: chooser Back control owns initial focus`,
     await J("document.activeElement===document.getElementById('backToBuild')"));
@@ -306,33 +460,92 @@ async function runCombo(width, height, tag) {
   })()`));
   await click("#backToBuild");
   await click('[data-choose="spring"]');
-  ck(`${tag}: owner-pending DynaCaps spring claim is Not verified`, await J(`(function(){
+  ck(`${tag}: same-manufacturer DynaCaps spring is not flagged Not verified`, await J(`(function(){
     const card=document.querySelector('[data-candidate="conical_springs::dynacaps"]');
-    return !!card&&card.querySelector('.badge').textContent==="Not verified"
-      &&!card.textContent.includes("Works with conditions");
+    return !!card&&card.querySelector('.badge').textContent==="Manufacturer matched"
+      &&!card.textContent.includes("Not verified");
   })()`));
-  await click("#backToBuild");
+  await clickCandidate("conical_springs::dynacaps");
+  await click('[data-choose="h1"]');
+  ck(`${tag}: same-manufacturer DynaCaps housing is not flagged Not verified`, await J(`(function(){
+    const card=document.querySelector('[data-candidate="housings::dynacaps"]');
+    return !!card&&card.querySelector('.badge').textContent==="Manufacturer matched"
+      &&!card.textContent.includes("Not verified");
+  })()`));
+  await clickCandidate("housings::dynacaps");
+  ck(`${tag}: same-manufacturer component stack has no unverified relationship`, await J(`(function(){
+    const api=window.__EC_BUILDER__,assessment=api.assessBuild();
+    return assessment.relations.length===3
+      &&assessment.relations.every(relation=>relation.state==="works")
+      &&document.getElementById("statusTitle").textContent==="No compatibility issues found"
+      &&![...document.querySelectorAll(".component-status .badge")]
+        .some(badge=>badge.textContent==="Not verified");
+  })()`));
 
   await click("#clearBuild");
   await click('[data-choose="dome"]');
   ck(`${tag}: dome choices are labeled Not evaluated`, await J(`
     !document.getElementById("domeNote").hidden
     &&[...document.querySelectorAll(".candidate .badge")].every(x=>x.textContent==="Not evaluated")`));
-  ck(`${tag}: exact Sony Gray 02 specimen row is selectable`,
-    await clickDomeSpecimen("dome::sony_bke_gray_02"));
-  ck(`${tag}: exact dome specimen projects collapse and both index metrics`, await J(`(function(){
-    const api=window.__EC_BUILDER__,m=api.DOME_MEASUREMENTS.find(x=>x.specimen_id==="dome::sony_bke_gray_02");
-    const text=document.querySelector('[data-slot-row="dome"]').textContent;
-    return !!m&&api.build.domeSpec===m.specimen_id
-      &&text.includes(m.label.replace(/_/g," "))
-      &&text.includes(m.collapse_force_gf.toFixed(1)+" gf measured")
-      &&text.includes("1 measured specimen")
-      &&text.includes("Weight Index "+m.weight_index.toFixed(1))
-      &&text.includes("Tactility Index "+m.tactility_index.toFixed(1));
+  const brownCatalogId = await J(`window.__EC_BUILDER__.DOME_MEASUREMENTS.find(
+    row=>row.specimen_id==="dome::deskeys_v3_brown_63g").catalog_id`);
+  ck(`${tag}: measured Deskeys V3 Brown 63g dome is selectable`,
+    await clickCandidate(brownCatalogId));
+  ck(`${tag}: selected dome summary has the requested exact order and Force-Wall`, await J(`(function(){
+    const api=window.__EC_BUILDER__,m=api.DOME_MEASUREMENTS.find(
+      row=>row.specimen_id==="dome::deskeys_v3_brown_63g");
+    const summary=document.querySelector('[data-slot-row="dome"] .selection-meta').textContent;
+    return m.force_wall_mm===3.8525
+      &&api.forceWallText([m])==="3.85 mm"
+      &&api.domeMetricSummary([m])==="Weight Index 79.1 · Tactility Index 67.2 · Force-Wall 3.85 mm"
+      &&summary==="Weight Index 79.1 · Tactility Index 67.2 · Force-Wall 3.85 mm";
   })()`));
   ck(`${tag}: dome-only build asks for another part`, await J(`
     document.getElementById("statusTitle").textContent==="Choose another part to check compatibility"
     &&document.getElementById("statusCopy").textContent.includes("Dome fit is not evaluated")`));
+  await click('[data-choose="dome"]');
+  await click(`[data-candidate="${brownCatalogId}"] [data-details]`);
+  ck(`${tag}: measured dome Details shows Weight, Tactility, and Force-Wall values`, await J(`(function(){
+    const rows=Object.fromEntries([...document.querySelectorAll("#detailBody .detail-cell")]
+      .map(cell=>[cell.querySelector("dt").textContent,cell.querySelector("dd").textContent]));
+    return rows["Weight Index"]==="79.1"
+      &&rows["Tactility Index"]==="67.2"
+      &&rows["Force-Wall"]==="3.85 mm";
+  })()`));
+  await click("#closeDetails");
+  await click("#backToBuild");
+
+  await click("#clearBuild");
+  await click('[data-choose="kbd"]');
+  await clickCandidate("kit::dynacaps");
+  await click('[data-choose="dome"]');
+  await clickCandidate(brownCatalogId);
+  ck(`${tag}: geometric travel wins when shorter than the selected dome Force-Wall`, await J(`(function(){
+    const dimensions=window.__EC_BUILDER__.mainSwitchDimensions();
+    return dimensions.compressionMm===0.25
+      &&dimensions.geometricTravelMm===3.75
+      &&dimensions.forceWallMm===3.8525
+      &&dimensions.travelMm===3.75
+      &&dimensions.travelSource==="geometry"
+      &&document.getElementById("dimensionTravel").textContent==="3.75 mm"
+      &&document.getElementById("dimensionCompression").textContent==="0.25 mm";
+  })()`));
+
+  await click("#clearBuild");
+  await click('[data-choose="kbd"]');
+  await clickCandidate("kbd::realforce_r2");
+  await click('[data-choose="dome"]');
+  await clickCandidate(brownCatalogId);
+  ck(`${tag}: measured Force-Wall wins when shorter than geometric travel`, await J(`(function(){
+    const dimensions=window.__EC_BUILDER__.mainSwitchDimensions();
+    return dimensions.compressionMm===0
+      &&dimensions.geometricTravelMm===4
+      &&dimensions.forceWallMm===3.8525
+      &&dimensions.travelMm===3.8525
+      &&dimensions.travelSource==="force-wall"
+      &&document.getElementById("dimensionTravel").textContent==="3.85 mm"
+      &&document.getElementById("dimensionCompression").textContent==="0.00 mm";
+  })()`));
 
   ck(`${tag}: four compatibility states use only customer-facing labels`, await J(`
     JSON.stringify([

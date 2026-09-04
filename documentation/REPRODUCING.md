@@ -1,10 +1,10 @@
 # Verifying the published site
 
 The repository publishes Force Curve Bench `fc-3.4` and EC Parts Builder
-`lib-6.0`. The Force Curve Bench canonical viewer URL is
+`lib-6.1`. The Force Curve Bench canonical viewer URL is
 [https://buddyog.github.io/topre-force-curves/](https://buddyog.github.io/topre-force-curves/),
 and its frozen release tag is `fc-3.4`. The builder is published at
-`dome-lab-parts.html` and is bound to tag `ec-parts-lib-6.0`.
+`dome-lab-parts.html` and is bound to tag `ec-parts-lib-6.1`.
 
 `SITE_RELEASE_MANIFEST.json` and the published `SHA256SUMS` are the active
 combined-site authority. `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` remains the
@@ -23,9 +23,9 @@ New physical acquisitions enter this process through the frozen
 alone is not Tier 1 or Tier 2 verification: the importer neither creates a new
 evidence epoch nor regenerates a public package.
 
-## Published lib-6.0 package verification
+## Published lib-6.1 package verification
 
-From an extracted lib-6.0 package root, run:
+From an extracted lib-6.1 package root, run:
 
 ```text
 python generator/tools/build_parts_library_release.py verify .
@@ -33,7 +33,7 @@ python generator/tools/build_parts_library_release.py verify .
 
 On systems where the command is named `python3`, substitute `python3`. The
 verifier checks the site manifest and checksum inventory, validates
-the lib-6.0 public-release identity, proves that `dome-lab-parts.html` is
+the lib-6.1 public-release identity, proves that `dome-lab-parts.html` is
 exactly the generated release picker, and re-verifies the protected fc-3.4
 predecessor.
 Every protected predecessor endpoint other than the declared builder
@@ -41,7 +41,7 @@ replacement, the canonical evidence tree, and all 184 raw CSV paths must remain
 byte-identical to fc-3.4.
 
 The Parts endpoint is the intentional exception to predecessor-page
-preservation: `dome-lab-parts.html` is replaced by the generator-owned lib-6.0
+preservation: `dome-lab-parts.html` is replaced by the generator-owned lib-6.1
 release. Overlay source paths and permitted generated changes are explicit and
 fail closed; an undeclared source replacement or unrelated generated change is
 a verification failure.
@@ -118,7 +118,7 @@ Key paths are:
 | Production viewer | `index.html` |
 | Open Graph image | `assets/force-curve-bench-fc-3.4-og.png` |
 | Protected fc-3.4 predecessor manifest | `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` |
-| Active lib-6.0 combined-site manifest | `SITE_RELEASE_MANIFEST.json` |
+| Active lib-6.1 combined-site manifest | `SITE_RELEASE_MANIFEST.json` |
 | Whole-package checksum list | `SHA256SUMS` |
 | Generator source and lockfiles | `generator/` |
 | Exact generated output | `generated/` |
@@ -128,8 +128,8 @@ Key paths are:
 | Git byte-preservation policy | `.gitattributes`, exact content `* -text` |
 | GitHub Pages static-publication marker | `.nojekyll`, exactly zero bytes |
 | fc-3.4 legacy endpoints | Three preserved HTML continuity endpoints |
-| Protected by the lib-6.0 overlay | Every predecessor endpoint except the declared builder replacement |
-| Replaced by lib-6.0 | `dome-lab-parts.html` |
+| Protected by the lib-6.1 overlay | Every predecessor endpoint except the declared builder replacement |
+| Replaced by lib-6.1 | `dome-lab-parts.html` |
 | Preserved raw measurements | 184 CSV files at their existing repository-relative paths |
 
 The public Open Graph asset URL is
@@ -318,12 +318,24 @@ open a shared `?sel=` comparison, verify the documentation and bundled-license
 links, check the Open Graph URL/image, and perform a human phone-width visual
 check.
 
-For lib-6.0, load `dome-lab-parts.html` directly and through the Shopify
+For lib-6.1, load `dome-lab-parts.html` directly and through the Shopify
 wrapper. Confirm that Shopify owns Dome Lab navigation and that the
-standalone builder has no tabs or other-tool links. Verify 9 component rows,
-13 keyboard starters, 68 exact specimen measurements carrying measured collapse
-force plus released Weight Index and Tactility Index values, 2 public keycap
-additions, and the exact labels **Works**, **Works with conditions**, **Does not
-work**, **Not verified**, and dome-only **Not evaluated**. Confirm the consumer
-contains 338 decision-changing edges while the full 3,403-edge config audit
-passes. These observations do not alter package bytes.
+standalone builder has no tabs or other-tool links. Verify 11 component rows,
+28 keyboard starters, 4 manufacturer-parts shortcuts, 10 recorded 2u
+assemblies, and 68 exact specimen measurements. Confirm that eligible measured
+domes expose Weight Index, Tactility Index, and Force-Wall, and that Travel and
+Dome compression respond to the selected 1u geometry. Verify the exact labels
+**Works**, **Works with conditions**, **Does not work**, **Not verified**,
+**Manufacturer matched**, and dome-only **Not evaluated**.
+
+Confirm that the browser projection contains 241 decision-changing pair edges
+and that the complete 3,570-edge audit closure remains unchanged. Select each
+part-scoped conical-spring case and
+verify that only the spring row is flagged once, unrelated parts remain
+unflagged, and the whole-build result inherits the issue. Also exercise a true
+pair-specific condition or conflict to confirm that it remains present and
+continues to govern the rollup. These observations do not alter package bytes.
+
+For historical lib-6.0 verification, use tag `ec-parts-lib-6.0` and the
+instructions and counts bundled with that tag. Do not compare lib-6.0 bytes to
+the current lib-6.1 manifest.

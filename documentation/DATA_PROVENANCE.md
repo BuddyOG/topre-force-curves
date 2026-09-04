@@ -6,7 +6,7 @@
 > [https://buddyog.github.io/topre-force-curves/](https://buddyog.github.io/topre-force-curves/)
 > and the frozen release tag is `fc-3.4`. Exact production-package hashes are
 > recorded by `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json`. EC Parts Builder
-> `lib-6.0` is published from tag `ec-parts-lib-6.0`. The active
+> `lib-6.1` is published from tag `ec-parts-lib-6.1`. The active
 > `SITE_RELEASE_MANIFEST.json` and `SHA256SUMS` inventory cover the combined
 > site while retaining the fc-3.4 manifest as the protected predecessor record.
 
@@ -83,7 +83,7 @@ Their preservation is a compatibility decision. The final 752-file
 repository-root inventory, including those 187 preserved files, is sealed by
 `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` and `SHA256SUMS`.
 
-### Published lib-6.0 EC Parts Builder overlay
+### Historical lib-6.0 EC Parts Builder overlay
 
 The `lib-6.0` release replaces
 `dome-lab-parts.html` with the generator-owned standalone EC Parts Builder.
@@ -109,6 +109,27 @@ Builder presentation/provenance set and rejects changes to the Force Curve
 viewer or scientific evidence. `SITE_RELEASE_MANIFEST.json` plus `SHA256SUMS`
 are the active combined-site authority; the fc-3.4 release manifest remains the
 protected predecessor record.
+
+### Published lib-6.1 EC Parts Builder overlay
+
+The `lib-6.1` release supersedes lib-6.0 at `dome-lab-parts.html` without
+altering the protected fc-3.4 scientific surfaces. Its complete compatibility
+closure contains 3,570 edges, and its browser projection contains 241
+decision-changing pair edges. It
+omits 97 generic matrix-expanded edges that repeat three part-scoped
+conical-spring findings: Deskeys and KLC are part-scoped **Does not work**;
+MetaPulse is part-scoped **Not verified**. The consumer displays each issue
+once on the culprit spring, leaves unrelated parts unflagged, and carries the
+part issue into the whole-build result. Pair-specific findings not subsumed by
+a part issue remain in the projection.
+
+The release also publishes 11 component rows, 28 keyboard starters, 4
+manufacturer-parts shortcuts, 10 recorded 2u assemblies, and Force-Wall /
+Travel / Dome compression presentation for eligible measured domes. The
+controlled overlay keeps every other protected predecessor endpoint, all 184
+raw CSV paths, and the canonical-evidence tree byte-identical to fc-3.4. The
+historical `ec-parts-lib-6.0` tag retains its 338-edge consumer projection and
+3,403-edge audit record.
 
 The publication root also adds `.gitattributes` with exact content `* -text`.
 This disables Git text and line-ending normalization so platform-specific

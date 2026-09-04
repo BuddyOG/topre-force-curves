@@ -1,0 +1,178 @@
+{
+ "schema": "stabilizer-assemblies-v1",
+ "assemblies": [
+  {
+   "id": "assembly2u::hhkb",
+   "name": "HHKB 2u Stabilizer Assembly",
+   "maker": "PFU",
+   "type": "2u stabilizer assembly",
+   "size_u": 2,
+   "notes": [
+    "The 2u housing is molded into the HHKB shell and is not loaded as a loose part."
+   ],
+   "slots": {
+    "h2": null,
+    "sl2": "stabilizer_slider::topre",
+    "ring2u": "ring::none"
+   },
+   "housingMode": "shell",
+   "housingLabel": "HHKB shell-integrated 2u housing",
+   "evidenceBasis": "Owner supplied and confirmed."
+  },
+  {
+   "id": "assembly2u::hhkb_type_s",
+   "name": "HHKB Type-S 2u Stabilizer Assembly",
+   "maker": "PFU",
+   "type": "2u stabilizer assembly",
+   "size_u": 2,
+   "notes": [
+    "Loads for HHKB Type-S keyboards. The 2u housing is molded into the shell and is not loaded as a loose part."
+   ],
+   "slots": {
+    "h2": null,
+    "sl2": "stabilizer_slider::hhkb_type_s",
+    "ring2u": "silencing_ring::topre_poron_0_5"
+   },
+   "housingMode": "shell",
+   "housingLabel": "HHKB Type-S shell-integrated 2u housing",
+   "evidenceBasis": "Owner supplied and confirmed."
+  },
+  {
+   "id": "assembly2u::realforce_rc1",
+   "name": "Realforce RC1 2u Stabilizer Assembly",
+   "maker": "Realforce",
+   "type": "2u stabilizer assembly",
+   "size_u": 2,
+   "notes": [
+    "The 2u housing is molded into the Realforce RC1 shell and is not loaded as a loose part."
+   ],
+   "slots": {
+    "h2": null,
+    "sl2": "stabilizer_slider::realforce_rc1_silenced_purple",
+    "ring2u": "silencing_ring::topre_poron_0_5"
+   },
+   "housingMode": "shell",
+   "housingLabel": "Realforce RC1 shell-integrated 2u housing",
+   "evidenceBasis": "Owner supplied and confirmed."
+  },
+  {
+   "id": "assembly2u::topre",
+   "name": "Topre 2u Stabilizer Assembly",
+   "maker": "Topre",
+   "type": "2u stabilizer assembly",
+   "size_u": 2,
+   "notes": [
+    "Standard unsilenced loose 2u assembly used by keyboards including the Leopold FC660C and FC980C."
+   ],
+   "slots": {
+    "h2": "stabilizer_housing::topre_standard",
+    "sl2": "stabilizer_slider::topre",
+    "ring2u": "ring::none"
+   },
+   "housingMode": "loose",
+   "evidenceBasis": "Owner supplied and confirmed."
+  },
+  {
+   "id": "assembly2u::topre_silenced",
+   "name": "Topre Silenced 2u Stabilizer Assembly",
+   "maker": "Topre",
+   "type": "2u stabilizer assembly",
+   "size_u": 2,
+   "notes": [
+    "The slider has no ring seat; the housing provides 1.0 mm of ring space. Changing the ring must be evaluated by the same chatter and compression calculation as other silenced assemblies."
+   ],
+   "slots": {
+    "h2": "stabilizer_housing::topre_silenced",
+    "sl2": "stabilizer_slider::topre_silenced",
+    "ring2u": "silencing_ring::topre_2u_poron_1_0"
+   },
+   "housingMode": "loose",
+   "evidenceBasis": "Owner supplied and confirmed."
+  },
+  {
+   "id": "assembly2u::novatouch",
+   "name": "NovaTouch 2u Stabilizer Assembly",
+   "maker": "Cooler Master",
+   "type": "2u stabilizer assembly",
+   "size_u": 2,
+   "notes": [
+    "Factory NovaTouch loose 2u housing and slider with 4.0 mm nominal travel and no silencing ring."
+   ],
+   "slots": {
+    "h2": "stabilizer_housing::novatouch",
+    "sl2": "stabilizer_slider::novatouch",
+    "ring2u": "ring::none"
+   },
+   "housingMode": "loose",
+   "evidenceBasis": "Owner supplied and confirmed."
+  },
+  {
+   "id": "assembly2u::deskeys",
+   "name": "Deskeys 2u Stabilizer Assembly",
+   "maker": "Deskeys",
+   "type": "2u stabilizer assembly",
+   "size_u": 2,
+   "notes": [
+    "Manufacturer starting point uses the Deskeys 0.7 mm Poron ring for both 1u and 2u sliders."
+   ],
+   "slots": {
+    "h2": "stabilizer_housing::deskeys",
+    "sl2": "stabilizer_slider::deskeys",
+    "ring2u": "silencing_ring::des_poron_0_7"
+   },
+   "housingMode": "loose",
+   "evidenceBasis": "Owner-confirmed in EC_Parts_Starting_Point_Defaults_Review.xlsx (2026-09-03; SHA256 e2ac489dcd92a193291e9278afebb6152e8d19a7b3325781a5948de749134f9a)."
+  },
+  {
+   "id": "assembly2u::dynacaps",
+   "name": "DynaCaps 2u Stabilizer Assembly",
+   "maker": "DynaCaps",
+   "type": "2u stabilizer assembly",
+   "size_u": 2,
+   "notes": [
+    "Manufacturer starting point uses the recommended DynaCaps 0.5 mm Silicone ring for both 1u and 2u sliders."
+   ],
+   "slots": {
+    "h2": "stabilizer_housing::dynacaps",
+    "sl2": "stabilizer_slider::dynacaps",
+    "ring2u": "silencing_ring::dynacaps_silicone_0_5"
+   },
+   "housingMode": "loose",
+   "evidenceBasis": "Owner correction on 2026-09-03 supersedes the workbook ring choice; the 0.5 mm Silicone ring recommendation and 1u/2u fit values are published by OmniType at https://omnitype.com/products/dynacap-silencing-rings."
+  },
+  {
+   "id": "assembly2u::klc",
+   "name": "KLC 2u Stabilizer Assembly",
+   "maker": "KLC",
+   "type": "2u stabilizer assembly",
+   "size_u": 2,
+   "notes": [
+    "Manufacturer starting point explicitly uses no silencing ring on either the 1u or 2u slider."
+   ],
+   "slots": {
+    "h2": "stabilizer_housing::klc_playground",
+    "sl2": "stabilizer_slider::klc_playground",
+    "ring2u": "ring::none"
+   },
+   "housingMode": "loose",
+   "evidenceBasis": "Owner-confirmed in EC_Parts_Starting_Point_Defaults_Review.xlsx (2026-09-03; SHA256 e2ac489dcd92a193291e9278afebb6152e8d19a7b3325781a5948de749134f9a)."
+  },
+  {
+   "id": "assembly2u::metakeebs",
+   "name": "MetaKeebs 2u Stabilizer Assembly",
+   "maker": "MetaKeebs",
+   "type": "2u stabilizer assembly",
+   "size_u": 2,
+   "notes": [
+    "Manufacturer starting point uses the MetaKeebs 0.5 mm Poron ring for both 1u and 2u sliders; the underlying catalog parts retain their MetaPulse names."
+   ],
+   "slots": {
+    "h2": "stabilizer_housing::metapulse",
+    "sl2": "stabilizer_slider::metapulse",
+    "ring2u": "silencing_ring::metapulse_poron_0_5"
+   },
+   "housingMode": "loose",
+   "evidenceBasis": "Owner-confirmed in EC_Parts_Starting_Point_Defaults_Review.xlsx (2026-09-03; SHA256 e2ac489dcd92a193291e9278afebb6152e8d19a7b3325781a5948de749134f9a)."
+  }
+ ]
+}

@@ -25,7 +25,28 @@
   "stem": "mx",
   "ring_seat_mm": 0.25,
   "travel_mm": 4,
+  "hide_nominal_travel": true,
   "model": "topre_silenced_purple",
+  "ring_fit_policy": {
+   "housing_rid": "housing::dynacaps",
+   "ring_rids": [
+    "silencing_ring::dynacaps_silicone_0_3",
+    "silencing_ring::dynacaps_silicone_0_5",
+    "silencing_ring::dynacaps_poron_0_3",
+    "silencing_ring::dynacaps_poron_0_5"
+   ],
+   "intentional_compressions": [
+    {
+     "mm": 0.05,
+     "status": "manufacturer_supported"
+    },
+    {
+     "mm": 0.25,
+     "status": "manufacturer_recommended"
+    }
+   ],
+   "source_url": "https://omnitype.com/pages/dynacap"
+  },
   "dimensions": {},
   "manufacturer": "OmniType"
  },
@@ -204,7 +225,7 @@
   "legacy_ids": [
    "stabilizer_slider_2u::deskeys"
   ],
-  "ring_seat_mm": 0,
+  "ring_seat_mm": 0.5,
   "travel_mm": 4,
   "model": "topre_standard",
   "dimensions": {},
@@ -221,13 +242,34 @@
   ],
   "ring_seat_mm": 0.25,
   "travel_mm": 4,
+  "hide_nominal_travel": true,
   "model": "topre_silenced_purple",
+  "ring_fit_policy": {
+   "housing_rid": "stabilizer_housing::dynacaps",
+   "ring_rids": [
+    "silencing_ring::dynacaps_silicone_0_3",
+    "silencing_ring::dynacaps_silicone_0_5",
+    "silencing_ring::dynacaps_poron_0_3",
+    "silencing_ring::dynacaps_poron_0_5"
+   ],
+   "intentional_compressions": [
+    {
+     "mm": 0.05,
+     "status": "manufacturer_supported"
+    },
+    {
+     "mm": 0.25,
+     "status": "manufacturer_recommended"
+    }
+   ],
+   "source_url": "https://omnitype.com/pages/dynacap"
+  },
   "dimensions": {},
   "stem": "mx",
   "manufacturer": "OmniType"
  },
  "stabilizer_slider::hhkb_type_s": {
-  "part_name": "Topre Silent (Type-S) Stabilizer Slider",
+  "part_name": "HHKB Type-S 2u Slider",
   "category": "stabilizer_slider",
   "brand": "PFU",
   "tier": "builder",
@@ -279,7 +321,7 @@
   "manufacturer": "MetaKeebs"
  },
  "stabilizer_slider::novatouch": {
-  "part_name": "NovaTouch Stabilizer Slider",
+  "part_name": "NovaTouch 2u Slider",
   "category": "stabilizer_slider",
   "brand": "Cooler Master",
   "tier": "builder",
@@ -298,7 +340,7 @@
   "version": "NovaTouch"
  },
  "stabilizer_slider::realforce_rc1_silenced_purple": {
-  "part_name": "Realforce RC1 Stabilizer Slider",
+  "part_name": "Realforce RC1 2u Slider",
   "category": "stabilizer_slider",
   "brand": "Realforce",
   "tier": "builder",
@@ -318,27 +360,27 @@
   "version": "Topre Silent (Realforce RC1)"
  },
  "stabilizer_slider::topre_silenced": {
-  "part_name": "Topre Silent (Realforce) Stabilizer Slider",
+  "part_name": "Topre Silenced 2u Slider",
   "category": "stabilizer_slider",
-  "brand": "Realforce",
+  "brand": "Topre",
   "tier": "builder",
   "notes": [
-   "Uses the Topre Realforce Silent 1.0 mm Poron Stabilizer Slider Silencing Ring — the oversized ring this housing/slider geometry is shaped for. | See note_rf_silent_stab_assembly."
+   "Same nominal dimensions as the unsilenced Topre 2u slider, with reduced housing-contact surface area and no ring seat. Pair with the Topre Silenced 2u housing and its 1.0 mm Poron ring."
   ],
   "legacy_ids": [
    "stabilizer_slider_2u::topre_silenced"
   ],
-  "ring_seat_mm": 0,
+  "ring_seat_mm": 0.0,
   "travel_mm": 4,
   "model": "topre_standard",
   "dimensions": {},
   "stem": "topre",
   "manufacturer": "Topre",
   "source_url": "https://unrealkeyboards.com/products/oem-topre-stabilizers",
-  "version": "Topre Silent (Realforce)"
+  "version": "Topre Silenced 2u"
  },
  "stabilizer_slider::topre": {
-  "part_name": "Topre Stabilizer Slider",
+  "part_name": "Topre 2u Slider",
   "category": "stabilizer_slider",
   "brand": "Topre",
   "tier": "builder",
@@ -361,7 +403,7 @@
   "legacy_ids": [
    "stabilizer_housing_2u::deskeys"
   ],
-  "ring_offset_mm": 2,
+  "ring_offset_mm": 0.2,
   "dimensions": {},
   "manufacturer": "Deskeys"
  },
@@ -373,7 +415,7 @@
   "legacy_ids": [
    "stabilizer_housing_2u::dynacaps"
   ],
-  "ring_offset_mm": 2,
+  "ring_offset_mm": 0.0,
   "dimensions": {},
   "manufacturer": "OmniType"
  },
@@ -385,7 +427,7 @@
   "legacy_ids": [
    "stabilizer_housing_2u::klc_playground"
   ],
-  "ring_offset_mm": 2,
+  "ring_offset_mm": 0.0,
   "dimensions": {},
   "manufacturer": "KLC"
  },
@@ -400,12 +442,12 @@
   "legacy_ids": [
    "stabilizer_housing_2u::metapulse"
   ],
-  "ring_offset_mm": 2,
+  "ring_offset_mm": 0.0,
   "dimensions": {},
   "manufacturer": "MetaKeebs"
  },
  "stabilizer_housing::novatouch": {
-  "part_name": "NovaTouch Stabilizer Housing",
+  "part_name": "NovaTouch 2u Housing",
   "category": "stabilizer_housing",
   "brand": "Cooler Master",
   "tier": "builder",
@@ -415,37 +457,37 @@
   "legacy_ids": [
    "stabilizer_housing_2u::novatouch"
   ],
-  "ring_offset_mm": 2,
+  "ring_offset_mm": 0.0,
   "dimensions": {},
   "manufacturer": "Topre",
   "version": "NovaTouch"
  },
  "stabilizer_housing::topre_silenced": {
-  "part_name": "Topre Silent (Realforce) Stabilizer Housing",
+  "part_name": "Topre Silenced 2u Housing",
   "category": "stabilizer_housing",
-  "brand": "Realforce",
+  "brand": "Topre",
   "tier": "builder",
   "notes": [
-   "Uses the Topre Realforce Silent 1.0 mm Poron Stabilizer Slider Silencing Ring — the oversized ring this housing/slider geometry is shaped for. | See note_rf_silent_stab_assembly."
+   "Provides 1.0 mm of ring space for the Topre 2u 1.0 mm Poron silencing ring."
   ],
   "legacy_ids": [
    "stabilizer_housing_2u::topre_silenced"
   ],
-  "ring_offset_mm": 2,
+  "ring_offset_mm": 1.0,
   "dimensions": {},
   "manufacturer": "Topre",
   "source_url": "https://unrealkeyboards.com/products/oem-topre-stabilizers",
-  "version": "Topre Silent (Realforce)"
+  "version": "Topre Silenced 2u"
  },
  "stabilizer_housing::topre_standard": {
-  "part_name": "Topre Stabilizer Housing",
+  "part_name": "Topre 2u Housing",
   "category": "stabilizer_housing",
   "brand": "Topre",
   "tier": "builder",
   "legacy_ids": [
    "stabilizer_housing_2u::topre_standard"
   ],
-  "ring_offset_mm": 2,
+  "ring_offset_mm": 0.0,
   "dimensions": {},
   "manufacturer": "Topre",
   "source_url": "https://unrealkeyboards.com/products/oem-topre-stabilizers"
@@ -497,6 +539,21 @@
   "dimensions": {},
   "manufacturer": "MetaKeebs"
  },
+ "spacebar_stabilizer::novatouch": {
+  "part_name": "NovaTouch Spacebar Stabilizer",
+  "category": "spacebar_stabilizer",
+  "brand": "Cooler Master",
+  "tier": "builder",
+  "notes": [
+   "Owner-supplied internal fact: factory NovaTouch spacebar stabilizer."
+  ],
+  "legacy_ids": [
+   "spacebar_stabilizer::novatouch"
+  ],
+  "dimensions": {},
+  "manufacturer": "Topre",
+  "version": "NovaTouch"
+ },
  "spacebar_stabilizer::topre": {
   "part_name": "Topre Spacebar Stabilizer",
   "category": "spacebar_stabilizer",
@@ -519,6 +576,11 @@
   ],
   "dimensions": {},
   "manufacturer": "Deskeys",
+  "part_issue": {
+   "scope": "part",
+   "status": "incompatible",
+   "reason": "Aftermarket conical springs other than DynaCaps do not reliably work on Topre-brand switches or Cipulot PCBs — expect missed actuations."
+  },
   "notes": [
    "Aftermarket conical springs other than DynaCaps do not reliably work on Topre-brand switches or Cipulot PCBs — expect missed actuations."
   ]
@@ -544,6 +606,11 @@
   ],
   "dimensions": {},
   "manufacturer": "KLC",
+  "part_issue": {
+   "scope": "part",
+   "status": "incompatible",
+   "reason": "Aftermarket conical springs other than DynaCaps do not reliably work on Topre-brand switches or Cipulot PCBs — expect missed actuations."
+  },
   "notes": [
    "Aftermarket conical springs other than DynaCaps do not reliably work on Topre-brand switches or Cipulot PCBs — expect missed actuations."
   ]
@@ -561,7 +628,12 @@
    "conical_springs::metapulse"
   ],
   "dimensions": {},
-  "manufacturer": "MetaKeebs"
+  "manufacturer": "MetaKeebs",
+  "part_issue": {
+   "scope": "part",
+   "status": "pending",
+   "reason": "Aftermarket conical springs other than DynaCaps do not reliably work on Topre-brand switches or Cipulot PCBs — expect missed actuations."
+  }
  },
  "conical_spring::topre": {
   "part_name": "Topre Conical Springs",
@@ -587,6 +659,20 @@
   "material": "poron",
   "dimensions": {},
   "manufacturer": "Topre"
+ },
+ "silencing_ring::topre_2u_poron_1_0": {
+  "part_name": "Topre 2u Silencing Ring",
+  "category": "silencing_ring",
+  "brand": "Topre",
+  "tier": "builder",
+  "notes": [
+   "Owner-supplied internal fact: 1.0 mm Poron ring used by the Topre Silenced 2u assembly."
+  ],
+  "thickness_mm": 1.0,
+  "material": "poron",
+  "dimensions": {},
+  "manufacturer": "Topre",
+  "version": "2u"
  },
  "silencing_ring::dynacaps_silicone_0_3": {
   "part_name": "DynaCaps 0.3 mm Silicone Silencing Ring",
@@ -997,6 +1083,24 @@
   "manufacturer": "Topre",
   "source_url": "https://unrealkeyboards.com/products/topre-brand-domes",
   "tolerance_pct": 10
+ },
+ "dome::topre_realforce_variable": {
+  "part_name": "Topre Realforce Variable",
+  "category": "dome",
+  "brand": "Topre",
+  "tier": "builder",
+  "weight": {
+   "pinky_g": 30,
+   "index_g": 45
+  },
+  "weight_label": "Variable 30g / 45g",
+  "notes": [
+   "Owner-supplied internal fact: nonuniform 30g/45g positional dome sheet/population used by many Realforce keyboards. Select an exact key position when a single dome weight matters."
+  ],
+  "style": "Variable",
+  "dimensions": {},
+  "manufacturer": "Topre",
+  "source_url": "https://unrealkeyboards.com/products/topre-brand-domes"
  },
  "dome::des_t1_28g": {
   "part_name": "Deskeys T1 28g",

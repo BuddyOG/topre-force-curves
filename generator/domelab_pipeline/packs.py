@@ -155,11 +155,11 @@ VIEWER_BUILD_PROFILE = VIEWER_BUILD_PROFILES["review"]
 
 PARTS_LIBRARY_BUILD_PROFILES = {
     "review": {
-        "library_build": "lib-6.0-review.1",
+        "library_build": "lib-6.1-review.1",
         "release_eligible": False,
     },
     "release": {
-        "library_build": "lib-6.0",
+        "library_build": "lib-6.1",
         "release_eligible": True,
     },
 }
@@ -1310,6 +1310,12 @@ def build_all_packs(retained_by_set, records, dataset_manifest, exclusions,
             collapse = rec.get("collapse_force_gf")
             if not isinstance(collapse, (int, float)) or isinstance(collapse, bool):
                 raise RuntimeError(f"dome measurement collapse force missing for {tid}")
+            force_wall = rec.get("travel_mm")
+            if force_wall is not None and (
+                    not isinstance(force_wall, (int, float))
+                    or isinstance(force_wall, bool)
+                    or not math.isfinite(force_wall)):
+                raise RuntimeError(f"dome measurement force wall invalid for {tid}")
             dome_measurements.append({
                 "catalog_id": entry["target"][8:],
                 "specimen_id": rec.get("tested_part"),
@@ -1317,6 +1323,9 @@ def build_all_packs(retained_by_set, records, dataset_manifest, exclusions,
                 "collapse_force_gf": collapse,
                 "weight_index": perceptual["weight_index"],
                 "tactility_index": perceptual["tactility_index"],
+                # Canonical travel_mm is the detected force-wall onset. Keep
+                # the source precision here and round only in the UI.
+                "force_wall_mm": force_wall,
             })
         p = _replace_blob(p, "DOME_MEASUREMENTS", dome_measurements)
 
@@ -1337,6 +1346,169 @@ def build_all_packs(retained_by_set, records, dataset_manifest, exclusions,
             r8_kbd_full = json.load(fh)
         with open(os.path.join(cfg_dir, "catalog_overlay.json"), encoding="utf-8") as fh:
             cat_ov = json.load(fh)
+        with open(os.path.join(cfg_dir, "stabilizer_assemblies.json"), encoding="utf-8") as fh:
+            assembly_cfg = json.load(fh)
+        with open(os.path.join(cfg_dir, "owner_starting_point_defaults.json"), encoding="utf-8") as fh:
+            owner_defaults_cfg = json.load(fh)
+        if assembly_cfg.get("schema") != "stabilizer-assemblies-v1":
+            raise RuntimeError("unsupported stabilizer assembly schema")
+        if owner_defaults_cfg.get("schema") != "owner-starting-point-defaults-v1":
+            raise RuntimeError("unsupported owner starting-point defaults schema")
+        explicit_none_cfg = owner_defaults_cfg.get("explicit_none_parts")
+        if not isinstance(explicit_none_cfg, dict) or not explicit_none_cfg:
+            raise RuntimeError("owner starting-point defaults need explicit-none records")
+        explicit_none_parts = [
+            {"id": part_id, "name": row.get("name") or part_id,
+             "slot": row.get("slot"), "meaning": row.get("meaning") or ""}
+            for part_id, row in sorted(explicit_none_cfg.items())
+        ]
+        if (any(row["slot"] not in ("dome", "sb") for row in explicit_none_parts)
+                or len({row["id"] for row in explicit_none_parts}) != len(explicit_none_parts)):
+            raise RuntimeError("owner explicit-none records have invalid or duplicate ids")
+        explicit_none_ids = {row["id"] for row in explicit_none_parts}
+        public_assemblies = assembly_cfg.get("assemblies")
+        if not isinstance(public_assemblies, list) or not public_assemblies:
+            raise RuntimeError("stabilizer assembly catalog is empty")
+        assembly_ids = [row.get("id") for row in public_assemblies]
+        if (any(not isinstance(value, str) or not value for value in assembly_ids)
+                or len(assembly_ids) != len(set(assembly_ids))):
+            raise RuntimeError("stabilizer assembly ids must be unique strings")
+
+        # Synchronize the browser catalog with the stable r8 source. The
+        # single-file template carries the previous rows as review scaffolding;
+        # generation updates them by rid and appends newly authored records.
+        category_to_catalog = {
+            "slider": "Sliders",
+            "stabilizer_slider": "Stabilizer Sliders",
+            "stabilizer_housing": "Stabilizer Housings",
+            "housing": "Housings",
+            "spacebar_stabilizer": "Spacebar Stabilizer",
+            "conical_spring": "Conical Springs",
+        }
+        part_issue_states = {
+            "incompatible": ("bad", "Does not work"),
+            "pending": ("unverified", "Not verified"),
+        }
+        part_issues = {}
+        for rid, src in sorted(r8_parts_full.items()):
+            raw_issue = src.get("part_issue")
+            if raw_issue is None:
+                continue
+            if (not isinstance(raw_issue, dict)
+                    or set(raw_issue) != {"scope", "status", "reason"}
+                    or raw_issue.get("scope") != "part"
+                    or raw_issue.get("status") not in part_issue_states
+                    or not isinstance(raw_issue.get("reason"), str)
+                    or not raw_issue["reason"].strip()):
+                raise RuntimeError(f"r8 part issue is malformed for {rid}")
+            state, label = part_issue_states[raw_issue["status"]]
+            part_issues[rid] = {
+                "scope": "part",
+                "state": state,
+                "label": label,
+                "text": raw_issue["reason"].strip(),
+            }
+        part_issue_rids = set(part_issues)
+        ec_by_rid = {row.get("rid") or row["id"]: row
+                     for row in ec_obj["PARTS"]}
+        for rid, src in sorted(r8_parts_full.items()):
+            category = src.get("category")
+            if category not in category_to_catalog or src.get("tier") != "builder":
+                continue
+            catalog_id = xw_cfg[rid]["catalog_id"]
+            row = ec_by_rid.get(rid)
+            if row is None:
+                row = {"id": catalog_id, "rid": rid}
+                ec_obj["PARTS"].append(row)
+                ec_by_rid[rid] = row
+            row.update({
+                "id": catalog_id,
+                "rid": rid,
+                "name": src["part_name"],
+                "cat": category_to_catalog[category],
+                "mfr": src.get("manufacturer") or src.get("brand") or "",
+                "type": ("OEM TOPRE" if src.get("manufacturer") == "Topre"
+                         else "AFTERMARKET"),
+                "stem": src.get("stem") or "",
+                "seat": src.get("ring_seat_mm"),
+                "off": src.get("ring_offset_mm", 0),
+                "travel": src.get("travel_mm"),
+                "hideTravel": bool(src.get("hide_nominal_travel", False)),
+                "style": src.get("version") or "",
+                "u": src.get("source_url") or "",
+                "notes": list(src.get("notes") or []),
+                "ringFit": src.get("ring_fit_policy"),
+            })
+            # Legacy templates carried the spring reliability warning as a
+            # presentation-only string. Part-scoped compatibility findings are
+            # now structured source data and must be the sole public form.
+            row.pop("springWarn", None)
+            row.pop("partIssue", None)
+            if rid in part_issues:
+                row["partIssue"] = part_issues[rid]
+        ec_obj["PARTS"].sort(key=lambda row: row["id"])
+
+        ring_by_id = {row["id"]: row for row in ring_rows}
+        for rid, src in sorted(r8_parts_full.items()):
+            if src.get("category") != "silencing_ring" or src.get("tier") != "builder":
+                continue
+            row = ring_by_id.get(rid)
+            if row is None:
+                row = {"id": rid}
+                ring_rows.append(row)
+                ring_by_id[rid] = row
+            material = str(src.get("material") or "")
+            row.update({
+                "id": rid,
+                "name": src["part_name"],
+                "t": src.get("thickness_mm"),
+                "mat": material.title(),
+                "brand": src.get("brand") or "",
+                "hard": src.get("hardness") or "",
+                "mfr": src.get("manufacturer") or src.get("brand") or "",
+                "u": src.get("source_url") or "",
+                "notes": list(src.get("notes") or []),
+            })
+        ring_rows.sort(key=lambda row: row["id"])
+
+        db_by_id = {row["id"]: row for row in db_rows}
+        for rid, src in sorted(r8_parts_full.items()):
+            if src.get("category") != "dome":
+                continue
+            catalog_id = xw_cfg[rid]["catalog_id"]
+            if catalog_id in db_by_id:
+                continue
+            weight = src.get("weight")
+            if isinstance(weight, dict):
+                values = [value for value in weight.values()
+                          if isinstance(value, (int, float))
+                          and not isinstance(value, bool)]
+                wmin = min(values) if values else None
+                wmax = max(values) if values else None
+                wraw = src.get("weight_label") or "Variable"
+            else:
+                wmin = wmax = (weight if isinstance(weight, (int, float))
+                               and not isinstance(weight, bool) else None)
+                wraw = (src.get("weight_label")
+                        or (f"{weight:g}g" if wmin is not None else ""))
+            row = {
+                "id": catalog_id,
+                "name": src["part_name"],
+                "maker": src.get("manufacturer") or src.get("brand") or "",
+                "brand": src.get("brand") or "",
+                "wraw": wraw,
+                "wmin": wmin,
+                "wmax": wmax,
+                "type": ("OEM TOPRE" if src.get("manufacturer") == "Topre"
+                         else "AFTERMARKET"),
+                "u": src.get("source_url") or "",
+                "version": src.get("version") or "",
+                "style": src.get("style") or "",
+            }
+            db_rows.append(row)
+            db_by_id[catalog_id] = row
+        db_rows.sort(key=lambda row: row["id"])
+        dome_ids = {row["id"] for row in db_rows}
         display_names = cat_ov.get("dome_display_names", {})
         unknown_display_ids = sorted(set(display_names) - dome_ids)
         if unknown_display_ids:
@@ -1368,7 +1540,9 @@ def build_all_packs(retained_by_set, records, dataset_manifest, exclusions,
             modparts.append({
                 "id": rid, "rid": rid, "name": src["part_name"],
                 "cat": cat_labels[src["category"]],
-                "brand": src.get("brand") or "", "stem": src.get("stem") or "",
+                "brand": src.get("brand") or "",
+                "mfr": src.get("manufacturer") or "",
+                "stem": src.get("stem") or "",
                 "notes": list(src.get("notes") or []),
                 "u": src.get("source_url") or ""})
         public_keyboard_ids = cat_ov.get("public_keyboard_ids")
@@ -1377,51 +1551,73 @@ def build_all_packs(retained_by_set, records, dataset_manifest, exclusions,
                 "catalog overlay: public_keyboard_ids must be a non-empty list")
         if len(public_keyboard_ids) != len(set(public_keyboard_ids)):
             raise RuntimeError("catalog overlay: duplicate public keyboard id")
+        public_brand_kit_ids = cat_ov.get("public_brand_kit_ids", [
+            "kit::deskeys", "kit::dynacaps", "kit::klc", "kit::metakeebs",
+        ])
+        if (not isinstance(public_brand_kit_ids, list)
+                or len(public_brand_kit_ids) != len(set(public_brand_kit_ids))):
+            raise RuntimeError("catalog overlay: invalid public brand-kit ids")
         preset_by_id = {row.get("id"): row for row in pr_cfg["presets"]}
         public_presets = []
         kbrows = []
-        for kid in public_keyboard_ids:
-            if kid not in r8_kbd_full:
+        for starter_id in public_keyboard_ids + public_brand_kit_ids:
+            is_keyboard = starter_id in public_keyboard_ids
+            if is_keyboard and starter_id not in r8_kbd_full:
                 raise RuntimeError(
-                    f"catalog overlay: public keyboard {kid} is absent from r8")
-            preset = preset_by_id.get(kid)
+                    f"catalog overlay: public keyboard {starter_id} is absent from r8")
+            preset = preset_by_id.get(starter_id)
             if not preset:
                 raise RuntimeError(
-                    f"catalog overlay: public keyboard {kid} has no preset")
-            if preset.get("source") != "r8_keyboard_registry":
+                    f"catalog overlay: public starter {starter_id} has no preset")
+            expected_source = ("r8_keyboard_registry" if is_keyboard
+                               else "authored_brand_kit")
+            if preset.get("source") != expected_source:
                 raise RuntimeError(
-                    f"catalog overlay: public keyboard {kid} is not source-backed")
+                    f"catalog overlay: public starter {starter_id} has source "
+                    f"{preset.get('source')!r}, expected {expected_source!r}")
             if not preset.get("slots"):
                 raise RuntimeError(
-                    f"catalog overlay: public keyboard {kid} has no usable slots")
+                    f"catalog overlay: public starter {starter_id} has no usable slots")
             # The browser needs only the starter identity, visible label, and
             # selections. Source/adjudication/omission records remain in the
             # generator-owned preset registry where they are validated.
             public_preset = {
                 "id": preset["id"],
                 "label": preset["label"],
+                "brand": preset.get("brand") or "",
+                "kind": "keyboard" if is_keyboard else "kit",
+                "notes": preset.get("notes") or "",
                 "slots": {
                     slot: {"part": selection["part"]}
                     for slot, selection in preset["slots"].items()
                 },
             }
-            dome_omission = (preset.get("empty") or {}).get("dome")
-            if "dome" not in preset["slots"] and dome_omission:
-                public_notice = re.sub(
-                    r"\b(\d+)g\b", r"\1 g", dome_omission
+            empty = preset.get("empty") or {}
+            notice_keys = ("dome", "ring", "stab2uAssembly", "ring2u", "sb")
+            notices = []
+            if not is_keyboard:
+                notices.append(
+                    "Loads this manufacturer's catalog parts as a shortcut; "
+                    "it is not a verified working configuration."
                 )
-                public_notice = re.sub(
-                    r"^the source identifies\s+", "Available in ",
-                    public_notice,
-                    flags=re.IGNORECASE,
-                )
-                public_notice = public_notice.replace(
-                    " — choose the installed dome",
-                    "; choose the dome installed in this keyboard.",
-                )
-                public_preset["notice"] = public_notice
+            generic_prefixes = ("not specified by the r8 keyboard registry",
+                                "not specified by this brand kit",
+                                "represented by the selected")
+            for key in notice_keys:
+                reason = empty.get(key)
+                if (not reason or key in preset["slots"]
+                        or str(reason).startswith(generic_prefixes)):
+                    continue
+                cleaned = re.sub(r"\b(\d+)g\b", r"\1 g", str(reason)).strip()
+                if cleaned and cleaned[-1] not in ".!?":
+                    cleaned += "."
+                notices.append(cleaned)
+            if notices:
+                public_preset["notice"] = " ".join(dict.fromkeys(notices))
             public_presets.append(public_preset)
-            k = r8_kbd_full[kid]
+            if not is_keyboard:
+                continue
+            k = r8_kbd_full[starter_id]
             consumer_notes = k.get("notes") or ""
             for note_id, note in ec_obj.get("NOTES", {}).items():
                 consumer_notes = re.sub(
@@ -1432,25 +1628,48 @@ def build_all_packs(retained_by_set, records, dataset_manifest, exclusions,
                 )
             consumer_notes = re.sub(r"\s+", " ", consumer_notes).strip()
             kbrows.append({
-                "id": kid, "rid": kid, "name": k["display_name"],
+                "id": starter_id, "rid": starter_id, "name": k["display_name"],
                 "brand": k.get("brand") or "", "kind": k.get("kind") or "",
                 "notes": consumer_notes,
-                "u": k.get("url") or ""})
+                "u": k.get("source_url") or k.get("url") or ""})
 
         # Validate every public preset target against the exact catalog that
         # will ship. Dome IDs address DOME_DB; all other selections address
         # either a catalog ID or its stable compatibility rid.
         public_part_ids = set()
+        public_part_ids.add(cat_ov["ring_none"]["id"])
         for row in ec_obj["PARTS"] + ec_obj["SHELLS"]:
             public_part_ids.add(row["id"])
             public_part_ids.add(row.get("rid") or row["id"])
         for row in ring_rows + modparts:
             public_part_ids.add(row["id"])
             public_part_ids.add(row.get("rid") or row["id"])
+        for assembly in public_assemblies:
+            if assembly.get("housingMode") not in ("shell", "loose"):
+                raise RuntimeError(
+                    f"2u assembly {assembly.get('id')} has invalid housingMode")
+            slots = assembly.get("slots")
+            if not isinstance(slots, dict) or set(slots) != {"h2", "sl2", "ring2u"}:
+                raise RuntimeError(
+                    f"2u assembly {assembly.get('id')} must define h2/sl2/ring2u")
+            if assembly["housingMode"] == "shell" and slots["h2"] is not None:
+                raise RuntimeError(
+                    f"shell-owned 2u assembly {assembly['id']} cannot load loose h2")
+            if assembly["housingMode"] == "loose" and slots["h2"] is None:
+                raise RuntimeError(
+                    f"loose 2u assembly {assembly['id']} must load h2")
+            for slot, part_id in slots.items():
+                if part_id is not None and part_id not in public_part_ids:
+                    raise RuntimeError(
+                        f"2u assembly {assembly['id']} references unavailable "
+                        f"{slot} part {part_id}")
+            public_part_ids.add(assembly["id"])
+        public_part_ids.update(explicit_none_ids)
         for preset in public_presets:
             for slot, selection in preset["slots"].items():
                 part_id = selection.get("part")
-                known = part_id in (dome_ids if slot == "dome" else public_part_ids)
+                known = part_id in ((dome_ids | explicit_none_ids)
+                                    if slot == "dome" else public_part_ids)
                 if not known:
                     raise RuntimeError(
                         f"public preset {preset['id']} references unavailable "
@@ -1478,16 +1697,22 @@ def build_all_packs(retained_by_set, records, dataset_manifest, exclusions,
             for key, evidence in ce.items()
             if evidence["st"] not in ("unknown", "not_applicable")
             and set(key.split("||")) <= public_rids
+            and not (set(key.split("||")) & part_issue_rids)
         }
         part_fields = (
             "id", "rid", "name", "cat", "mfr", "type", "stem",
-            "seat", "off", "travel", "style", "u", "springWarn",
+            "seat", "off", "travel", "hideTravel", "style", "u", "notes",
+            "partIssue", "ringFit",
         )
         shell_fields = (
-            "id", "rid", "name", "mfr", "type", "u", "addsSb", "shellNote",
+            "id", "rid", "name", "mfr", "type", "off", "u", "addsSb", "shellNote",
         )
         def consumer_note_text(value):
             text = str(value or "")
+            text = text.replace(
+                "Effect = ring - (slider seat + 0.2).",
+                "Fit delta = (slider seat + housing seat) - ring thickness.",
+            )
             text = re.sub(
                 r"(?:;\s*)?owner adjudication (?:is )?pending[^.]*\.?",
                 ". This pairing has not been independently confirmed.",
@@ -1510,6 +1735,10 @@ def build_all_packs(retained_by_set, records, dataset_manifest, exclusions,
             )
             text = re.sub(r"\s+([.,;:])", r"\1", text)
             return re.sub(r"\.{2,}", ".", text).strip()
+        runtime_note_ids = {
+            evidence["nid"] for evidence in ce_runtime.values()
+            if evidence.get("nid")
+        } | {"note_deskeys_housing", "note_dynacaps_housing"}
         public_ec = {
             "PARTS": [
                 {key: row[key] for key in part_fields if key in row}
@@ -1522,11 +1751,15 @@ def build_all_packs(retained_by_set, records, dataset_manifest, exclusions,
             "NOTES": {
                 note_id: {"text": consumer_note_text(note.get("text"))}
                 for note_id, note in ec_obj.get("NOTES", {}).items()
+                if note_id in runtime_note_ids
             },
         }
         p = _replace_blob(p, "const EC", public_ec)
+        p = _replace_blob(p, "RINGPARTS", ring_rows)
         p = _replace_blob(p, "COMPAT_EVIDENCE", ce_runtime)
         p = _replace_blob(p, "const PRESETS", public_presets)
+        p = _replace_blob(p, "STABILIZER_ASSEMBLIES_2U", public_assemblies)
+        p = _replace_blob(p, "const NONE_PARTS", explicit_none_parts)
         p = _replace_blob(p, "const MODPARTS", modparts)
         p = _replace_blob(p, "const KEYBOARDS", kbrows)
         from .pipeline import parts_library_source_identity, _h

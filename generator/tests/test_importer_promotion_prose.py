@@ -313,7 +313,7 @@ def test_picker_runtime_battery(review_staging):
          os.path.join(review_staging, "packs", "picker.staged.html"),
          "Topre_R2_45g", "bt_0078",
          os.path.join(review_staging, "bench_tests.staged.json"),
-         "lib-6.0-review.1", "false"],
+         "lib-6.1-review.1", "false"],
         capture_output=True, text=True, encoding="utf-8", errors="replace", env=_node_env())
     payload = json.loads(out.stdout[out.stdout.index("{"):])
     failed = [c for c in payload["checks"] if not c["pass"]]

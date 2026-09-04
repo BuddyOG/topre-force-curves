@@ -19,7 +19,7 @@ import build_parts_library_release as release  # noqa: E402
 
 
 CANONICAL_URL = "https://buddyog.github.io/topre-force-curves/"
-GIT_TAG = "ec-parts-lib-6.0"
+GIT_TAG = "ec-parts-lib-6.1"
 
 
 def _sha(path: Path) -> str:
@@ -61,7 +61,7 @@ def _picker(build: dict) -> str:
 
 def _review_build() -> dict:
     return {
-        "library_build": "lib-6.0-review.1",
+        "library_build": "lib-6.1-review.1",
         "mode": "review",
         "presentation_role": "review_candidate",
         "release_eligible": False,
@@ -72,7 +72,7 @@ def _review_build() -> dict:
 
 def _release_build() -> dict:
     return {
-        "library_build": "lib-6.0",
+        "library_build": "lib-6.1",
         "mode": "release",
         "presentation_role": "public_release",
         "release_eligible": True,
@@ -310,7 +310,7 @@ def test_build_is_deterministic_and_preserves_fc34(workspace):
     assert manifest["predecessor_release"]["package_id"] == release.fc34.PACKAGE_ID
     assert manifest["predecessor_release"]["git_tag"] == "fc-3.4"
     assert manifest["tool_builds"]["force_curve_bench"]["build"] == "fc-3.4"
-    assert manifest["tool_builds"]["ec_parts_library"]["build"] == "lib-6.0"
+    assert manifest["tool_builds"]["ec_parts_library"]["build"] == "lib-6.1"
     assert manifest["overlay"]["root_picker_source"] == (
         "generated/packs/picker.staged.html"
     )
@@ -344,7 +344,7 @@ def test_base_is_verified_before_overlay_or_output(workspace, monkeypatch):
 @pytest.mark.parametrize(
     "field,value",
     [
-        ("library_build", "lib-6.0-review.1"),
+        ("library_build", "lib-6.1-review.1"),
         ("mode", "review"),
         ("presentation_role", "review_candidate"),
         ("release_eligible", False),

@@ -54,7 +54,7 @@ a{color:#d4adff}
 .button.ghost{background:transparent}
 .button.danger{color:var(--bad)}
 .button.small{min-height:44px;padding:8px 12px;font-size:.88rem}
-.platform-card,.status-panel,.component-section,.chooser-shell{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+.platform-card,.status-panel,.dimensions-panel,.component-section,.chooser-shell{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
 .platform-card{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;padding:16px 18px;margin-bottom:14px}
 .kicker,.section-label{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
 .platform-name{font-size:1.06rem;font-weight:800;margin-top:4px}
@@ -77,6 +77,13 @@ a{color:#d4adff}
 .compat-item.good{border-color:var(--good)}
 .compat-item strong{font-size:.82rem}
 .compat-item p{margin:2px 0 0;color:var(--muted);font-size:.86rem;line-height:1.45}
+.dimensions-panel{padding:17px 18px;margin-bottom:14px}
+.dimension-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:9px}
+.dimension-item{background:var(--surface-2);border-radius:10px;padding:12px 14px}
+.dimension-name{color:var(--muted);font-size:.79rem;font-weight:800}
+.dimension-value{font-size:1.35rem;font-weight:850;letter-spacing:-.02em;margin-top:3px}
+.dimension-copy{color:var(--muted);font-size:.84rem;line-height:1.5;margin:10px 0 0}
+.dimension-copy+.dimension-copy{margin-top:4px}
 .component-section{overflow:hidden;margin-bottom:14px}
 .component-section h2{font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0;padding:13px 18px;border-bottom:1px solid var(--line);background:var(--surface-2)}
 .component-list{list-style:none;padding:0;margin:0}
@@ -171,6 +178,7 @@ dialog::backdrop{background:rgba(0,0,0,.72)}
   .results{grid-template-columns:1fr}
   .candidate.specimen{margin-left:10px}
   .detail-grid{grid-template-columns:1fr}
+  .dimension-grid{grid-template-columns:1fr}
   .undo-bar{align-items:stretch;flex-direction:column}
   .undo-actions .button{flex:1}
 }
@@ -193,7 +201,7 @@ dialog::backdrop{background:rgba(0,0,0,.72)}
     </div>
     <details class="evidence-note">
       <summary>Compatibility evidence beta</summary>
-      <p>Compatibility reflects recorded evidence. “Not verified” means the combination has not been confirmed. Dome-to-component fit is not evaluated.</p>
+      <p>Compatibility reflects recorded evidence plus a same-manufacturer matching policy. “Manufacturer matched” means an otherwise-unverified pair shares a recorded manufacturer; known conflicts and conditions still take precedence. “Not verified” means a cross-manufacturer combination has not been confirmed. Dome-to-component fit is not evaluated.</p>
     </details>
   </header>
 
@@ -203,7 +211,7 @@ dialog::backdrop{background:rgba(0,0,0,.72)}
       <div class="toolbar" id="buildToolbar">
         <button class="button ghost" id="clearBuild" type="button">Clear build</button>
       </div>
-      <section class="platform-card" id="platformCard" aria-label="Keyboard starting point"></section>
+      <section class="platform-card" id="platformCard" aria-label="Keyboard or parts-kit starting point"></section>
       <section class="status-panel" id="statusPanel" aria-labelledby="statusTitle" data-level="empty">
         <div class="status-top">
           <div>
@@ -216,6 +224,21 @@ dialog::backdrop{background:rgba(0,0,0,.72)}
           <summary>View compatibility details</summary>
           <div class="compat-list" id="compatDetails"></div>
         </details>
+      </section>
+      <section class="dimensions-panel" id="dimensionsPanel" aria-labelledby="dimensionsTitle">
+        <div class="section-label" id="dimensionsTitle">Main-switch dimensions</div>
+        <div class="dimension-grid">
+          <div class="dimension-item">
+            <div class="dimension-name">Travel</div>
+            <div class="dimension-value" id="dimensionTravel">Not calculated</div>
+          </div>
+          <div class="dimension-item">
+            <div class="dimension-name">Dome compression</div>
+            <div class="dimension-value" id="dimensionCompression">Not calculated</div>
+          </div>
+        </div>
+        <p class="dimension-copy" id="dimensionCopy">Choose a slider, 1u housing, and silencing-ring state to calculate these values.</p>
+        <p class="dimension-copy">Dome compression is ring-induced pre-compression: ring thickness minus the selected slider and housing ring-seat depths, never below zero.</p>
       </section>
       <div id="buildSections"></div>
     </section>
@@ -288,8 +311,10 @@ const DOME_DB=[{"id":"dm-astro-domes-120g","name":"Astro Domes 120g","maker":"As
 const RINGPARTS=[{"id":"silencing_ring::topre_poron_0_5","name":"Topre 0.5 mm Poron Silencing Ring","t":0.5,"mat":"Poron","brand":"Topre","hard":"","mfr":"Topre","u":"https://unrealkeyboards.com/products/topre-silencing-rings"},{"id":"silencing_ring::dynacaps_silicone_0_3","name":"DynaCaps 0.3 mm Silicone Silencing Ring","t":0.3,"mat":"Silicone","brand":"DynaCaps","hard":"Shore 40A","mfr":"OmniType","u":"https://omnitype.com/products/dynacap-silencing-rings"},{"id":"silencing_ring::dynacaps_silicone_0_5","name":"DynaCaps 0.5 mm Silicone Silencing Ring","t":0.5,"mat":"Silicone","brand":"DynaCaps","hard":"Shore 40A","mfr":"OmniType","u":"https://omnitype.com/products/dynacap-silencing-rings"},{"id":"silencing_ring::dynacaps_poron_0_3","name":"DynaCaps 0.3 mm Poron Silencing Ring","t":0.3,"mat":"Poron","brand":"DynaCaps","hard":"","mfr":"OmniType","u":"https://omnitype.com/products/dynacap-silencing-rings"},{"id":"silencing_ring::dynacaps_poron_0_5","name":"DynaCaps 0.5 mm Poron Silencing Ring","t":0.5,"mat":"Poron","brand":"DynaCaps","hard":"","mfr":"OmniType","u":"https://omnitype.com/products/dynacap-silencing-rings"},{"id":"silencing_ring::des_poron_0_2","name":"Deskeys 0.2 mm Poron Silencing Ring","t":0.2,"mat":"Poron","brand":"Deskeys","hard":"","mfr":"Deskeys","u":"https://deskeys.io/collections/home-all-products/products/silencing-ring-for-topre-keyboards"},{"id":"silencing_ring::des_poron_0_3","name":"Deskeys 0.3 mm Poron Silencing Ring","t":0.3,"mat":"Poron","brand":"Deskeys","hard":"","mfr":"Deskeys","u":"https://deskeys.io/collections/home-all-products/products/silencing-ring-for-topre-keyboards"},{"id":"silencing_ring::des_poron_0_4","name":"Deskeys 0.4 mm Poron Silencing Ring","t":0.4,"mat":"Poron","brand":"Deskeys","hard":"","mfr":"Deskeys","u":"https://deskeys.io/collections/home-all-products/products/silencing-ring-for-topre-keyboards"},{"id":"silencing_ring::des_poron_0_5","name":"Deskeys 0.5 mm Poron Silencing Ring","t":0.5,"mat":"Poron","brand":"Deskeys","hard":"","mfr":"Deskeys","u":"https://deskeys.io/collections/home-all-products/products/silencing-ring-for-topre-keyboards"},{"id":"silencing_ring::des_poron_0_6","name":"Deskeys 0.6 mm Poron Silencing Ring","t":0.6,"mat":"Poron","brand":"Deskeys","hard":"","mfr":"Deskeys","u":"https://deskeys.io/collections/home-all-products/products/silencing-ring-for-topre-keyboards"},{"id":"silencing_ring::des_poron_0_7","name":"Deskeys 0.7 mm Poron Silencing Ring","t":0.7,"mat":"Poron","brand":"Deskeys","hard":"","mfr":"Deskeys","u":"https://deskeys.io/collections/home-all-products/products/silencing-ring-for-topre-keyboards"},{"id":"silencing_ring::des_poron_1_0","name":"Deskeys 1.0 mm Poron Silencing Ring","t":1,"mat":"Poron","brand":"Deskeys","hard":"","mfr":"Deskeys","u":"https://deskeys.io/collections/home-all-products/products/silencing-ring-for-topre-keyboards"},{"id":"silencing_ring::des_silicone_0_3","name":"Deskeys 0.3 mm Silicone Silencing Ring","t":0.3,"mat":"Silicone","brand":"Deskeys","hard":"","mfr":"Deskeys","u":"https://deskeys.io/collections/home-all-products/products/silencing-ring-for-topre-keyboards"},{"id":"silencing_ring::des_silicone_0_5","name":"Deskeys 0.5 mm Silicone Silencing Ring","t":0.5,"mat":"Silicone","brand":"Deskeys","hard":"","mfr":"Deskeys","u":"https://deskeys.io/collections/home-all-products/products/silencing-ring-for-topre-keyboards"},{"id":"silencing_ring::unreal_keyboards_poron_0_3","name":"Unreal Keyboards 0.3 mm Poron Silencing Ring","t":0.3,"mat":"Poron","brand":"Unreal Keyboards","hard":"","mfr":"Unreal Keyboards","u":"https://unrealkeyboards.com/products/topre-silencing-rings"},{"id":"silencing_ring::unreal_keyboards_poron_0_5","name":"Unreal Keyboards 0.5 mm Poron Silencing Ring","t":0.5,"mat":"Poron","brand":"Unreal Keyboards","hard":"","mfr":"Unreal Keyboards","u":"https://unrealkeyboards.com/products/topre-silencing-rings"},{"id":"silencing_ring::unreal_keyboards_poron_0_7","name":"Unreal Keyboards 0.7 mm Poron Silencing Ring","t":0.7,"mat":"Poron","brand":"Unreal Keyboards","hard":"","mfr":"Unreal Keyboards","u":"https://unrealkeyboards.com/products/topre-silencing-rings"},{"id":"silencing_ring::unreal_keyboards_poron_1_0","name":"Unreal Keyboards 1.0 mm Poron Silencing Ring","t":1,"mat":"Poron","brand":"Unreal Keyboards","hard":"","mfr":"Unreal Keyboards","u":"https://unrealkeyboards.com/products/topre-silencing-rings"},{"id":"silencing_ring::unreal_keyboards_silicone_0_3","name":"Unreal Keyboards 0.3 mm Silicone Silencing Ring","t":0.3,"mat":"Silicone","brand":"Unreal Keyboards","hard":"","mfr":"Unreal Keyboards","u":"https://unrealkeyboards.com/products/topre-silencing-rings"},{"id":"silencing_ring::unreal_keyboards_silicone_0_5","name":"Unreal Keyboards 0.5 mm Silicone Silencing Ring","t":0.5,"mat":"Silicone","brand":"Unreal Keyboards","hard":"","mfr":"Unreal Keyboards","u":"https://unrealkeyboards.com/products/topre-silencing-rings"},{"id":"silencing_ring::klc_poron_0_3","name":"KLC 0.3 mm Poron Silencing Ring","t":0.3,"mat":"Poron","brand":"KLC","hard":"","mfr":"KLC","u":"https://klc-playground.com/products/instock-ec-kits-and-packs"},{"id":"silencing_ring::klc_silicone_0_3","name":"KLC 0.3 mm Silicone Silencing Ring","t":0.3,"mat":"Silicone","brand":"KLC","hard":"","mfr":"KLC","u":"https://klc-playground.com/products/instock-ec-kits-and-packs"},{"id":"silencing_ring::metapulse_poron_0_5","name":"MetaPulse 0.5 mm Poron Silencing Ring","t":0.5,"mat":"Poron","brand":"MetaPulse","hard":"","mfr":"MetaKeebs","u":"https://metakeebs.com/products/pre-order-metapulse-bundle-1"}];
 const MODPARTS = []; /* GENERATED: r8 parts that fill a public builder slot */
 const KEYBOARDS = []; /* GENERATED: qualified public keyboard starting points */
+const STABILIZER_ASSEMBLIES_2U = []; /* GENERATED: compound 2u stabilizer starting assemblies */
+const NONE_PARTS = []; /* GENERATED: intentional no-part states used by owner-reviewed starting points */
 
-const DOME_MEASUREMENTS = []; /* GENERATED: exact specimen + collapse force + two perception indices */
+const DOME_MEASUREMENTS = []; /* GENERATED: exact specimen + collapse force + two perception indices + force wall */
 const PICKER_BUILD = {}; /* GENERATED: quiet review/release identity */
 const COMPAT_EVIDENCE = {}; /* GENERATED: stable-id compatibility evidence */
 const PRESETS = []; /* GENERATED: source-backed keyboard starting configurations */
@@ -298,13 +323,13 @@ const OEM="OEM TOPRE";
 const AM="AFTERMARKET";
 const CATALOG={
   keyboards:[],keycaps:[],domes:[],sliders:[],rings:[],housings1u:[],
-  springs:[],housings2u:[],sliders2u:[],spacebars:[],shells:[]
+  springs:[],stabilizerAssemblies2u:[],housings2u:[],sliders2u:[],spacebars:[],shells:[]
 };
 const PARTIDX={};
 const DOME_BY_SOURCE_ID={};
 const build={
   kbd:null,shell:null,dome:null,domeSpec:null,slider:null,h1:null,spring:null,
-  ring:null,keycap:null,h2:null,sl2:null,sb:null
+  ring:null,keycap:null,stab2uAssembly:null,h2:null,sl2:null,ring2u:null,sb:null
 };
 const SLOT_DEFS=[
   {key:"dome",label:"Dome",list:"domes",group:"Core switch"},
@@ -313,8 +338,10 @@ const SLOT_DEFS=[
   {key:"spring",label:"Conical spring",list:"springs",group:"Core switch"},
   {key:"ring",label:"Silencing ring",list:"rings",group:"Core switch"},
   {key:"keycap",label:"Keycaps",list:"keycaps",group:"Core switch"},
+  {key:"stab2uAssembly",label:"2u stabilizer assembly",list:"stabilizerAssemblies2u",group:"Stabilized keys"},
   {key:"h2",label:"2u stabilizer housing",list:"housings2u",group:"Stabilized keys"},
   {key:"sl2",label:"2u stabilizer slider",list:"sliders2u",group:"Stabilized keys"},
+  {key:"ring2u",label:"2u silencing ring",list:"rings",group:"Stabilized keys"},
   {key:"sb",label:"Spacebar stabilizer",list:"spacebars",group:"Stabilized keys"}
 ];
 const SLOT_BY_KEY=Object.fromEntries(SLOT_DEFS.map(function(s){return [s.key,s];}));
@@ -325,6 +352,14 @@ function typeLabel(value){
   return value||"";
 }
 function makerOf(p){return p ? p.mfr||p.maker||p.vendor||p.brand||"" : "";}
+function canonicalManufacturerKey(value){
+  return String(value||"").trim().toLowerCase()
+    .replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
+}
+function sameManufacturerKey(part){
+  if(!part||part.pseudo)return "";
+  return canonicalManufacturerKey(part.manufacturerKey||part.mfr||"");
+}
 function initCoreParts(){
   var catMap={
     "Sliders":"sliders","Housings":"housings1u",
@@ -337,40 +372,91 @@ function initCoreParts(){
     var p={
       id:raw.id,rid:raw.rid||raw.id,name:raw.name,cat:raw.cat,
       maker:raw.mfr||raw.vendor||"",vendor:raw.vendor||"",mfr:raw.mfr||"",
+      manufacturerKey:canonicalManufacturerKey(raw.mfr||""),
       type:raw.type||"",stem:raw.stem||"",seat:raw.seat,
-      off:list==="housings2u"?null:(raw.off||0),travel:raw.travel,
-      version:raw.style||"",u:raw.u||"",notes:[],springWarn:raw.springWarn||""
+      off:raw.off==null?(list==="housings2u"?null:0):Number(raw.off),travel:raw.travel,
+      hideTravel:!!raw.hideTravel,version:raw.style||"",u:raw.u||"",
+      notes:Array.isArray(raw.notes)?raw.notes.slice():[],
+      partIssue:raw.partIssue&&typeof raw.partIssue==="object"?Object.assign({},raw.partIssue):null,
+      ringFit:raw.ringFit||null
     };
     if(raw.name==="Deskeys Housings"&&EC.NOTES.note_deskeys_housing)p.notes.push(EC.NOTES.note_deskeys_housing.text);
     if(raw.name==="DynaCaps Housings"&&EC.NOTES.note_dynacaps_housing)p.notes.push(EC.NOTES.note_dynacaps_housing.text);
-    if(list==="housings2u")p.notes.push("Stabilizer-housing ring-offset geometry is unresolved and is not presented as a settled value.");
+    if(list==="housings2u"&&p.off==null)p.notes.push("Stabilizer-housing ring-offset geometry is unresolved and is not presented as a settled value.");
     CATALOG[list].push(p);
     PARTIDX[p.id]=p;
   }
   for(const raw of EC.SHELLS){
     var shell={
       id:raw.id,rid:raw.rid||raw.id,name:raw.name,cat:"Platform",
-      maker:raw.mfr||raw.vendor||"",type:raw.type||"",u:raw.u||"",
+      maker:raw.mfr||raw.vendor||"",mfr:raw.mfr||"",
+      manufacturerKey:canonicalManufacturerKey(raw.mfr||""),
+      type:raw.type||"",u:raw.u||"",
+      off:raw.off==null?null:Number(raw.off),
       shell:true,addsSb:!!raw.addsSb,notes:[raw.shellNote].filter(Boolean)
     };
     CATALOG.shells.push(shell);
     PARTIDX[shell.id]=shell;
   }
 }
+function initNoneParts(){
+  for(const raw of NONE_PARTS){
+    var part={
+      id:raw.id,name:raw.name,cat:raw.slot==="dome"?"Domes":"Spacebar Stabilizer",
+      pseudo:true,noneLabel:"Not used",noneSummary:raw.meaning||"Intentional no-part selection",
+      maker:"",type:"",u:"",notes:[],measurements:[]
+    };
+    PARTIDX[part.id]=part;
+  }
+}
 function initRings(){
   var none={
     id:"ring::none",rid:"ring::none",name:"No ring (bare slider)",
-    cat:"Silencing Rings",maker:"",type:"",t:0,mat:"",pseudo:true,u:"",notes:[]
+    cat:"Silencing Rings",maker:"",type:"",t:0,mat:"",pseudo:true,
+    noneLabel:"No ring",noneSummary:"Deliberate bare-slider configuration",u:"",notes:[]
   };
   CATALOG.rings.push(none);
   PARTIDX[none.id]=none;
   for(const raw of RINGPARTS){
     var p={
       id:raw.id,rid:raw.id,name:raw.name,cat:"Silencing Rings",
-      maker:raw.mfr||raw.brand||"",brand:raw.brand||"",type:/Topre/.test(raw.brand||"")?OEM:AM,
-      t:raw.t,mat:raw.mat||"",hard:raw.hard||"",u:raw.u||"",notes:[]
+      maker:raw.mfr||raw.brand||"",mfr:raw.mfr||raw.brand||"",
+      manufacturerKey:canonicalManufacturerKey(raw.mfr||raw.brand||""),
+      brand:raw.brand||"",type:/Topre/.test(raw.brand||"")?OEM:AM,
+      t:raw.t,mat:raw.mat||"",hard:raw.hard||"",u:raw.u||"",
+      notes:Array.isArray(raw.notes)?raw.notes.slice():[]
     };
     CATALOG.rings.push(p);
+    PARTIDX[p.id]=p;
+  }
+}
+function rawAssemblySlot(raw,key){
+  var value=(raw.slots&&Object.prototype.hasOwnProperty.call(raw.slots,key))?raw.slots[key]:raw[key];
+  if(value&&typeof value==="object")return value.part==null?null:value.part;
+  return value==null?null:value;
+}
+function initStabilizerAssemblies2u(){
+  for(const raw of STABILIZER_ASSEMBLIES_2U){
+    var notes=[];
+    if(Array.isArray(raw.notes))notes=raw.notes.slice();
+    else if(raw.notes)notes=[raw.notes];
+    if(raw.note)notes.push(raw.note);
+    var p={
+      id:raw.id,rid:raw.rid||raw.id,name:raw.name,cat:"2u Stabilizer Assemblies",
+      maker:raw.maker||raw.mfr||raw.brand||"",mfr:raw.mfr||raw.maker||raw.brand||"",
+      manufacturerKey:canonicalManufacturerKey(raw.mfr||raw.maker||raw.brand||""),
+      brand:raw.brand||"",type:raw.type||"",
+      u:typeof raw.u==="string"?raw.u:(raw.url||""),notes:[...new Set(notes.filter(Boolean))],compound:true,
+      housingMode:raw.housingMode||raw.housing_mode||"loose",
+      housingLabel:raw.housingLabel||raw.housing_label||"",
+      housingOffset:raw.housingOffset==null?(raw.housing_offset_mm==null?null:Number(raw.housing_offset_mm)):Number(raw.housingOffset),
+      slots:{
+        h2:rawAssemblySlot(raw,"h2"),
+        sl2:rawAssemblySlot(raw,"sl2"),
+        ring2u:rawAssemblySlot(raw,"ring2u")
+      }
+    };
+    CATALOG.stabilizerAssemblies2u.push(p);
     PARTIDX[p.id]=p;
   }
 }
@@ -379,7 +465,9 @@ function initKeycaps(){
     if(raw.cat!=="Keycaps")continue;
     var p={
       id:raw.id,rid:raw.rid||raw.id,name:raw.name,cat:"Keycaps",
-      maker:raw.brand||"",type:raw.brand==="Topre"?OEM:(raw.brand?AM:""),stem:raw.stem||"",
+      maker:raw.mfr||raw.brand||"",mfr:raw.mfr||raw.brand||"",
+      manufacturerKey:canonicalManufacturerKey(raw.mfr||raw.brand||""),
+      type:raw.brand==="Topre"?OEM:(raw.brand?AM:""),stem:raw.stem||"",
       u:raw.u||"",notes:(raw.notes||[]).slice()
     };
     CATALOG.keycaps.push(p);
@@ -392,6 +480,19 @@ function initKeyboards(){
       id:raw.id,rid:raw.rid||raw.id,name:raw.name,cat:"Keyboards",
       maker:raw.brand||"",brand:raw.brand||"",kind:raw.kind||"",
       type:raw.kind==="oem"?OEM:AM,u:raw.u||"",notes:[raw.notes||""].filter(Boolean)
+    };
+    CATALOG.keyboards.push(p);
+    PARTIDX[p.id]=p;
+  }
+  for(const preset of PRESETS){
+    if(!preset.id||(!preset.id.startsWith("kbd::")&&!preset.id.startsWith("kit::"))||PARTIDX[preset.id])continue;
+    var isKit=preset.id.startsWith("kit::");
+    var p={
+      id:preset.id,rid:preset.rid||preset.id,name:preset.label||preset.name||preset.id,
+      cat:isKit?"Parts Kits":"Keyboards",maker:preset.maker||preset.brand||(isKit?(preset.label||""):""),
+      brand:preset.brand||"",kind:isKit?"kit":(preset.kind||"oem"),
+      type:preset.type||(isKit?AM:OEM),u:preset.u||"",notes:[preset.note||preset.notes||""].flat().filter(Boolean),
+      starter:true
     };
     CATALOG.keyboards.push(p);
     PARTIDX[p.id]=p;
@@ -449,7 +550,9 @@ function initDomes(){
 }
 function initCatalog(){
   initCoreParts();
+  initNoneParts();
   initRings();
+  initStabilizerAssemblies2u();
   initKeycaps();
   initKeyboards();
   initDomes();
@@ -514,7 +617,7 @@ function selectedCompatibilityParts(exceptSlot){
   }
   if(build.shell&&exceptSlot!=="h1"&&exceptSlot!=="h2"&&exceptSlot!=="sb")add(PARTIDX[build.shell]);
   for(const slot of SLOT_DEFS){
-    if(slot.key===exceptSlot||slot.key==="dome")continue;
+    if(slot.key===exceptSlot||slot.key==="dome"||slot.key==="stab2uAssembly")continue;
     add(slotPart(slot.key));
   }
   return out;
@@ -523,36 +626,153 @@ function rollupRelations(relations){
   if(relations.some(function(r){return r.state==="bad";}))return {state:"bad",label:"Does not work"};
   if(relations.some(function(r){return r.state==="unverified";}))return {state:"unverified",label:"Not verified"};
   if(relations.some(function(r){return r.state==="conditional";}))return {state:"conditional",label:"Works with conditions"};
+  if(relations.some(function(r){return r.basis==="same_manufacturer";})){
+    return {state:"works",label:"Manufacturer matched",basis:"same_manufacturer"};
+  }
   if(relations.length)return {state:"works",label:"Works"};
   return {state:"neutral",label:"Choose more parts"};
 }
+function unchangedBaselineRids(snapshot){
+  var recorded=new Set();
+  if(!snapshot)return recorded;
+  var baseline;
+  try{baseline=JSON.parse(snapshot);}catch(error){return recorded;}
+  for(const entry of Object.entries(baseline)){
+    var key=entry[0],partId=entry[1];
+    if(["kbd","dome","domeSpec","stab2uAssembly"].includes(key)
+        ||partId==null||build[key]!==partId)continue;
+    var part=PARTIDX[partId];
+    if(part&&!part.pseudo&&ridOf(part))recorded.add(ridOf(part));
+  }
+  return recorded;
+}
+function recordedContextRelation(aPart,bPart){
+  var a=ridOf(aPart),b=ridOf(bPart);
+  if(!a||!b)return null;
+  var presetRecorded=unchangedBaselineRids(presetBaseline);
+  if(build.kbd&&presetRecorded.has(a)&&presetRecorded.has(b)){
+    if(String(build.kbd).startsWith("kit::")){
+      return {
+        state:"unverified",label:"Not verified",
+        text:"Loaded together as a manufacturer-parts shortcut; that grouping is not evidence of a working configuration."
+      };
+    }
+    return {state:"works",label:"Works",text:"Recorded together in the selected keyboard configuration."};
+  }
+  var assembly=slotPart("stab2uAssembly");
+  var assemblyRecorded=unchangedBaselineRids(assemblyBaseline);
+  if(assembly&&assemblyRecorded.has(a)&&assemblyRecorded.has(b)){
+    return {state:"works",label:"Works",text:"Recorded together in the selected 2u stabilizer assembly."};
+  }
+  return null;
+}
+function sameManufacturerRelation(aPart,bPart){
+  var key=sameManufacturerKey(aPart);
+  if(!key||key!==sameManufacturerKey(bPart))return null;
+  return {
+    state:"works",label:"Manufacturer matched",basis:"same_manufacturer",
+    text:"These parts share the same recorded manufacturer and are accepted by the same-manufacturer compatibility policy."
+  };
+}
+function compatibilityApplicable(aPart,bPart){
+  if(!aPart||!bPart||aPart.pseudo||bPart.pseudo)return false;
+  var categories=new Set([aPart.cat,bPart.cat]);
+  // Keycaps do not physically interact with the conical spring or silencing
+  // ring. Treating those pairs as evidence gaps made every otherwise coherent
+  // manufacturer stack appear Not verified because of an unrelated part.
+  if(categories.has("Keycaps")&&
+      (categories.has("Conical Springs")||categories.has("Silencing Rings")))return false;
+  return true;
+}
+function partScopedFinding(part){
+  var issue=part&&part.partIssue;
+  if(!issue||part.pseudo||issue.scope!=="part")return null;
+  if(!["bad","conditional","unverified"].includes(issue.state))return null;
+  var labels={bad:"Does not work",conditional:"Works with conditions",unverified:"Not verified"};
+  return {
+    scope:"part",rid:ridOf(part),part:part.name,state:issue.state,
+    label:issue.label||labels[issue.state],text:String(issue.text||""),
+    basis:"part_issue"
+  };
+}
+function relationFor(aPart,bPart){
+  if(!compatibilityApplicable(aPart,bPart))return null;
+  // A part-scoped finding owns the problem. Its expanded matrix edges are
+  // audit evidence, not separate consumer conflicts with every other part.
+  if(partScopedFinding(aPart)||partScopedFinding(bPart))return null;
+  var evidence=consumerRelation(evEdge(aPart,bPart),aPart.name,bPart.name);
+  if(!evidence)return null;
+  var context=recordedContextRelation(aPart,bPart);
+
+  // An unchanged keyboard or 2u-assembly starting point is exact configuration
+  // evidence and outranks generic pair rules.
+  if(context&&context.state==="works")return context;
+
+  // Outside an unchanged starting point, recorded conflicts and adjudicated
+  // conditions always outrank manufacturer matching. Same-manufacturer matching
+  // is only a fallback for a relationship that would otherwise be unverified.
+  if(evidence.state==="bad"||evidence.state==="conditional")return evidence;
+  if(evidence.state==="works")return evidence;
+  return sameManufacturerRelation(aPart,bPart)||context||evidence;
+}
 function assessCandidate(slotKey,candidate){
-  if(slotKey==="dome")return {state:"neutral",label:"Not evaluated",relations:[]};
-  if(slotKey==="kbd")return {state:"neutral",label:"Starting configuration",relations:[]};
-  if(candidate.part.pseudo)return {state:"neutral",label:"No ring",relations:[]};
+  if(candidate.part.pseudo)return {state:"neutral",label:candidate.part.noneLabel||"Not used",relations:[],partFindings:[]};
+  if(slotKey==="dome")return {state:"neutral",label:"Not evaluated",relations:[],partFindings:[]};
+  if(slotKey==="kbd")return {state:"neutral",label:"Starting configuration",relations:[],partFindings:[]};
+  if(slotKey==="stab2uAssembly")return {state:"neutral",label:"Recorded assembly",relations:[],partFindings:[]};
+  var ownFinding=partScopedFinding(candidate.part);
+  if(ownFinding)return {state:ownFinding.state,label:ownFinding.label,relations:[],partFindings:[ownFinding]};
   var relations=[];
   for(const other of selectedCompatibilityParts(slotKey)){
     if(ridOf(other)===ridOf(candidate.part))continue;
-    var rel=consumerRelation(evEdge(candidate.part,other),candidate.part.name,other.name);
+    var rel=relationFor(candidate.part,other);
     if(rel)relations.push(Object.assign({a:candidate.part.name,b:other.name},rel));
   }
-  return Object.assign({relations:relations},rollupRelations(relations));
+  return Object.assign({relations:relations,partFindings:[]},rollupRelations(relations));
 }
 function assessBuild(){
   var parts=selectedCompatibilityParts(null);
   var selectedRows=SLOT_DEFS.filter(function(slot){return !!slotPart(slot.key);}).length;
+  var partFindings=parts.map(partScopedFinding).filter(Boolean);
   var relations=[];
   for(var i=0;i<parts.length;i++){
     for(var j=i+1;j<parts.length;j++){
-      var edge=evEdge(parts[i],parts[j]);
-      var rel=consumerRelation(edge,parts[i].name,parts[j].name);
+      var rel=relationFor(parts[i],parts[j]);
       if(rel)relations.push(Object.assign({a:parts[i].name,b:parts[j].name},rel));
     }
   }
   var counts={bad:0,conditional:0,unverified:0,works:0};
+  for(const finding of partFindings)counts[finding.state]=(counts[finding.state]||0)+1;
   for(const rel of relations)counts[rel.state]=(counts[rel.state]||0)+1;
   var state="empty",title="Choose parts to begin",copy="Recorded compatibility will appear as components are selected.";
-  if(parts.length===0&&selectedRows){
+  var badParts=partFindings.filter(function(f){return f.state==="bad";}).length;
+  var badRelations=relations.filter(function(r){return r.state==="bad";}).length;
+  var unverifiedParts=partFindings.filter(function(f){return f.state==="unverified";}).length;
+  var unverifiedRelations=relations.filter(function(r){return r.state==="unverified";}).length;
+  var conditionalParts=partFindings.filter(function(f){return f.state==="conditional";}).length;
+  var conditionalRelations=relations.filter(function(r){return r.state==="conditional";}).length;
+  if(counts.bad){
+    state="bad";
+    if(badParts&&!badRelations){
+      title=badParts+(badParts===1?" incompatible part":" incompatible parts");
+      copy="Replace the flagged part"+(badParts===1?"":"s")+" before using this configuration.";
+    }else if(badParts){
+      title=counts.bad+(counts.bad===1?" compatibility issue":" compatibility issues");
+      copy="Replace the flagged part"+(badParts===1?"":"s")+" and review the remaining conflict"+(badRelations===1?"":"s")+".";
+    }else{
+      title=badRelations+(badRelations===1?" known conflict":" known conflicts");
+      copy="Review the conflict"+(badRelations===1?"":"s")+" before using this configuration.";
+    }
+  }else if(unverifiedParts&&!unverifiedRelations){
+    state="incomplete";
+    title=unverifiedParts+(unverifiedParts===1?" part not verified":" parts not verified");
+    copy="Compatibility for the flagged part"+(unverifiedParts===1?" has":"s have")+" not been confirmed.";
+    if(counts.conditional)copy+=" "+counts.conditional+(counts.conditional===1?" recorded condition also needs":" recorded conditions also need")+" review.";
+  }else if(conditionalParts&&!conditionalRelations){
+    state="conditional";
+    title=conditionalParts+(conditionalParts===1?" part condition to review":" part conditions to review");
+    copy="Review the recorded condition"+(conditionalParts===1?".":"s.");
+  }else if(parts.length===0&&selectedRows){
     state="incomplete";
     title="Choose another part to check compatibility";
     copy=build.dome&&selectedRows===1
@@ -563,40 +783,170 @@ function assessBuild(){
     title="Choose another part to check compatibility";
     copy="Add another compatibility-evaluated component to compare this build.";
   }else if(parts.length>=2){
-    if(counts.bad){
-      state="bad";
-      title=counts.bad+(counts.bad===1?" known conflict":" known conflicts");
-      copy="Review the conflict"+(counts.bad===1?"":"s")+" before using this configuration.";
+    if(!relations.length){
+      state="incomplete";
+      title="Choose another part to check compatibility";
+      copy="The selected parts do not interact for compatibility checking. Add another component to continue.";
     }else if(counts.unverified){
       state="incomplete";
       var verified=counts.works||0;
-      title=verified?"Compatibility evidence is incomplete":"Compatibility not verified";
-      copy=verified?(counts.unverified+(counts.unverified===1?" pairing is":" pairings are")+" not verified."):"None of the selected relationships has confirmed compatibility evidence.";
+      title=unverifiedParts&&!unverifiedRelations
+        ?unverifiedParts+(unverifiedParts===1?" part not verified":" parts not verified")
+        :(verified?"Compatibility evidence is incomplete":"Compatibility not verified");
+      copy=unverifiedParts&&!unverifiedRelations
+        ?"Compatibility for the flagged part"+(unverifiedParts===1?" has":"s have")+" not been confirmed."
+        :(verified?(counts.unverified+(counts.unverified===1?" pairing is":" pairings are")+" not verified."):"None of the selected relationships has confirmed compatibility evidence.");
       if(counts.conditional)copy+=" "+counts.conditional+(counts.conditional===1?" recorded condition also needs":" recorded conditions also need")+" review.";
     }else if(counts.conditional){
       state="conditional";
-      title=counts.conditional+(counts.conditional===1?" condition to review":" conditions to review");
+      title=conditionalParts&&!conditionalRelations
+        ?conditionalParts+(conditionalParts===1?" part condition to review":" part conditions to review")
+        :counts.conditional+(counts.conditional===1?" condition to review":" conditions to review");
       copy="Review the recorded condition"+(counts.conditional===1?".":"s.");
     }else{
       state="good";
-      title="All checked relationships work";
-      copy="Every applicable relationship in the current selection has recorded compatible evidence.";
+      var manufacturerMatched=relations.some(function(r){return r.basis==="same_manufacturer";});
+      title=manufacturerMatched?"No compatibility issues found":"All checked relationships work";
+      copy=manufacturerMatched
+        ?"Recorded evidence and same-manufacturer matching found no compatibility issues in the selected relationships."
+        :"Every applicable relationship in the current selection has recorded compatible evidence.";
     }
   }
-  return {parts:parts,relations:relations,counts:counts,state:state,title:title,copy:copy};
+  return {parts:parts,partFindings:partFindings,relations:relations,counts:counts,state:state,title:title,copy:copy};
 }
 
-function ringGeometryNote(){
+function intentionalRingFit(slider,housing,ring,compression){
+  var policy=slider&&slider.ringFit;
+  if(!policy||!housing||!ring)return null;
+  var housingRid=housing.rid||housing.id,ringRid=ring.rid||ring.id;
+  if(housingRid!==policy.housing_rid||!Array.isArray(policy.ring_rids)||
+      !policy.ring_rids.includes(ringRid))return null;
+  var fits=Array.isArray(policy.intentional_compressions)?policy.intentional_compressions:[];
+  var match=fits.find(function(row){
+    return row&&Number.isFinite(Number(row.mm))&&Math.abs(Number(row.mm)-compression)<1e-9;
+  });
+  return match?{status:match.status||"manufacturer_supported",sourceUrl:policy.source_url||""}:null;
+}
+function ringGeometryAssessment(label,slider,ring,offset,housing){
+  if(!slider||!ring||slider.seat==null||ring.t==null||offset==null)return null;
+  var sliderSeat=Number(slider.seat),housingSeat=Number(offset),ringThickness=Number(ring.t);
+  if(![sliderSeat,housingSeat,ringThickness].every(Number.isFinite))return null;
+  var totalSeat=sliderSeat+housingSeat;
+  var delta=totalSeat-ringThickness;
+  var equation=totalSeat.toFixed(2)+" mm total ring seat ("+
+    sliderSeat.toFixed(2)+" mm slider seat + "+housingSeat.toFixed(2)+
+    " mm housing seat) versus "+ringThickness.toFixed(2)+" mm ring thickness.";
+  if(Math.abs(delta)<1e-9){
+    return ring.pseudo&&Math.abs(totalSeat)<1e-9?null:{
+      text:label+" seats flush: "+equation,warning:false,kind:"flush",sourceUrl:""
+    };
+  }
+  if(delta<0){
+    var compression=Math.abs(delta);
+    var intended=intentionalRingFit(slider,housing,ring,compression);
+    if(intended){
+      var status=intended.status==="manufacturer_recommended"?"manufacturer recommended":"manufacturer supported";
+      return {
+        text:label+" has "+compression.toFixed(2)+" mm intentional pre-compression ("+status+"). "+equation,
+        warning:false,kind:"intentional-compression",sourceUrl:intended.sourceUrl
+      };
+    }
+    return {text:label+" has "+compression.toFixed(2)+" mm compression: "+equation,
+      warning:true,kind:"compression",sourceUrl:""};
+  }
+  return {text:label+" leaves "+delta.toFixed(2)+" mm top-out clearance (chatter risk): "+equation,
+    warning:true,kind:"chatter",sourceUrl:""};
+}
+function ringGeometryText(label,slider,ring,offset,housing){
+  var assessment=ringGeometryAssessment(label,slider,ring,offset,housing);
+  return assessment?assessment.text:null;
+}
+function ringGeometryAssessment1u(){
   var slider=slotPart("slider"),ring=slotPart("ring"),housing=slotPart("h1");
-  if(!slider||!ring||ring.pseudo||slider.seat==null)return null;
-  var offset=housing&&!housing.shell&&housing.off!=null?housing.off:0;
-  var effective=Number((ring.t-(slider.seat+offset)).toFixed(2));
-  if(Math.abs(effective)<.001)return "Calculated ring geometry seats flush.";
-  if(effective<0)return "Calculated ring geometry leaves "+Math.abs(effective).toFixed(2)+" mm top-out clearance.";
-  return "Calculated ring geometry indicates "+effective.toFixed(2)+" mm pre-compression.";
+  if(!slider||!ring||!housing||slider.seat==null||housing.off==null)return null;
+  return ringGeometryAssessment("1u ring geometry",slider,ring,housing.off,housing);
+}
+function ringGeometryNote(){
+  var assessment=ringGeometryAssessment1u();
+  return assessment?assessment.text:null;
+}
+function stabilizerRingGeometryAssessment(){
+  var slider=slotPart("sl2"),ring=slotPart("ring2u"),housing=slotPart("h2");
+  if(!slider||!ring||slider.seat==null)return null;
+  var assembly=slotPart("stab2uAssembly"),offset=null;
+  if(housing&&housing.shell){
+    offset=assembly&&assembly.housingOffset!=null?assembly.housingOffset:0;
+  }else if(housing&&housing.off!=null){
+    offset=housing.off;
+  }else if(!housing&&assembly&&assembly.housingMode==="shell"){
+    offset=assembly.housingOffset==null?0:assembly.housingOffset;
+  }
+  return ringGeometryAssessment("2u stabilizer ring geometry",slider,ring,offset,housing);
+}
+function stabilizerRingGeometryNote(){
+  var assessment=stabilizerRingGeometryAssessment();
+  return assessment?assessment.text:null;
+}
+function ringGeometryAssessments(){
+  return [ringGeometryAssessment1u(),stabilizerRingGeometryAssessment()].filter(Boolean);
+}
+function ringGeometryNotes(){
+  return ringGeometryAssessments().map(function(row){return row.text;});
+}
+
+function selectedDomeMeasurement(){
+  var dome=slotPart("dome");
+  if(!dome||dome.pseudo)return null;
+  var rows=domeMeasurements(dome);
+  return rows.length===1?rows[0]:null;
+}
+function mainSwitchDimensions(){
+  var slider=slotPart("slider"),housing=slotPart("h1"),ring=slotPart("ring");
+  var measured=selectedDomeMeasurement();
+  var forceWall=measured&&typeof measured.force_wall_mm==="number"&&Number.isFinite(measured.force_wall_mm)
+    ?measured.force_wall_mm:null;
+  var result={
+    compressionMm:null,geometricTravelMm:null,forceWallMm:forceWall,
+    travelMm:null,travelSource:null,measurementSelected:!!measured
+  };
+  if(!slider||!housing||!ring||slider.travel==null||slider.seat==null||housing.off==null||ring.t==null)return result;
+  var nominalTravel=Number(slider.travel),sliderSeat=Number(slider.seat);
+  var housingSeat=Number(housing.off),ringThickness=Number(ring.t);
+  if(![nominalTravel,sliderSeat,housingSeat,ringThickness].every(Number.isFinite))return result;
+  var compression=Math.max(0,ringThickness-(sliderSeat+housingSeat));
+  var geometricTravel=Math.max(0,nominalTravel-compression);
+  result.compressionMm=compression;
+  result.geometricTravelMm=geometricTravel;
+  result.travelMm=forceWall!=null&&forceWall<geometricTravel?forceWall:geometricTravel;
+  result.travelSource=forceWall!=null&&forceWall<geometricTravel?"force-wall":"geometry";
+  return result;
+}
+function renderBuildDimensions(){
+  var dims=mainSwitchDimensions();
+  var travel=document.getElementById("dimensionTravel");
+  var compression=document.getElementById("dimensionCompression");
+  var copy=document.getElementById("dimensionCopy");
+  travel.textContent=dims.travelMm==null?"Not calculated":dims.travelMm.toFixed(2)+" mm";
+  compression.textContent=dims.compressionMm==null?"Not calculated":dims.compressionMm.toFixed(2)+" mm";
+  if(dims.travelMm==null){
+    copy.textContent="Choose a slider, 1u housing, and silencing-ring state to calculate these values.";
+    return;
+  }
+  var geometryText=dims.geometricTravelMm.toFixed(2)+" mm ring-adjusted slider travel";
+  if(dims.forceWallMm!=null){
+    var wallText=dims.forceWallMm.toFixed(2)+" mm selected-dome Force-Wall";
+    copy.textContent=dims.travelSource==="force-wall"
+      ?"Travel is limited by the "+wallText+" because it is shorter than the "+geometryText+"."
+      :"Travel is limited by the "+geometryText+" because it is not greater than the "+wallText+".";
+  }else if(dims.measurementSelected){
+    copy.textContent="Force-Wall was not detected for the selected measured dome. Travel therefore uses the "+geometryText+"; no final sample is substituted for Force-Wall.";
+  }else{
+    copy.textContent="Travel uses the "+geometryText+". Select an exact measured specimen when a dome family has multiple measurements to apply its Force-Wall.";
+  }
 }
 
 function presetById(id){return PRESETS.find(function(p){return p.id===id;})||null;}
+function presetPartId(spec){return spec&&typeof spec==="object"?spec.part:spec;}
 function catalogIdForRid(rid){
   if(PARTIDX[rid])return rid;
   for(const id of Object.keys(PARTIDX)){
@@ -604,29 +954,57 @@ function catalogIdForRid(rid){
   }
   return null;
 }
+function resolvedAssemblySlotId(assembly,key){
+  if(!assembly||!assembly.slots)return null;
+  var raw=assembly.slots[key];
+  if(raw==null)return null;
+  return PARTIDX[raw]?raw:catalogIdForRid(raw);
+}
+function assemblyConstituentSnapshot(){
+  return JSON.stringify({h2:build.h2||null,sl2:build.sl2||null,ring2u:build.ring2u||null});
+}
+function isAssemblyModified(){
+  return !!build.stab2uAssembly&&assemblyBaseline!=null&&assemblyConstituentSnapshot()!==assemblyBaseline;
+}
+function applyStabilizerAssembly(assembly,options){
+  if(!assembly)return false;
+  var opts=options||{};
+  var replacesIntegrated=assembly.housingMode!=="shell"&&!!(build.shell&&build.h2===build.shell);
+  if(replacesIntegrated&&!opts.preserveIntegrated)detachIntegratedContext();
+  build.stab2uAssembly=assembly.id;
+  build.h2=assembly.housingMode==="shell"?(build.shell||null):resolvedAssemblySlotId(assembly,"h2");
+  build.sl2=resolvedAssemblySlotId(assembly,"sl2");
+  build.ring2u=resolvedAssemblySlotId(assembly,"ring2u");
+  assemblyBaseline=assemblyConstituentSnapshot();
+  return replacesIntegrated;
+}
 function keyboardFilledSlots(preset){
   var labels=[];
   var labelByKey={
     dome:"Dome",slider:"Main slider",ring:"Silencing ring",spring:"Conical spring",
-    keycap:"Keycaps",h1:"1u housing",h2:"2u stabilizer housing",
-    sl2:"2u stabilizer slider",sb:"Spacebar stabilizer"
+    keycap:"Keycaps",h1:"1u housing",stab2uAssembly:"2u stabilizer assembly",
+    h2:"2u stabilizer housing",sl2:"2u stabilizer slider",
+    ring2u:"2u silencing ring",sb:"Spacebar stabilizer"
   };
   for(const key of Object.keys(preset.slots||{})){
     if(key==="shell"){
       labels.push("1u housing","2u stabilizer housing");
-      var shell=PARTIDX[preset.slots[key].part];
+      var shell=PARTIDX[presetPartId(preset.slots[key])];
       if(shell&&shell.addsSb)labels.push("Spacebar stabilizer");
+    }else if(key==="stab2uAssembly"){
+      labels.push("2u stabilizer assembly","2u stabilizer housing","2u stabilizer slider","2u silencing ring");
     }else if(labelByKey[key])labels.push(labelByKey[key]);
   }
   return [...new Set(labels)];
 }
 function qualifiedKeyboardPresets(){
   return PRESETS.filter(function(p){
-    if(!p.id||!p.id.startsWith("kbd::"))return false;
+    if(!p.id||(!p.id.startsWith("kbd::")&&!p.id.startsWith("kit::")))return false;
     var keys=Object.keys(p.slots||{});
     if(!keys.length)return false;
     return keys.every(function(key){
-      var id=p.slots[key]&&p.slots[key].part;
+      var id=presetPartId(p.slots[key]);
+      if(PARTIDX[id]&&PARTIDX[id].pseudo)return true;
       if(key==="dome")return !!DOME_BY_SOURCE_ID[id];
       return !!catalogIdForRid(id);
     });
@@ -635,6 +1013,7 @@ function qualifiedKeyboardPresets(){
 let presetBaseline=null;
 let presetLabel="";
 let presetNotice="";
+let assemblyBaseline=null;
 let undoState=null;
 function snapshotBuild(){
   var copy={};
@@ -649,13 +1028,15 @@ function resetBuildState(){
   presetBaseline=null;
   presetLabel="";
   presetNotice="";
+  assemblyBaseline=null;
 }
 function captureBuildState(){
   return {
     build:Object.assign({},build),
     presetBaseline:presetBaseline,
     presetLabel:presetLabel,
-    presetNotice:presetNotice
+    presetNotice:presetNotice,
+    assemblyBaseline:assemblyBaseline
   };
 }
 function buildSelectionCount(){
@@ -679,6 +1060,7 @@ function restoreUndo(){
   presetBaseline=state.presetBaseline;
   presetLabel=state.presetLabel;
   presetNotice=state.presetNotice||"";
+  assemblyBaseline=state.assemblyBaseline==null?null:state.assemblyBaseline;
   renderBuild();
   announce("Previous build restored.");
   requestEmbedHeight();
@@ -686,7 +1068,7 @@ function restoreUndo(){
 function applyKeyboardPreset(preset){
   resetBuildState();
   if(preset.slots&&preset.slots.shell){
-    var shell=PARTIDX[preset.slots.shell.part];
+    var shell=PARTIDX[presetPartId(preset.slots.shell)];
     if(shell){
       build.shell=shell.id;
       build.h1=shell.id;
@@ -694,21 +1076,30 @@ function applyKeyboardPreset(preset){
       if(shell.addsSb)build.sb=shell.id;
     }
   }
+  var assemblySpec=preset.slots&&preset.slots.stab2uAssembly;
+  if(assemblySpec){
+    var assemblyId=presetPartId(assemblySpec);
+    var assembly=PARTIDX[assemblyId]||PARTIDX[catalogIdForRid(assemblyId)];
+    if(assembly&&assembly.compound)applyStabilizerAssembly(assembly,{preserveIntegrated:true});
+  }
   for(const entry of Object.entries(preset.slots||{})){
-    var slot=entry[0],spec=entry[1];
-    if(slot==="shell")continue;
+    var slot=entry[0],spec=entry[1],partId=presetPartId(spec);
+    if(slot==="shell"||slot==="stab2uAssembly")continue;
     if(build.shell&&(slot==="h1"||slot==="h2"||(slot==="sb"&&PARTIDX[build.shell].addsSb)))continue;
     if(slot==="dome"){
-      var dome=DOME_BY_SOURCE_ID[spec.part];
-      if(dome){build.dome=dome.id;build.domeSpec=null;}
+      var explicitNone=PARTIDX[partId];
+      var dome=DOME_BY_SOURCE_ID[partId];
+      if(explicitNone&&explicitNone.pseudo){build.dome=explicitNone.id;build.domeSpec=null;}
+      else if(dome){build.dome=dome.id;build.domeSpec=null;}
       continue;
     }
-    var id=catalogIdForRid(spec.part);
+    var id=catalogIdForRid(partId);
     if(id&&Object.prototype.hasOwnProperty.call(build,slot))build[slot]=id;
   }
   build.kbd=preset.id;
+  if(build.stab2uAssembly)assemblyBaseline=assemblyConstituentSnapshot();
   presetLabel=preset.label;
-  presetNotice=preset.notice||"";
+  presetNotice=Array.isArray(preset.notice||preset.notes)?(preset.notice||preset.notes).join(" "):(preset.notice||preset.notes||"");
   presetBaseline=snapshotBuild();
 }
 function detachIntegratedContext(){
@@ -753,27 +1144,43 @@ function metricRange(rows,key,digits,suffix){
   var f=function(v){return digits===0?String(Math.round(v)):v.toFixed(digits);};
   return (Math.abs(hi-lo)<Math.pow(10,-digits)/2?f(lo):f(lo)+"–"+f(hi))+(suffix||"");
 }
+function forceWallText(rows){
+  if(!rows.length)return "";
+  var values=rows.filter(function(r){return typeof r.force_wall_mm==="number"&&Number.isFinite(r.force_wall_mm);});
+  if(!values.length)return "Not detected";
+  var text=metricRange(values,"force_wall_mm",2," mm");
+  return values.length===rows.length?text:text+"; some not detected";
+}
+function domeMetricSummary(rows){
+  if(!rows.length)return "";
+  return [
+    "Weight Index "+(metricRange(rows,"weight_index",1,"")||"Not available"),
+    "Tactility Index "+(metricRange(rows,"tactility_index",1,"")||"Not available"),
+    "Force-Wall "+forceWallText(rows)
+  ].join(" · ");
+}
 function partSummary(slotKey,part){
   if(!part)return "";
+  if(part.pseudo)return part.noneSummary||"Intentional no-part selection";
+  if(slotKey==="stab2uAssembly"){
+    var housing=part.housingMode==="shell"
+      ?((part.housingLabel||"Keyboard shell")+" (not a loose part)")
+      :(resolvedAssemblySlotId(part,"h2")&&PARTIDX[resolvedAssemblySlotId(part,"h2")]?PARTIDX[resolvedAssemblySlotId(part,"h2")].name:"Housing not specified");
+    var slider=resolvedAssemblySlotId(part,"sl2"),ring=resolvedAssemblySlotId(part,"ring2u");
+    return [housing,slider&&PARTIDX[slider]?PARTIDX[slider].name:"Slider not specified",ring&&PARTIDX[ring]?PARTIDX[ring].name:"Ring not specified"].join(" · ");
+  }
   if(slotKey==="dome"){
     var rows=domeMeasurements(part);
-    var bits=[];
-    if(part.wraw)bits.push("Nominal "+part.wraw);
-    if(rows.length){
-      bits.push(metricRange(rows,"collapse_force_gf",1," gf measured"));
-      bits.push(rows.length+" measured specimen"+(rows.length===1?"":"s"));
-      bits.push("Weight Index "+metricRange(rows,"weight_index",1,""));
-      bits.push("Tactility Index "+metricRange(rows,"tactility_index",1,""));
-    }
-    return bits.join(" · ");
+    if(rows.length)return domeMetricSummary(rows);
+    return [part.wraw?"Nominal "+part.wraw:"","No measured specimen"].filter(Boolean).join(" · ");
   }
-  if(slotKey==="ring"&&part.pseudo)return "Deliberate bare-slider configuration";
   if(part.shell)return "Built into the selected keyboard";
   var bits=[];
   if(part.stem)bits.push(String(part.stem).toUpperCase()+" mount");
   if(part.t!=null&&!part.pseudo)bits.push(part.t+" mm "+(part.mat||""));
-  if(part.travel!=null)bits.push(part.travel+" mm nominal travel");
+  if(part.travel!=null&&!part.hideTravel)bits.push(part.travel+" mm nominal travel");
   if(part.seat!=null)bits.push(part.seat+" mm ring seat");
+  if((slotKey==="h1"||slotKey==="h2")&&part.off)bits.push(part.off+" mm housing ring seat");
   return bits.filter(Boolean).join(" · ");
 }
 function selectedPartName(slotKey,part){
@@ -784,15 +1191,15 @@ function selectedPartName(slotKey,part){
   return part?part.name:"";
 }
 function platformHTML(){
-  var keyboard=slotPart("kbd");
-  if(!keyboard){
-    return '<div><div class="kicker">Keyboard / platform</div><div class="platform-name empty">No starting keyboard selected</div><div class="platform-copy">Start blank, or fill only the parts recorded for a supported keyboard.</div></div>'+
-      '<div class="platform-actions"><button class="button small primary" type="button" data-choose="kbd">Choose keyboard</button></div>';
+  var starter=slotPart("kbd");
+  if(!starter){
+    return '<div><div class="kicker">Keyboard or parts kit</div><div class="platform-name empty">No starting point selected</div><div class="platform-copy">Start blank, or fill the parts recorded for a supported keyboard or manufacturer kit.</div></div>'+
+      '<div class="platform-actions"><button class="button small primary" type="button" data-choose="kbd">Choose starting point</button></div>';
   }
   var modified=isPresetModified();
-  return '<div><div class="kicker">Keyboard / platform</div><div class="platform-name">'+escText(presetLabel||keyboard.name)+(modified?' <span class="badge neutral">Modified</span>':'')+'</div>'+
-    '<div class="platform-copy">Filled only recorded components. Unspecified parts remain empty.'+(presetNotice?' <strong>Choose dome:</strong> '+escText(presetNotice):'')+'</div></div>'+
-    '<div class="platform-actions"><button class="button small" type="button" data-choose="kbd">Change</button><button class="button small danger" type="button" data-remove="kbd">Remove keyboard &amp; integrated parts</button></div>';
+  return '<div><div class="kicker">Keyboard or parts kit</div><div class="platform-name">'+escText(presetLabel||starter.name)+(modified?' <span class="badge neutral">Modified</span>':'')+'</div>'+
+    '<div class="platform-copy">Filled only recorded components. Unspecified parts remain empty.'+(presetNotice?' <strong>Note:</strong> '+escText(presetNotice):'')+'</div></div>'+
+    '<div class="platform-actions"><button class="button small" type="button" data-choose="kbd">Change</button><button class="button small danger" type="button" data-remove="kbd">Remove starting point</button></div>';
 }
 function renderPlatform(){
   var card=document.getElementById("platformCard");
@@ -806,18 +1213,42 @@ function renderBuildStatus(){
   document.getElementById("statusCopy").textContent=result.copy;
   var details=document.getElementById("compatDisclosure");
   var list=document.getElementById("compatDetails");
+  var partFindings=result.partFindings||[];
   var findings=result.relations.filter(function(r){return r.state!=="works";});
-  var geometry=ringGeometryNote();
-  details.hidden=!findings.length&&!geometry;
-  list.innerHTML=findings.map(function(r){
+  var geometry=ringGeometryAssessments();
+  var fitWarnings=geometry.filter(function(note){return note.warning;});
+  if(fitWarnings.length&&result.state!=="bad"){
+    panel.dataset.level="conditional";
+    document.getElementById("statusTitle").textContent="Ring fit needs review";
+    document.getElementById("statusCopy").textContent="The selected ring geometry indicates chatter risk or compression.";
+  }
+  details.hidden=!partFindings.length&&!findings.length&&!geometry.length;
+  list.innerHTML=partFindings.map(function(f){
+    return '<div class="compat-item '+escText(f.state)+'"><strong>'+escText(f.label)+'</strong><div><b>'+escText(f.part)+'</b><p>'+escText(f.text)+'</p></div></div>';
+  }).join("")+findings.map(function(r){
     return '<div class="compat-item '+escText(r.state)+'"><strong>'+escText(r.label)+'</strong><div><b>'+escText(r.a)+' + '+escText(r.b)+'</b><p>'+escText(r.text)+'</p></div></div>';
   }).join("");
-  if(geometry)list.insertAdjacentHTML("beforeend",'<div class="compat-item"><strong>Fit note</strong><div><p>'+escText(geometry)+'</p></div></div>');
+  for(const note of geometry){
+    var source=note.sourceUrl?safeLink(note.sourceUrl,"Manufacturer source","source-link"):"";
+    var label=note.warning?"Fit warning":(note.kind==="intentional-compression"?"Manufacturer design note":"Fit note");
+    list.insertAdjacentHTML("beforeend",'<div class="compat-item '+(note.warning?'conditional':'good')+'"><strong>'+label+'</strong><div><p>'+escText(note.text)+'</p>'+(source?'<p>'+source+'</p>':'')+'</div></div>');
+  }
 }
 function rowHTML(slot){
   var p=slotPart(slot.key);
+  var assembly=slot.key==="h2"?slotPart("stab2uAssembly"):null;
+  var integratedAssemblyHousing=!p&&assembly&&assembly.housingMode==="shell";
+  if(integratedAssemblyHousing){
+    return '<li class="component-row" data-slot-row="h2">'+
+      '<div class="component-name">'+escText(slot.label)+'</div><div>'+
+      '<div class="selection-name">'+escText(assembly.housingLabel||"Shell-integrated 2u housing")+'</div>'+
+      '<div class="selection-meta">Built into the selected 2u stabilizer assembly; not a loose part.</div></div>'+
+      '<div class="component-status">'+badgeHTML({state:"neutral",label:"Integrated"})+'</div>'+
+      '<div class="row-actions"><button class="button small" type="button" data-choose="h2">Use loose part</button></div></li>';
+  }
   var assessment=p?assessCandidate(slot.key,{part:p}):{state:"neutral",label:"Not selected"};
-  if(slot.key==="dome"&&p)assessment={state:"neutral",label:"Not evaluated"};
+  if(slot.key==="dome"&&p&&!p.pseudo)assessment={state:"neutral",label:"Not evaluated"};
+  if(slot.key==="stab2uAssembly"&&p)assessment={state:"neutral",label:isAssemblyModified()?"Modified":"Assembly loaded"};
   var locked=!!(p&&p.shell);
   var summary=p?partSummary(slot.key,p):"";
   if(locked)summary+=(summary?" · ":"")+"Choosing a loose part removes the keyboard starting point and its other integrated parts.";
@@ -826,7 +1257,7 @@ function rowHTML(slot){
     '<div>'+(p?'<div class="selection-name">'+escText(selectedPartName(slot.key,p))+'</div><div class="selection-meta">'+escText(summary)+'</div>':'<div class="selection-name empty">Not selected</div>')+'</div>'+
     '<div class="component-status">'+(p?badgeHTML(assessment):'')+'</div>'+
     '<div class="row-actions"><button class="button small '+(p?"":"primary")+'" type="button" data-choose="'+escText(slot.key)+'">'+(p?(locked?"Use loose part":"Change"):"Choose")+'</button>'+
-    (p&&!locked?'<button class="button small danger" type="button" data-remove="'+escText(slot.key)+'">Remove</button>':'')+'</div></li>';
+    (p&&!locked?'<button class="button small danger" type="button" data-remove="'+escText(slot.key)+'">'+(slot.key==="stab2uAssembly"?"Remove assembly label":"Remove")+'</button>':'')+'</div></li>';
 }
 function renderBuildRows(){
   var root=document.getElementById("buildSections");
@@ -839,11 +1270,12 @@ function renderBuildRows(){
 function renderBuild(){
   renderPlatform();
   renderBuildStatus();
+  renderBuildDimensions();
   renderBuildRows();
   document.getElementById("buildToolbar").hidden=!Object.values(build).some(Boolean);
 }
 
-function activeSlot(){return appState.slot==="kbd"?{key:"kbd",label:"Keyboard / platform",list:"keyboards"}:SLOT_BY_KEY[appState.slot];}
+function activeSlot(){return appState.slot==="kbd"?{key:"kbd",label:"Keyboard or parts kit",list:"keyboards"}:SLOT_BY_KEY[appState.slot];}
 function keyboardCandidates(){
   return qualifiedKeyboardPresets().map(function(preset){
     return {key:preset.id,part:PARTIDX[preset.id],preset:preset,kind:"keyboard"};
@@ -911,7 +1343,7 @@ function renderFilters(){
     var stems=uniqueValues(candidates,function(c){return String(c.part.stem||"").toLowerCase();});
     if(stems.length>1)html+='<div class="field compact"><label for="stemFilter">Mount</label><select id="stemFilter">'+selectOptions(stems,appState.stem,"All mounts")+'</select></div>';
   }
-  if(slot.key==="ring"){
+  if(slot.key==="ring"||slot.key==="ring2u"){
     var materials=uniqueValues(candidates,function(c){return c.part.mat||"";});
     var thicknesses=uniqueValues(candidates,function(c){return c.part.pseudo?"":String(c.part.t);});
     html+='<div class="field compact"><label for="materialFilter">Material</label><select id="materialFilter">'+selectOptions(materials.map(function(x){return x.toLowerCase();}),appState.material,"All materials")+'</select></div>';
@@ -925,7 +1357,7 @@ function renderFilters(){
       '<option value="ge80"'+(appState.weight==="ge80"?" selected":"")+'>80 g or more</option></select></div>'+
       '<label class="check-label"><input id="measuredOnly" type="checkbox"'+(appState.measuredOnly?" checked":"")+'> Measured only</label>';
   }
-  if(!["kbd","dome"].includes(slot.key)){
+  if(!["kbd","dome","stab2uAssembly"].includes(slot.key)){
     html+='<label class="check-label"><input id="showIncompatible" type="checkbox"'+(appState.showIncompatible?" checked":"")+'> Show options that do not work</label>';
   }
   document.getElementById("filters").innerHTML=html;
@@ -947,19 +1379,22 @@ function candidateSpecs(candidate,slotKey){
     specs.push("Fills "+fills+" builder row"+(fills===1?"":"s"));
     if(p.maker)specs.push(p.maker);
   }else if(slotKey==="dome"){
-    if(p.wraw)specs.push("Nominal "+p.wraw);
     var rows=m?[m]:(p.measurements||[]);
     if(rows.length){
-      specs.push(metricRange(rows,"collapse_force_gf",1," gf collapse"));
-      specs.push("Weight Index "+metricRange(rows,"weight_index",1,""));
-      specs.push("Tactility Index "+metricRange(rows,"tactility_index",1,""));
-    }else specs.push("No measured specimen");
-  }else if(slotKey==="ring"){
+      specs.push.apply(specs,domeMetricSummary(rows).split(" · "));
+    }else{
+      if(p.wraw)specs.push("Nominal "+p.wraw);
+      specs.push("No measured specimen");
+    }
+  }else if(slotKey==="stab2uAssembly"){
+    var summary=partSummary(slotKey,p).split(" · ");
+    specs.push.apply(specs,summary);
+  }else if(slotKey==="ring"||slotKey==="ring2u"){
     if(p.pseudo)specs.push("Bare slider");
     else{specs.push(p.t+" mm");if(p.mat)specs.push(p.mat);if(p.hard)specs.push(p.hard);}
   }else{
     if(p.stem)specs.push(String(p.stem).toUpperCase()+" mount");
-    if(p.travel!=null)specs.push(p.travel+" mm nominal travel");
+    if(p.travel!=null&&!p.hideTravel)specs.push(p.travel+" mm nominal travel");
     if(p.seat!=null)specs.push(p.seat+" mm ring seat");
     if(p.type)specs.push(typeLabel(p.type));
   }
@@ -980,9 +1415,11 @@ function candidateIsSelected(candidate,slotKey){
 function candidateHTML(candidate,slotKey,assessment){
   var specs=candidateSpecs(candidate,slotKey).map(function(s){return '<span class="spec">'+escText(s)+'</span>';}).join("");
   var selected=candidateIsSelected(candidate,slotKey);
-  var reset=selected&&slotKey==="kbd"&&isPresetModified();
-  var action=reset?"Reset to recorded configuration":(selected?"Selected":(slotKey==="kbd"?"Use this keyboard":"Add to build"));
-  var actionAttr=reset?' data-reset-preset="'+escText(candidate.key)+'"':(selected?' disabled':' data-select="'+escText(candidate.key)+'"');
+  var resetKeyboard=selected&&slotKey==="kbd"&&isPresetModified();
+  var resetAssembly=selected&&slotKey==="stab2uAssembly"&&isAssemblyModified();
+  var reset=resetKeyboard||resetAssembly;
+  var action=resetKeyboard?"Reset to recorded configuration":(resetAssembly?"Reset assembly":(selected?"Selected":(slotKey==="kbd"?"Use this starting point":(slotKey==="stab2uAssembly"?"Use this assembly":"Add to build"))));
+  var actionAttr=resetKeyboard?' data-reset-preset="'+escText(candidate.key)+'"':(resetAssembly?' data-reset-assembly="'+escText(candidate.key)+'"':(selected?' disabled':' data-select="'+escText(candidate.key)+'"'));
   return '<article class="candidate '+(candidate.kind==="dome-specimen"?"specimen":"")+'" data-candidate="'+escText(candidate.key)+'">'+
     '<div class="candidate-top"><div><h4>'+escText(candidateTitle(candidate))+'</h4><div class="candidate-maker">'+escText(makerOf(candidate.part)||typeLabel(candidate.part.type))+'</div></div>'+badgeHTML(assessment)+'</div>'+
     '<div class="candidate-specs">'+specs+'</div>'+
@@ -1042,12 +1479,14 @@ function openChooser(slotKey,opener){
   var slot=activeSlot();
   document.getElementById("buildView").hidden=true;
   document.getElementById("chooseView").hidden=false;
-  document.getElementById("chooseTitle").textContent="Choose "+(slotKey==="kbd"?"a keyboard":slot.label.toLowerCase());
+  document.getElementById("chooseTitle").textContent="Choose "+(slotKey==="kbd"?"a starting point":slot.label.toLowerCase());
   document.getElementById("chooseIntro").textContent=slotKey==="kbd"
-    ?"Starting from a keyboard replaces the current build with only its recorded components."
+    ?"Starting from a keyboard or manufacturer parts kit replaces the current build with only its recorded components."
     :(slotKey==="dome"
       ?"Choose a dome by its exact identity or measured specimen. Dome-to-component fit is not evaluated."
-      :"Options are checked against the parts currently selected.");
+      :(slotKey==="stab2uAssembly"
+        ?"Load a recorded 2u housing, slider, and silencing-ring configuration at once. You can change each part afterward."
+        :"Options are checked against the parts currently selected."));
   document.getElementById("chooserBuild").textContent=currentBuildSummary();
   document.getElementById("domeNote").hidden=slotKey!=="dome";
   renderFilters();
@@ -1082,6 +1521,13 @@ function selectCandidate(candidate){
     if(previous)offerUndo("The previous build was replaced.",previous);
     return;
   }
+  if(slotKey==="stab2uAssembly"){
+    var prior=buildSelectionCount()?captureBuildState():null;
+    var removedKeyboard=applyStabilizerAssembly(candidate.part);
+    closeChooser(candidateTitle(candidate)+" loaded. Its housing, slider, and silencing ring can now be changed individually."+(removedKeyboard?" The keyboard starting point and its integrated parts were removed.":""));
+    if(prior)offerUndo("The previous 2u stabilizer configuration was replaced.",prior);
+    return;
+  }
   var detached=!!(build.shell&&["h1","h2","sb"].includes(slotKey)&&build[slotKey]===build.shell);
   var previous=detached?captureBuildState():null;
   if(detached)detachIntegratedContext();
@@ -1089,6 +1535,14 @@ function selectCandidate(candidate){
   if(slotKey==="dome")build.domeSpec=candidate.measurement?candidate.measurement.specimen_id:null;
   closeChooser(candidateTitle(candidate)+" added to the build."+(detached?" The keyboard starting point and its integrated parts were removed.":""));
   if(previous)offerUndo("The keyboard and its integrated parts were replaced.",previous);
+}
+function resetSelectedAssembly(candidate){
+  if(!candidate||!candidate.part||!candidate.part.compound)return;
+  dismissUndo();
+  var previous=captureBuildState();
+  applyStabilizerAssembly(candidate.part);
+  closeChooser("Restored the recorded parts for "+candidate.part.name+".");
+  offerUndo("Your modified 2u stabilizer assembly was reset.",previous);
 }
 function resetSelectedKeyboard(candidate){
   if(!candidate||!candidate.preset)return;
@@ -1101,10 +1555,13 @@ function resetSelectedKeyboard(candidate){
 function removeSlot(slotKey){
   dismissUndo();
   var detached=false;
-  var previous=(slotKey==="kbd"||(build.shell&&["h1","h2","sb"].includes(slotKey)&&build[slotKey]===build.shell))?captureBuildState():null;
+  var previous=(slotKey==="kbd"||slotKey==="stab2uAssembly"||(build.shell&&["h1","h2","sb"].includes(slotKey)&&build[slotKey]===build.shell))?captureBuildState():null;
   if(slotKey==="kbd"){
     detached=!!build.shell;
     detachIntegratedContext();
+  }else if(slotKey==="stab2uAssembly"){
+    build.stab2uAssembly=null;
+    assemblyBaseline=null;
   }else if(build.shell&&["h1","h2","sb"].includes(slotKey)&&build[slotKey]===build.shell){
     detached=true;
     detachIntegratedContext();
@@ -1113,9 +1570,11 @@ function removeSlot(slotKey){
     if(slotKey==="dome")build.domeSpec=null;
   }
   renderBuild();
-  var message=(slotKey==="kbd"||detached)?"The keyboard starting point and its integrated parts were removed.":(SLOT_BY_KEY[slotKey]?SLOT_BY_KEY[slotKey].label:"Keyboard")+" removed.";
+  var message=slotKey==="stab2uAssembly"
+    ?"The assembly label was removed. Its parts remain selected for individual editing."
+    :((slotKey==="kbd"||detached)?"The starting-point label and its integrated keyboard context were removed. Loose selected parts remain in the build.":(SLOT_BY_KEY[slotKey]?SLOT_BY_KEY[slotKey].label:"Starting point")+" removed.");
   announce(message);
-  if(previous)offerUndo("Keyboard context and integrated parts removed.",previous);
+  if(previous)offerUndo(slotKey==="stab2uAssembly"?"Assembly label removed.":"Starting-point context and integrated parts removed.",previous);
   requestEmbedHeight();
 }
 
@@ -1137,13 +1596,18 @@ function detailRows(candidate,slotKey){
     add("Measured collapse force",metricRange(mrows,"collapse_force_gf",2," gf"));
     add("Weight Index",metricRange(mrows,"weight_index",1,""));
     add("Tactility Index",metricRange(mrows,"tactility_index",1,""));
-  }else if(slotKey==="ring"){
+    add("Force-Wall",forceWallText(mrows));
+  }else if(slotKey==="stab2uAssembly"){
+    add("Housing",p.housingMode==="shell"?(p.housingLabel||"Keyboard shell")+" (not a loose part)":(resolvedAssemblySlotId(p,"h2")&&PARTIDX[resolvedAssemblySlotId(p,"h2")]?PARTIDX[resolvedAssemblySlotId(p,"h2")].name:"Not specified"));
+    add("Slider",resolvedAssemblySlotId(p,"sl2")&&PARTIDX[resolvedAssemblySlotId(p,"sl2")]?PARTIDX[resolvedAssemblySlotId(p,"sl2")].name:"Not specified");
+    add("Silencing ring",resolvedAssemblySlotId(p,"ring2u")&&PARTIDX[resolvedAssemblySlotId(p,"ring2u")]?PARTIDX[resolvedAssemblySlotId(p,"ring2u")].name:"Not specified");
+  }else if(slotKey==="ring"||slotKey==="ring2u"){
     if(!p.pseudo){add("Thickness",p.t+" mm");add("Material",p.mat);add("Hardness",p.hard);}
   }else{
     add("Mount",p.stem?String(p.stem).toUpperCase():"");
-    add("Nominal travel",p.travel!=null?p.travel+" mm":"");
+    add("Nominal travel",p.travel!=null&&!p.hideTravel?p.travel+" mm":"");
     add("Ring seat",p.seat!=null?p.seat+" mm":"");
-    if(slotKey==="h1"&&p.off)add("Additional ring space",p.off+" mm");
+    if((slotKey==="h1"||slotKey==="h2")&&p.off)add("Additional ring space",p.off+" mm");
   }
   return rows;
 }
@@ -1156,7 +1620,7 @@ function openDetails(candidateKey,opener){
   document.getElementById("detailTitle").textContent=candidateTitle(candidate);
   var rows=detailRows(candidate,slot.key);
   var notes=(candidate.part.notes||[]).slice();
-  if(candidate.part.springWarn)notes.push(candidate.part.springWarn);
+  if(candidate.part.partIssue)notes.push(candidate.part.partIssue.text);
   if(assessment.relations&&assessment.relations.length){
     for(const relation of assessment.relations){
       var relationNote=relation.label+": "+relation.text;
@@ -1186,6 +1650,8 @@ document.addEventListener("click",function(event){
   if(remove){removeSlot(remove.dataset.remove);return;}
   var resetPreset=event.target.closest("[data-reset-preset]");
   if(resetPreset){resetSelectedKeyboard(currentCandidates.get(resetPreset.dataset.resetPreset));return;}
+  var resetAssembly=event.target.closest("[data-reset-assembly]");
+  if(resetAssembly){resetSelectedAssembly(currentCandidates.get(resetAssembly.dataset.resetAssembly));return;}
   var select=event.target.closest("[data-select]");
   if(select){selectCandidate(currentCandidates.get(select.dataset.select));return;}
   var details=event.target.closest("[data-details]");
@@ -1267,10 +1733,23 @@ renderBuild();
 requestEmbedHeight();
 window.__EC_BUILDER__={
   CATALOG:CATALOG,build:build,SLOT_DEFS:SLOT_DEFS,
+  STABILIZER_ASSEMBLIES_2U:STABILIZER_ASSEMBLIES_2U,
   assessCandidate:assessCandidate,assessBuild:assessBuild,
+  relationFor:relationFor,compatibilityApplicable:compatibilityApplicable,
+  partScopedFinding:partScopedFinding,
+  sameManufacturerKey:sameManufacturerKey,
   qualifiedKeyboardPresets:qualifiedKeyboardPresets,
   applyKeyboardPreset:applyKeyboardPreset,openChooser:openChooser,
   closeChooser:closeChooser,selectCandidate:selectCandidate,
+  applyStabilizerAssembly:applyStabilizerAssembly,
+  isAssemblyModified:isAssemblyModified,
+  ringGeometryNote:ringGeometryNote,
+  stabilizerRingGeometryNote:stabilizerRingGeometryNote,
+  ringGeometryAssessments:ringGeometryAssessments,
+  selectedDomeMeasurement:selectedDomeMeasurement,
+  mainSwitchDimensions:mainSwitchDimensions,
+  forceWallText:forceWallText,
+  domeMetricSummary:domeMetricSummary,
   DOME_MEASUREMENTS:DOME_MEASUREMENTS
 };
 </script>

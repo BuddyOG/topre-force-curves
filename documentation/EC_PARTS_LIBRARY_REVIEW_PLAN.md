@@ -3,8 +3,15 @@
 Status: completed. The prepublication build was `lib-6.0-review.1`; publication
 of `lib-6.0` was explicitly authorized on 2026-08-30.
 
-The repository publishes Force Curve Bench `fc-3.4` and EC Parts Builder
-`lib-6.0`. This file preserves the acceptance boundary used before promotion.
+This is the historical acceptance record for the published `lib-6.0` release.
+It intentionally retains the 9-row and 13-starter scope that was tested at
+that time. The later `lib-6.1` release and its completed prepublication record
+are documented separately in
+[EC_PARTS_LIBRARY_LIB61_REVIEW.md](EC_PARTS_LIBRARY_LIB61_REVIEW.md).
+
+At the time of this acceptance, the repository published Force Curve Bench
+`fc-3.4` and EC Parts Builder `lib-6.0`. This file preserves that historical
+boundary after lib-6.1 promotion.
 
 This plan replaces the lib-5.x interface plan. The structured catalog,
 compatibility evidence, stable identities, source records, and deterministic
@@ -48,11 +55,35 @@ The underlying evidence remains lossless. Public copy uses exactly **Works**,
 applicable edge remains unresolved as **Not verified**. Domes use the separate
 label **Not evaluated**.
 
+Those four compatibility labels describe the historical `lib-6.0` release.
+The later `lib-6.1` release adds **Manufacturer matched** for an
+otherwise-unverified pair whose canonical manufacturer is the same and
+nonempty. It treats that pair as positive under a library policy, not as a
+claim of recorded compatibility evidence. An unchanged recorded keyboard or 2u
+assembly supplies exact configuration context. Outside that context, explicit
+incompatible and adjudicated conditional evidence take precedence, followed by
+explicit compatible evidence and then the manufacturer fallback.
+Cross-manufacturer unresolved pairs remain **Not verified**. Non-interacting
+keycap-to-ring and keycap-to-conical-spring pairs are not evaluated, while ring
+geometry and part-scoped spring findings remain independent of the manufacturer
+policy. The `lib-6.1` consumer projection contains 241 decision-changing pair
+edges after suppressing 97 generic matrix-expanded edges that merely repeat
+the Deskeys, KLC, or MetaPulse spring-wide finding. The affected spring is
+flagged once on its own row, unrelated parts remain unflagged, and the
+whole-build result inherits the part issue. True pair-specific findings remain
+in force.
+
 Domes are selectable but outside the compatibility matrix. Exact measured
 dome specimens may show measured collapse force plus their released Weight
 Index and Tactility Index; the builder does not display force curves,
 force-wall metrics, assembly-match cards, retained runs, or full provenance
 records.
+
+That force-wall boundary is historical `lib-6.0` behavior. The later
+`lib-6.1` release projects the canonical per-specimen `travel_mm` value as
+**Force-Wall** and uses it, when detected, as one input to a separate displayed
+build **Travel** result. Its formula, exact-specimen rule, and null handling are
+specified in the [lib-6.1 review record](EC_PARTS_LIBRARY_LIB61_REVIEW.md).
 
 ## Embed boundary
 

@@ -37,9 +37,9 @@ import build_public_release as fc34
 SITE_MANIFEST_NAME = "SITE_RELEASE_MANIFEST.json"
 SHA256SUMS_NAME = "SHA256SUMS"
 PREDECESSOR_MANIFEST_NAME = "FORCE_CURVE_BENCH_RELEASE_MANIFEST.json"
-PACKAGE_ID = "ec-parts-library-site-lib-6.0"
+PACKAGE_ID = "ec-parts-library-site-lib-6.1"
 ARTIFACT_ROLE = "public_multi_tool_site_release"
-PARTS_BUILD = "lib-6.0"
+PARTS_BUILD = "lib-6.1"
 FORCE_BUILD = "fc-3.4"
 MANIFEST_VERSION = 1
 POLICY_VERSION = 1

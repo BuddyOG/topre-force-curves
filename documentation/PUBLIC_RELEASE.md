@@ -1,11 +1,15 @@
 # Dome Lab public release record
 
-Publication date: 2026-08-31  
+Initial publication date: 2026-08-31
+
+EC Parts Builder lib-6.1 update: 2026-09-04
+
 Repository: <https://github.com/BuddyOG/topre-force-curves>
 
 This record identifies the public Dome Lab system after the Force Curve Bench,
-EC Parts Builder, storefront pages, and Preprint 2.0 were released. It does not
-replace the tool-specific manifests or the frozen research record.
+EC Parts Builder, storefront pages, and Preprint 2.0 were released, including
+the subsequent EC Parts Builder lib-6.1 update. It does not replace the
+tool-specific manifests or the frozen research record.
 
 ## Public entry points
 
@@ -13,7 +17,7 @@ replace the tool-specific manifests or the frozen research record.
 - [Force Curve Bench](https://unrealkeyboards.com/pages/topre-force-curve-library)
   — Shopify presentation of `fc-3.4`.
 - [EC Parts Builder](https://unrealkeyboards.com/pages/topre-ec-parts-library-builder)
-  — Shopify presentation of `lib-6.0`.
+  — Shopify presentation of `lib-6.1`.
 - [Beyond Snap Ratio](https://unrealkeyboards.com/pages/beyond-snap-ratio) —
   Preprint 2.0 overview and download links.
 - [Topre & EC Dome Force Curves](https://unrealkeyboards.com/blogs/topre-mods/topre-dome-force-curves)
@@ -29,7 +33,8 @@ The standalone tools remain available at:
 | Artifact | Public identity |
 |---|---|
 | Force Curve Bench | `fc-3.4`; Git tag `fc-3.4`; release commit `f8203d4` |
-| EC Parts Builder | `lib-6.0`; Git tag `ec-parts-lib-6.0`; release commit `134e0c2` |
+| EC Parts Builder | `lib-6.1`; Git tag `ec-parts-lib-6.1` |
+| Previous EC Parts Builder | `lib-6.0`; Git tag `ec-parts-lib-6.0`; release commit `134e0c2` |
 | Frozen raw-source commit | `6e86ac1955a0c566c7aae521705e51371992ba8a` |
 | Canonical evidence identity | `7aa8588b50856816b7fce90dd6e743c26c6f16926071123291cb054352b6cd4a` |
 | Measurement method | `metrics-v4.2` |
@@ -43,6 +48,13 @@ The standalone tools remain available at:
 its SHA-256 digest. The Force Curve Bench predecessor manifest remains in the
 site package and protects the fc-3.4 viewer, raw CSV files, canonical evidence,
 and continuity endpoints.
+
+The lib-6.1 builder publishes 11 component rows, 28 keyboard starters, 4
+manufacturer-parts shortcuts, 10 recorded 2u assemblies, 68 exact measured-dome
+mappings, and 241 decision-changing pair edges backed by a complete 3,570-edge
+compatibility audit closure. The release changes the Parts Builder and its
+declared supporting files only; it does not change the fc-3.4 scientific
+evidence or perception-index model.
 
 ## Paper and research compendium
 

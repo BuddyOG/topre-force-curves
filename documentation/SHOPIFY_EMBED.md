@@ -6,7 +6,7 @@ standalone EC Parts Builder:
 - Shopify wrapper: <https://unrealkeyboards.com/pages/topre-ec-parts-library-builder>
 - Hosted builder: <https://buddyog.github.io/topre-force-curves/dome-lab-parts.html>
 
-The hosted path serves EC Parts Builder `lib-6.0`; this production contract is
+The hosted path serves EC Parts Builder `lib-6.1`; this production contract is
 active for that release. The embedded builder has no Home or library tabs and
 no links to other tools.
 

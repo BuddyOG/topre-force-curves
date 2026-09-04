@@ -18,7 +18,7 @@ viewer and overview is a
 publication-surface change; it is not a raw-data change.
 
 The current published tree combines Force Curve Bench `fc-3.4` with EC Parts
-Builder `lib-6.0`. The builder replaces `dome-lab-parts.html` through an
+Builder `lib-6.1`. The builder replaces `dome-lab-parts.html` through an
 explicit, versioned overlay policy. That overlay protects
 every predecessor endpoint other than the declared builder replacement, all
 raw CSVs, and the canonical evidence tree against incidental change.

@@ -10,39 +10,52 @@ tool's fifth output: every number below is computed from the evidence and
 asserted at generation time.
 
 ## Universe and closure
-- Items: 83 co-selectable non-dome catalog identities (39 core
-  builder parts, 2 shells, 2 keycap records, plate, PCB, 23 silencing rings,
-  15 mod-tier products).
-- Pairs: 3403 = C(83,2); full closure, every pair carries
+- Items: 85 co-selectable non-dome catalog identities across the
+  complete vendored catalog and authored shell abstractions.
+- Pairs: 3570 = C(85,2); full closure, every pair carries
   an explicit state.
 - States: compatible 101, incompatible 156,
   conditional 38, pending 43, unknown
-  2666, not_applicable 399.
+  2804, not_applicable 428.
 
 ## Runtime-selectable coverage
 The builder subset is derived from `catalog_overlay.json` `buildable_lists`,
 not from a second hard-coded census. Library-only plate, PCB, and mod-tier
 records remain in the full evidence closure but do not inflate these figures.
-- Identities selectable by the current UI: 66.
-- Pair closure over that subset: 2145.
-- Applicable pairs: 1746.
+- Identities selectable by the current UI: 68.
+- Pair closure over that subset: 2278.
+- Applicable pairs: 1850.
 - Resolved source-imported pairs: 264.
 - Unresolved pairs (unknown, pending, owner_pending, or unadjudicated):
-  1482.
-- State census: compatible 101, conditional 38, incompatible 156, not_applicable 399, pending 43, unknown 1408.
+  1586.
+- State census: compatible 101, conditional 38, incompatible 156, not_applicable 428, pending 43, unknown 1512.
 
-## Reconciliation with the review's 787-pair count
-The reviewer counted 787 potentially co-selected pairs over the pre-Round-2
-universe of 43 vertices (39 parts, 2 shells, 2 keycaps): C(43,2) = 903 minus
-116 same-slot pairs = 787, with 337 explicit edges and 450 absent.
-- Same-slot exclusions among the 43: 116 (housings 10, keycaps 1, sliders 28, spacebars 10, springs 10, stab housings 21, stab sliders 36).
-- Shell-model exclusions among the 43: 30 — RC1 shell x spacebar stabilizer (5); shell x housing (10); shell x shell (1); shell x stabilizer housing (14). The
-  Round 2 audit bucketed the shell×shell pair into same-slot (117/29);
-  it belongs here — its recorded reason is the shell slot model.
-- Applicable pairs over the 43 under this model: 757
-  (= 903 − 116 − 30). Every absent-but-applicable pair is an
-  explicit `unknown` entry naming its evidence gap. Over the full Round 2
-  universe the applicable count is 3004.
+## Current consumer-core reconciliation
+The consumer core is derived from the present catalog rather than frozen to
+the earlier 43-vertex review snapshot.
+- Core vertices: 44; unordered pairs: 946.
+- Same-slot exclusions: 121 (housings 10, keycaps 1, sliders 28, spacebars 15, springs 10, stab housings 21, stab sliders 36).
+- Shell-model exclusions: 31 — RC1 shell x spacebar stabilizer (6); shell x housing (10); shell x shell (1); shell x stabilizer housing (14).
+- Applicable pairs over the current core: 794. Every
+  explicit `unknown` entry naming its evidence gap. Across the full evidence
+  universe the applicable count is 3142.
+
+## lib-6.1 consumer projection
+
+The complete closure and counts above remain the audit authority. The
+`lib-6.1` browser payload is a smaller consumer projection containing
+**241 decision-changing pair edges**. It suppresses
+97 source-imported or pending edges whose repeated
+pair form is subsumed by a part-scoped conical-spring finding:
+conical_spring::deskeys 31, conical_spring::klc_playground 31, conical_spring::metapulse 35.
+
+This suppression changes presentation, not provenance. Deskeys and KLC are
+shown once as part-scoped **Does not work** findings; MetaPulse is shown once
+as a part-scoped **Not verified** finding. Only the culprit spring row is
+flagged, the whole-build result inherits that issue, and unrelated component
+rows are not blamed. Any genuine pair-specific finding that is not subsumed by
+a part-scoped issue remains in the consumer projection and is evaluated
+normally.
 
 ## r8 agreement and the 31 reverted promotions
 - r8 part-scoped edges: 335; every `compatible` and

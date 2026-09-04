@@ -1,6 +1,6 @@
 # Unreal Keyboards tool documentation
 
-> Force Curve Bench `fc-3.4` and EC Parts Builder `lib-6.0` are published from
+> Force Curve Bench `fc-3.4` and EC Parts Builder `lib-6.1` are published from
 > this repository. `SITE_RELEASE_MANIFEST.json` and its `SHA256SUMS` inventory
 > are the active multi-tool site authority.
 
@@ -9,7 +9,7 @@ The canonical Force Curve Bench is
 `fc-3.4`. `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` remains its protected
 predecessor record. The EC Parts Builder is published at
 <https://buddyog.github.io/topre-force-curves/dome-lab-parts.html> and is bound
-to tag `ec-parts-lib-6.0` by the active site manifest.
+to tag `ec-parts-lib-6.1` by the active site manifest.
 
 ## Documentation set
 
@@ -30,6 +30,10 @@ to tag `ec-parts-lib-6.0` by the active site manifest.
 - [fc-3.4 release notes](RELEASE_NOTES_fc-3.4.md)
 - [EC Parts Builder](EC_PARTS_LIBRARY.md) — standalone workflow, Evidence-beta
   labels, catalog projection, and interpretation limits.
+- [lib-6.1 release notes](RELEASE_NOTES_lib-6.1.md) — current release changes,
+  identity, verification, and continuity boundary.
+- [EC Parts Builder lib-6.1 prepublication acceptance](EC_PARTS_LIBRARY_LIB61_REVIEW.md)
+  — completed 2u-assembly, expanded-starting-point, and promotion record.
 - [EC Parts Builder review record](EC_PARTS_LIBRARY_REVIEW_PLAN.md) — completed
   prepublication acceptance boundary for `lib-6.0`.
 - [Shopify embed contract](SHOPIFY_EMBED.md) — required parent/child
@@ -64,12 +68,24 @@ it is not a completed result.
 Shopify owns the Dome Lab landing page, header, and navigation. The EC Parts
 Builder is one independently embedded tool: it contains no Home or master
 library tab and no links to other tools. Its catalog exists as contextual
-chooser data for 9 component rows.
+chooser data. The published `lib-6.1` uses 11 component rows, adding a
+top-level 2u stabilizer assembly and a separate 2u silencing-ring row to the
+historical lib-6.0 surface.
 
-The published builder includes 13 source-backed keyboard starters, 68
-exact dome-specimen measurement mappings carrying measured collapse force plus
-released Weight Index and Tactility Index values, 2 public keycap additions,
-and 338 decision-changing compatibility edges. The complete 3,403-edge
-configuration remains the audit authority. Customer-facing compatibility
-labels are **Works**, **Works with conditions**, **Does not work**, and **Not
-verified**; domes are **Not evaluated**.
+The published builder includes 28 keyboard starters, 4 manufacturer-parts
+shortcuts, 10 recorded 2u assemblies, and 68 exact dome-specimen measurement
+mappings. Eligible measured domes carry collapse force, Weight Index,
+Tactility Index, and Force-Wall onset. The owner's September 3, 2026 review
+supplies the 32 starting-point defaults. Manufacturer shortcuts intentionally
+load no dome; four short-spacebar Realforce starters use their selected 2u
+assembly instead of a separate spacebar stabilizer. These defaults are
+starting points rather than compatibility verdicts.
+
+The lib-6.1 consumer projection contains **241 decision-changing pair edges**.
+Ninety-seven generic matrix-expanded conical-spring edges are suppressed
+because their findings belong to the affected Deskeys, KLC, or MetaPulse
+spring itself. The culprit spring is flagged once, unrelated rows remain
+unflagged, the whole-build result inherits the part issue, and true
+pair-specific findings remain active. The complete 3,570-edge closure remains
+the audit authority. The historical lib-6.0 release and its 338-edge browser /
+3,403-edge audit counts remain documented by its release notes and tag.

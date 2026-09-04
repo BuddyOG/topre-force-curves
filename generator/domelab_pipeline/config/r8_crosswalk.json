@@ -685,6 +685,15 @@
    "r8_id": "dome::topre_55g_aged",
    "tier": "builder"
   },
+  "dome::topre_realforce_variable": {
+   "brand": "Topre",
+   "catalog_id": "dm-topre-realforce-variable",
+   "category": "dome",
+   "disposition": "integrated_dome_catalog",
+   "part_name": "Topre Realforce Variable",
+   "r8_id": "dome::topre_realforce_variable",
+   "tier": "builder"
+  },
   "housing::deskeys": {
    "brand": "Deskeys",
    "catalog_id": "housings::deskeys",
@@ -883,6 +892,24 @@
    "r8_id": "kbd::leopold",
    "tier": null
   },
+  "kbd::leopold_fc660c": {
+   "brand": "Leopold",
+   "catalog_id": "kbd::leopold_fc660c",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "Leopold FC660C",
+   "r8_id": "kbd::leopold_fc660c",
+   "tier": null
+  },
+  "kbd::leopold_fc980c": {
+   "brand": "Leopold",
+   "catalog_id": "kbd::leopold_fc980c",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "Leopold FC980C",
+   "r8_id": "kbd::leopold_fc980c",
+   "tier": null
+  },
   "kbd::neverest": {
    "brand": null,
    "catalog_id": "kbd::neverest",
@@ -893,12 +920,93 @@
    "tier": null
   },
   "kbd::novatouch": {
-   "brand": "Novatouch",
+   "brand": "Cooler Master",
    "catalog_id": "kbd::novatouch",
    "category": "keyboard",
    "disposition": "integrated_round2_keyboard_registry",
-   "part_name": "Novatouch",
+   "part_name": "NovaTouch TKL",
    "r8_id": "kbd::novatouch",
+   "tier": null
+  },
+  "kbd::realforce_101u": {
+   "brand": "Realforce",
+   "catalog_id": "kbd::realforce_101u",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "Realforce 101U",
+   "r8_id": "kbd::realforce_101u",
+   "tier": null
+  },
+  "kbd::realforce_103u": {
+   "brand": "Realforce",
+   "catalog_id": "kbd::realforce_103u",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "Realforce 103U",
+   "r8_id": "kbd::realforce_103u",
+   "tier": null
+  },
+  "kbd::realforce_104u": {
+   "brand": "Realforce",
+   "catalog_id": "kbd::realforce_104u",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "Realforce 104U",
+   "r8_id": "kbd::realforce_104u",
+   "tier": null
+  },
+  "kbd::realforce_106u": {
+   "brand": "Realforce",
+   "catalog_id": "kbd::realforce_106u",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "Realforce 106U",
+   "r8_id": "kbd::realforce_106u",
+   "tier": null
+  },
+  "kbd::realforce_108u": {
+   "brand": "Realforce",
+   "catalog_id": "kbd::realforce_108u",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "Realforce 108U",
+   "r8_id": "kbd::realforce_108u",
+   "tier": null
+  },
+  "kbd::realforce_86u": {
+   "brand": "Realforce",
+   "catalog_id": "kbd::realforce_86u",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "Realforce 86U",
+   "r8_id": "kbd::realforce_86u",
+   "tier": null
+  },
+  "kbd::realforce_87u": {
+   "brand": "Realforce",
+   "catalog_id": "kbd::realforce_87u",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "Realforce 87U",
+   "r8_id": "kbd::realforce_87u",
+   "tier": null
+  },
+  "kbd::realforce_89u": {
+   "brand": "Realforce",
+   "catalog_id": "kbd::realforce_89u",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "Realforce 89U",
+   "r8_id": "kbd::realforce_89u",
+   "tier": null
+  },
+  "kbd::realforce_91u": {
+   "brand": "Realforce",
+   "catalog_id": "kbd::realforce_91u",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "Realforce 91U",
+   "r8_id": "kbd::realforce_91u",
    "tier": null
   },
   "kbd::realforce_r2": {
@@ -908,6 +1016,24 @@
    "disposition": "integrated_round2_keyboard_registry",
    "part_name": "Realforce R2",
    "r8_id": "kbd::realforce_r2",
+   "tier": null
+  },
+  "kbd::realforce_r3": {
+   "brand": "Realforce",
+   "catalog_id": "kbd::realforce_r3",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "Realforce R3",
+   "r8_id": "kbd::realforce_r3",
+   "tier": null
+  },
+  "kbd::realforce_r4": {
+   "brand": "Realforce",
+   "catalog_id": "kbd::realforce_r4",
+   "category": "keyboard",
+   "disposition": "integrated_round2_keyboard_registry",
+   "part_name": "Realforce R4",
+   "r8_id": "kbd::realforce_r4",
    "tier": null
   },
   "kbd::realforce_rc1": {
@@ -1293,6 +1419,15 @@
    "r8_id": "silencing_ring::metapulse_poron_0_5",
    "tier": "builder"
   },
+  "silencing_ring::topre_2u_poron_1_0": {
+   "brand": "Topre",
+   "catalog_id": "silencing_ring::topre_2u_poron_1_0",
+   "category": "silencing_ring",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "Topre 2u Silencing Ring",
+   "r8_id": "silencing_ring::topre_2u_poron_1_0",
+   "tier": "builder"
+  },
   "silencing_ring::topre_poron_0_5": {
    "brand": "Topre",
    "catalog_id": "silencing_ring::topre_poron_0_5",
@@ -1494,6 +1629,15 @@
    "r8_id": "spacebar_stabilizer::metapulse",
    "tier": "builder"
   },
+  "spacebar_stabilizer::novatouch": {
+   "brand": "Cooler Master",
+   "catalog_id": "spacebar_stabilizer::novatouch",
+   "category": "spacebar_stabilizer",
+   "disposition": "integrated_builder_catalog",
+   "part_name": "NovaTouch Spacebar Stabilizer",
+   "r8_id": "spacebar_stabilizer::novatouch",
+   "tier": "builder"
+  },
   "spacebar_stabilizer::topre": {
    "brand": "Topre",
    "catalog_id": "spacebar_stabilizer::topre",
@@ -1544,16 +1688,16 @@
    "catalog_id": "stabilizer_housing_2u::novatouch",
    "category": "stabilizer_housing",
    "disposition": "integrated_builder_catalog",
-   "part_name": "NovaTouch Stabilizer Housing",
+   "part_name": "NovaTouch 2u Housing",
    "r8_id": "stabilizer_housing::novatouch",
    "tier": "builder"
   },
   "stabilizer_housing::topre_silenced": {
-   "brand": "Realforce",
+   "brand": "Topre",
    "catalog_id": "stabilizer_housing_2u::topre_silenced",
    "category": "stabilizer_housing",
    "disposition": "integrated_builder_catalog",
-   "part_name": "Topre Silent (Realforce) Stabilizer Housing",
+   "part_name": "Topre Silenced 2u Housing",
    "r8_id": "stabilizer_housing::topre_silenced",
    "tier": "builder"
   },
@@ -1562,7 +1706,7 @@
    "catalog_id": "stabilizer_housing_2u::topre_standard",
    "category": "stabilizer_housing",
    "disposition": "integrated_builder_catalog",
-   "part_name": "Topre Stabilizer Housing",
+   "part_name": "Topre 2u Housing",
    "r8_id": "stabilizer_housing::topre_standard",
    "tier": "builder"
   },
@@ -1589,7 +1733,7 @@
    "catalog_id": "stabilizer_slider_2u::hhkb_type_s",
    "category": "stabilizer_slider",
    "disposition": "integrated_builder_catalog",
-   "part_name": "Topre Silent (Type-S) Stabilizer Slider",
+   "part_name": "HHKB Type-S 2u Slider",
    "r8_id": "stabilizer_slider::hhkb_type_s",
    "tier": "builder"
   },
@@ -1616,7 +1760,7 @@
    "catalog_id": "stabilizer_slider_2u::novatouch",
    "category": "stabilizer_slider",
    "disposition": "integrated_builder_catalog",
-   "part_name": "NovaTouch Stabilizer Slider",
+   "part_name": "NovaTouch 2u Slider",
    "r8_id": "stabilizer_slider::novatouch",
    "tier": "builder"
   },
@@ -1625,7 +1769,7 @@
    "catalog_id": "stabilizer_slider_2u::realforce_rc1_silenced_purple",
    "category": "stabilizer_slider",
    "disposition": "integrated_builder_catalog",
-   "part_name": "Realforce RC1 Stabilizer Slider",
+   "part_name": "Realforce RC1 2u Slider",
    "r8_id": "stabilizer_slider::realforce_rc1_silenced_purple",
    "tier": "builder"
   },
@@ -1634,16 +1778,16 @@
    "catalog_id": "stabilizer_slider_2u::topre",
    "category": "stabilizer_slider",
    "disposition": "integrated_builder_catalog",
-   "part_name": "Topre Stabilizer Slider",
+   "part_name": "Topre 2u Slider",
    "r8_id": "stabilizer_slider::topre",
    "tier": "builder"
   },
   "stabilizer_slider::topre_silenced": {
-   "brand": "Realforce",
+   "brand": "Topre",
    "catalog_id": "stabilizer_slider_2u::topre_silenced",
    "category": "stabilizer_slider",
    "disposition": "integrated_builder_catalog",
-   "part_name": "Topre Silent (Realforce) Stabilizer Slider",
+   "part_name": "Topre Silenced 2u Slider",
    "r8_id": "stabilizer_slider::topre_silenced",
    "tier": "builder"
   },
@@ -1701,8 +1845,8 @@
  "schema": "r8-crosswalk-v1",
  "source": {
   "records": {
-   "keyboards": 21,
-   "parts": 152
+   "keyboards": 34,
+   "parts": 155
   },
   "reference": "03_product_data_r8_reference",
   "vendored": "config/r8/"

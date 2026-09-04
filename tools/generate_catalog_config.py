@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 """Deterministic generator for the parts-library config triple.
 
-Regenerates, byte-stably, from the vendored r8 source plus the two explicit
-authored overlays:
+Regenerates, byte-stably, from the vendored r8 source plus explicit authored
+and owner-confirmed overlays:
 
     config/compat_evidence.json   six-state stable-ID pair closure
     config/presets.json           registry + brand-kit presets
@@ -13,9 +13,11 @@ authored overlays:
 Authority vocabulary (no statement is ever upgraded past its source):
     source_imported   imported r8 / lib-5.0 assertions
     owner_pending     the 31 reverted DynaCaps promotions; the 4 brand kits
+    owner_confirmed   selections returned in the owner defaults workbook
     unadjudicated     absent-but-applicable pairs (explicit unknowns)
     model_derived     slot-model not_applicable rulings
-last_reviewed is null everywhere until a real owner review records a date.
+Compatibility last_reviewed remains null until a compatibility review records
+a date. Preset selections record their separate owner-review provenance.
 
 Usage: python tools/generate_catalog_config.py [--check]
 --check regenerates into memory and exits nonzero on any byte difference
@@ -412,13 +414,16 @@ def build_evidence(r8_parts, r8_comp, compat_overlay, overlay,
     return evidence
 
 
-def build_presets(r8_parts, r8_kbd, overlay):
+def build_presets(r8_parts, r8_kbd, overlay, stabilizer_assemblies,
+                  owner_defaults):
     KSLOT = {"slider": "slider", "stabilizer_slider": "sl2", "dome": "dome",
              "housing": "h1", "conical_spring": "spring",
              "silencing_ring": "ring", "stabilizer_housing": "h2",
-             "spacebar_stabilizer": "sb"}
-    EMPTY_UNIVERSE = list(KSLOT.values()) + ["keycap"]
+             "spacebar_stabilizer": "sb",
+             "stabilizer_assembly": "stab2uAssembly"}
+    EMPTY_UNIVERSE = list(KSLOT.values()) + ["ring2u", "keycap"]
     ring_none = overlay["ring_none"]["id"]
+    assembly_ids = {row["id"] for row in stabilizer_assemblies["assemblies"]}
     presets = []
     for kid, k in sorted(r8_kbd.items()):
         slots, empty = {}, {}
@@ -429,7 +434,12 @@ def build_presets(r8_parts, r8_kbd, overlay):
                               "source": "r8_keyboard_registry (none mapped to "
                                         "the explicit No-ring choice)"}
                 continue
-            if cat == "dome":
+            if cat == "stabilizer_assembly":
+                if pid not in assembly_ids:
+                    raise SystemExit(
+                        f"keyboard {kid} references unknown 2u assembly {pid}")
+                tid = pid
+            elif cat == "dome":
                 tid = dome_db_id(overlay, pid) if pid in r8_parts else pid
             else:
                 tid = tpl_id_for(pid)
@@ -486,21 +496,23 @@ def build_presets(r8_parts, r8_kbd, overlay):
         presets.append({"id": kid, "label": label, "group": "brand_kit",
                         "brand": label, "source": "authored_brand_kit",
                         "adjudication": "owner_pending",
-                        "notes": "brand kit: only parts this brand actually "
-                                 "sells; unlisted slots are chosen separately",
+                        "notes": "Manufacturer-parts shortcut: loads only "
+                                 "parts this brand sells; it is not a verified "
+                                 "working configuration, and unlisted slots "
+                                 "are chosen separately.",
                         "slots": {k: {"part": v,
                                       "source": "authored_brand_kit"}
                                   for k, v in slots.items()},
                         "empty": empty})
 
+    no_dome = "No dome loaded by default \u2014 choose the dome you are using"
     kit("kit::deskeys", "Deskeys",
         {"slider": "slider::deskeys", "h1": "housings::deskeys",
          "h2": "stabilizer_housing_2u::deskeys",
          "sl2": "stabilizer_slider_2u::deskeys",
          "sb": "spacebar_stabilizer::deskeys",
          "spring": "conical_springs::deskeys_conical"},
-        {"dome": "Deskeys sells V1/V2/V3/T1/CARROTS at many weights \u2014 "
-                 "pick one",
+        {"dome": no_dome,
          "ring": "Deskeys sells 0.2\u20131.0 mm rings \u2014 pick one"})
     kit("kit::dynacaps", "DynaCaps",
         {"slider": "slider::dynacaps", "h1": "housings::dynacaps",
@@ -508,8 +520,7 @@ def build_presets(r8_parts, r8_kbd, overlay):
          "sl2": "stabilizer_slider_2u::dynacaps",
          "sb": "spacebar_stabilizer::dynacaps",
          "spring": "conical_springs::dynacaps"},
-        {"dome": "DynaCaps sells Light/Medium/Heavy and more \u2014 pick a "
-                 "weight",
+        {"dome": no_dome,
          "ring": "DynaCaps sells 0.3/0.5 mm Poron and Silicone rings \u2014 "
                  "pick one"})
     kit("kit::klc", "KLC",
@@ -518,26 +529,176 @@ def build_presets(r8_parts, r8_kbd, overlay):
          "sl2": "stabilizer_slider_2u::klc_playground",
          "sb": "spacebar_stabilizer::klc_playground",
          "spring": "conical_springs::klc_playground"},
-        {"dome": "KLC sells 35/45/55 g domes \u2014 pick a weight",
+        {"dome": no_dome,
          "ring": "KLC sells 0.3 mm Poron and Silicone rings (both in the "
                  "catalog) \u2014 pick one"})
-    kit("kit::metapulse", "MetaPulse",
+    kit("kit::metakeebs", "MetaKeebs",
         {"slider": "slider::metapulse", "h1": "housings::metapulse",
          "h2": "stabilizer_housing_2u::metapulse",
          "sl2": "stabilizer_slider_2u::metapulse",
          "sb": "spacebar_stabilizer::metapulse",
          "spring": "conical_springs::metapulse"},
-        {"dome": "MetaPulse sells BS/RS domes at many weights \u2014 pick one",
+        {"dome": no_dome,
          "ring": "MetaPulse sells a 0.5 mm Poron ring \u2014 optional, pick "
                  "it explicitly"})
+    # The vendored r8 registry remains untouched. Apply the returned workbook
+    # as a separately reviewable authority layer after source import and
+    # authored-kit construction.
+    if owner_defaults.get("schema") != "owner-starting-point-defaults-v1":
+        raise SystemExit("unsupported owner_starting_point_defaults.json schema")
+    review = owner_defaults.get("review")
+    if not isinstance(review, dict):
+        raise SystemExit("owner defaults must contain review provenance")
+    required_review = {"id", "adjudication", "date", "source_file", "sha256"}
+    if set(review) != required_review:
+        raise SystemExit("owner defaults review provenance has unexpected fields")
+    if review.get("adjudication") != "owner_confirmed":
+        raise SystemExit("owner defaults review must be owner_confirmed")
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(review.get("date"))):
+        raise SystemExit("owner defaults review date must use YYYY-MM-DD")
+    if not re.fullmatch(r"[0-9a-f]{64}", str(review.get("sha256"))):
+        raise SystemExit("owner defaults workbook SHA256 is invalid")
+    amendments = owner_defaults.get("amendments", [])
+    if not isinstance(amendments, list):
+        raise SystemExit("owner defaults amendments must be a list")
+    for amendment in amendments:
+        required_amendment = {
+            "id", "date", "adjudication", "source", "supporting_url", "changes"
+        }
+        if not isinstance(amendment, dict) or set(amendment) != required_amendment:
+            raise SystemExit("owner defaults amendment has unexpected fields")
+        if amendment["adjudication"] != "owner_confirmed":
+            raise SystemExit("owner defaults amendment must be owner_confirmed")
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(amendment["date"])):
+            raise SystemExit("owner defaults amendment date must use YYYY-MM-DD")
+        if not amendment["source"] or not amendment["supporting_url"]:
+            raise SystemExit("owner defaults amendment lacks provenance")
+        if not isinstance(amendment["changes"], list) or not amendment["changes"]:
+            raise SystemExit("owner defaults amendment must record changes")
+
+    explicit_none = owner_defaults.get("explicit_none_parts")
+    if not isinstance(explicit_none, dict) or not explicit_none:
+        raise SystemExit("owner defaults must declare explicit-none identities")
+    for none_id, row in explicit_none.items():
+        if not none_id.startswith("none::") or not isinstance(row, dict):
+            raise SystemExit(f"invalid explicit-none identity {none_id!r}")
+        if row.get("slot") not in set(EMPTY_UNIVERSE):
+            raise SystemExit(f"explicit-none identity {none_id} has unknown slot")
+        if not row.get("name") or not row.get("meaning"):
+            raise SystemExit(f"explicit-none identity {none_id} lacks copy")
+
+    assembly_by_id = {row["id"]: row
+                      for row in stabilizer_assemblies["assemblies"]}
+    part_slots = {ring_none: "ring"}
+    for rid, part in r8_parts.items():
+        cat = part["category"]
+        if cat == "dome":
+            part_slots[dome_db_id(overlay, rid)] = "dome"
+        elif cat in KSLOT:
+            part_slots[tpl_id_for(rid)] = KSLOT[cat]
+        elif cat == "keycap":
+            part_slots[tpl_id_for(rid)] = "keycap"
+    for shell_id in overlay["shells"]:
+        part_slots[shell_id] = "shell"
+    for assembly_id in assembly_by_id:
+        part_slots[assembly_id] = "stab2uAssembly"
+    for none_id, row in explicit_none.items():
+        if none_id in part_slots:
+            raise SystemExit(f"explicit-none identity collides with part {none_id}")
+        part_slots[none_id] = row["slot"]
+
+    override_rows = owner_defaults.get("presets")
+    if not isinstance(override_rows, dict) or not override_rows:
+        raise SystemExit("owner defaults must contain preset overrides")
+    expected_reviewed = (set(overlay.get("public_keyboard_ids", []))
+                         | set(overlay.get("public_brand_kit_ids", [])))
+    actual_reviewed = set(override_rows)
+    if actual_reviewed != expected_reviewed:
+        missing = sorted(expected_reviewed - actual_reviewed)
+        extra = sorted(actual_reviewed - expected_reviewed)
+        raise SystemExit("owner defaults must cover the exact public starter "
+                         f"set; missing={missing}, extra={extra}")
+    preset_by_id = {row["id"]: row for row in presets}
+    owner_source = "owner_starting_point_defaults"
+    for preset_id, override in sorted(override_rows.items()):
+        if preset_id not in preset_by_id:
+            raise SystemExit(f"owner defaults name unknown preset {preset_id}")
+        if (not isinstance(override, dict)
+                or not set(override) <= {"slots", "notes"}):
+            raise SystemExit(f"owner defaults {preset_id} has unexpected fields")
+        selections = override.get("slots")
+        if not isinstance(selections, dict) or not selections:
+            raise SystemExit(f"owner defaults {preset_id} has no selections")
+        if ("stab2uAssembly" in selections
+                and set(selections) & {"h2", "sl2", "ring2u"}):
+            raise SystemExit(f"owner defaults {preset_id} redundantly selects "
+                             "2u assembly child parts")
+        preset = preset_by_id[preset_id]
+        for slot, part_id in sorted(selections.items()):
+            expected_slot = part_slots.get(part_id)
+            if expected_slot is None:
+                raise SystemExit(f"owner defaults {preset_id} references "
+                                 f"unknown part {part_id}")
+            if expected_slot != slot:
+                raise SystemExit(f"owner defaults {preset_id} puts {part_id} "
+                                 f"in {slot}, expected {expected_slot}")
+            preset["slots"][slot] = {
+                "part": part_id,
+                "source": owner_source,
+                "adjudication": "owner_confirmed",
+                "review": review["id"],
+                "selection_state": ("explicit_none"
+                                    if part_id in explicit_none else "selected"),
+            }
+            preset["empty"].pop(slot, None)
+        if "notes" in override:
+            if not isinstance(override["notes"], str):
+                raise SystemExit(f"owner defaults {preset_id} notes must be text")
+            preset["notes"] = override["notes"]
+        preset["adjudication"] = "owner_confirmed"
+        preset["owner_review"] = {"id": review["id"],
+                                  "date": review["date"]}
+
+    # A selected 2u assembly is the sole parent selection. Its h2/sl2/ring2u
+    # children stay independently editable at runtime, but are not redundantly
+    # encoded in the preset itself.
+    for preset in presets:
+        assembly_selection = preset["slots"].get("stab2uAssembly")
+        if not assembly_selection:
+            continue
+        assembly_id = assembly_selection["part"]
+        if assembly_id not in assembly_by_id:
+            raise SystemExit(f"preset {preset['id']} references unknown 2u "
+                             f"assembly {assembly_id}")
+        preset["assembly_owned"] = {}
+        for child_slot in ("h2", "sl2", "ring2u"):
+            preset["slots"].pop(child_slot, None)
+            preset["empty"][child_slot] = (
+                "represented by the selected 2u stabilizer assembly; the "
+                "child remains independently editable after loading")
+            preset["assembly_owned"][child_slot] = {
+                "assembly": assembly_id,
+                "source": assembly_selection["source"],
+                "adjudication": assembly_selection.get(
+                    "adjudication", preset["adjudication"]),
+            }
+
     presets.sort(key=lambda p: p["id"])
     return {"schema": "presets-v1",
             "purpose": "Registry-generated presets. Stable part IDs only; a "
                        "preset never invents a component \u2014 empty slots "
-                       "carry the reason. Imported registry statements are "
-                       "source_imported; the authored brand kits are "
-                       "owner_pending.",
+                       "carry the reason. Owner-confirmed workbook choices "
+                       "are applied without changing the vendored r8 source.",
             "generator": "tools/generate_catalog_config.py",
+            "owner_review": review,
+            "owner_amendments": amendments,
+            "explicit_none_parts": explicit_none,
+            "source_artifacts": {
+                "owner_starting_point_defaults": _artifact(
+                    "owner_starting_point_defaults.json"),
+                "stabilizer_assemblies": _artifact(
+                    "stabilizer_assemblies.json"),
+            },
             "presets": presets}
 
 
@@ -551,19 +712,18 @@ def build_audit(evidence, r8_parts, r8_comp, overlay):
     c = evidence["counts"]
     ui = evidence["coverage"]["ui_selectable"]
 
-    # -- the reviewer's 43-vertex universe (39 core parts, 2 shells,
-    #    2 keycaps; plate and PCB excluded) --
-    core43 = sorted(i for i, v in items.items()
-                    if v["cls"] in ("core", "shell")
-                    and v["slot"] not in ("plate", "pcb"))
-    assert len(core43) == 43, len(core43)
-    total43 = len(core43) * 42 // 2
-    assert total43 == 903
+    # Current consumer-facing core universe (plate, PCB, and mod-tier parts
+    # excluded). Compute this from the catalog so a documented OEM addition
+    # cannot leave a stale hard-coded census behind.
+    consumer_core = sorted(i for i, v in items.items()
+                           if v["cls"] in ("core", "shell")
+                           and v["slot"] not in ("plate", "pcb"))
+    total_core = len(consumer_core) * (len(consumer_core) - 1) // 2
 
     same_slot = collections.Counter()
     shell_model = collections.Counter()
-    for i, a in enumerate(core43):
-        for b in core43[i + 1:]:
+    for i, a in enumerate(consumer_core):
+        for b in consumer_core[i + 1:]:
             e = by_id[(a, b)] if (a, b) in by_id else by_id[(b, a)]
             if e["state"] != "not_applicable":
                 continue
@@ -583,16 +743,14 @@ def build_audit(evidence, r8_parts, r8_comp, overlay):
                 same_slot[items[a]["slot"]] += 1
     n_same = sum(same_slot.values())
     n_shell = sum(shell_model.values())
-    # The Round 2 audit misclassified the shell x shell pair as same-slot
-    # (117/29). Correct classification: 116 same-slot + 30 shell-model.
-    assert n_same == 116, dict(same_slot)
-    assert n_shell == 30, dict(shell_model)
-    assert shell_model == collections.Counter(
-        {"shell x housing": 10, "shell x stabilizer housing": 14,
-         "shell x shell": 1, "RC1 shell x spacebar stabilizer": 5})
-    applicable43 = total43 - n_same - n_shell
-    assert applicable43 == 757
-    assert c["pairs"] - c["not_applicable"] == 3004
+    applicable_core = total_core - n_same - n_shell
+    observed_core_applicable = sum(
+        1 for e in pairs
+        if e["a"] in consumer_core and e["b"] in consumer_core
+        and e["state"] != "not_applicable")
+    assert applicable_core == observed_core_applicable
+    assert c["pairs"] - c["not_applicable"] == sum(
+        1 for e in pairs if e["state"] != "not_applicable")
 
     r8_edges = [e for e in r8_comp if "keyboard" not in e]
     assert len(r8_edges) == 335, len(r8_edges)
@@ -605,6 +763,23 @@ def build_audit(evidence, r8_parts, r8_comp, overlay):
     shell_refine = [e for e in pairs
                     if e["source"] == "lib50" and e["a"].startswith("shell::")
                     and e["state"] != "not_applicable"]
+    issue_rids = {rid for rid, part in r8_parts.items()
+                  if part.get("part_issue")}
+    ui_ids = {rid for rid, item in items.items() if item["ui_selectable"]}
+    browser_source_edges = [
+        e for e in pairs
+        if e["state"] not in ("unknown", "not_applicable")
+        and e["a"] in ui_ids and e["b"] in ui_ids
+    ]
+    suppressed_issue_edges = [
+        e for e in browser_source_edges
+        if e["a"] in issue_rids or e["b"] in issue_rids
+    ]
+    browser_pair_edges = len(browser_source_edges) - len(suppressed_issue_edges)
+    suppressed_by_part = collections.Counter(
+        e["a"] if e["a"] in issue_rids else e["b"]
+        for e in suppressed_issue_edges
+    )
 
     def li(entries):
         return "\n".join(f"  - `{e['id']}` {e['a']} \u2194 {e['b']}"
@@ -627,9 +802,8 @@ tool's fifth output: every number below is computed from the evidence and
 asserted at generation time.
 
 ## Universe and closure
-- Items: {c['items']} co-selectable non-dome catalog identities (39 core
-  builder parts, 2 shells, 2 keycap records, plate, PCB, 23 silencing rings,
-  15 mod-tier products).
+- Items: {c['items']} co-selectable non-dome catalog identities across the
+  complete vendored catalog and authored shell abstractions.
 - Pairs: {c['pairs']} = C({c['items']},2); full closure, every pair carries
   an explicit state.
 - States: compatible {c['compatible']}, incompatible {c['incompatible']},
@@ -648,18 +822,32 @@ records remain in the full evidence closure but do not inflate these figures.
   {ui['unresolved_pairs']}.
 - State census: {', '.join(f'{k} {v}' for k, v in sorted(ui['states'].items()))}.
 
-## Reconciliation with the review's 787-pair count
-The reviewer counted 787 potentially co-selected pairs over the pre-Round-2
-universe of 43 vertices (39 parts, 2 shells, 2 keycaps): C(43,2) = 903 minus
-116 same-slot pairs = 787, with 337 explicit edges and 450 absent.
-- Same-slot exclusions among the 43: {n_same} ({same_bits}).
-- Shell-model exclusions among the 43: {n_shell} \u2014 {shell_bits}. The
-  Round 2 audit bucketed the shell\u00d7shell pair into same-slot (117/29);
-  it belongs here \u2014 its recorded reason is the shell slot model.
-- Applicable pairs over the 43 under this model: {applicable43}
-  (= 903 \u2212 116 \u2212 30). Every absent-but-applicable pair is an
-  explicit `unknown` entry naming its evidence gap. Over the full Round 2
+## Current consumer-core reconciliation
+The consumer core is derived from the present catalog rather than frozen to
+the earlier 43-vertex review snapshot.
+- Core vertices: {len(consumer_core)}; unordered pairs: {total_core}.
+- Same-slot exclusions: {n_same} ({same_bits}).
+- Shell-model exclusions: {n_shell} \u2014 {shell_bits}.
+- Applicable pairs over the current core: {applicable_core}. Every
+  explicit `unknown` entry naming its evidence gap. Across the full evidence
   universe the applicable count is {c['pairs'] - c['not_applicable']}.
+
+## lib-6.1 consumer projection
+
+The complete closure and counts above remain the audit authority. The
+`lib-6.1` browser payload is a smaller consumer projection containing
+**{browser_pair_edges} decision-changing pair edges**. It suppresses
+{len(suppressed_issue_edges)} source-imported or pending edges whose repeated
+pair form is subsumed by a part-scoped conical-spring finding:
+{', '.join(f'{rid} {count}' for rid, count in sorted(suppressed_by_part.items()))}.
+
+This suppression changes presentation, not provenance. Deskeys and KLC are
+shown once as part-scoped **Does not work** findings; MetaPulse is shown once
+as a part-scoped **Not verified** finding. Only the culprit spring row is
+flagged, the whole-build result inherits that issue, and unrelated component
+rows are not blamed. Any genuine pair-specific finding that is not subsumed by
+a part-scoped issue remains in the consumer projection and is evaluated
+normally.
 
 ## r8 agreement and the {len(reverted)} reverted promotions
 - r8 part-scoped edges: {len(r8_edges)}; every `compatible` and
@@ -702,13 +890,13 @@ universe of 43 vertices (39 parts, 2 shells, 2 keycaps): C(43,2) = 903 minus
 """
 
 
-def build_ledger(xwalk):
+def build_ledger(xwalk, part_count, keyboard_count):
     counts = collections.Counter(v["disposition"] for v in xwalk.values())
     L = ["# r8 catalog crosswalk and disposition ledger\n",
          "Every record in the vendored r8 source (config/r8/) accounted for. "
          "Stable IDs on both sides; no record is silently out of scope. "
          "Regenerated deterministically by tools/generate_catalog_config.py.\n",
-         "- r8 part records: 152; keyboard records: 21.",
+         f"- r8 part records: {part_count}; keyboard records: {keyboard_count}.",
          "- Dispositions: " + ", ".join(f"{k}: {v}"
                                         for k, v in sorted(counts.items()))
          + "\n"]
@@ -736,13 +924,56 @@ def main():
     compat_rules = _load("r8/compat_rules.json")
     compat_overlay = _load("compat_overlay.json")
     catalog_overlay = _load("catalog_overlay.json")
+    stabilizer_assemblies = _load("stabilizer_assemblies.json")
+    owner_defaults = _load("owner_starting_point_defaults.json")
+    if stabilizer_assemblies.get("schema") != "stabilizer-assemblies-v1":
+        raise SystemExit("unsupported stabilizer_assemblies.json schema")
+    assembly_rows = stabilizer_assemblies.get("assemblies")
+    if not isinstance(assembly_rows, list) or not assembly_rows:
+        raise SystemExit("stabilizer_assemblies.json must contain assemblies")
+    assembly_ids = [row.get("id") for row in assembly_rows]
+    if any(not isinstance(value, str) or not value for value in assembly_ids):
+        raise SystemExit("every 2u stabilizer assembly needs a stable id")
+    if len(assembly_ids) != len(set(assembly_ids)):
+        raise SystemExit("duplicate 2u stabilizer assembly id")
+    assembly_slot_categories = {
+        "h2": "stabilizer_housing",
+        "sl2": "stabilizer_slider",
+        "ring2u": "silencing_ring",
+    }
+    for assembly in assembly_rows:
+        slots = assembly.get("slots")
+        if not isinstance(slots, dict) or set(slots) != set(assembly_slot_categories):
+            raise SystemExit(f"2u assembly {assembly['id']} must define "
+                             "h2/sl2/ring2u")
+        if assembly.get("housingMode") not in {"shell", "loose"}:
+            raise SystemExit(f"2u assembly {assembly['id']} has invalid "
+                             "housingMode")
+        if (assembly["housingMode"] == "shell") != (slots["h2"] is None):
+            raise SystemExit(f"2u assembly {assembly['id']} housingMode and "
+                             "h2 selection disagree")
+        for slot, expected_category in assembly_slot_categories.items():
+            part_id = slots[slot]
+            if part_id is None:
+                if slot != "h2":
+                    raise SystemExit(f"2u assembly {assembly['id']} has null "
+                                     f"{slot}")
+                continue
+            if slot == "ring2u" and part_id == catalog_overlay["ring_none"]["id"]:
+                continue
+            part = r8_parts.get(part_id)
+            if not part or part.get("category") != expected_category:
+                raise SystemExit(f"2u assembly {assembly['id']} references "
+                                 f"invalid {slot} part {part_id}")
     source_artifacts = {
         "generator": _artifact("@generator"),
         "r8_parts": _artifact("r8/parts.json"),
+        "r8_keyboards": _artifact("r8/keyboards.json"),
         "r8_compatibility": _artifact("r8/compatibility.json"),
         "r8_compat_rules": _artifact("r8/compat_rules.json"),
         "compat_overlay": _artifact("compat_overlay.json"),
         "catalog_overlay": _artifact("catalog_overlay.json"),
+        "stabilizer_assemblies": _artifact("stabilizer_assemblies.json"),
     }
 
     xwalk = build_crosswalk(r8_parts, r8_kbd, catalog_overlay)
@@ -752,14 +983,17 @@ def main():
              "generator": "tools/generate_catalog_config.py",
              "source": {"reference": "03_product_data_r8_reference",
                         "vendored": "config/r8/",
-                        "records": {"parts": 152, "keyboards": 21}},
+                        "records": {"parts": len(r8_parts),
+                                    "keyboards": len(r8_kbd)}},
              "records": xwalk}),
         os.path.join(CFG, "compat_evidence.json"): _dump(
             build_evidence(r8_parts, r8_comp, compat_overlay,
                            catalog_overlay, compat_rules, source_artifacts)),
         os.path.join(CFG, "presets.json"): _dump(
-            build_presets(r8_parts, r8_kbd, catalog_overlay)),
-        os.path.join(DOC, "R8_DISPOSITION_LEDGER.md"): build_ledger(xwalk),
+            build_presets(r8_parts, r8_kbd, catalog_overlay,
+                          stabilizer_assemblies, owner_defaults)),
+        os.path.join(DOC, "R8_DISPOSITION_LEDGER.md"): build_ledger(
+            xwalk, len(r8_parts), len(r8_kbd)),
     }
     outputs[os.path.join(DOC, "COMPAT_AUDIT_r8.md")] = build_audit(
         json.loads(outputs[os.path.join(CFG, "compat_evidence.json")]),

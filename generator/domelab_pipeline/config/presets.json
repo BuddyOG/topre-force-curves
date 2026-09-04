@@ -1,5 +1,47 @@
 {
+ "explicit_none_parts": {
+  "none::dome": {
+   "meaning": "The starting point intentionally loads no dome.",
+   "name": "No dome",
+   "slot": "dome"
+  },
+  "none::spacebar_stabilizer": {
+   "meaning": "The starting point intentionally loads no separate spacebar stabilizer.",
+   "name": "No separate spacebar stabilizer",
+   "slot": "sb"
+  }
+ },
  "generator": "tools/generate_catalog_config.py",
+ "owner_amendments": [
+  {
+   "adjudication": "owner_confirmed",
+   "changes": [
+    {
+     "from": "silencing_ring::dynacaps_poron_0_3",
+     "slot": "ring",
+     "target": "kit::dynacaps",
+     "to": "silencing_ring::dynacaps_silicone_0_5"
+    },
+    {
+     "from": "silencing_ring::dynacaps_poron_0_3",
+     "slot": "ring2u",
+     "target": "assembly2u::dynacaps",
+     "to": "silencing_ring::dynacaps_silicone_0_5"
+    }
+   ],
+   "date": "2026-09-03",
+   "id": "owner-amendment-2026-09-03-dynacaps-rings",
+   "source": "Owner instruction during lib-6.1 review; supersedes only the DynaCaps ring choices recorded in the workbook.",
+   "supporting_url": "https://omnitype.com/pages/dynacap"
+  }
+ ],
+ "owner_review": {
+  "adjudication": "owner_confirmed",
+  "date": "2026-09-03",
+  "id": "owner-defaults-2026-09-03",
+  "sha256": "e2ac489dcd92a193291e9278afebb6152e8d19a7b3325781a5948de749134f9a",
+  "source_file": "EC_Parts_Starting_Point_Defaults_Review.xlsx"
+ },
  "presets": [
   {
    "adjudication": "source_imported",
@@ -10,10 +52,12 @@
     "h2": "not specified by the r8 keyboard registry — sourced or chosen separately",
     "keycap": "not specified by the source — choose MX or Topre keycaps",
     "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "ring2u": "not specified by the r8 keyboard registry — sourced or chosen separately",
     "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
     "sl2": "not specified by the r8 keyboard registry — sourced or chosen separately",
     "slider": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "stab2uAssembly": "not specified by the r8 keyboard registry — sourced or chosen separately"
    },
    "group": "oem",
    "id": "kbd::agar_ec_kit",
@@ -31,10 +75,12 @@
     "h2": "not specified by the r8 keyboard registry — sourced or chosen separately",
     "keycap": "not specified by the source — choose MX or Topre keycaps",
     "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "ring2u": "not specified by the r8 keyboard registry — sourced or chosen separately",
     "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
     "sl2": "not specified by the r8 keyboard registry — sourced or chosen separately",
     "slider": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "stab2uAssembly": "not specified by the r8 keyboard registry — sourced or chosen separately"
    },
    "group": "aftermarket",
    "id": "kbd::ck980c",
@@ -45,12 +91,31 @@
   },
   {
    "adjudication": "source_imported",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "source_imported",
+     "assembly": "assembly2u::hhkb",
+     "source": "r8_keyboard_registry"
+    },
+    "ring2u": {
+     "adjudication": "source_imported",
+     "assembly": "assembly2u::hhkb",
+     "source": "r8_keyboard_registry"
+    },
+    "sl2": {
+     "adjudication": "source_imported",
+     "assembly": "assembly2u::hhkb",
+     "source": "r8_keyboard_registry"
+    }
+   },
    "brand": "HHKB",
    "empty": {
     "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
     "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "oem",
    "id": "kbd::hhkb",
@@ -69,10 +134,6 @@
      "part": "shell::hhkb",
      "source": "template_shell_crosswalk"
     },
-    "sl2": {
-     "part": "stabilizer_slider_2u::topre",
-     "source": "r8_keyboard_registry"
-    },
     "slider": {
      "part": "slider::topre",
      "source": "r8_keyboard_registry"
@@ -80,440 +141,1170 @@
     "spring": {
      "part": "conical_springs::topre",
      "source": "r8_keyboard_registry"
+    },
+    "stab2uAssembly": {
+     "part": "assembly2u::hhkb",
+     "source": "r8_keyboard_registry"
     }
    },
    "source": "r8_keyboard_registry"
   },
   {
-   "adjudication": "source_imported",
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "brand": "HHKB",
    "empty": {
     "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "oem",
    "id": "kbd::hhkb_30th",
    "label": "HHKB 30th Anniversary",
    "notes": "First HHKB with Topre 30g domes; upcoming. See note_hhkb_mx.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
    "slots": {
     "dome": {
+     "adjudication": "owner_confirmed",
      "part": "dm-topre-30g",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "silencing_ring::topre_poron_0_5",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "shell": {
+     "adjudication": "owner_confirmed",
      "part": "shell::hhkb",
-     "source": "template_shell_crosswalk"
-    },
-    "sl2": {
-     "part": "stabilizer_slider_2u::topre",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "slider": {
-     "part": "slider::topre",
-     "source": "r8_keyboard_registry"
+     "adjudication": "owner_confirmed",
+     "part": "slider::hhkb_type_s",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::hhkb",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     }
    },
    "source": "r8_keyboard_registry"
   },
   {
-   "adjudication": "source_imported",
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "brand": "HHKB",
    "empty": {
     "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "oem",
    "id": "kbd::hhkb_bt",
    "label": "HHKB BT",
    "notes": "No Type-S variant. See note_hhkb_mx.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
    "slots": {
     "dome": {
+     "adjudication": "owner_confirmed",
      "part": "dm-topre-45g",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "shell": {
+     "adjudication": "owner_confirmed",
      "part": "shell::hhkb",
-     "source": "template_shell_crosswalk"
-    },
-    "sl2": {
-     "part": "stabilizer_slider_2u::topre",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "slider": {
+     "adjudication": "owner_confirmed",
      "part": "slider::topre",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::hhkb",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     }
    },
    "source": "r8_keyboard_registry"
   },
   {
-   "adjudication": "source_imported",
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "brand": "HHKB",
    "empty": {
     "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "oem",
    "id": "kbd::hhkb_classic",
    "label": "HHKB Classic",
    "notes": "Often called \"HHKB Pro 3\". See note_hhkb_mx.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
    "slots": {
     "dome": {
+     "adjudication": "owner_confirmed",
      "part": "dm-topre-45g",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "shell": {
+     "adjudication": "owner_confirmed",
      "part": "shell::hhkb",
-     "source": "template_shell_crosswalk"
-    },
-    "sl2": {
-     "part": "stabilizer_slider_2u::topre",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "slider": {
+     "adjudication": "owner_confirmed",
      "part": "slider::topre",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::hhkb",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     }
    },
    "source": "r8_keyboard_registry"
   },
   {
-   "adjudication": "source_imported",
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb_type_s",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb_type_s",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb_type_s",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "brand": "HHKB",
    "empty": {
     "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "oem",
    "id": "kbd::hhkb_classic_type_s",
    "label": "HHKB Classic Type-S",
    "notes": "Often called \"HHKB Pro 3\". See note_hhkb_mx.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
    "slots": {
     "dome": {
+     "adjudication": "owner_confirmed",
      "part": "dm-topre-45g",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "silencing_ring::topre_poron_0_5",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "shell": {
+     "adjudication": "owner_confirmed",
      "part": "shell::hhkb",
-     "source": "template_shell_crosswalk"
-    },
-    "sl2": {
-     "part": "stabilizer_slider_2u::hhkb_type_s",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "slider": {
+     "adjudication": "owner_confirmed",
      "part": "slider::hhkb_type_s",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::hhkb_type_s",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     }
    },
    "source": "r8_keyboard_registry"
   },
   {
-   "adjudication": "source_imported",
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "brand": "HHKB",
    "empty": {
     "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "oem",
    "id": "kbd::hhkb_hybrid",
    "label": "HHKB Hybrid",
    "notes": "Often called \"HHKB Pro 3\". See note_hhkb_mx.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
    "slots": {
     "dome": {
+     "adjudication": "owner_confirmed",
      "part": "dm-topre-45g",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "shell": {
+     "adjudication": "owner_confirmed",
      "part": "shell::hhkb",
-     "source": "template_shell_crosswalk"
-    },
-    "sl2": {
-     "part": "stabilizer_slider_2u::topre",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "slider": {
+     "adjudication": "owner_confirmed",
      "part": "slider::topre",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::hhkb",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     }
    },
    "source": "r8_keyboard_registry"
   },
   {
-   "adjudication": "source_imported",
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "brand": "HHKB",
    "empty": {
     "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "oem",
    "id": "kbd::hhkb_hybrid_jp",
    "label": "HHKB Hybrid JP",
    "notes": "Japanese layout Hybrid (no JP Classic exists). See note_hhkb_mx.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
    "slots": {
     "dome": {
+     "adjudication": "owner_confirmed",
      "part": "dm-topre-45g",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "shell": {
+     "adjudication": "owner_confirmed",
      "part": "shell::hhkb",
-     "source": "template_shell_crosswalk"
-    },
-    "sl2": {
-     "part": "stabilizer_slider_2u::topre",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "slider": {
+     "adjudication": "owner_confirmed",
      "part": "slider::topre",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::hhkb",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     }
    },
    "source": "r8_keyboard_registry"
   },
   {
-   "adjudication": "source_imported",
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb_type_s",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb_type_s",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb_type_s",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "brand": "HHKB",
    "empty": {
     "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "oem",
    "id": "kbd::hhkb_hybrid_type_s",
    "label": "HHKB Hybrid Type-S",
    "notes": "Often called \"HHKB Pro 3\". See note_hhkb_mx.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
    "slots": {
     "dome": {
+     "adjudication": "owner_confirmed",
      "part": "dm-topre-45g",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "silencing_ring::topre_poron_0_5",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "shell": {
+     "adjudication": "owner_confirmed",
      "part": "shell::hhkb",
-     "source": "template_shell_crosswalk"
-    },
-    "sl2": {
-     "part": "stabilizer_slider_2u::hhkb_type_s",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "slider": {
+     "adjudication": "owner_confirmed",
      "part": "slider::hhkb_type_s",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::hhkb_type_s",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     }
    },
    "source": "r8_keyboard_registry"
   },
   {
-   "adjudication": "source_imported",
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "brand": "HHKB",
    "empty": {
     "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "oem",
    "id": "kbd::hhkb_pro_1",
    "label": "HHKB Professional (Pro 1)",
    "notes": "No Type-S until 2011 — five years after Pro 2. See note_hhkb_mx.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
    "slots": {
     "dome": {
+     "adjudication": "owner_confirmed",
      "part": "dm-topre-45g",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "shell": {
+     "adjudication": "owner_confirmed",
      "part": "shell::hhkb",
-     "source": "template_shell_crosswalk"
-    },
-    "sl2": {
-     "part": "stabilizer_slider_2u::topre",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "slider": {
+     "adjudication": "owner_confirmed",
      "part": "slider::topre",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::hhkb",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     }
    },
    "source": "r8_keyboard_registry"
   },
   {
-   "adjudication": "source_imported",
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "brand": "HHKB",
    "empty": {
     "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "oem",
    "id": "kbd::hhkb_pro_2",
    "label": "HHKB Pro 2",
    "notes": "See note_hhkb_mx.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
    "slots": {
     "dome": {
+     "adjudication": "owner_confirmed",
      "part": "dm-topre-45g",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "shell": {
+     "adjudication": "owner_confirmed",
      "part": "shell::hhkb",
-     "source": "template_shell_crosswalk"
-    },
-    "sl2": {
-     "part": "stabilizer_slider_2u::topre",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "slider": {
+     "adjudication": "owner_confirmed",
      "part": "slider::topre",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::hhkb",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     }
    },
    "source": "r8_keyboard_registry"
   },
   {
-   "adjudication": "source_imported",
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "brand": "HHKB",
    "empty": {
     "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "oem",
    "id": "kbd::hhkb_pro_2_jp",
    "label": "HHKB Pro 2 JP",
    "notes": "See note_hhkb_mx.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
    "slots": {
     "dome": {
+     "adjudication": "owner_confirmed",
      "part": "dm-topre-45g",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "shell": {
+     "adjudication": "owner_confirmed",
      "part": "shell::hhkb",
-     "source": "template_shell_crosswalk"
-    },
-    "sl2": {
-     "part": "stabilizer_slider_2u::topre",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "slider": {
+     "adjudication": "owner_confirmed",
      "part": "slider::topre",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::hhkb",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     }
    },
    "source": "r8_keyboard_registry"
   },
   {
-   "adjudication": "source_imported",
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb_type_s",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb_type_s",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb_type_s",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "brand": "HHKB",
    "empty": {
     "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "oem",
    "id": "kbd::hhkb_pro_2_jp_type_s",
    "label": "HHKB Pro 2 JP Type-S",
    "notes": "See note_hhkb_mx.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
    "slots": {
     "dome": {
+     "adjudication": "owner_confirmed",
      "part": "dm-topre-45g",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "silencing_ring::topre_poron_0_5",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "shell": {
+     "adjudication": "owner_confirmed",
      "part": "shell::hhkb",
-     "source": "template_shell_crosswalk"
-    },
-    "sl2": {
-     "part": "stabilizer_slider_2u::hhkb_type_s",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "slider": {
+     "adjudication": "owner_confirmed",
      "part": "slider::hhkb_type_s",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::hhkb_type_s",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     }
    },
    "source": "r8_keyboard_registry"
   },
   {
-   "adjudication": "source_imported",
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb_type_s",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb_type_s",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::hhkb_type_s",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "brand": "HHKB",
    "empty": {
     "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "oem",
    "id": "kbd::hhkb_pro_2_type_s",
    "label": "HHKB Pro 2 Type-S",
    "notes": "2011. See note_hhkb_mx.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
    "slots": {
     "dome": {
+     "adjudication": "owner_confirmed",
      "part": "dm-topre-45g",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "silencing_ring::topre_poron_0_5",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "shell": {
+     "adjudication": "owner_confirmed",
      "part": "shell::hhkb",
-     "source": "template_shell_crosswalk"
-    },
-    "sl2": {
-     "part": "stabilizer_slider_2u::hhkb_type_s",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "slider": {
+     "adjudication": "owner_confirmed",
      "part": "slider::hhkb_type_s",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::hhkb_type_s",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     }
    },
    "source": "r8_keyboard_registry"
   },
   {
    "adjudication": "source_imported",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "source_imported",
+     "assembly": "assembly2u::hhkb_type_s",
+     "source": "r8_keyboard_registry"
+    },
+    "ring2u": {
+     "adjudication": "source_imported",
+     "assembly": "assembly2u::hhkb_type_s",
+     "source": "r8_keyboard_registry"
+    },
+    "sl2": {
+     "adjudication": "source_imported",
+     "assembly": "assembly2u::hhkb_type_s",
+     "source": "r8_keyboard_registry"
+    }
+   },
    "brand": "HHKB",
    "empty": {
     "dome": "not specified by the r8 keyboard registry — sourced or chosen separately",
     "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
     "keycap": "not specified by the source — choose MX or Topre keycaps",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
     "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "sl2": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "oem",
    "id": "kbd::hhkb_type_s",
@@ -535,6 +1326,10 @@
     "spring": {
      "part": "conical_springs::topre",
      "source": "r8_keyboard_registry"
+    },
+    "stab2uAssembly": {
+     "part": "assembly2u::hhkb_type_s",
+     "source": "r8_keyboard_registry"
     }
    },
    "source": "r8_keyboard_registry"
@@ -543,21 +1338,216 @@
    "adjudication": "source_imported",
    "brand": "Leopold",
    "empty": {
-    "dome": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "h1": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "dome": "the exact model and SKU determine dome weight — choose the installed dome",
     "h2": "not specified by the r8 keyboard registry — sourced or chosen separately",
     "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "ring": "the exact SKU determines whether the 1u switch is silenced — choose the installed ring state",
+    "ring2u": "the installed 2u assembly determines its silencing ring — confirm after choosing the assembly",
+    "sb": "the exact layout and spacebar width determine whether a separate spacebar stabilizer is present",
     "sl2": "not specified by the r8 keyboard registry — sourced or chosen separately",
     "slider": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "stab2uAssembly": "the exact model and SKU determine the 2u stabilizer assembly — choose the installed assembly"
    },
    "group": "oem",
    "id": "kbd::leopold",
    "label": "Leopold (family)",
-   "notes": "Placeholder for Leopold Topre models (FC660C, FC980C, ...).",
-   "slots": {},
+   "notes": "Broad family starter. Confirm the exact model and SKU before choosing the dome, silent/unsilenced parts, 2u assembly, or spacebar stabilizer.",
+   "slots": {
+    "h1": {
+     "part": "housings::topre",
+     "source": "r8_keyboard_registry"
+    },
+    "spring": {
+     "part": "conical_springs::topre",
+     "source": "r8_keyboard_registry"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "brand": "Leopold",
+   "empty": {
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
+   },
+   "group": "oem",
+   "id": "kbd::leopold_fc660c",
+   "label": "Leopold FC660C",
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
+   "slots": {
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "dm-topre-45g",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "slider": {
+     "adjudication": "owner_confirmed",
+     "part": "slider::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "brand": "Leopold",
+   "empty": {
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
+   },
+   "group": "oem",
+   "id": "kbd::leopold_fc980c",
+   "label": "Leopold FC980C",
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
+   "slots": {
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "dm-topre-45g",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "slider": {
+     "adjudication": "owner_confirmed",
+     "part": "slider::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "source": "r8_keyboard_registry"
   },
   {
@@ -569,10 +1559,12 @@
     "h2": "not specified by the r8 keyboard registry — sourced or chosen separately",
     "keycap": "not specified by the source — choose MX or Topre keycaps",
     "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "ring2u": "not specified by the r8 keyboard registry — sourced or chosen separately",
     "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
     "sl2": "not specified by the r8 keyboard registry — sourced or chosen separately",
     "slider": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "stab2uAssembly": "not specified by the r8 keyboard registry — sourced or chosen separately"
    },
    "group": "aftermarket",
    "id": "kbd::neverest",
@@ -582,237 +1574,1685 @@
    "source": "r8_keyboard_registry"
   },
   {
-   "adjudication": "source_imported",
-   "brand": "Novatouch",
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::novatouch",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::novatouch",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::novatouch",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "brand": "Cooler Master",
    "empty": {
-    "dome": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "h1": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "h2": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "sl2": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "slider": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "oem",
    "id": "kbd::novatouch",
-   "label": "Novatouch",
-   "notes": "",
-   "slots": {},
+   "label": "NovaTouch TKL",
+   "notes": "Factory NovaTouch configuration: 45g Topre dome, MX-compatible NovaTouch slider, Topre 1u housing and conical spring, no main silencing ring, NovaTouch 2u assembly, and NovaTouch spacebar stabilizer.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
+   "slots": {
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "dm-topre-45g",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::mx",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::novatouch",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "slider": {
+     "adjudication": "owner_confirmed",
+     "part": "slider::novatouch",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::novatouch",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "source": "r8_keyboard_registry"
   },
   {
-   "adjudication": "source_imported",
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "brand": "Realforce",
    "empty": {
-    "dome": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "h1": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "h2": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "sb": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "sl2": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "slider": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
+   },
+   "group": "oem",
+   "id": "kbd::realforce_101u",
+   "label": "Realforce 101U",
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
+   "slots": {
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "dm-topre-realforce-variable",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "slider": {
+     "adjudication": "owner_confirmed",
+     "part": "slider::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "brand": "Realforce",
+   "empty": {
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
+   },
+   "group": "oem",
+   "id": "kbd::realforce_103u",
+   "label": "Realforce 103U",
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
+   "slots": {
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "dm-topre-realforce-variable",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "slider": {
+     "adjudication": "owner_confirmed",
+     "part": "slider::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "brand": "Realforce",
+   "empty": {
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
+   },
+   "group": "oem",
+   "id": "kbd::realforce_104u",
+   "label": "Realforce 104U",
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
+   "slots": {
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "dm-topre-realforce-variable",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "slider": {
+     "adjudication": "owner_confirmed",
+     "part": "slider::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "brand": "Realforce",
+   "empty": {
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
+   },
+   "group": "oem",
+   "id": "kbd::realforce_106u",
+   "label": "Realforce 106U",
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review. This layout has no separate spacebar stabilizer.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
+   "slots": {
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "dm-topre-realforce-variable",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "none::spacebar_stabilizer",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "explicit_none",
+     "source": "owner_starting_point_defaults"
+    },
+    "slider": {
+     "adjudication": "owner_confirmed",
+     "part": "slider::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "brand": "Realforce",
+   "empty": {
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
+   },
+   "group": "oem",
+   "id": "kbd::realforce_108u",
+   "label": "Realforce 108U",
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review. This layout has no separate spacebar stabilizer.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
+   "slots": {
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "dm-topre-realforce-variable",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "none::spacebar_stabilizer",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "explicit_none",
+     "source": "owner_starting_point_defaults"
+    },
+    "slider": {
+     "adjudication": "owner_confirmed",
+     "part": "slider::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "brand": "Realforce",
+   "empty": {
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
+   },
+   "group": "oem",
+   "id": "kbd::realforce_86u",
+   "label": "Realforce 86U",
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
+   "slots": {
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "dm-topre-realforce-variable",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "slider": {
+     "adjudication": "owner_confirmed",
+     "part": "slider::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "brand": "Realforce",
+   "empty": {
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
+   },
+   "group": "oem",
+   "id": "kbd::realforce_87u",
+   "label": "Realforce 87U",
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
+   "slots": {
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "dm-topre-realforce-variable",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "slider": {
+     "adjudication": "owner_confirmed",
+     "part": "slider::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "brand": "Realforce",
+   "empty": {
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
+   },
+   "group": "oem",
+   "id": "kbd::realforce_89u",
+   "label": "Realforce 89U",
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review. This layout has no separate spacebar stabilizer.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
+   "slots": {
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "dm-topre-realforce-variable",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "none::spacebar_stabilizer",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "explicit_none",
+     "source": "owner_starting_point_defaults"
+    },
+    "slider": {
+     "adjudication": "owner_confirmed",
+     "part": "slider::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "brand": "Realforce",
+   "empty": {
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
+   },
+   "group": "oem",
+   "id": "kbd::realforce_91u",
+   "label": "Realforce 91U",
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review. This layout has no separate spacebar stabilizer.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
+   "slots": {
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "dm-topre-realforce-variable",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "none::spacebar_stabilizer",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "explicit_none",
+     "source": "owner_starting_point_defaults"
+    },
+    "slider": {
+     "adjudication": "owner_confirmed",
+     "part": "slider::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "brand": "Realforce",
+   "empty": {
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "oem",
    "id": "kbd::realforce_r2",
    "label": "Realforce R2",
-   "notes": "",
-   "slots": {},
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
+   "slots": {
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "dm-topre-45g",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "slider": {
+     "adjudication": "owner_confirmed",
+     "part": "slider::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "source": "r8_keyboard_registry"
   },
   {
-   "adjudication": "source_imported",
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre_silenced",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre_silenced",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre_silenced",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "brand": "Realforce",
    "empty": {
-    "dome": "the source identifies 30g and 45g variants — choose the installed dome",
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
+   },
+   "group": "oem",
+   "id": "kbd::realforce_r3",
+   "label": "Realforce R3",
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
+   "slots": {
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "dm-topre-45g",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "silencing_ring::topre_poron_0_5",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "slider": {
+     "adjudication": "owner_confirmed",
+     "part": "slider::topre_silenced_purple",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::topre_silenced",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre_silenced",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre_silenced",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::topre_silenced",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "brand": "Realforce",
+   "empty": {
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
+   },
+   "group": "oem",
+   "id": "kbd::realforce_r4",
+   "label": "Realforce R4",
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
+   "slots": {
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "dm-topre-45g",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "silencing_ring::topre_poron_0_5",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "slider": {
+     "adjudication": "owner_confirmed",
+     "part": "slider::topre_silenced_purple",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::topre_silenced",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "source": "r8_keyboard_registry"
+  },
+  {
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::realforce_rc1",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::realforce_rc1",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::realforce_rc1",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "brand": "Realforce",
+   "empty": {
     "h1": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "h2": "represented by the selected molded shell; no loose housing identity is overlaid",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "not specified by the r8 keyboard registry — sourced or chosen separately",
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
     "sb": "represented by the selected shell's integrated spacebar stabilizer",
-    "sl2": "not specified by the r8 keyboard registry — sourced or chosen separately",
-    "spring": "not specified by the r8 keyboard registry — sourced or chosen separately"
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "oem",
    "id": "kbd::realforce_rc1",
    "label": "Realforce RC1",
-   "notes": "Housings + Stabilizer Housing link as RC1. Spacebar stabilizer is part of the keyboard. Comes with Topre 45g or 30g domes.",
+   "notes": "Owner-confirmed starting point uses a Topre 45g dome. The housing and spacebar stabilizer remain integrated into the RC1 shell.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
    "slots": {
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "dm-topre-45g",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "silencing_ring::topre_poron_0_5",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
     "shell": {
+     "adjudication": "owner_confirmed",
      "part": "shell::rc1",
-     "source": "template_shell_crosswalk"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "slider": {
+     "adjudication": "owner_confirmed",
      "part": "slider::topre_silenced_purple",
-     "source": "r8_keyboard_registry"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "spring": {
+     "adjudication": "owner_confirmed",
+     "part": "conical_springs::topre",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::realforce_rc1",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     }
    },
    "source": "r8_keyboard_registry"
   },
   {
-   "adjudication": "owner_pending",
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::deskeys",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::deskeys",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::deskeys",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "brand": "Deskeys",
    "empty": {
-    "dome": "Deskeys sells V1/V2/V3/T1/CARROTS at many weights — pick one",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "Deskeys sells 0.2–1.0 mm rings — pick one"
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "brand_kit",
    "id": "kit::deskeys",
    "label": "Deskeys",
-   "notes": "brand kit: only parts this brand actually sells; unlisted slots are chosen separately",
+   "notes": "Manufacturer-parts shortcut: loads only parts this brand sells; it is not a verified working configuration, and unlisted slots are chosen separately.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
    "slots": {
-    "h1": {
-     "part": "housings::deskeys",
-     "source": "authored_brand_kit"
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "none::dome",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "explicit_none",
+     "source": "owner_starting_point_defaults"
     },
-    "h2": {
-     "part": "stabilizer_housing_2u::deskeys",
-     "source": "authored_brand_kit"
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::deskeys",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::mx",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "silencing_ring::des_poron_0_7",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "sb": {
+     "adjudication": "owner_confirmed",
      "part": "spacebar_stabilizer::deskeys",
-     "source": "authored_brand_kit"
-    },
-    "sl2": {
-     "part": "stabilizer_slider_2u::deskeys",
-     "source": "authored_brand_kit"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "slider": {
+     "adjudication": "owner_confirmed",
      "part": "slider::deskeys",
-     "source": "authored_brand_kit"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "spring": {
+     "adjudication": "owner_confirmed",
      "part": "conical_springs::deskeys_conical",
-     "source": "authored_brand_kit"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::deskeys",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     }
    },
    "source": "authored_brand_kit"
   },
   {
-   "adjudication": "owner_pending",
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::dynacaps",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::dynacaps",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::dynacaps",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "brand": "DynaCaps",
    "empty": {
-    "dome": "DynaCaps sells Light/Medium/Heavy and more — pick a weight",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "DynaCaps sells 0.3/0.5 mm Poron and Silicone rings — pick one"
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "brand_kit",
    "id": "kit::dynacaps",
    "label": "DynaCaps",
-   "notes": "brand kit: only parts this brand actually sells; unlisted slots are chosen separately",
+   "notes": "Manufacturer-parts shortcut: loads only parts this brand sells; it is not a verified working configuration, and unlisted slots are chosen separately.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
    "slots": {
-    "h1": {
-     "part": "housings::dynacaps",
-     "source": "authored_brand_kit"
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "none::dome",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "explicit_none",
+     "source": "owner_starting_point_defaults"
     },
-    "h2": {
-     "part": "stabilizer_housing_2u::dynacaps",
-     "source": "authored_brand_kit"
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::dynacaps",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::mx",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "silencing_ring::dynacaps_silicone_0_5",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "sb": {
+     "adjudication": "owner_confirmed",
      "part": "spacebar_stabilizer::dynacaps",
-     "source": "authored_brand_kit"
-    },
-    "sl2": {
-     "part": "stabilizer_slider_2u::dynacaps",
-     "source": "authored_brand_kit"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "slider": {
+     "adjudication": "owner_confirmed",
      "part": "slider::dynacaps",
-     "source": "authored_brand_kit"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "spring": {
+     "adjudication": "owner_confirmed",
      "part": "conical_springs::dynacaps",
-     "source": "authored_brand_kit"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::dynacaps",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     }
    },
    "source": "authored_brand_kit"
   },
   {
-   "adjudication": "owner_pending",
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
+    "h2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::klc",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::klc",
+     "source": "owner_starting_point_defaults"
+    },
+    "sl2": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::klc",
+     "source": "owner_starting_point_defaults"
+    }
+   },
    "brand": "KLC",
    "empty": {
-    "dome": "KLC sells 35/45/55 g domes — pick a weight",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "KLC sells 0.3 mm Poron and Silicone rings (both in the catalog) — pick one"
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
    },
    "group": "brand_kit",
    "id": "kit::klc",
    "label": "KLC",
-   "notes": "brand kit: only parts this brand actually sells; unlisted slots are chosen separately",
+   "notes": "Manufacturer-parts shortcut: loads only parts this brand sells; it is not a verified working configuration, and unlisted slots are chosen separately.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
    "slots": {
-    "h1": {
-     "part": "housings::klc_playground",
-     "source": "authored_brand_kit"
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "none::dome",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "explicit_none",
+     "source": "owner_starting_point_defaults"
     },
-    "h2": {
-     "part": "stabilizer_housing_2u::klc_playground",
-     "source": "authored_brand_kit"
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::klc_playground",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::mx",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "ring::none",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "sb": {
+     "adjudication": "owner_confirmed",
      "part": "spacebar_stabilizer::klc_playground",
-     "source": "authored_brand_kit"
-    },
-    "sl2": {
-     "part": "stabilizer_slider_2u::klc_playground",
-     "source": "authored_brand_kit"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "slider": {
+     "adjudication": "owner_confirmed",
      "part": "slider::klc_playground",
-     "source": "authored_brand_kit"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "spring": {
+     "adjudication": "owner_confirmed",
      "part": "conical_springs::klc_playground",
-     "source": "authored_brand_kit"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::klc",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     }
    },
    "source": "authored_brand_kit"
   },
   {
-   "adjudication": "owner_pending",
-   "brand": "MetaPulse",
-   "empty": {
-    "dome": "MetaPulse sells BS/RS domes at many weights — pick one",
-    "keycap": "not specified by the source — choose MX or Topre keycaps",
-    "ring": "MetaPulse sells a 0.5 mm Poron ring — optional, pick it explicitly"
-   },
-   "group": "brand_kit",
-   "id": "kit::metapulse",
-   "label": "MetaPulse",
-   "notes": "brand kit: only parts this brand actually sells; unlisted slots are chosen separately",
-   "slots": {
-    "h1": {
-     "part": "housings::metapulse",
-     "source": "authored_brand_kit"
-    },
+   "adjudication": "owner_confirmed",
+   "assembly_owned": {
     "h2": {
-     "part": "stabilizer_housing_2u::metapulse",
-     "source": "authored_brand_kit"
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::metakeebs",
+     "source": "owner_starting_point_defaults"
     },
-    "sb": {
-     "part": "spacebar_stabilizer::metapulse",
-     "source": "authored_brand_kit"
+    "ring2u": {
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::metakeebs",
+     "source": "owner_starting_point_defaults"
     },
     "sl2": {
-     "part": "stabilizer_slider_2u::metapulse",
-     "source": "authored_brand_kit"
+     "adjudication": "owner_confirmed",
+     "assembly": "assembly2u::metakeebs",
+     "source": "owner_starting_point_defaults"
+    }
+   },
+   "brand": "MetaKeebs",
+   "empty": {
+    "h2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "ring2u": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading",
+    "sl2": "represented by the selected 2u stabilizer assembly; the child remains independently editable after loading"
+   },
+   "group": "brand_kit",
+   "id": "kit::metakeebs",
+   "label": "MetaKeebs",
+   "notes": "Manufacturer-parts shortcut: loads only parts this brand sells; it is not a verified working configuration, and unlisted slots are chosen separately.",
+   "owner_review": {
+    "date": "2026-09-03",
+    "id": "owner-defaults-2026-09-03"
+   },
+   "slots": {
+    "dome": {
+     "adjudication": "owner_confirmed",
+     "part": "none::dome",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "explicit_none",
+     "source": "owner_starting_point_defaults"
+    },
+    "h1": {
+     "adjudication": "owner_confirmed",
+     "part": "housings::metapulse",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "keycap": {
+     "adjudication": "owner_confirmed",
+     "part": "keycap::mx",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "ring": {
+     "adjudication": "owner_confirmed",
+     "part": "silencing_ring::metapulse_poron_0_5",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "sb": {
+     "adjudication": "owner_confirmed",
+     "part": "spacebar_stabilizer::metapulse",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "slider": {
+     "adjudication": "owner_confirmed",
      "part": "slider::metapulse",
-     "source": "authored_brand_kit"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     },
     "spring": {
+     "adjudication": "owner_confirmed",
      "part": "conical_springs::metapulse",
-     "source": "authored_brand_kit"
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
+    },
+    "stab2uAssembly": {
+     "adjudication": "owner_confirmed",
+     "part": "assembly2u::metakeebs",
+     "review": "owner-defaults-2026-09-03",
+     "selection_state": "selected",
+     "source": "owner_starting_point_defaults"
     }
    },
    "source": "authored_brand_kit"
   }
  ],
- "purpose": "Registry-generated presets. Stable part IDs only; a preset never invents a component — empty slots carry the reason. Imported registry statements are source_imported; the authored brand kits are owner_pending.",
- "schema": "presets-v1"
+ "purpose": "Registry-generated presets. Stable part IDs only; a preset never invents a component — empty slots carry the reason. Owner-confirmed workbook choices are applied without changing the vendored r8 source.",
+ "schema": "presets-v1",
+ "source_artifacts": {
+  "owner_starting_point_defaults": {
+   "path": "generator/domelab_pipeline/config/owner_starting_point_defaults.json",
+   "sha256": "34af4baa223c2b5a635078d878d1ef70141c6eaec48470ead9e754457ee1e74f"
+  },
+  "stabilizer_assemblies": {
+   "path": "generator/domelab_pipeline/config/stabilizer_assemblies.json",
+   "sha256": "186453cc863ecb7c85df0f53010debbc1424804bfa4fa6369a23d8a395d3edb2"
+  }
+ }
 }

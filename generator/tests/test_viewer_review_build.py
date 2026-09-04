@@ -75,8 +75,8 @@ def test_release_profile_changes_only_presentation_identity(
     assert review_pb["mode"] == "review" and release_pb["mode"] == "release"
     assert review_pb["presentation_role"] == "review_candidate"
     assert release_pb["presentation_role"] == "public_release"
-    assert review_pb["library_build"] == "lib-6.0-review.1"
-    assert release_pb["library_build"] == "lib-6.0"
+    assert review_pb["library_build"] == "lib-6.1-review.1"
+    assert release_pb["library_build"] == "lib-6.1"
     assert review_pb["release_eligible"] is False
     assert release_pb["release_eligible"] is True
     for key in review_pb:

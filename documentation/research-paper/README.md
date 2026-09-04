@@ -10,7 +10,7 @@ adds prospective multi-rater validation only after that study is completed.
 - Preprint 2.0: <https://doi.org/10.5281/zenodo.22167065>
 - Research compendium: <https://doi.org/10.5281/zenodo.22167047>
 - Force Curve Bench: `fc-3.4`
-- EC Parts Builder: `lib-6.0`
+- EC Parts Builder: `lib-6.1`
 - Objective evidence: `metrics-v4.2`, frozen commit `6e86ac1`, evidence
   identity `7aa8588b...d4a`
 - Exploratory evidence: `subjective-pilot-v1`, one rater, 25 domes, three

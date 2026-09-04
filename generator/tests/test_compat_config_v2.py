@@ -61,8 +61,9 @@ def test_committed_v2_evidence_has_verifiable_sources_and_stable_ids():
     assert evidence["schema"] == "compat-evidence-v2"
     sources = evidence["source_artifacts"]
     assert set(sources) == {
-        "generator", "r8_parts", "r8_compatibility", "r8_compat_rules",
-        "compat_overlay", "catalog_overlay",
+        "generator", "r8_parts", "r8_keyboards", "r8_compatibility",
+        "r8_compat_rules", "compat_overlay", "catalog_overlay",
+        "stabilizer_assemblies",
     }
     for record in sources.values():
         path = os.path.join(ROOT, *record["path"].split("/"))
@@ -93,18 +94,18 @@ def test_ui_selectable_coverage_is_derived_and_matches_current_catalog():
                                                "unadjudicated")]
     coverage = evidence["coverage"]["ui_selectable"]
     assert coverage == {
-        "items": 66,
-        "pairs": 2145,
-        "applicable_pairs": 1746,
+        "items": 68,
+        "pairs": 2278,
+        "applicable_pairs": 1850,
         "resolved_pairs": 264,
-        "unresolved_pairs": 1482,
+        "unresolved_pairs": 1586,
         "states": {
             "compatible": 101,
             "conditional": 38,
             "incompatible": 156,
-            "not_applicable": 399,
+            "not_applicable": 428,
             "pending": 43,
-            "unknown": 1408,
+            "unknown": 1512,
         },
     }
     assert len(selectable) == coverage["items"]

@@ -13,8 +13,9 @@ the public Open Graph image is
 and the frozen publication tag is `fc-3.4`.
 
 The sections through **Responsive visual limitation** preserve the historical
-Force Curve Bench acceptance record. EC Parts Builder `lib-6.0` has its own
-release acceptance record below.
+Force Curve Bench acceptance record. The historical EC Parts Builder
+`lib-6.0` acceptance and the current `lib-6.1` acceptance are recorded
+separately below.
 
 ## Interactive browser checks
 
@@ -37,7 +38,7 @@ tested in the Codex in-app Chromium browser at its available 1440 × 900 and
 | Theme | Pass | Light and dark themes both rendered with the expected computed page colors. |
 | Fonts and requests | Pass | Inter and IBM Plex Mono loaded from embedded data; no third-party font request occurred. Runtime trace requests were limited to immutable raw CSV URLs at the frozen commit. |
 | PNG export | Pass | A fresh Topre R2 45g export was produced and visually inspected at 3005 × 1962 pixels: 611,063 bytes, SHA-256 `504f2e1a54a63ff58f1832627260231b816b0a82023d1e328bae45c6b882a224`. It included the shared 4.5 mm scale, the `3.96 mm` force-wall marker without a comparison, the separate recorded turnaround, the build/evidence footer, and a large centered `UNREAL KEYBOARDS` watermark at low opacity behind the chart. The watermark was absent from the live viewer. |
-| Rights/footer | Pass | Footer text is `© 2026 Brian “BuddyOG” Gebo — Unreal Keyboards. All rights reserved.` and links to the bundled documentation and terms. |
+| Rights/footer | Pass | Footer text is `© 2026 Brian “BuddyOG” Gebo — Unreal Keyboards. All rights reserved.` The separate build badge identifies the generated build. |
 
 ## Executable runtime batteries
 
@@ -71,7 +72,7 @@ the accepted starting point. A final human phone-width spot check is still a
 useful deployment check, but this tooling limitation did not expose a viewer
 failure.
 
-## EC Parts Builder lib-6.0 acceptance
+## Historical EC Parts Builder lib-6.0 acceptance
 
 The standalone release-profile builder passed 117 of 117 real-browser checks
 across 1280 px desktop, 390 px phone, and 320 px reflow viewports. It produced
@@ -85,6 +86,34 @@ skips. Two release-profile generations were byte-identical, and the final site
 package passed its manifest, checksum, protected-predecessor, raw-data, and
 canonical-evidence verification.
 
+## EC Parts Builder lib-6.1 acceptance
+
+The final `lib-6.1-review.1` prepublication build was reviewed in the browser
+and explicitly accepted by the owner. Its standalone runtime battery passed 85
+of 85 checks. The complete generator suite passed 518 tests with 13 declared
+environment-dependent skips, and a clean second generation was byte-identical.
+
+The promoted `lib-6.1` release profile then passed 180 of 180 automated
+real-browser checks across 1280 px desktop, 390 px phone, and 320 px reflow
+viewports. It produced 12 screenshots, recorded no failed network requests,
+and passed the Shopify exact-origin bridge battery 12 of 12. Two independently
+generated release trees were byte-identical before packaging.
+
+Acceptance covered all 11 component rows; 28 keyboard starters; 4
+manufacturer-parts shortcuts; all 10 recorded 2u assemblies; independent 1u
+and 2u ring-fit calculations; the DynaCaps supported-compression exception;
+measured-dome Force-Wall, Travel, and Dome compression displays; same-
+manufacturer fallback handling; and the part-scoped spring presentation.
+Deskeys and KLC springs produced one **Does not work** finding on the spring
+itself, MetaPulse produced one **Not verified** finding, unrelated rows were
+not blamed through duplicate pair messages, and genuine pair-specific findings
+remained active.
+
+The accepted review artifact's SHA-256 was
+`1f9150b6c1910ccef480dd3b561571e93ec7ca2da59f3fd273b6fa851193b546`.
+That hash records the prepublication artifact only. The promoted release bytes
+are identified by `SITE_RELEASE_MANIFEST.json` and `SHA256SUMS`.
+
 ## Deployment checks
 
 For the already published fc-3.4 release, load the canonical URL and confirm
@@ -94,16 +123,24 @@ described above. Also confirm that `dome-lab-parts.html` and the other protected
 continuity endpoints resolve, and spot-check one published raw CSV at its
 preserved relative path.
 
-For the published lib-6.0 builder, confirm that the standalone builder has no
-in-tool tabs or sibling-tool links; exposes 9 component rows, 13
-keyboard starters, 68 exact specimen measurements carrying measured collapse
-force plus released Weight Index and Tactility Index values, and 2 public
-keycap additions; uses the exact labels **Works**, **Works with conditions**,
-**Does not work**, **Not verified**, and dome-only **Not evaluated**; and
-carries 338 decision-changing browser edges while the 3,403-edge config audit passes. The
-Shopify wrapper owns Dome Lab navigation and must pass the iframe contract.
-`SITE_RELEASE_MANIFEST.json` and its `SHA256SUMS` are the active site authority;
-the fc-3.4 manifest remains the protected predecessor record.
+For the published lib-6.1 builder, confirm that the standalone builder has no
+in-tool tabs or sibling-tool links; exposes 11 component rows, 28 keyboard
+starters, 4 manufacturer-parts shortcuts, 10 recorded 2u assemblies, and 68
+exact specimen measurements; and uses **Works**, **Works with conditions**,
+**Does not work**, **Not verified**, **Manufacturer matched**, and dome-only
+**Not evaluated**. Confirm that measured-dome details and the visible Travel /
+Dome compression panel apply Force-Wall and ring-seat geometry as documented.
+
+The browser payload must contain 241 decision-changing pair edges after 97
+generic matrix-expanded conical-spring edges are suppressed while the complete
+3,570-edge audit closure remains intact. Selecting an affected
+spring must produce one finding and one badge on the spring row only; unrelated
+parts must remain unflagged, and the whole-build status must inherit the part
+issue. A genuine pair-specific condition or conflict must still render and
+affect the rollup. The Shopify wrapper owns Dome Lab navigation and must pass
+the iframe contract. `SITE_RELEASE_MANIFEST.json` and `SHA256SUMS` are the
+active site authority; the fc-3.4 manifest remains the protected predecessor
+record.
 
 ## Live deployment closeout — 2026-08-31
 
@@ -117,9 +154,9 @@ The publication checks above were completed against the public deployment:
 | Paper overview | Pass | <https://unrealkeyboards.com/pages/beyond-snap-ratio> |
 | Explanatory article | Pass | <https://unrealkeyboards.com/blogs/topre-mods/topre-dome-force-curves> |
 | Standalone Force Curve Bench | Pass | <https://buddyog.github.io/topre-force-curves/> |
-| Standalone EC Parts Builder | Pass | <https://buddyog.github.io/topre-force-curves/dome-lab-parts.html> |
+| Standalone EC Parts Builder (then `lib-6.0`) | Pass | <https://buddyog.github.io/topre-force-curves/dome-lab-parts.html> |
 | fc-3.4 GitHub release | Pass | <https://github.com/BuddyOG/topre-force-curves/releases/tag/fc-3.4> |
-| lib-6.0 GitHub release | Pass | <https://github.com/BuddyOG/topre-force-curves/releases/tag/ec-parts-lib-6.0> |
+| Historical lib-6.0 GitHub release | Pass | <https://github.com/BuddyOG/topre-force-curves/releases/tag/ec-parts-lib-6.0> |
 | Paper DOI | Pass | <https://doi.org/10.5281/zenodo.22167065> |
 | Compendium DOI | Pass | <https://doi.org/10.5281/zenodo.22167047> |
 
@@ -127,3 +164,9 @@ The storefront hub, paper page, article, and Tools navigation were inspected
 after publication. The standalone endpoints resolved to their released tools.
 Private review pages, the unpublished review theme, and the pre-release menu
 backup remain rollback assets rather than release authorities.
+
+## EC Parts Builder lib-6.1 publication — 2026-09-04
+
+The lib-6.1 update retained both public Parts Builder URLs and the Shopify
+embed contract. Git tag `ec-parts-lib-6.1` identifies the new builder release;
+`ec-parts-lib-6.0` remains available as the predecessor and rollback record.

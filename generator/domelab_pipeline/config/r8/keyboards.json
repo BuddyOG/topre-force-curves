@@ -10,7 +10,8 @@
    "dome": "dome::topre_45g",
    "housing": "housing::topre",
    "conical_spring": "conical_spring::topre",
-   "silencing_ring": "silencing_ring::none"
+   "silencing_ring": "silencing_ring::none",
+   "stabilizer_assembly": "assembly2u::hhkb"
   }
  },
  "kbd::hhkb_type_s": {
@@ -22,7 +23,8 @@
    "slider": "slider::hhkb_type_s",
    "housing": "housing::topre",
    "conical_spring": "conical_spring::topre",
-   "silencing_ring": "silencing_ring::topre_poron_0_5"
+   "silencing_ring": "silencing_ring::topre_poron_0_5",
+   "stabilizer_assembly": "assembly2u::hhkb_type_s"
   }
  },
  "kbd::realforce_rc1": {
@@ -32,14 +34,26 @@
   "notes": "Housings + Stabilizer Housing link as RC1. Spacebar stabilizer is part of the keyboard. Comes with Topre 45g or 30g domes.",
   "default_parts": {
    "dome": "dome::topre_30g",
-   "slider": "slider::topre_silenced_purple"
+   "slider": "slider::topre_silenced_purple",
+   "silencing_ring": "silencing_ring::topre_poron_0_5",
+   "stabilizer_assembly": "assembly2u::realforce_rc1"
   }
  },
  "kbd::novatouch": {
-  "display_name": "Novatouch",
-  "brand": "Novatouch",
+  "display_name": "NovaTouch TKL",
+  "brand": "Cooler Master",
   "kind": "oem",
-  "notes": ""
+  "notes": "Factory NovaTouch configuration: 45g Topre dome, MX-compatible NovaTouch slider, Topre 1u housing and conical spring, no main silencing ring, NovaTouch 2u assembly, and NovaTouch spacebar stabilizer.",
+  "source_url": "https://www.coolermaster.com/catalog/peripheral/keyboards/novatouch-tkl/",
+  "default_parts": {
+   "dome": "dome::topre_45g",
+   "slider": "slider::novatouch",
+   "housing": "housing::topre",
+   "conical_spring": "conical_spring::topre",
+   "silencing_ring": "silencing_ring::none",
+   "stabilizer_assembly": "assembly2u::novatouch",
+   "spacebar_stabilizer": "spacebar_stabilizer::novatouch"
+  }
  },
  "kbd::agar_ec_kit": {
   "display_name": "Agar EC Kit",
@@ -55,7 +69,8 @@
   "default_parts": {
    "dome": "dome::topre_45g",
    "slider": "slider::topre",
-   "stabilizer_slider": "stabilizer_slider::topre"
+   "stabilizer_slider": "stabilizer_slider::topre",
+   "stabilizer_assembly": "assembly2u::hhkb"
   }
  },
  "kbd::hhkb_pro_2": {
@@ -66,7 +81,8 @@
   "default_parts": {
    "dome": "dome::topre_45g",
    "slider": "slider::topre",
-   "stabilizer_slider": "stabilizer_slider::topre"
+   "stabilizer_slider": "stabilizer_slider::topre",
+   "stabilizer_assembly": "assembly2u::hhkb"
   }
  },
  "kbd::hhkb_pro_2_type_s": {
@@ -77,7 +93,9 @@
   "default_parts": {
    "dome": "dome::topre_45g",
    "slider": "slider::hhkb_type_s",
-   "stabilizer_slider": "stabilizer_slider::hhkb_type_s"
+   "stabilizer_slider": "stabilizer_slider::hhkb_type_s",
+   "silencing_ring": "silencing_ring::topre_poron_0_5",
+   "stabilizer_assembly": "assembly2u::hhkb_type_s"
   }
  },
  "kbd::hhkb_pro_2_jp": {
@@ -88,7 +106,8 @@
   "default_parts": {
    "dome": "dome::topre_45g",
    "slider": "slider::topre",
-   "stabilizer_slider": "stabilizer_slider::topre"
+   "stabilizer_slider": "stabilizer_slider::topre",
+   "stabilizer_assembly": "assembly2u::hhkb"
   }
  },
  "kbd::hhkb_pro_2_jp_type_s": {
@@ -99,7 +118,9 @@
   "default_parts": {
    "dome": "dome::topre_45g",
    "slider": "slider::hhkb_type_s",
-   "stabilizer_slider": "stabilizer_slider::hhkb_type_s"
+   "stabilizer_slider": "stabilizer_slider::hhkb_type_s",
+   "silencing_ring": "silencing_ring::topre_poron_0_5",
+   "stabilizer_assembly": "assembly2u::hhkb_type_s"
   }
  },
  "kbd::hhkb_bt": {
@@ -110,7 +131,8 @@
   "default_parts": {
    "dome": "dome::topre_45g",
    "slider": "slider::topre",
-   "stabilizer_slider": "stabilizer_slider::topre"
+   "stabilizer_slider": "stabilizer_slider::topre",
+   "stabilizer_assembly": "assembly2u::hhkb"
   }
  },
  "kbd::hhkb_hybrid": {
@@ -121,7 +143,8 @@
   "default_parts": {
    "dome": "dome::topre_45g",
    "slider": "slider::topre",
-   "stabilizer_slider": "stabilizer_slider::topre"
+   "stabilizer_slider": "stabilizer_slider::topre",
+   "stabilizer_assembly": "assembly2u::hhkb"
   }
  },
  "kbd::hhkb_hybrid_type_s": {
@@ -132,7 +155,9 @@
   "default_parts": {
    "dome": "dome::topre_45g",
    "slider": "slider::hhkb_type_s",
-   "stabilizer_slider": "stabilizer_slider::hhkb_type_s"
+   "stabilizer_slider": "stabilizer_slider::hhkb_type_s",
+   "silencing_ring": "silencing_ring::topre_poron_0_5",
+   "stabilizer_assembly": "assembly2u::hhkb_type_s"
   }
  },
  "kbd::hhkb_hybrid_jp": {
@@ -143,7 +168,8 @@
   "default_parts": {
    "dome": "dome::topre_45g",
    "slider": "slider::topre",
-   "stabilizer_slider": "stabilizer_slider::topre"
+   "stabilizer_slider": "stabilizer_slider::topre",
+   "stabilizer_assembly": "assembly2u::hhkb"
   }
  },
  "kbd::hhkb_classic": {
@@ -154,7 +180,8 @@
   "default_parts": {
    "dome": "dome::topre_45g",
    "slider": "slider::topre",
-   "stabilizer_slider": "stabilizer_slider::topre"
+   "stabilizer_slider": "stabilizer_slider::topre",
+   "stabilizer_assembly": "assembly2u::hhkb"
   }
  },
  "kbd::hhkb_classic_type_s": {
@@ -165,7 +192,9 @@
   "default_parts": {
    "dome": "dome::topre_45g",
    "slider": "slider::hhkb_type_s",
-   "stabilizer_slider": "stabilizer_slider::hhkb_type_s"
+   "stabilizer_slider": "stabilizer_slider::hhkb_type_s",
+   "silencing_ring": "silencing_ring::topre_poron_0_5",
+   "stabilizer_assembly": "assembly2u::hhkb_type_s"
   }
  },
  "kbd::hhkb_30th": {
@@ -176,20 +205,174 @@
   "default_parts": {
    "dome": "dome::topre_30g",
    "slider": "slider::topre",
-   "stabilizer_slider": "stabilizer_slider::topre"
+   "stabilizer_slider": "stabilizer_slider::topre",
+   "stabilizer_assembly": "assembly2u::hhkb"
   }
  },
  "kbd::leopold": {
   "display_name": "Leopold (family)",
   "brand": "Leopold",
   "kind": "oem",
-  "notes": "Placeholder for Leopold Topre models (FC660C, FC980C, ...)."
+  "notes": "Broad family starter. Confirm the exact model and SKU before choosing the dome, silent/unsilenced parts, 2u assembly, or spacebar stabilizer.",
+  "source_url": "https://www.leopold.co.kr/",
+  "default_parts": {
+   "housing": "housing::topre",
+   "conical_spring": "conical_spring::topre"
+  }
+ },
+ "kbd::leopold_fc660c": {
+  "display_name": "Leopold FC660C",
+  "brand": "Leopold",
+  "kind": "oem",
+  "notes": "Broad model starter. Confirm the exact SKU before choosing the dome, silent/unsilenced parts, 2u assembly, or spacebar stabilizer.",
+  "source_url": "https://www.leopold.co.kr/",
+  "default_parts": {
+   "housing": "housing::topre",
+   "conical_spring": "conical_spring::topre"
+  }
+ },
+ "kbd::leopold_fc980c": {
+  "display_name": "Leopold FC980C",
+  "brand": "Leopold",
+  "kind": "oem",
+  "notes": "Broad model starter. Confirm the exact SKU before choosing the dome, silent/unsilenced parts, 2u assembly, or spacebar stabilizer.",
+  "source_url": "https://www.leopold.co.kr/",
+  "default_parts": {
+   "housing": "housing::topre",
+   "conical_spring": "conical_spring::topre"
+  }
+ },
+ "kbd::realforce_r4": {
+  "display_name": "Realforce R4",
+  "brand": "Realforce",
+  "kind": "oem",
+  "notes": "Broad generation starter. Confirm the exact model and SKU before choosing the dome, silent/unsilenced parts, 2u assembly, or spacebar stabilizer.",
+  "source_url": "https://www.realforce.co.jp/en/products/",
+  "default_parts": {
+   "housing": "housing::topre",
+   "conical_spring": "conical_spring::topre"
+  }
+ },
+ "kbd::realforce_r3": {
+  "display_name": "Realforce R3",
+  "brand": "Realforce",
+  "kind": "oem",
+  "notes": "Broad generation starter. Confirm the exact model and SKU before choosing the dome, silent/unsilenced parts, 2u assembly, or spacebar stabilizer.",
+  "source_url": "https://www.realforce.co.jp/en/products/",
+  "default_parts": {
+   "housing": "housing::topre",
+   "conical_spring": "conical_spring::topre"
+  }
  },
  "kbd::realforce_r2": {
   "display_name": "Realforce R2",
   "brand": "Realforce",
   "kind": "oem",
-  "notes": ""
+  "notes": "Broad generation starter. Confirm the exact model and SKU before choosing the dome, silent/unsilenced parts, 2u assembly, or spacebar stabilizer.",
+  "source_url": "https://www.realforce.co.jp/en/products/",
+  "default_parts": {
+   "housing": "housing::topre",
+   "conical_spring": "conical_spring::topre"
+  }
+ },
+ "kbd::realforce_104u": {
+  "display_name": "Realforce 104U",
+  "brand": "Realforce",
+  "kind": "oem",
+  "notes": "Broad model family. Confirm the exact SKU before choosing the dome, silent/unsilenced parts, 2u assembly, or spacebar stabilizer.",
+  "source_url": "https://www.realforce.co.jp/en/products/",
+  "default_parts": {
+   "housing": "housing::topre",
+   "conical_spring": "conical_spring::topre"
+  }
+ },
+ "kbd::realforce_108u": {
+  "display_name": "Realforce 108U",
+  "brand": "Realforce",
+  "kind": "oem",
+  "notes": "Broad model family. Confirm the exact SKU before choosing the dome, silent/unsilenced parts, 2u assembly, or spacebar stabilizer.",
+  "source_url": "https://www.realforce.co.jp/en/products/",
+  "default_parts": {
+   "housing": "housing::topre",
+   "conical_spring": "conical_spring::topre"
+  }
+ },
+ "kbd::realforce_106u": {
+  "display_name": "Realforce 106U",
+  "brand": "Realforce",
+  "kind": "oem",
+  "notes": "Broad model family. Confirm the exact SKU before choosing the dome, silent/unsilenced parts, 2u assembly, or spacebar stabilizer.",
+  "source_url": "https://www.realforce.co.jp/en/products/",
+  "default_parts": {
+   "housing": "housing::topre",
+   "conical_spring": "conical_spring::topre"
+  }
+ },
+ "kbd::realforce_101u": {
+  "display_name": "Realforce 101U",
+  "brand": "Realforce",
+  "kind": "oem",
+  "notes": "Broad model family. Confirm the exact SKU before choosing the dome, silent/unsilenced parts, 2u assembly, or spacebar stabilizer.",
+  "source_url": "https://www.realforce.co.jp/en/products/",
+  "default_parts": {
+   "housing": "housing::topre",
+   "conical_spring": "conical_spring::topre"
+  }
+ },
+ "kbd::realforce_103u": {
+  "display_name": "Realforce 103U",
+  "brand": "Realforce",
+  "kind": "oem",
+  "notes": "Broad model family. Confirm the exact SKU before choosing the dome, silent/unsilenced parts, 2u assembly, or spacebar stabilizer.",
+  "source_url": "https://www.realforce.co.jp/en/products/",
+  "default_parts": {
+   "housing": "housing::topre",
+   "conical_spring": "conical_spring::topre"
+  }
+ },
+ "kbd::realforce_86u": {
+  "display_name": "Realforce 86U",
+  "brand": "Realforce",
+  "kind": "oem",
+  "notes": "Broad model family. Confirm the exact SKU before choosing the dome, silent/unsilenced parts, 2u assembly, or spacebar stabilizer.",
+  "source_url": "https://www.realforce.co.jp/en/products/",
+  "default_parts": {
+   "housing": "housing::topre",
+   "conical_spring": "conical_spring::topre"
+  }
+ },
+ "kbd::realforce_87u": {
+  "display_name": "Realforce 87U",
+  "brand": "Realforce",
+  "kind": "oem",
+  "notes": "Broad model family. Confirm the exact SKU before choosing the dome, silent/unsilenced parts, 2u assembly, or spacebar stabilizer.",
+  "source_url": "https://www.realforce.co.jp/en/products/",
+  "default_parts": {
+   "housing": "housing::topre",
+   "conical_spring": "conical_spring::topre"
+  }
+ },
+ "kbd::realforce_91u": {
+  "display_name": "Realforce 91U",
+  "brand": "Realforce",
+  "kind": "oem",
+  "notes": "Broad model family. Confirm the exact SKU before choosing the dome, silent/unsilenced parts, 2u assembly, or spacebar stabilizer.",
+  "source_url": "https://www.realforce.co.jp/en/products/",
+  "default_parts": {
+   "housing": "housing::topre",
+   "conical_spring": "conical_spring::topre"
+  }
+ },
+ "kbd::realforce_89u": {
+  "display_name": "Realforce 89U",
+  "brand": "Realforce",
+  "kind": "oem",
+  "notes": "Broad model family. Confirm the exact SKU before choosing the dome, silent/unsilenced parts, 2u assembly, or spacebar stabilizer.",
+  "source_url": "https://www.realforce.co.jp/en/products/",
+  "default_parts": {
+   "housing": "housing::topre",
+   "conical_spring": "conical_spring::topre"
+  }
  },
  "kbd::neverest": {
   "display_name": "NEVEREST",

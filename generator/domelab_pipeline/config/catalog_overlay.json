@@ -94,7 +94,8 @@
   "dome::topre_45g": "dm-topre-45g",
   "dome::topre_45g_aged": "dm-topre-45g-aged",
   "dome::topre_55g": "dm-topre-55g",
-  "dome::topre_55g_aged": "dm-topre-55g-aged"
+  "dome::topre_55g_aged": "dm-topre-55g-aged",
+  "dome::topre_realforce_variable": "dm-topre-realforce-variable"
  },
  "dome_display_names": {
   "dm-astro-domes-35g": "Astro Domes Shiner 35g",
@@ -140,9 +141,135 @@
   "kbd::hhkb_pro_2_jp",
   "kbd::hhkb_pro_2_jp_type_s",
   "kbd::hhkb_pro_2_type_s",
+  "kbd::leopold_fc660c",
+  "kbd::leopold_fc980c",
+  "kbd::novatouch",
+  "kbd::realforce_101u",
+  "kbd::realforce_103u",
+  "kbd::realforce_104u",
+  "kbd::realforce_106u",
+  "kbd::realforce_108u",
+  "kbd::realforce_86u",
+  "kbd::realforce_87u",
+  "kbd::realforce_89u",
+  "kbd::realforce_91u",
+  "kbd::realforce_r2",
+  "kbd::realforce_r3",
+  "kbd::realforce_r4",
   "kbd::realforce_rc1"
  ],
+ "public_brand_kit_ids": [
+  "kit::deskeys",
+  "kit::dynacaps",
+  "kit::klc",
+  "kit::metakeebs"
+ ],
  "preset_slot_omissions": {
+  "kbd::leopold": {
+   "dome": "the exact model and SKU determine dome weight — choose the installed dome",
+   "ring": "the exact SKU determines whether the 1u switch is silenced — choose the installed ring state",
+    "stab2uAssembly": "the exact model and SKU determine the 2u stabilizer assembly — choose the installed assembly",
+   "ring2u": "the installed 2u assembly determines its silencing ring — confirm after choosing the assembly",
+   "sb": "the exact layout and spacebar width determine whether a separate spacebar stabilizer is present"
+  },
+  "kbd::leopold_fc660c": {
+   "dome": "the exact SKU determines dome weight — choose the installed dome",
+   "ring": "the exact SKU determines whether the 1u switch is silenced — choose the installed ring state",
+    "stab2uAssembly": "the exact SKU determines the 2u stabilizer assembly — choose the installed assembly",
+   "ring2u": "the installed 2u assembly determines its silencing ring — confirm after choosing the assembly",
+   "sb": "the exact layout and spacebar width determine whether a separate spacebar stabilizer is present"
+  },
+  "kbd::leopold_fc980c": {
+   "dome": "the exact SKU determines dome weight — choose the installed dome",
+   "ring": "the exact SKU determines whether the 1u switch is silenced — choose the installed ring state",
+    "stab2uAssembly": "the exact SKU determines the 2u stabilizer assembly — choose the installed assembly",
+   "ring2u": "the installed 2u assembly determines its silencing ring — confirm after choosing the assembly",
+   "sb": "the exact layout and spacebar width determine whether a separate spacebar stabilizer is present"
+  },
+  "kbd::realforce_101u": {
+   "dome": "the exact SKU may use a fixed-weight or variable 30g/45g dome population — choose the installed dome",
+   "ring": "the exact SKU determines whether the 1u switch is silenced — choose the installed ring state",
+    "stab2uAssembly": "the exact SKU and layout determine the 2u stabilizer assembly — choose the installed assembly",
+   "ring2u": "the installed 2u assembly determines its silencing ring — confirm after choosing the assembly",
+   "sb": "the exact layout and spacebar width determine whether a separate spacebar stabilizer is present; under 4.5u uses a 2u assembly instead"
+  },
+  "kbd::realforce_103u": {
+   "dome": "the exact SKU may use a fixed-weight or variable 30g/45g dome population — choose the installed dome",
+   "ring": "the exact SKU determines whether the 1u switch is silenced — choose the installed ring state",
+    "stab2uAssembly": "the exact SKU and layout determine the 2u stabilizer assembly — choose the installed assembly",
+   "ring2u": "the installed 2u assembly determines its silencing ring — confirm after choosing the assembly",
+   "sb": "the exact layout and spacebar width determine whether a separate spacebar stabilizer is present; under 4.5u uses a 2u assembly instead"
+  },
+  "kbd::realforce_104u": {
+   "dome": "the exact SKU may use a fixed-weight or variable 30g/45g dome population — choose the installed dome",
+   "ring": "the exact SKU determines whether the 1u switch is silenced — choose the installed ring state",
+    "stab2uAssembly": "the exact SKU and layout determine the 2u stabilizer assembly — choose the installed assembly",
+   "ring2u": "the installed 2u assembly determines its silencing ring — confirm after choosing the assembly",
+   "sb": "the exact layout and spacebar width determine whether a separate spacebar stabilizer is present; under 4.5u uses a 2u assembly instead"
+  },
+  "kbd::realforce_106u": {
+   "dome": "the exact SKU may use a fixed-weight or variable 30g/45g dome population — choose the installed dome",
+   "ring": "the exact SKU determines whether the 1u switch is silenced — choose the installed ring state",
+    "stab2uAssembly": "the exact SKU and layout determine the 2u stabilizer assembly — choose the installed assembly",
+   "ring2u": "the installed 2u assembly determines its silencing ring — confirm after choosing the assembly",
+   "sb": "the exact layout and spacebar width determine whether a separate spacebar stabilizer is present; under 4.5u uses a 2u assembly instead"
+  },
+  "kbd::realforce_108u": {
+   "dome": "the exact SKU may use a fixed-weight or variable 30g/45g dome population — choose the installed dome",
+   "ring": "the exact SKU determines whether the 1u switch is silenced — choose the installed ring state",
+    "stab2uAssembly": "the exact SKU and layout determine the 2u stabilizer assembly — choose the installed assembly",
+   "ring2u": "the installed 2u assembly determines its silencing ring — confirm after choosing the assembly",
+   "sb": "the exact layout and spacebar width determine whether a separate spacebar stabilizer is present; under 4.5u uses a 2u assembly instead"
+  },
+  "kbd::realforce_86u": {
+   "dome": "the exact SKU may use a fixed-weight or variable 30g/45g dome population — choose the installed dome",
+   "ring": "the exact SKU determines whether the 1u switch is silenced — choose the installed ring state",
+    "stab2uAssembly": "the exact SKU and layout determine the 2u stabilizer assembly — choose the installed assembly",
+   "ring2u": "the installed 2u assembly determines its silencing ring — confirm after choosing the assembly",
+   "sb": "the exact layout and spacebar width determine whether a separate spacebar stabilizer is present; under 4.5u uses a 2u assembly instead"
+  },
+  "kbd::realforce_87u": {
+   "dome": "the exact SKU may use a fixed-weight or variable 30g/45g dome population — choose the installed dome",
+   "ring": "the exact SKU determines whether the 1u switch is silenced — choose the installed ring state",
+    "stab2uAssembly": "the exact SKU and layout determine the 2u stabilizer assembly — choose the installed assembly",
+   "ring2u": "the installed 2u assembly determines its silencing ring — confirm after choosing the assembly",
+   "sb": "the exact layout and spacebar width determine whether a separate spacebar stabilizer is present; under 4.5u uses a 2u assembly instead"
+  },
+  "kbd::realforce_89u": {
+   "dome": "the exact SKU may use a fixed-weight or variable 30g/45g dome population — choose the installed dome",
+   "ring": "the exact SKU determines whether the 1u switch is silenced — choose the installed ring state",
+    "stab2uAssembly": "the exact SKU and layout determine the 2u stabilizer assembly — choose the installed assembly",
+   "ring2u": "the installed 2u assembly determines its silencing ring — confirm after choosing the assembly",
+   "sb": "the exact layout and spacebar width determine whether a separate spacebar stabilizer is present; under 4.5u uses a 2u assembly instead"
+  },
+  "kbd::realforce_91u": {
+   "dome": "the exact SKU may use a fixed-weight or variable 30g/45g dome population — choose the installed dome",
+   "ring": "the exact SKU determines whether the 1u switch is silenced — choose the installed ring state",
+    "stab2uAssembly": "the exact SKU and layout determine the 2u stabilizer assembly — choose the installed assembly",
+   "ring2u": "the installed 2u assembly determines its silencing ring — confirm after choosing the assembly",
+   "sb": "the exact layout and spacebar width determine whether a separate spacebar stabilizer is present; under 4.5u uses a 2u assembly instead"
+  },
+  "kbd::realforce_r2": {
+   "dome": "the exact model and SKU determine dome weight or variable weighting — choose the installed dome",
+   "ring": "the exact SKU determines whether the 1u switch is silenced — choose the installed ring state",
+    "stab2uAssembly": "the exact model, SKU, and layout determine the 2u stabilizer assembly — choose the installed assembly",
+   "ring2u": "the installed 2u assembly determines its silencing ring — confirm after choosing the assembly",
+   "sb": "the exact layout and spacebar width determine whether a separate spacebar stabilizer is present; under 4.5u uses a 2u assembly instead"
+  },
+  "kbd::realforce_r3": {
+   "dome": "the exact model and SKU determine dome weight or variable weighting — choose the installed dome",
+   "ring": "the exact SKU determines whether the 1u switch is silenced — choose the installed ring state",
+    "stab2uAssembly": "the exact model, SKU, and layout determine the 2u stabilizer assembly — choose the installed assembly",
+   "ring2u": "the installed 2u assembly determines its silencing ring — confirm after choosing the assembly",
+   "sb": "the exact layout and spacebar width determine whether a separate spacebar stabilizer is present; under 4.5u uses a 2u assembly instead"
+  },
+  "kbd::realforce_r4": {
+   "dome": "the exact model and SKU determine dome weight or variable weighting — choose the installed dome",
+   "ring": "the exact SKU determines whether the 1u switch is silenced — choose the installed ring state",
+    "stab2uAssembly": "the exact model, SKU, and layout determine the 2u stabilizer assembly — choose the installed assembly",
+   "ring2u": "the installed 2u assembly determines its silencing ring — confirm after choosing the assembly",
+   "sb": "the exact layout and spacebar width determine whether a separate spacebar stabilizer is present; under 4.5u uses a 2u assembly instead"
+  },
   "kbd::realforce_rc1": {
    "dome": "the source identifies 30g and 45g variants — choose the installed dome"
   }
@@ -154,6 +281,7 @@
   "name": "No ring (bare slider)"
  },
  "schema": "catalog-overlay-v1",
+ "stabilizer_assemblies_file": "stabilizer_assemblies.json",
  "shells": {
   "shell::hhkb": {
    "name": "HHKB Shell",

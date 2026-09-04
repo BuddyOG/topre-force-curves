@@ -54,8 +54,8 @@ def test_r8_source_accounting_remains_complete_without_shipping_the_source(
              if e.get("r8_id") and not e["r8_id"].startswith("kbd::")]
     kbds = [e for e in xw.values()
             if e.get("r8_id") and e["r8_id"].startswith("kbd::")]
-    assert len(parts) == 152
-    assert len(kbds) == 21
+    assert len(parts) == 155
+    assert len(kbds) == 34
     r8_parts = _load(os.path.join(CFG, "r8", "parts.json"))
     r8_kbd = _load(os.path.join(CFG, "r8", "keyboards.json"))
     assert {e["r8_id"] for e in parts} == set(r8_parts)
@@ -76,7 +76,7 @@ def test_r8_source_accounting_remains_complete_without_shipping_the_source(
                           "R8_DISPOSITION_LEDGER.md")
     with open(ledger, encoding="utf-8") as f:
         led = f.read()
-    assert "152" in led and "21" in led
+    assert "155" in led and "34" in led
     for e in list(xw.values())[::7]:            # spot coverage across the ledger
         assert (e["r8_id"] or e["catalog_id"]) in led
 
@@ -105,6 +105,7 @@ def test_parts_library_identity_lists_every_presentation_input():
     assert "release_reference/dome-lab-parts.release.html" in keys
     for rel in ("config/parts_record_map.json", "config/compat_evidence.json",
                 "config/presets.json", "config/r8_crosswalk.json",
+                "config/stabilizer_assemblies.json",
                 "config/r8/parts.json", "config/r8/keyboards.json",
                 "config/r8/compatibility.json",
                 "config/f8203d4_measurement_baseline.json"):

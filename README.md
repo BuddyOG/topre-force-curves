@@ -1,7 +1,7 @@
 # Unreal Keyboards EC research tools
 
 > **Current publication:** Force Curve Bench `fc-3.4` and EC Parts Builder
-> `lib-6.0` are published from this repository. The active multi-tool site
+> `lib-6.1` are published from this repository. The active multi-tool site
 > authority is `SITE_RELEASE_MANIFEST.json` with its `SHA256SUMS` inventory.
 
 The corresponding Shopify pages present the Unreal Keyboards tools separately:
@@ -37,7 +37,8 @@ result.
 | Canonical public viewer | [https://buddyog.github.io/topre-force-curves/](https://buddyog.github.io/topre-force-curves/) |
 | Generator integration and regeneration parity | Complete |
 | Force Curve release tag | `fc-3.4` |
-| EC Parts Builder release | `lib-6.0`; tag `ec-parts-lib-6.0`; `release_eligible: true` |
+| EC Parts Builder release | `lib-6.1`; tag `ec-parts-lib-6.1`; `release_eligible: true` |
+| EC Parts Builder prepublication record | `lib-6.1-review.1`; completed and superseded by `lib-6.1` |
 | Current public package authority | `SITE_RELEASE_MANIFEST.json` and its `SHA256SUMS` |
 | Protected predecessor authority | `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json`, bound to tag `fc-3.4` |
 | Open Graph image | `https://buddyog.github.io/topre-force-curves/assets/force-curve-bench-fc-3.4-og.png` |
@@ -58,10 +59,11 @@ The accepted second GUI update changes presentation and navigation only. The
 frozen scientific payload, run membership, measurements, method, and index
 equations did not change.
 
-The lib-6.0 site release replaces only `dome-lab-parts.html` with the generated
-builder. Every other protected predecessor endpoint, every raw CSV, and the
-complete canonical-evidence tree remain byte-identical to fc-3.4. The
+The current lib-6.1 site release replaces only `dome-lab-parts.html` with the
+generated builder. Every other protected predecessor endpoint, every raw CSV,
+and the complete canonical-evidence tree remain byte-identical to fc-3.4. The
 deterministic site builder rejects any undeclared or protected-path change.
+The earlier lib-6.0 release used the same protected-overlay boundary.
 
 The release adds a root `.gitattributes` containing exactly `* -text`. This
 disables Git text and line-ending normalization for every inventoried path so a
@@ -73,20 +75,37 @@ scientific evidence.
 
 ## EC Parts Builder
 
-The published `lib-6.0` build is one row-based assembly tool. Its catalog
-feeds contextual part choosers rather than a separate library page. It exposes
-9 component rows, 13 source-backed keyboard starters, 68 exact dome-specimen
-measurement mappings carrying measured collapse force plus released Weight
-Index and Tactility Index values, and 2 public keycap additions from the larger
-vendored catalog.
+The published `lib-6.1` build is one row-based assembly tool. Its catalog feeds
+contextual part choosers rather than a separate library page. It exposes 11
+component rows, including a top-level 2u stabilizer assembly and an
+independently selectable 2u silencing ring. It has 28 keyboard starters, 4
+manufacturer-parts shortcuts, 10 recorded 2u assemblies, and 68 exact
+dome-specimen measurement mappings. Eligible measured domes carry collapse
+force, Weight Index, Tactility Index, and detected Force-Wall onset.
 
-The consumer payload contains 338 decision-changing compatibility edges. The
-complete 3,403-edge configuration remains the audit authority outside the
-browser. Public results use exactly **Works**, **Works with conditions**,
-**Does not work**, and **Not verified**. Dome compatibility is outside this
-engine and is labeled **Not evaluated**.
+The starting-point defaults reflect the owner's September 3, 2026 review.
+Manufacturer shortcuts intentionally load no dome, and the Realforce 106U,
+108U, 89U, and 91U intentionally load no separate spacebar stabilizer because
+their short spacebars use the selected 2u assembly. Starting-point defaults
+are assembly aids, not compatibility verdicts.
+
+The lib-6.1 consumer payload contains 241 decision-changing pair edges after
+generic matrix-expanded edges for three part-scoped conical-spring findings
+are suppressed. The affected spring is flagged once on its own row, unrelated
+parts are not blamed, and the whole-build status inherits the finding; genuine
+pair-specific findings remain. The complete 3,570-edge configuration remains
+the audit authority outside the browser. Public results use **Works**, **Works
+with conditions**, **Does not work**, **Not verified**, and the declared
+**Manufacturer matched** fallback. Dome compatibility is outside this engine
+and is labeled **Not evaluated**.
+
+The historical lib-6.0 release exposed 9 component rows, 13 keyboard starters,
+and 338 decision-changing browser edges against its 3,403-edge audit closure.
+Its tag and release record remain available for exact historical citation.
 
 See the [EC Parts Builder guide](documentation/EC_PARTS_LIBRARY.md),
+[lib-6.1 prepublication acceptance record](documentation/EC_PARTS_LIBRARY_LIB61_REVIEW.md),
+[lib-6.1 release notes](documentation/RELEASE_NOTES_lib-6.1.md),
 [lib-6.0 release notes](documentation/RELEASE_NOTES_lib-6.0.md), and
 [Shopify embed contract](documentation/SHOPIFY_EMBED.md).
 
@@ -274,8 +293,13 @@ tolerances, formal instrument-uncertainty bounds, or perceptual thresholds.
   publication identity.
 - [EC Parts Builder guide](documentation/EC_PARTS_LIBRARY.md) — standalone
   workflow, contextual catalog, Evidence-beta labels, and interpretation limits.
-- [lib-6.0 release notes](documentation/RELEASE_NOTES_lib-6.0.md) — local-review
-  chronology, target identity, changes, limitations, and verification contract.
+- [lib-6.1 release notes](documentation/RELEASE_NOTES_lib-6.1.md) — current
+  Parts Builder changes, release identity, and scientific-continuity boundary.
+- [lib-6.1 prepublication acceptance record](documentation/EC_PARTS_LIBRARY_LIB61_REVIEW.md)
+  — completed 2u-assembly, starter, catalog, and acceptance scope.
+- [lib-6.0 release notes](documentation/RELEASE_NOTES_lib-6.0.md) — historical
+  release chronology, target identity, changes, limitations, and verification
+  contract.
 - [Shopify embed contract](documentation/SHOPIFY_EMBED.md) — exact-origin
   parent/child messaging and production acceptance checks.
 - [Public release record](documentation/PUBLIC_RELEASE.md) — final public

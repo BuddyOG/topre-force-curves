@@ -9,31 +9,31 @@
  "counts": {
   "compatible": 101,
   "conditional": 38,
-  "core_applicable_pairs": 844,
-  "core_vertices": 45,
+  "core_applicable_pairs": 883,
+  "core_vertices": 46,
   "incompatible": 156,
-  "items": 83,
-  "not_applicable": 399,
-  "pairs": 3403,
+  "items": 85,
+  "not_applicable": 428,
+  "pairs": 3570,
   "pending": 43,
   "r8_exception_promotions_reverted": 31,
-  "unknown": 2666
+  "unknown": 2804
  },
  "coverage": {
   "ui_selectable": {
-   "applicable_pairs": 1746,
-   "items": 66,
-   "pairs": 2145,
+   "applicable_pairs": 1850,
+   "items": 68,
+   "pairs": 2278,
    "resolved_pairs": 264,
    "states": {
     "compatible": 101,
     "conditional": 38,
     "incompatible": 156,
-    "not_applicable": 399,
+    "not_applicable": 428,
     "pending": 43,
-    "unknown": 1408
+    "unknown": 1512
    },
-   "unresolved_pairs": 1482
+   "unresolved_pairs": 1586
   }
  },
  "generator": "tools/generate_catalog_config.py (deterministic; inputs: config/r8/ + config/compat_overlay.json + config/catalog_overlay.json)",
@@ -643,6 +643,22 @@
   {
    "a": "conical_spring::deskeys",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_01ee9e7e760aecfcf4e58e2760c137255b58c5ccfdb973f34003fffc5fcdc357",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "conical_spring::deskeys",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_5687a9d166996903fbbd121a675850f0d1e1f04ae14f17460afa29004f60f592",
    "last_reviewed": null,
@@ -971,6 +987,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_08ffec51f023a7e8348fdbcab0b7b426ee611b7654408947b78161c9d183bb9a",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "conical_spring::deskeys",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_65e48a894ba4309f6e29d67b00ecc8d90706cd25fe4f00db03cc1beaa499c15b",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -1914,6 +1946,22 @@
   {
    "a": "conical_spring::dynacaps",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_869fa4f5feaa2168b9e6fa3093865555278d540a9c273719f61e7bb1804213f5",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_e90c8879ee99519d6df505aaf2a0e34e1959286e1bc20bdbf0b233c0e07c8247",
    "last_reviewed": null,
@@ -2252,6 +2300,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_9ffa2e37b6ac63c10f3b7dbf5f31f70274417392fa806378c6e21e787eb425b1",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "conical_spring::dynacaps",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_001bf01b7f86fa0d71c1f65909b0103e1e2ba8d71924e9c145fda6c935918c1b",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -3188,6 +3252,22 @@
   {
    "a": "conical_spring::klc_playground",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_2185632449da35ceae31328f4e1de1f71a3e92609b338fb4a33317261b1cff17",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "conical_spring::klc_playground",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_f873c64538a38075c1a55f37cbc006fb7e07f8970f944625c876c9d7e6a168fd",
    "last_reviewed": null,
@@ -3516,6 +3596,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_2bbd33f5f73b64396141f6410d080fad4a3f2d4c95164208c37d87be62f377fe",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "conical_spring::klc_playground",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_4999ec40e4b4bba1deb77ada38d15d5ab72bee5ce0da88ec8f0a42cdbbf9c7ba",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -4427,6 +4523,22 @@
   {
    "a": "conical_spring::metapulse",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_e3354e6b7dc68b5d9de180c68877008881b9175073fba754caf93a58044ad329",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_5f6d448580a975a1cf443e4fb9a140851f8e9143305583943bb7bb74c32f227e",
    "last_reviewed": null,
@@ -4775,6 +4887,22 @@
     "compat_overlay"
    ],
    "state": "pending"
+  },
+  {
+   "a": "conical_spring::metapulse",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_dae8d4822f920ab33a415392a0121811ab2239791948f39146e58883ad162005",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
   },
   {
    "a": "conical_spring::metapulse",
@@ -5669,6 +5797,22 @@
   {
    "a": "conical_spring::topre",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_f46515b1cf71fa4c4fa6c3de5c493119650449b620d9e08b7fa4f62f8642b52b",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "conical_spring::topre",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_27af6c35c39362d6c04c07e074005355f0cd6adf3d6aff3b655fa22ee1e3045a",
    "last_reviewed": null,
@@ -5997,6 +6141,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_ed117638c80d442bbbad3c45bd77944fae9672d360ca214de71199b013ed0439",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "conical_spring::topre",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_990b89b9cc03f99101de0902a961826ac1cb0ba2cc284e061412a89f22ec0abc",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -6875,6 +7035,22 @@
   {
    "a": "housing::deskeys",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_f98e1bb33ac1caa8b9fc17935123961c1b4b15a357b34e3daa433824eea7e92f",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "housing::deskeys",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_5ca26b31c4d52b849fee5c0615a0bd406a7658c41c7af1891cbd597f1f78cabd",
    "last_reviewed": null,
@@ -7213,6 +7389,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_3f9b374e127e9e1914d35aec76433d44946c3db8d7a81baec74a042b5257d117",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "housing::deskeys",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_d22b6366c5f75c1c7fc999bdc447137c24436acabf1311f35cc1cd1eac6dc8a7",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -8089,6 +8281,22 @@
   {
    "a": "housing::dynacaps",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_2f8f0cdb547a9602f6965a6ad4ed3fb6123c27344f092436defba7366831f58e",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "housing::dynacaps",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_1c10184e2f6a930880038df35ef9e72e4eac5bd73a78b0decc5934d6fc679be7",
    "last_reviewed": null,
@@ -8422,6 +8630,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_5360c237195ef9d906213eaa210aa4e68f82c38b2b1b9845129fec9f0c81a141",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "housing::dynacaps",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_6cadcd94065f1e11bc20b0cdd2f1fb670ccecca02ea4a702b28a519b60f35129",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -9282,6 +9506,22 @@
   {
    "a": "housing::klc_playground",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_e297d30c7d4fd786c6444c996e0add4043c8784e0a1d617107f886af7d708929",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "housing::klc_playground",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_4bc4f31fac308a96deaee980a62eb3c42d446e1e58a7a6e256caf9a0a4f22de0",
    "last_reviewed": null,
@@ -9617,6 +9857,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_cfcc1ef302e097f9d58ffec95de9b62a581ef9926ed624eb9c4e58cc4bd869ae",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "housing::klc_playground",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_291db4d79f3add97cdd63695eec8309097c4c6d827871032c58042e4006075f3",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -10462,6 +10718,22 @@
   {
    "a": "housing::metapulse",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_a49669131ec4ff8276c544256b68b358fff00ae8b241b023702f785cbab93e82",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "housing::metapulse",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_28af9b82c04c4155e0df9d869cbf70cd28cdf58f869272dccda44f64d7ed58c2",
    "last_reviewed": null,
@@ -10800,6 +11072,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_149c60b14254f84276450e29bd1a4d6b204a15ccf264788cce5043ec42889489",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "housing::metapulse",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_268b16c2db8999f29dc73d030da4c289f742b41b8b8671194d503cfe80d3de5a",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -11628,6 +11916,22 @@
   {
    "a": "housing::topre",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_770c1162712a96e12d62bbcac3a983519a316ed91d8304c52a2f4e9568b797f4",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "housing::topre",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_96a76cd04c1b84c69f572eea9dcef11037e4ddb4f80d16f6f65784fea17eddcf",
    "last_reviewed": null,
@@ -11963,6 +12267,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_471b70aaf1ba82e55d25472c7db04a2ddb6824967db78432c5c4883c3cbf4243",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "housing::topre",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_8b6a4c8e8979870f14806616c22760e1faf6db55dce161d7219b1b4cd9aa2c52",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -12777,6 +13097,22 @@
   {
    "a": "keycap::mx",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_a702d697ab5e53125d191cb6d0074c8173f6ac668b583d5575abe77a5d92df0b",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "keycap::mx",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_a4146947676329bc8ca9561233e5ca0d08d63808d31e582da480e397d8dd5563",
    "last_reviewed": null,
@@ -13113,6 +13449,22 @@
     "r8_compatibility"
    ],
    "state": "compatible"
+  },
+  {
+   "a": "keycap::mx",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_adf1cb9053dcb27268f043677a9d8da01f3e9ef29eceb398e5d9548e6437748b",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
   },
   {
    "a": "keycap::mx",
@@ -13885,6 +14237,22 @@
   {
    "a": "keycap::topre",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_199af0103696b2e058258eded524bf4073f6f20852f94102210146ddff758ea0",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "keycap::topre",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_6d286c450683436639a1928140f0d0a355205832bee110d51f9d9251383d6b9c",
    "last_reviewed": null,
@@ -14221,6 +14589,22 @@
     "r8_compatibility"
    ],
    "state": "incompatible"
+  },
+  {
+   "a": "keycap::topre",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_bbf378521bfee9ea47072ce302837cd8d99a86f4dc3e9b4e4fd423906056a780",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
   },
   {
    "a": "keycap::topre",
@@ -14976,6 +15360,22 @@
   {
    "a": "keycap_oring::unreal_1_2",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_35d8ee4b2997715e1ed89d72faa880be94c563f2d3989c5427da4dee5f833fcc",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "keycap_oring::unreal_1_2",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_693896881feb25a3b29f9942b694a2388882439ce79cf9515d8e932b445920f1",
    "last_reviewed": null,
@@ -15314,6 +15714,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_d4bdbe6ef7849bb9691d90329633f5dffb31ff8483ccee00d17034d6fde1c005",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "keycap_oring::unreal_1_2",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_1a182fb7ab58a8f351a8487a5e1d8e8b2dc2140de75b023313391e77c5fcf8d1",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -16080,6 +16496,22 @@
   {
    "a": "landing_pad::des",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_87e92f25bf2be71e2886c9c74c0c876fa650031036e2b3b9eedcfabf2c9012ba",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "landing_pad::des",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_94c256aca58ee3039bcb88f317ab60753d5061121924b2e0962301654111be40",
    "last_reviewed": null,
@@ -16418,6 +16850,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_8718151bcd80071c1a1d1043f720c359e3df76b2b5eab254988ad8cd42b241cc",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "landing_pad::des",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_a0230cf149340b80c7f8e30c14a7bd3b7bc9bb9940ed762354329c31f44a2884",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -17168,6 +17616,22 @@
   {
    "a": "landing_pad::unreal",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_7aa458a7896a57fdfcde213954a458807a4079d78c7b9637ba4d12e135f1d65b",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "landing_pad::unreal",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_cc11e713658aad160faf13f2cbce85947ac92092ac1662172ed33ac277bc5dbd",
    "last_reviewed": null,
@@ -17506,6 +17970,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_2c15d783944b0e4e830bd836ed9e297c32bb56fe47b87718dfc9c971199ff6a2",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "landing_pad::unreal",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_74a8c1326682814a95ae36330e423825c151eb39e4d3e958d9bd3fa4ed3afeb8",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -18240,6 +18720,22 @@
   {
    "a": "pcb::generic",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_b7f05162139ac2fc3c9e55630489f1c14e42f02f0171f27790006c8d77b1b9c0",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "pcb::generic",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_892b57a7b9b249877f908b0415ff020a3896c80373294e0ce4bf071b2dfa1764",
    "last_reviewed": null,
@@ -18578,6 +19074,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_ec9d7375d724f2fabce3cbf5ef94c4f77d2c5b788abc8ec7dd5bd31b76859fe3",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "pcb::generic",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_04e6a523a637f61fe746b0c286b96786248c75b638d0a2d6ca678ab71982e0f5",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -19296,6 +19808,22 @@
   {
    "a": "plate::topre",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_e7903708a225343c0345c31eb62337948a2ce60b305b417c7941d2b606ba8da0",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "plate::topre",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_be160cbd14c025ddd888f3ded9b993980574baac87df3da8cba4be215ca45e89",
    "last_reviewed": null,
@@ -19634,6 +20162,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_281d2ac4f379b7a91cf63c9cdf7cd181deaa168fdac5c783d3264960583091de",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "plate::topre",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_7aa27dc32790c741fe39e3a0cb29ea6b918b9774cfff3b097c3a7b9ab4bc6878",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -20336,6 +20880,22 @@
   {
    "a": "plate_gasket::des_poron_0_5",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_42389fe955ed6a2f7959c3a6aea35fa33cdb7106dc364a3b0ac54a9cc48cdc04",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "plate_gasket::des_poron_0_5",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_5b625ca293d89ab7c72f0f2019744edced471d9264eeb20118efb1c6e4557849",
    "last_reviewed": null,
@@ -20674,6 +21234,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_9f4a11472574a666b864efbaf85853ff3577e453d12118fdada5e237ce6c52d7",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "plate_gasket::des_poron_0_5",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_1d3d8eb3993f720ac793c6a5af91638ffd6eaf2b75de2083a65359a9845c2fc3",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -21360,6 +21936,22 @@
   {
    "a": "plate_gasket::dynacaps_silicone_0_4",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_408a6b23b1b20f535e78f9eff3adb9b476e7d396b1a06f961914cc7821b45068",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "plate_gasket::dynacaps_silicone_0_4",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_30601a5b4b828404c4f238f2bc6cceed2803c6b1db79c21e6d8d0fd799f2b7dc",
    "last_reviewed": null,
@@ -21698,6 +22290,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_4786255c2d7f2fb7e1ea864067c7dd20d40308a2813bf5dfeb83dc8e551f5e08",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "plate_gasket::dynacaps_silicone_0_4",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_94c539fa73a2451f1d60d34aead74cc0fe6851d10182990a37f4e0163920955d",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -22368,6 +22976,22 @@
   {
    "a": "plate_gasket::unreal_poron_0_3",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_3e67894f1ea742eadd6b7701ef7d063df4a8ffd90da243ae4c53a1c5c80b002c",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "plate_gasket::unreal_poron_0_3",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_71460c2d8c4175d397087919444ebb396bba44953053c4bee7a0e81a03fedd40",
    "last_reviewed": null,
@@ -22706,6 +23330,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_3069a78a3951e74dfebe4913b7f0597b80e205726d815c6586afc20402971bec",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "plate_gasket::unreal_poron_0_3",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_e8d7d231ac709dd45992168117aa3ba36395607c9355bb28a5a90a49a8fec97e",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -23360,6 +24000,22 @@
   {
    "a": "plate_gasket::unreal_poron_0_3_hhkb",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_ed7000923239317f28e333c165093925fa973cc270626d67c59601b1477aa8a3",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "plate_gasket::unreal_poron_0_3_hhkb",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_4c310cfe45f0a14012e2a1496bc5997901a26518ac994d21f1226a1442cf25b8",
    "last_reviewed": null,
@@ -23698,6 +24354,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_e4f7c76c0e7616c601428d40fe21f0e1c095a2da9134fb383cb0225969e34313",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "plate_gasket::unreal_poron_0_3_hhkb",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_7b9196ab73d733c71aae8559945d80d7f32b79702b953c1265f5bb1e59c00487",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -24336,6 +25008,22 @@
   {
    "a": "shell::hhkb",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_c39491bd8af46744f21569f7597659d18b436e2a1212137e8d29c4df525c25b3",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "shell::hhkb",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_ba642ddeb8548854557652d9a42388a39d66690aaf3f39ac1fbae6f4f7847111",
    "last_reviewed": null,
@@ -24683,6 +25371,22 @@
     "compat_overlay"
    ],
    "state": "incompatible"
+  },
+  {
+   "a": "shell::hhkb",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_4ac5da1d698800dd424d68fa3c05c2fedfdb375923cee39480eb14efc40cb330",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
   },
   {
    "a": "shell::hhkb",
@@ -25294,6 +25998,22 @@
   {
    "a": "shell::rc1",
    "adjudication": "unadjudicated",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_222c55bc4a68ddafe2c2fde443fcc0b8f99ce6c789cb1a5ab1062d9d550763ae",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "shell::rc1",
+   "adjudication": "unadjudicated",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_a2e02de14169060c3600b2b0112683006e31bdf2cae04943b5931f768373433a",
    "last_reviewed": null,
@@ -25632,6 +26352,22 @@
    "adjudication": "model_derived",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_a4b52137643668e89b4d575f9b6c6b14aa8f86c6acd01debbf72c385c19ec9f5",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "not co-selected: RC1 shell integrates the spacebar stabilizer",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "shell::rc1",
+   "adjudication": "model_derived",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_1ed7f6a658b6a9c52e03e4e0c554171c2b79220ec8a2a3acb0464f5913735eb1",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -26237,6 +26973,22 @@
   {
    "a": "silencing_ring::des_poron_0_2",
    "adjudication": "model_derived",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_cd3d3896b35f6a03803be998af6f83efb6527318368860a484306d8a18e368c3",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::des_poron_0_2",
+   "adjudication": "model_derived",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_f4416641ad0fa9fa3c8c54e60354ebebc9a1ffeb419a66c0cb2fd63afccaa0b1",
    "last_reviewed": null,
@@ -26575,6 +27327,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_46ceb1cbdac570ef9bae85d1fa726bb3c0583135c0197aae12216488979cbb3b",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::des_poron_0_2",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_bedefec90ca8535af703595537c5bb76a7efd9a301d5282d4668d8c6e69287f1",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -27165,6 +27933,22 @@
   {
    "a": "silencing_ring::des_poron_0_3",
    "adjudication": "model_derived",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_d5014122662152f13f40be1311345cbabd83e922b29cebf516f90d505b8dd4cb",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::des_poron_0_3",
+   "adjudication": "model_derived",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_4853456fda46961d91d45024ae849a4a7c7a0f935156ee8cb462c516f9eaa929",
    "last_reviewed": null,
@@ -27503,6 +28287,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_5f5e568585d68f97e85e8b16e5c8d6b473f2cdd80f7323cf481996d2477c69cd",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::des_poron_0_3",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_c103200d8fa4128bc7f03521f6f4f7e17c585794f46462f96a1cc78921aa51c1",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -28077,6 +28877,22 @@
   {
    "a": "silencing_ring::des_poron_0_4",
    "adjudication": "model_derived",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_35cf279ec9870d219eb83c17e955786d0a4da8b5fd8e48c0d5f9995a4feb6396",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::des_poron_0_4",
+   "adjudication": "model_derived",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_975d3aa0b4e6aa400c94665d294135113705e9332257293585c235a0dc75a721",
    "last_reviewed": null,
@@ -28415,6 +29231,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_75c51b2c57dc213581401f6326e53901a90ba7baef90a31037eb9946ef483849",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::des_poron_0_4",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_9f19a4bfab33937be00d356b7ccf1ef09f74fe41056c39a91c131045e011ff41",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -28973,6 +29805,22 @@
   {
    "a": "silencing_ring::des_poron_0_5",
    "adjudication": "model_derived",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_1b50f68b024b39f198f1125aee0141f494c6a3665fc72f768350445e062b39c4",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::des_poron_0_5",
+   "adjudication": "model_derived",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_ca716fc97a6ca7da2a32e8abe35c86b6f80a16c78b2928d2f86dc3387b00c653",
    "last_reviewed": null,
@@ -29311,6 +30159,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_9ee252c5c53f7864d43971392920a2d888498ed3a497b5b1ac8e27577d6696c6",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::des_poron_0_5",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_ecd2a57bbef919267d7cde34753812dc8cf22d69bbaaac460bbff4fd895c32eb",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -29853,6 +30717,22 @@
   {
    "a": "silencing_ring::des_poron_0_6",
    "adjudication": "model_derived",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_9c23d8ee055d544fe186eb922d870a9218471f1d1b2a2625295f1fbdef90e299",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::des_poron_0_6",
+   "adjudication": "model_derived",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_b9d19247db677aca71471ddd13452b650bfa138d3f9a6d867351bdd03bf48b9b",
    "last_reviewed": null,
@@ -30191,6 +31071,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_2c2a00d01e8b5d1949ad2c922691e7dc11a25b86ba4925e840f4d9e6476ad654",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::des_poron_0_6",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_a62e4c245869d65607f1677b1f12c8ed0770fd73ef803f1ebebf63ec4224125c",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -30717,6 +31613,22 @@
   {
    "a": "silencing_ring::des_poron_0_7",
    "adjudication": "model_derived",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_b272ef3c361d6a3d7404c4d673d238e2e9835ad2e60fb795e7221578a5e6d89b",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::des_poron_0_7",
+   "adjudication": "model_derived",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_e9e58b109ea3ba925efb08f12de889bcee13c9b5ef004d75ea06880be5a5a510",
    "last_reviewed": null,
@@ -31055,6 +31967,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_6acbfc9e8d2fd106420486e7e72ca202ae7bccebf42fc52c90ee7af7d76a2cc4",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::des_poron_0_7",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_2806370b6408b8a7d3bfb52adaeefa7ff808c72b1557a3cbb8a5034155768e7e",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -31565,6 +32493,22 @@
   {
    "a": "silencing_ring::des_poron_1_0",
    "adjudication": "model_derived",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_f5f924e1006ceb96959350ad0cf19a7167aca2adb08b03b2602a5ab33302e727",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::des_poron_1_0",
+   "adjudication": "model_derived",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_a8a97faa257677d5643ce2057c53f01442e7f9bf7017a68a64f9b059535a57a2",
    "last_reviewed": null,
@@ -31903,6 +32847,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_7f530496ed15dd67fed6a6c2a4280df8e3e9487f8c5dcc2631c9d0108c3493c3",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::des_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_ef0d8ffe32394839fd36a1cf2927c4f8e36abde5c2268a5e3440dd01fe5d0006",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -32397,6 +33357,22 @@
   {
    "a": "silencing_ring::des_silicone_0_3",
    "adjudication": "model_derived",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_30e561d1da12716ddbe8055026d1253236708ba138930147c7f3d944e4e59540",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::des_silicone_0_3",
+   "adjudication": "model_derived",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_6135f792d226181cc7d10802c1bd242e82c7df0448396021603ca75f25f55c30",
    "last_reviewed": null,
@@ -32735,6 +33711,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_f5fbd5e980c4238b38f3e3190000d432aad3037640f5afbcd9adc66443780f6b",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::des_silicone_0_3",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_b02618a7ce73b9fb4f77efbddba0e0f25a8e2ab410d4aa0153abff6a1f335a4f",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -33213,6 +34205,22 @@
   {
    "a": "silencing_ring::des_silicone_0_5",
    "adjudication": "model_derived",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_f6bc7a75dad0b365342b582f4c020813ddd7f9230b693d564ba102d0ed23f674",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::des_silicone_0_5",
+   "adjudication": "model_derived",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_1ca4e93948b682bc03aaa3d045dcd3fd56d2c6c46174379acafa2e0991f445c8",
    "last_reviewed": null,
@@ -33551,6 +34559,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_f800d385a60316b7dcc1e0ce2bb6a04f398207223ea7b659addaa6000f0f5379",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::des_silicone_0_5",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_28414dfae4a9dea7583b303640264f843e9fcfc0f10fee0643931b61a23e3f8f",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -34013,6 +35037,22 @@
   {
    "a": "silencing_ring::dynacaps_poron_0_3",
    "adjudication": "model_derived",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_b6e6100d872b338bab5e10b3d37cfe41930e545844d196fcf1324b7dd5fd87b8",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::dynacaps_poron_0_3",
+   "adjudication": "model_derived",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_a21973f6bf9b2fcfd0cd087c18a26965aaade35f9573d14face4d65df710f2a6",
    "last_reviewed": null,
@@ -34351,6 +35391,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_efb62f80b86177bdb8928d08e21479e706cf51450ec45e1f062d0ab76b7b77b7",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::dynacaps_poron_0_3",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_9c64d2c67fbf34385ef10cf35ffa74bff94fe878b2a976b7537e7af9a76cbf56",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -34797,6 +35853,22 @@
   {
    "a": "silencing_ring::dynacaps_poron_0_5",
    "adjudication": "model_derived",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_dd1f4defee0470f2198001a0b0b7814cddc1568d09dd52eadba5c85f4eb5f89a",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::dynacaps_poron_0_5",
+   "adjudication": "model_derived",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_274ff0cdb2fadeabfb80829aa23e50f67d485a47a86f1a9496d5d8d8f54f13ba",
    "last_reviewed": null,
@@ -35135,6 +36207,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_4cd3cb1f81a7ad07ef71b425cacb799d3dc875ebe23923712980ad98adfaff2f",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::dynacaps_poron_0_5",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_82f42475e4ee083b6bb593263f2e6b9de3435d63f05b53a84a775f10fe6012ea",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -35565,6 +36653,22 @@
   {
    "a": "silencing_ring::dynacaps_silicone_0_3",
    "adjudication": "model_derived",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_2d26696d5523feb1506501d1b505e8f6d9809bd193ee5d226e77d24b1232b798",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::dynacaps_silicone_0_3",
+   "adjudication": "model_derived",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_a8b6444b50c5c451efc43ccdc671c9edd6e6f98d9d927aac1c37c3a857eb0cd4",
    "last_reviewed": null,
@@ -35903,6 +37007,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_825e2592a9abf9aed6f23114716cd34449398a5a1298f530d13d9611e9f21a25",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::dynacaps_silicone_0_3",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_a888eeee1b7ca3b3843ef366ca66801fea9bbe145852e5550674eef707c9fe5c",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -36317,6 +37437,22 @@
   {
    "a": "silencing_ring::dynacaps_silicone_0_5",
    "adjudication": "model_derived",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_98db340ee1a4aa63b2961a997a67c7a35bf72ce6798b705fafbc541f18e74340",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::dynacaps_silicone_0_5",
+   "adjudication": "model_derived",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_e11b069c0808faf631ee9ddf81840078d251a89778ced3ad3133ade4607437ee",
    "last_reviewed": null,
@@ -36655,6 +37791,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_164e809c08b754a670e8afa8fe9496aff7ca2fad2da9524e035c9dae4aec504a",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::dynacaps_silicone_0_5",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_fe882749d906fa79e1775f0ddf99eab2d154c5c0e8512fc55d113f7cda5eb201",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -37053,6 +38205,22 @@
   {
    "a": "silencing_ring::klc_poron_0_3",
    "adjudication": "model_derived",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_81477ee236551793256a2436c7e70cb1c0ede203bcdc80f28eb40597214d7611",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::klc_poron_0_3",
+   "adjudication": "model_derived",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_1bbac82b4e94a53bb86f95dfd456ee30db815a7fbe374db1f4aa9b2c55caa50a",
    "last_reviewed": null,
@@ -37391,6 +38559,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_7aeb940a0b92a6a88d5882cce79a406ecf4996bccf2271fc587cd7e885b32582",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::klc_poron_0_3",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_ed83c954414f350af131db00cb353cb93bd876b22b5aa0909b62a04df21633ed",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -37773,6 +38957,22 @@
   {
    "a": "silencing_ring::klc_silicone_0_3",
    "adjudication": "model_derived",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_83eb8bd83ce04a0ced1196ed6fac541d823d3ed223b62d03edbf8baee9e25184",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::klc_silicone_0_3",
+   "adjudication": "model_derived",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_d5202afe80dce471002ba41d64ccced3024f4426ab6f119144cf58c7b0b6d3dd",
    "last_reviewed": null,
@@ -38111,6 +39311,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_83c7d6e4d69773bb0e0f4a7083203cf060cfe7425fb65d92e4e9eebae7608da6",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::klc_silicone_0_3",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_00f78d9f7fe6e5f918d995fd06db637a009944c562b4c30a2a7e0e1d22f578a6",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -38477,6 +39693,22 @@
   {
    "a": "silencing_ring::metapulse_poron_0_5",
    "adjudication": "model_derived",
+   "b": "silencing_ring::topre_2u_poron_1_0",
+   "id": "ce2_3ce8baa75f51dd5aff428f53efcd411cfcaef8021983e9f2ca2800e7c89b91aa",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::metapulse_poron_0_5",
+   "adjudication": "model_derived",
    "b": "silencing_ring::topre_poron_0_5",
    "id": "ce2_bdcf2e5a6cba3b2c10f47c7ce88a91bf341cef530b5dee03efb4831fe6c42390",
    "last_reviewed": null,
@@ -38815,6 +40047,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_bca46cfb986e43fcd0fe4f67948bbdb114f0c6279f4a577985ba42242009cb3d",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::metapulse_poron_0_5",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_628fe7af854f8fb62f9a6dc82727b3d2cd7a50db64a95196c132b03d73d74e98",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -39179,6 +40427,726 @@
    "state": "unknown"
   },
   {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "model_derived",
+   "b": "silencing_ring::topre_poron_0_5",
+   "id": "ce2_b0f0190ac034a4809bd63cb9f5103ec8059e3d94e5b8ded3075dc9ed0f6566e1",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "model_derived",
+   "b": "silencing_ring::unreal_keyboards_poron_0_3",
+   "id": "ce2_8412951b119382763ad63eba39356fcffa85611048d31bed4c0169f3981e8279",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "model_derived",
+   "b": "silencing_ring::unreal_keyboards_poron_0_5",
+   "id": "ce2_da9baf4fabd1476558a448ebb98a8da4292edcfdbf7c4165b54ffaa2db6306a9",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "model_derived",
+   "b": "silencing_ring::unreal_keyboards_poron_0_7",
+   "id": "ce2_d01c689533e03c2f3da379f837dde77169e22e3af17a5c667cada3b1d550fb62",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "model_derived",
+   "b": "silencing_ring::unreal_keyboards_poron_1_0",
+   "id": "ce2_f5e41a73552f8f7c78c3984dd45b309ec58461372b01e9ccaa0b560c5605e1cc",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "model_derived",
+   "b": "silencing_ring::unreal_keyboards_silicone_0_3",
+   "id": "ce2_02e19353f9dca6fd74dd961b30851edb84e37195247d9e27b321789af9d03f15",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "model_derived",
+   "b": "silencing_ring::unreal_keyboards_silicone_0_5",
+   "id": "ce2_7043a0b3276fda68975b7a163aa85a3f586b27209b2383e15ce9fdd968ad9ea6",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one ring per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "slider::deskeys",
+   "id": "ce2_a1e4dfb6eb6781c5c73b230ae08f00aafef11e9bcd4a68cfd5f2e2912e4e1f80",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "slider::dynacaps",
+   "id": "ce2_36775a5a819811a93b6cb4d88c35dafa3f68b87957609424df42264f8eb8eff8",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "slider::hhkb_type_s",
+   "id": "ce2_d5bf4c61d2c5a1e36ce7f04be1b254f342c08f27883b90131c9242c0a89328a4",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "slider::klc_playground",
+   "id": "ce2_b35b04ad43f5fab9fe1cd0e1dac0a0d77a2c1baf5fce361af93872f3a8035e90",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "slider::metapulse",
+   "id": "ce2_dd52a77b959e41886ef13bbfbde7b24ebe8da2eee51cd493ffdc5c56623fb7a0",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "slider::novatouch",
+   "id": "ce2_fa57861b7b1e31cd3b175a999dd31ff2025d3ad91a36c1b4d81c37bdd3b4b289",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "slider::topre",
+   "id": "ce2_46f065da64cac00fc3a61c6b4a8d5e2629180952a6e3600c6422882412226c3e",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "slider::topre_silenced_purple",
+   "id": "ce2_68b6b7cd4d02661e5e245a4c73d5acd28c9bc0cc9a2e53d9ebaf36f1f902bb99",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "slider_gasket::des_0_5",
+   "id": "ce2_9be3cbed86cecfaf69ff7eefa05a1d83de26e23e363415a11962b679314bbcef",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "slider_gasket::des_0_7",
+   "id": "ce2_8673bbf8af4fe843a656131306928fb587f97de03304b6d27a1ee176745658fd",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_spring::des",
+   "id": "ce2_fdc601970fe447f8e285107ca06829f3d3f30ce0d4d5b18bfc25073398c8d17d",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::deskeys",
+   "id": "ce2_d815b3a71bad8b997be86a3887a2322be4016f5165cb9c724e89034451ac07b8",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::dynacaps",
+   "id": "ce2_81b8b5be729c824281d1cc183e5a16de227a771cbac233c2b0c72e941d5fcdb1",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::klc_playground",
+   "id": "ce2_39c004d20b5df758b7123b575e44540516c1b061bfe253c03046774786d5a871",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::metapulse",
+   "id": "ce2_015db7aba515cbbc65de11a857fb97e2b2e6337f46c7d52fef081e06ee547070",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_2b34cadb9586c101538e79c1239b046c3f62595bf1eea1a3d7a80e57bf2dfc05",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::topre",
+   "id": "ce2_7044e6b4333ab2effe343d31a378e184534e77af49034b1419413573af12fb09",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_housing::deskeys",
+   "id": "ce2_5e53b5c8f1cb0aa9ee9c7624a17f6d6c481c90d4dadd35dbc56bcf10e3aed656",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_housing::dynacaps",
+   "id": "ce2_f2544630cf8392db481432dbd369ce21e6f6a87f2ace22c76f35108093d31e50",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_housing::klc_playground",
+   "id": "ce2_134e7aee379ea1655054249ff90b4d7427f8eadbc256ddc482c72486041b6a60",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_housing::metapulse",
+   "id": "ce2_40b28206b873a6130c7125d2d15cdfda40f214350987f6cd500a8917d540bc68",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_housing::novatouch",
+   "id": "ce2_f54975ccb05228e749db7496527a357c99adc5f161325fe518cfd4fc9100ee89",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_housing::topre_silenced",
+   "id": "ce2_ee053c8eeee3e7b7f3a77a58e60eed3961fb6b703daa482420d35c7f64e6e6f9",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_housing::topre_standard",
+   "id": "ce2_74a0e66bb6b8b4dfa3560065d6d9226dba6f35e66753ca5b7c16a222ec1fe99d",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_slider::deskeys",
+   "id": "ce2_d83c8666936c79647518136c4cd4916d836ea2a2a64b4489fe2b935b995f89aa",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_slider::dynacaps",
+   "id": "ce2_7ab22daa8fcfb1585a2d38792d506f037bc9e882901ec4a6a622280559780f62",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_slider::hhkb_type_s",
+   "id": "ce2_074c82fad1e505325b83206e95687638a0431dea05621354d1558b46e24a9ace",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_slider::klc_playground",
+   "id": "ce2_d8278030d823511818af97c95a8e40c50a7b4b0aae6bf21a2be6903251b4cf9f",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_slider::metapulse",
+   "id": "ce2_1e9784f83059437da1098fa5795b77cad375c6f944bd42192aec2070cf669389",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_slider::novatouch",
+   "id": "ce2_b3ad8572a708fcce2107893592423ceed4e0320ed91a754e3d462afc8ffc4056",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_slider::realforce_rc1_silenced_purple",
+   "id": "ce2_9f9ad367791eeceb9a8189d575cbb7eb476a4cf8d02f3f28c9b3f2d21b0ced38",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_slider::topre",
+   "id": "ce2_0a3c2b23105b61f048735ed1432e0062892907022dc2908374971e91e7c17686",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_slider::topre_silenced",
+   "id": "ce2_3169482d754941c3ceeba298affa58e5447cc608675b4caa9b9f020684ac68b4",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "travel_spacer::des_poron_0_7",
+   "id": "ce2_0a0fe8e726c1e4ba9420eb2f1dc36f20dc09fca12edfebcd39afee768ca916b8",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "travel_spacer::des_silicone_0_3",
+   "id": "ce2_487256101bdb52afafd815577e1689cb707cdb2eabc93e5594aabea2d0d251de",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "travel_spacer::des_silicone_0_5",
+   "id": "ce2_80c79921f5513160ff60d4a5a818be1a406ecce3b53767cc6883e55e3462a547",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "travel_spacer::des_silicone_0_7",
+   "id": "ce2_d2a309ba8ab97df26c77ddbacbda631ad59009026855f17cb8b16b129e77d93c",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_2u_poron_1_0",
+   "adjudication": "unadjudicated",
+   "b": "travel_spacer::unreal_silicone_0_5",
+   "id": "ce2_0406e141bfdee9ffd90a6ef78a18fbe7928da9cb866113b993e11bb235b975ae",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
    "a": "silencing_ring::topre_poron_0_5",
    "adjudication": "model_derived",
    "b": "silencing_ring::unreal_keyboards_poron_0_3",
@@ -39503,6 +41471,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_6859e5f0e5769f27d17a93e09a497307570f337463aaacba1e5f60f1fa701ff6",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::topre_poron_0_5",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_8a924c9ea4cf9c302ea0ef450495b64e60476b55bb4fbbf8c5db1235ed38571e",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -40189,6 +42173,22 @@
   {
    "a": "silencing_ring::unreal_keyboards_poron_0_3",
    "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_b6ccf75324e260a7d10fc4f3f3c98458e16d77c994ad5d217ee45380396b0f5f",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::unreal_keyboards_poron_0_3",
+   "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_26525a9b42234aa27785aa05ed4b49b36f59304dcf1de16fca5b45487b8112ca",
    "last_reviewed": null,
@@ -40845,6 +42845,22 @@
   {
    "a": "silencing_ring::unreal_keyboards_poron_0_5",
    "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_f3c105137781393f32cd812fa1cd74124432f3f2109581e875ca793c16a2f67d",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::unreal_keyboards_poron_0_5",
+   "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_ea1363a3fb18b0fa319dee112aa304a18027f6bdb542c6490eeeb4f621895cb6",
    "last_reviewed": null,
@@ -41485,6 +43501,22 @@
   {
    "a": "silencing_ring::unreal_keyboards_poron_0_7",
    "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_9ecc8ad80d888dccebe0586639c4545dd622d75d8e6b8c7d46b9f9e501824bda",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::unreal_keyboards_poron_0_7",
+   "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_6c1ef567dc0428a5d80e4939b849b7ad51bd0587ee8b00cf2ee746d972f56ede",
    "last_reviewed": null,
@@ -42109,6 +44141,22 @@
   {
    "a": "silencing_ring::unreal_keyboards_poron_1_0",
    "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_643b96e4005dd89b2040f4ad19c965cba0bbf2ab02c7d5f7c058a6ebc71cd4f6",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::unreal_keyboards_poron_1_0",
+   "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_a7c9266f05abc1123bd883e001beac50e7201873c511ad89727c1fe202805ecd",
    "last_reviewed": null,
@@ -42717,6 +44765,22 @@
   {
    "a": "silencing_ring::unreal_keyboards_silicone_0_3",
    "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_c36fd5f2f44364f0cd6ded2c0e0d7ff8b120b0187ab6310d9fe5afed60f94de3",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::unreal_keyboards_silicone_0_3",
+   "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_7421384f6426304f1b561c2be891f86322267ee50ee253328010ff49ee147edd",
    "last_reviewed": null,
@@ -43309,6 +45373,22 @@
   {
    "a": "silencing_ring::unreal_keyboards_silicone_0_5",
    "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_e8dbbc303299d0bd28873db823e97fdea4cd1263123d5c011459eeecd68c5c8b",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "silencing_ring::unreal_keyboards_silicone_0_5",
+   "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_cbf15f8cf9f4fe261d56852960a1171029acf618719f169bac75dbe0f8ade644",
    "last_reviewed": null,
@@ -43885,6 +45965,22 @@
   {
    "a": "slider::deskeys",
    "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_08b0838b8850f838cbaffb16e68ff3ea9e259787c1a8118c7179efd34a203cbc",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "slider::deskeys",
+   "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_a6c0aa17b71da249e6ea5bd04328d081a5ebed990e25337172bd5fa344bec77b",
    "last_reviewed": null,
@@ -44445,6 +46541,22 @@
   {
    "a": "slider::dynacaps",
    "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_751ad700afe94fd048f4bf14956eeefe593be6457a4ce4cd42fa304a75e906ad",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "slider::dynacaps",
+   "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_bae56e421243e8e5be5d526b00e714b9cd203c58726b4a3d67096df74d14825c",
    "last_reviewed": null,
@@ -44984,6 +47096,22 @@
   },
   {
    "a": "slider::hhkb_type_s",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_c1b8bf5a191eb6fca493d0ae6237f01ff01c8c6560a0af131399ba34aa692597",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "slider::hhkb_type_s",
    "adjudication": "source_imported",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_0a3c444d06547313d3ce80f6e2dac1a478ba8d7440154f588903c7686cf4a5ab",
@@ -45483,6 +47611,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_7b6f8fa3e61354be3b514336533945aa4b051e6a597fcdcae1e299e3a50bb20e",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "slider::klc_playground",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_2148e8204729651caaf3dd3a9afd0c9eb063a89f71f3244935a547e0f78f22a6",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -46009,6 +48153,22 @@
   {
    "a": "slider::metapulse",
    "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_de5fcf75aeabb5477ff35ab5c6053321cc511f20eb6c289cf0e3792657e94007",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "slider::metapulse",
+   "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_d0f20944e94c60578f25b90ed381541c27dd518c6a8a842fbb878837fc42db40",
    "last_reviewed": null,
@@ -46505,6 +48665,22 @@
   {
    "a": "slider::novatouch",
    "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_3a13e644bcc9aa7dbce3c1a8e0f439919ca441de1c8c4458b5ad76032da88072",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "slider::novatouch",
+   "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_101a1fdc343870d407c5cd64e7375efad729eb1cfe30d454f5ec9a123d0f72ea",
    "last_reviewed": null,
@@ -46965,6 +49141,22 @@
   },
   {
    "a": "slider::topre",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_50f900ddf86f7dff4490044565d651aa182eb3c5bfc5474f6dde4d57e84cf07c",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "slider::topre",
    "adjudication": "source_imported",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_0846952eddbf897095f3866e4ce203d8efabb9d8fcdca5eb045030aabb13a6c4",
@@ -47409,6 +49601,22 @@
   },
   {
    "a": "slider::topre_silenced_purple",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_05ec2dd04c71630552453627bff39d6b6b79710749d94319c32ef3db1ef75913",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "slider::topre_silenced_purple",
    "adjudication": "source_imported",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_ed5008d1c50bc24ab7240c4654bef49b20efc17f9b71789b0e8ae78b7f8a165b",
@@ -47828,6 +50036,22 @@
    "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::metapulse",
    "id": "ce2_e6ad2503690c51579d524d8ff1a977347e69b7443673b16ea24943742220c8c5",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "slider_gasket::des_0_5",
+   "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_a596d4284fcee83c7541f9da9013498cf0636b8a22e4d447282732d97e9f8199",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -48274,6 +50498,22 @@
   {
    "a": "slider_gasket::des_0_7",
    "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_00d3c1b0185fd89e4d1c8717eb8b8d3f4096cbebbf6a7bf56f36fb2e70c05c97",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "slider_gasket::des_0_7",
+   "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_9f193c4890f120a47e111f8c301664f19bfd08d09be5688d54918966c8a5c4db",
    "last_reviewed": null,
@@ -48690,6 +50930,22 @@
   {
    "a": "spacebar_spring::des",
    "adjudication": "unadjudicated",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_141fb82293cf382923bc35bcf5419041154cce862f464e2d3c85537d85f53953",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_spring::des",
+   "adjudication": "unadjudicated",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_c284596b73ff641242761b9e0fa71a5a0ea877a703f253a9e88e4454dcd5117a",
    "last_reviewed": null,
@@ -49090,6 +51346,22 @@
   {
    "a": "spacebar_stabilizer::deskeys",
    "adjudication": "model_derived",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_29c994853a468fc88b0028c568f90e9ae83e2aa3dec34b948163baa00a3f5819",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one spacebar per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "spacebar_stabilizer::deskeys",
+   "adjudication": "model_derived",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_2e0370a38de449453066ad532dba88b77794cfb74d418d8fa3bea5c9d56fb062",
    "last_reviewed": null,
@@ -49474,6 +51746,22 @@
   {
    "a": "spacebar_stabilizer::dynacaps",
    "adjudication": "model_derived",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_26cd32097019018962f70cd4029a2cf18368bf607b575e581c10e744c799feeb",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one spacebar per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "spacebar_stabilizer::dynacaps",
+   "adjudication": "model_derived",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_6d70e9e4fefd44683b3eb7ab8754cb14331731e9a07493116f4a5eecb84337cf",
    "last_reviewed": null,
@@ -49842,6 +52130,22 @@
   {
    "a": "spacebar_stabilizer::klc_playground",
    "adjudication": "model_derived",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_bdd2e812f93146abc925e93936b147a5738628a53abbf14a9dbc24ad93e4c09b",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one spacebar per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "spacebar_stabilizer::klc_playground",
+   "adjudication": "model_derived",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_99bb3dafc3295cd7163658215b010fdce5c50d0f8c100652a58fb88e0d78fb72",
    "last_reviewed": null,
@@ -50194,6 +52498,22 @@
   {
    "a": "spacebar_stabilizer::metapulse",
    "adjudication": "model_derived",
+   "b": "spacebar_stabilizer::novatouch",
+   "id": "ce2_3e4ef5fcfa0b1582b50b70940b977a1633a6ceb433dae007b703ea9ed5cb54f3",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one spacebar per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "spacebar_stabilizer::metapulse",
+   "adjudication": "model_derived",
    "b": "spacebar_stabilizer::topre",
    "id": "ce2_17e3ae0de48c0ee25b9b03811ce05d7b3aac8b91a1dd045d47ab5a1078c908a2",
    "last_reviewed": null,
@@ -50532,6 +52852,358 @@
    "adjudication": "unadjudicated",
    "b": "travel_spacer::unreal_silicone_0_5",
    "id": "ce2_42645660abd5743a28ca8da7fc5e4a8ba6ca80bff7989befa94cf9bccc1a206a",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "model_derived",
+   "b": "spacebar_stabilizer::topre",
+   "id": "ce2_e9d8eeffe8916557864bd85a5e957cbc07b91a96fc980badce2ac7334d13b146",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "mutually exclusive: one spacebar per build",
+   "source": "slot_model",
+   "source_refs": [
+    "generator",
+    "catalog_overlay"
+   ],
+   "state": "not_applicable"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_housing::deskeys",
+   "id": "ce2_db9e68f0933d8e4b7bd74615a878b1a13b4e12a1de27cb2c37c8cbdd9354b748",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_housing::dynacaps",
+   "id": "ce2_7c06e194411330f85256b79bad3abdeb663a58795f0a69910e05cba8c6034e39",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_housing::klc_playground",
+   "id": "ce2_fa8e059eb68017a8220fb691b95d1539d2b3c97fd92c66855df4a8b4a928eec7",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_housing::metapulse",
+   "id": "ce2_f91e1538bd116efc7143a19d628019805a1dd52a4c578d6235981e8f7af4cf46",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_housing::novatouch",
+   "id": "ce2_0268c4f749ef63bb4671bdd6a79ea9b72f2c8dd1d44242051129189adbf6bcb4",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_housing::topre_silenced",
+   "id": "ce2_6864433c3994f3ae51a743d3337f326aa001905b26cae35fdad5d35d00bed560",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_housing::topre_standard",
+   "id": "ce2_dcf91324cc0a84fce4000a15aa4073ad44d6f41db7eb0204672ee9ebac5e9af1",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_slider::deskeys",
+   "id": "ce2_47bca76ff9c75954922a293143508984ceb3a3115425416d7004b190d0031bce",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_slider::dynacaps",
+   "id": "ce2_82814c804fe4d545fb5f77fccbc32a568d1f89677aa409e110044df5cfd4c512",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_slider::hhkb_type_s",
+   "id": "ce2_4185b367bc51a014db25d3ee32cca5dafc57dbc95562f00198c01c1353045c10",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_slider::klc_playground",
+   "id": "ce2_54815b5078d9d23cb6e0ef4dc39735cf7eb542f1e8c6f08cad439f03fdb75bb7",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_slider::metapulse",
+   "id": "ce2_e6efaf8b6227ecfcbfba6e68b99a9f02b317fc4e22004b7e7a339800d1a2a1cd",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_slider::novatouch",
+   "id": "ce2_d565f7f01450049109788fc0eb193221998a9e680c8e2937b73aa1cd040ff1f6",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_slider::realforce_rc1_silenced_purple",
+   "id": "ce2_840ab9ef758c83c2019a0e52ba6f9d9de90c9811e5230db2cb5d3a75abcbd47f",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_slider::topre",
+   "id": "ce2_9f7335c94c7387f86990ba0938b13211da22c1be0f813ee791b58f58546491b4",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "stabilizer_slider::topre_silenced",
+   "id": "ce2_3c332e45d9502528f9b8c5c3c5f3b24e79c11efcd71abcd3289e0f3b68e9620c",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "travel_spacer::des_poron_0_7",
+   "id": "ce2_3cef598ad3cdca4ae39e869473abf05d04abb4d0995c4cbc488f85634152eae2",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "travel_spacer::des_silicone_0_3",
+   "id": "ce2_0474444f007269111856ed5d7132deaad1c70c362fb19f50270580ba1ce20b43",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "travel_spacer::des_silicone_0_5",
+   "id": "ce2_517e9994f04a3ba6600d4a5eb4f77d5068ab001ca76080f8576dcce895d075d5",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "travel_spacer::des_silicone_0_7",
+   "id": "ce2_dddee1696d05597bae69c33f953f1469c91267d10bbd87cf22ce6a35784df43a",
+   "last_reviewed": null,
+   "note_id": null,
+   "qualifier": null,
+   "reason": "no compatibility evidence recorded",
+   "source": "none",
+   "source_refs": [
+    "r8_compatibility",
+    "compat_overlay"
+   ],
+   "state": "unknown"
+  },
+  {
+   "a": "spacebar_stabilizer::novatouch",
+   "adjudication": "unadjudicated",
+   "b": "travel_spacer::unreal_silicone_0_5",
+   "id": "ce2_8eb3f041a7efe9cff71ea0d61295d960b4b59511b28ea02eb95e570b9f093a22",
    "last_reviewed": null,
    "note_id": null,
    "qualifier": null,
@@ -54250,7 +56922,7 @@
  "source_artifacts": {
   "catalog_overlay": {
    "path": "generator/domelab_pipeline/config/catalog_overlay.json",
-   "sha256": "510a142775150b10e415ef74ee595f53b12e88a80ab4eca39c255a821103f474"
+   "sha256": "3d632ffd8e93263806364c732186699e7883ebb05f49e1908e4a97f0386f2f45"
   },
   "compat_overlay": {
    "path": "generator/domelab_pipeline/config/compat_overlay.json",
@@ -54258,7 +56930,7 @@
   },
   "generator": {
    "path": "tools/generate_catalog_config.py",
-   "sha256": "165a6e985c6b66ed9cf0d838159835ab463f5e67c709c0b9cc9e13ef5c823f6c"
+   "sha256": "8d45cb013b17c9018aee7fe63dc3b27d1ac38ec98d0ce3d67c3c361cd259f901"
   },
   "r8_compat_rules": {
    "path": "generator/domelab_pipeline/config/r8/compat_rules.json",
@@ -54268,9 +56940,17 @@
    "path": "generator/domelab_pipeline/config/r8/compatibility.json",
    "sha256": "8410de5101ac58a76029ad58d29bcacf99a1ad87b8cdffd1ffd1ab4500ef6ea9"
   },
+  "r8_keyboards": {
+   "path": "generator/domelab_pipeline/config/r8/keyboards.json",
+   "sha256": "b325d8737404fa0b62e1843cf771b6daac73342ee567d9acfd435f1e382058ae"
+  },
   "r8_parts": {
    "path": "generator/domelab_pipeline/config/r8/parts.json",
-   "sha256": "7275a6c70a64f288139d95e0c1f93eff91bb3adb98b65690bd3dc105d92e9301"
+   "sha256": "ce0832d08c51c40fc603d5f6aac7e6569179b29455f9bcd451776c8e3fa5e0db"
+  },
+  "stabilizer_assemblies": {
+   "path": "generator/domelab_pipeline/config/stabilizer_assemblies.json",
+   "sha256": "186453cc863ecb7c85df0f53010debbc1424804bfa4fa6369a23d8a395d3edb2"
   }
  },
  "states": [

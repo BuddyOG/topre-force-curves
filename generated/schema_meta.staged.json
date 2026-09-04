@@ -1,6 +1,6 @@
 {
  "calc_version": "metrics-v4.2 (valley-v2, press-work, drop-rate, ramp-v3-post-seating) + travel-v3 (step1pct force-wall) + intake-qc-v1.4",
- "config_hash": "820daf4d349f4d5b934483c0e12d1d86d6da5856b2a916f836ebabafffb5a568",
+ "config_hash": "e90a9b74bc5fbb5c3bc922bbe07dddcbc3570d738ceae8d672f5640bc1928e07",
  "config_hash_definition": "config_hash == bundle_hash over all distinguished method, dataset-decision, metadata-authority, history, raw, generator-source, and release-reference identities; evidence_epoch_hash excludes generator source and presentation/release-reference bytes",
  "dispersion_note": "sd is the sample standard deviation (n-1) via statistics.stdev",
  "evidence_epoch": {
@@ -760,16 +760,16 @@
   "ramp_band_complete"
  ],
  "provenance_hashes": {
-  "bundle_hash": "820daf4d349f4d5b934483c0e12d1d86d6da5856b2a916f836ebabafffb5a568",
+  "bundle_hash": "e90a9b74bc5fbb5c3bc922bbe07dddcbc3570d738ceae8d672f5640bc1928e07",
   "dataset_decision_hash": "98c68e9f4f1d75eec1c35e9b69cbbe945621568e2d9b0432981012aa6d5e9ea1",
   "evidence_epoch_hash": "7aa8588b50856816b7fce90dd6e743c26c6f16926071123291cb054352b6cd4a",
   "evidence_history_hash": "f988f34c2187d9c9bc1bfb3e15e0398442a446a734c2a1b8f418feb7ab9be9de",
-  "generator_source_hash": "f4b8c977d31629eecd79505cf4b282dcc7ffd1f81b4697321f13282605d77ba3",
+  "generator_source_hash": "d4d80f05a03e38dc8e732a053b362e4a89c519a003cdec24f33490219cb65317",
   "metadata_authority_hash": "ebbbec8833ad95a215afa96804dc080854809d598939e0e787d2f75ec4ae567a",
   "method_hash": "ca4bc30969d89b88c1af27b8f6fb4dfcf3d580456d73f754a0a7a27de466c6a4",
   "raw_csv_manifest_hash": "309e3fb1e4866aafa5e11eb154b8daa3eee41ec5b96a545191a56efee55ce573",
   "raw_manifest_hash": "b2714a4b45180b141fbb6f46913aaef854f428a5ec9c7feb36fd5b980bc6be13",
-  "release_reference_hash": "1fe550b7d3f57eb5273993fc4f4f0eaf5c20e6af6ed1fbeb60b300e8e33ac8cc"
+  "release_reference_hash": "0e8583f46e36625fcfb1ab7dfafc187a01f73b681b6f4be35afa72ef264635a5"
  },
  "repo_commit": "6e86ac1955a0c566c7aae521705e51371992ba8a",
  "travel_unit": "mm"

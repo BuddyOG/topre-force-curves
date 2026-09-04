@@ -1,0 +1,446 @@
+{
+ "schema": "owner-starting-point-defaults-v1",
+ "purpose": "Owner-confirmed starting-point selections. This overlay corrects generated presets without rewriting the vendored r8 source registry.",
+ "review": {
+  "id": "owner-defaults-2026-09-03",
+  "adjudication": "owner_confirmed",
+  "date": "2026-09-03",
+  "source_file": "EC_Parts_Starting_Point_Defaults_Review.xlsx",
+  "sha256": "e2ac489dcd92a193291e9278afebb6152e8d19a7b3325781a5948de749134f9a"
+ },
+ "amendments": [
+  {
+   "id": "owner-amendment-2026-09-03-dynacaps-rings",
+   "date": "2026-09-03",
+   "adjudication": "owner_confirmed",
+   "source": "Owner instruction during lib-6.1 review; supersedes only the DynaCaps ring choices recorded in the workbook.",
+   "supporting_url": "https://omnitype.com/pages/dynacap",
+   "changes": [
+    {
+     "target": "kit::dynacaps",
+     "slot": "ring",
+     "from": "silencing_ring::dynacaps_poron_0_3",
+     "to": "silencing_ring::dynacaps_silicone_0_5"
+    },
+    {
+     "target": "assembly2u::dynacaps",
+     "slot": "ring2u",
+     "from": "silencing_ring::dynacaps_poron_0_3",
+     "to": "silencing_ring::dynacaps_silicone_0_5"
+    }
+   ]
+  }
+ ],
+ "explicit_none_parts": {
+  "none::dome": {
+   "name": "No dome",
+   "slot": "dome",
+   "meaning": "The starting point intentionally loads no dome."
+  },
+  "none::spacebar_stabilizer": {
+   "name": "No separate spacebar stabilizer",
+   "slot": "sb",
+   "meaning": "The starting point intentionally loads no separate spacebar stabilizer."
+  }
+ },
+ "presets": {
+  "kbd::hhkb_30th": {
+   "slots": {
+    "dome": "dm-topre-30g",
+    "keycap": "keycap::topre",
+    "ring": "silencing_ring::topre_poron_0_5",
+    "sb": "spacebar_stabilizer::topre",
+    "shell": "shell::hhkb",
+    "slider": "slider::hhkb_type_s",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::hhkb"
+   }
+  },
+  "kbd::hhkb_bt": {
+   "slots": {
+    "dome": "dm-topre-45g",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "spacebar_stabilizer::topre",
+    "shell": "shell::hhkb",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::hhkb"
+   }
+  },
+  "kbd::hhkb_classic": {
+   "slots": {
+    "dome": "dm-topre-45g",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "spacebar_stabilizer::topre",
+    "shell": "shell::hhkb",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::hhkb"
+   }
+  },
+  "kbd::hhkb_classic_type_s": {
+   "slots": {
+    "dome": "dm-topre-45g",
+    "keycap": "keycap::topre",
+    "ring": "silencing_ring::topre_poron_0_5",
+    "sb": "spacebar_stabilizer::topre",
+    "shell": "shell::hhkb",
+    "slider": "slider::hhkb_type_s",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::hhkb_type_s"
+   }
+  },
+  "kbd::hhkb_hybrid": {
+   "slots": {
+    "dome": "dm-topre-45g",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "spacebar_stabilizer::topre",
+    "shell": "shell::hhkb",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::hhkb"
+   }
+  },
+  "kbd::hhkb_hybrid_jp": {
+   "slots": {
+    "dome": "dm-topre-45g",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "spacebar_stabilizer::topre",
+    "shell": "shell::hhkb",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::hhkb"
+   }
+  },
+  "kbd::hhkb_hybrid_type_s": {
+   "slots": {
+    "dome": "dm-topre-45g",
+    "keycap": "keycap::topre",
+    "ring": "silencing_ring::topre_poron_0_5",
+    "sb": "spacebar_stabilizer::topre",
+    "shell": "shell::hhkb",
+    "slider": "slider::hhkb_type_s",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::hhkb_type_s"
+   }
+  },
+  "kbd::hhkb_pro_1": {
+   "slots": {
+    "dome": "dm-topre-45g",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "spacebar_stabilizer::topre",
+    "shell": "shell::hhkb",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::hhkb"
+   }
+  },
+  "kbd::hhkb_pro_2": {
+   "slots": {
+    "dome": "dm-topre-45g",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "spacebar_stabilizer::topre",
+    "shell": "shell::hhkb",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::hhkb"
+   }
+  },
+  "kbd::hhkb_pro_2_jp": {
+   "slots": {
+    "dome": "dm-topre-45g",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "spacebar_stabilizer::topre",
+    "shell": "shell::hhkb",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::hhkb"
+   }
+  },
+  "kbd::hhkb_pro_2_jp_type_s": {
+   "slots": {
+    "dome": "dm-topre-45g",
+    "keycap": "keycap::topre",
+    "ring": "silencing_ring::topre_poron_0_5",
+    "sb": "spacebar_stabilizer::topre",
+    "shell": "shell::hhkb",
+    "slider": "slider::hhkb_type_s",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::hhkb_type_s"
+   }
+  },
+  "kbd::hhkb_pro_2_type_s": {
+   "slots": {
+    "dome": "dm-topre-45g",
+    "keycap": "keycap::topre",
+    "ring": "silencing_ring::topre_poron_0_5",
+    "sb": "spacebar_stabilizer::topre",
+    "shell": "shell::hhkb",
+    "slider": "slider::hhkb_type_s",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::hhkb_type_s"
+   }
+  },
+  "kbd::leopold_fc660c": {
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "slots": {
+    "dome": "dm-topre-45g",
+    "h1": "housings::topre",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "spacebar_stabilizer::topre",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::topre"
+   }
+  },
+  "kbd::leopold_fc980c": {
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "slots": {
+    "dome": "dm-topre-45g",
+    "h1": "housings::topre",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "spacebar_stabilizer::topre",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::topre"
+   }
+  },
+  "kbd::novatouch": {
+   "slots": {
+    "dome": "dm-topre-45g",
+    "h1": "housings::topre",
+    "keycap": "keycap::mx",
+    "ring": "ring::none",
+    "sb": "spacebar_stabilizer::novatouch",
+    "slider": "slider::novatouch",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::novatouch"
+   }
+  },
+  "kbd::realforce_101u": {
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "slots": {
+    "dome": "dm-topre-realforce-variable",
+    "h1": "housings::topre",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "spacebar_stabilizer::topre",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::topre"
+   }
+  },
+  "kbd::realforce_103u": {
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "slots": {
+    "dome": "dm-topre-realforce-variable",
+    "h1": "housings::topre",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "spacebar_stabilizer::topre",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::topre"
+   }
+  },
+  "kbd::realforce_104u": {
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "slots": {
+    "dome": "dm-topre-realforce-variable",
+    "h1": "housings::topre",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "spacebar_stabilizer::topre",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::topre"
+   }
+  },
+  "kbd::realforce_106u": {
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review. This layout has no separate spacebar stabilizer.",
+   "slots": {
+    "dome": "dm-topre-realforce-variable",
+    "h1": "housings::topre",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "none::spacebar_stabilizer",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::topre"
+   }
+  },
+  "kbd::realforce_108u": {
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review. This layout has no separate spacebar stabilizer.",
+   "slots": {
+    "dome": "dm-topre-realforce-variable",
+    "h1": "housings::topre",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "none::spacebar_stabilizer",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::topre"
+   }
+  },
+  "kbd::realforce_86u": {
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "slots": {
+    "dome": "dm-topre-realforce-variable",
+    "h1": "housings::topre",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "spacebar_stabilizer::topre",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::topre"
+   }
+  },
+  "kbd::realforce_87u": {
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "slots": {
+    "dome": "dm-topre-realforce-variable",
+    "h1": "housings::topre",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "spacebar_stabilizer::topre",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::topre"
+   }
+  },
+  "kbd::realforce_89u": {
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review. This layout has no separate spacebar stabilizer.",
+   "slots": {
+    "dome": "dm-topre-realforce-variable",
+    "h1": "housings::topre",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "none::spacebar_stabilizer",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::topre"
+   }
+  },
+  "kbd::realforce_91u": {
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review. This layout has no separate spacebar stabilizer.",
+   "slots": {
+    "dome": "dm-topre-realforce-variable",
+    "h1": "housings::topre",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "none::spacebar_stabilizer",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::topre"
+   }
+  },
+  "kbd::realforce_r2": {
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "slots": {
+    "dome": "dm-topre-45g",
+    "h1": "housings::topre",
+    "keycap": "keycap::topre",
+    "ring": "ring::none",
+    "sb": "spacebar_stabilizer::topre",
+    "slider": "slider::topre",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::topre"
+   }
+  },
+  "kbd::realforce_r3": {
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "slots": {
+    "dome": "dm-topre-45g",
+    "h1": "housings::topre",
+    "keycap": "keycap::topre",
+    "ring": "silencing_ring::topre_poron_0_5",
+    "sb": "spacebar_stabilizer::topre",
+    "slider": "slider::topre_silenced_purple",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::topre_silenced"
+   }
+  },
+  "kbd::realforce_r4": {
+   "notes": "Owner-confirmed starting-point defaults from the 2026-09-03 review.",
+   "slots": {
+    "dome": "dm-topre-45g",
+    "h1": "housings::topre",
+    "keycap": "keycap::topre",
+    "ring": "silencing_ring::topre_poron_0_5",
+    "sb": "spacebar_stabilizer::topre",
+    "slider": "slider::topre_silenced_purple",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::topre_silenced"
+   }
+  },
+  "kbd::realforce_rc1": {
+   "notes": "Owner-confirmed starting point uses a Topre 45g dome. The housing and spacebar stabilizer remain integrated into the RC1 shell.",
+   "slots": {
+    "dome": "dm-topre-45g",
+    "keycap": "keycap::topre",
+    "ring": "silencing_ring::topre_poron_0_5",
+    "shell": "shell::rc1",
+    "slider": "slider::topre_silenced_purple",
+    "spring": "conical_springs::topre",
+    "stab2uAssembly": "assembly2u::realforce_rc1"
+   }
+  },
+  "kit::deskeys": {
+   "slots": {
+    "dome": "none::dome",
+    "h1": "housings::deskeys",
+    "keycap": "keycap::mx",
+    "ring": "silencing_ring::des_poron_0_7",
+    "sb": "spacebar_stabilizer::deskeys",
+    "slider": "slider::deskeys",
+    "spring": "conical_springs::deskeys_conical",
+    "stab2uAssembly": "assembly2u::deskeys"
+   }
+  },
+  "kit::dynacaps": {
+   "slots": {
+    "dome": "none::dome",
+    "h1": "housings::dynacaps",
+    "keycap": "keycap::mx",
+    "ring": "silencing_ring::dynacaps_silicone_0_5",
+    "sb": "spacebar_stabilizer::dynacaps",
+    "slider": "slider::dynacaps",
+    "spring": "conical_springs::dynacaps",
+    "stab2uAssembly": "assembly2u::dynacaps"
+   }
+  },
+  "kit::klc": {
+   "slots": {
+    "dome": "none::dome",
+    "h1": "housings::klc_playground",
+    "keycap": "keycap::mx",
+    "ring": "ring::none",
+    "sb": "spacebar_stabilizer::klc_playground",
+    "slider": "slider::klc_playground",
+    "spring": "conical_springs::klc_playground",
+    "stab2uAssembly": "assembly2u::klc"
+   }
+  },
+  "kit::metakeebs": {
+   "slots": {
+    "dome": "none::dome",
+    "h1": "housings::metapulse",
+    "keycap": "keycap::mx",
+    "ring": "silencing_ring::metapulse_poron_0_5",
+    "sb": "spacebar_stabilizer::metapulse",
+    "slider": "slider::metapulse",
+    "spring": "conical_springs::metapulse",
+    "stab2uAssembly": "assembly2u::metakeebs"
+   }
+  }
+ }
+}

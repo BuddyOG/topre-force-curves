@@ -33,9 +33,9 @@ identity
 
 ## EC Parts Builder
 
-Unreal Keyboards. *EC Parts Builder*, release `lib-6.0`.
+Unreal Keyboards. *EC Parts Builder*, release `lib-6.1`.
 <https://buddyog.github.io/topre-force-curves/dome-lab-parts.html>. Source:
-<https://github.com/BuddyOG/topre-force-curves/releases/tag/ec-parts-lib-6.0>.
+<https://github.com/BuddyOG/topre-force-curves/releases/tag/ec-parts-lib-6.1>.
 
 Compatibility statements are evidence-scoped and can change in a later
 version. Include the release number and access date.
