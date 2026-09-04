@@ -4,10 +4,12 @@ Initial publication date: 2026-08-31
 
 EC Parts Builder lib-6.1 update: 2026-09-04
 
+Research-paper revision: 2026-09-04
+
 Repository: <https://github.com/BuddyOG/topre-force-curves>
 
 This record identifies the public Dome Lab system after the Force Curve Bench,
-EC Parts Builder, storefront pages, and Preprint 2.0 were released, including
+EC Parts Builder, storefront pages, and Preprint 2.1 were released, including
 the subsequent EC Parts Builder lib-6.1 update. It does not replace the
 tool-specific manifests or the frozen research record.
 
@@ -19,7 +21,7 @@ tool-specific manifests or the frozen research record.
 - [EC Parts Builder](https://unrealkeyboards.com/pages/topre-ec-parts-library-builder)
   — Shopify presentation of `lib-6.1`.
 - [Beyond Snap Ratio](https://unrealkeyboards.com/pages/beyond-snap-ratio) —
-  Preprint 2.0 overview and download links.
+  preprint overview and download links.
 - [Topre & EC Dome Force Curves](https://unrealkeyboards.com/blogs/topre-mods/topre-dome-force-curves)
   — public explanatory article.
 
@@ -60,14 +62,15 @@ evidence or perception-index model.
 
 **Beyond Snap Ratio: Reproducible Force–Travel Measurement and Exploratory
 Perceptual Correlates of Weight and Collapse Sharpness in Electrocapacitive
-Domes**, Brian Gebo, Version 2.0, 2026-08-29.
+Domes**, Brian Gebo, Version 2.1, 2026-09-04.
 
-- Paper DOI: <https://doi.org/10.5281/zenodo.22167065>
+- Paper DOI: <https://doi.org/10.5281/zenodo.22295223>
+- All-version concept DOI: <https://doi.org/10.5281/zenodo.22167064>
 - Research-compendium DOI: <https://doi.org/10.5281/zenodo.22167047>
 - Paper PDF SHA-256:
-  `4dcbd938149b3ce17c27d121e07675bb1c5c9cf8ab05be9a3ec0e11fd2e35caf`
+  `1de8e71e32b557e4cffeffe03ffb13a6326789e99b04890147043f6f7728c862`
 - Paper manifest SHA-256:
-  `ac88859d5ad13992d83df27c6d4da3b601fba79026ab9e0cafa5ee9bd819fbf7`
+  `4c9e664529f70ccb35573daab6a0248d8642d04534aef02b6b87aca8359b1686`
 
 The paper is a preprint and has not been independently peer reviewed. Its
 manuscript and original figures are released under CC BY 4.0. Files in the

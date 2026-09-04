@@ -4,8 +4,11 @@
 
 Gebo, Brian. *Beyond Snap Ratio: Reproducible Force–Travel Measurement and
 Exploratory Perceptual Correlates of Weight and Collapse Sharpness in
-Electrocapacitive Domes*. Version 2.0, 29 August 2026.
-<https://doi.org/10.5281/zenodo.22167065>.
+Electrocapacitive Domes*. Version 2.1, 4 September 2026.
+<https://doi.org/10.5281/zenodo.22295223>.
+
+The concept DOI <https://doi.org/10.5281/zenodo.22167064> resolves to the
+latest version. Use the version-specific DOI above when citing this exact text.
 
 The manuscript and its original figures are licensed CC BY 4.0. State the
 version and DOI because later versions may contain additional evidence.

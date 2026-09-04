@@ -9,7 +9,7 @@ The corresponding Shopify pages present the Unreal Keyboards tools separately:
 - [Dome Lab](https://unrealkeyboards.com/pages/dome-lab)
 - [Force Curve Bench](https://unrealkeyboards.com/pages/topre-force-curve-library)
 - [EC Parts Builder](https://unrealkeyboards.com/pages/topre-ec-parts-library-builder)
-- [Beyond Snap Ratio Preprint 2.0](https://unrealkeyboards.com/pages/beyond-snap-ratio)
+- [Beyond Snap Ratio](https://unrealkeyboards.com/pages/beyond-snap-ratio)
 - [Topre & EC Dome Force Curves article](https://unrealkeyboards.com/blogs/topre-mods/topre-dome-force-curves)
 
 Shopify owns the Dome Lab landing page, header, and navigation. Force Curve
@@ -49,7 +49,7 @@ result.
 | Metric method | `metrics-v4.2` |
 | Intake authority | `intake-qc-v1.4`, implementation-parity bound to `test-imp 1.1.4` |
 | Perception-index model | `perception-rank-v1` |
-| Research preprint | Version 2.0; [paper DOI](https://doi.org/10.5281/zenodo.22167065); [compendium DOI](https://doi.org/10.5281/zenodo.22167047) |
+| Research preprint | Version 2.1; [paper DOI](https://doi.org/10.5281/zenodo.22295223); [all versions](https://doi.org/10.5281/zenodo.22167064); [compendium DOI](https://doi.org/10.5281/zenodo.22167047) |
 
 The site manifest records the active combined publication. The retained
 `FORCE_CURVE_BENCH_RELEASE_MANIFEST.json` remains the immutable predecessor
@@ -356,7 +356,7 @@ do not change the project terms above.
   “BuddyOG” Gebo / [Unreal Keyboards](https://unrealkeyboards.com).
 
 The released EC Parts Builder consumes the fc-3.4 canonical evidence without
-changing it. Beyond Snap Ratio Preprint 2.0 records the released methods and
+changing it. Beyond Snap Ratio Preprint 2.1 records the released methods and
 exploratory pilot. The prospective blinded multi-rater protocol is frozen as
 `perception-validation-v1`; until the study is completed, no confirmatory
 multi-rater perception claim is made.

@@ -210,10 +210,17 @@ Their units are different, so the profile places each raw value at its
 percentile position within the frozen 68-dome reference fleet. Tap or hover over
 a point to see both the raw value and percentile.
 
-The **Weight Index** itself uses collapse force only. It is the percentile of
-the dome's collapse force compared with the other domes tested, from 0
-(lightest) to 100 (heaviest). The other two measurements remain useful
-descriptors but are not folded into the index.
+The **Weight Index** itself uses collapse force only:
+
+```text
+Weight Index = fleet percentile(full-precision cohort collapse force)
+```
+
+It is the percentile of the dome's collapse force compared with the other
+domes tested, from 0 (lightest) to 100 (heaviest). The profile's three plotted
+points are separate comparisons, not ingredients in a combined score. RAMP
+and pre-collapse work remain useful descriptors but are not folded into the
+index.
 
 ### Tactility profile
 
@@ -228,11 +235,22 @@ As in the Weight profile, each metric is shown at its own frozen-fleet
 percentile because their raw units are not interchangeable. Tap or hover over a
 point to see the raw value and percentile.
 
-The **Tactility Index** itself uses force drop only. It is the percentile of the
-dome's force drop compared with the other domes tested, from 0 (least sharp) to
-100 (sharpest). The other three measurements remain supporting descriptors and
-are not folded into the index. A low value does not classify a dome as
-linear/off; the pilot contained no linear/off observation.
+The **Tactility Index** itself uses force drop only:
+
+```text
+Tactility Index = fleet percentile(full-precision cohort force Drop)
+```
+
+It is the percentile of the dome's force drop compared with the other domes
+tested, from 0 (least sharp) to 100 (sharpest). The profile's four plotted
+points are separate comparisons, not ingredients in a combined score. The
+other three measurements remain supporting descriptors and are not folded
+into the index. A low value does not classify a dome as linear/off; the pilot
+contained no linear/off observation.
+
+Spearman rank correlations were used as primary evidence when selecting the
+single input for each index; Pearson correlations were secondary descriptions.
+Neither set of coefficients is used as a mathematical weight.
 
 ### Weight vs tactility
 
@@ -248,6 +266,16 @@ in that fleet. Neither direction is a universal quality judgment.
 Force-wall onset is kept separate and does not affect either coordinate. It is
 shown in the force-curves view and in the expanded comparison readout, not in
 the profile or scatter legends.
+
+The canonical evidence also retains **Press work to force-wall**, the press
+integral from the recorded start to the detected wall. It ranked sixth of the
+fourteen screened metrics for perceived weight in the pilot
+(`Spearman rho = 0.817381`), but it remains a separate full-stroke-effort
+descriptor. It is not included in Weight Index because it depends on the
+assembly-defined wall endpoint, is unavailable when no wall is detected, and
+was highly redundant with collapse force (`rho = 0.900`) and pre-collapse work
+(`rho = 0.943`) without evidence of an independent contribution. Its close
+screening rank is supporting evidence, not an index coefficient.
 
 Only calibrated dome-baseline records with both indices can be plotted. A
 part-assembly selection is reported as **Not calibrated**. A missing dome index

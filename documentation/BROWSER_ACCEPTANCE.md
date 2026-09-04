@@ -170,3 +170,11 @@ backup remain rollback assets rather than release authorities.
 The lib-6.1 update retained both public Parts Builder URLs and the Shopify
 embed contract. Git tag `ec-parts-lib-6.1` identifies the new builder release;
 `ec-parts-lib-6.0` remains available as the predecessor and rollback record.
+
+## Beyond Snap Ratio Preprint 2.1 publication — 2026-09-04
+
+The version-specific DOI <https://doi.org/10.5281/zenodo.22295223> resolved to
+the published 2.1 record with 21 files, a 4 September 2026 publication date,
+and the research compendium relation. The concept DOI
+<https://doi.org/10.5281/zenodo.22167064> resolved to the latest version;
+Preprint 2.0 remains available under its historical version DOI.

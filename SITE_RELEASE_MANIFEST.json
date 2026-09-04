@@ -834,10 +834,10 @@
       "sha256": "842d16a868e8df394899ee3f75666bdfd799769c65be5de95b18bc5e0ed071bd"
     },
     {
-      "bytes": 19781,
+      "bytes": 19825,
       "component": "parts_library_overlay",
       "path": "README.md",
-      "sha256": "97d83e7b86a5d031864c97472210e69fe0fc67c415d1a03efa52585257949b26"
+      "sha256": "f1113c9c553274781ae1b6f1243a56d4be2703a1025b84e846f5ef40442d3ed2"
     },
     {
       "bytes": 60003,
@@ -3366,16 +3366,16 @@
       "sha256": "36faf29111351a66e71b9d0f1a61c1d14cad4603181806c45f538e52fbad017e"
     },
     {
-      "bytes": 11214,
+      "bytes": 11626,
       "component": "parts_library_overlay",
       "path": "documentation/BROWSER_ACCEPTANCE.md",
-      "sha256": "693961c00a2f0538fbc14f5bedd998140869e3cb9274eb8be2b6cce5bb8eb44d"
+      "sha256": "b7e3b23f4d0804fc2d3ad4b81d08b49b10b3c27b971fd14ef886686d30a503c4"
     },
     {
-      "bytes": 2053,
+      "bytes": 2210,
       "component": "parts_library_overlay",
       "path": "documentation/CITATION.md",
-      "sha256": "4fc4f452b59b73df89f9c75f094719934995a8a8214efbe47e94c6aceb5b61e4"
+      "sha256": "7b1e64594379b5ce572bd8736f1eae353f7b14b85e6118547e979fa699cc42ca"
     },
     {
       "bytes": 9256,
@@ -3417,19 +3417,19 @@
       "bytes": 9858,
       "component": "parts_library_overlay",
       "path": "documentation/LIMITATIONS.md",
-      "sha256": "09321668ba83af2660aae089fc3d9c09d4de3cf6ddfe2629f9c37c92a115968a"
+      "sha256": "ceaa85928c54c2e3a3a78aaab9b0df18c174bd1a069f228c6efacbdaf4592d9e"
     },
     {
-      "bytes": 23867,
+      "bytes": 25776,
       "component": "parts_library_overlay",
       "path": "documentation/METHOD.md",
-      "sha256": "d7045b1d9253d77d657ead00d0b15e47a35360d72cae5804b607936bd991d4aa"
+      "sha256": "95f5e08801d5612ae2eec85ad8f76886b3f4466463a8d6a9d1554e4d01443b24"
     },
     {
-      "bytes": 4883,
+      "bytes": 4985,
       "component": "parts_library_overlay",
       "path": "documentation/PUBLIC_RELEASE.md",
-      "sha256": "cc4ad6f07d1e0c508f6bc5b397d00c1fce2643f0cc85ab8d8bbae8d48afcf637"
+      "sha256": "4069174fc01c82e4a0546843ca8adb7ce125025a103135bc85d9ff258cc6b3dd"
     },
     {
       "bytes": 19026,
@@ -3438,10 +3438,16 @@
       "sha256": "a03ff1251769c1b652c7590e28554734eca0027a36e1cabf5bfd866e64e3e7f3"
     },
     {
-      "bytes": 5354,
+      "bytes": 5627,
       "component": "parts_library_overlay",
       "path": "documentation/README.md",
-      "sha256": "b909bd4b151b749369066344c6bc1d295e76b6a7cf4b7110039e9846f446dca9"
+      "sha256": "346142a9be9c650d024968e1ea7961fb91975d286602d0a495d10ee25cec9670"
+    },
+    {
+      "bytes": 2252,
+      "component": "parts_library_overlay",
+      "path": "documentation/RELEASE_NOTES_beyond-snap-ratio-v2.1.md",
+      "sha256": "a278d709b457eac3eeb9774c5e0274253f753e5de74d31f1f96c2fc82b202d52"
     },
     {
       "bytes": 1376,
@@ -3504,16 +3510,16 @@
       "sha256": "9f5b76440eafef61c9a7852508ba4f0e04e9a43172bae658632795a8a9a35aec"
     },
     {
-      "bytes": 18376,
-      "component": "fc34_base_preserved",
+      "bytes": 19614,
+      "component": "parts_library_overlay",
       "path": "documentation/VIEWER_GUIDE.md",
-      "sha256": "fa7a7d846fdb73e51d69186e5ffbc3bcf29161781927ad90c2a6bd91b80b6be9"
+      "sha256": "3cf554808169aa553bf1f20e889a878fac649aae679265cda997aa5609043861"
     },
     {
-      "bytes": 9140,
+      "bytes": 9467,
       "component": "parts_library_overlay",
       "path": "documentation/index.html",
-      "sha256": "6a4c54efe918b2204a46957654280ca93afead738e42abff0776170a68ded105"
+      "sha256": "d9e3a69c8831df0e1e3cdaed23d282c1207fe12a0644a5d005094bf97903880f"
     },
     {
       "bytes": 4456,
@@ -3579,7 +3585,7 @@
       "bytes": 5270,
       "component": "parts_library_overlay",
       "path": "documentation/prospective-study/README.md",
-      "sha256": "9f9b58697f015b91a9f39b18f0300a8414fbbaf8548bcc62daa66deec826e57f"
+      "sha256": "1aa513e7136830b78eb6e4285cdb0e6e63ed30711fc4b265d96d1b415312209c"
     },
     {
       "bytes": 1500,
@@ -3624,16 +3630,16 @@
       "sha256": "85ecfb7609949e7c0930edc0c9313f6ca1c4c58cd89c14af32ae2810aa12ae6b"
     },
     {
-      "bytes": 2865,
+      "bytes": 3691,
       "component": "parts_library_overlay",
       "path": "documentation/research-paper/CLAIM_MATRIX.md",
-      "sha256": "0fd2f444d5e970ee6a2f6f7ef143e01ae8486ce1a21f08504ddd769ca8a56225"
+      "sha256": "773ec1371add9b89c6c39c35aa7fd0345721ee392b63306c4e05d71ad4124183"
     },
     {
-      "bytes": 3756,
+      "bytes": 5219,
       "component": "parts_library_overlay",
       "path": "documentation/research-paper/README.md",
-      "sha256": "e189e44e347b1825acbd33a6311127c213317319a150c8e61653c4dbe9ab5539"
+      "sha256": "43ba961b0c94179f8854b132b444a13620e2e7097b76c89e87a5bff4a575e960"
     },
     {
       "bytes": 1704,
@@ -4458,10 +4464,10 @@
       "sha256": "fd81e078fe999cdcb6af4ecdcbea97b5d2d3962b3e863f724ca79f67d6f8f69d"
     },
     {
-      "bytes": 4315,
+      "bytes": 4409,
       "component": "parts_library_overlay",
       "path": "generator/domelab_pipeline/config/parts_release_overlay.json",
-      "sha256": "17c6fc32794ea02508928c6c1e36e3e8becacb118ab01d78e233c93ac23d1c47"
+      "sha256": "4c966ba85676404f1c568d850883592872aac72700ac080d7cc2f448bcdd273c"
     },
     {
       "bytes": 109633,
@@ -4955,19 +4961,19 @@
         "base_sha256": "ca63925cf56a61f623205af173b33fedc14e8aa8439e165e7d2b7a54df285906",
         "operation": "replace",
         "path": "README.md",
-        "release_sha256": "97d83e7b86a5d031864c97472210e69fe0fc67c415d1a03efa52585257949b26"
+        "release_sha256": "f1113c9c553274781ae1b6f1243a56d4be2703a1025b84e846f5ef40442d3ed2"
       },
       {
         "base_sha256": "f6387933227ad9b3bfc68519abad2e2a83b17ab4738a059bddd37e5926026d4b",
         "operation": "replace",
         "path": "documentation/BROWSER_ACCEPTANCE.md",
-        "release_sha256": "693961c00a2f0538fbc14f5bedd998140869e3cb9274eb8be2b6cce5bb8eb44d"
+        "release_sha256": "b7e3b23f4d0804fc2d3ad4b81d08b49b10b3c27b971fd14ef886686d30a503c4"
       },
       {
         "base_sha256": null,
         "operation": "add",
         "path": "documentation/CITATION.md",
-        "release_sha256": "4fc4f452b59b73df89f9c75f094719934995a8a8214efbe47e94c6aceb5b61e4"
+        "release_sha256": "7b1e64594379b5ce572bd8736f1eae353f7b14b85e6118547e979fa699cc42ca"
       },
       {
         "base_sha256": null,
@@ -5009,19 +5015,19 @@
         "base_sha256": "853ab54a444754f7aec1ee1759e84ec86ea2c437e230003754414cfa24615ccc",
         "operation": "replace",
         "path": "documentation/LIMITATIONS.md",
-        "release_sha256": "09321668ba83af2660aae089fc3d9c09d4de3cf6ddfe2629f9c37c92a115968a"
+        "release_sha256": "ceaa85928c54c2e3a3a78aaab9b0df18c174bd1a069f228c6efacbdaf4592d9e"
       },
       {
         "base_sha256": "0d783ff8e075b423a1fdea72cf521a675ecb42d2d92d72a9a7b59de3928d87a0",
         "operation": "replace",
         "path": "documentation/METHOD.md",
-        "release_sha256": "d7045b1d9253d77d657ead00d0b15e47a35360d72cae5804b607936bd991d4aa"
+        "release_sha256": "95f5e08801d5612ae2eec85ad8f76886b3f4466463a8d6a9d1554e4d01443b24"
       },
       {
         "base_sha256": null,
         "operation": "add",
         "path": "documentation/PUBLIC_RELEASE.md",
-        "release_sha256": "cc4ad6f07d1e0c508f6bc5b397d00c1fce2643f0cc85ab8d8bbae8d48afcf637"
+        "release_sha256": "4069174fc01c82e4a0546843ca8adb7ce125025a103135bc85d9ff258cc6b3dd"
       },
       {
         "base_sha256": null,
@@ -5033,7 +5039,13 @@
         "base_sha256": "389826d420a17a71a8c5b20ee04c99a99593f3cde059f3482b1125334d37b8d0",
         "operation": "replace",
         "path": "documentation/README.md",
-        "release_sha256": "b909bd4b151b749369066344c6bc1d295e76b6a7cf4b7110039e9846f446dca9"
+        "release_sha256": "346142a9be9c650d024968e1ea7961fb91975d286602d0a495d10ee25cec9670"
+      },
+      {
+        "base_sha256": null,
+        "operation": "add",
+        "path": "documentation/RELEASE_NOTES_beyond-snap-ratio-v2.1.md",
+        "release_sha256": "a278d709b457eac3eeb9774c5e0274253f753e5de74d31f1f96c2fc82b202d52"
       },
       {
         "base_sha256": null,
@@ -5090,10 +5102,16 @@
         "release_sha256": "85254a717f8352ec5be9c3ef085c6a8580b1a0fc4591c8eaf41fbd575a0effee"
       },
       {
+        "base_sha256": "fa7a7d846fdb73e51d69186e5ffbc3bcf29161781927ad90c2a6bd91b80b6be9",
+        "operation": "replace",
+        "path": "documentation/VIEWER_GUIDE.md",
+        "release_sha256": "3cf554808169aa553bf1f20e889a878fac649aae679265cda997aa5609043861"
+      },
+      {
         "base_sha256": "cd932e86217300d0352f6e33ceaf8c8f8f831b39c4618763e25b793dede4b199",
         "operation": "replace",
         "path": "documentation/index.html",
-        "release_sha256": "6a4c54efe918b2204a46957654280ca93afead738e42abff0776170a68ded105"
+        "release_sha256": "d9e3a69c8831df0e1e3cdaed23d282c1207fe12a0644a5d005094bf97903880f"
       },
       {
         "base_sha256": null,
@@ -5147,7 +5165,7 @@
         "base_sha256": null,
         "operation": "add",
         "path": "documentation/prospective-study/README.md",
-        "release_sha256": "9f9b58697f015b91a9f39b18f0300a8414fbbaf8548bcc62daa66deec826e57f"
+        "release_sha256": "1aa513e7136830b78eb6e4285cdb0e6e63ed30711fc4b265d96d1b415312209c"
       },
       {
         "base_sha256": null,
@@ -5195,13 +5213,13 @@
         "base_sha256": null,
         "operation": "add",
         "path": "documentation/research-paper/CLAIM_MATRIX.md",
-        "release_sha256": "0fd2f444d5e970ee6a2f6f7ef143e01ae8486ce1a21f08504ddd769ca8a56225"
+        "release_sha256": "773ec1371add9b89c6c39c35aa7fd0345721ee392b63306c4e05d71ad4124183"
       },
       {
         "base_sha256": null,
         "operation": "add",
         "path": "documentation/research-paper/README.md",
-        "release_sha256": "e189e44e347b1825acbd33a6311127c213317319a150c8e61653c4dbe9ab5539"
+        "release_sha256": "43ba961b0c94179f8854b132b444a13620e2e7097b76c89e87a5bff4a575e960"
       },
       {
         "base_sha256": null,
@@ -5285,7 +5303,7 @@
         "base_sha256": null,
         "operation": "add",
         "path": "generator/domelab_pipeline/config/parts_release_overlay.json",
-        "release_sha256": "17c6fc32794ea02508928c6c1e36e3e8becacb118ab01d78e233c93ac23d1c47"
+        "release_sha256": "4c966ba85676404f1c568d850883592872aac72700ac080d7cc2f448bcdd273c"
       },
       {
         "base_sha256": null,
@@ -5457,7 +5475,7 @@
       }
     ],
     "policy_name": "ec-parts-builder-lib-6.1",
-    "policy_sha256": "17c6fc32794ea02508928c6c1e36e3e8becacb118ab01d78e233c93ac23d1c47",
+    "policy_sha256": "4c966ba85676404f1c568d850883592872aac72700ac080d7cc2f448bcdd273c",
     "policy_version": 1,
     "root_picker_source": "generated/packs/picker.staged.html"
   },
@@ -5488,7 +5506,7 @@
   },
   "publication": {
     "canonical_public_url": "https://buddyog.github.io/topre-force-curves/dome-lab-parts.html",
-    "git_tag": "ec-parts-lib-6.1"
+    "git_tag": "beyond-snap-ratio-v2.1"
   },
   "release_eligible": true,
   "tool_builds": {

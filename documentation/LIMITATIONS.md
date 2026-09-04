@@ -194,7 +194,7 @@ Changes to raw acquisitions, retained membership, metric formulas, thresholds,
 aggregation, the 68-member reference arrays, or the pilot-derived model require
 an explicit new version, regenerated artifacts, and new provenance checks.
 
-Beyond Snap Ratio Preprint 2.0 adds context and exploratory analysis but does
+Beyond Snap Ratio Preprint 2.1 adds context and exploratory analysis but does
 not override these boundaries. It cites the released identities and does not
 silently redefine the values documented here. The planned prospective study is
 specified in [`prospective-study/`](prospective-study/README.md); until that

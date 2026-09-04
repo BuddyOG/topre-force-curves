@@ -104,4 +104,4 @@ The repository protocol is frozen and archived under tag
 operator-readiness box is complete. The study itself is complete only after
 enrollment, both scored sessions, declared quality control, blinded analysis,
 code-key release, and a versioned result report. Until then, public claims
-remain the exploratory claims in Preprint 2.0.
+remain the exploratory claims in Preprint 2.1.

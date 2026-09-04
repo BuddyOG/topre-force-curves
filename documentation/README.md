@@ -28,6 +28,9 @@ to tag `ec-parts-lib-6.1` by the active site manifest.
   phrase “75 raw ratings” refers to 75 session-by-dome observation rows; each
   row contains one weight and one tactility score (150 numeric scores total).
 - [fc-3.4 release notes](RELEASE_NOTES_fc-3.4.md)
+- [Beyond Snap Ratio Preprint 2.1 clarification notes](RELEASE_NOTES_beyond-snap-ratio-v2.1.md)
+  — single-input index arithmetic, association-rank interpretation, and
+  publication identities.
 - [EC Parts Builder](EC_PARTS_LIBRARY.md) — standalone workflow, Evidence-beta
   labels, catalog projection, and interpretation limits.
 - [lib-6.1 release notes](RELEASE_NOTES_lib-6.1.md) — current release changes,
@@ -56,8 +59,9 @@ to tag `ec-parts-lib-6.1` by the active site manifest.
 - [Documentation closeout notes](RELEASE_NOTES_dome-lab-docs-2026-08-31.md)
   — dated public-record additions with scientific continuity.
 
-Beyond Snap Ratio Preprint 2.0 is available at
-<https://doi.org/10.5281/zenodo.22167065>, with its research compendium at
+Beyond Snap Ratio Preprint 2.1 is available at
+<https://doi.org/10.5281/zenodo.22295223>; the concept DOI for all versions is
+<https://doi.org/10.5281/zenodo.22167064>. Its research compendium is at
 <https://doi.org/10.5281/zenodo.22167047>. The preprint is the frozen methods
 and exploratory-pilot foundation. The prospective package is frozen as
 `perception-validation-v1` and specifies the next multi-rater evidence phase;

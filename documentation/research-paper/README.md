@@ -1,13 +1,13 @@
 # Full research-paper roadmap
 
 The full paper is a future evidence synthesis, not a cosmetic expansion of the
-existing preprint. **Beyond Snap Ratio**, Version 2.0, is the frozen methods,
+existing preprint. **Beyond Snap Ratio**, Version 2.1, is the frozen methods,
 bench, canonical-evidence, and exploratory-pilot foundation. The planned paper
 adds prospective multi-rater validation only after that study is completed.
 
 ## Current foundation
 
-- Preprint 2.0: <https://doi.org/10.5281/zenodo.22167065>
+- Preprint 2.1: <https://doi.org/10.5281/zenodo.22295223>
 - Research compendium: <https://doi.org/10.5281/zenodo.22167047>
 - Force Curve Bench: `fc-3.4`
 - EC Parts Builder: `lib-6.1`
@@ -16,6 +16,34 @@ adds prospective multi-rater validation only after that study is completed.
 - Exploratory evidence: `subjective-pilot-v1`, one rater, 25 domes, three
   fixed-order sessions
 - Frozen index model: `perception-rank-v1`
+
+## Required index-construction wording
+
+Every revision must state the released equations directly:
+
+```text
+Weight Index = fleet percentile(full-precision cohort collapse force)
+Tactility Index = fleet percentile(full-precision cohort force Drop)
+```
+
+They are single-input fleet coordinates, not multi-metric perception scores.
+Spearman rank associations supplied the primary input-selection evidence and
+Pearson correlations were secondary descriptions; neither coefficient is used
+as a weight. RAMP, pre-collapse work, press work to force-wall, and the other
+screened descriptors do not enter either released equation.
+
+The frozen analysis field `rho_weighted_family_composite_spearman_rho` is a
+diagnostic association for a rejected candidate family composite. Its legacy
+name does not describe either released index and it does not affect their
+values.
+
+Press work to force-wall should still be reported as a separate full-stroke
+effort descriptor. Its perceived-weight association ranked sixth among the
+fourteen screens (`Spearman rho = 0.817381`), but it depends on an
+assembly-defined detected-wall endpoint, is missing when no wall is detected,
+and was highly redundant with collapse force (`rho = 0.900`) and pre-collapse
+work (`rho = 0.943`). The pilot does not establish an independent contribution
+that would justify adding this endpoint-dependent term to Weight Index.
 
 ## Required sequence
 
@@ -45,7 +73,8 @@ adds prospective multi-rater validation only after that study is completed.
 5. **Mechanical metrics** — collapse force, ramp, work, drop family,
    force-wall onset, null semantics, and correlated-descriptor warning.
 6. **Exploratory pilot** — fixed 25-dome panel, one-rater limitations, rank
-   associations, and transparent derivation of the two percentile indices.
+   associations, exact separation of selection evidence from index arithmetic,
+   and transparent derivation of the two single-input percentile indices.
 7. **Prospective validation** — blinded randomized repeated-measures protocol,
    participants, preregistered analysis, exclusions, and results.
 8. **Discussion** — convergence or disagreement across raters, assembly-

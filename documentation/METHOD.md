@@ -317,6 +317,7 @@ without being promoted as index inputs.
 | Normalized drop rate (NDR) | `(Fc - Fv) / (Fc × (xv - xc))`, equivalently Drop rate divided by `Fc` | 1/mm |
 | Snap | `100 × (Fc - Fv) / Fc` | % |
 | Pre-collapse work | raw-force integral from the recorded press start to interpolated `xc` | gf·mm |
+| Press work to force-wall | raw-force integral from the recorded press start to detected force-wall onset | gf·mm |
 | RAMP | baseline-relative 10–90% pre-Collapse rise divided by its interpolated travel span | gf/mm |
 | Steepest 0.10 mm drop | maximum force-loss rate over any 0.10 mm interval within `[xc, xv]` | gf/mm |
 | Detected force-wall onset | earliest post-Valley coordinate satisfying the sustained 1%-per-step rule | mm |
@@ -380,11 +381,14 @@ This is one-way mechanical work on the measured press trace. It is not an
 electrical actuation-energy claim.
 
 The canonical evidence also retains the legacy field
-`full_stroke_press_work_gf_mm`: the raw-force integral from the press start to
-the detected force-wall onset. It is null whenever that wall is unavailable and
-is not displayed as a weight or tactility descriptor in the perception-focused
-viewer. Despite the field's historical name, it is not work to a known physical
-or nominal full-travel position.
+`full_stroke_press_work_gf_mm`, labelled **Press work to force-wall**: the
+raw-force integral from the press start to the detected force-wall onset. It is
+null whenever that wall is unavailable and is not displayed as a weight or
+tactility descriptor in the perception-focused viewer. Despite the field's
+historical name, it is not work to a known physical or nominal full-travel
+position. It remains useful as a separate full-stroke-effort descriptor when a
+detected wall exists, especially for questions about presses that continue
+past collapse, but it is not an input to either perception index.
 
 ## Cohort aggregation, curves, and rounding
 
@@ -425,14 +429,35 @@ in the panel). Each dome's arithmetic mean across the three sessions was used.
 Collapse force had the strongest observed Spearman rank association with mean
 perceived-weight rank (`rho = 0.951744545758805`). Force Drop had the strongest
 association with mean tactility-sharpness rank
-(`rho = 0.930200072898408`). Those correlations select the mechanical input to
-each index; they are not coefficients in the index equations and do not prove
-causation.
+(`rho = 0.930200072898408`). Spearman rank association supplied the primary
+input-selection evidence; Pearson correlations were secondary descriptions.
+Neither Spearman nor Pearson coefficients are weights in the index equations,
+and neither analysis proves causation.
 
 RAMP and pre-collapse work remain supporting weight descriptors. Steepest
 0.10 mm drop, Drop rate, and Snap remain supporting tactility-sharpness
 descriptors. Combining these correlated families produced weaker agreement
 with the pilot, so they are not combined into the two indices.
+
+The frozen analysis field `rho_weighted_family_composite_spearman_rho` records
+a diagnostic association for that rejected candidate family composite. Its
+legacy name does not describe either released index formula and it does not
+affect any released index value.
+
+Press work to force-wall had the sixth-largest observed Spearman association
+with perceived weight among the fourteen screened metrics
+(`rho = 0.817380609886974`; 95% BCa interval
+`[0.648791394920568, 0.913590454630411]`). Its point estimate was only
+`0.0007722` below fifth-ranked Drop rate, so the ordinal rank should not be
+read as a practically resolved separation. It is nevertheless excluded from
+the Weight Index because the index is the selected single-input collapse-force
+percentile, not a weighted combination of the screen. Press work also depends
+on an assembly-defined detected wall, is null if no wall is detected, and is
+highly redundant in this pilot with collapse force (`rho = 0.900000`) and
+pre-collapse work (`rho = 0.943077`). The pilot does not show an independent
+contribution that would justify the extra endpoint dependency and model
+complexity. The measurement is retained separately for full-stroke-effort
+questions rather than discarded.
 
 ### Index equations
 
@@ -445,6 +470,10 @@ measurement cohorts in the frozen reference fleet:
 Weight Index_i              = P(Ci; C_fleet)
 Tactility-sharpness Index_i = P(Di; D_fleet)
 ```
+
+There is no correlation multiplier or fitted coefficient in either formula.
+Every other mechanical descriptor, including RAMP, pre-collapse work, and
+press work to force-wall, does not enter either equation.
 
 `P(x; R)` is the fleet percentile function. For a unique reference value at
 zero-based sorted position `k` in the 68-member fleet:
